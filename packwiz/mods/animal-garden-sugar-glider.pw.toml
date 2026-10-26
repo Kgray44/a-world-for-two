@@ -1,0 +1,12 @@
+name = "Animal Garden - Sugar Glider"
+filename = "animalgarden-sugargilder-1.0.0-neoforge-1.21.1-21.1.214.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/WktWffF9/versions/uHLwVY2K/animalgarden-sugargilder-1.0.0-neoforge-1.21.1-21.1.214.jar"
+hash-format = "sha512"
+hash = "e218e905fc931377819e8122a329320a10d5a4d13b38aea3867c4a6b3693cdc7bc2791a057322932296439c36fe7dc32dbc144e7ff303f06babefbf587e3f4bf"
+
+[update.modrinth]
+mod-id = "WktWffF9"
+version = "uHLwVY2K"

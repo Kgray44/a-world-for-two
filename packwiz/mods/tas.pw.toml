@@ -1,0 +1,12 @@
+name = "Take a Seat!"
+filename = "takeaseat-1.0.4-1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/Gg7qMzxE/versions/6qDGV9YV/takeaseat-1.0.4-1.21.1-neoforge.jar"
+hash-format = "sha512"
+hash = "7dab4eecc557e57a14abf1ef29ed6b5fc3f79c6b573c8cfb8e32f116acbd766d27ad11050c8317593fd17153793edfdf1a25d7f223abcbc594ceb40b57e08387"
+
+[update.modrinth]
+mod-id = "Gg7qMzxE"
+version = "6qDGV9YV"

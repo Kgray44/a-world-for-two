@@ -1,0 +1,12 @@
+name = "BlueLib"
+filename = "2.4.3-neoforge-1.21.1-bluelib-2.4.3.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/e4dMhzcL/versions/YFGbBo01/2.4.3-neoforge-1.21.1-bluelib-2.4.3.jar"
+hash-format = "sha512"
+hash = "59a29756b4d6e8ead64eb7b09f65e17009f2e7cfd1cb38a42ca6f1434c16166a3db1ad9b988fcf1f394e27eafe2cb7547e39eafffed56b01a3fb2f13fa97c235"
+
+[update.modrinth]
+mod-id = "e4dMhzcL"
+version = "YFGbBo01"

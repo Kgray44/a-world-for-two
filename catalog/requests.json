@@ -1,0 +1,552 @@
+{
+  "minecraft": "1.21.1",
+  "loader": "neoforge",
+  "neoforge_candidate": "21.1.255",
+  "requests": [
+    [
+      "farmers-delight",
+      "Farmer's Delight",
+      "cozy"
+    ],
+    [
+      "kaleidoscope-cookery",
+      "Kaleidoscope Cookery",
+      "cozy"
+    ],
+    [
+      "handcrafted",
+      "Handcrafted",
+      "cozy"
+    ],
+    [
+      "supplementaries",
+      "Supplementaries",
+      "cozy"
+    ],
+    [
+      "macaws-furniture",
+      "Macaw's Furniture",
+      "cozy"
+    ],
+    [
+      "macaws-windows",
+      "Macaw's Windows",
+      "cozy"
+    ],
+    [
+      "macaws-doors",
+      "Macaw's Doors",
+      "cozy"
+    ],
+    [
+      "macaws-roofs",
+      "Macaw's Roofs",
+      "cozy"
+    ],
+    [
+      "macaws-bridges",
+      "Macaw's Bridges",
+      "cozy"
+    ],
+    [
+      "macaws-fences-and-walls",
+      "Macaw's Fences and Walls",
+      "cozy"
+    ],
+    [
+      "macaws-trapdoors",
+      "Macaw's Trapdoors",
+      "cozy"
+    ],
+    [
+      "farm-and-charm",
+      "[Let's Do] Farm & Charm",
+      "cozy"
+    ],
+    [
+      "vinery",
+      "[Let's Do] Vinery",
+      "cozy"
+    ],
+    [
+      "comforts",
+      "Comforts",
+      "cozy"
+    ],
+    [
+      "ribbits",
+      "Ribbits",
+      "wildlife"
+    ],
+    [
+      "naturalist",
+      "Naturalist",
+      "wildlife"
+    ],
+    [
+      "critters-and-companions",
+      "Critters and Companions",
+      "wildlife"
+    ],
+    [
+      "flying-squirrels",
+      "Flying squirrels",
+      "wildlife"
+    ],
+    [
+      "tectonic",
+      "Tectonic",
+      "terrain"
+    ],
+    [
+      "terralith",
+      "Terralith",
+      "terrain"
+    ],
+    [
+      "regions-unexplored",
+      "Regions Unexplored",
+      "terrain"
+    ],
+    [
+      "biomes-weve-gone",
+      "Oh The Biomes We've Gone",
+      "terrain-alternative"
+    ],
+    [
+      "natures-spirit",
+      "Nature's Spirit",
+      "terrain-alternative"
+    ],
+    [
+      "world-height",
+      "Raised vertical world height",
+      "terrain-alternative"
+    ],
+    [
+      "create",
+      "Create",
+      "engineering"
+    ],
+    [
+      "steam-n-rails",
+      "Create: Steam 'n' Rails (NeoForge port)",
+      "engineering"
+    ],
+    [
+      "create-deco",
+      "Create: Deco",
+      "engineering"
+    ],
+    [
+      "createaddition",
+      "Create: Crafts & Additions",
+      "engineering"
+    ],
+    [
+      "central-kitchen",
+      "Create: Central Kitchen",
+      "engineering"
+    ],
+    [
+      "slice-and-dice",
+      "Create: Slice & Dice",
+      "engineering"
+    ],
+    [
+      "ornithopter",
+      "Create: Ornithopter Glider",
+      "engineering"
+    ],
+    [
+      "aeronautics",
+      "Create Aeronautics",
+      "advanced"
+    ],
+    [
+      "sable",
+      "Sable",
+      "advanced"
+    ],
+    [
+      "big-cannons",
+      "Create Big Cannons",
+      "advanced"
+    ],
+    [
+      "projectile-library",
+      "Ritchie's Projectile Library",
+      "advanced"
+    ],
+    [
+      "small-ships",
+      "Small Ships",
+      "ships"
+    ],
+    [
+      "bluedude-dragons",
+      "Bluedude Dragons",
+      "adventure"
+    ],
+    [
+      "tacz",
+      "TaCZ unofficial NeoForge port",
+      "adventure"
+    ],
+    [
+      "cinematic-interactions",
+      "Cinematic Interactions",
+      "immersion"
+    ],
+    [
+      "immersive-interactions",
+      "Immersive Interactions",
+      "immersion"
+    ],
+    [
+      "essential",
+      "Essential Mod",
+      "immersion"
+    ],
+    [
+      "flame",
+      "Flame",
+      "identity"
+    ],
+    [
+      "kaleidoscope",
+      "Kaleidoscope",
+      "identity"
+    ],
+    [
+      "bsl",
+      "BSL Shaders",
+      "shader"
+    ],
+    [
+      "complementary-reimagined",
+      "Complementary Reimagined",
+      "shader"
+    ],
+    [
+      "complementary-unbound",
+      "Complementary Unbound",
+      "shader"
+    ],
+    [
+      "derivative",
+      "Derivative shader",
+      "shader"
+    ],
+    [
+      "sodium",
+      "Sodium",
+      "client-performance"
+    ],
+    [
+      "iris",
+      "Iris",
+      "client-performance"
+    ],
+    [
+      "immediatelyfast",
+      "ImmediatelyFast",
+      "client-performance"
+    ],
+    [
+      "entityculling",
+      "Entity Culling",
+      "client-performance"
+    ],
+    [
+      "moreculling",
+      "More Culling",
+      "client-performance"
+    ],
+    [
+      "dynamic-fps",
+      "Dynamic FPS",
+      "client-performance"
+    ],
+    [
+      "ferritecore",
+      "FerriteCore",
+      "shared-performance"
+    ],
+    [
+      "modernfix",
+      "ModernFix",
+      "shared-performance"
+    ],
+    [
+      "voxy",
+      "Voxy",
+      "lod"
+    ],
+    [
+      "roxy",
+      "Roxy",
+      "lod"
+    ],
+    [
+      "voxy-seedgen",
+      "Voxy SeedGen",
+      "lod"
+    ],
+    [
+      "lod-server-support",
+      "LOD Server Support",
+      "lod"
+    ],
+    [
+      "distanthorizons",
+      "Distant Horizons",
+      "lod"
+    ],
+    [
+      "dh-seedgen",
+      "Distant Horizons SeedGen",
+      "lod"
+    ],
+    [
+      "lodgen",
+      "LODgen",
+      "lod"
+    ],
+    [
+      "lithium",
+      "Lithium",
+      "server-performance"
+    ],
+    [
+      "chunky",
+      "Chunky",
+      "server-performance"
+    ],
+    [
+      "spark",
+      "spark",
+      "server-performance"
+    ],
+    [
+      "c2me",
+      "C2ME",
+      "server-performance"
+    ],
+    [
+      "servercore",
+      "ServerCore",
+      "server-performance"
+    ],
+    [
+      "scalablelux",
+      "ScalableLux",
+      "server-performance"
+    ],
+    [
+      "alternate-current",
+      "Alternate Current",
+      "server-performance"
+    ],
+    [
+      "fastsuite",
+      "FastSuite",
+      "server-performance"
+    ],
+    [
+      "clumps",
+      "Clumps",
+      "server-performance"
+    ],
+    [
+      "let-me-despawn",
+      "Let Me Despawn",
+      "server-performance"
+    ],
+    [
+      "ambient-sounds",
+      "Ambient audio enhancements",
+      "addition"
+    ],
+    [
+      "lighting",
+      "Attractive lighting",
+      "addition"
+    ],
+    [
+      "greenhouse",
+      "Greenhouses and gardening",
+      "addition"
+    ],
+    [
+      "seating",
+      "Usable chairs and seating",
+      "addition"
+    ],
+    [
+      "structures",
+      "Villages, ruins and exploration structures",
+      "addition"
+    ],
+    [
+      "seasons",
+      "Optional weather and seasonal ambiance",
+      "addition"
+    ],
+    [
+      "sophisticated-backpacks",
+      "Sophisticated Backpacks",
+      "storage"
+    ],
+    [
+      "sophisticated-core",
+      "Sophisticated Core",
+      "storage"
+    ],
+    [
+      "backpacks-create-integration",
+      "Sophisticated Backpacks Create Integration",
+      "storage"
+    ],
+    [
+      "create-backpacks-compat",
+      "Create: Sophisticated Backpacks Compat",
+      "storage"
+    ],
+    [
+      "sound-physics",
+      "Sound Physics Remastered",
+      "audio"
+    ],
+    [
+      "immersive-melodies",
+      "Immersive Melodies",
+      "audio"
+    ],
+    [
+      "presence-footsteps",
+      "Presence Footsteps",
+      "audio"
+    ],
+    [
+      "advanced-weather",
+      "Advanced Weather",
+      "weather"
+    ],
+    [
+      "serene-seasons",
+      "Serene Seasons",
+      "weather"
+    ],
+    [
+      "falling-leaves",
+      "Falling Leaves",
+      "weather"
+    ],
+    [
+      "particle-rain",
+      "Particle Rain",
+      "weather"
+    ],
+    [
+      "smooth-animations",
+      "Smooth Player Animations",
+      "animation"
+    ],
+    [
+      "take-a-seat",
+      "Take a Seat!",
+      "animation"
+    ],
+    [
+      "emotecraft",
+      "Emotecraft",
+      "animation"
+    ],
+    [
+      "skin-layers",
+      "3D Skin Layers",
+      "animation"
+    ],
+    [
+      "not-enough-animations",
+      "Not Enough Animations",
+      "animation"
+    ],
+    [
+      "simple-hats",
+      "Simple Hats",
+      "cosmetics"
+    ],
+    [
+      "amendments",
+      "Amendments",
+      "cosmetics"
+    ],
+    [
+      "carry-on",
+      "Carry On",
+      "cosmetics"
+    ],
+    [
+      "visual-workbench",
+      "Visual Workbench",
+      "cosmetics"
+    ],
+    [
+      "cosmetic-armor",
+      "Cosmetic Armor Reworked",
+      "cosmetics"
+    ],
+    [
+      "exposure",
+      "Exposure",
+      "photography"
+    ],
+    [
+      "ziplines",
+      "Ziplines: Rezipped!",
+      "transportation"
+    ],
+    [
+      "lootr",
+      "Lootr",
+      "exploration"
+    ],
+    [
+      "natures-compass",
+      "Nature's Compass",
+      "exploration"
+    ],
+    [
+      "explorers-compass",
+      "Explorer's Compass",
+      "exploration"
+    ],
+    [
+      "controlling",
+      "Controlling",
+      "exploration"
+    ],
+    [
+      "polymorph",
+      "Polymorph",
+      "exploration"
+    ],
+    [
+      "travelers-backpack",
+      "Traveler's Backpack",
+      "superseded"
+    ],
+    [
+      "fog",
+      "Fog",
+      "superseded"
+    ],
+    [
+      "better-fog",
+      "Better Fog",
+      "optional-candidate"
+    ]
+  ]
+}

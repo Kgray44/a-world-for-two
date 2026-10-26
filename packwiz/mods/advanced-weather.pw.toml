@@ -1,0 +1,12 @@
+name = "Advanced Weather"
+filename = "advancedweather-0.1.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/BU2Tm2Hq/versions/hkSfHfRz/advancedweather-0.1.2.jar"
+hash-format = "sha512"
+hash = "f877e40d1be613678759a21910acad48b18073ea837937fa85811c19c8672e8d4e1371beebb32c678c8cf358c657eaf3da9c1458a3f280af6201cfab91e8989f"
+
+[update.modrinth]
+mod-id = "BU2Tm2Hq"
+version = "hkSfHfRz"

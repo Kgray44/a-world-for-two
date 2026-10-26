@@ -1,0 +1,529 @@
+{
+  "version": "0.1.0-candidate.1",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.255",
+  "java": 21,
+  "default_lod": "distant-horizons",
+  "policy": "Review exact release metadata and JAR dependency ranges, prefer stable releases, and never promote runtime-unvalidated candidates to production.",
+  "mods": [
+    {
+      "request": "farmers-delight",
+      "project": "farmers-delight",
+      "version": "XTVZDOol"
+    },
+    {
+      "request": "kaleidoscope-cookery",
+      "project": "kaleidoscope-cookery",
+      "version": "g8w0b2ly"
+    },
+    {
+      "request": "handcrafted",
+      "project": "handcrafted",
+      "version": "JfqnpP2Z"
+    },
+    {
+      "request": "supplementaries",
+      "project": "supplementaries",
+      "version": "rWq0ko29"
+    },
+    {
+      "request": "macaws-furniture",
+      "project": "macaws-furniture",
+      "version": "Z5V3Ps7S"
+    },
+    {
+      "request": "macaws-windows",
+      "project": "macaws-windows",
+      "version": "rQUE4LCz"
+    },
+    {
+      "request": "macaws-doors",
+      "project": "macaws-doors",
+      "version": "u7BRX44F"
+    },
+    {
+      "request": "macaws-roofs",
+      "project": "macaws-roofs",
+      "version": "jiXRXiSt"
+    },
+    {
+      "request": "macaws-bridges",
+      "project": "macaws-bridges",
+      "version": "aQ7rY7ng"
+    },
+    {
+      "request": "macaws-fences-and-walls",
+      "project": "macaws-fences-and-walls",
+      "version": "jVdb0r4W"
+    },
+    {
+      "request": "macaws-trapdoors",
+      "project": "macaws-trapdoors",
+      "version": "StnP0RNi"
+    },
+    {
+      "request": "farm-and-charm",
+      "project": "lets-do-farm-charm",
+      "version": "2eW1JdC8"
+    },
+    {
+      "request": "vinery",
+      "project": "lets-do-vinery",
+      "version": "NmoLFrhq"
+    },
+    {
+      "request": "comforts",
+      "project": "comforts",
+      "version": "3kpPjcTc"
+    },
+    {
+      "request": "ribbits",
+      "project": "ribbits",
+      "version": "XrUKaWrw"
+    },
+    {
+      "request": "naturalist",
+      "project": "naturalist",
+      "version": "9Yn8ig4c"
+    },
+    {
+      "request": "critters-and-companions",
+      "project": "critters-and-companions",
+      "version": "aeDUpTJS"
+    },
+    {
+      "request": "flying-squirrels",
+      "project": "animal-garden-sugar-glider",
+      "side": "both",
+      "reason": "Sugar gliders are marsupials, not flying squirrels; this is an explicitly labeled gliding-pet alternative."
+    },
+    {
+      "request": "tectonic",
+      "project": "tectonic",
+      "version": "n4iyW7aB",
+      "world_sensitive": true
+    },
+    {
+      "request": "terralith",
+      "project": "terralith",
+      "version": "IY93YaEe",
+      "world_sensitive": true
+    },
+    {
+      "request": "regions-unexplored",
+      "project": "regions-unexplored",
+      "version": "M9SMxdTX",
+      "world_sensitive": true
+    },
+    {
+      "request": "create",
+      "project": "create",
+      "version": "UjX6dr61",
+      "reason": "Reviewed Create 6.0.10 baseline; all addons must satisfy this exact release."
+    },
+    {
+      "request": "steam-n-rails",
+      "project": "L3Jv0QZI",
+      "reason": "Select the latest stable 0.2 line, not the 0.3 alpha/beta line; check JAR range against Create 6.0.10.",
+      "version": "HOPX5oro"
+    },
+    {
+      "request": "create-deco",
+      "project": "create-deco",
+      "version": "qrcMVoBD"
+    },
+    {
+      "request": "createaddition",
+      "project": "createaddition",
+      "reason": "Stable 1.6.0, not the 1.7 beta line.",
+      "version": "qPr8V4G2"
+    },
+    {
+      "request": "central-kitchen",
+      "project": "create-central-kitchen",
+      "version": "qZxkZR8W"
+    },
+    {
+      "request": "slice-and-dice",
+      "project": "slice-and-dice",
+      "version": "D6mQaFRW"
+    },
+    {
+      "request": "ornithopter",
+      "project": "create-ornithopter-glider",
+      "version": "DFrFDlu7"
+    },
+    {
+      "request": "aeronautics",
+      "project": "create-aeronautics",
+      "version": "44pLdPGg",
+      "reason": "Stable 1.3.2 uses Sable 2.x; upstream Iris visual issues remain an explicit runtime gate."
+    },
+    {
+      "request": "sable",
+      "project": "sable",
+      "version": "fg9dTRz9",
+      "reason": "2.0.6 includes prior Create massless-contraption crash fixes."
+    },
+    {
+      "request": "big-cannons",
+      "project": "create-big-cannons",
+      "version": "bOiDu0LS"
+    },
+    {
+      "request": "projectile-library",
+      "project": "rpl"
+    },
+    {
+      "request": "small-ships",
+      "project": "small-ships",
+      "version": "2iLK0Wz6",
+      "reason": "Use stable 2.0.2 rather than the reference pack's beta."
+    },
+    {
+      "request": "bluedude-dragons",
+      "project": "bluedude-dragons",
+      "version": "gKRLQn5o",
+      "allow_prerelease": true,
+      "reason": "Requested HTTYD experience; only prerelease 1.21.1 files are published. Must pass dedicated startup and owner gameplay before production."
+    },
+    {
+      "request": "tacz",
+      "project": "tacz-1.21.1",
+      "reason": "Only primary firearms system; use the port's bundled default gun pack unless a separately pinned pack is reviewed."
+    },
+    {
+      "request": "essential",
+      "project": "essential",
+      "side": "client",
+      "optional": true,
+      "default": false,
+      "reason": "Optional hosted-world fallback; never installed on the dedicated server."
+    },
+    {
+      "request": "sodium",
+      "project": "sodium",
+      "version": "uMOpc5uV",
+      "side": "client",
+      "reason": "Sable 2.0.6 bundles Veil requiring Sodium 0.8.12+; use 0.8.13 paired with the matching Iris port."
+    },
+    {
+      "request": "iris",
+      "project": "iris",
+      "version": "KduFYu4t",
+      "side": "client",
+      "reason": "Version string is 1.8.14-beta.1 despite release labeling. Exact Sodium 0.8.13 is required for compatibility with Sable 2.0.6; treat shaders as a candidate runtime gate.",
+      "allow_prerelease": true
+    },
+    {
+      "request": "immediatelyfast",
+      "project": "immediatelyfast",
+      "version": "EJzmEPZV",
+      "side": "client"
+    },
+    {
+      "request": "entityculling",
+      "project": "entityculling",
+      "version": "eieYbWYb",
+      "side": "client"
+    },
+    {
+      "request": "moreculling",
+      "project": "moreculling",
+      "version": "5M4T2FfG",
+      "side": "client"
+    },
+    {
+      "request": "dynamic-fps",
+      "project": "dynamic-fps",
+      "version": "T238FZpQ",
+      "side": "client"
+    },
+    {
+      "request": "ferritecore",
+      "project": "ferrite-core"
+    },
+    {
+      "request": "modernfix",
+      "project": "modernfix",
+      "version": "ZDZENbHH"
+    },
+    {
+      "request": "distanthorizons",
+      "project": "distanthorizons",
+      "version": "9w34y8ai",
+      "side": "both",
+      "reason": "3.3.3 plus SeedGen 0.9.1 is the primary candidate. Both endpoints carry the same terrain stack for multiplayer seed generation."
+    },
+    {
+      "request": "dh-seedgen",
+      "project": "distant-horizons-seedgen",
+      "version": "2DrfEi0d",
+      "side": "both",
+      "allow_prerelease": true,
+      "reason": "0.9.1 includes urgent serverseed and compatibility fixes. SeedGen's published status is beta; runtime and terrain fidelity tests are mandatory."
+    },
+    {
+      "request": "lithium",
+      "project": "lithium",
+      "version": "DDUrRVCA"
+    },
+    {
+      "request": "chunky",
+      "project": "chunky",
+      "version": "LuFhm4eU",
+      "side": "server"
+    },
+    {
+      "request": "spark",
+      "project": "spark",
+      "version": "v5qtqRQi",
+      "side": "server"
+    },
+    {
+      "request": "clumps",
+      "project": "clumps",
+      "version": "jo7lDoK4",
+      "side": "server"
+    },
+    {
+      "request": "let-me-despawn",
+      "project": "lmd",
+      "side": "server",
+      "version": "fgcMDg9B",
+      "reason": "Hold 1.5.0: the current 1.26.10 line requires NeoForge 21.1.262 and newer Almanac, beyond the selected loader."
+    },
+    {
+      "request": "bsl",
+      "project": "bsl-shaders",
+      "kind": "shader",
+      "side": "client"
+    },
+    {
+      "request": "complementary-reimagined",
+      "project": "complementary-reimagined",
+      "kind": "shader",
+      "side": "client"
+    },
+    {
+      "request": "complementary-unbound",
+      "project": "complementary-unbound",
+      "kind": "shader",
+      "side": "client"
+    },
+    {
+      "request": "ambient-sounds",
+      "project": "ambientsounds",
+      "side": "client"
+    },
+    {
+      "request": "lighting",
+      "project": "macaws-lights-and-lamps"
+    },
+    {
+      "request": "structures",
+      "project": "towns-and-towers",
+      "world_sensitive": true
+    },
+    {
+      "project": "lithostitched",
+      "version": "cZu4cHY3",
+      "side": "both",
+      "reason": "Required terrain helper on both endpoints for biome registries and SeedGen."
+    },
+    {
+      "request": "sophisticated-backpacks",
+      "project": "sophisticated-backpacks",
+      "version": "3SXYeyvp"
+    },
+    {
+      "request": "sophisticated-core",
+      "project": "sophisticated-core",
+      "version": "DqcfpFN9"
+    },
+    {
+      "request": "backpacks-create-integration",
+      "project": "sophisticated-backpacks-create-integration",
+      "version": "PWwbiDmx"
+    },
+    {
+      "request": "create-backpacks-compat",
+      "project": "create-sophisticated-backpacks-compat",
+      "version": "MGpIgh9e",
+      "side": "both",
+      "reason": "Recipe integration included on clients too so the same instance also supports singleplayer."
+    },
+    {
+      "request": "sound-physics",
+      "project": "sound-physics-remastered",
+      "version": "85fA7L1W",
+      "allow_prerelease": true,
+      "reason": "Selected primary feature has only beta NeoForge 1.21.1 releases; exact file requires runtime and integration acceptance.",
+      "side": "client"
+    },
+    {
+      "request": "immersive-melodies",
+      "project": "immersive-melodies",
+      "version": "RLpigSXC"
+    },
+    {
+      "request": "advanced-weather",
+      "project": "advanced-weather",
+      "version": "hkSfHfRz",
+      "allow_prerelease": true,
+      "reason": "Selected primary feature has only beta NeoForge 1.21.1 releases; exact file requires runtime and integration acceptance."
+    },
+    {
+      "request": "serene-seasons",
+      "project": "serene-seasons",
+      "version": "pHEgQQUE",
+      "allow_prerelease": true,
+      "reason": "Selected primary feature has only beta NeoForge 1.21.1 releases; exact file requires runtime and integration acceptance."
+    },
+    {
+      "request": "falling-leaves",
+      "project": "fallingleavesforge",
+      "version": "ZTfOTZtM",
+      "side": "client"
+    },
+    {
+      "request": "smooth-animations",
+      "project": "smoothplayeranimations",
+      "version": "m6Nno8XD",
+      "side": "client"
+    },
+    {
+      "request": "take-a-seat",
+      "project": "tas",
+      "version": "6qDGV9YV"
+    },
+    {
+      "request": "emotecraft",
+      "project": "emotecraft",
+      "version": "fu6N0NgM"
+    },
+    {
+      "request": "skin-layers",
+      "project": "3dskinlayers",
+      "version": "GJTnQGfe",
+      "side": "client"
+    },
+    {
+      "request": "simple-hats",
+      "project": "simple-hats",
+      "version": "t7zbSooi"
+    },
+    {
+      "request": "amendments",
+      "project": "amendments",
+      "version": "OLV6Q846"
+    },
+    {
+      "request": "carry-on",
+      "project": "carry-on",
+      "version": "PV8oLZ1q"
+    },
+    {
+      "request": "visual-workbench",
+      "project": "visual-workbench",
+      "version": "3646RfLS"
+    },
+    {
+      "request": "exposure",
+      "project": "exposure",
+      "version": "iBvaR6AK"
+    },
+    {
+      "request": "ziplines",
+      "project": "ziplines-rezipped",
+      "version": "aoJSybb5"
+    },
+    {
+      "request": "lootr",
+      "project": "lootr",
+      "version": "SPOrIzX8"
+    },
+    {
+      "request": "natures-compass",
+      "project": "natures-compass",
+      "version": "nFniEtJV"
+    },
+    {
+      "request": "explorers-compass",
+      "project": "explorers-compass",
+      "version": "hIJ2Ev1Q"
+    },
+    {
+      "request": "controlling",
+      "project": "controlling",
+      "version": "FaNppCJJ",
+      "side": "client"
+    },
+    {
+      "request": "polymorph",
+      "project": "polymorph",
+      "version": "VEburL70"
+    },
+    {
+      "project": "almanac",
+      "version": "cHGan9fQ",
+      "side": "server",
+      "reason": "Pin the stable pre-1.26.10 line for Let Me Despawn 1.5.0 and NeoForge 21.1.255."
+    },
+    {
+      "project": "glitchcore",
+      "version": "S2TfWrZR",
+      "allow_prerelease": true,
+      "reason": "Explicit pinned dependency for the selected Serene Seasons beta."
+    },
+    {
+      "project": "owo-lib",
+      "version": "wbdHEItB",
+      "allow_prerelease": true,
+      "reason": "Pinned NeoForge port required by the selected Simple Hats release."
+    },
+    {
+      "project": "ha1mEyJS",
+      "version": "yjxtkvnD",
+      "side": "both",
+      "reason": "Take a Seat declares this library required on BOTH physical sides; follow the actual JAR requirement and validate dedicated startup."
+    }
+  ],
+  "artifacts": [
+    {
+      "project_id": "github:dcvke/CinematicInteractions",
+      "slug": "cinematic-interactions",
+      "name": "Cinematic Interactions",
+      "version_id": "v0.18.28-neoforge-1.21.1-beta",
+      "version": "0.18.28",
+      "release_type": "beta",
+      "provider": "github",
+      "filename": "Cinematic.Interaction-NeoForge-1.21.1-0.18.28.jar",
+      "url": "https://github.com/dcvke/CinematicInteractions/releases/download/v0.18.28-neoforge-1.21.1-beta/Cinematic.Interaction-NeoForge-1.21.1-0.18.28.jar",
+      "hashes": {
+        "sha256": "a710efafdee42186611fa8f4468acac5f14fa55bf4ff3c8386b13ee3fa81b997"
+      },
+      "size": 1214576,
+      "side": "both",
+      "kind": "mod",
+      "request": "cinematic-interactions",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "MIT",
+        "name": "MIT",
+        "url": "https://github.com/dcvke/CinematicInteractions/blob/main/LICENSE"
+      },
+      "source": "https://github.com/dcvke/CinematicInteractions/releases/tag/v0.18.28-neoforge-1.21.1-beta",
+      "selection_reason": "Official author release and GitHub asset SHA-256; author targets NeoForge 21.1.255. Beta needs scene and multiplayer validation.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    }
+  ]
+}

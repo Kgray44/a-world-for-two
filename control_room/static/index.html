@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#183d32">
+  <meta name="description" content="A little world, beautifully looked after. Local Minecraft server management for KG and Sera.">
+  <title>A World for Two · Control Room</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <aside id="sidebar">
+    <a class="brand" href="#overview"><img src="/mark.svg" alt="" width="44" height="44"><span>A World for Two<small>CONTROL ROOM</small></span></a>
+    <div class="nav-label">OUR LITTLE WORLD</div>
+    <nav aria-label="Main navigation">
+      <a href="#overview" data-page="overview"><span class="nav-icon">⌂</span>Overview</a>
+      <a href="#performance" data-page="performance"><span class="nav-icon">⌁</span>Performance</a>
+      <a href="#storage" data-page="storage"><span class="nav-icon">▱</span>Storage</a>
+      <a href="#mods" data-page="mods"><span class="nav-icon">◇</span>Mod Manager</a>
+      <a href="#settings" data-page="settings"><span class="nav-icon">☷</span>World settings</a>
+      <a href="#players" data-page="players"><span class="nav-icon">♧</span>Players & access</a>
+      <a href="#console" data-page="console"><span class="nav-icon">›_</span>Console & logs</a>
+      <a href="#backups" data-page="backups"><span class="nav-icon">↶</span>Backups</a>
+      <a href="#connectivity" data-page="connectivity"><span class="nav-icon">⌘</span>Connectivity</a>
+    </nav>
+    <div class="nav-label secondary-label">MAKE IT YOURS</div>
+    <nav aria-label="Setup and reference">
+      <a href="#graphics" data-page="graphics"><span class="nav-icon">☼</span>Graphics & distance</a>
+      <a href="#compatibility" data-page="compatibility"><span class="nav-icon">✓</span>Compatibility</a>
+      <a href="#setup" data-page="setup"><span class="nav-icon">⚙</span>Setup & repair</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="avatars"><span>KG</span><span>S</span></div><div>Made for the two of you.<small>Local. Private. Yours.</small></div></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar"><button id="menu" class="icon-button" aria-label="Toggle navigation">☰</button><div class="breadcrumb">YOUR WORLD <span>/</span> <b id="page-label">Overview</b></div><div class="top-right"><span id="connection" class="connection"><i></i> Connecting</span><span class="local-tag">LOCAL HOST</span></div></header>
+    <main id="main" tabindex="-1"><div class="loading"><span class="spinner"></span>Finding our little world…</div></main>
+    <footer><span>A World for Two <span class="footer-leaf">❧</span> KG & Sera</span><span id="last-update">Waiting for a live sample</span></footer>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="modal"><div class="modal-top"><h2 id="modal-title"></h2><button id="modal-close" class="icon-button" aria-label="Close dialog">×</button></div><div id="modal-body"></div><div id="modal-actions"></div></dialog>
+</body>
+</html>

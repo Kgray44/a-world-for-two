@@ -1,0 +1,8 @@
+name = "Cinematic Interactions"
+filename = "Cinematic.Interaction-NeoForge-1.21.1-0.18.28.jar"
+side = "both"
+
+[download]
+url = "https://github.com/dcvke/CinematicInteractions/releases/download/v0.18.28-neoforge-1.21.1-beta/Cinematic.Interaction-NeoForge-1.21.1-0.18.28.jar"
+hash-format = "sha256"
+hash = "a710efafdee42186611fa8f4468acac5f14fa55bf4ff3c8386b13ee3fa81b997"

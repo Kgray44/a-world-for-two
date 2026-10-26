@@ -1,0 +1,12 @@
+name = "Bluedude Dragons"
+filename = "bdd-neoforge-1.21.1-1.3.0-alpha.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/SImnmScL/versions/gKRLQn5o/bdd-neoforge-1.21.1-1.3.0-alpha.jar"
+hash-format = "sha512"
+hash = "4d51ef6a57afb039fd6c26b80b4d06ff74b75a3a7d1bded5aa7d694f3958fcb84c06934ed7e44c137197c55f47975d01b8b006b3506a440cf1df561d3f2ee598"
+
+[update.modrinth]
+mod-id = "SImnmScL"
+version = "gKRLQn5o"

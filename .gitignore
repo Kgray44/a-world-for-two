@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.env
+*.jar
+*.log
+runtime/
+.local/
+exports/*.zip
+exports/*.mrpack
+exports/*.json
+evidence/private/
+evidence/research/
+!exports/.gitkeep

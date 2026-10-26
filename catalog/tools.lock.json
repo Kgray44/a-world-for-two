@@ -1,0 +1,10 @@
+{
+  "neoforge_installer": {
+    "version": "21.1.255",
+    "filename": "neoforge-21.1.255-installer.jar",
+    "url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.255/neoforge-21.1.255-installer.jar",
+    "size": 6972010,
+    "hashes": {"sha256": "11d67a99db0ded3648b97b1eac06c5db0305899e05f657d360bec9d6741e522f"},
+    "evidence": "Official Maven HEAD Content-Length and .sha256 read 2026-10-26"
+  }
+}
