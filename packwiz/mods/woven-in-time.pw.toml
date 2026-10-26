@@ -1,0 +1,12 @@
+name = "Woven In Time - History inspired art"
+filename = "woven_in_time-1.0.0-for-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/Jun9AaGz/versions/Nub9NJ0i/woven_in_time-1.0.0-for-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "3cf37dbc962217d96de4556719bd3595cbf4e0961e67bf83abf86402bbc1381b6f93f74dfa669878e70df2a8ab143ab32b98b88b424899993854abba32c6f227"
+
+[update.modrinth]
+mod-id = "Jun9AaGz"
+version = "Nub9NJ0i"

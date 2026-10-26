@@ -1,0 +1,12 @@
+name = "All Tutta's Needs"
+filename = "alltuttasneeds-3.4.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/XVZogNXg/versions/5saCAf6o/alltuttasneeds-3.4.0.jar"
+hash-format = "sha512"
+hash = "53a8dfd55a2966c5a42c8ff531188cfb0925382043d9a8c9e3ca33b417ff3fc18947100f65d1d58b76651b672252ded04d015d7c1fc0aa9d10666d06014a6b89"
+
+[update.modrinth]
+mod-id = "XVZogNXg"
+version = "5saCAf6o"

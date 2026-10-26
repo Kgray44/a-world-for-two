@@ -9,14 +9,24 @@ import threading
 import time
 from pathlib import Path
 
-from .common import GiB, UserError, utcnow
+from .common import GiB, REPO, UserError, utcnow
 
 FLOOR = 30 * GiB
 GUARD = Path(r"C:\Users\kkids\AppData\Local\AeroStorageWatch\ReserveGuard.ps1")
 MAX_FILES = 1_000_000
 
 
+def scan_path(path):
+    # Java/Gradle caches routinely exceed legacy MAX_PATH. Use the native extended
+    # path form so these bytes remain visible to allocation and live inventory checks.
+    path = Path(path)
+    if os.name == "nt" and not str(path).startswith("\\\\?\\"):
+        return Path("\\\\?\\" + str(path.resolve()))
+    return path
+
+
 def tree_size(root: Path, limit=None):
+    root = scan_path(root)
     total = count = 0
     if not root.exists():
         return 0
@@ -27,7 +37,12 @@ def tree_size(root: Path, limit=None):
             path = Path(directory) / file
             if path.is_symlink():
                 raise UserError("Linked files cannot be included in managed storage")
-            total += path.stat().st_size
+            try:
+                total += path.stat().st_size
+            except FileNotFoundError:
+                # Downloaders and Minecraft atomically rename their own temporary
+                # files. A vanished entry owns no bytes; the next scan sees its new name.
+                continue
             count += 1
             if count > MAX_FILES:
                 raise UserError("Directory has too many files for a bounded operation")
@@ -37,6 +52,8 @@ def tree_size(root: Path, limit=None):
 
 
 class Storage:
+    _associated_cache = None
+    _associated_lock = threading.Lock()
     def __init__(self, layout):
         self.layout = layout
         self._lock = threading.RLock()
@@ -45,6 +62,11 @@ class Storage:
         self._usage = (0.0, 0)
         self._breakdown = None
         self._scan_at = 0.0
+        self._inventory_guard = threading.Lock()
+        self._inventory_worker = None
+        self._inventory_attempt = 0.0
+        self._inventory_error = None
+        self._associated_latest = None
 
     def usage(self, force=False):
         if force or time.monotonic() - self._usage[0] > 60:
@@ -77,7 +99,8 @@ class Storage:
                         raise OSError(ctypes.get_last_error(), "Unable to measure allocated bytes")
                     return (high.value << 32) | low
             count = 0
-            for directory, dirs, files in os.walk(self.layout.home, followlinks=False,
+            scan_root = scan_path(self.layout.home)
+            for directory, dirs, files in os.walk(scan_root, followlinks=False,
                                                   onerror=lambda error: problems.append(str(error))):
                 retained = []
                 for name in dirs:
@@ -89,7 +112,7 @@ class Storage:
                 dirs[:] = retained
                 for name in files:
                     path = Path(directory) / name
-                    relative = path.relative_to(self.layout.home)
+                    relative = path.relative_to(scan_root)
                     key = relative.parts[0] if len(relative.parts) > 1 else "other"
                     label = labels.get(key, "Preserved prior worlds" if key.startswith("pre-restore-") else key)
                     item = buckets.setdefault(key, {"key": key, "label": label, "bytes": 0, "allocated_bytes": 0, "files": 0})
@@ -166,7 +189,39 @@ class Storage:
             return self.reserve(remaining, target)
         return self.last
 
-    def snapshot(self):
+    def live_inventory(self, refresh_seconds=60):
+        """Return the last measured inventory while one bounded scan refreshes it.
+
+        Recursive storage measurement must not hold up server telemetry or every
+        dashboard request. An unfinished first scan is unknown, never zero bytes.
+        Reserve checks still use their independent synchronous usage/drive checks.
+        """
+        with self._inventory_guard:
+            updating = self._inventory_worker is not None and self._inventory_worker.is_alive()
+            if not updating and time.monotonic() - self._inventory_attempt >= refresh_seconds:
+                self._inventory_attempt = time.monotonic()
+
+                def measure():
+                    try:
+                        self.breakdown()
+                        self._associated_latest = self.associated()
+                        self._inventory_error = None
+                    except Exception as error:
+                        self._inventory_error = str(error)[:500]
+                    finally:
+                        self._inventory_attempt = time.monotonic()
+
+                self._inventory_worker = threading.Thread(target=measure, daemon=True, name="awft-storage-inventory")
+                self._inventory_worker.start()
+                updating = True
+        breakdown = self._breakdown or {
+            "measured_at": None, "scan_ms": None, "categories": [], "bytes": None,
+            "allocated_bytes": None, "files": None, "complete": False, "issues": [],
+            "refresh_seconds": 5, "note": "The first measured inventory is still being collected."
+        }
+        return dict(breakdown, updating=updating, scan_error=self._inventory_error, refresh_seconds=refresh_seconds)
+
+    def snapshot(self, live=False):
         disks = []
         paths = ["C:\\", "D:\\"] if os.name == "nt" else [str(self.layout.home.anchor)]
         for path in paths:
@@ -176,8 +231,40 @@ class Storage:
                               "free": item.free, "reserve": FLOOR, "low": item.free <= FLOOR})
             except OSError:
                 disks.append({"drive": path, "error": "Drive unavailable"})
-        breakdown = self.breakdown()
+        breakdown = self.live_inventory(5 if live else 60)
         return {"drives": disks, "project_bytes": breakdown["bytes"], "breakdown": breakdown,
+                "associated": self._associated_latest,
                 "project_budget": self.layout.settings()["project_budget_gib"] * GiB,
                 "last_guard": self.last,
                 "coverage": "Managed writers only. External applications and already-running unrelated writers are outside this monitor."}
+
+    def associated(self):
+        """Include source and shared launcher data without counting D: junctions twice."""
+        roots = [('source','Project source & evidence',REPO,False)]
+        if os.name == 'nt':
+            prism=Path(os.environ.get('APPDATA', ''))/'PrismLauncher'
+            roots += [(name,'Prism shared '+name,prism/name,True) for name in ('libraries','assets','meta')]
+        roots=[row for row in roots if not row[2].resolve().is_relative_to(self.layout.home)]
+        signature=tuple(str(row[2]) for row in roots)
+        with Storage._associated_lock:
+            cached=Storage._associated_cache
+            if cached and cached[0]==signature and time.monotonic()-cached[1]<15:
+                return cached[2]
+            rows=[]
+            for key,label,root,shared in roots:
+                total=count=0;issues=[]
+                for directory,dirs,files in os.walk(scan_path(root),followlinks=False,onerror=lambda e:issues.append(str(e))):
+                    dirs[:]=[name for name in dirs if not (Path(directory)/name).is_symlink() and not (Path(directory)/name).is_junction()]
+                    for name in files:
+                        path=Path(directory)/name
+                        if path.is_symlink():continue
+                        try:
+                            total+=path.stat().st_size;count+=1
+                        except FileNotFoundError:issues.append('A file changed during the scan')
+                        except OSError as error:issues.append(str(error))
+                        if count>MAX_FILES:raise UserError('Associated storage exceeded its bounded file-count limit')
+                rows.append({'key':key,'label':label,'path':str(root),'bytes':total,'files':count,'shared':shared,'complete':not issues,'issues':issues[:5]})
+            result={'measured_at':utcnow(),'refresh_seconds':15,'rows':rows,'bytes':sum(row['bytes'] for row in rows),
+                'note':'Additional file contents outside the runtime project. Shared Prism data can serve other modpacks, so its full measured size is shown separately. Launcher accounts, other instances, installed Java and unrelated personal files are excluded.'}
+            Storage._associated_cache=(signature,time.monotonic(),result)
+            return result

@@ -1,0 +1,13 @@
+# Claims protect builds without keeping unattended chunks simulated.
+# Explicit administrator forceloads remain a separate Minecraft facility.
+[serverConfig]
+primaryPartySystem = "default"
+
+[serverConfig.parties]
+maxPartyMembers = 8
+
+[serverConfig.claims]
+maxPlayerClaims = 256
+maxPlayerClaimForceloads = 0
+forceloadBonusPerPartyMember = 0
+forceloadBonusForPartyOwner = 0

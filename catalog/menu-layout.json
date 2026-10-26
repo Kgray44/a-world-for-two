@@ -1,0 +1,13 @@
+{
+  "background_sha256": "007ff334d43dad12b441e572f7b7ab466df557ea20fa793222398008a116232a",
+  "authoring": "Original A World for Two typography and control textures; no artwork transformations.",
+  "layout": "FancyMenu v3 native format",
+  "runtime_visual_validation": "pending",
+  "native_actions": [
+    "joinserver",
+    "vanilla singleplayer",
+    "vanilla options",
+    "vanilla NeoForge mods",
+    "vanilla quit"
+  ]
+}

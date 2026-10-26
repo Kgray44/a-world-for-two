@@ -1,0 +1,8 @@
+name = "MapHorizons"
+filename = "maphorizons-1.1.0-awft.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/maphorizons-1.1.0-awft.1.jar"
+hash-format = "sha256"
+hash = "da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93"

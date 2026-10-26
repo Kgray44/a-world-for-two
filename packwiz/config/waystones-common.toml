@@ -1,0 +1,20 @@
+# Discover settlements first. Railways and ships remain the free everyday routes.
+[general]
+defaultVisibility = "ACTIVATION"
+allowEveryoneToManageGlobalWaystones = false
+warpStoneUseTime = 60
+
+[inventoryButton]
+inventoryButton = "NONE"
+
+[worldGen]
+chunksBetweenWildWaystones = 48
+spawnInVillages = "REGULAR"
+
+[teleports]
+enableCosts = true
+enableCooldowns = true
+enableDurability = true
+warpRequirements = ["[is_not_interdimensional] scaled_add_xp_cost(distance, 0.02)", "[is_interdimensional] add_xp_cost(54)", "[source_is_warp_plate] multiply_xp_cost(0)", "[source_is_scroll] multiply_xp_cost(0)", "[target_is_fleeting_memorial] multiply_xp_cost(0)", "min_xp_cost(0)", "max_xp_cost(54)", "[source_is_inventory_button] add_cooldown(inventory_button, 300)"]
+transportPets = "SAME_DIMENSION"
+transportLeashed = "SAME_DIMENSION"

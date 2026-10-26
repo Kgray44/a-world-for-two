@@ -1,0 +1,39 @@
+{
+  "structures": [
+    {
+      "structure": "ancientstructures:mayan_temple",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:mayan_village",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:mayan_temple2",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:mayan_ruins",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:mayan_temple3",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:mayan_temple4",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:lone_school",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 160,
+    "separation": 64,
+    "spread_type": "triangular",
+    "salt": 9994513
+  }
+}

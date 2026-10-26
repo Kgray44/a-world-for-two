@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import json
+import math
 import re
+import time
 import urllib.request
+from datetime import datetime
 
 from .common import UserError, read_json, utcnow, write_json
 
@@ -24,16 +27,112 @@ def profile(name):
 
 
 class Players:
-    def __init__(self, layout, storage, server, settings):
+    def __init__(self, layout, storage, server, settings, telemetry=lambda: {}):
         self.layout, self.storage, self.server, self.settings = layout, storage, server, settings
+        self.telemetry = telemetry
+        self.storage.reserve(2 * 1024 * 1024)
+        self.last_location_sample = None
 
     def snapshot(self):
+        with self.layout.mutation:
+            return self._snapshot()
+
+    def _snapshot(self):
         whitelist = read_json(self.layout.server / "whitelist.json", [])
         ops = read_json(self.layout.server / "ops.json", [])
         status = self.server.snapshot()
+        measurements = self.telemetry()
+        fresh = False
+        if measurements.get("tick_at") and status["state"] == "online":
+            try:
+                fresh = 0 <= time.time() - datetime.fromisoformat(measurements["tick_at"].replace("Z", "+00:00")).timestamp() <= 15
+            except (ValueError, TypeError):
+                pass
+        live = {ident: dict(value, at=measurements["tick_at"]) for ident, value in measurements.get("players", {}).items()} if fresh else {}
+        known = read_json(self.layout.state / "last-player-locations.json", {})
+        if live and measurements["tick_at"] != self.last_location_sample:
+            known.update({ident: dict(value, at=measurements["tick_at"]) for ident, value in live.items()})
+            known = dict(list(known.items())[-128:])
+            write_json(self.layout.state / "last-player-locations.json", known)
+            self.last_location_sample = measurements["tick_at"]
+        identities = {p["uuid"]: {"uuid": p["uuid"], "name": p["name"]} for p in [*whitelist, *ops, *live.values()]}
+        members = []
+        for ident, person in identities.items():
+            op = next((x for x in ops if x["uuid"] == ident), {})
+            location = live.get(ident) or known.get(ident)
+            members.append(dict(person, whitelisted=any(x["uuid"] == ident for x in whitelist),
+                operator_level=op.get("level", 0), bypass_player_limit=op.get("bypassesPlayerLimit", False),
+                online=ident in live, location=location, location_state="live" if ident in live else "last seen" if location else "not available"))
         return {"whitelist": whitelist, "operators": ops, "online": status.get("status", {}).get("players") if status.get("status") else None,
-                "events": status["events"], "online_mode": True,
+                "events": status["events"], "online_mode": True, "members": members,
+                "capabilities": measurements.get("bridge_capabilities", []) if fresh else [],
                 "note": "Profile names and UUIDs only. Account credentials are never collected."}
+
+    def details(self, name):
+        if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z0-9_]{1,16}", name):
+            raise UserError("Choose a valid Java player")
+        snapshot = self.snapshot()
+        who = next((p for p in snapshot["members"] if p["name"].lower() == name.lower()), None)
+        if who is None:
+            raise UserError("This player is not in the whitelist, operator list or current online roster")
+        return dict(who, capabilities=snapshot["capabilities"])
+
+    def permissions(self, name, level, bypass=False, confirmed=False, notify=lambda _: None):
+        if type(level) is not int or not 0 <= level <= 4 or type(bypass) is not bool or level == 0 and bypass:
+            raise UserError("Choose member level 0 or operator level 1–4. Player-limit bypass requires operator status.")
+        if confirmed is not True:
+            raise UserError("Confirm this permission change before saving")
+        who = self.details(name)
+        with self.layout.mutation:
+            self.storage.reserve(1024 * 1024)
+            path = self.layout.server / "ops.json"
+            if path.exists():
+                self.settings.snapshot(path)
+            if self.server.running():
+                if "player_permissions" not in self.snapshot()["capabilities"]:
+                    raise UserError("Live permission-level editing needs the fresh Control Bridge 0.2 telemetry. Stop the server to edit offline, or install the updated bridge.")
+                command = f"awft permissions {who['name']} {who['uuid']} {level} {str(bypass).lower()}"
+                self.server._write(command)
+                deadline = time.monotonic() + 5
+                while time.monotonic() < deadline:
+                    try:
+                        entries = read_json(path, [])
+                        entry = next((p for p in entries if p["uuid"] == who["uuid"]), None)
+                        if (level == 0 and entry is None) or (entry and entry.get("level") == level and entry.get("bypassesPlayerLimit") == bypass):
+                            break
+                    except (ValueError, OSError):
+                        pass
+                    time.sleep(.1)
+                else:
+                    raise UserError("The permission command was sent but persistence was not confirmed. Review the console before retrying.")
+            else:
+                entries = [p for p in read_json(path, []) if p["uuid"] != who["uuid"]]
+                if level:
+                    entries.append({"uuid": who["uuid"], "name": who["name"], "level": level, "bypassesPlayerLimit": bypass})
+                write_json(path, entries)
+            write_json(self.layout.logs / ("player-permissions-" + str(time.time_ns()) + ".json"),
+                {"at": utcnow(), "player": who["name"], "uuid": who["uuid"], "from_level": who["operator_level"], "to_level": level, "bypass": bypass, "persistence": "confirmed"})
+            notify("Saved " + who["name"] + " permission level " + str(level))
+            return self.details(name)
+
+    def game_action(self, name, action, value=None, confirmed=False, notify=lambda _: None):
+        if confirmed is not True:
+            raise UserError("Confirm this player change first")
+        who = self.details(name)
+        self.storage.reserve(1024 * 1024)
+        if not self.server.running() or not who["online"]:
+            raise UserError("This player must be online with current server telemetry")
+        if action == "game-mode" and value in ("survival", "creative", "adventure", "spectator"):
+            command = "gamemode " + value + " " + who["name"]
+        elif action == "xp-level" and type(value) is int and 0 <= value <= 1000:
+            command = f"experience set {who['name']} {value} levels"
+        elif action == "kick":
+            command = "kick " + who["name"]
+        else:
+            raise UserError("Choose a supported player action or XP level from 0 through 1000")
+        self.server._write(command)
+        write_json(self.layout.logs / ("player-game-action-" + str(time.time_ns()) + ".json"), {"at": utcnow(), "action": action, "player": who["name"], "value": value, "state": "command sent; refresh telemetry for result"})
+        return {"sent": command, "note": "Refresh the live player card to confirm the result"}
 
     def update(self, action, name, confirmed=False, notify=lambda _: None):
         if action not in ("whitelist-add", "whitelist-remove", "op", "deop", "kick"):

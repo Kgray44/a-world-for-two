@@ -8,7 +8,7 @@
   <title>A World for Two · Control Room</title>
   <link rel="icon" href="/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
-  <script src="/app.js" defer></script>
+  <script src="/app.js" type="module"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -22,6 +22,7 @@
       <a href="#mods" data-page="mods"><span class="nav-icon">◇</span>Mod Manager</a>
       <a href="#settings" data-page="settings"><span class="nav-icon">☷</span>World settings</a>
       <a href="#players" data-page="players"><span class="nav-icon">♧</span>Players & access</a>
+      <a href="#atlas" data-page="atlas"><span class="nav-icon">⌖</span>World Atlas</a>
       <a href="#console" data-page="console"><span class="nav-icon">›_</span>Console & logs</a>
       <a href="#backups" data-page="backups"><span class="nav-icon">↶</span>Backups</a>
       <a href="#connectivity" data-page="connectivity"><span class="nav-icon">⌘</span>Connectivity</a>
@@ -29,13 +30,15 @@
     <div class="nav-label secondary-label">MAKE IT YOURS</div>
     <nav aria-label="Setup and reference">
       <a href="#graphics" data-page="graphics"><span class="nav-icon">☼</span>Graphics & distance</a>
+      <a href="#cinematics" data-page="cinematics"><span class="nav-icon">✧</span>Cinematics</a>
       <a href="#compatibility" data-page="compatibility"><span class="nav-icon">✓</span>Compatibility</a>
       <a href="#setup" data-page="setup"><span class="nav-icon">⚙</span>Setup & repair</a>
     </nav>
     <div class="sidebar-bottom"><div class="avatars"><span>KG</span><span>S</span></div><div>Made for the two of you.<small>Local. Private. Yours.</small></div></div>
   </aside>
   <div class="shell">
-    <header class="topbar"><button id="menu" class="icon-button" aria-label="Toggle navigation">☰</button><div class="breadcrumb">YOUR WORLD <span>/</span> <b id="page-label">Overview</b></div><div class="top-right"><span id="connection" class="connection"><i></i> Connecting</span><span class="local-tag">LOCAL HOST</span></div></header>
+    <header class="topbar"><button id="menu" class="icon-button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">☰</button><div class="breadcrumb">YOUR WORLD <span>/</span> <b id="page-label">Overview</b></div><div class="top-right"><button class="button ghost small" data-action="jobs">Task history</button><span id="connection" class="connection"><i></i> Connecting</span><span class="local-tag">LOCAL HOST</span></div></header>
+    <aside id="playtest-context" class="notice runtime-context" role="status" hidden></aside>
     <main id="main" tabindex="-1"><div class="loading"><span class="spinner"></span>Finding our little world…</div></main>
     <footer><span>A World for Two <span class="footer-leaf">❧</span> KG & Sera</span><span id="last-update">Waiting for a live sample</span></footer>
   </div>

@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "ruinarium:aztecjungletemple",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1,
+    "spacing": 128,
+    "separation": 64,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "other_set": "epic:epic_temple",
+      "chunk_count": 16
+    }
+  }
+}

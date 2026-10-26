@@ -547,6 +547,576 @@
       "better-fog",
       "Better Fog",
       "optional-candidate"
+    ],
+    [
+      "envelope",
+      "Envelope",
+      "mail"
+    ],
+    [
+      "yours-truly",
+      "Yours Truly",
+      "mail"
+    ],
+    [
+      "post-it",
+      "Post It!",
+      "mail"
+    ],
+    [
+      "music-maker",
+      "Music Maker",
+      "music"
+    ],
+    [
+      "mimi",
+      "MIMI: Musical Instrument Minecraft Interface",
+      "music"
+    ],
+    [
+      "music-disc-maker",
+      "Music Disc Maker",
+      "music"
+    ],
+    [
+      "simply-swords",
+      "Simply Swords",
+      "combat"
+    ],
+    [
+      "better-combat",
+      "Better Combat",
+      "combat"
+    ],
+    [
+      "scythes-vanilla",
+      "Scythes Vanilla",
+      "combat"
+    ],
+    [
+      "spartan-weaponry-reborn",
+      "Spartan Weaponry Reborn",
+      "combat"
+    ],
+    [
+      "simplest-scythes",
+      "Simplest Scythes",
+      "farming"
+    ],
+    [
+      "yagm",
+      "Yet Another Gravestone Mod (YAGM)",
+      "recovery"
+    ],
+    [
+      "sable-ragdoll-corpse",
+      "Sable: Ragdoll Corpse",
+      "recovery"
+    ],
+    [
+      "corail-tombstone",
+      "Corail Tombstone",
+      "recovery"
+    ],
+    [
+      "hybrid-aquatic",
+      "Hybrid Aquatic",
+      "ocean"
+    ],
+    [
+      "upgrade-aquatic",
+      "Upgrade Aquatic",
+      "ocean"
+    ],
+    [
+      "aquaculture",
+      "Aquaculture 2",
+      "ocean"
+    ],
+    [
+      "oceans-delight",
+      "Ocean's Delight",
+      "ocean"
+    ],
+    [
+      "unusual-fish",
+      "Unusual Fish",
+      "ocean"
+    ],
+    [
+      "deep-diving",
+      "Create: Deep Diving",
+      "ocean"
+    ],
+    [
+      "doggy-talents-next",
+      "Doggy Talents Next",
+      "pets"
+    ],
+    [
+      "cozys-improved-cats",
+      "Cozy's Improved Cats",
+      "pets"
+    ],
+    [
+      "fresh-animations",
+      "Fresh Animations",
+      "pets"
+    ],
+    [
+      "entity-model-features",
+      "Entity Model Features (EMF)",
+      "pets"
+    ],
+    [
+      "entitytexturefeatures",
+      "Entity Texture Features (ETF)",
+      "pets"
+    ],
+    [
+      "wandering-pets",
+      "Wandering Pets (Updated)",
+      "pets"
+    ],
+    [
+      "multibeds",
+      "MultiBeds",
+      "bedrooms"
+    ],
+    [
+      "all-tuttas-needs",
+      "All Tutta's Needs",
+      "bedrooms"
+    ],
+    [
+      "sleep-through-the-night",
+      "Sleep Through The Night",
+      "bedrooms"
+    ],
+    [
+      "sleep-tight",
+      "Sleep Tight",
+      "bedrooms"
+    ],
+    [
+      "macaws-paths-and-pavings",
+      "Macaw's Paths and Pavings",
+      "building"
+    ],
+    [
+      "macaws-stairs",
+      "Macaw's Stairs",
+      "building"
+    ],
+    [
+      "macaws-paintings",
+      "Macaw's Paintings",
+      "building"
+    ],
+    [
+      "macaws-holidays",
+      "Macaw's Holidays",
+      "building"
+    ],
+    [
+      "framedblocks",
+      "FramedBlocks",
+      "building"
+    ],
+    [
+      "rechiseled",
+      "Rechiseled",
+      "building"
+    ],
+    [
+      "fairy-lights",
+      "Fairy Lights",
+      "lighting"
+    ],
+    [
+      "sodium-dynamic-lights",
+      "Sodium Dynamic Lights",
+      "lighting"
+    ],
+    [
+      "fairy-lights-sable",
+      "Fairy Lights fork with Sable/Flywheel integration",
+      "lighting"
+    ],
+    [
+      "immersive-animals",
+      "Immersive Animals",
+      "animal-behavior"
+    ],
+    [
+      "juvenile-preserve",
+      "Juvenile Preserve",
+      "animal-behavior"
+    ],
+    [
+      "xaeros-minimap",
+      "Xaero's Minimap",
+      "mapping"
+    ],
+    [
+      "xaeros-world-map",
+      "Xaero's World Map",
+      "mapping"
+    ],
+    [
+      "create-xaeros-map",
+      "Create - Xaero's Map",
+      "mapping"
+    ],
+    [
+      "maphorizons",
+      "MapHorizons",
+      "mapping"
+    ],
+    [
+      "open-parties-and-claims",
+      "Open Parties and Claims",
+      "mapping"
+    ],
+    [
+      "waystones",
+      "Waystones",
+      "mapping"
+    ],
+    [
+      "create-hypertubes",
+      "Create: Hypertubes",
+      "transport"
+    ],
+    [
+      "create-overpressure",
+      "Create: Overpressure",
+      "transport"
+    ],
+    [
+      "create-pipes",
+      "Create: Pipes",
+      "transport"
+    ],
+    [
+      "create-pneumatic-express",
+      "Create: Pneumatic Express",
+      "transport"
+    ],
+    [
+      "create-pipe-connector",
+      "Create: Pipe Connector",
+      "transport"
+    ],
+    [
+      "create-native-chutes",
+      "Create native Chutes",
+      "transport"
+    ],
+    [
+      "treasures-of-the-dead",
+      "Treasures of the Dead",
+      "pirates"
+    ],
+    [
+      "lets-forge-pirates",
+      "Let's Forge Pirates",
+      "pirates"
+    ],
+    [
+      "fish-of-thieves",
+      "Fish of Thieves",
+      "pirates"
+    ],
+    [
+      "whaleborne",
+      "Whaleborne",
+      "pirates"
+    ],
+    [
+      "treasure2",
+      "Treasure2",
+      "pirates"
+    ],
+    [
+      "yungs-better-ocean-monuments",
+      "YUNG's Better Ocean Monuments",
+      "pirates"
+    ],
+    [
+      "pirate-guns",
+      "Pirate Guns",
+      "pirates"
+    ],
+    [
+      "pirates-n-ships",
+      "Pirates 'n' Ships",
+      "pirates"
+    ],
+    [
+      "black-powder-age-of-sail",
+      "Black Powder: Age of Sail",
+      "pirates"
+    ],
+    [
+      "squaremap",
+      "squaremap",
+      "atlas"
+    ],
+    [
+      "the-explorers-friend",
+      "The Explorer’s Friend",
+      "atlas"
+    ],
+    [
+      "giant-tree",
+      "Giant Tree",
+      "trees"
+    ],
+    [
+      "tree-giant",
+      "Tree Giant",
+      "trees"
+    ],
+    [
+      "l-trees-giant-trees",
+      "L-Trees: Giant Trees",
+      "trees"
+    ],
+    [
+      "dynamic-trees",
+      "Dynamic Trees",
+      "trees"
+    ],
+    [
+      "dynamic-trees-terralith",
+      "Dynamic Trees - Terralith",
+      "trees"
+    ],
+    [
+      "dynamic-trees-regions-unexplored",
+      "Dynamic Trees - Regions Unexplored",
+      "trees"
+    ],
+    [
+      "fancymenu",
+      "FancyMenu",
+      "cinematics"
+    ],
+    [
+      "drippy-loading-screen",
+      "Drippy Loading Screen",
+      "cinematics"
+    ],
+    [
+      "lumiera",
+      "Lumiera",
+      "cinematics"
+    ],
+    [
+      "cinematic-respawn",
+      "Cinematic Respawn",
+      "cinematics"
+    ],
+    [
+      "ambient-camera",
+      "Ambient Camera",
+      "cinematics"
+    ],
+    [
+      "countereds-smooth-f5",
+      "Countered’s Smooth F5",
+      "cinematics"
+    ],
+    [
+      "camera-utils-neoforge-port",
+      "Camera Utils (NeoForge Port)",
+      "cinematics"
+    ],
+    [
+      "cinematic-zoom",
+      "Cinematic Zoom",
+      "cinematics"
+    ],
+    [
+      "cinematic-cutscenes",
+      "Cinematic: Cutscenes",
+      "cinematics"
+    ],
+    [
+      "epic-death-screen",
+      "Epic Death Screen",
+      "cinematics"
+    ],
+    [
+      "easegui",
+      "EaseGUI",
+      "cinematics"
+    ],
+    [
+      "smooth-gui",
+      "Smooth Gui",
+      "cinematics"
+    ],
+    [
+      "better-animations-collection",
+      "Better Animations Collection",
+      "cinematics"
+    ],
+    [
+      "seamless-loading-screen",
+      "Seamless Loading Screen",
+      "cinematics"
+    ],
+    [
+      "dairatz",
+      "Dairatz",
+      "Fairytale kingdom"
+    ],
+    [
+      "icarus",
+      "Icarus",
+      "Fairytale kingdom"
+    ],
+    [
+      "icarus-rewinged",
+      "Icarus: Re-Winged",
+      "Fairytale kingdom"
+    ],
+    [
+      "fairy-tales",
+      "Fairy Tales",
+      "Fairytale kingdom"
+    ],
+    [
+      "mythrais",
+      "Mythrais",
+      "Royal architecture"
+    ],
+    [
+      "embers-castles-and-keeps",
+      "Ember's Castles and Keeps",
+      "Royal architecture"
+    ],
+    [
+      "woven-in-time",
+      "Woven in Time",
+      "Royal architecture"
+    ],
+    [
+      "castle-shift",
+      "Castle Shift",
+      "Royal architecture"
+    ],
+    [
+      "chipped",
+      "Chipped",
+      "Royal architecture"
+    ],
+    [
+      "trotting-wagons",
+      "Trotting Wagons",
+      "Royal transportation"
+    ],
+    [
+      "effortless-building",
+      "Effortless Building",
+      "Building toolkit"
+    ],
+    [
+      "structurize",
+      "Structurize",
+      "Building toolkit"
+    ],
+    [
+      "building-gadgets-2",
+      "Building Gadgets 2",
+      "Building toolkit"
+    ],
+    [
+      "construction-wands-revived",
+      "Construction Wands Revived",
+      "Building toolkit"
+    ],
+    [
+      "epic-structures-jungle-temples",
+      "Epic Structures: Jungle Temples",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "aztec-temple-ruins",
+      "Aztec Temple & Ruins",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "yungs-better-jungle-temples",
+      "YUNG's Better Jungle Temples",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "yungs-better-desert-temples",
+      "YUNG's Better Desert Temples",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "archaeology-ruins",
+      "Archaeology Ruins",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "ancient-structures",
+      "Ancient Structures",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "philips-ruins",
+      "Philip's Ruins",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "when-dungeons-arise",
+      "When Dungeons Arise",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "moogs-temples-reimagined",
+      "Moog's Temples Reimagined",
+      "Ancient civilizations and archaeology"
+    ],
+    [
+      "kappa-shader",
+      "Kappa Shader",
+      "shaders"
+    ],
+    [
+      "bliss-shader",
+      "Bliss Shaders",
+      "shaders"
+    ],
+    [
+      "chocapic13-shaders",
+      "Chocapic13 Shaders",
+      "shaders"
+    ],
+    [
+      "photon-shader",
+      "Photon Shaders",
+      "shaders"
+    ],
+    [
+      "makeup-ultra-fast-shaders",
+      "MakeUp Ultra Fast",
+      "shaders"
+    ],
+    [
+      "solas-shader",
+      "Solas Shader",
+      "shaders"
+    ],
+    [
+      "pastel-shaders",
+      "Pastel Shaders (research candidate)",
+      "shaders"
     ]
   ]
 }

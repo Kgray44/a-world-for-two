@@ -13,6 +13,16 @@ def resolve():
     selection = read_json(REPO / "catalog/selection.json")
     resolver = Resolver(REPO / "evidence/research")
     items = resolver.resolve(selection["mods"])
+    for repair in selection.get('repairs', []):
+        base = repair['upstream_artifact']
+        current = next((m for m in items if m['project_id'] == repair['project_id']), None)
+        if not current or current['version_id'] != base['version_id'] or current['hashes'] != base['hashes']:
+            raise ValueError('A reviewed compatibility repair no longer matches its exact upstream artifact')
+        items = [repair if m['project_id'] == repair['project_id'] else m for m in items]
+        if repair['slug'] == 'advanced-weather':
+            for item in items:
+                if item['slug'] == 'yacl':
+                    item['side'] = 'both'
     items += selection.get("artifacts", [])
     lock = {"format": 1, "name": "A World for Two", "version": selection["version"], "minecraft": "1.21.1",
             "neoforge": selection["neoforge"], "java": 21, "generated": utcnow(), "release_status": "candidate",
@@ -24,13 +34,16 @@ def resolve():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=["resolve", "validate", "download", "jars"])
+    parser.add_argument("action", choices=["resolve", "refresh", "validate", "download", "jars"])
     parser.add_argument("--home", type=Path, default=Path(r"D:\A World for Two"))
     args = parser.parse_args()
     if args.action == "resolve":
         resolve()
         return
     lock = read_json(REPO / "catalog/lock.json")
+    if args.action == "refresh":
+        print(json.dumps({"pack_sha256": generate_pack(REPO / "packwiz", lock), "version": lock["version"]}))
+        return
     if args.action == "validate":
         errors = validate_pack(REPO / "packwiz", lock)
         print(json.dumps({"errors": errors, "mods": len(lock["mods"]), "tier": "manifest integrity"}, indent=2))

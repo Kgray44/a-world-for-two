@@ -1,0 +1,12 @@
+name = "GottschCore"
+filename = "gottschcore-neoforge-1.21.1-2.6.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/Pww2zMWB/versions/F2Uvbpzb/gottschcore-neoforge-1.21.1-2.6.0.jar"
+hash-format = "sha512"
+hash = "a39b6935ce9b288a1a89ec12eaf85ba0f47cac2c7db4ab29d12da36ddbb5c32df70e3c21ed242ac0c2758a5a0b8bc729410c8205bd2a967a451248c0a1a12858"
+
+[update.modrinth]
+mod-id = "Pww2zMWB"
+version = "F2Uvbpzb"

@@ -1,0 +1,12 @@
+name = "Aztec Temple & Ruins - Ruins Structure ✅"
+filename = "aztec-ruins-1.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/Y4XyzgIp/versions/lyaZWn68/aztec-ruins-1.0.jar"
+hash-format = "sha512"
+hash = "629ce9ab27668415a4fcfd8af4ba3be51461720b7267b40f99f9ad4b32e1bf0c636abd7fbb4d6895247d55f243746dac5f840edbcdd881fbfab520f877e788ba"
+
+[update.modrinth]
+mod-id = "Y4XyzgIp"
+version = "lyaZWn68"

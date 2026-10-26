@@ -1,0 +1,12 @@
+name = "Create: Overpressure"
+filename = "overpressure-0.1.7.4.jar"
+side = "both"
+
+[download]
+mode = "metadata:curseforge"
+hash-format = "sha512"
+hash = "56ce3a1d284f63dfab441ab06a365923958d2313c5fdf5d338d787e7e0a90453e4bc68f76eb1830586a53df312f98c27914bb10c6c56346e5ed619e573266ca3"
+
+[update.curseforge]
+file-id = 9196247
+project-id = 1630290

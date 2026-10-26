@@ -1,0 +1,12 @@
+name = "Fairy Tales"
+filename = "fairytales-neoforge-1211-1.0.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/eeLjov9H/versions/EgJ9dsdF/fairytales-neoforge-1211-1.0.0.jar"
+hash-format = "sha512"
+hash = "5d84263987c7513842c3583fcc87ffb63c3f3f01dbf2aede4366cf4447c5dbe234a0b35ae342ca743e53c434e2341255f97d14958f8f7b00f5e0a150f4775476"
+
+[update.modrinth]
+mod-id = "eeLjov9H"
+version = "EgJ9dsdF"

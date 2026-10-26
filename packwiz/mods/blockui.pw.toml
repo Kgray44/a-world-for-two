@@ -1,0 +1,8 @@
+name = "UI Library Mod"
+filename = "blockui-1.0.191-1.21.1-snapshot.jar"
+side = "both"
+
+[download]
+url = "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/blockui/1.0.191-1.21.1-snapshot/blockui-1.0.191-1.21.1-snapshot.jar"
+hash-format = "sha256"
+hash = "46885ec85d96a7d0e8c237d21a918e554cb1509e1f9ff9e30f0f60a68fb7c7bc"

@@ -1,0 +1,31 @@
+{
+  "structures": [
+    {
+      "structure": "ancientstructures:roman_ruined_temple",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:roman_temple",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:roman_house",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:roman_bath",
+      "weight": 1
+    },
+    {
+      "structure": "ancientstructures:roman_tombstone",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 160,
+    "separation": 64,
+    "spread_type": "triangular",
+    "salt": 583611589
+  }
+}

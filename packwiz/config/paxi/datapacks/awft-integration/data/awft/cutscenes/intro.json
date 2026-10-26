@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "id": "awft:intro",
+  "duration_ticks": 200,
+  "camera_position_mode": "relative_to_anchor",
+  "interpolation": "catmull_rom",
+  "settings": {
+    "fade_in": true,
+    "fade_out": true,
+    "hide_ui": true,
+    "letterbox": true,
+    "fade_duration_ticks": 8,
+    "letterbox_duration_ticks": 8
+  },
+  "keyframes": [
+    {
+      "time": 0,
+      "pos": {
+        "x": -8,
+        "y": 5,
+        "z": -8
+      },
+      "yaw": 135,
+      "pitch": 15,
+      "fov": 68,
+      "path_type": "smooth"
+    },
+    {
+      "time": 3,
+      "pos": {
+        "x": -5,
+        "y": 4,
+        "z": -6
+      },
+      "yaw": 145,
+      "pitch": 12,
+      "fov": 66,
+      "path_type": "smooth"
+    },
+    {
+      "time": 6,
+      "pos": {
+        "x": 3,
+        "y": 3,
+        "z": -5
+      },
+      "yaw": -150,
+      "pitch": 10,
+      "fov": 65,
+      "path_type": "smooth"
+    },
+    {
+      "time": 9.5,
+      "pos": {
+        "x": 0,
+        "y": 1.62,
+        "z": 0
+      },
+      "yaw": 0,
+      "pitch": 0,
+      "fov": 70,
+      "path_type": "smooth"
+    }
+  ],
+  "events": [
+    {
+      "tick": 2,
+      "type": "lumiera:play_sound",
+      "sound": "minecraft:block.amethyst_block.chime",
+      "source": "ambient",
+      "volume": 0.2,
+      "pitch": 1.0,
+      "relative_to_camera": true
+    },
+    {
+      "tick": 85,
+      "type": "lumiera:show_text",
+      "text": "A World for Two",
+      "preset": "TITLE",
+      "duration": 65
+    }
+  ]
+}

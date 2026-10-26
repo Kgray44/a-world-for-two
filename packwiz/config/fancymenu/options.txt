@@ -1,0 +1,9 @@
+##[customization]
+B:show_customization_overlay = 'false';
+B:modpack_mode = 'false';
+
+##[tutorial]
+B:show_welcome_screen = 'false';
+
+##[window]
+S:custom_window_title = 'A World for Two';

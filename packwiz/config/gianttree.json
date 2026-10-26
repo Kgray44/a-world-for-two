@@ -1,0 +1,71 @@
+{
+  "treeBlocks": [
+    {
+      "saplingId": "minecraft:oak_sapling",
+      "logId": "minecraft:oak_log",
+      "leaveId": "minecraft:oak_leaves",
+      "growtherId": "simple_growther"
+    },
+    {
+      "saplingId": "minecraft:spruce_sapling",
+      "logId": "minecraft:spruce_log",
+      "leaveId": "minecraft:spruce_leaves",
+      "growtherId": "simple_growther"
+    },
+    {
+      "saplingId": "minecraft:birch_sapling",
+      "logId": "minecraft:birch_log",
+      "leaveId": "minecraft:birch_leaves",
+      "growtherId": "simple_growther"
+    },
+    {
+      "saplingId": "minecraft:jungle_sapling",
+      "logId": "minecraft:jungle_log",
+      "leaveId": "minecraft:jungle_leaves",
+      "growtherId": "jungle_growther"
+    },
+    {
+      "saplingId": "minecraft:acacia_sapling",
+      "logId": "minecraft:acacia_log",
+      "leaveId": "minecraft:acacia_leaves",
+      "growtherId": "simple_growther"
+    },
+    {
+      "saplingId": "minecraft:cherry_sapling",
+      "logId": "minecraft:cherry_log",
+      "leaveId": "minecraft:cherry_leaves",
+      "growtherId": "simple_growther"
+    },
+    {
+      "saplingId": "minecraft:dark_oak_sapling",
+      "logId": "minecraft:dark_oak_log",
+      "leaveId": "minecraft:dark_oak_leaves",
+      "growtherId": "simple_growther"
+    },
+    {
+      "saplingId": "minecraft:pale_oak_sapling",
+      "logId": "minecraft:pale_oak_log",
+      "leaveId": "minecraft:pale_oak_leaves",
+      "growtherId": "simple_growther"
+    },
+    {
+      "saplingId": "minecraft:azalea",
+      "logId": "minecraft:oak_log",
+      "leaveId": "minecraft:azalea_leaves",
+      "growtherId": "azalea_growther"
+    },
+    {
+      "saplingId": "minecraft:flowering_azalea",
+      "logId": "minecraft:oak_log",
+      "leaveId": "minecraft:flowering_azalea_leaves",
+      "growtherId": "azalea_growther"
+    },
+    {
+      "saplingId": "minecraft:mangrove_propagule",
+      "logId": "minecraft:mangrove_log",
+      "leaveId": "minecraft:mangrove_leaves",
+      "growtherId": "simple_growther"
+    }
+  ],
+  "maxSaplingCount": 25
+}

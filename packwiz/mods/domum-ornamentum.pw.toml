@@ -1,0 +1,8 @@
+name = "Domum Ornamentum"
+filename = "domum-ornamentum-1.0.203-1.21.1-snapshot.jar"
+side = "both"
+
+[download]
+url = "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/domum-ornamentum/1.0.203-1.21.1-snapshot/domum-ornamentum-1.0.203-1.21.1-snapshot.jar"
+hash-format = "sha256"
+hash = "889384290b2dbb9bb2f96a5102b426cc7182bce8986afeb39a201e842319131b"

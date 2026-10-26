@@ -1,0 +1,8 @@
+name = "Structurize"
+filename = "structurize-1.0.832-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/structurize/1.0.832-1.21.1/structurize-1.0.832-1.21.1.jar"
+hash-format = "sha256"
+hash = "b6ede7635c63a80bd3d034c1ad3e74c648b8478f341f883d7d29c3dcf90b79ce"

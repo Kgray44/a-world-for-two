@@ -1,0 +1,15 @@
+# Balanced camera defaults, using the pinned mod's generated native schema.
+[camera]
+approachSpeed = 125
+leaveSpeed = 125
+leanStrength = 70
+sceneZoom = 70
+quickMode = 1
+letterbox = true
+livingCamera = false
+cameraShake = false
+screenFlash = false
+
+[multiplayer]
+clientOnlyMode = false
+serverHintSeen = true

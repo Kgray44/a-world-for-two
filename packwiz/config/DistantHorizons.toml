@@ -1,0 +1,16 @@
+# Exact DH 3.3.3 keys verified in a real disposable server.
+[server]
+maxGenerationRequestDistance = 128
+maxSyncOnLoadRequestDistance = 128
+generationRequestRateLimit = 4
+syncOnLoadRateLimit = 20
+realTimeUpdateDistanceRadiusInChunks = 128
+playerBandwidthLimit = 500
+globalBandwidthLimit = 1000
+[common.multiThreading]
+numberOfThreads = 2
+threadRunTimeRatio = "0.5"
+[common.worldGenerator]
+limitIfServerUnhealthy = true
+generatorPlan = "SURFACE_THEN_CHUNKS"
+chunkGeneratorMode = "FEATURES"

@@ -1,0 +1,12 @@
+name = "Giant Tree"
+filename = "gianttree-1.0.1+neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/1ODkDrIl/versions/TSasMzGr/gianttree-1.0.1%2Bneoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "f3fc24761221d8fb58176ded568c2ad9b3e7e37963af5a600c5d56eb6eaa63c309d9eddb58b6716b58af5ad4ea472873077b48e5cbd9a75b00fa3db1391834c7"
+
+[update.modrinth]
+mod-id = "1ODkDrIl"
+version = "TSasMzGr"

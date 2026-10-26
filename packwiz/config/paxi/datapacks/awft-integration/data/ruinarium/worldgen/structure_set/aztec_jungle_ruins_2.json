@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "ruinarium:aztec_jungle_ruins_2",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 80,
+    "separation": 32,
+    "salt": 716824314,
+    "exclusion_zone": {
+      "other_set": "ruinarium:aztecjungletemple",
+      "chunk_count": 16
+    }
+  }
+}

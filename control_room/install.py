@@ -121,7 +121,8 @@ class Installer:
         args = self.layout.server / "libraries/net/neoforged/neoforge" / version / "win_args.txt"
         if args.exists():
             return
-        tool = read_json(REPO / "catalog/tools.lock.json")["neoforge_installer"]
+        pins = read_json(REPO / "catalog/tools.lock.json")
+        tool = pins.get("neoforge_installers", {}).get(version) or pins["neoforge_installer"]
         if version != tool["version"]:
             raise UserError("This NeoForge version has no reviewed installer pin")
         installer = self.layout.caches / tool["filename"]

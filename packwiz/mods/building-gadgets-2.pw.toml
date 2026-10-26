@@ -1,0 +1,12 @@
+name = "Building Gadgets 2"
+filename = "buildinggadgets2-21.1.1.jar"
+side = "both"
+
+[download]
+mode = "metadata:curseforge"
+hash-format = "sha256"
+hash = "cddd7b4345fdc38a4fc2ec0d85b55fd374d19f9edaf652747b95cb7881a72cce"
+
+[update.curseforge]
+file-id = 9310471
+project-id = 298187

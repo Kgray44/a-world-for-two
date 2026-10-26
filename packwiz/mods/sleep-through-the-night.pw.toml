@@ -1,0 +1,12 @@
+name = "Sleep Through The Night"
+filename = "sttn-1.2.0-neoforge-1.21.1.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/ZEGmQnbL/versions/vTSCzN7E/sttn-1.2.0-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "3fc8a8f0754cd58da3de934b52f935936a435d64bebed79e9c1b2db8c26efa4dc544273707c87043803c2337f2928f99256ffb82ab4062ab8e05aa1ac79baf26"
+
+[update.modrinth]
+mod-id = "ZEGmQnbL"
+version = "vTSCzN7E"

@@ -1,7 +1,7 @@
 {
-  "version": "0.1.0-candidate.1",
+  "version": "0.1.0-candidate.12",
   "minecraft": "1.21.1",
-  "neoforge": "21.1.255",
+  "neoforge": "21.1.262",
   "java": 21,
   "default_lod": "distant-horizons",
   "policy": "Review exact release metadata and JAR dependency ranges, prefer stable releases, and never promote runtime-unvalidated candidates to production.",
@@ -178,7 +178,7 @@
       "request": "small-ships",
       "project": "small-ships",
       "version": "2iLK0Wz6",
-      "reason": "Use stable 2.0.2 rather than the reference pack's beta."
+      "reason": "Restored latest reviewed native release: the comparison downgrade did not fix the observed lifecycle/resource errors; preserved receipts document the focused repair."
     },
     {
       "request": "bluedude-dragons",
@@ -487,6 +487,552 @@
       "version": "yjxtkvnD",
       "side": "both",
       "reason": "Take a Seat declares this library required on BOTH physical sides; follow the actual JAR requirement and validate dedicated startup."
+    },
+    {
+      "request": "envelope",
+      "project": "envelope",
+      "version": "7AGtjUTP"
+    },
+    {
+      "request": "yours-truly",
+      "project": "yours-truly",
+      "version": "ZS9vvlRX"
+    },
+    {
+      "request": "post-it",
+      "project": "post-it",
+      "version": "XGPYBJwN",
+      "allow_prerelease": true,
+      "reason": "Requested primary feature currently has only prerelease files; exact candidate is subject to runtime/feature testing."
+    },
+    {
+      "request": "music-maker",
+      "project": "music-maker-mod",
+      "version": "SuWiRk2o",
+      "reason": "Official author NeoForge 1.21.1 release preferred over the separate unofficial port; retains Immersive Melodies for portable performances."
+    },
+    {
+      "request": "music-disc-maker",
+      "project": "music-disc-maker",
+      "version": "F9KgekDL"
+    },
+    {
+      "request": "simply-swords",
+      "project": "simply-swords",
+      "version": "nS0Yahr5"
+    },
+    {
+      "request": "better-combat",
+      "project": "better-combat",
+      "version": "VhIOvcXP"
+    },
+    {
+      "request": "simplest-scythes",
+      "project": "simplest-scythes",
+      "version": "ZyhC4A8z"
+    },
+    {
+      "request": "hybrid-aquatic",
+      "project": "hybrid-aquatic",
+      "version": "jdOU7Pzu"
+    },
+    {
+      "request": "upgrade-aquatic",
+      "project": "upgrade-aquatic",
+      "version": "9zf6y4e4"
+    },
+    {
+      "request": "aquaculture",
+      "project": "aquaculture",
+      "version": "5pbz0ETj"
+    },
+    {
+      "request": "oceans-delight",
+      "project": "oceans-delight",
+      "version": "ja5Qg1xw"
+    },
+    {
+      "request": "doggy-talents-next",
+      "project": "doggy-talents-next",
+      "version": "BKs2urib"
+    },
+    {
+      "request": "cozys-improved-cats",
+      "project": "cozys-improved-cats",
+      "version": "N6QLvGMN"
+    },
+    {
+      "request": "entity-model-features",
+      "project": "entity-model-features",
+      "version": "197m3VoU",
+      "side": "client"
+    },
+    {
+      "request": "entitytexturefeatures",
+      "project": "entitytexturefeatures",
+      "version": "lwNx1nD1",
+      "side": "client"
+    },
+    {
+      "request": "sleep-through-the-night",
+      "project": "sleep-through-the-night",
+      "version": "vTSCzN7E"
+    },
+    {
+      "request": "macaws-paths-and-pavings",
+      "project": "macaws-paths-and-pavings",
+      "version": "tlymsxUG"
+    },
+    {
+      "request": "macaws-stairs",
+      "project": "macaws-stairs",
+      "version": "4t8L0dGP"
+    },
+    {
+      "request": "macaws-paintings",
+      "project": "macaws-paintings",
+      "version": "W9QHKmDh"
+    },
+    {
+      "request": "macaws-holidays",
+      "project": "macaws-holidays",
+      "version": "2mO9Xhpt"
+    },
+    {
+      "request": "framedblocks",
+      "project": "framedblocks",
+      "version": "5g0Yxvfb"
+    },
+    {
+      "request": "rechiseled",
+      "project": "rechiseled",
+      "version": "6muGRqvu"
+    },
+    {
+      "request": "corail-tombstone",
+      "project": "corail-tombstone",
+      "version": "e68NhQJm",
+      "reason": "One primary inventory-preservation owner, chosen for the established stable release line. Backpack/accessory/restart recovery remains a mandatory real test; no safety claim is inferred from age."
+    },
+    {
+      "request": "fairy-lights",
+      "project": "fairylights",
+      "version": "FbQyjAdN",
+      "reason": "Selected one Fairy Lights implementation: the fork explicitly supporting Sable and Flywheel. No second Fairy Lights mod is installed."
+    },
+    {
+      "project": "gedNE4y2",
+      "version": "HJZB6bmA",
+      "allow_prerelease": true,
+      "reason": "Exact NeoForge dependency for the selected combat system; animation-overlap testing remains mandatory."
+    },
+    {
+      "project": "reeses-sodium-options",
+      "version": "XjF2IkL8",
+      "side": "client",
+      "reason": "Required by Sodium Options API; client graphics controls."
+    },
+    {
+      "request": "fresh-animations",
+      "project": "fresh-animations",
+      "version": "aQjwvDfY",
+      "side": "client",
+      "kind": "resourcepack",
+      "reason": "Author-hosted Fresh Animations with EMF and ETF; no redistribution in source or exports."
+    },
+    {
+      "request": "sodium-dynamic-lights",
+      "project": "lambdynamiclights",
+      "version": "ksaGCvSu",
+      "side": "client",
+      "reason": "Official stable NeoForge LambDynamicLights replaces the old Sodium Dynamic Lights port. Exact native JAR metadata and author instructions establish that its cross-loader Fabric API edge is Fabric-only; rendering acceptance remains pending."
+    },
+    {
+      "project": "blueprint",
+      "version": "FHOjk8Ez",
+      "reason": "8.1.1 comparison did not fix the structure-repaletter issue. Restored latest native release, without assertion or error suppression."
+    },
+    {
+      "request": "multibeds",
+      "project": "multibeds",
+      "version": "WoUrPFjT",
+      "reason": "Selected bed system instead of All Tutta 3.4.0: actual tests exposed unknown Woodworks condition codecs across optional recipes and resource warnings. MultiBeds retains custom bedding and banner designs without those overlapping modules."
+    },
+    {
+      "request": "xaeros-minimap",
+      "project": "xaeros-minimap",
+      "version": "irjR7dHk",
+      "side": "client",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "xaeros-world-map",
+      "project": "xaeros-world-map",
+      "version": "SnQ4SoDe",
+      "side": "client",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "create-xaeros-map",
+      "project": "create-xaeros-map",
+      "version": "x8eDZf7t",
+      "side": "client",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "create-hypertubes",
+      "project": "hypertube",
+      "version": "qYjOyvgW",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "open-parties-and-claims",
+      "project": "open-parties-and-claims",
+      "version": "yWmXD7GW",
+      "side": "both",
+      "allow_prerelease": true,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "waystones",
+      "project": "waystones",
+      "version": "6Z6MQ6os",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "treasures-of-the-dead",
+      "project": "treasures-of-the-dead",
+      "version": "gu4iR38f",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "fish-of-thieves",
+      "project": "fish-of-thieves",
+      "version": "2cjMgIrU",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "whaleborne",
+      "project": "whaleborne",
+      "version": "tMeasTc4",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "treasure2",
+      "project": "treasure2",
+      "version": "gGgxcW0i",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "yungs-better-ocean-monuments",
+      "project": "yungs-better-ocean-monuments",
+      "version": "yFjEcj2g",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "request": "pirate-guns",
+      "project": "pirate-guns",
+      "version": "YE5xHD6m",
+      "side": "both",
+      "allow_prerelease": false,
+      "reason": "Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required."
+    },
+    {
+      "project": "gottschcore",
+      "version": "F2Uvbpzb",
+      "side": "both",
+      "reason": "Treasure2 declares GottschCore 2.6.x in native JAR metadata; upstream Modrinth dependency list omits this edge."
+    },
+    {
+      "project": "paxi",
+      "version": "CLZfFbCx",
+      "side": "both",
+      "reason": "Global loading of the reviewed coastal-pirate spawn and recipe repair datapack; no manual world overwrite."
+    },
+    {
+      "request": "squaremap",
+      "project": "squaremap",
+      "version": "z5esjXfR",
+      "side": "server",
+      "reason": "Preferred established 2D atlas renderer. Test loaded/existing chunk behavior and native NeoForge mod block colors before permanent deployment."
+    },
+    {
+      "request": "giant-tree",
+      "project": "giant-tree",
+      "version": "TSasMzGr",
+      "side": "both",
+      "reason": "Controlled player-grown giant trees, with measured limits and no second global forest replacement."
+    },
+    {
+      "request": "fancymenu",
+      "project": "fancymenu",
+      "version": "P9dDosz2",
+      "side": "client",
+      "allow_prerelease": false,
+      "reason": "Required cinematic primary system. Native NeoForge 1.21.1 release; client-only presentation."
+    },
+    {
+      "request": "drippy-loading-screen",
+      "project": "drippy-loading-screen",
+      "version": "MVgsDsSB",
+      "side": "client",
+      "allow_prerelease": false,
+      "reason": "Required cinematic primary system. Native NeoForge 1.21.1 release; client-only presentation."
+    },
+    {
+      "request": "lumiera",
+      "project": "lumiera",
+      "version": "7vs8ya9N",
+      "side": "both",
+      "allow_prerelease": true,
+      "reason": "Required cinematic primary system. Exact author alpha exception for NeoForge 1.21.1; runtime and safe camera restoration are required before promotion."
+    },
+    {
+      "request": "cinematic-respawn",
+      "project": "cinematic-respawn",
+      "version": "zEiXMbmI",
+      "side": "client",
+      "allow_prerelease": false,
+      "reason": "Required cinematic primary system. Native NeoForge 1.21.1 release; client-only presentation."
+    },
+    {
+      "request": "ambient-camera",
+      "project": "ambient-camera",
+      "version": "F5xffOiZ",
+      "side": "client",
+      "allow_prerelease": false,
+      "reason": "Required cinematic primary system. Native NeoForge 1.21.1 release; client-only presentation."
+    },
+    {
+      "project": "embers-text-api",
+      "version": "IpL9hTnI",
+      "side": "client",
+      "reason": "Required CLIENT dependency declared inside the pinned Lumiera NeoForge JAR; missing from its Modrinth dependency metadata."
+    },
+    {
+      "request": "icarus",
+      "project": "Dw7M6XKW",
+      "version": "QKQXFFhz",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "icarus-rewinged",
+      "project": "vIKddJF1",
+      "version": "pKtA3vR4",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "fairy-tales",
+      "project": "eeLjov9H",
+      "version": "EgJ9dsdF",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "mythrais",
+      "project": "dz8ogIVL",
+      "version": "KaAPwUu4",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "embers-castles-and-keeps",
+      "project": "KDxWV2ac",
+      "version": "A01sUZQR",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "request": "woven-in-time",
+      "project": "Jun9AaGz",
+      "version": "Nub9NJ0i",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "castle-shift",
+      "project": "YD7K9Qmq",
+      "version": "K5YEnMn7",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "request": "chipped",
+      "project": "BAscRYKm",
+      "version": "eqVowbGc",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "trotting-wagons",
+      "project": "X8CywXiK",
+      "version": "mpGWRAjg",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "effortless-building",
+      "project": "DYtfQEYj",
+      "version": "YxnBXtLv",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "request": "construction-wands-revived",
+      "project": "u2NJ7rzu",
+      "version": "wYnj2tM3",
+      "allow_prerelease": true,
+      "reason": "Required fairytale/building addendum candidate; exact native 1.21.1 NeoForge file. Functional and multiplayer validation pending."
+    },
+    {
+      "project": "sparkweave",
+      "version": "j8reYKe3",
+      "allow_prerelease": true,
+      "reason": "Explicit dependency exception: pinned Icarus 4.7.9 requires Sparkweave; matching NeoForge 1.21.1 files are beta only. Full candidate runtime validation remains required."
+    },
+    {
+      "project": "Zs1qzXyd",
+      "version": "aN4PmOt6",
+      "request": "epic-structures-jungle-temples",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "project": "Y4XyzgIp",
+      "version": "lyaZWn68",
+      "request": "aztec-temple-ruins",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "project": "z9Ve58Ih",
+      "version": "P00i2hJn",
+      "request": "yungs-better-jungle-temples",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "project": "XNlO7sBv",
+      "version": "GQ9iNWkI",
+      "request": "yungs-better-desert-temples",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "project": "4tmjt1KA",
+      "version": "U7RucPgA",
+      "request": "archaeology-ruins",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates."
+    },
+    {
+      "project": "gZp8ofn3",
+      "version": "W6svh8BW",
+      "request": "ancient-structures",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates."
+    },
+    {
+      "project": "KdJhOYVV",
+      "version": "EQHGxQAv",
+      "request": "philips-ruins",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates."
+    },
+    {
+      "project": "8DfbfASn",
+      "version": "XIRJSFQ0",
+      "request": "when-dungeons-arise",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "project": "UNanzCXS",
+      "version": "RvfqP9Zb",
+      "request": "moogs-temples-reimagined",
+      "reason": "Reviewed NeoForge 1.21.1 candidate; structure overlap, spacing, placement, loot and measured generation remain runtime gates. Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+      "side": "both"
+    },
+    {
+      "project": "vEgtiJIY",
+      "version": "EvVBQ12Y",
+      "side": "both",
+      "reason": "Required dependency of Ancient Structures"
+    },
+    {
+      "project": "RgWXq0La",
+      "version": "vuLdhPUq",
+      "side": "both",
+      "reason": "Required dependency of Ancient Structures"
+    },
+    {
+      "project": "1oUDhxuy",
+      "version": "wcg4mE4e",
+      "side": "both",
+      "reason": "Required dependency of MTR - Moog's Temples Reimagined Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods."
+    },
+    {
+      "request": "kappa-shader",
+      "project": "kappa-shader",
+      "version": "8p4viq8V",
+      "kind": "shader",
+      "side": "client",
+      "world_sensitive": false,
+      "reason": "High detail; realistic, stylized light and volumetric clouds. No DH compatibility is assumed."
+    },
+    {
+      "request": "bliss-shader",
+      "project": "bliss-shader",
+      "version": "kC2Y8q1P",
+      "kind": "shader",
+      "side": "client",
+      "world_sensitive": false,
+      "reason": "Fantasy skies and warm, varied lighting; established release selected instead of a floating development branch."
+    },
+    {
+      "request": "photon-shader",
+      "project": "photon-shader",
+      "version": "BnGklH5y",
+      "kind": "shader",
+      "side": "client",
+      "world_sensitive": false,
+      "reason": "Balanced to high quality gameplay shaders; this release adds Create Colorwheel integration and configurable atmosphere."
+    },
+    {
+      "request": "makeup-ultra-fast-shaders",
+      "project": "makeup-ultra-fast-shaders",
+      "version": "t4YRxQug",
+      "kind": "shader",
+      "side": "client",
+      "world_sensitive": false,
+      "reason": "Lighter configurable effects; optional shadows, depth of field and color schemes. No FPS claim before measurement."
+    },
+    {
+      "request": "solas-shader",
+      "project": "solas-shader",
+      "version": "XE9yh7pS",
+      "kind": "shader",
+      "side": "client",
+      "world_sensitive": false,
+      "reason": "Cozy fantasy option with colored lighting, auroras, fireflies and expressive skies; moderate-cost author target."
     }
   ],
   "artifacts": [
@@ -523,6 +1069,515 @@
         "metadata": "pass",
         "jar": "pending",
         "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "curseforge:1630290",
+      "slug": "create-overpressure",
+      "name": "Create: Overpressure",
+      "version_id": "9196247",
+      "version": "0.1.7.4",
+      "provider": "curseforge",
+      "release_type": "release",
+      "filename": "overpressure-0.1.7.4.jar",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/create-overpressure/files/9196247",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/create-overpressure/files/9196247",
+      "size": 681735,
+      "hashes": {
+        "sha512": "56ce3a1d284f63dfab441ab06a365923958d2313c5fdf5d338d787e7e0a90453e4bc68f76eb1830586a53df312f98c27914bb10c6c56346e5ed619e573266ca3",
+        "sha256": "9c03c26bc50c637dbe1d8b9e19e9c10218687c61d335b36588f11e54805c4cf7",
+        "sha1": "ceeceff3a93de84b25b0729fd5ab802fd3434d51"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": "create-overpressure",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "Create: Overpressure Source-Available License 1.0; assets ARR"
+      },
+      "curseforge_project": 1630290,
+      "curseforge_file": 9196247,
+      "selection_reason": "Native NeoForge 1.21.1 author file. Download through CurseForge; redistribution restrictions preserved. Candidate requires full runtime and gameplay verification.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      },
+      "download_provenance": {
+        "method": "official CurseForge browser download",
+        "checked_at": "2026-10-26",
+        "hash_source": "exact downloaded author artifact; locally pinned"
+      }
+    },
+    {
+      "project_id": "curseforge:935975",
+      "slug": "lets-forge-pirates",
+      "name": "Let’s Forge Pirates",
+      "version_id": "5814128",
+      "version": "4.0",
+      "provider": "curseforge",
+      "release_type": "release",
+      "filename": "[NeoForge]Lets_Forge_Pirates_[1_21_1]_4.jar",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lets-forge-pirates/files/5814128",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lets-forge-pirates/files/5814128",
+      "size": 996458,
+      "hashes": {
+        "sha512": "f7002d10c0d76f10cf6760bb4106e66e25ca24bd26982859523a8374f38cec7a94a62c706887361906bab9eff866d62ddd7b2df7e3b0a7b2511eeacc76467a9f",
+        "sha256": "2d9da8b1d8ee4f8242f3b43a47b67b2a83f158eb0ed1c004ba5f92508888602d",
+        "sha1": "62835a8aaa6812358b1e70cfbca574a7aa6862db"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": "lets-forge-pirates",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "ARR; author permits modpack inclusion"
+      },
+      "curseforge_project": 935975,
+      "curseforge_file": 5814128,
+      "selection_reason": "Native NeoForge 1.21.1 author file. Download through CurseForge; redistribution restrictions preserved. Candidate requires full runtime and gameplay verification.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      },
+      "download_provenance": {
+        "method": "official CurseForge browser download",
+        "checked_at": "2026-10-26",
+        "hash_source": "exact downloaded author artifact; locally pinned"
+      }
+    },
+    {
+      "project_id": "github:VolcanicMG/MapHorizons",
+      "slug": "maphorizons",
+      "name": "MapHorizons",
+      "version_id": "1.1.0+6c80ad5+awft.1",
+      "version": "1.1.0",
+      "provider": "local-build",
+      "release_type": "experimental",
+      "filename": "maphorizons-1.1.0-awft.1.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/maphorizons-1.1.0-awft.1.jar",
+      "size": 110502,
+      "hashes": {
+        "sha256": "da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": "maphorizons",
+      "optional": false,
+      "default": true,
+      "world_sensitive": false,
+      "dependencies": [],
+      "source": "https://github.com/VolcanicMG/MapHorizons/tree/6c80ad5be5fff2c373388dfd6ff433667edd7217",
+      "license": {
+        "id": "MIT"
+      },
+      "selection_reason": "High-priority experimental DH3.3.x-to-Xaero adapter, built from exact author source with selfCheck pass. SeedGen visual verification remains required; no automatic map population claimed.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "awft:control-bridge",
+      "slug": "awft-control-bridge",
+      "name": "A World for Two Control Bridge",
+      "version_id": "0.5.0",
+      "version": "0.5.0",
+      "provider": "local-build",
+      "release_type": "candidate",
+      "filename": "awft-control-bridge-0.5.0.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.5.0.jar",
+      "size": 55048,
+      "hashes": {
+        "sha256": "e10cd42e3fd4f0622bf6e24cff78d04889e3e61aa29218d4064dff71e5a8e640"
+      },
+      "side": "server",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "MIT"
+      },
+      "source": "https://github.com/Kgray44/a-world-for-two",
+      "selection_reason": "Exact owned server bridge: measured tick/JVM telemetry and lifecycle-safe Chunky listener setup.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "awft:client-presentation",
+      "slug": "awft-client-presentation",
+      "name": "A World for Two Presentation",
+      "version_id": "0.2.1",
+      "version": "0.2.1",
+      "provider": "local-build",
+      "release_type": "candidate",
+      "filename": "awft-client-presentation-0.2.1.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-client-presentation-0.2.1.jar",
+      "size": 7762,
+      "hashes": {
+        "sha256": "2614892ec05d63d8e2c51a4bf0b0424470cc1195815b6c0695130642ba51c42c"
+      },
+      "side": "client",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "MIT"
+      },
+      "source": "https://github.com/Kgray44/a-world-for-two",
+      "selection_reason": "Owned native menu toolbar, pinned cinematic arbitration and bounded real client measurements. No world renderer or player movement.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "author:ldtteam:structurize",
+      "slug": "structurize",
+      "name": "Structurize",
+      "version_id": "1.0.832-1.21.1",
+      "version": "1.0.832-1.21.1",
+      "provider": "author-maven",
+      "release_type": "release",
+      "filename": "structurize-1.0.832-1.21.1.jar",
+      "url": "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/structurize/1.0.832-1.21.1/structurize-1.0.832-1.21.1.jar",
+      "size": 1063849,
+      "hashes": {
+        "sha256": "b6ede7635c63a80bd3d034c1ad3e74c648b8478f341f883d7d29c3dcf90b79ce"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": "structurize",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "GPL-3.0-only"
+      },
+      "source": "https://github.com/ldtteam/Structurize",
+      "selection_reason": "Pinned author Maven artifact. Structurize release requires these exact-minimum BlockUI/Domum snapshot dependencies; native constraints and full runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "author:ldtteam:blockui",
+      "slug": "blockui",
+      "name": "UI Library Mod",
+      "version_id": "1.0.191-1.21.1-snapshot",
+      "version": "1.0.191-1.21.1-snapshot",
+      "provider": "author-maven",
+      "release_type": "beta",
+      "filename": "blockui-1.0.191-1.21.1-snapshot.jar",
+      "url": "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/blockui/1.0.191-1.21.1-snapshot/blockui-1.0.191-1.21.1-snapshot.jar",
+      "size": 465689,
+      "hashes": {
+        "sha256": "46885ec85d96a7d0e8c237d21a918e554cb1509e1f9ff9e30f0f60a68fb7c7bc"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "GPL-3.0-only"
+      },
+      "source": "https://github.com/ldtteam/BlockUI",
+      "selection_reason": "Pinned author Maven artifact. Structurize release requires these exact-minimum BlockUI/Domum snapshot dependencies; native constraints and full runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "author:ldtteam:domum-ornamentum",
+      "slug": "domum-ornamentum",
+      "name": "Domum Ornamentum",
+      "version_id": "1.0.203-1.21.1-snapshot",
+      "version": "1.0.203-1.21.1-snapshot",
+      "provider": "author-maven",
+      "release_type": "beta",
+      "filename": "domum-ornamentum-1.0.203-1.21.1-snapshot.jar",
+      "url": "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/domum-ornamentum/1.0.203-1.21.1-snapshot/domum-ornamentum-1.0.203-1.21.1-snapshot.jar",
+      "size": 1079808,
+      "hashes": {
+        "sha256": "889384290b2dbb9bb2f96a5102b426cc7182bce8986afeb39a201e842319131b"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "GPL-3.0-only",
+        "native_declaration": "GPL3"
+      },
+      "source": "https://github.com/ldtteam/Domum-Ornamentum",
+      "selection_reason": "Pinned author Maven artifact. Structurize release requires these exact-minimum BlockUI/Domum snapshot dependencies; native constraints and full runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "curseforge:298187",
+      "slug": "building-gadgets-2",
+      "name": "Building Gadgets 2",
+      "version_id": "curseforge:9310471",
+      "version": "21.1.1",
+      "provider": "curseforge",
+      "release_type": "release",
+      "curseforge_project": 298187,
+      "curseforge_file": 9310471,
+      "filename": "buildinggadgets2-21.1.1.jar",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/building-gadgets/download/9310471",
+      "size": 3861286,
+      "hashes": {
+        "sha256": "cddd7b4345fdc38a4fc2ec0d85b55fd374d19f9edaf652747b95cb7881a72cce"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": "building-gadgets-2",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "MIT"
+      },
+      "source": "https://www.curseforge.com/minecraft/mc-mods/building-gadgets/files/9310471",
+      "selection_reason": "Official NeoForge 1.21.1 maintenance release fixes connected-area handling and gadget menus. Acquired by the exact Curse Maven coordinate published on its official file page; native and gameplay checks still required.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    }
+  ],
+  "repairs": [
+    {
+      "project_id": "BU2Tm2Hq",
+      "slug": "advanced-weather",
+      "name": "Advanced Weather",
+      "version_id": "0.1.2+awft.3",
+      "version": "0.1.2+awft.3",
+      "release_type": "beta",
+      "filename": "advancedweather-0.1.2+awft.3.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/advancedweather-0.1.2+awft.3.jar",
+      "hashes": {
+        "sha256": "40ffeb077e7c550de485d1d9c923874683811d52e6e9c7fafa614b0888e99f10"
+      },
+      "size": 8116035,
+      "side": "both",
+      "kind": "mod",
+      "request": "advanced-weather",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "version_id": "UjX6dr61",
+          "project_id": "LNytGWDc",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "1eAoo2KR",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "e0bNACJD",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "oWaK0Q19",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "upstream_dependencies": [
+        {
+          "version_id": "UjX6dr61",
+          "project_id": "LNytGWDc",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "1eAoo2KR",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "e0bNACJD",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "oWaK0Q19",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "MIT",
+        "name": "MIT License",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/advanced-weather",
+      "selection_reason": "Correct client-only mixin classification, common config dependency, and the absent mercury bucket supplier. Every other upstream class remains unchanged.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      },
+      "provider": "local-patch",
+      "upstream_artifact": {
+        "project_id": "BU2Tm2Hq",
+        "slug": "advanced-weather",
+        "name": "Advanced Weather",
+        "version_id": "hkSfHfRz",
+        "version": "0.1.2",
+        "release_type": "beta",
+        "filename": "advancedweather-0.1.2.jar",
+        "url": "https://cdn.modrinth.com/data/BU2Tm2Hq/versions/hkSfHfRz/advancedweather-0.1.2.jar",
+        "hashes": {
+          "sha1": "205aa656bf3c7128b7f65224b09a48be6b958355",
+          "sha512": "f877e40d1be613678759a21910acad48b18073ea837937fa85811c19c8672e8d4e1371beebb32c678c8cf358c657eaf3da9c1458a3f280af6201cfab91e8989f"
+        },
+        "size": 8086657,
+        "side": "both",
+        "kind": "mod",
+        "request": "advanced-weather",
+        "world_sensitive": true,
+        "optional": false,
+        "default": true,
+        "dependencies": [
+          {
+            "version_id": "UjX6dr61",
+            "project_id": "LNytGWDc",
+            "file_name": null,
+            "dependency_type": "optional"
+          },
+          {
+            "version_id": null,
+            "project_id": "1eAoo2KR",
+            "file_name": null,
+            "dependency_type": "required"
+          },
+          {
+            "version_id": null,
+            "project_id": "e0bNACJD",
+            "file_name": null,
+            "dependency_type": "optional"
+          },
+          {
+            "version_id": null,
+            "project_id": "oWaK0Q19",
+            "file_name": null,
+            "dependency_type": "optional"
+          }
+        ],
+        "upstream_dependencies": [
+          {
+            "version_id": "UjX6dr61",
+            "project_id": "LNytGWDc",
+            "file_name": null,
+            "dependency_type": "optional"
+          },
+          {
+            "version_id": null,
+            "project_id": "1eAoo2KR",
+            "file_name": null,
+            "dependency_type": "required"
+          },
+          {
+            "version_id": null,
+            "project_id": "e0bNACJD",
+            "file_name": null,
+            "dependency_type": "optional"
+          },
+          {
+            "version_id": null,
+            "project_id": "oWaK0Q19",
+            "file_name": null,
+            "dependency_type": "optional"
+          }
+        ],
+        "metadata_exceptions": [],
+        "license": {
+          "id": "MIT",
+          "name": "MIT License",
+          "url": null
+        },
+        "source": "https://modrinth.com/mod/advanced-weather",
+        "selection_reason": "Selected primary feature has only beta NeoForge 1.21.1 releases; exact file requires runtime and integration acceptance.",
+        "status": "Integrated but awaiting runtime validation",
+        "validation": {
+          "metadata": "pass",
+          "jar": "pending",
+          "runtime": "not run"
+        }
+      },
+      "repair": {
+        "format": 1,
+        "upstream_version": "0.1.2",
+        "version": "0.1.2+awft.3",
+        "upstream_sha256": "fa90e1b103812cd6f2fff1c0bbba402afa83eb8b24b86fe982ed0733332d3766",
+        "changed_entries": [
+          "net/antopfr/advancedweather/content/fluid/AWFluids.class",
+          "advancedweather.mixins.json",
+          "META-INF/neoforge.mods.toml"
+        ],
+        "reason": "Correct client-only mixin classification, common config dependency, and the absent mercury bucket supplier. Every other upstream class remains unchanged.",
+        "upstream_source": "https://github.com/Antop90fr1/AdvancedWeather1.21.1",
+        "source_commit_inspected": "50fe9990e03ac24638343703792797f8991b5266",
+        "license": "MIT; original work by Antopfr. Embedded libraries retain their own licenses."
       }
     }
   ]

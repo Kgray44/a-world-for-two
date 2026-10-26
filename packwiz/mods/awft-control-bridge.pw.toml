@@ -1,0 +1,8 @@
+name = "A World for Two Control Bridge"
+filename = "awft-control-bridge-0.5.0.jar"
+side = "server"
+
+[download]
+url = "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.5.0.jar"
+hash-format = "sha256"
+hash = "e10cd42e3fd4f0622bf6e24cff78d04889e3e61aa29218d4064dff71e5a8e640"

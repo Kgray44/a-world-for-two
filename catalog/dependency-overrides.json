@@ -1,0 +1,31 @@
+[
+  {
+    "project_id": "yBW8D80W",
+    "version_id": "ksaGCvSu",
+    "sha512": "0286076e8b2922dfbe90cd4544a0d16e6d07d7249c732a37479ea4281e9cf96c86dd2e1ce5261489bd5553ceba33044bc550a04b9eb582645eb97f15c9c6a64c",
+    "exclude_project": "P7dR8mSH",
+    "loader": "neoforge",
+    "reason": "Fabric API is required only on Fabric. The author explicitly states NeoForge works as-is. Exact native neoforge.mods.toml requires only the embedded lambdynlights_runtime, inspected in the hash-verified JAR. All native required dependencies remain enforced.",
+    "source": "https://modrinth.com/mod/lambdynamiclights"
+  },
+  {
+    "project_id": "gZp8ofn3",
+    "version_id": "W6svh8BW",
+    "sha512": "6bca244fad0febf5c733090c230b1239f0255ce5086cace04240ac4c394861da7ac6fdb8dd7529eeaa7b1feb659e422c574fab12ec06e342da7d7444b7fa2bda",
+    "loader": "neoforge",
+    "dependency_project": "p19vrgc2",
+    "dependency_side": "client",
+    "reason": "Fusion is a client texture renderer. This exact native NeoForge artifact requires Dawn of Time and Armor of the Ages on BOTH sides, contains no Fusion dependency or bytecode references, and has empty client/common mixins. Preserve Fusion as a required CLIENT dependency without installing it on the dedicated server. Native JAR dependency validation remains authoritative.",
+    "source": "https://modrinth.com/mod/ancient-structures/version/W6svh8BW"
+  },
+  {
+    "project_id": "RgWXq0La",
+    "version_id": "vuLdhPUq",
+    "sha512": "293c49cc0f65053c57741f61adff70444fb70b6cae3c912ba67ce46fbbe4ab84a9e010b995e0b6375d02397ed600382cc8c8dd8feb91061ff7ef7759de5fe746",
+    "loader": "neoforge",
+    "dependency_project": "p19vrgc2",
+    "dependency_side": "client",
+    "reason": "The exact native NeoForge descriptor declares Fusion OPTIONAL and CLIENT. Preserve the upstream API requirement for clients while avoiding an unsupported Fusion installation on the dedicated server. No native required edge is removed.",
+    "source": "https://modrinth.com/mod/dawn-of-time/version/vuLdhPUq"
+  }
+]

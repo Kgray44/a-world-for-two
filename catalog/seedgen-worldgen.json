@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-26T22:43:51.045253+00:00",
+  "authority": "https://modrinth.com/mod/distant-horizons-seedgen",
+  "reason": "Installed on both sides because SeedGen requires matching world-generation mods and custom registry codecs on the client, including otherwise server-only structure mods.",
+  "mods": [
+    {
+      "slug": "aztec-ruins",
+      "version": "1.0+mod",
+      "sha256": "f73927a04552bfa2ce079c97de505cc4d420370669506dee2d6e332f96a6188e",
+      "side": "both"
+    },
+    {
+      "slug": "castle-shift",
+      "version": "0.3.0",
+      "sha256": "382416b0cfcaf086a2ad3e76d7ad453cf5e0ae7078c5db85053d660ea62aefc4",
+      "side": "both"
+    },
+    {
+      "slug": "embers-castles-and-keeps",
+      "version": "1.0.9.1-1.21.1-neoforge",
+      "sha256": "c910201a21a09a8e56be2c023922b8158876542fc5e2ef5b4ef6359a5656e0e1",
+      "side": "both"
+    },
+    {
+      "slug": "epic-structures-jungle-temples",
+      "version": "1.0.2",
+      "sha256": "2cbec91d588216260b146aaaa4087ed6b157e84949c6455c137e338573300fdb",
+      "side": "both"
+    },
+    {
+      "slug": "moogs-structure-lib",
+      "version": "3.4.2-neoforge-1.21.1",
+      "sha256": "753337838224c43dfd8070e54b587219847cbcfc3ffcd06128802fa34fb92214",
+      "side": "both"
+    },
+    {
+      "slug": "mtr-moogs-temples-reimagined",
+      "version": "2.0.4",
+      "sha256": "a0c2d78808ad101d4e8c12945ce3b1465cad61296751be6bc2f86074c9480335",
+      "side": "both"
+    },
+    {
+      "slug": "when-dungeons-arise",
+      "version": "2.1.68",
+      "sha256": "7eee1eca7e3b2c6c1bede055934f391ae2e8349ffe33e106f451176d2cfcf0e4",
+      "side": "both"
+    },
+    {
+      "slug": "yungs-better-desert-temples",
+      "version": "1.21.1-NeoForge-4.1.5",
+      "sha256": "2c3191ad447092cc7873a06e92f16bd3e2ff9dc31e93268b8893d06dd89e1fd6",
+      "side": "both"
+    },
+    {
+      "slug": "yungs-better-jungle-temples",
+      "version": "1.21.1-NeoForge-3.1.2",
+      "sha256": "a0d57b78c7a1891796f342b1f09c214bc27bedf0a3a894f029dfdb2db9f813d0",
+      "side": "both"
+    }
+  ],
+  "observed_failure": "Candidate.9 client registry loading failed on missing YUNG/Moog placement codecs and structure definitions, then SeedGen reported a vanilla fallback.",
+  "boundary": "This corrects the installation prerequisite. A new client runtime must prove modded worldgen loading, server agreement and distant-terrain fidelity. No SeedGen JAR is modified."
+}

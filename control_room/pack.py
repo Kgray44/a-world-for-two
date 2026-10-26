@@ -10,7 +10,7 @@ import zipfile
 from copy import deepcopy
 from pathlib import Path
 
-from .common import REPO, UserError, atomic_write, digest, read_json, utcnow, write_json
+from .common import REPO, UserError, atomic_write, contained, digest, read_json, utcnow, write_json
 from .network import api, download
 
 STATUSES = {"Integrated and tested", "Integrated but awaiting runtime validation", "Alternative selected",
@@ -22,7 +22,8 @@ def stable(version):
 
 
 def compatible(version, kind="mod"):
-    return "1.21.1" in version["game_versions"] and ("neoforge" in version["loaders"] if kind == "mod" else "iris" in version["loaders"])
+    return "1.21.1" in version["game_versions"] and ("neoforge" in version["loaders"] if kind == "mod" else
+        "iris" in version["loaders"] if kind == "shader" else kind == "resourcepack")
 
 
 def resolve_project(value):
@@ -33,7 +34,7 @@ def resolve_project(value):
         if parsed.hostname not in ("modrinth.com", "www.modrinth.com") or parsed.scheme != "https":
             raise UserError("Use a Modrinth project URL. CurseForge needs an authorized API key and its separate lookup control.")
         parts = parsed.path.strip("/").split("/")
-        if len(parts) < 2 or parts[0] not in ("mod", "project", "shader"):
+        if len(parts) < 2 or parts[0] not in ("mod", "project", "shader", "resourcepack"):
             raise UserError("Enter a complete Modrinth project URL")
         value = parts[1]
     if not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", value):
@@ -94,6 +95,21 @@ class Resolver:
             raise UserError("Upstream filename is unsafe")
         if not 0 < file["size"] <= 256 * 1024 * 1024:
             raise UserError("Upstream file is outside the bounded download policy")
+        # Modrinth cannot express loader-conditional edges on a multiloader file.
+        # Exceptions are exact reviewed artifacts, never a generic missing-dependency
+        # fallback. Native JAR dependency validation still runs without exceptions.
+        dependencies, exceptions = deepcopy(version["dependencies"]), []
+        for decision in read_json(REPO / "catalog/dependency-overrides.json", []):
+            if decision["project_id"] == project["id"] and decision["version_id"] == version["id"]:
+                if file["hashes"].get("sha512") != decision["sha512"] or decision["loader"] != "neoforge":
+                    raise UserError("Loader-conditional metadata decision no longer matches its reviewed artifact")
+                if decision.get('dependency_side') == 'client':
+                    for edge in dependencies:
+                        if edge.get('project_id') == decision['dependency_project']:
+                            edge['side'] = 'client'
+                else:
+                    dependencies = [d for d in dependencies if d.get("project_id") != decision["exclude_project"]]
+                exceptions.append(decision)
         side = choice.get("side")
         if not side:
             side = "client" if project["server_side"] == "unsupported" else "server" if project["client_side"] == "unsupported" else "both"
@@ -103,8 +119,9 @@ class Resolver:
                 "side": side, "kind": choice.get("kind", "mod"), "request": choice.get("request"),
                 "world_sensitive": choice.get("world_sensitive", any(c in project.get("categories", []) for c in ["worldgen", "adventure", "decoration", "technology", "food", "mobs", "equipment"])),
                 "optional": choice.get("optional", False), "default": choice.get("default", True),
-                "dependencies": version["dependencies"], "license": project["license"],
-                "source": "https://modrinth.com/" + ("shader/" if choice.get("kind") == "shader" else "mod/") + project["slug"],
+                "dependencies": dependencies, "upstream_dependencies": version["dependencies"],
+                "metadata_exceptions": exceptions, "license": project["license"],
+                "source": "https://modrinth.com/" + {"shader": "shader/", "resourcepack": "resourcepack/"}.get(choice.get("kind"), "mod/") + project["slug"],
                 "selection_reason": choice.get("reason", "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply."),
                 "status": "Integrated but awaiting runtime validation", "validation": {"metadata": "pass", "jar": "pending", "runtime": "not run"}}
 
@@ -134,7 +151,7 @@ class Resolver:
                 if pid in items:
                     if vid and items[pid]["version_id"] != vid:
                         raise UserError(item["name"] + " requires an exact version of " + items[pid]["name"] + ": " + vid)
-                    if item["side"] == "both" and items[pid]["side"] == "client":
+                    if item["side"] == "both" and items[pid]["side"] == "client" and dependency.get('side') != 'client':
                         if self.project(pid)["server_side"] == "unsupported":
                             raise UserError(item["name"] + " requires the client-only selected dependency " + items[pid]["name"])
                         items[pid]["side"] = "both"
@@ -142,7 +159,7 @@ class Resolver:
                     continue
                 project = self.project(pid)
                 version = self.select(project, vid)
-                child = self.item(project, version, {"side": "client" if item["side"] == "client" else None,
+                child = self.item(project, version, {"side": "client" if item["side"] == "client" or dependency.get('side') == 'client' else None,
                     "reason": "Required dependency of " + item["name"]})
                 # A client-only parent's dependencies must not leak onto the dedicated server.
                 if item["side"] == "client":
@@ -180,12 +197,17 @@ def generate_pack(directory: Path, lock):
     directory.mkdir(parents=True, exist_ok=True)
     files = []
     for item in lock["mods"]:
-        shader = item["kind"] == "shader"
-        relative = ("shaderpacks/" if shader else "mods/") + item["slug"] + ".pw.toml"
+        folder = {"mod": "mods/", "shader": "shaderpacks/", "resourcepack": "resourcepacks/"}.get(item["kind"])
+        if folder is None:
+            raise UserError("Unknown pack file kind: " + str(item["kind"]))
+        relative = folder + item["slug"] + ".pw.toml"
         quote = lambda x: json.dumps(x, ensure_ascii=False)
         hashes = item["hashes"]
         algorithm = "sha512" if "sha512" in hashes else "sha256" if "sha256" in hashes else "sha1"
-        text = f"name = {quote(item['name'])}\nfilename = {quote(item['filename'])}\nside = {quote(item['side'])}\n\n[download]\nurl = {quote(item['url'])}\nhash-format = {quote(algorithm)}\nhash = {quote(hashes[algorithm])}\n"
+        download_source = ('mode = "metadata:curseforge"' if item.get("provider") == "curseforge" else 'url = ' + quote(item['url']))
+        text = f"name = {quote(item['name'])}\nfilename = {quote(item['filename'])}\nside = {quote(item['side'])}\n\n[download]\n{download_source}\nhash-format = {quote(algorithm)}\nhash = {quote(hashes[algorithm])}\n"
+        if item.get("provider") == "curseforge":
+            text += f"\n[update.curseforge]\nfile-id = {item['curseforge_file']}\nproject-id = {item['curseforge_project']}\n"
         if item.get("provider", "modrinth") == "modrinth":
             text += f"\n[update.modrinth]\nmod-id = {quote(item['project_id'])}\nversion = {quote(item['version_id'])}\n"
         if item.get("optional"):
@@ -217,6 +239,13 @@ def validate_pack(directory, lock):
         if digest(directory / "index.toml") != pack["index"]["hash"]:
             errors.append("Packwiz index hash mismatch")
         index = tomllib.loads((directory / "index.toml").read_text(encoding="utf-8"))
+        payload = {p.relative_to(directory).as_posix() for folder in ("config", "defaultconfigs")
+                   for p in (directory / folder).rglob("*") if p.is_file()}
+        if (directory / "options.txt").is_file():
+            payload.add("options.txt")
+        indexed_payload = {x["file"] for x in index["files"] if not x.get("metafile")}
+        if indexed_payload != payload:
+            errors.append("Pack payload inventory differs from its index; regenerate before distribution")
         expected = {m["slug"]: m for m in lock["mods"]}
         seen = set()
         for entry in index["files"]:
@@ -234,7 +263,9 @@ def validate_pack(directory, lock):
                     errors.append("Untracked mod: " + slug)
                     continue
                 item = expected[slug]
-                if meta["filename"] != item["filename"] or meta["side"] != item["side"] or meta["download"].get("url") != item["url"]:
+                source_matches = (meta["download"].get("mode") == "metadata:curseforge" and
+                    meta.get("update", {}).get("curseforge") == {"file-id": item["curseforge_file"], "project-id": item["curseforge_project"]}) if item.get("provider") == "curseforge" else meta["download"].get("url") == item["url"]
+                if meta["filename"] != item["filename"] or meta["side"] != item["side"] or not source_matches:
                     errors.append("Metadata differs from the lock: " + slug)
                 if meta["download"]["hash"] != item["hashes"].get(meta["download"]["hash-format"]):
                     errors.append("Download hash differs: " + slug)
@@ -244,6 +275,32 @@ def validate_pack(directory, lock):
     except (KeyError, ValueError, OSError) as exc:
         errors.append("Invalid Packwiz manifest: " + str(exc))
     return errors
+
+
+def public_pack_file(directory, relative):
+    """Serve only bounded, hash-verified Packwiz members, including menu PNGs."""
+    directory = Path(directory)
+    manifest = contained(directory, 'pack.toml')
+    index_path = contained(directory, 'index.toml')
+    if manifest.stat().st_size > 65536 or index_path.stat().st_size > 2 * 1024 * 1024:
+        raise UserError('Pack metadata exceeds its serving limit')
+    pack = tomllib.loads(manifest.read_text(encoding='utf-8'))
+    if pack['index'].get('file') != 'index.toml' or pack['index'].get('hash-format') != 'sha256' or digest(index_path) != pack['index']['hash']:
+        raise UserError('The active pack index needs regeneration before distribution')
+    if relative == 'pack.toml':
+        return manifest
+    if relative == 'index.toml':
+        return index_path
+    index = tomllib.loads(index_path.read_text(encoding='utf-8'))
+    if index.get('hash-format') != 'sha256' or len(index.get('files', [])) > 3000:
+        raise UserError('Unsupported pack index')
+    entry = next((row for row in index['files'] if row['file'] == relative), None)
+    if entry is None:
+        raise UserError('This file is not part of the active pack')
+    target = contained(directory, relative)
+    if not target.is_file() or target.stat().st_size > 8 * 1024 * 1024 or digest(target) != entry['hash']:
+        raise UserError('The indexed pack file is missing, too large or changed')
+    return target
 
 
 def version_key(value):
@@ -298,7 +355,9 @@ def loader_supports(modid, version, constraint, neoforge):
 
 
 def jar_metadata(path: Path):
-    def inspect(archive, nested=False):
+    embedded_bytes = 0
+    def inspect(archive, depth=0):
+        nonlocal embedded_bytes
         mods, dependencies, embedded = [], [], []
         meta_name = next((name for name in ("META-INF/neoforge.mods.toml", "META-INF/mods.toml") if name in archive.namelist()), None)
         if meta_name:
@@ -311,12 +370,15 @@ def jar_metadata(path: Path):
                 version = str(item.get("version", ""))
                 if "${file.jarVersion}" in version:
                     version = declared[1].strip() if declared else "unresolved"
-                mods.append({"id": item["modId"], "version": version, "embedded": nested})
+                mods.append({"id": item["modId"], "version": version, "embedded": depth > 0})
             for owner, entries in data.get("dependencies", {}).items():
                 for entry in entries:
                     dependencies.append(dict(entry, owner=owner))
-        # Only inspect one level of known JarJar libraries, with strict byte limits.
-        if not nested and "META-INF/jarjar/metadata.json" in archive.namelist():
+        # NeoForge resolves nested JarJar libraries recursively. Keep depth and
+        # decompressed-byte bounds, while checking every native dependency edge.
+        if "META-INF/jarjar/metadata.json" in archive.namelist():
+            if depth >= 5:
+                raise UserError("Embedded dependency nesting exceeds the review limit")
             meta = archive.getinfo("META-INF/jarjar/metadata.json")
             if meta.file_size > 1024 * 1024:
                 raise UserError("Oversized JarJar metadata")
@@ -326,9 +388,12 @@ def jar_metadata(path: Path):
                 info = archive.getinfo(name)
                 if info.file_size > 128 * 1024 * 1024:
                     raise UserError("Oversized embedded dependency")
+                embedded_bytes += info.file_size
+                if embedded_bytes > 512 * 1024 * 1024:
+                    raise UserError("Embedded dependencies exceed their decompressed byte budget")
                 with zipfile.ZipFile(io.BytesIO(archive.read(info))) as child:
-                    child_mods, child_deps, _ = inspect(child, True)
-                    embedded.extend(child_mods)
+                    child_mods, child_deps, descendants = inspect(child, depth + 1)
+                    embedded.extend(child_mods + descendants)
                     dependencies.extend(child_deps)
         service = "META-INF/services/net.neoforged.neoforgespi.language.IModLanguageLoader"
         language_provider = service in archive.namelist() or any("Kotlin" in n and "LanguageProvider" in n for n in archive.namelist())
@@ -354,6 +419,8 @@ def cache_files(lock, directory, storage, notify=lambda _: None, side=None):
             if path.stat().st_size != item["size"] or digest(path, algorithm) != item["hashes"][algorithm]:
                 raise UserError("Cached bytes differ from the pinned file: " + item["filename"])
             continue
+        if item.get("provider") == "curseforge":
+            raise UserError("Download the exact file from its author page, then use Import downloaded file in Mods: " + item["source"])
         download(item["url"], path, item["size"], item["hashes"][algorithm], algorithm, storage, notify)
     return items
 
@@ -366,7 +433,7 @@ def validate_jars(lock, directory):
         direct = set()
         unresolved = set()
         for item in lock["mods"]:
-            if item["kind"] == "shader" or item["side"] not in (side, "both") or item.get("optional") and not item.get("default", True):
+            if item["kind"] != "mod" or item["side"] not in (side, "both") or item.get("optional") and not item.get("default", True):
                 continue
             path = directory / item["filename"]
             if not path.exists():

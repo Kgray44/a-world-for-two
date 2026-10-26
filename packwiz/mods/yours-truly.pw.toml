@@ -1,0 +1,12 @@
+name = "Yours Truly"
+filename = "yourstruly-neoforge-1.0.1+mc1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/IaNRtr0L/versions/ZS9vvlRX/yourstruly-neoforge-1.0.1%2Bmc1.21.1.jar"
+hash-format = "sha512"
+hash = "c182d879509e655b4377ee9658a672808a2b31726e36c9f0d21745b4992800546ce5ac3b7633c2339135d7f8f4c07a572768757062a9ca805ec3c29465252cd0"
+
+[update.modrinth]
+mod-id = "IaNRtr0L"
+version = "ZS9vvlRX"

@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "philipsruins:lost_soul_dungeon",
+      "weight": 1
+    },
+    {
+      "structure": "philipsruins:underground_structures",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 641781942,
+    "spacing": 112,
+    "separation": 56
+  }
+}

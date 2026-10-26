@@ -1,0 +1,16 @@
+{
+  "primary": [
+    "fancymenu",
+    "drippy-loading-screen",
+    "lumiera",
+    "cinematic-respawn",
+    "ambient-camera"
+  ],
+  "intro": {
+    "id": "awft:intro",
+    "duration_seconds": 10,
+    "anchor": "Actual joining player position; the camera moves relative to it without teleporting the player.",
+    "replacement": "Author a cottage path with Lumiera’s timeline and replace the awft:intro cutscene in the integration datapack.",
+    "validation": "Native registry and client playback pending."
+  }
+}

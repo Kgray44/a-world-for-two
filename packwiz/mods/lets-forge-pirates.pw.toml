@@ -1,0 +1,12 @@
+name = "Let’s Forge Pirates"
+filename = "[NeoForge]Lets_Forge_Pirates_[1_21_1]_4.jar"
+side = "both"
+
+[download]
+mode = "metadata:curseforge"
+hash-format = "sha512"
+hash = "f7002d10c0d76f10cf6760bb4106e66e25ca24bd26982859523a8374f38cec7a94a62c706887361906bab9eff866d62ddd7b2df7e3b0a7b2511eeacc76467a9f"
+
+[update.curseforge]
+file-id = 5814128
+project-id = 935975

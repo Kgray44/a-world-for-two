@@ -1,0 +1,293 @@
+{
+  "maphorizons": {
+    "repository": "VolcanicMG/MapHorizons",
+    "commit": "6c80ad5be5fff2c373388dfd6ff433667edd7217",
+    "license": "MIT",
+    "tree": [
+      {
+        "path": ".gitattributes",
+        "sha": "b7bbcc476ce55828b7010edeca69bb493a98daf3",
+        "size": 252,
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "sha": "cf0864e8399f12d06fcfd3770a963f72f30caf60",
+        "size": 447,
+        "type": "blob"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "sha": "866c4031e66c3d4f7dc88de6b7b3804a44847459",
+        "size": 4503,
+        "type": "blob"
+      },
+      {
+        "path": "DESIGN.md",
+        "sha": "dfc9159c196d15268deb1eab697205f20e7c825b",
+        "size": 19144,
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "sha": "b39903eab2f037f9d142765d7ef17c25a7b56218",
+        "size": 1067,
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "sha": "683c1c72e10a2a2324c016902d39ff2db03b8c42",
+        "size": 6860,
+        "type": "blob"
+      },
+      {
+        "path": "build.gradle",
+        "sha": "f2c8e2383e29864f5dd32dcecad3fefb6af3c30c",
+        "size": 2367,
+        "type": "blob"
+      },
+      {
+        "path": "gradle.properties",
+        "sha": "269297318885ddfe634adc8066845c542f180ee2",
+        "size": 393,
+        "type": "blob"
+      },
+      {
+        "path": "gradle/wrapper/gradle-wrapper.jar",
+        "sha": "1b33c55baabb587c669f562ae36f953de2481846",
+        "size": 43764,
+        "type": "blob"
+      },
+      {
+        "path": "gradle/wrapper/gradle-wrapper.properties",
+        "sha": "23449a2b54328b514d1423812706edf212fa587b",
+        "size": 252,
+        "type": "blob"
+      },
+      {
+        "path": "gradlew",
+        "sha": "23d15a9367071145e9c79bb4ddf879d1fbe78b5d",
+        "size": 8733,
+        "type": "blob"
+      },
+      {
+        "path": "gradlew.bat",
+        "sha": "db3a6ac207e507b0bc1635a9f2c18d3b174e682e",
+        "size": 2843,
+        "type": "blob"
+      },
+      {
+        "path": "settings.gradle",
+        "sha": "cd5cd7a81eedc2ac463a53c2d89a54c29b7104cd",
+        "size": 196,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/Bits.java",
+        "sha": "9fb564a9a9873a23315722d5481814e9d5f1f288",
+        "size": 2603,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/Config.java",
+        "sha": "01d76b60e11fa039e2ee78f1d4dcede6eb7ca6b2",
+        "size": 4471,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/MapHorizons.java",
+        "sha": "e644d65f31798c162b2f491597a24404f5671d80",
+        "size": 3180,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/ConfigButton.java",
+        "sha": "6d383ff97575fe4b7eb64112b6a9cbcff9545270",
+        "size": 2080,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/Diagnostics.java",
+        "sha": "63f9df770de6abd7ebc04f49935e713d60b59d23",
+        "size": 1145,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/ExploredClient.java",
+        "sha": "126ee2f017e139259a136476e3db7b812ee17025",
+        "size": 6779,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/MapHorizonsClient.java",
+        "sha": "869367ac7d0b4aea1741fb5c0a705b196024455e",
+        "size": 3808,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/RegionColours.java",
+        "sha": "aafd3fde903ea03b2308ccd61ea74cccb96317cf",
+        "size": 9178,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/ShareFetch.java",
+        "sha": "4f0c68a44a0131a3b30a6ccd058272be1f1bc435",
+        "size": 6967,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/TerrainMath.java",
+        "sha": "2153796e5fad67c405b6aeb46e2a06527a1b7c14",
+        "size": 7421,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/dh/DhSource.java",
+        "sha": "7105f43c0d7474f317b2fc9db1b2b9cf0defca3f",
+        "size": 30034,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/xaero/LeafTextures.java",
+        "sha": "745ef6c851e25d5e2ca1bc1a2f360a18ba62276e",
+        "size": 365,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/xaero/TerrainHighlighter.java",
+        "sha": "d0bef79dfd5af0872cf51508b5608f54691fb6c9",
+        "size": 5470,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/xaero/TerrainMixinPlugin.java",
+        "sha": "17a481dcf5af46f18c646d211edfd55da6f3cfb3",
+        "size": 1370,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/xaero/XaeroColours.java",
+        "sha": "1fc9d120a23d8bcedd56b1fdf9edc93c368be428",
+        "size": 6376,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/xaero/XaeroHashes.java",
+        "sha": "2b2984d537fc10da6acdf4ab6c507a19d6de44aa",
+        "size": 1313,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/client/xaero/XaeroSettingsScreen.java",
+        "sha": "bb4c585589ca61802ff1a6b01d0111545db3d1b8",
+        "size": 435,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/mixin/LeafTextureMixin.java",
+        "sha": "9271b3829d52250325b1795e99abb905d948d2c2",
+        "size": 1392,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/mixin/RegistryMixin.java",
+        "sha": "ed9e361899280a3eb8deb4a774645023c2bb0e04",
+        "size": 788,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/net/ExploredPayload.java",
+        "sha": "382cce434e24f4214e10e9b81bcaeb3da772ccfa",
+        "size": 3243,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/net/SectionDataPayload.java",
+        "sha": "1364505c1bc48922f228a5f88fff167e61e133af",
+        "size": 2063,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/net/SectionRequestPayload.java",
+        "sha": "856f2e3003b52f5361d76e031e33d6ff38c45ad6",
+        "size": 1499,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/server/ExploredData.java",
+        "sha": "15d6231459a29ae895e14ec19d46ad63b90d0df0",
+        "size": 4551,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/server/ExploredSync.java",
+        "sha": "7ef94aaa075c453619921be7a43e9845de6c1308",
+        "size": 9643,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/server/FtbTeamsCompat.java",
+        "sha": "230057753364bc26df82d5a2f8eba07182921621",
+        "size": 2077,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/server/ShareServer.java",
+        "sha": "db977edbc246751323c117eac98be835c5985c78",
+        "size": 9741,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/share/ShareMath.java",
+        "sha": "2ae00f84701e6119b855ea5f0591d8fb90c2d72a",
+        "size": 1092,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/java/com/volcanicmg/maphorizons/share/TokenBucket.java",
+        "sha": "a0fc7b0eba6affb8e62a5fe59555c7fe3afb0622",
+        "size": 1006,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/resources/assets/maphorizons/lang/en_us.json",
+        "sha": "403afc768a1386cbd00bc1f7c106646767c300b9",
+        "size": 1132,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/resources/maphorizons.mixins.json",
+        "sha": "8105e1f328163068a0971bded442dfe74299a647",
+        "size": 313,
+        "type": "blob"
+      },
+      {
+        "path": "src/main/templates/META-INF/neoforge.mods.toml",
+        "sha": "b8accdf63fcfc85b7def9e0891be11e15f53e515",
+        "size": 1288,
+        "type": "blob"
+      },
+      {
+        "path": "src/test/java/com/volcanicmg/maphorizons/SelfCheck.java",
+        "sha": "60c4132bd1a663037d97227c8df8c9d3545161da",
+        "size": 9982,
+        "type": "blob"
+      }
+    ],
+    "libraries": {
+      "xaeroworldmap-neoforge-1.21.1-1.47.0.jar": "xaeros-world-map",
+      "DistantHorizons-3.3.1-1.21.1-fabric-neoforge.jar": "distanthorizons",
+      "architectury-13.0.11-neoforge.jar": "architectury-api"
+    },
+    "compile_only": [
+      {
+        "filename": "ftb-teams-neoforge-2101.1.11.jar",
+        "size": 308236,
+        "sha256": "e6bcd670493624e6906df872a9c6af4a33fe6405cac57a32c59cd4cd5838c655",
+        "source": "https://www.curseforge.com/minecraft/mc-mods/ftb-teams-forge/files/8724782",
+        "runtime_included": false
+      }
+    ]
+  }
+}

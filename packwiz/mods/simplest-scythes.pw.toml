@@ -1,0 +1,12 @@
+name = "Simplest Scythes (archived)"
+filename = "simplest_scythes-1.21.1-1.1.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/eKAyy7Zd/versions/ZyhC4A8z/simplest_scythes-1.21.1-1.1.0.jar"
+hash-format = "sha512"
+hash = "975d26b0aabffcba4d5dd72d5be7908c1cdb4cf21c23b50d6f588b26413c8b99d59a2c8d574af47225b3cf5a195631ca075343ac6bb742eb9f11614b2d6f372b"
+
+[update.modrinth]
+mod-id = "eKAyy7Zd"
+version = "ZyhC4A8z"

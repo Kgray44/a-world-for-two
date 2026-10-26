@@ -1,0 +1,12 @@
+name = "MultiBeds"
+filename = "multibeds-neoforge-1.21.1-1.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/JyytxgF6/versions/WoUrPFjT/multibeds-neoforge-1.21.1-1.0.jar"
+hash-format = "sha512"
+hash = "642949a08fb53fb4e0c17ca801c49c2727c10552d20471f017f0291b9607b6639294d0eb27ed68da0235e3b79c6545696baa67e393f1b778611dc46928f13849"
+
+[update.modrinth]
+mod-id = "JyytxgF6"
+version = "WoUrPFjT"

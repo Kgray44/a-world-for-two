@@ -1,0 +1,18 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#awft:pirate_oceans",
+  "spawners": [
+    {
+      "type": "treasures_of_the_dead:blooming_skeleton",
+      "weight": 15,
+      "minCount": 1,
+      "maxCount": 3
+    },
+    {
+      "type": "treasures_of_the_dead:captain_blooming_skeleton",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "archaeology_ruins:ruined_desert_pyramid",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 96,
+    "separation": 48,
+    "salt": 93969674
+  }
+}

@@ -28,6 +28,7 @@ IDENTITIES = {
     "dh-seedgen": "distant-horizons-seedgen", "bsl": "bsl-shaders",
     "complementary-reimagined": "complementary-reimagined",
     "complementary-unbound": "complementary-unbound", "biomes-weve-gone": "oh-the-biomes-weve-gone",
+    "aztec-temple-ruins": "aztec-ruins", "moogs-temples-reimagined": "mtr-moogs-temples-reimagined",
 }
 
 

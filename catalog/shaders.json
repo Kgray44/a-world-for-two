@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-26T22:43:17.620567+00:00",
+  "quality_cost_boundary": "Style and intended cost are author descriptions and configuration guidance, not benchmarks. Download counts indicate popularity rather than a measured quality ranking.",
+  "shaders": [
+    {
+      "id": "bsl-shaders",
+      "name": "BSL Shaders",
+      "style": "Warm and cozy",
+      "cost": "Balanced to high",
+      "description": "Soft light and a familiar cinematic look.",
+      "source": "https://modrinth.com/shader/bsl-shaders",
+      "dh_status": "programs-present",
+      "dh_note": "DH shader programs are present; exact Iris/DH/modpack runtime testing is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "complementary-reimagined",
+      "name": "Complementary Shaders - Reimagined",
+      "style": "Warm and cozy",
+      "cost": "Balanced to high",
+      "description": "Minecraft-styled clouds and warm interiors.",
+      "source": "https://modrinth.com/shader/complementary-reimagined",
+      "dh_status": "programs-present",
+      "dh_note": "DH shader programs are present; exact Iris/DH/modpack runtime testing is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "complementary-unbound",
+      "name": "Complementary Shaders - Unbound",
+      "style": "Cinematic",
+      "cost": "High",
+      "description": "Realistic water, skies and dramatic lighting; used in the owner playtest.",
+      "source": "https://modrinth.com/shader/complementary-unbound",
+      "dh_status": "programs-present",
+      "dh_note": "DH shader programs are present; exact Iris/DH/modpack runtime testing is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "kappa-shader",
+      "name": "Kappa Shader",
+      "style": "Realistic",
+      "cost": "High",
+      "description": "Detailed clouds, volumetric fog and screen-space path tracing. This exact 5.3 ZIP has no DH terrain programs; distant-terrain compatibility is limited.",
+      "source": "https://modrinth.com/shader/kappa-shader",
+      "dh_status": "unverified-or-absent",
+      "dh_note": "No DH terrain/water programs found in this exact author ZIP. Iris rendering acceptance is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "bliss-shader",
+      "name": "Bliss Shaders",
+      "style": "Warm fantasy",
+      "cost": "Balanced to high",
+      "description": "Changing skies, warm light and varied fantasy atmosphere.",
+      "source": "https://modrinth.com/shader/bliss-shader",
+      "dh_status": "programs-present",
+      "dh_note": "DH shader programs are present; exact Iris/DH/modpack runtime testing is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "photon-shader",
+      "name": "Photon Shaders",
+      "style": "Natural",
+      "cost": "Balanced to high",
+      "description": "Gameplay-focused, semi-realistic light with scalable clouds and effects. Version 1.4 adds Colorwheel integration; our Create combination still needs testing.",
+      "source": "https://modrinth.com/shader/photon-shader",
+      "dh_status": "programs-present",
+      "dh_note": "DH shader programs are present; exact Iris/DH/modpack runtime testing is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "makeup-ultra-fast-shaders",
+      "name": "MakeUp - Ultra Fast",
+      "style": "Flexible and cozy",
+      "cost": "Lighter to balanced",
+      "description": "Optional effects and several color schemes; start with Medium and tune after measurement.",
+      "source": "https://modrinth.com/shader/makeup-ultra-fast-shaders",
+      "dh_status": "programs-present",
+      "dh_note": "DH shader programs are present; exact Iris/DH/modpack runtime testing is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "solas-shader",
+      "name": "Solas Shader",
+      "style": "Cozy fantasy",
+      "cost": "Balanced to high",
+      "description": "Auroras, fireflies, colored lighting and expressive fantasy skies.",
+      "source": "https://modrinth.com/shader/solas-shader",
+      "dh_status": "programs-present",
+      "dh_note": "DH shader programs are present; exact Iris/DH/modpack runtime testing is pending.",
+      "validation": "Pinned author release inspected; no measured FPS or complete rendering acceptance."
+    },
+    {
+      "id": "chocapic13-shaders",
+      "name": "Chocapic13 Shaders (original)",
+      "version": "V9 / V9.1 beta under investigation",
+      "style": "Classic warm light",
+      "cost": "Preset dependent",
+      "description": "The original author download is required. It is not replaced by Bliss. Legacy release, Iris/DH support unverified.",
+      "source": "https://www.curseforge.com/minecraft/shaders/chocapic13-shaders",
+      "dh_status": "unverified-or-absent",
+      "dh_note": "No compatibility claim. Official automated download returned HTTP 403; unchanged original file needed.",
+      "validation": "Pending author download and native client test."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+config-version: 2
+settings:
+  internal-webserver:
+    enabled: false
+    bind: 127.0.0.1
+    port: 8081
+  update-checker: false
+world-settings:
+  default:
+    map:
+      enabled: false
+      max-render-threads: 1
+      background-render:
+        enabled: true
+        max-chunks-per-interval: 32
+        interval-seconds: 30
+        max-render-threads: 1
+    player-tracker:
+      update-interval-seconds: 5
+      nameplate:
+        show-head: false
+  minecraft:overworld:
+    map:
+      enabled: true
+  minecraft:the_nether:
+    map:
+      enabled: true
+      iterate-up: true
+      max-height: 127
+  minecraft:the_end:
+    map:
+      enabled: true

@@ -1,0 +1,19 @@
+{
+  "structures": [
+    {
+      "structure": "mtr:jungle_temple",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "moogs_structures:advanced_random_spread",
+    "salt": 154471789,
+    "spacing": 112,
+    "separation": 48,
+    "frequency": 0.6,
+    "exclusion_zone": {
+      "other_set": "betterjungletemples:jungle_temples",
+      "chunk_count": 16
+    }
+  }
+}

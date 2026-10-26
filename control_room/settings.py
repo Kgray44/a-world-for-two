@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import difflib
 import json
+import math
 import re
 import tomllib
 from pathlib import Path
@@ -45,6 +46,9 @@ def validate_value(value, spec):
     kind = spec["type"]
     if kind == "integer":
         if type(value) is not int or not spec["min"] <= value <= spec["max"]:
+            raise UserError(f"{spec['label']}: enter {spec['min']} through {spec['max']}")
+    elif kind == "number":
+        if type(value) not in (int, float) or not math.isfinite(value) or not spec["min"] <= value <= spec["max"]:
             raise UserError(f"{spec['label']}: enter {spec['min']} through {spec['max']}")
     elif kind == "boolean":
         if type(value) is not bool:
@@ -261,10 +265,46 @@ class Settings:
                 forms.append(dict(schema, available=False, reason="Generated after the first successful mod load"))
                 continue
             try:
-                value = tomllib.loads(path.read_text(encoding="utf-8"))
+                value = json.loads(path.read_text(encoding="utf-8")) if path.suffix == ".json" else tomllib.loads(path.read_text(encoding="utf-8"))
                 for key in schema["path"]:
                     value = value[key]
-                forms.append(dict(schema, available=True, current=value))
+                forms.append(dict(schema, available=True, current=value, expected=digest(path)))
             except (KeyError, ValueError):
                 forms.append(dict(schema, available=False, reason="Pinned schema does not match this generated file"))
         return forms
+
+    def update_mod(self, ident, value, expected):
+        schema = next((s for s in self.mod_forms() if s["id"] == ident), None)
+        if not schema or not schema["available"]:
+            raise UserError("This pinned configuration field is not available yet")
+        validate_value(value, schema)
+        if not expected or expected != schema["expected"]:
+            raise UserError("Configuration changed; reload the form before saving")
+        raw = self.raw(schema["file"])
+        if Path(schema["file"]).suffix == ".json":
+            data = json.loads(raw["content"])
+            target = data
+            for part in schema["path"][:-1]:
+                target = target[part]
+            target[schema["path"][-1]] = value
+            content = json.dumps(data, indent=2) + "\n"
+        else:
+            # Change exactly one scalar inside its exact table, preserving comments,
+            # order, unrelated values and array-of-table sections.
+            table, key = ".".join(schema["path"][:-1]), schema["path"][-1]
+            section, count, lines = "", 0, []
+            for line in raw["content"].splitlines(True):
+                match = re.match(r"\s*\[([^\[\]]+)\]\s*(?:#.*)?$", line.rstrip())
+                if match:
+                    section = match[1]
+                elif re.match(r"\s*\[\[", line):
+                    section = "<array>"
+                if section == table and re.match(r"\s*" + re.escape(key) + r"\s*=", line):
+                    encoded = json.dumps(value)
+                    line = re.sub(r"^(\s*" + re.escape(key) + r"\s*=\s*)[^#\r\n]+", lambda m: m[1] + encoded + " ", line)
+                    count += 1
+                lines.append(line)
+            if count != 1:
+                raise UserError("Generated TOML no longer matches the pinned scalar schema")
+            content = "".join(lines)
+        return self.raw_save(schema["file"], content, expected)

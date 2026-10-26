@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="awft_client_presentation"
+version="0.2.1"
+displayName="A World for Two: Presentation"
+authors="A World for Two"
+description="Preserves native menu controls in a compact toolbar, coordinates cinematic cameras, and records bounded local client measurements."
+displayTest="IGNORE_ALL_VERSION"
+
+[[mixins]]
+config="awft-presentation.mixins.json"
+
+[[dependencies.awft_client_presentation]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.262,)"
+side="CLIENT"
+
+[[dependencies.awft_client_presentation]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+side="CLIENT"

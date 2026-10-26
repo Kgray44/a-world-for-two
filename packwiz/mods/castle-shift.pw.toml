@@ -1,0 +1,12 @@
+name = "Castle Shift"
+filename = "castleshift-0.3.0+1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/YD7K9Qmq/versions/K5YEnMn7/castleshift-0.3.0%2B1.21.1-neoforge.jar"
+hash-format = "sha512"
+hash = "263c27726d007fd905e9672e24c8c036ca7e05dc269b7922be0dc8f9be349238b273ca1fcdc9f7e690ddb037278169f9ba1fc67040bf204f26eece93dfd89ba3"
+
+[update.modrinth]
+mod-id = "YD7K9Qmq"
+version = "K5YEnMn7"

@@ -28,7 +28,39 @@ class ModManager:
     def inventory(self):
         lock, _ = self.active()
         return {"version": lock["version"], "mods": lock["mods"],
+                "candidate_version": read_json(REPO / "catalog/lock.json")["version"],
+                "candidate": read_json(REPO / "catalog/lock.json"),
                 "update_policy": "Updates are queried on demand, selected by exact version and staged for review. Never silently update content."}
+
+    def manual_files(self):
+        # Include the current source candidate while an older qualified release is active.
+        lock = read_json(REPO / "catalog/lock.json")
+        return [{"slug": m["slug"], "name": m["name"], "version": m["version"], "filename": m["filename"],
+                 "source": m["source"], "cached": (self.layout.caches / "mods" / m["filename"]).is_file(),
+                 "license": m["license"], "size": m["size"]} for m in lock["mods"] if m.get("provider") == "curseforge"]
+
+    def import_manual(self, slug, notify=lambda _: None):
+        lock = read_json(REPO / "catalog/lock.json")
+        item = next((m for m in lock["mods"] if m["slug"] == slug and m.get("provider") == "curseforge"), None)
+        if not item:
+            raise UserError("Choose an exact pinned manual download")
+        filename = item["filename"]
+        if Path(filename).name != filename or not filename.endswith(".jar"):
+            raise UserError("Invalid pinned filename")
+        source = Path.home() / "Downloads" / filename
+        algorithm = "sha512" if "sha512" in item["hashes"] else "sha256"
+        if not source.is_file() or source.is_symlink() or source.stat().st_size != item["size"] or digest(source, algorithm) != item["hashes"][algorithm]:
+            raise UserError("The exact pinned file was not found in Downloads, or its size/hash differs. Download it from the displayed author page first.")
+        with self.layout.mutation:
+            self.storage.reserve(item["size"])
+            target = self.layout.caches / "mods" / filename
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if target.exists() and digest(target, algorithm) != item["hashes"][algorithm]:
+                raise UserError("A different cached file is preserved; inspect it before importing")
+            if not target.exists():
+                shutil.copy2(source, target)
+            notify("Verified " + item["name"] + "; imported to the candidate cache")
+        return {"name": item["name"], "sha256": digest(target), "state": "cached candidate; active server unchanged"}
 
     def search(self, query):
         if not isinstance(query, str) or not 1 <= len(query) <= 100:

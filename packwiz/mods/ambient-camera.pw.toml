@@ -1,0 +1,12 @@
+name = "Ambient Camera"
+filename = "ambient_camera-1.21.1-1.1.0.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/clAZIcaY/versions/F5xffOiZ/ambient_camera-1.21.1-1.1.0.jar"
+hash-format = "sha512"
+hash = "fe5ab1a12d4ed0156ebf5791f166148e17351e7c1609cde63036ac54f2f3b7602d060be2979b7cf5b6d7a52800acb5a4586d7a73e196d5cf880255715d9a9025"
+
+[update.modrinth]
+mod-id = "clAZIcaY"
+version = "F5xffOiZ"

@@ -1,0 +1,41 @@
+{
+  "sources": [
+    {
+      "project": "treasures-of-the-dead",
+      "version": "0.9.0-1.21.1",
+      "file": "data/treasures_of_the_dead/neoforge/biome_modifier/totd_skeleton_overworld_spawns.json",
+      "jar_sha256": "be622317894d782c1ca520b212a433fe6605dfc88824a92dab23ef1f46e9494f"
+    },
+    {
+      "project": "treasures-of-the-dead",
+      "version": "0.9.0-1.21.1",
+      "file": "data/treasures_of_the_dead/neoforge/biome_modifier/totd_skeleton_spawns.json",
+      "jar_sha256": "be622317894d782c1ca520b212a433fe6605dfc88824a92dab23ef1f46e9494f"
+    },
+    {
+      "project": "treasures-of-the-dead",
+      "version": "0.9.0-1.21.1",
+      "file": "data/treasures_of_the_dead/neoforge/biome_modifier/blooming_skeleton_spawns.json",
+      "jar_sha256": "be622317894d782c1ca520b212a433fe6605dfc88824a92dab23ef1f46e9494f"
+    },
+    {
+      "project": "create-deco",
+      "version": "2.1.3",
+      "file": "data/createdeco/recipe/placard.json",
+      "jar_sha256": "edacf1ad0bd6b9f1667d711650dc0cde604356d91caca7ca1ec428c2f9400c6e"
+    },
+    {
+      "project": "visual-workbench",
+      "version": "21.1.2",
+      "file": "data/visualworkbench/tags/block/unaltered_workbenches.json",
+      "jar_sha256": "f9bea7865d57c0f32075fc1e8b760d048cf77513c8d93fa41c181ad190eb4449"
+    }
+  ],
+  "changes": [
+    "Natural Treasures of the Dead spawns restricted to ocean and beach tags, with smaller groups and lower captain weights.",
+    "Structure raids, merchants, treasures and quest encounters remain available.",
+    "Create Deco placard ingredient uses the actual Minecraft 1.21.1 item key.",
+    "Visual Workbench native unaltered-workbench tag preserves vanilla crafting tables for Cinematic Interactions. Existing converted tables and their inventories are never replaced."
+  ],
+  "boundary": "Claim protection and real combat tests remain required; this does not promise invulnerability."
+}

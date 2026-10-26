@@ -1,0 +1,27 @@
+{
+  "structures": [
+    {
+      "structure": "epic:epic_temple",
+      "weight": 1
+    },
+    {
+      "structure": "epic:epic_temple_large",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 3456234,
+    "locate_offset": [
+      0,
+      0,
+      0
+    ],
+    "spacing": 141,
+    "separation": 87,
+    "exclusion_zone": {
+      "other_set": "betterjungletemples:jungle_temples",
+      "chunk_count": 16
+    }
+  }
+}

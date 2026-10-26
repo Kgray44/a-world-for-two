@@ -1,0 +1,12 @@
+name = "Ember's Castles And Keeps"
+filename = "castles_and_keeps-1.0.9.1-1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/KDxWV2ac/versions/A01sUZQR/castles_and_keeps-1.0.9.1-1.21.1-neoforge.jar"
+hash-format = "sha512"
+hash = "636ef0339d19e0e95908b6b5221ba8b09371a5e759d2b728d243a5e0756993b2d83dcb8a328b10c75ea0add5b34e4703c24d6051860537385444457f0f6c1900"
+
+[update.modrinth]
+mod-id = "KDxWV2ac"
+version = "A01sUZQR"

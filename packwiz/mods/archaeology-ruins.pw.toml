@@ -1,0 +1,12 @@
+name = "Archaeology Ruins"
+filename = "archaeology_ruins-1.0.0-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/4tmjt1KA/versions/U7RucPgA/archaeology_ruins-1.0.0-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "e240e939684ea73d21f2ea04319583491269c529ce1b730ad34d81609824d1c5ad7608dd964e9861ea5e1efe6bdb4591c36a4eb62b149dc57478bf14c180ef9c"
+
+[update.modrinth]
+mod-id = "4tmjt1KA"
+version = "U7RucPgA"

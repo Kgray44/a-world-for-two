@@ -1,0 +1,12 @@
+name = "Pirate Guns"
+filename = "jgpg-1.2.1.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/rg6cgM2o/versions/YE5xHD6m/jgpg-1.2.1.1.jar"
+hash-format = "sha512"
+hash = "b7533813ff0e1fd2bd8a98c123e1ef987a4a93e655ae35e0f0360e43ddd75fdbc7f460f0fcd87e4512d15019e797bfe151a3c6637e10f2684f577ad47905f295"
+
+[update.modrinth]
+mod-id = "rg6cgM2o"
+version = "YE5xHD6m"

@@ -55,7 +55,17 @@ def digest(path: Path, algorithm="sha256"):
 
 
 def contained(root: Path, relative: str) -> Path:
-    candidate = (root / relative).resolve()
+    relative_path = Path(relative)
+    if relative_path.is_absolute() or relative_path.drive or ".." in relative_path.parts:
+        raise UserError("Path must stay inside the selected project directory")
+    lexical = root / relative_path
+    # Inspect the original path before resolve() erases links and junctions.
+    for parent in [lexical, *lexical.parents]:
+        if parent == root:
+            break
+        if parent.is_symlink() or parent.is_junction():
+            raise UserError("Linked directories are not allowed for managed files")
+    candidate = lexical.resolve()
     if not candidate.is_relative_to(root.resolve()) or candidate == root.resolve():
         raise UserError("Path must stay inside the selected project directory")
     # Resolve follows Windows junctions; never allow an existing symlink along a path.
@@ -69,7 +79,7 @@ def contained(root: Path, relative: str) -> Path:
 
 class Layout:
     def __init__(self, home: Path):
-        self.home = home.expanduser().resolve()
+        self.home = Path(home).expanduser().resolve()
         self.server = self.home / "server"
         self.world = self.home / "world"
         self.state = self.home / "dashboard"

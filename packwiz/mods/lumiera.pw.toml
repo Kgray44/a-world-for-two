@@ -1,0 +1,12 @@
+name = "Lumiera"
+filename = "lumiera-neoforge-1.21.1-1.0.0-alpha.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/pKjISKyx/versions/7vs8ya9N/lumiera-neoforge-1.21.1-1.0.0-alpha.1.jar"
+hash-format = "sha512"
+hash = "05e2c3c510a64642d1e5d35a8fd430c0d3ab38b985f3453611d06b1f2e74241e7f43b6e99bc20e64ae03e1b634c517aae0aa84681f1fa1537defdf15a20d9228"
+
+[update.modrinth]
+mod-id = "pKjISKyx"
+version = "7vs8ya9N"

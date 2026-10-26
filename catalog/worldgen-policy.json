@@ -1,0 +1,965 @@
+{
+  "generated": "2026-10-26T22:31:27.695027+00:00",
+  "pack_version": "0.1.0-candidate.11",
+  "scope": "Candidate new-chunk placement only. No permanent world was read, generated or changed.",
+  "boundary": "Larger spacing and directed exclusion zones reduce density. Actual terrain fit, structure overlap, loot and generation cost require disposable-world validation.",
+  "placements": [
+    {
+      "project": "ancient-structures",
+      "version": "0.1.2",
+      "jar_sha256": "84e8ecdaf722af08e5cc3d10d2197face227fe485c8d364585adfe8679484f61",
+      "structure_set": "ancientstructures:german_buildings",
+      "file": "data/ancientstructures/worldgen/structure_set/german_buildings.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 120,
+        "separation": 11,
+        "spread_type": "triangular",
+        "salt": 613
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 613
+      }
+    },
+    {
+      "project": "ancient-structures",
+      "version": "0.1.2",
+      "jar_sha256": "84e8ecdaf722af08e5cc3d10d2197face227fe485c8d364585adfe8679484f61",
+      "structure_set": "ancientstructures:japanese_buildings",
+      "file": "data/ancientstructures/worldgen/structure_set/japanese_buildings.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 120,
+        "separation": 10,
+        "spread_type": "triangular",
+        "salt": 25449
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 25449
+      }
+    },
+    {
+      "project": "ancient-structures",
+      "version": "0.1.2",
+      "jar_sha256": "84e8ecdaf722af08e5cc3d10d2197face227fe485c8d364585adfe8679484f61",
+      "structure_set": "ancientstructures:mayan_buildings",
+      "file": "data/ancientstructures/worldgen/structure_set/mayan_buildings.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 110,
+        "separation": 11,
+        "spread_type": "triangular",
+        "salt": 9994513
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 9994513
+      }
+    },
+    {
+      "project": "ancient-structures",
+      "version": "0.1.2",
+      "jar_sha256": "84e8ecdaf722af08e5cc3d10d2197face227fe485c8d364585adfe8679484f61",
+      "structure_set": "ancientstructures:roman_buildings",
+      "file": "data/ancientstructures/worldgen/structure_set/roman_buildings.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 110,
+        "separation": 11,
+        "spread_type": "triangular",
+        "salt": 583611589
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 583611589
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:adoberuins",
+      "file": "data/archaeology_ruins/worldgen/structure_set/adoberuins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 30,
+        "separation": 20,
+        "salt": 1108054183
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1108054183
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:mudblacksmithruin",
+      "file": "data/archaeology_ruins/worldgen/structure_set/mudblacksmithruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 35,
+        "separation": 30,
+        "salt": 1891367289
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1891367289
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:mudpotterruin",
+      "file": "data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 35,
+        "separation": 25,
+        "salt": 1027327534
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1027327534
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:mudschoolruin",
+      "file": "data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 40,
+        "separation": 30,
+        "salt": 1067233915
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1067233915
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:ocean_ruin",
+      "file": "data/archaeology_ruins/worldgen/structure_set/ocean_ruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 25,
+        "separation": 15,
+        "salt": 2134590717
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 2134590717
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:ruinedjungletemple",
+      "file": "data/archaeology_ruins/worldgen/structure_set/ruinedjungletemple.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 25,
+        "separation": 20,
+        "salt": 1955198292
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 48,
+        "salt": 1955198292
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:ruined_desert_pyramid",
+      "file": "data/archaeology_ruins/worldgen/structure_set/ruined_desert_pyramid.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 35,
+        "separation": 25,
+        "salt": 93969674
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 48,
+        "salt": 93969674
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:ruined_ocean_monument",
+      "file": "data/archaeology_ruins/worldgen/structure_set/ruined_ocean_monument.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 36,
+        "separation": 35,
+        "salt": 96247560
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 112,
+        "separation": 56,
+        "salt": 96247560
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:smallmudruin",
+      "file": "data/archaeology_ruins/worldgen/structure_set/smallmudruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 20,
+        "separation": 14,
+        "salt": 963026644
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 963026644
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:small_ocean_ruin",
+      "file": "data/archaeology_ruins/worldgen/structure_set/small_ocean_ruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 30,
+        "separation": 25,
+        "salt": 1664717944
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1664717944
+      }
+    },
+    {
+      "project": "archaeology-ruins",
+      "version": "1.0.0",
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "structure_set": "archaeology_ruins:warm_ocean_ruin",
+      "file": "data/archaeology_ruins/worldgen/structure_set/warm_ocean_ruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 20,
+        "separation": 15,
+        "salt": 1859338252
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1859338252
+      }
+    },
+    {
+      "project": "aztec-ruins",
+      "version": "1.0+mod",
+      "jar_sha256": "f73927a04552bfa2ce079c97de505cc4d420370669506dee2d6e332f96a6188e",
+      "structure_set": "ruinarium:aztecjungletemple",
+      "file": "data/ruinarium/worldgen/structure_set/aztecjungletemple.json",
+      "before": {
+        "salt": 1,
+        "spacing": 34,
+        "separation": 6,
+        "type": "minecraft:random_spread"
+      },
+      "after": {
+        "salt": 1,
+        "spacing": 128,
+        "separation": 64,
+        "type": "minecraft:random_spread",
+        "exclusion_zone": {
+          "other_set": "epic:epic_temple",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "aztec-ruins",
+      "version": "1.0+mod",
+      "jar_sha256": "f73927a04552bfa2ce079c97de505cc4d420370669506dee2d6e332f96a6188e",
+      "structure_set": "ruinarium:aztec_jungle_ruins_1",
+      "file": "data/ruinarium/worldgen/structure_set/aztec_jungle_ruins_1.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 32,
+        "separation": 1,
+        "salt": 0
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 273874299,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "aztec-ruins",
+      "version": "1.0+mod",
+      "jar_sha256": "f73927a04552bfa2ce079c97de505cc4d420370669506dee2d6e332f96a6188e",
+      "structure_set": "ruinarium:aztec_jungle_ruins_2",
+      "file": "data/ruinarium/worldgen/structure_set/aztec_jungle_ruins_2.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 35,
+        "separation": 2,
+        "salt": 0
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 716824314,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "aztec-ruins",
+      "version": "1.0+mod",
+      "jar_sha256": "f73927a04552bfa2ce079c97de505cc4d420370669506dee2d6e332f96a6188e",
+      "structure_set": "ruinarium:aztec_savanna_ruins_1",
+      "file": "data/ruinarium/worldgen/structure_set/aztec_savanna_ruins_1.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 36,
+        "separation": 3,
+        "salt": 0
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 912591128,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "aztec-ruins",
+      "version": "1.0+mod",
+      "jar_sha256": "f73927a04552bfa2ce079c97de505cc4d420370669506dee2d6e332f96a6188e",
+      "structure_set": "ruinarium:aztec_savanna_ruins_2",
+      "file": "data/ruinarium/worldgen/structure_set/aztec_savanna_ruins_2.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 37,
+        "separation": 5,
+        "salt": 0
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 1730372919,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "castle-shift",
+      "version": "0.3.0",
+      "jar_sha256": "382416b0cfcaf086a2ad3e76d7ad453cf5e0ae7078c5db85053d660ea62aefc4",
+      "structure_set": "castleshift:castle",
+      "file": "data/castleshift/worldgen/structure_set/castle.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 32,
+        "separation": 8,
+        "salt": 194572831,
+        "exclusion_zone": {
+          "other_set": "minecraft:villages",
+          "chunk_count": 10
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 32,
+        "salt": 194572831,
+        "exclusion_zone": {
+          "other_set": "minecraft:villages",
+          "chunk_count": 10
+        }
+      }
+    },
+    {
+      "project": "epic-structures-jungle-temples",
+      "version": "1.0.2",
+      "jar_sha256": "2cbec91d588216260b146aaaa4087ed6b157e84949c6455c137e338573300fdb",
+      "structure_set": "epic:epic_temple",
+      "file": "data/epic/worldgen/structure_set/epic_temple.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 3456234,
+        "locate_offset": [
+          0,
+          0,
+          0
+        ],
+        "spacing": 141,
+        "separation": 87
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 3456234,
+        "locate_offset": [
+          0,
+          0,
+          0
+        ],
+        "spacing": 141,
+        "separation": 87,
+        "exclusion_zone": {
+          "other_set": "betterjungletemples:jungle_temples",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "epic-structures-jungle-temples",
+      "version": "1.0.2",
+      "jar_sha256": "2cbec91d588216260b146aaaa4087ed6b157e84949c6455c137e338573300fdb",
+      "structure_set": "epic:epic_temple_ruin",
+      "file": "data/epic/worldgen/structure_set/epic_temple_ruin.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 14357619,
+        "locate_offset": [
+          10,
+          0,
+          10
+        ],
+        "spacing": 32,
+        "separation": 8
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 14357619,
+        "locate_offset": [
+          10,
+          0,
+          10
+        ],
+        "spacing": 80,
+        "separation": 32,
+        "exclusion_zone": {
+          "other_set": "epic:epic_temple",
+          "chunk_count": 12
+        }
+      }
+    },
+    {
+      "project": "mtr-moogs-temples-reimagined",
+      "version": "2.0.4",
+      "jar_sha256": "a0c2d78808ad101d4e8c12945ce3b1465cad61296751be6bc2f86074c9480335",
+      "structure_set": "mtr:desert_temple",
+      "file": "data/mtr/worldgen/structure_set/desert_temple.json",
+      "before": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 225874987,
+        "spacing": 36,
+        "separation": 8,
+        "frequency": 0.8
+      },
+      "after": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 225874987,
+        "spacing": 112,
+        "separation": 48,
+        "frequency": 0.8,
+        "exclusion_zone": {
+          "other_set": "betterdeserttemples:desert_temples",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "mtr-moogs-temples-reimagined",
+      "version": "2.0.4",
+      "jar_sha256": "a0c2d78808ad101d4e8c12945ce3b1465cad61296751be6bc2f86074c9480335",
+      "structure_set": "mtr:jungle_temple",
+      "file": "data/mtr/worldgen/structure_set/jungle_temple.json",
+      "before": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 154471789,
+        "spacing": 31,
+        "separation": 12,
+        "frequency": 0.6
+      },
+      "after": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 154471789,
+        "spacing": 112,
+        "separation": 48,
+        "frequency": 0.6,
+        "exclusion_zone": {
+          "other_set": "betterjungletemples:jungle_temples",
+          "chunk_count": 16
+        }
+      }
+    },
+    {
+      "project": "mtr-moogs-temples-reimagined",
+      "version": "2.0.4",
+      "jar_sha256": "a0c2d78808ad101d4e8c12945ce3b1465cad61296751be6bc2f86074c9480335",
+      "structure_set": "mtr:badlands_temple",
+      "file": "data/mtr/worldgen/structure_set/badlands_temple.json",
+      "before": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 8859687364,
+        "spacing": 32,
+        "separation": 8
+      },
+      "after": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 8859687364,
+        "spacing": 112,
+        "separation": 48
+      }
+    },
+    {
+      "project": "mtr-moogs-temples-reimagined",
+      "version": "2.0.4",
+      "jar_sha256": "a0c2d78808ad101d4e8c12945ce3b1465cad61296751be6bc2f86074c9480335",
+      "structure_set": "mtr:ocean_temple",
+      "file": "data/mtr/worldgen/structure_set/ocean_temple.json",
+      "before": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 231230495,
+        "spacing": 12,
+        "separation": 4,
+        "frequency": 0.5
+      },
+      "after": {
+        "type": "moogs_structures:advanced_random_spread",
+        "salt": 231230495,
+        "spacing": 128,
+        "separation": 64,
+        "frequency": 0.5
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:ancient_crypt",
+      "file": "data/philipsruins/worldgen/structure_set/ancient_crypt.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 265792644,
+        "spacing": 80,
+        "separation": 50
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 265792644,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:ancient_dungeon",
+      "file": "data/philipsruins/worldgen/structure_set/ancient_dungeon.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 512345192,
+        "spacing": 10,
+        "separation": 3
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 512345192,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:ancient_ruins",
+      "file": "data/philipsruins/worldgen/structure_set/ancient_ruins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 165916912,
+        "spacing": 60,
+        "separation": 30
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 165916912,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:ancient_towers",
+      "file": "data/philipsruins/worldgen/structure_set/ancient_towers.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 283426912,
+        "spacing": 50,
+        "separation": 40
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 283426912,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:field_stone_ruins",
+      "file": "data/philipsruins/worldgen/structure_set/field_stone_ruins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 558158731,
+        "spacing": 75,
+        "separation": 35
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 558158731,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:field_stone_ruins_rocks",
+      "file": "data/philipsruins/worldgen/structure_set/field_stone_ruins_rocks.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "exclusion_zone": {
+          "chunk_count": 10,
+          "other_set": "minecraft:villages"
+        },
+        "salt": 144788412,
+        "spacing": 40,
+        "separation": 27
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "exclusion_zone": {
+          "chunk_count": 10,
+          "other_set": "minecraft:villages"
+        },
+        "salt": 144788412,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:level_one_ruins",
+      "file": "data/philipsruins/worldgen/structure_set/level_one_ruins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 328134491,
+        "spacing": 75,
+        "separation": 40
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 328134491,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:level_three_ruins",
+      "file": "data/philipsruins/worldgen/structure_set/level_three_ruins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 198312145,
+        "spacing": 85,
+        "separation": 45
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 198312145,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:level_two_ruins",
+      "file": "data/philipsruins/worldgen/structure_set/level_two_ruins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 697518742,
+        "spacing": 80,
+        "separation": 50
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 697518742,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:lost_soul_city",
+      "file": "data/philipsruins/worldgen/structure_set/lost_soul_city.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 121229911,
+        "spacing": 80,
+        "separation": 65
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 121229911,
+        "spacing": 112,
+        "separation": 65
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:ocean_fortress_main",
+      "file": "data/philipsruins/worldgen/structure_set/ocean_fortress_main.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 765385625,
+        "spacing": 70,
+        "separation": 50
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 765385625,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:ocean_ruins",
+      "file": "data/philipsruins/worldgen/structure_set/ocean_ruins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 937485621,
+        "spacing": 50,
+        "separation": 40
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 937485621,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:pumpkin_ruins",
+      "file": "data/philipsruins/worldgen/structure_set/pumpkin_ruins.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 248791439,
+        "spacing": 50,
+        "separation": 40
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 248791439,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "jar_sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "structure_set": "philipsruins:underground_structures",
+      "file": "data/philipsruins/worldgen/structure_set/underground_structures.json",
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 641781942,
+        "spacing": 60,
+        "separation": 35
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 641781942,
+        "spacing": 112,
+        "separation": 56
+      }
+    },
+    {
+      "project": "when-dungeons-arise",
+      "version": "2.1.68",
+      "jar_sha256": "7eee1eca7e3b2c6c1bede055934f391ae2e8349ffe33e106f451176d2cfcf0e4",
+      "structure_set": "dungeons_arise:major_structures",
+      "file": "data/dungeons_arise/worldgen/structure_set/major_structures.json",
+      "before": {
+        "salt": 88371663,
+        "spacing": 50,
+        "separation": 45,
+        "type": "minecraft:random_spread"
+      },
+      "after": {
+        "salt": 88371663,
+        "spacing": 128,
+        "separation": 64,
+        "type": "minecraft:random_spread"
+      }
+    },
+    {
+      "project": "when-dungeons-arise",
+      "version": "2.1.68",
+      "jar_sha256": "7eee1eca7e3b2c6c1bede055934f391ae2e8349ffe33e106f451176d2cfcf0e4",
+      "structure_set": "dungeons_arise:minor_structures",
+      "file": "data/dungeons_arise/worldgen/structure_set/minor_structures.json",
+      "before": {
+        "salt": 342415935,
+        "spacing": 45,
+        "separation": 40,
+        "type": "minecraft:random_spread"
+      },
+      "after": {
+        "salt": 342415935,
+        "spacing": 112,
+        "separation": 56,
+        "type": "minecraft:random_spread"
+      }
+    },
+    {
+      "project": "yungs-better-desert-temples",
+      "version": "1.21.1-NeoForge-4.1.5",
+      "jar_sha256": "2c3191ad447092cc7873a06e92f16bd3e2ff9dc31e93268b8893d06dd89e1fd6",
+      "structure_set": "betterdeserttemples:desert_temples",
+      "file": "data/betterdeserttemples/worldgen/structure_set/desert_temples.json",
+      "before": {
+        "salt": 92746251,
+        "spacing": 30,
+        "separation": 20,
+        "exclusion_zone": {
+          "chunk_count": 6,
+          "other_set": "minecraft:villages"
+        },
+        "type": "betterdeserttemples:desert_temple"
+      },
+      "after": {
+        "salt": 92746251,
+        "spacing": 80,
+        "separation": 40,
+        "exclusion_zone": {
+          "chunk_count": 6,
+          "other_set": "minecraft:villages"
+        },
+        "type": "betterdeserttemples:desert_temple"
+      }
+    },
+    {
+      "project": "yungs-better-jungle-temples",
+      "version": "1.21.1-NeoForge-3.1.2",
+      "jar_sha256": "a0d57b78c7a1891796f342b1f09c214bc27bedf0a3a894f029dfdb2db9f813d0",
+      "structure_set": "betterjungletemples:jungle_temples",
+      "file": "data/betterjungletemples/worldgen/structure_set/jungle_temples.json",
+      "before": {
+        "type": "betterjungletemples:jungle_temple",
+        "salt": 996971851,
+        "spacing": 24,
+        "separation": 8,
+        "enhanced_exclusion_zone": {
+          "other_set": "#betterjungletemples:jungle_temple_avoid",
+          "chunk_count": 4
+        }
+      },
+      "after": {
+        "type": "betterjungletemples:jungle_temple",
+        "salt": 996971851,
+        "spacing": 80,
+        "separation": 40,
+        "enhanced_exclusion_zone": {
+          "other_set": "#betterjungletemples:jungle_temple_avoid",
+          "chunk_count": 4
+        }
+      }
+    }
+  ]
+}

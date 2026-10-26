@@ -1,0 +1,23 @@
+{
+  "structures": [
+    {
+      "structure": "epic:epic_temple_ruin",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 14357619,
+    "locate_offset": [
+      10,
+      0,
+      10
+    ],
+    "spacing": 80,
+    "separation": 32,
+    "exclusion_zone": {
+      "other_set": "epic:epic_temple",
+      "chunk_count": 12
+    }
+  }
+}

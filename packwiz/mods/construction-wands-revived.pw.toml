@@ -1,0 +1,12 @@
+name = "Construction Wands Revived"
+filename = "ConstructionWandsRevived-1.21.1-4.2.2-NeoForge.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/u2NJ7rzu/versions/wYnj2tM3/ConstructionWandsRevived-1.21.1-4.2.2-NeoForge.jar"
+hash-format = "sha512"
+hash = "8371038a79f81312f1bfc2937bc2c6a1069fed2b54a8b82ccc1a49c2d60e106ed7a39d8a46f0675b58a837145abf281d2e1749d53f372587df53508fb92d94d3"
+
+[update.modrinth]
+mod-id = "u2NJ7rzu"
+version = "wYnj2tM3"

@@ -1,0 +1,12 @@
+name = "Cozy's Improved Cats"
+filename = "cozys-improved-cats-2.1.0-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/5MaZBjPT/versions/N6QLvGMN/cozys-improved-cats-2.1.0-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "73e532fc4e4af9e985e20d797cd38b61bffe1974bef598100d4379846e6eff88589e89fa547efe81e180ab6e58b11de4ea85917d48e3ae1020159170003419df"
+
+[update.modrinth]
+mod-id = "5MaZBjPT"
+version = "N6QLvGMN"

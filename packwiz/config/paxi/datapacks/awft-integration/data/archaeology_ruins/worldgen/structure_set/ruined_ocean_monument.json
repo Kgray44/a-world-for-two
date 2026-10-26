@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "archaeology_ruins:ruined_ocean_monument",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 112,
+    "separation": 56,
+    "salt": 96247560
+  }
+}

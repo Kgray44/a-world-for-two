@@ -1,0 +1,39 @@
+{
+  "renderer": "Distant Horizons + Distant Horizons SeedGen",
+  "profiles": [
+    {
+      "id": "high-quality",
+      "name": "The scenic route",
+      "audience": "KG · RTX 5070 laptop · High Quality",
+      "description": "Warm cinematic lighting and long vistas, with restrained generation while the laptop also hosts the server.",
+      "settings": {
+        "Client maximum heap": "6 GiB (6144 MiB); owner-selected for the shared host test",
+        "Vanilla render / simulation": "10 / 6 chunks",
+        "DH distance starting target": "128 chunks; reduce if frametimes or cache growth suffer",
+        "Background generation target": "2 worker threads, low-impact preset; verify exact generated keys",
+        "Shader": "Complementary Reimagined; BSL and Unbound selectable after validation",
+        "LOD cache budget": "4 GiB per test world; stop managed generation before exhaustion",
+        "Dynamic lighting": "Optional; evaluate with shaders and moving contraptions",
+        "Weather particles": "Conservative counts until severe-weather benchmark passes"
+      },
+      "validation": "Candidate settings. No measured FPS, shader/LOD/weather acceptance or Sable visual compatibility claim yet."
+    },
+    {
+      "id": "balanced",
+      "name": "A gentler pace",
+      "audience": "Sera · hardware unknown · Balanced",
+      "description": "Conservative rendering defaults. Keep the same shared gameplay pack, then tune locally after measuring Sera's computer.",
+      "settings": {
+        "Client maximum heap": "Start with 4 GiB if system RAM permits; do not assume an 8 GiB allocation is safe",
+        "Vanilla render / simulation": "6 / 4 chunks",
+        "DH distance starting target": "64 chunks; reduce if necessary",
+        "Background generation target": "1 worker, low-impact preset",
+        "Shader": "Off initially; enable BSL or Complementary low only after measurement",
+        "LOD cache budget": "2 GiB starting limit",
+        "Dynamic lighting": "Disabled initially",
+        "Weather particles": "Reduced local density; no competing fog mod"
+      },
+      "validation": "Candidate settings. Sera's hardware and actual client performance have not been observed."
+    }
+  ]
+}

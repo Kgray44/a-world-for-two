@@ -1,0 +1,13 @@
+{
+  "realWeatherEnabled": false,
+  "hailDamageCrops": false,
+  "hailDamageEntities": false,
+  "hailBreakGlass": false,
+  "heavyRainSlowCrops": false,
+  "frostKillsCrops": false,
+  "droughtDriesFarmland": false,
+  "windSpreadsFire": false,
+  "enableCreateWindmillCompat": true,
+  "windAffectsContraptions": true,
+  "contraptionWindStrength": 0.5
+}

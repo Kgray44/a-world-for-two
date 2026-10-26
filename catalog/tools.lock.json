@@ -1,10 +1,52 @@
 {
   "neoforge_installer": {
-    "version": "21.1.255",
-    "filename": "neoforge-21.1.255-installer.jar",
-    "url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.255/neoforge-21.1.255-installer.jar",
-    "size": 6972010,
-    "hashes": {"sha256": "11d67a99db0ded3648b97b1eac06c5db0305899e05f657d360bec9d6741e522f"},
-    "evidence": "Official Maven HEAD Content-Length and .sha256 read 2026-10-26"
+    "version": "21.1.262",
+    "filename": "neoforge-21.1.262-installer.jar",
+    "url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.262/neoforge-21.1.262-installer.jar",
+    "size": 6972019,
+    "hashes": {
+      "sha256": "e86f5d78ed310465bd1ecf79823abcbc58782699b068ac776f4c5e226d994a8f"
+    },
+    "evidence": "Official Maven HEAD and sha256 read 2026-10-26"
+  },
+  "packwiz_bootstrap": {
+    "version": "v0.0.3",
+    "filename": "packwiz-installer-bootstrap-v0.0.3.jar",
+    "size": 98989,
+    "url": "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar",
+    "hashes": {
+      "sha256": "a8fbb24dc604278e97f4688e82d3d91a318b98efc08d5dbfcbcbcab6443d116c"
+    }
+  },
+  "packwiz_installer": {
+    "version": "v0.5.14",
+    "filename": "packwiz-installer-v0.5.14.jar",
+    "size": 4378828,
+    "url": "https://github.com/packwiz/packwiz-installer/releases/download/v0.5.14/packwiz-installer.jar",
+    "hashes": {
+      "sha256": "c9f646908d340d84773948a9a7d98bc1dae250d35e1016dc6e2b8459760b5598"
+    }
+  },
+  "neoforge_installers": {
+    "21.1.255": {
+      "version": "21.1.255",
+      "filename": "neoforge-21.1.255-installer.jar",
+      "url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.255/neoforge-21.1.255-installer.jar",
+      "size": 6972010,
+      "hashes": {
+        "sha256": "11d67a99db0ded3648b97b1eac06c5db0305899e05f657d360bec9d6741e522f"
+      },
+      "evidence": "Official Maven HEAD Content-Length and .sha256 read 2026-10-26"
+    },
+    "21.1.262": {
+      "version": "21.1.262",
+      "filename": "neoforge-21.1.262-installer.jar",
+      "url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.262/neoforge-21.1.262-installer.jar",
+      "size": 6972019,
+      "hashes": {
+        "sha256": "e86f5d78ed310465bd1ecf79823abcbc58782699b068ac776f4c5e226d994a8f"
+      },
+      "evidence": "Official Maven HEAD and sha256 read 2026-10-26"
+    }
   }
 }

@@ -1,0 +1,12 @@
+name = "Treasures of the dead"
+filename = "treasures_of_the_dead-0.9.0-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/95Rx81bQ/versions/gu4iR38f/treasures_of_the_dead-0.9.0-1.21.1.jar"
+hash-format = "sha512"
+hash = "77ae3f94fe92a03e4c720f7c8c9290650164e8333e5cf5269e8a6fd630b24c9095573e1f243c0b4db686dd463a98a33969c221b286281cfaea701e23bf8bda32"
+
+[update.modrinth]
+mod-id = "95Rx81bQ"
+version = "gu4iR38f"

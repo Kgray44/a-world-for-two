@@ -1,0 +1,33 @@
+{
+  "project_id": "github:CptGummiball/explorers-friend",
+  "slug": "the-explorers-friend",
+  "name": "The Explorer's Friend",
+  "version_id": "v0.5.2-neoforge-1.21.1",
+  "version": "0.5.2",
+  "provider": "github",
+  "release_type": "release",
+  "filename": "explorersfriend-neoforge-1.21.1-0.5.2.jar",
+  "url": "https://github.com/CptGummiball/explorers-friend/releases/download/v0.5.2/explorersfriend-neoforge-1.21.1-0.5.2.jar",
+  "size": 391003,
+  "hashes": {
+    "sha256": "98435d3e45f13c05cc4035125bc8093426eb6c36944a9fbd98c6e5634b194fc9"
+  },
+  "side": "server",
+  "kind": "mod",
+  "request": "the-explorers-friend",
+  "optional": false,
+  "default": true,
+  "world_sensitive": false,
+  "dependencies": [],
+  "source": "https://github.com/CptGummiball/explorers-friend/releases/tag/v0.5.2",
+  "license": {
+    "id": "MIT"
+  },
+  "selection_reason": "Isolated comparison against squaremap for mod block colors, bounded snapshots, claims and renderer overhead.",
+  "status": "Unresolved, with investigation details",
+  "validation": {
+    "metadata": "reviewed",
+    "jar": "pending",
+    "runtime": "not run"
+  }
+}

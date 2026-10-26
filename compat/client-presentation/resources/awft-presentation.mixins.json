@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "worldfortwo.presentation.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["TitleControlMixin"],
+  "injectors": {"defaultRequire": 1}
+}

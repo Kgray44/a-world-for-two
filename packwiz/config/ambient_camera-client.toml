@@ -1,0 +1,21 @@
+[ambientCamera]
+enabled = true
+idleSeconds = 300
+hideHud = true
+showCinematicBars = false
+showStatusMessages = true
+shotDurationSeconds = 12.0
+hardCuts = true
+transitionEffect = 1
+cameraSpeed = 0.7
+sceneryFocusDistance = 24.0
+enableMobFocus = true
+mobFocusRange = 24.0
+excludeHostileMobs = true
+excludeBats = true
+idleWhileChatOpen = false
+idleWhileContainerOpen = false
+idleWhileMultiplayerPause = false
+ambientFpsLimit = 30
+allowWallClipping = false
+collisionPadding = 0.25

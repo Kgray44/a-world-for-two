@@ -1,0 +1,104 @@
+{
+  "pirates_n_ships": {
+    "project_id": "github:Richard-Sen27/pirates-n-ships",
+    "slug": "pirates-n-ships",
+    "name": "Pirates 'n' Ships",
+    "version_id": "v0.3.0",
+    "version": "0.3.0",
+    "provider": "github",
+    "release_type": "beta",
+    "filename": "pirates_n_ships-neoforge-1.21.1-0.3.0.jar",
+    "url": "https://github.com/Richard-Sen27/pirates-n-ships/releases/download/v0.3.0/pirates_n_ships-neoforge-1.21.1-0.3.0.jar",
+    "size": 33805097,
+    "hashes": {
+      "sha256": "845ac55c8e2a4f8fbf334fb924c123ae0a2a896edab0a2b64b38e16575c360a4"
+    },
+    "side": "both",
+    "kind": "mod",
+    "request": "pirates-n-ships",
+    "optional": false,
+    "default": true,
+    "world_sensitive": true,
+    "dependencies": [],
+    "source": "https://github.com/Richard-Sen27/pirates-n-ships/releases/tag/v0.3.0",
+    "license": {
+      "id": "PolyForm Noncommercial 1.0.0; verify bundled notices"
+    },
+    "selection_reason": "Experimental only: Sable 2.0.6, Create/Aeronautics, combat and permanent-world safety gates required.",
+    "status": "Unresolved, with investigation details",
+    "validation": {
+      "metadata": "reviewed",
+      "jar": "pending",
+      "runtime": "not run"
+    }
+  },
+  "blackpowder": {
+    "project_id": "curseforge:1740147",
+    "slug": "black-powder-age-of-sail",
+    "name": "Black Powder: Age of Sail",
+    "version_id": "9239251",
+    "version": "2.3.0",
+    "provider": "curseforge",
+    "release_type": "release",
+    "filename": "blackpowder-2.3.0.jar",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/black-powder-arms-neoforge-1-21-1/files/9239251",
+    "size": 1791771,
+    "hashes": {
+      "sha256": "c46f68de0202553db5fb94f12007bfbea3eb416984dbc4f16cf73046232a4164",
+      "sha512": "c3b0efb950094eeca98f37fc905ea9f1b9028ec819c52bf6b643aa3a19a3de2551c306cb76dc186dfeabad7f4e42bcc271e8badf8c210d52110f01ca50db2755"
+    },
+    "side": "both",
+    "kind": "mod",
+    "request": "black-powder-age-of-sail",
+    "optional": false,
+    "default": true,
+    "world_sensitive": true,
+    "dependencies": [],
+    "source": "https://www.curseforge.com/minecraft/mc-mods/black-powder-arms-neoforge-1-21-1/files/9239251",
+    "license": {
+      "id": "ARR"
+    },
+    "selection_reason": "Experimental only: Sable 2.0.6, Create/Aeronautics, combat and permanent-world safety gates required.",
+    "status": "Unresolved, with investigation details",
+    "validation": {
+      "metadata": "reviewed",
+      "jar": "pending",
+      "runtime": "not run"
+    },
+    "curseforge_project": 1740147,
+    "curseforge_file": 9239251
+  },
+  "explorers_friend": {
+    "project_id": "github:CptGummiball/explorers-friend",
+    "slug": "the-explorers-friend",
+    "name": "The Explorer's Friend",
+    "version_id": "v0.5.2-neoforge-1.21.1",
+    "version": "0.5.2",
+    "provider": "github",
+    "release_type": "release",
+    "filename": "explorersfriend-neoforge-1.21.1-0.5.2.jar",
+    "url": "https://github.com/CptGummiball/explorers-friend/releases/download/v0.5.2/explorersfriend-neoforge-1.21.1-0.5.2.jar",
+    "size": 391003,
+    "hashes": {
+      "sha256": "98435d3e45f13c05cc4035125bc8093426eb6c36944a9fbd98c6e5634b194fc9"
+    },
+    "side": "server",
+    "kind": "mod",
+    "request": "the-explorers-friend",
+    "optional": false,
+    "default": true,
+    "world_sensitive": false,
+    "dependencies": [],
+    "source": "https://github.com/CptGummiball/explorers-friend/releases/tag/v0.5.2",
+    "license": {
+      "id": "MIT"
+    },
+    "selection_reason": "Isolated comparison against squaremap for mod block colors, bounded snapshots, claims and renderer overhead.",
+    "status": "Unresolved, with investigation details",
+    "validation": {
+      "metadata": "reviewed",
+      "jar": "pending",
+      "runtime": "not run"
+    }
+  }
+}

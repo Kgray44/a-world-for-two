@@ -129,6 +129,8 @@ class Server:
                 self._logger.info(line)
             if "Done (" in line and "For help" in line:
                 self.state = "online"
+            if "Encountered an unexpected exception" in line and self.state == "starting":
+                self.state = "failed"
             match = re.search(r"\b([A-Za-z0-9_]{1,16}) (joined|left) the game", line)
             if match:
                 self.events.append({"at": utcnow(), "name": match[1], "event": match[2]})
@@ -136,6 +138,10 @@ class Server:
                 tick = re.search(r"Mean tick time:\s*([\d.]+)\s*ms.*?Mean TPS:\s*([\d.]+)", line)
                 if tick and "Overall" in line:
                     self.tick = {"mspt": float(tick[1]), "tps": float(tick[2]), "at": utcnow(),
+                                 "source": "NeoForge /neoforge tps, Overall"}
+                current = re.search(r"\bOverall:\s*([\d.]+)\s*TPS\s*\(([\d.]+)\s*ms/tick\)", line)
+                if current:
+                    self.tick = {"mspt": float(current[2]), "tps": float(current[1]), "at": utcnow(),
                                  "source": "NeoForge /neoforge tps, Overall"}
 
     def _reader(self, process):
@@ -166,15 +172,28 @@ class Server:
             problems = verify_installed(self.layout)
             if problems:
                 raise UserError("Installation integrity check failed: " + "; ".join(problems[:5]))
-            self.storage.reserve(512 * 1024 * 1024)
+            from .atlas import prepare_renderer
+            prepare_renderer(self.layout, self.storage)
+            from .storage import tree_size
+            budgets = self.layout.settings()
+            growth = max(0, budgets["world_budget_gib"] * 1024 ** 3 - tree_size(self.layout.world))
+            growth += max(0, budgets["cache_budget_gib"] * 1024 ** 3 - tree_size(self.layout.caches))
+            self.storage.reserve(growth + 256 * 1024 * 1024)
             options = self.layout.settings()
             java = shutil.which(options["java"])
             if not java:
                 raise UserError("Java 21 was not found; set up Java before starting")
-            version = subprocess.run([java, "-version"], text=True, capture_output=True, timeout=10,
+            version = subprocess.run([java, "-XshowSettings:properties", "-version"], text=True, capture_output=True, timeout=10,
                                      creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
             if not re.search(r'version "21[.\"]', version.stderr + version.stdout):
                 raise UserError("This pack requires Java 21")
+            # Oracle's javapath shim can spawn a second JVM. Own the actual binary
+            # so stdin, process identity and CPU/RSS all refer to Minecraft itself.
+            java_home = re.search(r"^\s*java\.home\s*=\s*(.+)$", version.stderr + version.stdout, re.M)
+            if java_home:
+                actual_java = Path(java_home[1].strip()) / "bin" / ("java.exe" if os.name == "nt" else "java")
+                if actual_java.is_file():
+                    java = str(actual_java)
             args = self.layout.server / "libraries/net/neoforged/neoforge" / receipt["neoforge"] / ("win_args.txt" if os.name == "nt" else "unix_args.txt")
             if not args.exists():
                 raise UserError("NeoForge installation is incomplete; run Repair")
@@ -271,10 +290,13 @@ class Server:
     def snapshot(self):
         with self._lock:
             active = self.running()
+            tick = dict(self.tick)
+            if not active or self.state != "online":
+                tick.update(tps=None, mspt=None, at=None)
             return {"state": self.state if active or self.state == "failed" else "offline",
                     "pid": self.identity.get("pid") if self.identity and active else None,
                     "uptime_seconds": max(0, time.time() - self.started) if active and self.started else None,
-                    "tick": dict(self.tick), "status": self.player_info, "warning": self.warning,
+                    "tick": tick, "status": self.player_info if active else None, "warning": self.warning,
                     "events": list(self.events)[-30:]}
 
     def console(self, after=0, query="", level="all"):

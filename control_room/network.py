@@ -14,7 +14,8 @@ from .common import UserError
 UA = "Kgray44/a-world-for-two/0.1 (github.com/Kgray44/a-world-for-two)"
 ALLOWED_DOWNLOAD_HOSTS = {"cdn.modrinth.com", "maven.neoforged.net", "github.com",
                           "objects.githubusercontent.com", "release-assets.githubusercontent.com",
-                          "raw.githubusercontent.com", "meta.prismlauncher.org"}
+                          "raw.githubusercontent.com", "meta.prismlauncher.org",
+                          "ldtteam.jfrog.io"}
 
 
 def public_https(url, allowed=None):
@@ -34,7 +35,14 @@ def public_https(url, allowed=None):
 
 class SafeRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
-        public_https(newurl, ALLOWED_DOWNLOAD_HOSTS)
+        origin, target = urllib.parse.urlsplit(req.full_url), urllib.parse.urlsplit(newurl)
+        # The author's Maven serves its immutable artifacts from this exact GCS
+        # filestore. Permit that verified redirect, never arbitrary GCS downloads.
+        author_filestore = (origin.hostname == 'ldtteam.jfrog.io'
+            and origin.path.startswith('/artifactory/mods-maven/com/ldtteam/')
+            and target.hostname == 'storage.googleapis.com'
+            and target.path.startswith('/art-ldtteam-filestore-1532847948/filestore/'))
+        public_https(newurl, ALLOWED_DOWNLOAD_HOSTS | {'storage.googleapis.com'} if author_filestore else ALLOWED_DOWNLOAD_HOSTS)
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 

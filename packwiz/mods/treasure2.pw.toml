@@ -1,0 +1,12 @@
+name = "Treasure2"
+filename = "treasure2-neoforge-1.21.1-5.0.4.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/kJtaoypK/versions/gGgxcW0i/treasure2-neoforge-1.21.1-5.0.4.jar"
+hash-format = "sha512"
+hash = "fef0bac977fa87e00f604745e554023a59d76e4ad6ddef20cfb12ceb3ba09db2e707bb9c94130588bf0b0d2ac13ad3db78871424d66b69d44c147552f35c0a6e"
+
+[update.modrinth]
+mod-id = "kJtaoypK"
+version = "gGgxcW0i"

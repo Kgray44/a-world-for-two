@@ -1,0 +1,105 @@
+{
+  "at": "2026-10-26T21:03:44.558829+00:00",
+  "mods": [
+    {
+      "project_id": "author:ldtteam:structurize",
+      "slug": "structurize",
+      "name": "Structurize",
+      "version_id": "1.0.832-1.21.1",
+      "version": "1.0.832-1.21.1",
+      "provider": "author-maven",
+      "release_type": "release",
+      "filename": "structurize-1.0.832-1.21.1.jar",
+      "url": "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/structurize/1.0.832-1.21.1/structurize-1.0.832-1.21.1.jar",
+      "size": 1063849,
+      "hashes": {
+        "sha256": "b6ede7635c63a80bd3d034c1ad3e74c648b8478f341f883d7d29c3dcf90b79ce"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": "structurize",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "GPL-3.0-only"
+      },
+      "source": "https://github.com/ldtteam/Structurize",
+      "selection_reason": "Pinned author Maven artifact. Structurize release requires these exact-minimum BlockUI/Domum snapshot dependencies; native constraints and full runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "author:ldtteam:blockui",
+      "slug": "blockui",
+      "name": "UI Library Mod",
+      "version_id": "1.0.191-1.21.1-snapshot",
+      "version": "1.0.191-1.21.1-snapshot",
+      "provider": "author-maven",
+      "release_type": "beta",
+      "filename": "blockui-1.0.191-1.21.1-snapshot.jar",
+      "url": "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/blockui/1.0.191-1.21.1-snapshot/blockui-1.0.191-1.21.1-snapshot.jar",
+      "size": 465689,
+      "hashes": {
+        "sha256": "46885ec85d96a7d0e8c237d21a918e554cb1509e1f9ff9e30f0f60a68fb7c7bc"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "GPL-3.0-only"
+      },
+      "source": "https://github.com/ldtteam/BlockUI",
+      "selection_reason": "Pinned author Maven artifact. Structurize release requires these exact-minimum BlockUI/Domum snapshot dependencies; native constraints and full runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "author:ldtteam:domum-ornamentum",
+      "slug": "domum-ornamentum",
+      "name": "Domum Ornamentum",
+      "version_id": "1.0.203-1.21.1-snapshot",
+      "version": "1.0.203-1.21.1-snapshot",
+      "provider": "author-maven",
+      "release_type": "beta",
+      "filename": "domum-ornamentum-1.0.203-1.21.1-snapshot.jar",
+      "url": "https://ldtteam.jfrog.io/artifactory/mods-maven/com/ldtteam/domum-ornamentum/1.0.203-1.21.1-snapshot/domum-ornamentum-1.0.203-1.21.1-snapshot.jar",
+      "size": 1079808,
+      "hashes": {
+        "sha256": "889384290b2dbb9bb2f96a5102b426cc7182bce8986afeb39a201e842319131b"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "GPL-3.0-only",
+        "native_declaration": "GPL3"
+      },
+      "source": "https://github.com/ldtteam/Domum-Ornamentum",
+      "selection_reason": "Pinned author Maven artifact. Structurize release requires these exact-minimum BlockUI/Domum snapshot dependencies; native constraints and full runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    }
+  ]
+}
