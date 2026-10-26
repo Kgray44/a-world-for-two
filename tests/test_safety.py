@@ -299,7 +299,7 @@ class StorageTests(Fixture):
             release.wait(2)
             storage._breakdown = measured
             return measured
-        with patch.object(storage, "breakdown", side_effect=scan) as scanning, patch.object(storage, "associated", return_value={"rows": []}):
+        with patch.object(storage, "breakdown", side_effect=scan) as scanning, patch.object(storage, "associated", return_value={"rows": []}), patch('control_room.storage.time.monotonic', return_value=5):
             try:
                 first = storage.snapshot()
                 self.assertTrue(entered.wait(1))

@@ -198,7 +198,7 @@ class Storage:
         """
         with self._inventory_guard:
             updating = self._inventory_worker is not None and self._inventory_worker.is_alive()
-            if not updating and time.monotonic() - self._inventory_attempt >= refresh_seconds:
+            if not updating and (self._inventory_worker is None or time.monotonic() - self._inventory_attempt >= refresh_seconds):
                 self._inventory_attempt = time.monotonic()
 
                 def measure():
