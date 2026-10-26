@@ -34,7 +34,7 @@ is described as one download and import.
 Use Java 21 and Python 3.12+:
 
 ```powershell
-python -m pip install .
+python -m pip install -e .
 python -m control_room run --home "D:\A World for Two"
 ```
 

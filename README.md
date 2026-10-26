@@ -47,7 +47,7 @@ maps and waypoints, live storage, backups, mod proposals, menu artwork, graphics
 choices and the installed Playit.gg tunnel service.
 
 ```powershell
-python -m pip install .
+python -m pip install -e .
 python -m control_room run --home "D:\A World for Two"
 ```
 
