@@ -13,7 +13,9 @@ threadRunTimeRatio = "0.5"
 [common.worldGenerator]
 limitIfServerUnhealthy = true
 generatorPlan = "SURFACE_THEN_CHUNKS"
-chunkGeneratorMode = "FEATURES"
+# SURFACE avoids a confirmed Lithostitched feature-predicate chunk future at shutdown.
+# Full player-driven terrain still includes features; distant fallback decoration is reduced.
+chunkGeneratorMode = "SURFACE"
 [client.advanced.graphics.quality]
 # Planned KG starting profile; the generated native default was 256.
 lodChunkRenderDistanceRadius = 128

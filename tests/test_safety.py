@@ -197,6 +197,22 @@ class ConfigurationTests(Fixture):
             with self.assertRaises(UserError):
                 server.command(command)
 
+    def test_typed_native_harbor_commands_bind_identity_and_confirmation(self):
+        server = Server(self.layout, self.storage)
+        digest = 'a' * 64
+        command = 'awftharborcraft create artistic-harbor-craft-1234567890abcdef ' + digest
+        with patch.object(server, '_write') as write:
+            with self.assertRaises(UserError):
+                server.command(command)
+            server.command(command, confirmed=True)
+            write.assert_called_once_with(command)
+            for invalid in [command.replace(digest, 'bad'), command + ' extra',
+                            command.replace('artistic-harbor-craft-', '../'),
+                            'awftharborcraft summon minecraft:boat',
+                            'awftattractions run hub ' + digest]:
+                with self.assertRaises(UserError):
+                    server.command(invalid, confirmed=True)
+
 
 class PlayerTests(Fixture):
     def setUp(self):

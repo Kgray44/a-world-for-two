@@ -3,7 +3,7 @@ name = "a-world-for-two"
 version = "0.1.0"
 description = "Local Windows control room and reproducible Minecraft pack for KG and Sera"
 requires-python = ">=3.12"
-dependencies = ["psutil==7.2.2", "Pillow==12.2.0"]
+dependencies = ["psutil==7.2.2", "Pillow==12.2.0", "nbtlib==2.0.4"]
 
 [project.scripts]
 awft = "control_room.__main__:main"

@@ -10,6 +10,8 @@ import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import java.lang.management.ManagementFactory;
 import java.nio.file.Files;
@@ -31,15 +33,39 @@ public class ControlBridge {
     private final ChunkDiagnostics chunkDiagnostics = new ChunkDiagnostics();
     private final SettlementSupport settlementSupport = new SettlementSupport();
     private final EngineeringSupport engineeringSupport = new EngineeringSupport();
+    private String operationOwner;
+    private long operationGeneration;
+    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.31","0.6.17",this::acquire);
+    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.31","0.6.17",this::acquire);
+    private final DragonTextureMirror dragonTextureMirror=new DragonTextureMirror();
 
-    public ControlBridge() {
+    private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease {
+        private final String owner;private final long generation;private boolean closed;
+        WorldLease(String owner,long generation){this.owner=owner;this.generation=generation;}
+        public boolean valid(){return !closed && generation==operationGeneration && owner.equals(operationOwner);}
+        public void close(){if(closed)return;if(valid())operationOwner=null;closed=true;}
+    }
+    private WorldLease acquire(String owner,boolean temporarySimulation){
+        if(operationOwner!=null || settlementSupport.busy() || engineeringSupport.busy())
+            throw new IllegalStateException("Another native world operation or pending cleanup owns the world");
+        operationOwner=owner;return new WorldLease(owner,++operationGeneration);
+    }
+
+    public ControlBridge(IEventBus modBus) {
+        settlementSupport.admissionGate(()->operationOwner==null && !engineeringSupport.busy());
+        engineeringSupport.admissionGate(()->operationOwner==null && !settlementSupport.busy());
+        modBus.addListener(dragonTextureMirror::payloads);
+        NeoForge.EVENT_BUS.addListener(dragonTextureMirror::sync);
         NeoForge.EVENT_BUS.addListener(this::started);
         NeoForge.EVENT_BUS.addListener(this::stopped);
+        NeoForge.EVENT_BUS.addListener(this::stopping);
         NeoForge.EVENT_BUS.addListener(this::before);
         NeoForge.EVENT_BUS.addListener(this::after);
         NeoForge.EVENT_BUS.addListener(playerSupport::commands);
         NeoForge.EVENT_BUS.addListener(settlementSupport::commands);
         NeoForge.EVENT_BUS.addListener(engineeringSupport::commands);
+        NeoForge.EVENT_BUS.addListener(attractionSupport::commands);
+        NeoForge.EVENT_BUS.addListener(harborCraftSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::chunk);
         NeoForge.EVENT_BUS.addListener(atlasSupport::joined);
@@ -49,6 +75,10 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(cinematicSupport::commands);
         NeoForge.EVENT_BUS.addListener(cinematicSupport::joined);
         NeoForge.EVENT_BUS.addListener(cinematicSupport::left);
+    }
+    private void stopping(ServerStoppingEvent event){
+        attractionSupport.stopped();harborCraftSupport.stopped();
+        engineeringSupport.stopped();settlementSupport.stopped();dragonTextureMirror.stopped();
     }
     private void started(ServerStartedEvent event) {
         serverStarted = true;
@@ -72,6 +102,8 @@ public class ControlBridge {
             cinematicSupport.tick(event.getServer());
             settlementSupport.tick(event.getServer());
             engineeringSupport.tick(event.getServer());
+            attractionSupport.tick(event.getServer());
+            harborCraftSupport.tick(event.getServer());
         }
         now = System.nanoTime();
         tickNanos += now - beforeTick;

@@ -28,3 +28,6 @@ exports/*.json
 evidence/private/
 evidence/research/
 !exports/.gitkeep
+
+/logs/
+!evidence/runtime/artistic-recovery-detail-20261027.json

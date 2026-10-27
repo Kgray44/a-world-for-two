@@ -10,11 +10,50 @@ from control_room.common import Layout, REPO, digest, read_json, utcnow, write_j
 from control_room.pack import generate_pack, validate_pack
 from control_room.storage import Storage
 from .build_bridge import build as build_bridge, BRIDGE_VERSION
-from .build_presentation import build as build_presentation
+from .build_presentation import build as build_presentation, PRESENTATION_VERSION
 from .weather_patch import build as build_weather, PATCH_VERSION
 from .seedgen_policy import apply as seedgen_policy
 
-VERSION = '0.1.0-candidate.23'
+VERSION = '0.1.0-candidate.31'
+
+
+def prepare_owned(home):
+    """Replace only the two owned helpers, preserving every gameplay artifact."""
+    layout=Layout(home);storage=Storage(layout)
+    storage.reserve(64*1024**2)
+    storage.reserve(8*1024**2,REPO)
+    previous=read_json(REPO/'catalog/lock.json')
+    if previous['version']==VERSION or validate_pack(REPO/'packwiz',previous):
+        raise ValueError('A valid previous immutable candidate is required')
+    directory=layout.staging/('candidate-owned-build-'+str(time.time_ns()));directory.mkdir()
+    bridge=build_bridge(layout.home,directory/('awft-control-bridge-'+BRIDGE_VERSION+'.jar'),storage)
+    presentation=build_presentation(layout.home,directory/('awft-client-presentation-'+PRESENTATION_VERSION+'.jar'),storage)
+    replacements={m['slug']:m for m in (bridge,presentation)}
+    for artifact in replacements.values():
+        source=directory/artifact['filename'];cached=layout.caches/'mods'/artifact['filename']
+        if cached.exists() and digest(cached)!=artifact['hashes']['sha256']:
+            raise ValueError('An immutable owned artifact filename already contains different bytes')
+        if not cached.exists():shutil.copy2(source,cached)
+    if any(sum(m['slug']==slug for m in previous['mods'])!=1 for slug in replacements):
+        raise ValueError('Each owned helper must have exactly one predecessor')
+    items=[replacements.get(m['slug'],m) for m in previous['mods']]
+    selection=read_json(REPO/'catalog/selection.json')
+    selection.update(version=VERSION,artifacts=[replacements.get(m['slug'],m) for m in selection['artifacts']])
+    history=REPO/'evidence/history'/('lock-'+str(time.time_ns())+'.json')
+    write_json(history,previous)
+    lock=previous|{'version':VERSION,'generated':utcnow(),'mods':items,
+        'validation':'Gameplay artifact pins preserved; owned helper native validation is recorded separately'}
+    write_json(REPO/'catalog/selection.json',selection);write_json(REPO/'catalog/lock.json',lock)
+    result={'version':VERSION,'entries':len(items),'mods':sum(m['kind']=='mod' for m in items),
+        'pack_sha256':generate_pack(REPO/'packwiz',lock),'build_directory':str(directory),
+        'previous_lock_sha256':digest(history),'owned':[bridge,presentation],
+        'preserved_gameplay_pins':True,
+        'source_hashes':{p.relative_to(REPO).as_posix():digest(p)
+            for name in ('compat/control-bridge','compat/client-presentation')
+            for p in (REPO/name).rglob('*') if p.is_file()}}
+    write_json(directory/'build.json',result)
+    print(result)
+    return result
 
 
 def prepare_bridge(home):
@@ -142,5 +181,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--home',type=Path,default=Path(r'D:\A World for Two'))
     parser.add_argument('--bridge-only',action='store_true')
+    parser.add_argument('--owned-only',action='store_true')
     args=parser.parse_args()
-    (prepare_bridge if args.bridge_only else prepare)(args.home)
+    (prepare_owned if args.owned_only else prepare_bridge if args.bridge_only else prepare)(args.home)

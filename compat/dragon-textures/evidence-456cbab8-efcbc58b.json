@@ -1,0 +1,112 @@
+{
+  "format": "awft-dragon-texture-investigation:1",
+  "tier": "Pinned asset/metadata/class inspection; no native runtime cache witness or visual acceptance",
+  "server_bdd": {
+    "file": "bdd-neoforge-1.21.1-1.3.0-alpha.jar",
+    "bytes": 21280474,
+    "sha256": "456cbab81fb3762cc2a981fa60eb545c22c9587602c8e4275b7d87e6f2f41e60"
+  },
+  "client_bdd": {
+    "file": "bdd-neoforge-1.21.1-1.3.0-alpha.jar",
+    "bytes": 21280474,
+    "sha256": "456cbab81fb3762cc2a981fa60eb545c22c9587602c8e4275b7d87e6f2f41e60"
+  },
+  "bluelib": {
+    "file": "2.4.3-neoforge-1.21.1-bluelib-2.4.3.jar",
+    "bytes": 1051325,
+    "sha256": "efcbc58b6f0f06062f4c8c937e049b21be3fab37f76285dd5078b6a927cc486b"
+  },
+  "client_server_bdd_identical": true,
+  "licenses": {
+    "bdd": "All rights reserved; no third-party bytes copied",
+    "bluelib": "MIT"
+  },
+  "official_bluelib_source_commit": "2c1c373ea8ffc4aeec10234fc1a1ff2eaafd07ae",
+  "assets": {
+    "nightfury": {
+      "requested_missing": "assets/bdd/dragons/nightfury/male/null_male.png",
+      "requested_exists": false,
+      "default_original_exists": true,
+      "default_original_file": "assets/bdd/dragons/nightfury/male/nightfury_male.png",
+      "default_original_sha256": "91aaff0756c195da01aad445298ef47b83b2ab03f37cacf55d684dfa7d16148d",
+      "default_original_dimensions": [
+        512,
+        512
+      ],
+      "installed_species_pngs": 70,
+      "default_has_adult_and_child_metadata": true
+    },
+    "terrible_terror": {
+      "requested_missing": "assets/bdd/dragons/terrible_terror/male/null_male.png",
+      "requested_exists": false,
+      "default_original_exists": true,
+      "default_original_file": "assets/bdd/dragons/terrible_terror/male/terribleterror_male.png",
+      "default_original_sha256": "a49e4a361f3cbc7f2f98e8e0394a16e4817934b2fddbbad55eb0596bc5fdf524",
+      "default_original_dimensions": [
+        128,
+        128
+      ],
+      "installed_species_pngs": 27,
+      "default_has_adult_and_child_metadata": true
+    }
+  },
+  "classes": [
+    {
+      "class": "com/bdc/bdd/api/entity/core_classes/BddBaseDragon.class",
+      "sha256": "77c9087970ee33b4465e4f79e2bd37da35f3243b4e6bbf9da5c2c719ea3ffdbc",
+      "bytes": 62597
+    },
+    {
+      "class": "com/bdc/bdd/api/model/BddDragonModel.class",
+      "sha256": "bed524a841d7349c3b4c115c9b82ab8a45a26c1cde3605bbd2636c84092411ec",
+      "bytes": 9005
+    },
+    {
+      "class": "software/bluelib/api/utils/variant/ParameterUtils.class",
+      "sha256": "8444fe172201c89a300560fd8d5e81701de46455907a632b7b9e1919b593c7fb",
+      "bytes": 5126,
+      "reference_evidence": [
+        "getVariants",
+        "software/bluelib/loader/cache/ResourceCache$Server"
+      ]
+    },
+    {
+      "class": "software/bluelib/loader/cache/ResourceCache$Server.class",
+      "sha256": "6db078a47cc0efcdafe44e36543926eff1ab866c2a78c256b11983a5b2a8c744",
+      "bytes": 6661,
+      "reference_evidence": [
+        "VARIANTS",
+        "emptyMap",
+        "getVariants",
+        "java/util/Collections",
+        "software/bluelib/loader/cache/ResourceCache$Server",
+        "software/bluelib/net/messages/client/loader/ControllerCachePacket"
+      ]
+    },
+    {
+      "class": "software/bluelib/net/messages/client/variant/VariantsPacket.class",
+      "sha256": "db7e1ee700561ee37f348a6b42aeb70d5c7938ceea3c3d4cc9b61d1e10452638",
+      "bytes": 4395,
+      "reference_evidence": [
+        "Ljava/util/Set;",
+        "allVariants"
+      ]
+    },
+    {
+      "class": "software/bluelib/BlueLib.class",
+      "sha256": "ff987c6a3cc734cc87632a10cde8393a6d7dad19056118c690fde713cd5b72f7",
+      "bytes": 4803,
+      "reference_evidence": [
+        "software/bluelib/loader/cache/ResourceCache$Server",
+        "software/bluelib/net/messages/client/loader/ControllerCachePacket"
+      ]
+    }
+  ],
+  "bdd_variant_cache_class_references": [],
+  "observed_missing_texture_warnings": {
+    "nightfury": 2,
+    "terrible_terror": 2
+  },
+  "world_or_entity_changes": 0,
+  "deployed_fix": false
+}

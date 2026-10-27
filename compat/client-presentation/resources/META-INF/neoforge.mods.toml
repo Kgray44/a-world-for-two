@@ -4,10 +4,10 @@ license="MIT"
 
 [[mods]]
 modId="awft_client_presentation"
-version="0.2.1"
+version="0.2.2"
 displayName="A World for Two: Presentation"
 authors="A World for Two"
-description="Preserves native menu controls in a compact toolbar, coordinates cinematic cameras, and records bounded local client measurements."
+description="Preserves native menu controls, coordinates cinematic cameras, records bounded client measurements, and retains applied Small Ships remote configs without reopening a nonexistent file."
 displayTest="IGNORE_ALL_VERSION"
 
 [[mixins]]

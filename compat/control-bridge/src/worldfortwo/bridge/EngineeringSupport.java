@@ -46,9 +46,13 @@ public final class EngineeringSupport {
     private String mode="idle";
     private int phase, elapsed, phaseTicks, cycles, readySamples;
     private long nextWrite;
+    private java.util.function.BooleanSupplier admissionGate=()->true;
+    public void admissionGate(java.util.function.BooleanSupplier gate){admissionGate=Objects.requireNonNull(gate);}
+    public boolean busy(){return !mode.equals("idle") || level!=null || !tickets.isEmpty();}
+    public void stopped(){if(busy())finish("server stopping; native mechanisms preserved");}
 
     public void commands(RegisterCommandsEvent event){
-        var root=Commands.literal("awftengine").requires(s->s.getEntity()==null && s.hasPermission(4));
+        var root=Commands.literal("awftengine").requires(s->s.getEntity()==null && s.hasPermission(4) && admissionGate.getAsBoolean());
         for(String action:List.of("setup","commission","close"))root.then(Commands.literal(action)
             .then(Commands.argument("sha256",StringArgumentType.word()).executes(c->{
                 try {admit(c.getSource().getServer(),action,StringArgumentType.getString(c,"sha256"));return 1;}

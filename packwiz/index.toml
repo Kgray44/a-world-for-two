@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/DistantHorizons.toml"
-hash = "bf6d4dcdc057c85d2af01c8ace31d61114558a6604cdb3d8151ac61c4bc9082f"
+hash = "e65a570c1da4ece0203bbdb0f39ca16827ab10d4b17401f5fbd60acc5df18bec"
 metafile = false
 
 [[files]]
@@ -361,6 +361,26 @@ hash = "cebb30e14537066b7249490b8bcd4a446466882c471ac58adef5330e4951f460"
 metafile = false
 
 [[files]]
+file = "config/paxi/datapacks/awft-settlement-cinematic/data/awft/cutscenes/rose_lantern_arrival.json"
+hash = "dcdc827844f7ecef36714b495dd80cc785a1ddd6ac924756684e1719d502d269"
+metafile = false
+
+[[files]]
+file = "config/paxi/datapacks/awft-settlement-cinematic/data/awft/cutscenes/rosewater_lark_replay.json"
+hash = "4ea4cff35cfdd43deea0a5760bb128857506d17dca9e7887f6ed6550f1c3c8f3"
+metafile = false
+
+[[files]]
+file = "config/paxi/datapacks/awft-settlement-cinematic/data/awft/cutscenes/rosewater_palace_replay.json"
+hash = "f057d43f6a55802f4ffbcc018d883faf5d9cedb8c8495c18ad4a233ca73dd7fd"
+metafile = false
+
+[[files]]
+file = "config/paxi/datapacks/awft-settlement-cinematic/pack.mcmeta"
+hash = "95e59f498c53a1ab54a0a133e9dab9ddf1f93eb2e0ab154bf0c8955003e8d41f"
+metafile = false
+
+[[files]]
 file = "config/seedgen.json"
 hash = "727f74d977d68e1b44b62532b9b713ce31fe5a1b032468c1adfc8ebe1f41e7ac"
 metafile = false
@@ -447,12 +467,12 @@ metafile = true
 
 [[files]]
 file = "mods/awft-client-presentation.pw.toml"
-hash = "a64b28c5178768fabb9db23f7bebe108efcc25417a6bf1b29d8dabf61e4bdd0e"
+hash = "d02f41c7d4173a6e0feb27cd1da2487a47ade7c400fa899fe91dba7264acbeba"
 metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "9b7a63561cdb4b97f6898dd554137727ac89ee6089da3978ecbca1ce30da71f5"
+hash = "bc414172abea28a86d0e0c0ecb8d2f783cee7af61bbaf5fdb10ee59ae3fec2a8"
 metafile = true
 
 [[files]]

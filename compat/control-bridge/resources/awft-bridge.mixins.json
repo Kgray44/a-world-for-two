@@ -4,5 +4,7 @@
   "package": "worldfortwo.bridge.mixin",
   "compatibilityLevel": "JAVA_21",
   "server": ["ChunkyLifecycleMixin", "SmallShipsConfigLifecycleMixin", "ChunkMapAccess", "DistanceManagerAccess", "DensityFingerprintMixin", "ChunkCacheAccess"],
+  "mixins": ["BlueLibVariantReloadMixin"],
+  "client": ["BddTextureParameterMixin", "BddTextureResourceMixin", "BddGlowParameterMixin", "SeedgenTectonicResourcesMixin"],
   "injectors": {"defaultRequire": 1}
 }

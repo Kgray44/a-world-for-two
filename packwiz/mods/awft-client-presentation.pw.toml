@@ -1,8 +1,8 @@
 name = "A World for Two Presentation"
-filename = "awft-client-presentation-0.2.1.jar"
+filename = "awft-client-presentation-0.2.2.jar"
 side = "client"
 
 [download]
-url = "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-client-presentation-0.2.1.jar"
+url = "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-client-presentation-0.2.2.jar"
 hash-format = "sha256"
-hash = "2614892ec05d63d8e2c51a4bf0b0424470cc1195815b6c0695130642ba51c42c"
+hash = "754555b0fc47e923ff6aaeccb8d162b72d4a0056b4a04e85c06c3d5d4f06c765"

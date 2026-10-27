@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-27T10:18:00.196604+00:00",
+  "images": [
+    {
+      "file": "docs/images/artistic-recovery/bramble-lane.png",
+      "sha256": "c912f95844e56edafaeefa10f39367601cb07af2ebb1ce31d74c81c4e4ab08d1",
+      "bytes": 2149605,
+      "capture": "Actual Minecraft framebuffer; unchanged image bytes"
+    },
+    {
+      "file": "docs/images/artistic-recovery/rose-lantern-hearth.png",
+      "sha256": "b41866cd166af88130247a0854b701dd6961726ce87d7c5ce262682e53a0a0d5",
+      "bytes": 2035614,
+      "capture": "Actual Minecraft framebuffer; unchanged image bytes"
+    },
+    {
+      "file": "docs/images/artistic-recovery/rosewater-hall.png",
+      "sha256": "7d822f7ba1160718d0493608d69fd5d6553224a1fb7bd78bbce72d4dbf2d0e12",
+      "bytes": 2239063,
+      "capture": "Actual Minecraft framebuffer; unchanged image bytes"
+    },
+    {
+      "file": "docs/images/artistic-recovery/rosewater-ballroom.png",
+      "sha256": "cb7cde4859517dd12a2e0cd27fa99dee6039c7f3bc69a07b099b783e71e7df75",
+      "bytes": 2382396,
+      "capture": "Actual Minecraft framebuffer; unchanged image bytes"
+    },
+    {
+      "file": "docs/images/artistic-recovery/nightfury-render.png",
+      "sha256": "c07035511610039c5c5fc1de0d7a8b8ac708a08034dbcba9884aa7b7314193d0",
+      "bytes": 2865611,
+      "capture": "Actual Minecraft framebuffer; unchanged image bytes"
+    },
+    {
+      "file": "docs/images/artistic-recovery/sea-glass-cog.png",
+      "sha256": "43023341c2903bc38c06c890a7d8e82cd14b8b8dac0c26f2ad670ab0309bc2f8",
+      "bytes": 2041827,
+      "capture": "Actual Minecraft framebuffer; unchanged image bytes"
+    }
+  ],
+  "client_pack": "candidate.26",
+  "bridge": "0.6.12",
+  "actual_shader": "Complementary Reimagined r5.9.3 HIGH",
+  "scope": "Visual work in progress, no owner artistic acceptance; FPS samples are not comprehensive performance qualification",
+  "dragon": "Existing black, nebula and leucistic Night Furies render distinct base textures; optional emissive masks remain a separate check"
+}

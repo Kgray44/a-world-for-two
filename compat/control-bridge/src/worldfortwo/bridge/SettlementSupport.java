@@ -52,9 +52,13 @@ public final class SettlementSupport {
     private ChunkPos ticketPos;
     private final Set<Long> mapChunks=new HashSet<>();
     private Object mapWorld;
+    private java.util.function.BooleanSupplier admissionGate=()->true;
+    public void admissionGate(java.util.function.BooleanSupplier gate){admissionGate=Objects.requireNonNull(gate);}
+    public boolean busy(){return !operation.equals("idle") || ticketLevel!=null || ticketPos!=null;}
+    public void stopped(){if(busy())finish("server stopping; existing construction retained");}
 
     public void commands(RegisterCommandsEvent event) {
-        var root=Commands.literal("awftbuild").requires(s->s.getEntity()==null && s.hasPermission(4));
+        var root=Commands.literal("awftbuild").requires(s->s.getEntity()==null && s.hasPermission(4) && admissionGate.getAsBoolean());
         root.then(Commands.literal("registry").executes(c->{
             try { registry(c.getSource().getServer()); success(c.getSource(),"Native registry exported");return 1; }
             catch(Exception e){throw new RuntimeException(e);}

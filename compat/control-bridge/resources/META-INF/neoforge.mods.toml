@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="awft_control_bridge"
-version="0.6.9"
+version="0.6.17"
 displayName="A World for Two: Control Bridge"
 authors="A World for Two"
 description="Measured local tick/JVM/world telemetry, project sleeping defaults, and the exact DH/Chunky startup lifecycle correction."
@@ -17,13 +17,13 @@ config="awft-bridge.mixins.json"
 modId="neoforge"
 type="required"
 versionRange="[21.1.255,)"
-side="SERVER"
+side="BOTH"
 
 [[dependencies.awft_control_bridge]]
 modId="minecraft"
 type="required"
 versionRange="[1.21.1]"
-side="SERVER"
+side="BOTH"
 
 [[dependencies.awft_control_bridge]]
 modId="seedrenderer"

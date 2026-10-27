@@ -29,6 +29,12 @@
           "reason": "Reviewed leftover Sodium Options API metadata in the immutable candidate.23 tag; absent from its active lock and index. Preserve tagged source bytes and omit only this unindexed file from the public payload."
         }
       }
+    },
+    {
+      "version": "0.1.0-candidate.31",
+      "git_tag": "awft-0.1.0-candidate.31",
+      "pack_sha256": "e369a8f343b7c5b27df5f7ac021134638d03735920e6014bb1d25a75b0bc75ce",
+      "status": "prerelease"
     }
   ]
 }

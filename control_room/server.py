@@ -278,9 +278,13 @@ class Server:
         patterns.append(r"data get block -?\d{1,8} -?\d{1,3} -?\d{1,8}(?: [A-Za-z0-9_.]{1,64})?")
         patterns += [r"awftengine (status|cancel)", r"awftengine (setup|commission|close) [a-f0-9]{64}",
                      r"awftengine inspect -?\d{1,8} -?\d{1,3} -?\d{1,8}"]
+        patterns += [r"awftharborcraft (status|cancel)",
+                     r"awftharborcraft (inspect|create) artistic-harbor-craft-[a-f0-9]{16} [a-f0-9]{64}",
+                     r"awftattractions (status|cancel)",
+                     r"awftattractions (inspect|admit) [a-z0-9-]{1,80} [a-f0-9]{64}"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
-        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|cancel)|awftengine (setup|commission|close|cancel))", command)
+        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftattractions (admit|cancel))", command)
         if dangerous and not confirmed:
             raise UserError("Confirm this player or world setting change first")
         self._write(command)

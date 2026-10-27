@@ -152,7 +152,7 @@ class Storage:
         target = (target or self.layout.home).resolve()
         with self._lock:
             if self.usage(force=True) + additional > self.layout.settings()["project_budget_gib"] * GiB:
-                raise UserError("This operation would exceed the project's 100 GiB storage budget")
+                raise UserError(f"This operation would exceed the project's {self.layout.settings()['project_budget_gib']} GiB storage budget")
             if os.name == "nt":
                 drive = target.drive.upper()
                 estimates = {"C:": 0, "D:": 0}

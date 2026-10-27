@@ -1,0 +1,628 @@
+{
+  "schema": 1,
+  "id": "awft:rosewater_palace_replay",
+  "duration_ticks": 320,
+  "camera_position_mode": "absolute",
+  "settings": {
+    "fade_in": true,
+    "fade_out": true,
+    "hide_ui": true,
+    "letterbox": true,
+    "fade_duration_ticks": 12,
+    "letterbox_duration_ticks": 10
+  },
+  "keyframes": [
+    {
+      "time": 0.0,
+      "pos": {
+        "x": 1210.0,
+        "y": 160.0,
+        "z": -1042.0
+      },
+      "rot": {
+        "yaw": -57.33909,
+        "pitch": 52.3289,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 0.5,
+      "pos": {
+        "x": 1210.87695,
+        "y": 160.24414,
+        "z": -1042.94336
+      },
+      "rot": {
+        "yaw": -56.39579,
+        "pitch": 52.26981,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 1.0,
+      "pos": {
+        "x": 1213.32812,
+        "y": 160.89062,
+        "z": -1045.42188
+      },
+      "rot": {
+        "yaw": -53.85787,
+        "pitch": 52.13206,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 1.5,
+      "pos": {
+        "x": 1217.08398,
+        "y": 161.81055,
+        "z": -1048.9082
+      },
+      "rot": {
+        "yaw": -50.15886,
+        "pitch": 51.95209,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 2.0,
+      "pos": {
+        "x": 1221.875,
+        "y": 162.875,
+        "z": -1052.875
+      },
+      "rot": {
+        "yaw": -45.69285,
+        "pitch": 51.77012,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 2.5,
+      "pos": {
+        "x": 1227.43164,
+        "y": 163.95508,
+        "z": -1056.79492
+      },
+      "rot": {
+        "yaw": -40.77949,
+        "pitch": 51.65616,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 3.0,
+      "pos": {
+        "x": 1233.48438,
+        "y": 164.92188,
+        "z": -1060.14062
+      },
+      "rot": {
+        "yaw": -35.63491,
+        "pitch": 51.71929,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 3.5,
+      "pos": {
+        "x": 1239.76367,
+        "y": 165.64648,
+        "z": -1062.38477
+      },
+      "rot": {
+        "yaw": -30.34948,
+        "pitch": 52.10852,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 4.0,
+      "pos": {
+        "x": 1246.0,
+        "y": 166.0,
+        "z": -1063.0
+      },
+      "rot": {
+        "yaw": -24.8637,
+        "pitch": 53.01508,
+        "roll": 0.0
+      },
+      "fov": 65.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 4.5,
+      "pos": {
+        "x": 1252.90234,
+        "y": 165.97852,
+        "z": -1062.10645
+      },
+      "rot": {
+        "yaw": -17.97651,
+        "pitch": 54.45572,
+        "roll": 0.0
+      },
+      "fov": 65.0859,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 5.0,
+      "pos": {
+        "x": 1261.03125,
+        "y": 165.70312,
+        "z": -1060.25781
+      },
+      "rot": {
+        "yaw": -8.44598,
+        "pitch": 55.99629,
+        "roll": 0.0
+      },
+      "fov": 65.3125,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 5.5,
+      "pos": {
+        "x": 1269.89453,
+        "y": 165.23242,
+        "z": -1057.57715
+      },
+      "rot": {
+        "yaw": 3.69129,
+        "pitch": 57.0801,
+        "roll": 0.0
+      },
+      "fov": 65.6328,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 6.0,
+      "pos": {
+        "x": 1279.0,
+        "y": 164.625,
+        "z": -1054.1875
+      },
+      "rot": {
+        "yaw": 17.57435,
+        "pitch": 57.15007,
+        "roll": 0.0
+      },
+      "fov": 66.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 6.5,
+      "pos": {
+        "x": 1287.85547,
+        "y": 163.93945,
+        "z": -1050.21191
+      },
+      "rot": {
+        "yaw": 31.49445,
+        "pitch": 55.98744,
+        "roll": 0.0
+      },
+      "fov": 66.3672,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 7.0,
+      "pos": {
+        "x": 1295.96875,
+        "y": 163.23438,
+        "z": -1045.77344
+      },
+      "rot": {
+        "yaw": 43.82639,
+        "pitch": 53.92101,
+        "roll": 0.0
+      },
+      "fov": 66.6875,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 7.5,
+      "pos": {
+        "x": 1302.84766,
+        "y": 162.56836,
+        "z": -1040.99512
+      },
+      "rot": {
+        "yaw": 53.8787,
+        "pitch": 51.62435,
+        "roll": 0.0
+      },
+      "fov": 66.9141,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 8.0,
+      "pos": {
+        "x": 1308.0,
+        "y": 162.0,
+        "z": -1036.0
+      },
+      "rot": {
+        "yaw": 61.78264,
+        "pitch": 49.76905,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 8.5,
+      "pos": {
+        "x": 1311.6582,
+        "y": 161.49316,
+        "z": -1030.28223
+      },
+      "rot": {
+        "yaw": 68.81769,
+        "pitch": 48.46466,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 9.0,
+      "pos": {
+        "x": 1314.39062,
+        "y": 160.97656,
+        "z": -1023.50781
+      },
+      "rot": {
+        "yaw": 75.80378,
+        "pitch": 47.37936,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 9.5,
+      "pos": {
+        "x": 1316.20898,
+        "y": 160.45605,
+        "z": -1016.05762
+      },
+      "rot": {
+        "yaw": 82.51842,
+        "pitch": 46.4537,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 10.0,
+      "pos": {
+        "x": 1317.125,
+        "y": 159.9375,
+        "z": -1008.3125
+      },
+      "rot": {
+        "yaw": 88.80125,
+        "pitch": 45.6795,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 10.5,
+      "pos": {
+        "x": 1317.15039,
+        "y": 159.42676,
+        "z": -1000.65332
+      },
+      "rot": {
+        "yaw": 94.564,
+        "pitch": 45.08225,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 11.0,
+      "pos": {
+        "x": 1316.29688,
+        "y": 158.92969,
+        "z": -993.46094
+      },
+      "rot": {
+        "yaw": 99.78315,
+        "pitch": 44.70663,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 11.5,
+      "pos": {
+        "x": 1314.57617,
+        "y": 158.45215,
+        "z": -987.11621
+      },
+      "rot": {
+        "yaw": 104.48415,
+        "pitch": 44.60973,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 12.0,
+      "pos": {
+        "x": 1312.0,
+        "y": 158.0,
+        "z": -982.0
+      },
+      "rot": {
+        "yaw": 108.72579,
+        "pitch": 44.86279,
+        "roll": 0.0
+      },
+      "fov": 67.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 12.5,
+      "pos": {
+        "x": 1307.46875,
+        "y": 157.53613,
+        "z": -977.96289
+      },
+      "rot": {
+        "yaw": 113.39128,
+        "pitch": 45.91087,
+        "roll": 0.0
+      },
+      "fov": 67.043,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 13.0,
+      "pos": {
+        "x": 1300.5,
+        "y": 157.03906,
+        "z": -974.57812
+      },
+      "rot": {
+        "yaw": 119.4944,
+        "pitch": 47.86293,
+        "roll": 0.0
+      },
+      "fov": 67.1562,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 13.5,
+      "pos": {
+        "x": 1292.03125,
+        "y": 156.53809,
+        "z": -971.81055
+      },
+      "rot": {
+        "yaw": 127.25303,
+        "pitch": 50.26772,
+        "roll": 0.0
+      },
+      "fov": 67.3164,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 14.0,
+      "pos": {
+        "x": 1283.0,
+        "y": 156.0625,
+        "z": -969.625
+      },
+      "rot": {
+        "yaw": 136.57655,
+        "pitch": 52.58694,
+        "roll": 0.0
+      },
+      "fov": 67.5,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 14.5,
+      "pos": {
+        "x": 1274.34375,
+        "y": 155.6416,
+        "z": -967.98633
+      },
+      "rot": {
+        "yaw": 146.69438,
+        "pitch": 54.30301,
+        "roll": 0.0
+      },
+      "fov": 67.6836,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 15.0,
+      "pos": {
+        "x": 1267.0,
+        "y": 155.30469,
+        "z": -966.85938
+      },
+      "rot": {
+        "yaw": 156.04788,
+        "pitch": 55.18179,
+        "roll": 0.0
+      },
+      "fov": 67.8438,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 15.5,
+      "pos": {
+        "x": 1261.90625,
+        "y": 155.08105,
+        "z": -966.20898
+      },
+      "rot": {
+        "yaw": 162.78306,
+        "pitch": 55.41863,
+        "roll": 0.0
+      },
+      "fov": 67.957,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    },
+    {
+      "time": 16.0,
+      "pos": {
+        "x": 1260.0,
+        "y": 155.0,
+        "z": -966.0
+      },
+      "rot": {
+        "yaw": 165.32361,
+        "pitch": 55.42725,
+        "roll": 0.0
+      },
+      "fov": 68.0,
+      "pathType": "linear",
+      "posTime": "linear",
+      "rotTime": "linear",
+      "fovTime": "linear"
+    }
+  ],
+  "events": [
+    {
+      "tick": 4,
+      "type": "lumiera:play_sound",
+      "sound": "minecraft:block.amethyst_block.chime",
+      "source": "ambient",
+      "volume": 0.15,
+      "pitch": 0.9,
+      "relative_to_camera": true
+    },
+    {
+      "tick": 170,
+      "type": "lumiera:show_text",
+      "text": "Rosewater Palace",
+      "preset": "TITLE",
+      "duration": 90
+    }
+  ]
+}

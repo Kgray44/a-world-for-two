@@ -1,261 +1,182 @@
 # Build and acceptance status
 
-Candidate **0.1.0-candidate.23**, 2026-10-27 UTC checkpoint. **The owner and Sera
-rejected the settlement's visual quality after actual exploration.** This includes
-the town, ships, bridges and castle. A substantial artistic rebuild takes priority;
-native block/inventory receipts do not qualify the architecture. See
-[artistic recovery](ARTISTIC-RECOVERY.md) for the representative-build and real
-graphical-review workflow. Tonight's world/player changes may be discarded under
-the owner's latest explicit instruction; a fresh start is authorized if needed.
-The official server is stopped during recovery. A separate fresh same-seed world
-is receiving authored prototypes and genuine shader screenshot revisions; it has
-not replaced the official save. Both new bridge forms are placed in staging, and
-the redesigned bascule passed two real 55° button-driven cycles. Interior,
-landscape, harbor and palace work remains active. The new hard material limits
-are three blocks in a second axis and nine blocks maximum in any axis; see the
-recovery record for their exact interpretation and current visual findings.
+**2026-10-27 UTC · release target 0.1.0-candidate.31**
+
+The pack and rebuilt settlement remain a candidate. The bridge 0.6.17 build,
+publication of the new Prism
+starter and the owner-authorized fresh-world handoff are in progress; none is
+recorded as complete at this checkpoint. The earlier town failed KG and Sera's
+visual review, so individually authored streets, cottages, ships, bridges, harbor
+works and palace wings now replace it in staging. Actual Minecraft screenshots
+guide revisions; owner artistic acceptance remains pending.
+
+Other Create attractions still need native installation or commissioning, and
+complete multiplayer, performance and addendum acceptance remain open. Technical
+receipts qualify only the specific checks they record.
 
 ## Current build
 
-Minecraft 1.21.1, NeoForge 21.1.262, Java 21; bridge **0.6.9**. There are **197 enabled
-top-level mod JARs**, **eight shader packs** and **one resource pack**. The lock has
-207 file records, including the optional Essential client fallback disabled by
-default. The compatibility inventory retains all **223 requested candidates**.
+| Component | Current selection |
+| --- | --- |
+| Minecraft / loader / Java | 1.21.1 / NeoForge 21.1.262 / Java 21 |
+| Enabled mods | 197 total; 191 client, 164 server, with shared mods on both sides |
+| Optional fallback | Essential disabled; 198 mod records including it |
+| Graphics | Eight shaders and one resource pack |
+| Client heap | KG: 6 GiB; Sera: conservative 4 GiB |
+| Owned helpers | Control Bridge 0.6.17 build target; client Presentation 0.2.2 |
+| Catalog | 207 file records; all 223 requested candidates retained |
+| Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
-Pack SHA-256:
-`9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11`.
-Exact component pins and sides are in [the lock](../catalog/lock.json).
+Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
+The lock is updated when the candidate.31 build is finalized; its current version
+is authoritative for completed artifacts. The latest full local run passed
+**319 Python tests in 60.749 seconds**, 207-entry Packwiz validation and four Node
+session tests. Final candidate.31 CI and runtime acceptance remain separate.
+Source checks are separate from native gameplay and release acceptance.
+[Compatibility](COMPATIBILITY.md) retains unresolved alternatives and
+feature-specific runtime gates.
 
-The published exporter/source checkpoint passed **131 Python tests in GitHub CI**,
-**four JavaScript session tests**, JavaScript syntax and Packwiz integrity for
-207 entries. The later Control Room cache source checkpoint passed **157 Python
-tests in GitHub CI**, plus the same JavaScript and Packwiz checks. Further attraction
-source work has its own local checks. These
-source checks are separate from graphics, gameplay and remote acceptance.
+Candidate.27's harbor inspection failed on the dedicated server because reflective
+field enumeration resolved a client-only camera type. Bridge 0.6.17 retains direct
+MethodHandles access for that specific inspection; its native dedicated-server
+probe and candidate.31 runtime acceptance remain pending. The failed receipt is
+preserved.
 
-The official save remains the existing permanent world. It was not regenerated or
-replaced by a test save. Tectonic uses vertical scale 1.4 and elevation boost 0.1
-within the existing −64..319 build range. Candidate.23 normalizes Tectonic file
-line endings to the existing runtime bytes; its generation settings are unchanged.
-Verified backups, unique saves and failed receipts remain preserved.
+Tectonic retains vertical scale 1.4 and elevation boost 0.1 within Minecraft's
+existing −64..319 build range. The owner authorized discarding the rejected
+world's player changes and starting fresh; final official-save handoff is pending
+here. Verified checkpoints, failed receipts and unique recovery material remain
+preserved.
 
-## Historical construction in the rejected official world
+## Rebuilt settlement and native review
 
-This table records previous technical construction only. It is not the new
-artistic staging inventory, a visual-quality score, or a completion claim.
+The new staging world contains Signal Lane's winding waterfront street, the
+Rose & Lantern cottage court, Bramble Lane's craft shops, harbor approaches,
+an original furnished sailing ship, Rosewater palace wings and two river crossings.
+Interiors and streets received successive furnishing, lighting, plant,
+shop-display and circulation passes based on actual eye-level game captures.
 
-| Area | Planned placements | Native result |
-| --- | ---: | --- |
-| Original plaza, cottage, gardens, barn, tree and harbor core | 96,019 | Earlier block/state/inventory verification passed |
-| Lanternwater pirate quarter | 104,341 | Earlier block/state/inventory verification passed |
-| River drawbridge structure | 12,317 | Closed-state verification and two native 55° cycles passed; saved programs verified |
-| South-bank Bramble Steps and Willow Crown | 139,635 | Placed; 19 furnished buildings, 21 landmarks; verification passed |
-| Expanded Rosewater Castle | 134,821 | Placed; 40 named rooms; verification passed |
-| Offshore Rosewater Resolute | 23,735 | Placed; verification passed |
-| Docked Amberwake | 17,323 | Placed; verification passed |
-| Docked Nightingale's Debt | 13,281 | Placed; verification passed |
-| Docked Sea Lavender | 12,476 | Placed; verification passed |
-| Harbor approaches, two small cutters and service boats | 4,148 | Placed; block/inventory verification passed; four native boat-placement commands completed |
+The final-art capture batch began around 09:50 UTC. Reviewed craft-lane and
+throne-hall frames are actual native game output. This is work in progress visual
+evidence, not owner approval or a promise that every district and camera angle
+passes. See [the recovery record](ARTISTIC-RECOVERY.md),
+[landmark prototypes](ARTISTIC-LANDMARK-PROTOTYPES.md), [street](ARTISTIC-STREET-PROTOTYPE.md),
+[cottages](ARTISTIC-COTTAGE-COURT.md), [craft lane](ARTISTIC-CRAFT-LANE.md)
+and [grounds](ARTISTIC-CONNECTING-GROUNDS.md).
 
-The newer expansion checks ran on candidate.20 with zero reported differences.
-Earlier core and port receipts are retained. Castle masonry and connecting public
-paths have explicit reviewed adaptations; preserved inventories are not reset.
-Counts include clearance air and overlapping deltas, so they are not a count of
-unique solid blocks or an artistic-quality score. Exact plan hashes, timings and
-sanitized receipts are in [the construction record](../evidence/runtime/permanent-settlement-construction.json).
+The rebuilt bascule's full native physical verification passed after a planter
+correction. A growable azalea had formed an oak trunk and leaves in the bridge
+clearance; a finite repair replaced six active planted pairs with native potted
+bushes on stone plinths. Every removed tree cell was proven air in a verified
+preconstruction backup. Other trees, architecture and the eight existing control
+block entities were preserved. Full 3/9 material checks and five focused
+correction regressions passed.
 
-The south-bank source plan checks 28 connected routes and 2,353 walking columns.
-The castle source checks 50 recorded routes. Ship plans check named-room corridor
-reachability, hull sealing and surveyed depth. These are geometry checks, followed
-by actual block verification; real walking, native collision shapes, fluid behavior
-and mod interactions still need review.
+Following an actual restart, two complete button/radio-driven 55° opening and
+closing cycles succeeded at **09:46:53 UTC**, with all temporary tickets released.
+Receipt: `2fae1ceb-ae51-461b-82b2-2822e8ce3717`, bridge **0.6.12**. These are actual
+artistic-staging mechanism results; they do not establish candidate.31
+native acceptance or safe passage of every vessel.
 
-The four large ships are distinct original structural builds with furnished
-belowdecks: the flagship has partly unfurled drying sails, Amberwake and
-Nightingale's Debt have furled sails, and Sea Lavender has loosened drying canvas.
-They are not assembled giant physics ships. The isolated tender hoist still needs
-glue/motion, safe boat retention and restart commissioning. Actual tender boarding,
-gangway walking and wet-hull checks remain pending. See [harbor design](GRAND-HARBOR-SHIPS-DESIGN.md),
-[castle design](ROSEWATER-CASTLE-DESIGN.md) and [south-bank design](SOUTH-BANK-DESIGN.md).
+The large sailing ship remains a structural build. Watermill, rail, Hypertube,
+pneumatic logistics and tender-hoist demonstrations have separate source/staging
+contracts and still need the appropriate installation, interaction, restart and
+safety checks. See [Create attractions](SETTLEMENT-ATTRACTIONS.md),
+[maritime attractions](MARITIME-ATTRACTIONS.md) and [showcase gaps](SHOWCASE-COVERAGE.md).
+Stocked items and decorative machines do not establish operating gameplay loops.
 
-The drawbridge's real water wheels measured 8 RPM, with 2 RPM at both sequencers
-and no overstress. Both bank buttons and the native radio network completed two
-full opposed 55° opening/closing cycles. All 11 temporary simulation tickets were
-released. Exact closed-state verification checked 12,317 positions with zero
-differences. An independent verified stopped-save audit confirmed both 55°
-reversible programs, closed/disassembled bearings and radio/power data persisted.
-Direct post-restart cycles and fully rigged vessel passage remain separate;
-automated mechanism tests are paused while the owner explores. Failed attempts
-remain preserved. See [the native checkpoint](../evidence/runtime/drawbridge-candidate.23.json).
+Earlier rejected-world construction counts and receipts are historical only,
+retained in [the construction record](../evidence/runtime/permanent-settlement-construction.json)
+and [candidate.23 mechanism record](../evidence/runtime/drawbridge-candidate.23.json).
+They are not the new staging inventory or a visual-quality score.
 
-The candidate.22 restart recovery attempt stopped before sending an input because
-the saved bearings had no live contraption attachment. Its failed receipt is
-preserved, with zero temporary tickets remaining. Both actual contraption entities
-and their 523/508-block structures were present in the verified pre-restart backup.
+## Dragon, client and cinematic checks
 
-Candidate.23 uses bridge 0.6.9 and opposed 55° targets. Before an input, it requires
-native entity loading and ticking, completed kinetic initialization, actual live
-controller attachment, nonzero finite input RPM and no overstress. Failed ticket
-cleanup retains the exact handles and blocks further admission until an explicit
-cleanup succeeds. **48 regression checks passed against the actual built JAR's
-phase, power, stress, simulation and attachment predicates.** Subsequent actual
-Minecraft results established native attachment readiness, safe 90° recovery,
-55° cycles and button/radio operation. The earlier dry-channel expectation failed
-at 80 cells: all were naturally flowing water within the two authored wheel
-channels. A finite verify-only derivative corrected those expectations; it found
-no missing solid blocks or orientation differences and passed all 12,317 checks.
-The original plan and failed receipt remain preserved. That derivative must never
-be placed. Java predicate checks remain separate from the native results.
+The dragon repair delivered **seven species and 75 variants** during an actual
+candidate.25 dedicated-client login. Later actual candidate.26 screenshots and
+client resource witnesses show distinct **black, nebula and leucistic Night Fury
+base textures**, with no texture aliases or entity/variant writes. The earlier
+purple/black base-texture failure is corrected for these observed cases. Optional
+upstream glow masks that are absent remain a separate limit; other species,
+adult/baby layers, saddles/tails, resource reloads and reconnects are not blanket
+qualified. See [the diagnosis](DRAGON-RENDER-REPAIR.md) and
+[actual capture evidence](../evidence/runtime/artistic-recovery-detail-20261027.json).
 
-The five-district architectural detail pass added 1,593 changes in 165 feature
-groups. Native before/place/after checks passed, and an independent stopped-backup
-audit matched every final position with zero identity or orientation differences.
-This verifies saved construction, not 3D beauty. A bounded, dry watermill,
-processing line, Hypertube and passenger railway plan is staged with 16,843 targets,
-14 block-entity tags and exact saved before states. A separate maritime proposal
-contains 154 blocks, one proposed Small Ships cog, a shallow clue/reward cache and
-the tender lift's complete body/sweep and spatial entity admission contracts.
-Neither addition has been installed or commissioned. Their mod installation and
-source checks do not establish operating attractions. See [the engineering hub](SETTLEMENT-ATTRACTIONS.md)
-and [maritime proposal](MARITIME-ATTRACTIONS.md).
+Presentation 0.2.2 contains the narrow Small Ships remote-config lifecycle repair.
+Its focused actual-pinned regression harness passed; full current-client reconnect
+and rendering acceptance remain separate. Earlier gameplay confirmed the intro
+returned control, furnace scenes worked, and a newly placed vanilla crafting table
+animated with responsive input. These observations retain their earlier scope.
 
-The [per-mod showcase audit](SHOWCASE-COVERAGE.md) binds all 197 enabled JARs,
-223 requests and 16 exact native construction sources. It finds 30 mods with
-historical mod-owned blocks and 13 with supplied items. Of 95 gameplay-content
-mods, 63 have no mod-owned block/item/entity evidence in these construction plans.
-This is not a live census or proof that naturally generated wildlife/content is
-absent. Envelope, framed construction, wildlife/fairies, zipline, wagon and actual
-sailing/physics demonstrations remain explicit gaps; scenery and stocked items
-do not qualify those gameplay loops.
+Seven earlier settlement scenes passed the pinned Lumiera parser/NBT probe and
+were present in the earlier server's actual registry. Those coordinates refer to
+the previous settlement; fresh-world scene geometry, delivery, skip/return and
+complete castle-to-offshore coverage require review. SeedGen LODs are not assumed
+to contain newly built structures. See [cinematic constraints](SETTLEMENT-CINEMATIC.md).
 
-Construction is budgeted, but a single engine action can exceed the soft work
-slice: south-bank placement recorded a 4,155 ms maximum slice while loading/placing.
-This is a construction observation, not a steady-state MSPT benchmark. Expanded
-settlement idle and nearby-player performance still need measurement.
+Actual candidate.29 and candidate.30 logins still produced different strict
+SeedGen fingerprints despite matching cinematic data. Tectonic's built-in pack
+was already present: the actual gap is priority. The client opened it before raw
+mod roots, allowing Terralith to override 16 overlapping resources; the server
+selected Tectonic after mod data. Candidate.31 reuses and moves that exact existing
+pack after raw roots and before explicit extras, preserving native metadata,
+overlays and fingerprint code. Actual candidate.31 paired agreement remains
+pending. See [the corrected diagnosis and limits](SEEDGEN-RUNTIME-GAP.md).
 
-## Cinematics and visual review
+Eight shaders are pinned, including Kappa and Bliss. Chocapic remains deferred at
+the owner's request. Switching shaders caused a real client freeze/disconnection
+during earlier play, so preset quality and reload responsiveness remain active
+limits. See [shader choices](SHADERS.md).
 
-Seven new settlement scenes passed the pinned Lumiera JSON parser and native NBT
-roundtrip probe. The prepared first-join scene is 24 seconds around the actual
-core; castle, port and four ships have separate local tours. The scene ZIP is now
-installed in the official save's datapacks directory. **The restarted server's
-actual Lumiera registry contains all seven scenes plus the earlier intro.**
-The verified stopped backup contains the exact 14,942-byte scene ZIP in the
-correct save. Delivery, real client rendering and
-skip/return behavior for these scenes remain pending.
+## Measured gameplay and performance limits
 
-The refreshed geometry manifest binds all ten verified construction sources,
-including the final 4,148-position harbor access and placed flagship. Its ZIP is
-byte-identical to the data checked by the exact Lumiera parser/NBT probe at
-02:03:40 UTC, so that format evidence remains applicable. No new JVM probe or
-game rendering is claimed by the geometry-provenance correction.
+These measurements belong to the earlier candidate.23 official world. They are
+not benchmarks of the rebuilt town or candidate.31.
 
-A core camera packet does not prove that the distant castle and offshore ships
-are present on the client's screen. Full castle-to-offshore first-join coverage
-needs a verified terrain-delivery solution and actual rendering review. Distant
-Horizons/SeedGen LODs are not assumed to contain newly built structures. See the
-[cinematic coverage contract](SETTLEMENT-CINEMATIC.md).
+| Five-minute session | Server TPS / tick time | Client and memory observations |
+| --- | --- | --- |
+| KG, 31 samples | Median 20.00 TPS; 12.82 ms/tick; sampled-mean p95 22.16 ms/tick | Complementary Reimagined: 18–33 FPS, median 26; server RSS 3.55 GiB; client RSS 8.71 GiB; available host RAM 0.36–1.63 GiB |
+| KG + Sera, 26 fresh two-player samples | Median 20.00 TPS; 11.74 ms/tick; sampled-mean p95 19.98 ms/tick | KG's 19 focused samples: 14–27 FPS, median 22; server RSS 5.42 GiB; median available host RAM 0.50 GiB; Sera's client uninstrumented |
 
-KG and Sera disconnected at 05:17 UTC. The server stopped cleanly at 05:26 UTC for
-recovery work. A verified stopped-world checkpoint was created before staging;
-no official world replacement has occurred at this checkpoint. Actual native
-street, interior, harbor, sunset and night review is the next artistic gate.
-Block counts do not establish cinematic beauty.
+The two-player recording excluded four stale snapshots and kept the final
+Sera-only sample separate. KG's later shader reload timed out, so it is not
+uninterrupted multiplayer acceptance. Exact scope is in the
+[one-player](../evidence/runtime/owner-play-candidate.23.json) and
+[two-player](../evidence/runtime/two-player-session-candidate.23.json) records.
 
-The exact bridge 0.6.7 JAR passed a separate headless Windows regression: an ordinary
-reader denied mutable status replacement, progress returned an AccessDenied warning,
-the old view stayed intact, and an immutable terminal JSON plus SHA sidecar was
-published and verified. That proves file-publication resilience, not a Minecraft
-mechanism or multiplayer pass.
+Fast travel still exposed slow terrain arrival. The idle investigation reproduced
+1,682 chunk holders with nine deliberately forced chunks, then returned to 841
+after removal and five minutes idle: 49 full, 25 block-ticking and nine
+entity-ticking chunks, zero forced and one spawn ticket. Holders are not the fully
+simulated count; no persistent loading leak was proved. SeedGen's earlier native
+server fingerprint passed, while current client agreement, generation fidelity
+and Xaero/MapHorizons population remain unverified.
 
-## Earlier observed gameplay and remaining integration limits
-
-- Earlier licensed one-player tests confirmed the intro returned control and the
-  furnace scene worked. The owner confirmed candidate.12's newly placed vanilla
-  crafting table animated with responsive chat/search. These observations do not
-  qualify every new scene, existing converted workstation or current candidate.
-- Earlier gameplay commonly measured about 20 TPS, 7–14 ms/tick and focused
-  59–60 FPS. Fast-travel terrain arrival remained slow; some samples had under
-  1 GiB free system RAM. No new full-settlement performance improvement is claimed.
-- A new five-minute official-world session with KG connected and both server and
-  client running recorded 31 samples: median 20.00 TPS, median 12.82 ms/tick and
-  22.16 ms/tick at the 95th percentile of sampled means. Server RSS median was
-  3.55 GiB and heap use 2.11 GiB. The Complementary Reimagined client measured
-  18–33 FPS (median 26), RSS 8.71 GiB and a 6 GiB maximum Java heap. Available host
-  RAM ranged 0.36–1.63 GiB. These are current observations, not a performance
-  improvement or a two-player benchmark. Shader/client cost still needs tuning.
-  See [the measured session](../evidence/runtime/owner-play-candidate.23.json).
-- Sera's actual login and simultaneous official-world play with KG are now observed.
-  A later five-minute recording contains 31 observations: 26 fresh two-player
-  samples, four stale snapshots excluded, and one final Sera-only sample. Fresh
-  two-player samples measured median 20.00 TPS, 11.74 ms/tick, 19.98 ms/tick at the
-  95th percentile of sampled means, server RSS 5.42 GiB and 0.50 GiB available host
-  RAM. KG's 19 focused game-screen samples measured 14–27 FPS (median 22); menu
-  samples are separate and Sera's client is not instrumented. KG's shader reload
-  subsequently timed out, so this is not uninterrupted multiplayer acceptance.
-  See [the two-player record](../evidence/runtime/two-player-session-candidate.23.json).
-- The idle investigation reproduced 1,682 chunk holders with nine deliberately
-  forced chunks, then returned to 841 after removal and five minutes idle. Baseline
-  was 49 full, 25 block-ticking, nine entity-ticking, zero forced and one spawn
-  ticket. Holders are not the fully simulated count; no persistent leak was proved.
-- SeedGen's dedicated-server fingerprint passed with actual modded registries on
-  candidate.17. Fresh client agreement, active generation fidelity and SeedGen
-  terrain appearing on Xaero through MapHorizons remain unverified.
-- Playit service stop/start retained the existing account and tunnel. Control Room
-  provides player permissions, whitelist, coordinates, Atlas, background storage
-  scans and session-token recovery. A source fix removes whole-mod hashing from
-  every overview request and retains strict startup/deploy/health checks; it needs
-  the next safe Control Room restart and a live latency measurement. No supported
-  dashboard-only Python reload currently preserves Java's console ownership.
-  Remote login is observed; complete two-player feature acceptance remains separate.
-- Eight shaders are pinned, including Kappa and Bliss. Chocapic is deferred at the
-  owner's request. Advanced pirate/physics experiments remain isolated.
+Control Room has source support for a bounded background integrity scan instead
+of hashing every installed mod on each overview poll; strict startup/deploy/health
+verification remains. Live reload/latency measurements require their own evidence.
+Playit service stop/start and actual remote login were observed earlier; complete
+current-world remote gameplay acceptance remains separate.
 
 ## Distribution and remaining acceptance
 
-The candidate.23 revision2 **Prism** starter is
-[public](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.23):
-**7,072,234 bytes**, SHA-256
-`9daf9b23ab77490f1d8ac3399d4146165248d4e9d10566b434569eba87fca218`.
-It configures a 6 GiB client heap and opens the normal multiplayer list from
-**Join Our World**, with separate public and KG-local entries. Packaging and native
-server-list, archive integrity, bootstrap chain and original artwork identity checks
-passed. The exact revision2 public ZIP and checksum passed unauthenticated download
-verification. A fresh public Packwiz installation passed: 199 downloads plus the
-single author-permitted bundled pirate JAR, all 200 client artifacts and 76 static
-configurations matched, with zero missing/changed files or server-only leakage.
-The headless installer enabled optional Essential; the normal GUI-default set has
-199 artifacts with Essential off. KG confirms Sera imported and launched the public
-Prism-r2 ZIP, and her actual server login is independently observed. This is
-user-reported import evidence; Sera's installed files were not inspected remotely.
-KG's existing owned client matched all current client artifact pins and
-joined the official server; its local direct-connect menu override and already
-installed files do not establish a fresh public-starter import.
-See [the release process](RELEASING.md).
+The planned **candidate.31 Prism ZIP** is not yet recorded as published or
+freshly imported. Its [release page](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.31)
+and [direct ZIP link](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.31/A-World-for-Two-0.1.0-candidate.31-Prism.zip)
+are prepared destinations; publication and the exact public checksum remain
+pending. Do not treat the older candidate.23 starter as the matching release.
 
-The compatibility prerelease is public at
-[compat-0.1.0](https://github.com/Kgray44/a-world-for-two/releases/tag/compat-0.1.0).
-All 13 assets passed independent unauthenticated public size/hash checks, including
-the four exact custom-artifact URLs used by Packwiz. Source CI passed after its
-test fixture was made independent of ignored private receipts. The immutable
-candidate.23 source tag is retained; publication caught five obsolete metadata
-records outside the active index. Their explicit, hash-bound publication exclusions
-now pass 14 publisher tests; the packaged tree contains only indexed files and
-manifests, with omission proofs retained. Pages deployment passed; the immutable
-public manifest and index match their exact hashes. The stable root manifest
-remains absent, and no active mod pins changed. The public game tunnel also
-answered a Minecraft status ping from the host. Sera then logged in and played
-alongside KG, as recorded separately; her exact public-starter import and client
-file hashes were not independently inspected. See [the publication evidence](../evidence/runtime/public-release-candidate.23.json)
-and [later two-player observations](../evidence/runtime/two-player-session-candidate.23.json).
+Historical candidate.23 Prism-r2 public download hashes, fresh Packwiz installation
+and Sera's reported Prism import/actual login remain recorded in
+[publication evidence](../evidence/runtime/public-release-candidate.23.json).
+Those results do not qualify the new archive. Candidate.31 still needs exact
+public-asset verification and a fresh install/import check; accounts, worlds,
+backups and caches remain excluded from the starter. See [release procedure](RELEASING.md).
 
-Finish direct post-restart drawbridge cycles, hoist and other transport/logistics commissioning, current-world
-restart and restore checks, complete mod-feature coverage, multiplayer feature tests,
-shader review, terrain-arrival measurements and full visual refinement. Source,
-Pages and public release artifacts are now published and checked; native Prism
-and full gameplay acceptance are still required before a qualified stable release.
-
-Cleanup remains conditional on a working, accepted build. Useful recovery snapshots,
-unique worlds and failed receipts stay preserved. Local writers reserve 30 GiB
-separately on C: and D:. This is a monitoring instruction, not an operating-system
-quota; external applications and already-running writers are outside its coverage.
+Before a qualified stable release: finish the fresh-world handoff and restart
+checks, current artifact/Prism verification, Create commissioning, multiplayer
+feature coverage, dragon/shader/cinematic review, terrain-arrival measurements and
+owner visual assessment. Cleanup follows a working, accepted build and preserves
+useful recovery snapshots and failed receipts. Local writers reserve 30 GiB
+separately on C: and D:; this monitoring rule does not constrain external
+applications or already-running writers.

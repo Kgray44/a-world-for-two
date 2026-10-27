@@ -9,7 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.9'
+BRIDGE_VERSION = '0.6.17'
 
 def build(home, destination, storage):
     storage.reserve(16 * 1024 * 1024, destination)
@@ -24,6 +24,10 @@ def build(home, destination, storage):
     libraries = home / "server/libraries"
     named = sorted(libraries.rglob("*-srg.jar"))
     jars = named + [p for p in sorted(libraries.rglob("*.jar")) if p not in named]
+    bluelib=home/'server/mods/2.4.3-neoforge-1.21.1-bluelib-2.4.3.jar'
+    if not bluelib.is_file() or digest(bluelib)!='efcbc58b6f0f06062f4c8c937e049b21be3fab37f76285dd5078b6a927cc486b':
+        raise UserError('The exact pinned BlueLib metadata API is required for this bridge')
+    jars.append(bluelib)
     cp = os.pathsep.join(p.as_posix() for p in jars)
     source = REPO / "compat/control-bridge"
     sources = sorted((source / "src").rglob("*.java"))
@@ -49,7 +53,7 @@ def build(home, destination, storage):
     return {"project_id": "awft:control-bridge", "slug": "awft-control-bridge", "name": "A World for Two Control Bridge",
             "version_id": BRIDGE_VERSION, "version": BRIDGE_VERSION, "provider": "local-build", "release_type": "candidate",
             "filename": destination.name, "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/" + destination.name,
-            "size": destination.stat().st_size, "hashes": {"sha256": digest(destination)}, "side": "server", "kind": "mod",
+            "size": destination.stat().st_size, "hashes": {"sha256": digest(destination)}, "side": "both", "kind": "mod",
             "request": None, "world_sensitive": False, "optional": False, "default": True, "dependencies": [],
             "license": {"id": "MIT"}, "source": "https://github.com/Kgray44/a-world-for-two",
             "selection_reason": "Exact owned server bridge: measured tick/JVM telemetry and lifecycle-safe Chunky listener setup.",

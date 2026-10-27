@@ -1,0 +1,510 @@
+{
+  "fixture_description": "Selected original native land samples only; no seed or world binding.",
+  "samples": [
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1080,
+      "y": 69,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1088,
+      "y": 69,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1096,
+      "y": 68,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 66,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1112,
+      "y": 66,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1120,
+      "y": 66,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1128,
+      "y": 65,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1136,
+      "y": 65,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 65,
+      "z": -1128
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1080,
+      "y": 69,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1088,
+      "y": 69,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1096,
+      "y": 68,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 66,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1112,
+      "y": 66,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1120,
+      "y": 66,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1128,
+      "y": 65,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1136,
+      "y": 65,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 65,
+      "z": -1120
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1080,
+      "y": 69,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1088,
+      "y": 68,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1096,
+      "y": 68,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 66,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1112,
+      "y": 66,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1120,
+      "y": 66,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1128,
+      "y": 65,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1136,
+      "y": 65,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 65,
+      "z": -1112
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1080,
+      "y": 67,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1088,
+      "y": 67,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1096,
+      "y": 67,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 67,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1112,
+      "y": 66,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1120,
+      "y": 66,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1128,
+      "y": 66,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1136,
+      "y": 66,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 66,
+      "z": -1104
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1080,
+      "y": 67,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1088,
+      "y": 67,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1096,
+      "y": 67,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 67,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1112,
+      "y": 67,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1120,
+      "y": 66,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1128,
+      "y": 66,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1136,
+      "y": 65,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 66,
+      "z": -1096
+    },
+    {
+      "block": "minecraft:rooted_dirt",
+      "fluid": false,
+      "x": 1080,
+      "y": 67,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1088,
+      "y": 67,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1096,
+      "y": 67,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 67,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1112,
+      "y": 67,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1120,
+      "y": 66,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1128,
+      "y": 66,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1136,
+      "y": 66,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 66,
+      "z": -1088
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1080,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1088,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1096,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:coarse_dirt",
+      "fluid": false,
+      "x": 1112,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1120,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1128,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1136,
+      "y": 67,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 66,
+      "z": -1080
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1080,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1088,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1096,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1104,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1112,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1120,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1128,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1136,
+      "y": 67,
+      "z": -1072
+    },
+    {
+      "block": "minecraft:grass_block",
+      "fluid": false,
+      "x": 1144,
+      "y": 66,
+      "z": -1072
+    }
+  ],
+  "source_sha256": "96a9e8efa961b27868ccbca9250d3ca6526ce3b7bbd0cb3a47c64c01a806991d"
+}

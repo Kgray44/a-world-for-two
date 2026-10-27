@@ -142,8 +142,8 @@ def bank_support(p,north):
     for x,z in gardens:
         for dx in range(-1,2):
             for dz in range(-1,2):p.stone(x+dx,68,z+dz)
-        p.put(x,69,z,'supplementaries:planter',extended=False,waterlogged=False)
-        p.put(x,70,z,'minecraft:flowering_azalea')
+        p.put(x,69,z,'minecraft:chiseled_stone_bricks')
+        p.put(x,70,z,'minecraft:potted_flowering_azalea_bush')
         p.put(x-2,69,z,'handcrafted:dark_oak_bench',facing='west',color='none',shape='single',waterlogged=False)
     if not north:
         for z in range(-1107,-1102):
