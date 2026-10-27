@@ -239,6 +239,27 @@ class ConfigurationTests(Fixture):
                 with self.assertRaises(UserError):
                     server.command(bad, confirmed=True)
 
+    def test_bridge_glue_requires_private_stage_typed_bundle_and_confirmation(self):
+        server = Server(self.layout, self.storage)
+        command = 'awftbridgeglue retire bridge-refinement-admission-' + 'a' * 16 + ' ' + 'a' * 64
+        with patch.object(server, '_write') as write:
+            with self.assertRaises(UserError):
+                server.command(command, confirmed=True)
+            write_json(self.layout.state / 'artistic-owner.json',
+                       {'format': 'awft-artistic-stage:1', 'home': str(self.layout.home)})
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': False, 'port': 25575})
+            with self.assertRaises(UserError):
+                server.command(command)
+            server.command(command, confirmed=True)
+            write.assert_called_once_with(command)
+            for bad in [command + ' extra', command.replace('bridge-refinement-admission-', '../'),
+                        command.replace('a' * 64, 'invalid')]:
+                with self.assertRaises(UserError):
+                    server.command(bad, confirmed=True)
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': True})
+            with self.assertRaises(UserError):
+                server.command(command, confirmed=True)
+
 
 class PlayerTests(Fixture):
     def setUp(self):

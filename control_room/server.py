@@ -328,9 +328,19 @@ class Server:
                      r"awftmill (inspect|commission) mill-commission-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftattractions (status|cancel)",
                      r"awftattractions (inspect|admit) [a-z0-9-]{1,80} [a-f0-9]{64}"]
+        if command.startswith('awftbridgeglue '):
+            owner = read_json(self.layout.state / 'artistic-owner.json', {})
+            settings = self.layout.settings()
+            if (owner.get('format') != 'awft-artistic-stage:1'
+                    or Path(owner.get('home', '')).resolve() != self.layout.home
+                    or settings.get('permanent_world') is not False
+                    or settings.get('port') != 25575):
+                raise UserError('Bridge refinement admission belongs to the owned private artistic stage')
+            patterns += [r"awftbridgeglue (status|cancel)",
+                         r"awftbridgeglue retire bridge-refinement-admission-[a-f0-9]{16} [a-f0-9]{64}"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
-        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftmill (commission|cancel)|awftattractions (admit|cancel))", command)
+        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftmill (commission|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel))", command)
         if dangerous and not confirmed:
             raise UserError("Confirm this player or world setting change first")
         self._write(command)

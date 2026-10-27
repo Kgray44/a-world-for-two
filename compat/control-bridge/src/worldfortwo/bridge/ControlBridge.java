@@ -35,9 +35,10 @@ public class ControlBridge {
     private final EngineeringSupport engineeringSupport = new EngineeringSupport();
     private String operationOwner;
     private long operationGeneration;
-    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.38","0.6.24",this::acquire);
-    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.38","0.6.24",this::acquire);
-    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.38","0.6.24",this::acquire);
+    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.39","0.6.25",this::acquire);
+    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.39","0.6.25",this::acquire);
+    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.39","0.6.25",this::acquire);
+    private final RefinementGlueAdmission refinementGlueAdmission=new RefinementGlueAdmission("0.1.0-candidate.39","0.6.25",this::acquire);
     private final DragonTextureMirror dragonTextureMirror=new DragonTextureMirror();
 
     private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease,ArtisticEngineeringSupport.Lease {
@@ -47,14 +48,14 @@ public class ControlBridge {
         public void close(){if(closed)return;if(valid())operationOwner=null;closed=true;}
     }
     private WorldLease acquire(String owner,boolean temporarySimulation){
-        if(operationOwner!=null || settlementSupport.busy() || engineeringSupport.busy())
+        if(operationOwner!=null || settlementSupport.busy() || engineeringSupport.busy() || refinementGlueAdmission.busy())
             throw new IllegalStateException("Another native world operation or pending cleanup owns the world");
         operationOwner=owner;return new WorldLease(owner,++operationGeneration);
     }
 
     public ControlBridge(IEventBus modBus) {
-        settlementSupport.admissionGate(()->operationOwner==null && !engineeringSupport.busy());
-        engineeringSupport.admissionGate(()->operationOwner==null && !settlementSupport.busy());
+        settlementSupport.admissionGate(()->operationOwner==null && !engineeringSupport.busy() && !refinementGlueAdmission.busy());
+        engineeringSupport.admissionGate(()->operationOwner==null && !settlementSupport.busy() && !refinementGlueAdmission.busy());
         modBus.addListener(dragonTextureMirror::payloads);
         NeoForge.EVENT_BUS.addListener(dragonTextureMirror::sync);
         NeoForge.EVENT_BUS.addListener(this::started);
@@ -68,6 +69,7 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(attractionSupport::commands);
         NeoForge.EVENT_BUS.addListener(harborCraftSupport::commands);
         NeoForge.EVENT_BUS.addListener(artisticEngineeringSupport::commands);
+        NeoForge.EVENT_BUS.addListener(refinementGlueAdmission::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::chunk);
         NeoForge.EVENT_BUS.addListener(atlasSupport::joined);
@@ -79,7 +81,7 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(cinematicSupport::left);
     }
     private void stopping(ServerStoppingEvent event){
-        attractionSupport.stopped();harborCraftSupport.stopped();artisticEngineeringSupport.stop();
+        attractionSupport.stopped();harborCraftSupport.stopped();artisticEngineeringSupport.stop();refinementGlueAdmission.stop();
         engineeringSupport.stopped();settlementSupport.stopped();dragonTextureMirror.stopped();
     }
     private void started(ServerStartedEvent event) {
@@ -107,6 +109,7 @@ public class ControlBridge {
             attractionSupport.tick(event.getServer());
             harborCraftSupport.tick(event.getServer());
             artisticEngineeringSupport.tick(event.getServer());
+            refinementGlueAdmission.tick(event.getServer());
         }
         now = System.nanoTime();
         tickNanos += now - beforeTick;

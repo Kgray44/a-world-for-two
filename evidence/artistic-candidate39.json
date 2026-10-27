@@ -1,0 +1,59 @@
+{
+  "format": "awft-private-candidate39:1",
+  "candidate": "0.1.0-candidate.39",
+  "bridge": "0.6.25",
+  "pack_sha256": "bc6d7b6032f4e3b87bc9fbea5f331852606277f512eed596e5514f39385b4856",
+  "bridge_sha256": "0eba2c122832735dc9f0df2187ca4841ca0fd2993b3e5df2c0698d45a8d5078f",
+  "scope": "Private artistic server; no official world or public release changes",
+  "native": "Exact two old authored glue retired; moving delta placed; full17226-target verification passed; two real55-degree cycles and closed full verification passed",
+  "restart": "Pending; setup must not replay",
+  "spit": "Main ornate tavern3127targets placed; zero geometry differences; strict verification retained2inventory Slot-type mismatches. No re-placement permitted. Other4components unplaced; typed SNBT correction pending.",
+  "checks": "383 Python tests and32 focused console safety tests pass; Java actual API compile pass",
+  "new_depth_requirement": "Entire settlement structural depth layer is in parallel authored proposals; no artistic acceptance inferred",
+  "native_receipts": [
+    {
+      "file": "bridge-refinement-glue-result-91efbe91-e481-4424-9a8e-7a0c3166ac16.json",
+      "sha256": "b376267a7cc856a1d2b0e171966d992228c4866a265b150cdf623f7e7d156e80",
+      "operation": "retire-old-authored-glue",
+      "status": "exact two old authored glue entities retired; geometry/setup/cycles remain separate",
+      "error": null,
+      "cycles": null,
+      "failures": null,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    {
+      "file": "engineering-result-fd1f7452-8ceb-48ec-a737-6daf81628c38.json",
+      "sha256": "8a67b64a8e306d2ec8d3a52f0dfa2dd8a5f0c90dcc880bf3597093e99c465972",
+      "operation": "setup",
+      "status": "native glue and real sequencer programs configured; operation not yet accepted",
+      "error": null,
+      "cycles": null,
+      "failures": null,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    {
+      "file": "engineering-result-153d023a-3e61-47f5-877c-4fbf99415973.json",
+      "sha256": "597d6c40b522ee94e3436da533004b4ec0570d21206c6a9e1df77add376d5504",
+      "operation": "commission",
+      "status": "two native button-driven open/close cycles passed at the reviewed angle; persistence and ship clearance remain separate",
+      "error": null,
+      "cycles": 2,
+      "failures": null,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    {
+      "file": "settlement-result-640e194f-731a-4e75-8b7a-5668dc7e8493.json",
+      "sha256": "b2b3158314e152f07bf696f4746fd7f6630e265668641d06cd6693f32720900d",
+      "operation": "verify",
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "error": null,
+      "cycles": null,
+      "failures": 0,
+      "cleanup_required": null,
+      "temporary_tickets_remaining": null
+    }
+  ]
+}
