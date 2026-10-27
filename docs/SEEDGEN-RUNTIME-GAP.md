@@ -78,6 +78,13 @@ actual-root encoding on both sides; its body, registered terrain values and
 strict comparison remain unchanged. Candidate.33 still refused client terrain
 generation. A native method call is not being reported as fingerprint agreement.
 
+Candidate.34 selected the same existing transparent-root codec guard on both
+sides. At 12:48:21 UTC the actual client computed `4c3a3a7d33b6c9c6` in 50 ms;
+the server computed `de19e29860fac400` in 28 ms. Encoding now completes, but
+strict agreement still fails. The next diagnostic compares individual entries
+using the same native codecs and actual loaded registries. No worldgen value,
+hash normalization or relaxed comparison has been substituted for this result.
+
 ## One bounded shutdown trial
 
 The Distant Horizons background fallback was tested with

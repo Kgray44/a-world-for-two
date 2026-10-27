@@ -35,8 +35,8 @@ public class ControlBridge {
     private final EngineeringSupport engineeringSupport = new EngineeringSupport();
     private String operationOwner;
     private long operationGeneration;
-    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.33","0.6.19",this::acquire);
-    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.33","0.6.19",this::acquire);
+    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.34","0.6.20",this::acquire);
+    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.34","0.6.20",this::acquire);
     private final DragonTextureMirror dragonTextureMirror=new DragonTextureMirror();
 
     private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease {
