@@ -192,6 +192,24 @@ class ArtworkSafetyTests(Fixture):
 
 
 class CameraPresetTests(Fixture):
+    def test_nested_native_toml_edits_preserve_other_tables_and_create_missing_tables(self):
+        import tomllib
+        from control_room.presentation import toml_update
+        original = ('[client]\nname = "KG"\n'
+                    '\t[client.advanced.graphics.quality]\n'
+                    '\t\tlodChunkRenderDistanceRadius = 256 # native comment\n'
+                    '\t\totherQuality = 3\n'
+                    '[server]\nport = 25575\n')
+        changed = toml_update(original, 'client.advanced.graphics.quality', {'lodChunkRenderDistanceRadius':128})
+        parsed = tomllib.loads(changed.decode())
+        self.assertEqual(parsed['client']['advanced']['graphics']['quality'],
+                         {'lodChunkRenderDistanceRadius':128, 'otherQuality':3})
+        self.assertEqual(parsed['server']['port'], 25575)
+        self.assertEqual(parsed['client']['name'], 'KG')
+        self.assertIn('# native comment', changed.decode())
+        added = tomllib.loads(toml_update(original, 'client.advanced.worker', {'threads':2}).decode())
+        self.assertEqual(added['client']['advanced']['worker']['threads'], 2)
+
     def test_local_presets_preserve_unrelated_fields_restore_exact_bytes_and_refuse_stale_edits(self):
         from control_room.presentation import apply, revision
         instance = self.layout.home / 'instances/test-client'

@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-27T00:08:02.942595Z",
+  "upstream": "SeedGen 0.9.1, exact unchanged author JAR",
+  "exception": "Direct density registry value is HolderHolder; vanilla direct dispatch codec intentionally refuses this transparent reference.",
+  "change": "Owned bridge 0.6.3 guards Minecraft DensityFunction's existing direct codec. Transparent root references encode their underlying value only on the SeedSharing.computePrint call stack. The unchanged SeedSharing class is not transformed. Calculation, registries, fingerprint comparison and stand-down gates remain unchanged.",
+  "standalone_minecraft_codec_probe": "pass",
+  "probe_checks": [
+    "unwrapped value",
+    "one reference",
+    "two references",
+    "same computed density",
+    "excessive-reference refusal"
+  ],
+  "dedicated_server_native_probe": "pass on candidate.17 with actual modded registries",
+  "dedicated_server_fingerprint": "de19e29860fac400",
+  "failed_experiments_preserved": "Earlier direct SeedSharing redirects recomputed client-side method frames on a dedicated server and failed RuntimeDistCleaner. Their artifacts and receipts are retained.",
+  "boundary": "Native dedicated-server fingerprint now succeeds. Fresh client agreement, SeedGen activation, generated-terrain fidelity and MapHorizons-to-Xaero population remain unverified."
+}

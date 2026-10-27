@@ -14,3 +14,6 @@ threadRunTimeRatio = "0.5"
 limitIfServerUnhealthy = true
 generatorPlan = "SURFACE_THEN_CHUNKS"
 chunkGeneratorMode = "FEATURES"
+[client.advanced.graphics.quality]
+# Planned KG starting profile; the generated native default was 256.
+lodChunkRenderDistanceRadius = 128

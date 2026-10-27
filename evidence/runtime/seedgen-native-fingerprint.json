@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-27T00:08:02.942595Z",
+  "candidate": "0.1.0-candidate.17",
+  "bridge": "0.6.3",
+  "upstream": "Unmodified SeedGen 0.9.1",
+  "probe": "Actual original SeedSharing.computePrint invoked on the dedicated server with modded registries",
+  "status": "pass",
+  "boundary": "Client fingerprint agreement, active SeedGen fidelity and MapHorizons map population remain unverified."
+}

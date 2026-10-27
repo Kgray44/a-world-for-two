@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-26T23:00:46.455351+00:00",
+  "candidate": "0.1.0-candidate.12",
+  "client_modded_registry_load": "pass; 253 biomes, 7 world types, 131 mod packs, no vanilla fallback",
+  "client_fingerprint": "39421890d93f9c73",
+  "server_fingerprint": "unknown",
+  "server_error": "java.lang.UnsupportedOperationException: Calling .codec() on HolderHolder",
+  "result": "Client SeedGen safely stands down; normal DH server terrain download remains active.",
+  "fix_status": "Unresolved; exact author 0.9.1 remains newest eligible NeoForge 1.21.1 release. Do not skip mismatch checks."
+}

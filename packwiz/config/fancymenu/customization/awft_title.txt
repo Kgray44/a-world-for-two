@@ -50,17 +50,15 @@ element {
   fade_out = no_fading
 }
 
-element {
+vanilla_button {
   label = Join Our World
   hoverlabel = Join Our World
+  is_hidden = false
   navigatable = true
   backgroundnormal = [source:local]/config/fancymenu/assets/awft-button-primary.png
   backgroundhovered = [source:local]/config/fancymenu/assets/awft-button-primary-hover.png
-  button_element_executable_block_identifier = awft-join-action
-  [executable_action_instance:awft-connect][action_type:joinserver] = 127.0.0.1:25565
-  [executable_block:awft-join-action][type:generic] = [executables:awft-connect;]
-  element_type = custom_button
-  instance_identifier = awft-join
+  element_type = vanilla_button
+  instance_identifier = mc_titlescreen_multiplayer_button
   anchor_point = bottom-right
   x = -184
   y = -160
@@ -158,24 +156,6 @@ vanilla_button {
   y = -48
   width = 160
   height = 22
-  stay_on_screen = true
-  stretch_x = false
-  stretch_y = false
-  base_opacity = 1.0
-  appearance_delay = no_delay
-  fade_in_v2 = no_fading
-  fade_out = no_fading
-}
-
-vanilla_button {
-  is_hidden = true
-  element_type = vanilla_button
-  instance_identifier = mc_titlescreen_multiplayer_button
-  anchor_point = vanilla
-  x = 0
-  y = 0
-  width = 10
-  height = 10
   stay_on_screen = true
   stretch_x = false
   stretch_y = false

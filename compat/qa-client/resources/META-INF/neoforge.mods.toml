@@ -1,0 +1,22 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="awft_settlement_qa"
+version="0.1.1"
+displayName="AWFT Settlement QA (test only)"
+displayTest="IGNORE_ALL_VERSION"
+description="Owned, expiring, loopback-only native framebuffer capture for settlement visual review. Excluded from all release manifests."
+
+[[dependencies.awft_settlement_qa]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.262]"
+side="CLIENT"
+
+[[dependencies.awft_settlement_qa]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+side="CLIENT"

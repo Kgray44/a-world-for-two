@@ -3,6 +3,6 @@
   "minVersion": "0.8",
   "package": "worldfortwo.bridge.mixin",
   "compatibilityLevel": "JAVA_21",
-  "server": ["ChunkyLifecycleMixin", "SmallShipsConfigLifecycleMixin", "ChunkMapAccess", "DistanceManagerAccess"],
+  "server": ["ChunkyLifecycleMixin", "SmallShipsConfigLifecycleMixin", "ChunkMapAccess", "DistanceManagerAccess", "DensityFingerprintMixin", "ChunkCacheAccess"],
   "injectors": {"defaultRequire": 1}
 }

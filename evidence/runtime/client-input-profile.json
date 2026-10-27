@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-26T23:12:34.388868+00:00",
+  "scope": "Five-minute local client recording spanning world join and owner-confirmed responsive chat/search/table interaction. All Java sampled threads; not a GPU benchmark or measured keyboard latency.",
+  "duration_seconds": 300,
+  "recording_sha256": "87691440d46fa145ca7fe68ada70aac51a975c18ae58155b121f69a841c74239",
+  "recording_bytes": 27027174,
+  "gc": {
+    "pauses": 154,
+    "total_ms": 1411.272,
+    "median_ms": 7.465,
+    "maximum_ms": 55.38
+  },
+  "notable_sampled_methods": [
+    "DH VarintUtil.readVarint",
+    "DH FullDataSourceV2DTO decoding",
+    "DH ColumnBox mesh building"
+  ],
+  "allocation_sites": [
+    "StringConcatHelper.newString",
+    "DhApiTerrainDataPoint.create",
+    "MapHorizons DhSource.Column.of"
+  ],
+  "boundary": "Raw JFR remains private because JVM/environment events may contain sensitive information. A responsive check does not prove the earlier intermittent delay is permanently eliminated."
+}

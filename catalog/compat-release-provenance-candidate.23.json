@@ -1,0 +1,92 @@
+{
+  "format": "awft-compat-release-provenance:1",
+  "candidate": "0.1.0-candidate.23",
+  "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+  "status": "Source-frozen candidate23 artifacts prepared locally; publication and qualification pending",
+  "source_notice_bundle": {
+    "filename": "A-World-for-Two-compat-candidate.23-Notices-and-Sources.zip",
+    "size": 4880566,
+    "sha256": "fbf93050ee94ee4391b9496f93cb701cf085e59eeeda5407b88120be19f49fa6",
+    "files": 66,
+    "scope": "Pinned source archives, exact official source JARs, complete component licenses and source/relink instructions; original compatibility binaries remain unchanged"
+  },
+  "artifacts": [
+    {
+      "filename": "awft-control-bridge-0.6.9.jar",
+      "size": 95867,
+      "sha256": "79420b1a8d645ad8a041aecc7155eaca6a4fd60993e783cf4287e543b1e42b97",
+      "license": "MIT for project-authored component code and metadata",
+      "notice": "compat/control-bridge/resources/LICENSE-awft.txt",
+      "notice_in_jar": true,
+      "source": "compat/control-bridge",
+      "source_hashes": "All 23 source/resource files checked against the immutable 0.6.9 build receipt and included in the bundle",
+      "build_recipe_sha256": "e416e105c59b4a7b8ef45ac93eae856f011bdbd756f78b013a6ffd2c56d77cd3"
+    },
+    {
+      "filename": "awft-client-presentation-0.2.1.jar",
+      "size": 7762,
+      "sha256": "2614892ec05d63d8e2c51a4bf0b0424470cc1195815b6c0695130642ba51c42c",
+      "license": "MIT for project-authored component code and metadata",
+      "notice": "compat/client-presentation/LICENSE-awft.txt",
+      "scope_notice": "compat/client-presentation/NOTICE.md",
+      "notice_in_jar": false,
+      "source": "compat/client-presentation",
+      "source_hashes": "All 4 original source/resource files checked against their immutable build receipt; full license accompanies the unchanged JAR"
+    },
+    {
+      "filename": "advancedweather-0.1.2+awft.3.jar",
+      "size": 8116035,
+      "sha256": "40ffeb077e7c550de485d1d9c923874683811d52e6e9c7fafa614b0888e99f10",
+      "license": "Advanced Weather MIT; separately embedded Registrate MPL2, Veil/GLSL LGPL3, Flywheel/Ponder/Molang MIT",
+      "notices": "compat/advanced-weather/notices",
+      "source": "https://github.com/Antop90fr1/AdvancedWeather1.21.1/tree/50fe9990e03ac24638343703792797f8991b5266",
+      "repair_source": "compat/advanced-weather/src/net/antopfr/advancedweather/content/fluid/AWFluids.java",
+      "repair_recipe": "tools/weather_patch.py"
+    },
+    {
+      "filename": "maphorizons-1.1.0-awft.1.jar",
+      "size": 110502,
+      "sha256": "da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93",
+      "license": "MIT",
+      "notice_in_jar": "META-INF/LICENSE.MapHorizons",
+      "source": "https://github.com/VolcanicMG/MapHorizons/tree/6c80ad5be5fff2c373388dfd6ff433667edd7217",
+      "recipe": "tools/source_build.py and catalog/source-builds.json"
+    }
+  ],
+  "verification": {
+    "binary_hashes_match_exact_candidate": true,
+    "zip_crc_and_full_payload_byte_comparison": "pass",
+    "pinned_source_git_tree_comparison": "pass; only explicitly declared CRLF transformations accepted and recorded",
+    "source_code_executed": false,
+    "nested_library_archive_replacement": "pass with metadata marker only; no modified-library game runtime",
+    "accounts_worlds_native_private_evidence_in_bundle": false,
+    "git_clean_byte_comparison": {
+      "checked_files": 309,
+      "indexed_packwiz_members": 283,
+      "raw_git_clean_blob_mismatches": 0,
+      "concurrent_drift": 0,
+      "actual_git_tag_archive": "pending parent tag creation; no Git index/ref mutation performed here"
+    },
+    "public_source_and_live_Tectonic_config_identity": "Exact LF SHA9ca01c0e5f109c517d2ebc025d933ca30c7c9f5010019b67527b061ecb8869d5; line-ending normalization does not change terrain settings"
+  },
+  "boundaries": [
+    "No legal compliance certification, upstream build, modified-library gameplay test or binary reproducibility claim follows from this preparation.",
+    "Registrate's exact official +67 delomboked source JAR is supplied; 57/66 Java files match the included raw Git tree, while nine generated/Lombok files differ. Raw-tree binary reproduction remains unverified.",
+    "The full Advanced Weather repository archive was not mirrored because it includes a downloaded Create Aeronautics JAR and large documentation images. The author download, pinned source links and local repair code/recipe are documented.",
+    "The scoped project MIT notice does not relicense third-party code, artwork, fonts or the entire repository.",
+    "The matching immutable source tag, public source/binary downloads, fresh Prism import and multiplayer acceptance remain separate release gates."
+  ],
+  "lock_sha256": "2dd23419a665d8c7bcbda523719dccd2f741f90dc27fc6a49895a189138bc131",
+  "index_sha256": "bf48061ae5a66d6272d4d1e7ac876fd92dda7d7d65f0641c8377a1cf7b0c63b0",
+  "prism_export": {
+    "filename": "A-World-for-Two-0.1.0-candidate.23-Prism.zip",
+    "size": 6308426,
+    "sha256": "412c62ae0288fe0a9fde98f39b112baaf1960e8c7521d64bc152827ebbb73c8d",
+    "archive_entries": 87,
+    "configuration_files_matched_to_exact_index": 76,
+    "native_minecraft_server_list_schema": "pass; resource-pack consent PROMPT",
+    "fresh_native_Prism_import": "pending",
+    "public_updater_install": "pending",
+    "game_client_launch": "not run"
+  }
+}

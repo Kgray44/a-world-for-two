@@ -1,0 +1,356 @@
+{
+  "at": "2026-10-26T22:58:53.262425+00:00",
+  "pack_sha256": "950cabf95cb59e78c3fd0ff8919f3ee12362657a12a42f63997bbd4770d8cfcc",
+  "status": "completed; compare ticket sources and completed/ticking chunks, not holder count alone",
+  "phases": [
+    {
+      "phase": "startup without player or probe tickets",
+      "at": "2026-10-26T22:49:36.925956+00:00",
+      "tps": 19.99727317183029,
+      "mspt": 1.69889,
+      "server_rss": 3852992512,
+      "server_cpu_percent_host": 4.3875,
+      "host_memory_available": 8302579712,
+      "dimensions": {
+        "minecraft:overworld": {
+          "visible_holders": 841,
+          "full_chunks": 49,
+          "block_ticking": 25,
+          "entity_ticking": 9,
+          "holders_examined": 841,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 1,
+          "details": {
+            "sources": [
+              {
+                "type": "start",
+                "tickets": 1,
+                "examples": [
+                  {
+                    "level": 30,
+                    "description": "Ticket[start 30 (INSTANCE)] at 0 force ticks false",
+                    "chunk_x": 33,
+                    "chunk_z": 9
+                  }
+                ]
+              }
+            ],
+            "ticket_levels": {
+              "30": 1,
+              "31": 8,
+              "32": 16,
+              "33": 24,
+              "34": 32,
+              "35": 40,
+              "36": 48,
+              "37": 56,
+              "38": 64,
+              "39": 72,
+              "40": 80,
+              "41": 88,
+              "42": 96,
+              "43": 104,
+              "44": 112
+            },
+            "truncated": false,
+            "measurement_ms": 0.416,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        },
+        "minecraft:the_end": {
+          "visible_holders": 0,
+          "full_chunks": 0,
+          "block_ticking": 0,
+          "entity_ticking": 0,
+          "holders_examined": 0,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 0,
+          "details": {
+            "sources": [],
+            "ticket_levels": {},
+            "truncated": false,
+            "measurement_ms": 0.0046,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        },
+        "minecraft:the_nether": {
+          "visible_holders": 0,
+          "full_chunks": 0,
+          "block_ticking": 0,
+          "entity_ticking": 0,
+          "holders_examined": 0,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 0,
+          "details": {
+            "sources": [],
+            "ticket_levels": {},
+            "truncated": false,
+            "measurement_ms": 0.0021,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        }
+      },
+      "spawn_chunk_radius": 2
+    },
+    {
+      "phase": "controlled nine-chunk force-load region",
+      "at": "2026-10-26T22:50:36.960069+00:00",
+      "tps": 19.998710974173843,
+      "mspt": 2.2545574257425742,
+      "server_rss": 4224487424,
+      "server_cpu_percent_host": 4.0625,
+      "host_memory_available": 7394574336,
+      "dimensions": {
+        "minecraft:overworld": {
+          "visible_holders": 1682,
+          "full_chunks": 98,
+          "block_ticking": 50,
+          "entity_ticking": 18,
+          "holders_examined": 1682,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 9,
+          "ticket_positions": 11,
+          "details": {
+            "sources": [
+              {
+                "type": "forced",
+                "tickets": 9,
+                "examples": [
+                  {
+                    "level": 31,
+                    "description": "Ticket[forced 31 ([128, 128])] at 1789 force ticks false",
+                    "chunk_x": 128,
+                    "chunk_z": 128
+                  },
+                  {
+                    "level": 31,
+                    "description": "Ticket[forced 31 ([129, 130])] at 1789 force ticks false",
+                    "chunk_x": 129,
+                    "chunk_z": 130
+                  },
+                  {
+                    "level": 31,
+                    "description": "Ticket[forced 31 ([129, 129])] at 1789 force ticks false",
+                    "chunk_x": 129,
+                    "chunk_z": 129
+                  }
+                ]
+              },
+              {
+                "type": "start",
+                "tickets": 1,
+                "examples": [
+                  {
+                    "level": 30,
+                    "description": "Ticket[start 30 (INSTANCE)] at 0 force ticks false",
+                    "chunk_x": 33,
+                    "chunk_z": 9
+                  }
+                ]
+              },
+              {
+                "type": "unknown",
+                "tickets": 1,
+                "examples": [
+                  {
+                    "level": 33,
+                    "description": "Ticket[unknown 33 ([33, 10])] at 2395 force ticks false",
+                    "chunk_x": 33,
+                    "chunk_z": 10
+                  }
+                ]
+              }
+            ],
+            "ticket_levels": {
+              "30": 1,
+              "31": 17,
+              "32": 32,
+              "33": 48,
+              "34": 64,
+              "35": 80,
+              "36": 96,
+              "37": 112,
+              "38": 128,
+              "39": 144,
+              "40": 160,
+              "41": 176,
+              "42": 192,
+              "43": 208,
+              "44": 224
+            },
+            "truncated": false,
+            "measurement_ms": 0.926,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        },
+        "minecraft:the_end": {
+          "visible_holders": 0,
+          "full_chunks": 0,
+          "block_ticking": 0,
+          "entity_ticking": 0,
+          "holders_examined": 0,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 0,
+          "details": {
+            "sources": [],
+            "ticket_levels": {},
+            "truncated": false,
+            "measurement_ms": 0.0064,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        },
+        "minecraft:the_nether": {
+          "visible_holders": 0,
+          "full_chunks": 0,
+          "block_ticking": 0,
+          "entity_ticking": 0,
+          "holders_examined": 0,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 0,
+          "details": {
+            "sources": [],
+            "ticket_levels": {},
+            "truncated": false,
+            "measurement_ms": 0.0019,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        }
+      },
+      "spawn_chunk_radius": 2
+    },
+    {
+      "phase": "five minutes after controlled force-load removal",
+      "at": "2026-10-26T22:55:37.268459+00:00",
+      "tps": 20.003333228695436,
+      "mspt": 1.1990445544554456,
+      "server_rss": 4107882496,
+      "server_cpu_percent_host": 3.90625,
+      "host_memory_available": 1024413696,
+      "dimensions": {
+        "minecraft:overworld": {
+          "visible_holders": 841,
+          "full_chunks": 49,
+          "block_ticking": 25,
+          "entity_ticking": 9,
+          "holders_examined": 841,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 1,
+          "details": {
+            "sources": [
+              {
+                "type": "start",
+                "tickets": 1,
+                "examples": [
+                  {
+                    "level": 30,
+                    "description": "Ticket[start 30 (INSTANCE)] at 0 force ticks false",
+                    "chunk_x": 33,
+                    "chunk_z": 9
+                  }
+                ]
+              }
+            ],
+            "ticket_levels": {
+              "30": 1,
+              "31": 8,
+              "32": 16,
+              "33": 24,
+              "34": 32,
+              "35": 40,
+              "36": 48,
+              "37": 56,
+              "38": 64,
+              "39": 72,
+              "40": 80,
+              "41": 88,
+              "42": 96,
+              "43": 104,
+              "44": 112
+            },
+            "truncated": false,
+            "measurement_ms": 0.5732,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        },
+        "minecraft:the_end": {
+          "visible_holders": 0,
+          "full_chunks": 0,
+          "block_ticking": 0,
+          "entity_ticking": 0,
+          "holders_examined": 0,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 0,
+          "details": {
+            "sources": [],
+            "ticket_levels": {},
+            "truncated": false,
+            "measurement_ms": 0.0044,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        },
+        "minecraft:the_nether": {
+          "visible_holders": 0,
+          "full_chunks": 0,
+          "block_ticking": 0,
+          "entity_ticking": 0,
+          "holders_examined": 0,
+          "pending_unloads": 0,
+          "vanilla_forced_chunks": 0,
+          "ticket_positions": 0,
+          "details": {
+            "sources": [],
+            "ticket_levels": {},
+            "truncated": false,
+            "measurement_ms": 0.0023,
+            "mod_owners": {
+              "owners": [],
+              "truncated": false,
+              "unavailable": ""
+            }
+          }
+        }
+      },
+      "spawn_chunk_radius": 2
+    }
+  ],
+  "conclusion": "The controlled nine-chunk force-load region exactly adds another 841-holder dependency halo. Removal returns to clean spawn loading after five minutes; no persistent leak observed."
+}

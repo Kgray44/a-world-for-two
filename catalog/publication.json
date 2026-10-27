@@ -1,0 +1,12 @@
+{
+  "format": "awft-publication:1",
+  "stable": null,
+  "snapshots": [
+    {
+      "version": "0.1.0-candidate.23",
+      "git_tag": "awft-0.1.0-candidate.23",
+      "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+      "status": "prerelease"
+    }
+  ]
+}

@@ -55,13 +55,14 @@ def closed(instance):
 def toml_update(text, section, updates):
     """Preserve all unrelated native fields and comments."""
     tomllib.loads(text)
-    lines, result, active, seen = text.splitlines(True), [], False, set()
+    lines, result, active, found, seen = text.splitlines(True), [], False, False, set()
     for line in lines:
         header = re.match(r'\s*\[([^\[\]]+)\]\s*(?:#.*)?$', line.rstrip())
         if header:
             if active:
                 result.extend(f'{key} = {json.dumps(value)}\n' for key, value in updates.items() if key not in seen)
             active = header[1] == section
+            found = found or active
         matched = re.match(r'(\s*)([A-Za-z][A-Za-z0-9_]*)\s*=\s*[^#\r\n]+', line) if active else None
         if matched and matched[2] in updates:
             key = matched[2]
@@ -72,11 +73,13 @@ def toml_update(text, section, updates):
         result.append(line if line.endswith('\n') else line + '\n')
     if active:
         result.extend(f'{key} = {json.dumps(value)}\n' for key, value in updates.items() if key not in seen)
-    elif section not in tomllib.loads(text):
+    elif not found:
         result.append('\n[' + section + ']\n')
         result.extend(f'{key} = {json.dumps(value)}\n' for key, value in updates.items())
     output = ''.join(result)
-    parsed = tomllib.loads(output)[section]
+    parsed = tomllib.loads(output)
+    for component in section.split('.'):
+        parsed = parsed[component]
     if any(parsed.get(key) != value for key, value in updates.items()):
         raise UserError('The native camera configuration no longer matches the pinned preset schema')
     return output.encode()

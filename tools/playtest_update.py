@@ -88,6 +88,12 @@ def update(home, ident):
         if path.stat().st_size != item['size'] or any(digest(path, alg) != value for alg, value in item['hashes'].items()):
             raise UserError('Candidate cache differs from its pin: ' + item['filename'])
         expected[item['filename']] = item
+    # Validate generated native edits before any managed artifact is changed.
+    camera = mc / 'config/cinematic-client.toml'
+    camera_raw = toml_update(camera.read_text(), 'multiplayer', {'clientOnlyMode':False,'serverHintSeen':True})
+    dh = mc / 'config/DistantHorizons.toml'
+    radius = 128 if client.get('player') == 'KG' else 64
+    dh_raw = toml_update(dh.read_text(), 'client.advanced.graphics.quality', {'lodChunkRenderDistanceRadius':radius})
     config_bytes = tree_size(REPO / 'packwiz/config')
     backup_bytes = tree_size(layout.world) + tree_size(layout.server / 'config') + 4 * 1024 * 1024
     artifact_bytes = sum(m['size'] for m in expected.values())
@@ -180,8 +186,8 @@ def update(home, ident):
                 target = contained(root, relative)
                 if managed or not target.exists():
                     replace(target, source.read_bytes(), label + '/' + relative)
-        camera = mc / 'config/cinematic-client.toml'
-        replace(camera, toml_update(camera.read_text(), 'multiplayer', {'clientOnlyMode':False,'serverHintSeen':True}), 'client/config/cinematic-client.toml')
+        replace(camera, camera_raw, 'client/config/cinematic-client.toml')
+        replace(dh, dh_raw, 'client/config/DistantHorizons.toml')
         old_client_pack = mc / 'packwiz'
         os.replace(old_client_pack, history / 'previous-client-packwiz')
         shutil.copytree(release, old_client_pack)

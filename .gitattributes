@@ -8,3 +8,5 @@
 *.html text eol=lf
 *.ps1 text eol=crlf
 *.cmd text eol=crlf
+packwiz/** text=auto eol=lf
+compat/control-bridge/** text=auto eol=lf

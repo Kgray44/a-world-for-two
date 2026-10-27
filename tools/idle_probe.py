@@ -60,16 +60,21 @@ def experiment(app):
         print('Idle probe receipt: '+str(target),flush=True)
 
 
-def run(parent,ident):
+def run(parent,ident,serve_only=False):
     layout,_,_,_=owned_pair(Layout(parent),ident)
     app=Application(layout.home)
     app.metrics.clients=ClientMetrics(Layout(parent))
     http=HTTPServer(('127.0.0.1',8766),make_handler(app))
     try:
         app.start()
-        threading.Thread(target=experiment,args=(app,),daemon=True).start()
+        if serve_only:
+            print('Start job: '+str(app.post('/api/server/start', {})),flush=True)
+        else:
+            threading.Thread(target=experiment,args=(app,),daemon=True).start()
         print('Updated candidate dashboard: http://127.0.0.1:8766/',flush=True)
         http.serve_forever(poll_interval=.5)
+    except KeyboardInterrupt:
+        pass
     finally:
         http.server_close()
         app.close()
@@ -79,5 +84,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--home',type=Path,default=Path(r'D:\A World for Two'))
     parser.add_argument('--id',required=True)
+    parser.add_argument('--serve-only',action='store_true',help='Start the owned pair normally without repeating the completed ticket experiment')
     args=parser.parse_args()
-    run(args.home,args.id)
+    run(args.home,args.id,args.serve_only)

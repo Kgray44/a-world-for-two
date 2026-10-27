@@ -4,7 +4,7 @@
   "layout": "FancyMenu v3 native format",
   "runtime_visual_validation": "pending",
   "native_actions": [
-    "joinserver",
+    "vanilla multiplayer server list",
     "vanilla singleplayer",
     "vanilla options",
     "vanilla NeoForge mods",

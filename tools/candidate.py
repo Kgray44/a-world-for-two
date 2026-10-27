@@ -7,13 +7,66 @@ import time
 from pathlib import Path
 
 from control_room.common import Layout, REPO, digest, read_json, utcnow, write_json
-from control_room.pack import generate_pack
+from control_room.pack import generate_pack, validate_pack
 from control_room.storage import Storage
-from .build_bridge import build as build_bridge
+from .build_bridge import build as build_bridge, BRIDGE_VERSION
 from .build_presentation import build as build_presentation
 from .weather_patch import build as build_weather, PATCH_VERSION
 from .seedgen_policy import apply as seedgen_policy
 
+VERSION = '0.1.0-candidate.23'
+
+
+def prepare_bridge(home):
+    """Preserve every existing gameplay pin while rebuilding only the owned bridge."""
+    layout=Layout(home);storage=Storage(layout)
+    storage.reserve(32*1024**2)
+    storage.reserve(4*1024**2,REPO)
+    previous=read_json(REPO/'catalog/lock.json')
+    if previous['version']==VERSION or validate_pack(REPO/'packwiz',previous):
+        raise ValueError('A valid previous immutable candidate is required')
+    directory=layout.staging/('candidate-bridge-build-'+str(time.time_ns()));directory.mkdir()
+    bridge=build_bridge(layout.home,directory/('awft-control-bridge-'+BRIDGE_VERSION+'.jar'),storage)
+    cached=layout.caches/'mods'/bridge['filename']
+    if cached.exists() and digest(cached)!=bridge['hashes']['sha256']:
+        raise ValueError('An immutable bridge filename already contains different bytes')
+    if not cached.exists():shutil.copy2(directory/bridge['filename'],cached)
+    # Git publishes LF text. The installed Tectonic config already has these
+    # exact LF bytes; preserve all settings while making the source hash portable.
+    tectonic=REPO/'packwiz/config/tectonic.json'
+    raw=tectonic.read_bytes();normalized=raw.replace(b'\r\n',b'\n')
+    normalizations=[]
+    if raw!=normalized:
+        if digest(tectonic)!='3b30742af26922774c5efe8ad6f85e7f4eb8e61ee4261533c2d060e1d1d9a5d0':
+            raise ValueError('Unreviewed Tectonic bytes cannot change through a bridge-only candidate')
+        original=directory/'tectonic-before-line-ending-normalization.json'
+        original.write_bytes(raw)
+        tectonic.write_bytes(normalized)
+        if digest(tectonic)!='9ca01c0e5f109c517d2ebc025d933ca30c7c9f5010019b67527b061ecb8869d5':
+            raise ValueError('Tectonic normalization differs from its reviewed LF bytes')
+        normalizations.append({'file':'config/tectonic.json','before_sha256':digest(original),
+            'after_sha256':digest(tectonic),'change':'CRLF to LF only; all non-line-ending bytes identical'})
+    selection=read_json(REPO/'catalog/selection.json')
+    selection.update(version=VERSION,artifacts=[bridge if m['slug']=='awft-control-bridge' else m for m in selection['artifacts']])
+    items=[bridge if m['slug']=='awft-control-bridge' else m for m in previous['mods']]
+    if sum(m['slug']=='awft-control-bridge' for m in items)!=1:
+        raise ValueError('Exactly one owned bridge must already exist')
+    lock=previous|{'version':VERSION,'generated':utcnow(),'mods':items,
+        'validation':'Gameplay pins preserved; owned bridge native restart and cycle checks pending'}
+    history=REPO/'evidence/history'/('lock-'+str(time.time_ns())+'.json')
+    write_json(history,previous)
+    write_json(REPO/'catalog/selection.json',selection)
+    write_json(REPO/'catalog/lock.json',lock)
+    result={'version':VERSION,'entries':len(items),'mods':sum(m['kind']=='mod' for m in items),
+        'enabled_mods':sum(m['kind']=='mod' and not(m.get('optional') and not m.get('default',True)) for m in items),
+        'pack_sha256':generate_pack(REPO/'packwiz',lock),'build_directory':str(directory),
+        'previous_lock_sha256':digest(history),
+        'owned_bridge':bridge,'preserved_gameplay_pins':True,
+        'byte_only_config_normalizations':normalizations,
+        'source_hashes':{p.relative_to(REPO).as_posix():digest(p) for p in (REPO/'compat/control-bridge').rglob('*') if p.is_file()}}
+    write_json(directory/'build.json',result)
+    print(result)
+    return result
 
 def prepare(home):
     layout = Layout(home)
@@ -36,7 +89,7 @@ def prepare(home):
     patched['url'] = 'https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/' + artifact.name
     patched['upstream_artifact'] = base
     patched['repair'] = provenance
-    bridge = build_bridge(layout.home, directory / 'awft-control-bridge-0.5.0.jar', storage)
+    bridge = build_bridge(layout.home, directory / ('awft-control-bridge-'+BRIDGE_VERSION+'.jar'), storage)
     presentation = build_presentation(layout.home, directory / 'awft-client-presentation-0.2.1.jar', storage)
     gadget_file = layout.caches / 'mods/buildinggadgets2-21.1.1.jar'
     gadgets = {'project_id':'curseforge:298187', 'slug':'building-gadgets-2', 'name':'Building Gadgets 2',
@@ -62,7 +115,7 @@ def prepare(home):
     for m in items:
         if m['slug'] == 'yacl':
             m['side'] = 'both'
-    version = '0.1.0-candidate.12'
+    version = VERSION
     existing_projects = {m['project'] for m in selection['mods']}
     for choice in research['choices'] + shaders['choices']:
         if choice['project'] not in existing_projects:
@@ -88,4 +141,6 @@ def prepare(home):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--home',type=Path,default=Path(r'D:\A World for Two'))
-    prepare(parser.parse_args().home)
+    parser.add_argument('--bridge-only',action='store_true')
+    args=parser.parse_args()
+    (prepare_bridge if args.bridge_only else prepare)(args.home)

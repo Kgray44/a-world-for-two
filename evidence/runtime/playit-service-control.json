@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-26T22:48:44.298304+00:00",
+  "version": "1.0.10",
+  "stop_confirmed": true,
+  "restart_confirmed": true,
+  "account_link_retained": true,
+  "tunnel_count_retained": true,
+  "active_connections_before": 0,
+  "boundary": "Native local service proof; public address, private linkage and raw logs excluded. Remote Minecraft join remains separate."
+}

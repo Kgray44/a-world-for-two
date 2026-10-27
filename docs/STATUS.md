@@ -1,49 +1,162 @@
 # Build and acceptance status
 
-2026-10-26 snapshot, candidate.12. Exact pins and hashes: `catalog/lock.json`.
+Candidate **0.1.0-candidate.23**, 2026-10-27 UTC checkpoint. The permanent settlement
+expansions are installed and have native block/inventory verification receipts.
+Functional commissioning, graphical refinement and release qualification continue.
 
-## Observed
+## Current build
 
-- 197 enabled mod JARs, eight shader packs and one resource pack. Client and server
-  subsets differ by side; the overall count is not the dedicated-server JAR count.
-- 53 local Python tests and four JavaScript session tests pass; Packwiz integrity passes.
-- One licensed player joined candidate.9 and confirmed the intro returned control
-  and the furnace interaction scene worked.
-- Gameplay commonly measured ~20 TPS, 7â€“14 ms/tick and focused 59â€“60 FPS. Some samples
-  had under 1 GiB system RAM free. This is one laptop/player, not remote two-player acceptance.
-- A `/locate biome` search took ~23.3 seconds. Minecraft typing/item-search delays
-  and slow terrain arrival during fast travel remain under investigation.
-- Clean post-disconnect idle: 841 Overworld holders, 49 full chunks, 25 block-ticking,
-  nine entity-ticking, zero forced chunks and one spawn ticket; Nether/End zero.
-  About 20 TPS / 1.15 ms per tick. Holder counts are not fully simulated chunk counts.
-- Native Playit 1.0.10 service stop/start passed with the account and tunnel retained.
-- Candidate.12 owner confirmed responsive chat/search and a working newly placed
-  vanilla crafting-table animation. The controlled nine-chunk ticket experiment
-  reproduced 1,682 holders exactly and returned to 841 five minutes after removal.
+Minecraft 1.21.1, NeoForge 21.1.262, Java 21; bridge **0.6.9**. There are **197 enabled
+top-level mod JARs**, **eight shader packs** and **one resource pack**. The lock has
+207 file records, including the optional Essential client fallback disabled by
+default. The compatibility inventory retains all **223 requested candidates**.
 
-## Updated candidate repairs
+Pack SHA-256:
+`9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11`.
+Exact component pins and sides are in [the lock](../catalog/lock.json).
 
-SeedGen's earlier vanilla fallback followed missing client worldgen codecs/mods.
-Nine exact worldgen mods now install on both sides. Candidate.12 successfully reads
-253 biomes and fingerprints the client's modded data. A second server-side failure,
-`Calling .codec() on HolderHolder`, prevents a matching server fingerprint. SeedGen
-therefore stands down on the client and DH downloads terrain. That failure remains unresolved.
-Visual Workbench converted vanilla tables into its own block, preventing Cinematic
-Interactions' vanilla match. A native tag now preserves new vanilla tables, and the
-owner verified the new table animation; existing tables/inventories are not replaced. The generic CI server reminder is marked seen
-while full client/server mode stays selected.
+The latest complete local check passed **119 Python tests**, **four JavaScript
+session tests**, JavaScript syntax and Packwiz integrity for 207 entries. These
+source checks are separate from CI, graphics, gameplay and remote acceptance.
 
-Atlas surface landing now searches real terrain height within one chunk. SQLite
-history commits before checkpointing and closes handles. Storage scans run in the background.
+The official save remains the existing permanent world. It was not regenerated or
+replaced by a test save. Tectonic uses vertical scale 1.4 and elevation boost 0.1
+within the existing −64..319 build range. Candidate.23 normalizes Tectonic file
+line endings to the existing runtime bytes; its generation settings are unchanged.
+Verified backups, unique saves and failed receipts remain preserved.
 
-## Remaining
+## What is actually built
 
-Native repaired SeedGen/table/teleport acceptance; taller mountains/deeper valleys
-within -64..319 in disposable terrain comparisons; chunk-generation and input-stall
-profiling; shader/weather/Create/Sable rendering; transport/logistics multiplayer,
-restart and chunk crossings; worldgen, structures, loot and traps; claims, pets and
-giant trees; remote two-player sync; restored-world restart; fresh Prism import and
-public updates. Advanced pirate/physics candidates remain isolated pending tests.
+| Area | Planned placements | Native result |
+| --- | ---: | --- |
+| Original plaza, cottage, gardens, barn, tree and harbor core | 96,019 | Earlier block/state/inventory verification passed |
+| Lanternwater pirate quarter | 104,341 | Earlier block/state/inventory verification passed |
+| River drawbridge structure | 12,317 | Physical verification passed; control cycles pending |
+| South-bank Bramble Steps and Willow Crown | 139,635 | Placed; 19 furnished buildings, 21 landmarks; verification passed |
+| Expanded Rosewater Castle | 134,821 | Placed; 40 named rooms; verification passed |
+| Offshore Rosewater Resolute | 23,735 | Placed; verification passed |
+| Docked Amberwake | 17,323 | Placed; verification passed |
+| Docked Nightingale's Debt | 13,281 | Placed; verification passed |
+| Docked Sea Lavender | 12,476 | Placed; verification passed |
+| Harbor approaches, two small cutters and service boats | 4,148 | Placed; block/inventory verification passed; four native boat-placement commands completed |
 
-The permanent world has not been replaced or promoted. Staging cleanup waits for
-acceptance; unique worlds and failed receipts remain preserved.
+The newer expansion checks ran on candidate.20 with zero reported differences.
+Earlier core and port receipts are retained. Castle masonry and connecting public
+paths have explicit reviewed adaptations; preserved inventories are not reset.
+Counts include clearance air and overlapping deltas, so they are not a count of
+unique solid blocks or an artistic-quality score. Exact plan hashes, timings and
+sanitized receipts are in [the construction record](../evidence/runtime/permanent-settlement-construction.json).
+
+The south-bank source plan checks 28 connected routes and 2,353 walking columns.
+The castle source checks 50 recorded routes. Ship plans check named-room corridor
+reachability, hull sealing and surveyed depth. These are geometry checks, followed
+by actual block verification; real walking, native collision shapes, fluid behavior
+and mod interactions still need review.
+
+The four large ships are distinct original structural builds with furnished
+belowdecks: the flagship has partly unfurled drying sails, Amberwake and
+Nightingale's Debt have furled sails, and Sea Lavender has loosened drying canvas.
+They are not assembled giant physics ships. The isolated tender hoist still needs
+glue/motion, safe boat retention and restart commissioning. Actual tender boarding,
+gangway walking and wet-hull checks remain pending. See [harbor design](GRAND-HARBOR-SHIPS-DESIGN.md),
+[castle design](ROSEWATER-CASTLE-DESIGN.md) and [south-bank design](SOUTH-BANK-DESIGN.md).
+
+The drawbridge's real water wheels measured 8 RPM, with 2 RPM at both sequencers
+and no overstress. This establishes power, not successful opening and closing.
+Button/radio signaling, leaf direction, clearance, repeated cycles and persistence
+remain under commissioning. Failed attempts remain available for diagnosis.
+
+The candidate.22 restart recovery attempt stopped before sending an input because
+the saved bearings had no live contraption attachment. Its failed receipt is
+preserved, with zero temporary tickets remaining. Both actual contraption entities
+and their 523/508-block structures were present in the verified pre-restart backup.
+
+Candidate.23 uses bridge 0.6.9 and opposed 55° targets. Before an input, it requires
+native entity loading and ticking, completed kinetic initialization, actual live
+controller attachment, nonzero finite input RPM and no overstress. Failed ticket
+cleanup retains the exact handles and blocks further admission until an explicit
+cleanup succeeds. **48 regression checks passed against the actual built JAR's
+phase, power, stress, simulation and attachment predicates.** Native reattachment,
+90° recovery, 55° cycles, button/radio operation, clearance and persistence remain
+pending; the Java checks do not establish those Minecraft results.
+
+Construction is budgeted, but a single engine action can exceed the soft work
+slice: south-bank placement recorded a 4,155 ms maximum slice while loading/placing.
+This is a construction observation, not a steady-state MSPT benchmark. Expanded
+settlement idle and nearby-player performance still need measurement.
+
+## Cinematics and visual review
+
+Seven new settlement scenes passed the pinned Lumiera JSON parser and native NBT
+roundtrip probe. The prepared first-join scene is 24 seconds around the actual
+core; castle, port and four ships have separate local tours. The scene ZIP is now
+installed in the official save's datapacks directory. **Activation awaits the final
+startup registry check for all seven scenes.** Delivery, real client rendering and
+skip/return behavior for these scenes remain pending.
+
+The refreshed geometry manifest binds all ten verified construction sources,
+including the final 4,148-position harbor access and placed flagship. Its ZIP is
+byte-identical to the data checked by the exact Lumiera parser/NBT probe at
+02:03:40 UTC, so that format evidence remains applicable. No new JVM probe or
+game rendering is claimed by the geometry-provenance correction.
+
+A core camera packet does not prove that the distant castle and offshore ships
+are present on the client's screen. Full castle-to-offshore first-join coverage
+needs a verified terrain-delivery solution and actual rendering review. Distant
+Horizons/SeedGen LODs are not assumed to contain newly built structures. See the
+[cinematic coverage contract](SETTLEMENT-CINEMATIC.md).
+
+The owner is using another game and Minecraft is closed. Intended-shader street,
+interior, harbor, sunset and night screenshots and a complete visual refinement
+pass are pending. Block counts do not establish cinematic beauty.
+
+The exact bridge 0.6.7 JAR passed a separate headless Windows regression: an ordinary
+reader denied mutable status replacement, progress returned an AccessDenied warning,
+the old view stayed intact, and an immutable terminal JSON plus SHA sidecar was
+published and verified. That proves file-publication resilience, not a Minecraft
+mechanism or multiplayer pass.
+
+## Earlier observed gameplay and remaining integration limits
+
+- Earlier licensed one-player tests confirmed the intro returned control and the
+  furnace scene worked. The owner confirmed candidate.12's newly placed vanilla
+  crafting table animated with responsive chat/search. These observations do not
+  qualify every new scene, existing converted workstation or current candidate.
+- Earlier gameplay commonly measured about 20 TPS, 7–14 ms/tick and focused
+  59–60 FPS. Fast-travel terrain arrival remained slow; some samples had under
+  1 GiB free system RAM. No new full-settlement performance improvement is claimed.
+- The idle investigation reproduced 1,682 chunk holders with nine deliberately
+  forced chunks, then returned to 841 after removal and five minutes idle. Baseline
+  was 49 full, 25 block-ticking, nine entity-ticking, zero forced and one spawn
+  ticket. Holders are not the fully simulated count; no persistent leak was proved.
+- SeedGen's dedicated-server fingerprint passed with actual modded registries on
+  candidate.17. Fresh client agreement, active generation fidelity and SeedGen
+  terrain appearing on Xaero through MapHorizons remain unverified.
+- Playit service stop/start retained the existing account and tunnel. Control Room
+  provides player permissions, whitelist, coordinates, Atlas, background storage
+  scans and session-token recovery. Remote two-player acceptance remains separate.
+- Eight shaders are pinned, including Kappa and Bliss. Chocapic is deferred at the
+  owner's request. Advanced pirate/physics experiments remain isolated.
+
+## Distribution and remaining acceptance
+
+The candidate.23 **Prism** starter is staged: **6,308,426 bytes**, SHA-256
+`412c62ae0288fe0a9fde98f39b112baaf1960e8c7521d64bc152827ebbb73c8d`.
+It configures a 6 GiB client heap and opens the normal multiplayer list from
+**Join Our World**, with separate public and KG-local entries. Packaging and native
+server-list, archive integrity, bootstrap chain and original artwork identity checks
+passed for this exact export. Public artifact/Packwiz publication, a clean native
+Prism import through pre-launch and current client startup remain pending.
+See [the release process](RELEASING.md).
+
+Finish drawbridge/hoist and other transport/logistics commissioning, current-world
+restart and restore checks, complete mod-feature coverage, remote multiplayer,
+shader review, terrain-arrival measurements, cinematic activation and full visual
+refinement. Publish and verify the exact GitHub source, Pages manifests, authorized
+author downloads and release assets before calling the starter a one-download
+finished release.
+
+Cleanup remains conditional on a working, accepted build. Useful recovery snapshots,
+unique worlds and failed receipts stay preserved. Local writers reserve 30 GiB
+separately on C: and D:. This is a monitoring instruction, not an operating-system
+quota; external applications and already-running writers are outside its coverage.

@@ -265,10 +265,16 @@ class Server:
                     r"gamerule (keepInventory|doDaylightCycle|doWeatherCycle|mobGriefing|doFireTick|doMobSpawning) (true|false)",
                     r"(whitelist (add|remove)|op|deop|kick) [A-Za-z0-9_]{1,16}",
                     r"spark (tps|healthreport|gcmonitor|profiler (start --timeout (30|60|120)|stop))",
-                    r"chunky (pause|cancel|progress)"]
+                    r"chunky (pause|cancel|progress)",
+                    r"awftbuild (registry|fingerprint|status|cancel)",
+                    r"awftbuild (noise|survey) -?\d{1,8} -?\d{1,8} \d{1,4} \d{1,3}",
+                    r"awftbuild (place|verify|map) [a-f0-9]{64}"]
+        patterns.append(r"data get block -?\d{1,8} -?\d{1,3} -?\d{1,8}(?: [A-Za-z0-9_.]{1,64})?")
+        patterns += [r"awftengine (status|cancel)", r"awftengine (setup|commission|close) [a-f0-9]{64}",
+                     r"awftengine inspect -?\d{1,8} -?\d{1,3} -?\d{1,8}"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
-        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel)", command)
+        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|cancel)|awftengine (setup|commission|close|cancel))", command)
         if dangerous and not confirmed:
             raise UserError("Confirm this player or world setting change first")
         self._write(command)

@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="awft_control_bridge"
-version="0.5.0"
+version="0.6.9"
 displayName="A World for Two: Control Bridge"
 authors="A World for Two"
 description="Measured local tick/JVM/world telemetry, project sleeping defaults, and the exact DH/Chunky startup lifecycle correction."
@@ -23,4 +23,10 @@ side="SERVER"
 modId="minecraft"
 type="required"
 versionRange="[1.21.1]"
+side="SERVER"
+
+[[dependencies.awft_control_bridge]]
+modId="seedrenderer"
+type="optional"
+versionRange="[0.9.1]"
 side="SERVER"

@@ -1,0 +1,265 @@
+{
+  "at": "2026-10-27T02:13:20.963875+00:00",
+  "candidate": "0.1.0-candidate.20",
+  "current_source_candidate": "0.1.0-candidate.21",
+  "current_source_pack_sha256": "53c57a507f7a6b7a4d16376214d72f1eb49fa8cac72c904fa3db96932f16622b",
+  "scope": "Construction checks below are actual earlier candidate.18 and candidate.20 native operations. This source checkpoint does not establish candidate.21 control-cycle, gameplay or final creative acceptance.",
+  "world": "Existing official persistent world; no regeneration or copied disposable save",
+  "backups": "Verified complete pre-expansion backups and all failed native receipts retained privately",
+  "previous_sanitized_checkpoint_sha256": "b43021fd15ffc743d8375cd40a8f4710b3017839c91fd3deda8fe5efa5822786",
+  "checks": {
+    "core": {
+      "operation": "verify",
+      "started": "2026-10-27T00:22:28.061839100Z",
+      "finished": "2026-10-27T00:22:53.047766700Z",
+      "plan_sha256": "45e88a165ed60ce438ec5d87094ed476faeebdaa68693ae6d1835a11eeea6aeb",
+      "blocks": 96019,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 1.2149,
+      "candidate": "0.1.0-candidate.18",
+      "native_receipt_sha256": "5e99b5efd3b746ab192960665b37ea8a572b2046b6f954081367c2c4a0b8950b",
+      "scope": "Earlier native block/state/inventory result retained; later reviewed masonry/path deltas have separate checks"
+    },
+    "pirate_quarter": {
+      "operation": "verify",
+      "started": "2026-10-27T00:36:45.672720500Z",
+      "finished": "2026-10-27T00:37:12.845308900Z",
+      "plan_sha256": "3bcc8f6bdfaf4d4ff44805e9fc5e5dee1b5b8b07d50916dba04af20a67ba72ba",
+      "blocks": 104341,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 4.0633,
+      "candidate": "0.1.0-candidate.18",
+      "native_receipt_sha256": "4e05b1d22107d1f2a492ce513490c4e4c2c28a2b3fac8d33c7cbb4cf78456cc5",
+      "scope": "Earlier native block/state/inventory result retained; later reviewed masonry/path deltas have separate checks"
+    },
+    "drawbridge_structure": {
+      "operation": "verify",
+      "started": "2026-10-27T00:59:15.746257700Z",
+      "finished": "2026-10-27T00:59:18.941876800Z",
+      "plan_sha256": "cc2bd89a14d86fc1de2236e5a4f92ca523d911bc128fcf96f91c1e6101fb8b69",
+      "blocks": 12317,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 0.8488,
+      "candidate": "0.1.0-candidate.18",
+      "native_receipt_sha256": "15bd31df57062366a39ddfb29c019fd82d3e7f1d89f86d01f403aa9bb38db960",
+      "scope": "Earlier native block/state/inventory result retained; later reviewed masonry/path deltas have separate checks"
+    },
+    "south_bank": {
+      "operation": "verify",
+      "started": "2026-10-27T01:37:06.485631200Z",
+      "finished": "2026-10-27T01:37:44.567315Z",
+      "plan_sha256": "08b57f7489876add7477597a09d12315b8dbfbe2b8edf87eefee5bc87a7e4371",
+      "blocks": 139635,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 6.3487,
+      "candidate": "0.1.0-candidate.20",
+      "placement": {
+        "status": "native actions complete",
+        "started": "2026-10-27T01:35:11.838513100Z",
+        "finished": "2026-10-27T01:36:02.534414300Z",
+        "failures": 0,
+        "max_work_ms": 4155.384,
+        "native_receipt_sha256": "cbd61b0265c1d865b18d8fee88adef67900f88f5e8ba3e28b48445d9cb5f5215"
+      },
+      "native_receipt_sha256": "7e0b7138cc5ad91061359dfa81c01685f1c2fe9d30e4cbfe3c9034ba8e5c1d74",
+      "scope": "Actual permanent-world block/state and supplied-inventory verification only; not client traversal, visual polish or functional commissioning",
+      "design_summary": {
+        "furnished_buildings": 19,
+        "landmarks": 21,
+        "recorded_routes": 28,
+        "walking_columns": 2353,
+        "source_plan_grade_and_headroom": "checked; not a real client walkthrough"
+      }
+    },
+    "rosewater_castle": {
+      "operation": "verify",
+      "started": "2026-10-27T01:40:41.679491400Z",
+      "finished": "2026-10-27T01:41:16.710694100Z",
+      "plan_sha256": "67f1bd76c75e2c66e4dd6586bb1546a52f20b3d39b00bb37227c00b0a8d1f8d5",
+      "blocks": 134821,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 4.2653,
+      "candidate": "0.1.0-candidate.20",
+      "placement": {
+        "status": "native actions complete",
+        "started": "2026-10-27T01:40:01.995565900Z",
+        "finished": "2026-10-27T01:40:39.814270500Z",
+        "failures": 0,
+        "max_work_ms": 82.6145,
+        "native_receipt_sha256": "86c86a2612dcd9bb98805d92ed761abf664df2c85754793d1995b61a002a70df"
+      },
+      "native_receipt_sha256": "3cc51f28deb3aacf8105a09b41ed04319e038c4ca9805731b0db3db3ec49cd9b",
+      "scope": "Actual permanent-world block/state and supplied-inventory verification only; not client traversal, visual polish or functional commissioning",
+      "design_summary": {
+        "named_rooms": 40,
+        "recorded_routes": 50,
+        "source_plan_route_clearance": "checked; native collision shapes and real walkthrough remain unverified"
+      }
+    },
+    "rosewater_resolute": {
+      "operation": "verify",
+      "started": "2026-10-27T01:42:05.268702200Z",
+      "finished": "2026-10-27T01:42:12.656993700Z",
+      "plan_sha256": "c612729b69ef8d3a71faf1f56996b6ab6cd57c68adbe8fbb7c0cfbeb8e5fbc84",
+      "blocks": 23735,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 4.0111,
+      "candidate": "0.1.0-candidate.20",
+      "placement": {
+        "status": "native actions complete",
+        "started": "2026-10-27T01:41:57.068162600Z",
+        "finished": "2026-10-27T01:42:04.060394Z",
+        "failures": 0,
+        "max_work_ms": 51.2967,
+        "native_receipt_sha256": "4aa618dc4d7e523b8556206f1e2d9ad085bb1c3728c0d3df0ba0917f95b85682"
+      },
+      "native_receipt_sha256": "1424daa79b25a6d9aef7d206a744b26ad67aad3b293362e9d7bd11501927d8d4",
+      "scope": "Actual permanent-world block/state and supplied-inventory verification only; not client traversal, visual polish or functional commissioning"
+    },
+    "amberwake": {
+      "operation": "verify",
+      "started": "2026-10-27T01:42:32.272032800Z",
+      "finished": "2026-10-27T01:42:37.057964900Z",
+      "plan_sha256": "f3fdaea349ea101e0e1868d4522505e2302c0971e439de5279e0f58f7a0ef115",
+      "blocks": 17323,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 4.1943,
+      "candidate": "0.1.0-candidate.20",
+      "placement": {
+        "status": "native actions complete",
+        "started": "2026-10-27T01:42:25.118763500Z",
+        "finished": "2026-10-27T01:42:30.959104800Z",
+        "failures": 0,
+        "max_work_ms": 69.7032,
+        "native_receipt_sha256": "2f0899f9a09340be27bad2d423c08541cdf7ef1f32c2cbe9d3267abf59d40675"
+      },
+      "native_receipt_sha256": "e9743bfef1a11aef9e3d46e8f16717154f90e7446f721eb4eb57a7b16d059ab3",
+      "scope": "Actual permanent-world block/state and supplied-inventory verification only; not client traversal, visual polish or functional commissioning"
+    },
+    "nightingales_debt": {
+      "operation": "verify",
+      "started": "2026-10-27T01:42:56.315744400Z",
+      "finished": "2026-10-27T01:43:00.105140700Z",
+      "plan_sha256": "8552b39eca0f40eb9ab4a4357b223e52939a49fd7714ae28fc7cc5208938d235",
+      "blocks": 13281,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 6.014,
+      "candidate": "0.1.0-candidate.20",
+      "placement": {
+        "status": "native actions complete",
+        "started": "2026-10-27T01:42:49.665639300Z",
+        "finished": "2026-10-27T01:42:53.958960600Z",
+        "failures": 0,
+        "max_work_ms": 26.991,
+        "native_receipt_sha256": "b5f4220e44cf42a382426190b1eb86a417632fbe9f2d93eafdf861a5daf84189"
+      },
+      "native_receipt_sha256": "8d443d2acfb3170a08bd3cca98fb41e667dad5cb9086c4d3d36acac5dccace56",
+      "scope": "Actual permanent-world block/state and supplied-inventory verification only; not client traversal, visual polish or functional commissioning"
+    },
+    "sea_lavender": {
+      "operation": "verify",
+      "started": "2026-10-27T01:43:15.668746800Z",
+      "finished": "2026-10-27T01:43:19.559328Z",
+      "plan_sha256": "3d7129b42b6dcee83c860a0db9bfbfcdbab1c7183c31c5bef6d0c3a99042fdd7",
+      "blocks": 12476,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 4.3227,
+      "candidate": "0.1.0-candidate.20",
+      "placement": {
+        "status": "native actions complete",
+        "started": "2026-10-27T01:43:09.361458600Z",
+        "finished": "2026-10-27T01:43:13.656808900Z",
+        "failures": 0,
+        "max_work_ms": 60.7198,
+        "native_receipt_sha256": "f1e1f29d83abefb16cebe7652f87db3e82bf59b4535e33dc5460d1704afa5d1c"
+      },
+      "native_receipt_sha256": "93a796f9ed8b834db71284be5cbddd3e8099a14c61c7fb8ccd534d3adbdf8c44",
+      "scope": "Actual permanent-world block/state and supplied-inventory verification only; not client traversal, visual polish or functional commissioning"
+    },
+    "harbor_access": {
+      "operation": "verify",
+      "started": "2026-10-27T01:50:24.057842600Z",
+      "finished": "2026-10-27T01:50:25.758703600Z",
+      "plan_sha256": "e31b6d4782283b66219c551c3a345bb361ecafa0ab313340e0a767322beaa908",
+      "blocks": 4148,
+      "failures": 0,
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "max_work_ms": 4.0391,
+      "candidate": "0.1.0-candidate.20",
+      "placement": {
+        "status": "native actions complete",
+        "started": "2026-10-27T01:50:17.768472Z",
+        "finished": "2026-10-27T01:50:21.817071200Z",
+        "failures": 0,
+        "max_work_ms": 328.0327,
+        "native_receipt_sha256": "32717f130dce2d896619d8140a6a3c95c1669d85860ab7d612ede64dcd08b20c"
+      },
+      "native_receipt_sha256": "3ff8fb921530904e6fa32e315fdd2d1859cf94758ee2e7edd3406a3c4baca00b",
+      "scope": "Actual permanent-world block/state and supplied-inventory verification only; not client traversal, visual polish or functional commissioning",
+      "design_summary": {
+        "small_structural_cutters": 2,
+        "native_boat_placement_commands_completed": 4,
+        "boat_boarding_and_navigation": "pending actual gameplay check"
+      }
+    }
+  },
+  "native_drawbridge_power": {
+    "candidate": "0.1.0-candidate.18",
+    "operation": "setup",
+    "started": "2026-10-27T00:59:57.943477500Z",
+    "finished": "2026-10-27T01:00:02.392815900Z",
+    "water_wheel_rpm": [
+      8.0,
+      8.0
+    ],
+    "sequencer_input_rpm": [
+      2.0,
+      2.0
+    ],
+    "overstressed": false,
+    "native_receipt_sha256": "f35cb081ead404fdbc30aa006022cb3abea67998b66d924bc8f19563ba8ab6b6",
+    "scope": "Actual native kinetic API snapshots; assembly motion, button/radio cycles, safe tip geometry and persistence remain pending"
+  },
+  "control_cycle": "Pending. Physical block verification and real input RPM do not establish a working drawbridge. Failed commissioning/publication receipts are retained; candidate.21 commissioning is separate.",
+  "windows_journal_reader_lock_regression": {
+    "bridge": "0.6.7",
+    "bridge_sha256": "c2869930e108ba6a16a4887b8901bde872e4ecf7a1b697aab926d806965b43c0",
+    "started": "2026-10-27T02:01:33.007574+00:00",
+    "finished": "2026-10-27T02:01:42.709576+00:00",
+    "status": "pass",
+    "ordinary_reader_replacement_denied": true,
+    "native_progress_access_denied_warning_observed": true,
+    "old_progress_preserved": true,
+    "immutable_terminal_sha_verified": "b6e3d23b0ea0380e8116f5cd639ce4e1b65aed6e80e07b8cb2788c05f413d86f",
+    "probe_receipt_sha256": "587b5e1920cf0b77a04bcd24b0d011d72b4ea9b095c914f94f9a8f72181966dd",
+    "scope": "Headless Windows file-publication regression on the exact pinned JAR only; no Minecraft startup or mechanism claim"
+  },
+  "settlement_cinematic_preparation": {
+    "scenes": 7,
+    "intro_seconds": 24,
+    "native_parser_and_nbt_roundtrip": "pass",
+    "native_probe_at": "2026-10-27T02:03:40.382658+00:00",
+    "native_probe_receipt_sha256": "c1d32fe82df2460b1f68d569ab42a44a39b601d085b023f03072da3af73bfe59",
+    "lumiera_sha256": "dadfcaab4fe335792f84b18d0f7d7ab499d54128c92f44cd25584aeff3f398d9",
+    "datapack_sha256": "0f0beab26f165e26a5d608d3567a94e230226e5bdf2236e5cf06de5c274b587d",
+    "activated": false,
+    "scope": "Local core intro plus six local tours. Server activation/reload, client rendering, network geometry coverage, skip/return and visual refinement remain pending. Full castle-to-offshore first-join coverage is not established."
+  },
+  "client_export": {
+    "candidate": "0.1.0-candidate.21",
+    "revision": "r2",
+    "bytes": 6308433,
+    "sha256": "496359137e1144ac49ee6ad5320a2ed71e6afa2493b21edb423f17c4ef3d2c31",
+    "state": "staged; public publication and clean native Prism import pending"
+  },
+  "boundary": "Placement counts include clearance air and are not additive unique-world totals. Exact block/tag verification and source-plan reachability are not a real walkthrough, collision-model review, shader image, wet-hull check, functional boat hoist, restart/persistence proof, performance qualification or two-player acceptance. No private world seed, host path, entity UUID or raw NBT is included."
+}

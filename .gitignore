@@ -6,6 +6,15 @@ __pycache__/
 *.jar
 *.log
 runtime/
+!evidence/runtime/
+evidence/runtime/*
+!evidence/runtime/idle-ticket-attribution.json
+!evidence/runtime/owner-crafting-table-confirmation.json
+!evidence/runtime/playit-service-control.json
+!evidence/runtime/seedgen-fingerprint-failure.json
+!evidence/runtime/client-input-profile.json
+!evidence/runtime/permanent-settlement-construction.json
+!evidence/runtime/seedgen-native-fingerprint.json
 .local/
 exports/*.zip
 exports/*.mrpack

@@ -9,6 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
+BRIDGE_VERSION = '0.6.9'
 
 def build(home, destination, storage):
     storage.reserve(16 * 1024 * 1024, destination)
@@ -31,7 +32,7 @@ def build(home, destination, storage):
     compiler = Path(r"C:\Program Files\Java\jdk-21.0.10\bin\javac.exe")
     if not compiler.is_file():
         raise UserError("The tested Java 21.0.10 JDK compiler is required")
-    result = subprocess.run([str(compiler), "@" + str(args)], capture_output=True, text=True, timeout=60,
+    result = subprocess.run([str(compiler), "-J-Xmx256m", "@" + str(args)], capture_output=True, text=True, timeout=60,
                             creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
     (work / "javac.log").write_text(result.stdout + result.stderr, encoding="utf-8")
     if result.returncode:
@@ -44,9 +45,9 @@ def build(home, destination, storage):
                     entry.compress_type = zipfile.ZIP_DEFLATED
                     archive.writestr(entry, path.read_bytes())
         entry = zipfile.ZipInfo("META-INF/MANIFEST.MF", (2026, 1, 1, 0, 0, 0))
-        archive.writestr(entry, "Manifest-Version: 1.0\nImplementation-Version: 0.5.0\n\n")
+        archive.writestr(entry, "Manifest-Version: 1.0\nImplementation-Version: " + BRIDGE_VERSION + "\n\n")
     return {"project_id": "awft:control-bridge", "slug": "awft-control-bridge", "name": "A World for Two Control Bridge",
-            "version_id": "0.5.0", "version": "0.5.0", "provider": "local-build", "release_type": "candidate",
+            "version_id": BRIDGE_VERSION, "version": BRIDGE_VERSION, "provider": "local-build", "release_type": "candidate",
             "filename": destination.name, "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/" + destination.name,
             "size": destination.stat().st_size, "hashes": {"sha256": digest(destination)}, "side": "server", "kind": "mod",
             "request": None, "world_sensitive": False, "optional": False, "default": True, "dependencies": [],

@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/DistantHorizons.toml"
-hash = "007b08de1dbeba73cefcefd3e9fbeed1f60d5e5536de6750f39609ed5c5c1b1a"
+hash = "bf6d4dcdc057c85d2af01c8ace31d61114558a6604cdb3d8151ac61c4bc9082f"
 metafile = false
 
 [[files]]
@@ -72,7 +72,7 @@ metafile = false
 
 [[files]]
 file = "config/fancymenu/customization/awft_title.txt"
-hash = "0b9d70fc8ce0fbfb0a1f3b4b4cb20e12de5667a1bb35973c3f58f8122a3a3ed3"
+hash = "b2df2acba400eb4c4a048c09955d6029d86fee6f56dbc6e3e9ef3512860cdcdc"
 metafile = false
 
 [[files]]
@@ -371,6 +371,11 @@ hash = "7dba5a9819dda027143c12a320c5cfc855660eeffa62c21ea12b123f772adaa2"
 metafile = false
 
 [[files]]
+file = "config/tectonic.json"
+hash = "9ca01c0e5f109c517d2ebc025d933ca30c7c9f5010019b67527b061ecb8869d5"
+metafile = false
+
+[[files]]
 file = "config/waystones-common.toml"
 hash = "4f9a269a1016e775238588008cc985f84b88d62f9acae7f9db8b29ecb216b8be"
 metafile = false
@@ -447,7 +452,7 @@ metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "b9a2d0717ea59a2c834554d0dcc18a9a0b15d46dee0798b0292f010a965a5f10"
+hash = "9b7a63561cdb4b97f6898dd554137727ac89ee6089da3978ecbca1ce30da71f5"
 metafile = true
 
 [[files]]

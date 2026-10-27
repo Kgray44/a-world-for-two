@@ -29,6 +29,8 @@ public class ControlBridge {
     private final AtlasSupport atlasSupport = new AtlasSupport();
     private final CinematicSupport cinematicSupport = new CinematicSupport();
     private final ChunkDiagnostics chunkDiagnostics = new ChunkDiagnostics();
+    private final SettlementSupport settlementSupport = new SettlementSupport();
+    private final EngineeringSupport engineeringSupport = new EngineeringSupport();
 
     public ControlBridge() {
         NeoForge.EVENT_BUS.addListener(this::started);
@@ -36,6 +38,8 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(this::before);
         NeoForge.EVENT_BUS.addListener(this::after);
         NeoForge.EVENT_BUS.addListener(playerSupport::commands);
+        NeoForge.EVENT_BUS.addListener(settlementSupport::commands);
+        NeoForge.EVENT_BUS.addListener(engineeringSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::chunk);
         NeoForge.EVENT_BUS.addListener(atlasSupport::joined);
@@ -66,6 +70,8 @@ public class ControlBridge {
         if (serverStarted) {
             playerSupport.tick(event.getServer(), now - beforeTick);
             cinematicSupport.tick(event.getServer());
+            settlementSupport.tick(event.getServer());
+            engineeringSupport.tick(event.getServer());
         }
         now = System.nanoTime();
         tickNanos += now - beforeTick;

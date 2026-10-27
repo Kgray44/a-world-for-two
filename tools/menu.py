@@ -43,16 +43,14 @@ def generate():
     # A fixed GUI scale keeps the landscape visible at common laptop resolutions.
     layout += block('customization', dict(action='setscale', scale=2.0))
     layout += element('awft-title', 'image', 'top-left', 22, 20, 240, 58, source='[source:local]/config/fancymenu/assets/awft-title.png')
-    layout += element('awft-join', 'custom_button', 'bottom-right', -184, -160, 160, 24,
-        label='Join Our World', hoverlabel='Join Our World', navigatable=True,
-        backgroundnormal='[source:local]/config/fancymenu/assets/awft-button-primary.png', backgroundhovered='[source:local]/config/fancymenu/assets/awft-button-primary-hover.png',
-        button_element_executable_block_identifier='awft-join-action',
-        **{'[executable_action_instance:awft-connect][action_type:joinserver]':'127.0.0.1:25565', '[executable_block:awft-join-action][type:generic]':'[executables:awft-connect;]'})
+    layout += element('mc_titlescreen_multiplayer_button', 'vanilla_button', 'bottom-right', -184, -160, 160, 24,
+        label='Join Our World', hoverlabel='Join Our World', is_hidden=False, navigatable=True,
+        backgroundnormal='[source:local]/config/fancymenu/assets/awft-button-primary.png', backgroundhovered='[source:local]/config/fancymenu/assets/awft-button-primary-hover.png')
     for index, (identifier, label) in enumerate([('mc_titlescreen_singleplayer_button','Singleplayer'),('mc_titlescreen_options_button','Settings'),('forge_titlescreen_mods_button','Mods'),('mc_titlescreen_quit_button','Quit')]):
         layout += element(identifier, 'vanilla_button', 'bottom-right', -184, -129 + index * 27, 160, 22,
             label=label, hoverlabel=label, is_hidden=False, navigatable=True,
             backgroundnormal='[source:local]/config/fancymenu/assets/awft-button-normal.png', backgroundhovered='[source:local]/config/fancymenu/assets/awft-button-hover.png')
-    for identifier in ('mc_titlescreen_multiplayer_button','mc_titlescreen_realms_button','minecraft_logo_widget','minecraft_splash_widget','minecraft_branding_widget','minecraft_realms_notification_icons_widget'):
+    for identifier in ('mc_titlescreen_realms_button','minecraft_logo_widget','minecraft_splash_widget','minecraft_branding_widget','minecraft_realms_notification_icons_widget'):
         layout += element(identifier, 'vanilla_button', 'vanilla', 0, 0, 10, 10, is_hidden=True)
     atomic_write(folder / 'customization/awft_title.txt', layout)
     loading = base('drippy_loading_overlay')
@@ -67,7 +65,7 @@ def generate():
     atomic_write(folder / 'customizablemenus.txt', 'type = customizablemenus\n\nnet.minecraft.client.gui.screens.TitleScreen {\n}\n\nde.keksuccino.drippyloadingscreen.customization.DrippyOverlayScreen {\n}\n')
     original = read_json(REPO / 'catalog/menu-artwork.json')
     assert digest(assets / 'awft-background.png') == original['sha256']
-    write_json(REPO / 'catalog/menu-layout.json', {'background_sha256':original['sha256'], 'authoring':'Original A World for Two typography and control textures; no artwork transformations.', 'layout':'FancyMenu v3 native format', 'runtime_visual_validation':'pending', 'native_actions':['joinserver','vanilla singleplayer','vanilla options','vanilla NeoForge mods','vanilla quit']})
+    write_json(REPO / 'catalog/menu-layout.json', {'background_sha256':original['sha256'], 'authoring':'Original A World for Two typography and control textures; no artwork transformations.', 'layout':'FancyMenu v3 native format', 'runtime_visual_validation':'pending', 'native_actions':['vanilla multiplayer server list','vanilla singleplayer','vanilla options','vanilla NeoForge mods','vanilla quit']})
     print('Authored FancyMenu title and Drippy layouts; supplied background hash unchanged.')
 
 
