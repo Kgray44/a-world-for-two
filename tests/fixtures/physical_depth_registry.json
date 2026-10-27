@@ -1,0 +1,391 @@
+{
+  "format": "awft-physical-depth-native-schemas:1",
+  "source": "Actual registered property schemas only; no world identity, geometry or native acceptance",
+  "blocks": {
+    "chipped:blank_calcite_carving": {},
+    "chipped:boxed_spruce_planks": {},
+    "chipped:calcite_bricks": {},
+    "chipped:calcite_mini_tiles": {},
+    "chipped:carved_calcite": {},
+    "chipped:carved_stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:ornate_calcite_pillar": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:reinforced_stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:small_calcite_bricks": {},
+    "dawnoftimebuilder:limestone_bricks_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:limestone_sided_column": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "vertical_connection": [
+        "none",
+        "under",
+        "above",
+        "both"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwdoors:dark_oak_glass_door": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "upper",
+        "lower"
+      ],
+      "hinge": [
+        "left",
+        "right"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwlights:tavern_wall_lantern": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mcwwindows:cherry_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "mcwwindows:dark_oak_plank_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "mcwwindows:diorite_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "mcwwindows:quartz_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "mcwwindows:stone_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:birch_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:chest": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "type": [
+        "single",
+        "left",
+        "right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:ladder": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:oak_door": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "upper",
+        "lower"
+      ],
+      "hinge": [
+        "left",
+        "right"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_andesite_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_diorite": {},
+    "minecraft:quartz_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:smooth_quartz_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:spruce_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stripped_birch_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "rechiseled:quartz_block_chiseled_pillar": {},
+    "rechiseled:spruce_planks_beams": {}
+  }
+}

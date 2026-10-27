@@ -282,6 +282,19 @@ class ConfigurationTests(Fixture):
                 server.command(command, confirmed=True)
 
 
+    def test_native_shape_settle_requires_exact_hash_and_confirmation(self):
+        server = Server(self.layout, self.storage)
+        command = 'awftbuild settle ' + 'c' * 64
+        with patch.object(server, '_write') as write:
+            with self.assertRaises(UserError):
+                server.command(command)
+            server.command(command, confirmed=True)
+            write.assert_called_once_with(command)
+            for bad in [command + ' extra', command.replace('c' * 64, 'invalid')]:
+                with self.assertRaises(UserError):
+                    server.command(bad, confirmed=True)
+
+
 class PlayerTests(Fixture):
     def setUp(self):
         super().setUp()

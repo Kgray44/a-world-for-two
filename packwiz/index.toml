@@ -472,7 +472,7 @@ metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "0d1b6c8627e75ac99d5572bb7497a0b71074f1510cd8b0fbb9612711f5497bd3"
+hash = "b55a7dfa40ecc5dcb729e0ddc5473785db93d44dabe54b7a336dadd1691a2cbf"
 metafile = true
 
 [[files]]

@@ -44,8 +44,12 @@ public final class SettlementSupport {
     private List<BlockState> palette;
     private String operation="idle";
     private int cursor, phase, centerX, centerZ, radius, step, columns, failures;
+    private int settlePass,settleChanges,neighborWait;
+    private final List<Integer> settlePassChanges=new ArrayList<>();
+    private final Set<BlockPos> settleSkippedBlockEntities=new HashSet<>();
     private long nextWrite;
     private CompletableFuture<ChunkResult<ChunkAccess>> pending;
+    private final List<CompletableFuture<ChunkResult<ChunkAccess>>> neighborhood=new ArrayList<>();
     private int pendingX, pendingZ;
     private ChunkAccess ready;
     private static final TicketType<ChunkPos> BUILD_TICKET=TicketType.create("awft_settlement",Comparator.comparingLong(ChunkPos::toLong));
@@ -55,7 +59,7 @@ public final class SettlementSupport {
     private Object mapWorld;
     private java.util.function.BooleanSupplier admissionGate=()->true;
     public void admissionGate(java.util.function.BooleanSupplier gate){admissionGate=Objects.requireNonNull(gate);}
-    public boolean busy(){return !operation.equals("idle") || ticketLevel!=null || ticketPos!=null;}
+    public boolean busy(){return !operation.equals("idle") || ticketLevel!=null || ticketPos!=null || pending!=null || !neighborhood.isEmpty();}
     public void stopped(){if(busy())finish("server stopping; existing construction retained");}
 
     public void commands(RegisterCommandsEvent event) {
@@ -104,7 +108,7 @@ public final class SettlementSupport {
                 .then(Commands.argument("z",IntegerArgumentType.integer(-25000000,25000000))
                 .then(Commands.argument("radius",IntegerArgumentType.integer(16,4096))
                 .then(Commands.argument("step",IntegerArgumentType.integer(4,256)).executes(c->{
-                    if(!operation.equals("idle"))return 0;
+                    if(busy())return 0;
                     centerX=IntegerArgumentType.getInteger(c,"x");centerZ=IntegerArgumentType.getInteger(c,"z");
                     radius=IntegerArgumentType.getInteger(c,"radius");step=IntegerArgumentType.getInteger(c,"step");
                     columns=radius*2/step+1;
@@ -112,10 +116,10 @@ public final class SettlementSupport {
                     start(mode); return 1;
                 }))))));
         }
-        for(String mode:List.of("place","verify","map")) root.then(Commands.literal(mode)
+        for(String mode:List.of("place","verify","map","settle")) root.then(Commands.literal(mode)
             .then(Commands.argument("sha256",StringArgumentType.word()).executes(c->{
                 try { admit(c.getSource().getServer(),mode,StringArgumentType.getString(c,"sha256"));return 1; }
-                catch(Exception e){throw new RuntimeException(e);}
+                catch(Exception e){e.printStackTrace();throw new RuntimeException(e);}
             })));
         root.then(Commands.literal("cancel").executes(c->{finish("cancelled; existing work retained");return 1;}));
         root.then(Commands.literal("status").executes(c->{success(c.getSource(),JSON.toJson(report));return 1;}));
@@ -173,7 +177,7 @@ public final class SettlementSupport {
         return state;
     }
     private void admit(MinecraftServer server,String mode,String expected)throws Exception {
-        if(!operation.equals("idle") || !expected.matches("[a-f0-9]{64}"))throw new IllegalStateException("Another operation is active or invalid hash");
+        if(busy() || !expected.matches("[a-f0-9]{64}"))throw new IllegalStateException("Another operation or shared chunk cleanup is active, or invalid hash");
         if(!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Construction needs an empty server");
         Path file=directory.resolve("plan.json");
         if(Files.isSymbolicLink(file) || Files.size(file)>MAX_PLAN_BYTES)throw new IllegalStateException("Plan exceeds bound or is linked");
@@ -190,6 +194,8 @@ public final class SettlementSupport {
         for(JsonElement entry:candidate.getAsJsonArray("palette"))states.add(state(entry.getAsString()));
         JsonArray blocks=candidate.getAsJsonArray("blocks");
         if(blocks.size()>MAX_BLOCKS || states.size()>8192)throw new IllegalStateException("Construction exceeds bound");
+        if(mode.equals("settle") && (blocks.size()>20_000 || candidate.getAsJsonArray("commands").size()!=0))
+            throw new IllegalStateException("Neighbor reconciliation requires at most20000 exact targets and no commands");
         int[] bounds=new int[4];for(int i=0;i<4;i++)bounds[i]=candidate.getAsJsonArray("bounds").get(i).getAsInt();
         if(bounds[2]-bounds[0]>512 || bounds[3]-bounds[1]>512)throw new IllegalStateException("Footprint exceeds bound");
         for(JsonElement entry:blocks){
@@ -216,12 +222,19 @@ public final class SettlementSupport {
         }
         plan=candidate;palette=states;start(mode);report.put("plan_sha256",expected);report.put("blocks",blocks.size());
     }
-    private void start(String mode){operation=mode;cursor=phase=failures=0;pending=null;ready=null;mapChunks.clear();mapWorld=null;samples.clear();report.clear();report.put("operation",mode);report.put("started",Instant.now().toString());report.put("status","running");}
+    private void start(String mode){operation=mode;cursor=phase=failures=0;pending=null;ready=null;neighborWait=settlePass=settleChanges=0;settlePassChanges.clear();settleSkippedBlockEntities.clear();mapChunks.clear();mapWorld=null;samples.clear();report.clear();report.put("operation",mode);report.put("started",Instant.now().toString());report.put("status","running");}
     private void finish(String status){
+        try{releaseTicket();report.remove("ticket_cleanup_error");}
+        catch(Exception error){report.put("ticket_cleanup_error",error.toString());}
+        neighborhood.removeIf(CompletableFuture::isDone);
+        if(pending!=null && pending.isDone())pending=null;
+        boolean cleanup=ticketLevel!=null || ticketPos!=null || pending!=null || !neighborhood.isEmpty();
         report.put("status",status);report.put("finished",Instant.now().toString());report.put("cursor",cursor);report.put("failures",failures);
+        report.put("cleanup_required",cleanup);report.put("temporary_tickets_remaining",ticketPos==null?0:1);
+        report.put("pending_shared_chunk_futures",neighborhood.size());
         try {if(operation.equals("survey")||operation.equals("noise"))write(operation+".json",Map.of("report",new LinkedHashMap<>(report),"samples",samples));NativeJournal.terminal(directory,"settlement",report);NativeJournal.progress(directory,"status.json",report);}
         catch(Exception error){System.err.println("AWFT settlement journal: "+error);}
-        releaseTicket();operation="idle";pending=null;ready=null;
+        operation=cleanup?"cleanup_required":"idle";ready=null;
     }
     @SuppressWarnings({"rawtypes","unchecked"})
     private static List<String> serializedValues(Property property){
@@ -230,24 +243,48 @@ public final class SettlementSupport {
         return result;
     }
     private void releaseTicket(){
-        if(ticketLevel!=null && ticketPos!=null)ticketLevel.getChunkSource().removeRegionTicket(BUILD_TICKET,ticketPos,0,ticketPos);
+        if(ticketLevel!=null && ticketPos!=null)ticketLevel.getChunkSource().removeRegionTicket(BUILD_TICKET,ticketPos,1,ticketPos);
         ticketLevel=null;ticketPos=null;
     }
     private ChunkAccess chunk(ServerLevel level,int x,int z){
         int cx=Math.floorDiv(x,16),cz=Math.floorDiv(z,16);
-        if(ready!=null && ready.getPos().x==cx && ready.getPos().z==cz && level.getChunkSource().getChunkNow(cx,cz)!=null)return ready;
+        if(ready!=null && ready.getPos().x==cx && ready.getPos().z==cz && ticketLevel==level
+                && ticketPos!=null && ticketPos.x==cx && ticketPos.z==cz && fullNeighborhood(level,cx,cz))return ready;
         ready=null;
         if(pending==null || pendingX!=cx || pendingZ!=cz){
             releaseTicket();ticketLevel=level;ticketPos=new ChunkPos(cx,cz);
-            level.getChunkSource().addRegionTicket(BUILD_TICKET,ticketPos,0,ticketPos);
-            pendingX=cx;pendingZ=cz;pending=((worldfortwo.bridge.mixin.ChunkCacheAccess)(Object)level.getChunkSource()).awftQueueChunk(cx,cz,ChunkStatus.FULL,true);
+            level.getChunkSource().addRegionTicket(BUILD_TICKET,ticketPos,1,ticketPos);
+            pendingX=cx;pendingZ=cz;
+            neighborWait=0;
+            // Native placement hooks (notably wither-skull structure matching)
+            // inspect adjacent chunks. A FULL center alone is insufficient.
+            // One finite radius-one ticket and nine actual FULL futures cover
+            // vanilla structure-pattern reads up to four blocks across every
+            // chunk edge, without skipping the actual golem/wither checks.
+            neighborhood.clear();
+            for(int dx=-1;dx<=1;dx++)for(int dz=-1;dz<=1;dz++){
+                var future=((worldfortwo.bridge.mixin.ChunkCacheAccess)(Object)level.getChunkSource()).awftQueueChunk(cx+dx,cz+dz,ChunkStatus.FULL,true);
+                neighborhood.add(future);if(dx==0 && dz==0)pending=future;
+            }
         }
-        if(!pending.isDone())return null;
-        ready=pending.join().orElse(null);pending=null;
+        if(++neighborWait>600)throw new IllegalStateException("Finite native neighbor readiness timeout");
+        if(neighborhood.stream().anyMatch(future->!future.isDone()))return null;
+        for(var future:neighborhood)if(future.join().orElse(null)==null)throw new IllegalStateException("Native placement neighbor could not be loaded");
+        if(!fullNeighborhood(level,cx,cz))return null;
+        ready=pending.join().orElse(null);pending=null;neighborhood.clear();
         if(ready==null)throw new IllegalStateException("Native chunk could not be loaded");
         return ready;
     }
+    private boolean fullNeighborhood(ServerLevel level,int cx,int cz){
+        for(int dx=-1;dx<=1;dx++)for(int dz=-1;dz<=1;dz++)if(level.getChunkSource().getChunkNow(cx+dx,cz+dz)==null)return false;
+        return true;
+    }
     public void tick(MinecraftServer server){
+        if(operation.equals("cleanup_required")){
+            if(ticketLevel==null && ticketPos==null && neighborhood.stream().allMatch(CompletableFuture::isDone)
+                    && (pending==null || pending.isDone()))finish("shared native chunk work completed; prior partial operation remains unaccepted");
+            return;
+        }
         if(operation.equals("idle"))return;
         if(!server.getPlayerList().getPlayers().isEmpty()){finish("paused; player joined, explicit resume/restart required");return;}
         long begin=System.nanoTime();int work=0;
@@ -307,10 +344,30 @@ public final class SettlementSupport {
                         ChunkAccess chunk=chunk(level,pos.getX(),pos.getZ());if(chunk==null)break;
                         BlockState expected=palette.get(row.get(3).getAsInt());
                         if(operation.equals("place"))level.setBlock(pos,expected,2|16);
+                        else if(operation.equals("settle")){
+                            BlockState current=level.getBlockState(pos);
+                            if(!sameStructure(current,expected))throw new IllegalStateException("Neighbor reconciliation structural preimage differs at "+pos);
+                            // Read current native states. Never replay source states,
+                            // block-entity data, inventories or plan commands.
+                            if(current.hasBlockEntity() || level.getBlockEntity(pos)!=null)settleSkippedBlockEntities.add(pos);
+                            else{
+                                BlockState updated=Block.updateFromNeighbourShapes(current,level,pos);
+                                if(!sameStructure(updated,expected))throw new IllegalStateException("Normal neighbor shape would remove or reorient the authored structure at "+pos);
+                                if(updated!=current){if(!level.setBlock(pos,updated,3))throw new IllegalStateException("Normal native neighbor update refused");settleChanges++;}
+                                level.updateNeighborsAt(pos,level.getBlockState(pos).getBlock());
+                                if(!sameStructure(level.getBlockState(pos),expected))throw new IllegalStateException("Native neighbor effects changed authored identity/orientation at "+pos);
+                            }
+                        }
                         else if(!samePlacement(chunk.getBlockState(pos),expected)){
                             failures++;if(failures<=30)System.err.println("AWFT settlement verification differs at "+pos+": "+chunk.getBlockState(pos)+" vs "+expected);
                         }
                         cursor++;
+                    }else if(phase==0 && operation.equals("settle")){
+                        settlePassChanges.add(settleChanges);report.put("normal_shape_changes_per_pass",List.copyOf(settlePassChanges));
+                        report.put("block_entity_targets_skipped",settleSkippedBlockEntities.size());
+                        if(++settlePass<3){settleChanges=cursor=0;continue;}
+                        if(settleChanges!=0)throw new IllegalStateException("Native neighbor shapes did not converge within three bounded passes");
+                        finish("normal native neighbor shapes reconciled; no source state, inventory or command replay");break;
                     }else if(phase==0){phase=1;cursor=0;}
                     else if(phase==1){
                         JsonArray tags=plan.getAsJsonArray("block_entities");
@@ -362,6 +419,17 @@ public final class SettlementSupport {
         if(actual.getBlock()!=expected.getBlock())return false;
         for(var property:expected.getProperties()){
             if(List.of("facing","axis","half","part","type","hinge").contains(property.getName()) && !actual.getValue(property).equals(expected.getValue(property)))return false;
+        }
+        return true;
+    }
+    private boolean sameStructure(BlockState actual,BlockState expected){
+        if(actual.getBlock()!=expected.getBlock())return false;
+        boolean derivedWindowPart=actual.getBlock().getClass().getName().equals("com.mcwwindows.kikoz.objects.ConnectedWindow")
+            && BuiltInRegistries.BLOCK.getKey(actual.getBlock()).getNamespace().equals("mcwwindows");
+        for(var property:expected.getProperties()){
+            boolean structural=List.of("facing","axis","half","type","hinge","rotation").contains(property.getName())
+                || property.getName().equals("part") && !derivedWindowPart;
+            if(structural && !actual.getValue(property).equals(expected.getValue(property)))return false;
         }
         return true;
     }

@@ -47,9 +47,12 @@ bytes are copied. Native model scale, joins, corner appearance and collisions
 remain visual/runtime checks. Copper end slopes, oxidised flanks and central
 bright standing seams are deliberate architectural surfaces.
 
-`tools.artistic_bridge_towers` emits an artwork geometry document and a full
-**unbound verification-only** proposal in a new private folder. It emits no
-placement delta, preimage, generic plan, commissioning request or native command.
+`tools.artistic_bridge_towers.author` emits an artwork geometry document and a
+full **unbound verification-only** proposal in a new private folder. Its separate
+`prepare` function binds the exact frozen geometry to a current verified stopped
+checkpoint, authenticates the saved complete bridge and all changed target
+states, refuses actual BEs, and emits before/delta/full/recovery artifacts. It
+does not invoke a native command or overwrite a generic plan.
 Both complete towers pass the conservative three/nine material rule, and all
 authored bridge surfaces pass the absolute nine-block cap. The focused tests
 also reject a new BE at a proposed bay, unknown block schemas, changes to the
@@ -62,3 +65,13 @@ Fresh native before/after verification, matched real screenshots, normal walking
 and model/leaf-sweep clearance must precede acceptance. Any resulting new full
 physical hash must be rebound into later commissioning receipts. No geometry
 count or synthetic test establishes beauty or owner approval.
+
+The first native candidate40 placement retained twelve construction-time window
+part differences. All six authored masks are intact two-by-two windows. Pinned
+Macaw `ConnectedWindow.onPlace` performs an inner normal shape update only when
+its computed state differs; the bulk builder's known-shape outer write suppresses
+the final neighbor update when the last upper-right pane is already correct.
+This leaves two stale parts per bay. The failed receipt is preserved. The
+canonical final-neighbor expectation remains unchanged; the residue is not
+accepted as the correct window design. Normal native neighbor reconciliation
+and a fresh strict full verification are required separately.

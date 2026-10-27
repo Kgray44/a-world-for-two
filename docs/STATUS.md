@@ -6,27 +6,32 @@
 
 **2026-10-27 UTC: candidate.31 published; fresh world installed; official server offline.**
 
-Private candidate 38 starts the dedicated server and authenticated client normally.
-The exact entrance correction permits all six native Hypertube connections and
-both real stations; commissioning then stops at the missing native detector
-attachment, with the drive stopped and no goods or train added. Mill R3,
-castle R4 and fixed drawbridge architecture are placed, strictly verified and
-reviewed in actual shader-enabled game captures. The redesigned moving leaves
-remain separate pending exact old-glue retirement and new mechanism tests.
+Private candidate 41 starts the dedicated server and authenticated client normally.
+The redesigned moving bridge completed two real 55° cycles in candidate 39 and two
+more after a candidate 40 restart without repeating setup. Candidate 41 adds
+projecting tower bays and steep copper roofs, native reconciliation of the exact
+requested Pirate Tavern and Fisherman's Shop, and further neighborhood, castle,
+mill and maritime architectural depth. Actual shader-enabled captures show the
+main original gothic tavern still needs warmer floor-level lighting and intimate
+furnishings. The final forest/wildlife pass and newly requested plaza fountain
+remain pending. Mill commissioning still stops at the missing native detector
+attachments, with the drive stopped and no goods or train added.
 Candidate36 also displayed the actual Xaero map with MapHorizons awft.2;
 coarse-only SeedGen coverage remains unproved. These private results do not
 change the official server or qualify a release.
-See [native 38 results](NATIVE-CANDIDATE38.md) and [36/37 history](NATIVE-CANDIDATE36-37.md).
+See [the latest native review](NATIVE-CANDIDATE39-41.md),
+[native 38 results](NATIVE-CANDIDATE38.md) and [36/37 history](NATIVE-CANDIDATE36-37.md).
 
 The owner has requested the pirate town cover the entire dry spit between river
-and ocean, continuing to its narrow seaward tip. Geography is being established
-from the actual saved terrain before authoring the connected extension. A final
-habitat and population pass follows completed construction and commissioning;
+and ocean, continuing to its narrow seaward tip. The connected extension is now
+built on verified dry saved terrain. A varied forest across the entire south bank,
+followed by a habitat and population pass, follows completed construction and commissioning;
 see [the inhabited landscape requirements](SETTLEMENT-LIFE.md).
 
 The fresh-world handoff completed at 11:23:08 UTC with 219 files; player,
 advancement, statistic and Effortless data were excluded. Old construction
-admissions were retired. Control Room and Playit are connected. Owner artistic
+admissions were retired. Control Room and Playit connectivity were observed earlier;
+current public server connectivity is not established. Owner artistic
 review, additional Create commissioning, full multiplayer coverage and the
 remaining strict SeedGen mismatch are open.
 
@@ -39,7 +44,7 @@ remaining strict SeedGen mismatch are open.
 | Optional fallback | Essential disabled; 198 mod records including it |
 | Graphics | Eight shaders and one resource pack |
 | Client heap | KG: 6 GiB; Sera: conservative 4 GiB |
-| Owned helpers | Released bridge 0.6.17; private bridge 0.6.24; client Presentation 0.2.2 |
+| Owned helpers | Released bridge 0.6.17; private bridge 0.6.27; client Presentation 0.2.2 |
 | Catalog | 207 file records; all 223 requested candidates retained |
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 

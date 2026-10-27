@@ -1,0 +1,526 @@
+{
+  "format": "awft-native-artistic-review:1",
+  "recorded": "2026-10-27T19:25:17.956541+00:00",
+  "candidate": "0.1.0-candidate.41",
+  "bridge": "0.6.27",
+  "pack_sha256": "de0b8849596931bb0b89419e91ad46cdec978463a3d7faee2c8c04649af3038f",
+  "bridge_sha256": "6be52e33eefb3d359569ab210e2c415adeb80475023e587a4443404d48b6953f",
+  "source_build": {
+    "private_directory": "candidate-bridge-build-1793125699770019800",
+    "sha256": "6353db02965d89be3117257e9eb131ca51b56930bf10cd3c4bca8a8203c605a0",
+    "source_files": 42,
+    "exact_working_source_matched_before_record": true
+  },
+  "scope": "Actual dedicated private artistic stage on25575 and authenticated licensed KG client. Official world/server and public candidate.31 unchanged. No LIFE seeded.",
+  "receipts": {
+    "bridge_tower_normal_shapes": {
+      "file": "settlement-result-671b30c0-75ea-48f7-ba58-8447e3c32a3d.json",
+      "sha256": "aad90220a1f14a6dedfcc60573085797d5774bcccee6d9b343b03371a5b89764",
+      "native_result": {
+        "operation": "settle",
+        "started": "2026-10-27T18:36:52.630070300Z",
+        "status": "normal native neighbor shapes reconciled; no source state, inventory or command replay",
+        "plan_sha256": "43ee80d81566913b833ef4a2e8ca18545fbc8c37a39ae004b374f1fbaa2cfe25",
+        "blocks": 776,
+        "cursor": 776,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 2.5344,
+        "max_work_ms": 23.8781,
+        "normal_shape_changes_per_pass": [
+          44,
+          0,
+          0
+        ],
+        "block_entity_targets_skipped": 1,
+        "finished": "2026-10-27T18:36:54.113206100Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "bridge_complete_20393": {
+      "file": "settlement-result-d1eefda5-80db-4ebc-80f3-bd9ad26e63d9.json",
+      "sha256": "b64045423f36e1aa8fe39745b6407216bfa1143b76473b2ded4e243907d8fc4b",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T18:36:54.288740800Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "5500bf6e11c36d4b0dca9bcdeac555b3bf9b600db8763c80d091c1e0194317b0",
+        "blocks": 20393,
+        "cursor": 8,
+        "phase": 1,
+        "failures": 0,
+        "last_work_ms": 4.2271,
+        "max_work_ms": 47.0549,
+        "finished": "2026-10-27T18:37:01.966122Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "castle_depth_524": {
+      "file": "settlement-result-91edb16e-91f7-43d2-9fc1-ce1a6c7e6ca5.json",
+      "sha256": "4c8b4b6ab79ad93d6b0980e83e19a9aa2a7e9094cb6eb56b14ab22c2a17119e8",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T19:05:10.820759700Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "ebcd5224821ef8dc425f167314a267f9c66772270900728bf11536b986fb6e2a",
+        "blocks": 524,
+        "cursor": 0,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 0.4132,
+        "max_work_ms": 1.6927,
+        "finished": "2026-10-27T19:05:11.270886900Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "mill_depth_94": {
+      "file": "settlement-result-5504a76d-6fae-4c78-83a7-09380a4b9790.json",
+      "sha256": "5ab714f8fc09a4aa3655c88362b3b6b403bde538b741070e4b063ebbcd903f61",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T18:59:03.659685900Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "bae3e86205a4cd64f509ec2beba1ef3f3fc905a280fdc0c73bbdf1fa114c304b",
+        "blocks": 94,
+        "finished": "2026-10-27T18:59:03.660687100Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "signal_depth_delta": {
+      "file": "settlement-result-622fd243-122c-4576-a34a-08a30aa9416c.json",
+      "sha256": "e5ca80f9a8870fad533d20740e38351f3a45709f4b232d79a7b136a1290d9817",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T18:50:57.064678400Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "050f443fa1d30614e7dfbf40b97023cb9366a59c46b7b20ac9f85bdf22b8d819",
+        "blocks": 792,
+        "cursor": 0,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 0.6302,
+        "max_work_ms": 1.2512,
+        "finished": "2026-10-27T18:50:57.417112400Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "court_depth_delta": {
+      "file": "settlement-result-325d45e7-fc43-4274-8869-d31f60ccad75.json",
+      "sha256": "cdcc106da0a6879345a2063dd272a913671a70969db05009046c99cb5b2586a0",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T18:50:59.618047800Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "932966fd5b12451f4b4a63e1f5dc151bbd50feaac2b2b85193961165a4718584",
+        "blocks": 171,
+        "finished": "2026-10-27T18:50:59.618047800Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "bramble_depth_delta": {
+      "file": "settlement-result-5b5bbe0b-ec37-426e-8bce-477cfd1d2728.json",
+      "sha256": "084e81a56335e3ed5b109991452ffe38b5d354371abc222648b200ef2e3bc0ae",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T18:51:02.071321300Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "d220b44ace8573cbf41715da693181d8fd9361de9be6f04d07bc9959a7633347",
+        "blocks": 324,
+        "cursor": 0,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 0.3493,
+        "max_work_ms": 0.3493,
+        "finished": "2026-10-27T18:51:02.112329900Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "rosebridge_depth_20": {
+      "file": "settlement-result-d7e8b0a4-a5dd-472d-a6ac-d876b42b2655.json",
+      "sha256": "852ae422b13e6ad81c28b65aea8f0f105e0cb40dcb5ff85decb5db4e58e080cc",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T18:54:45.706364900Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "8c9233d7f203825f8ba1a795975e994ddbc03ab999dee132b4e2e0734f3f2f1a",
+        "blocks": 20,
+        "finished": "2026-10-27T18:54:45.707362900Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "harbor_workshop_only_31": {
+      "file": "settlement-result-a3e96bf9-860d-4a80-b879-7d69becf5696.json",
+      "sha256": "440a5df954202c2430a58d79f68f863b5077be05ee0f5a7263d7e5c04be28156",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T19:02:36.966265600Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "adb7d0965675177e1ce9e695da988ec85abec4516cad58cd5b5f9b98070fd419",
+        "blocks": 31,
+        "finished": "2026-10-27T19:02:36.967267100Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "original_pirate_tavern_native_joins": {
+      "file": "import-joins-result-40e708dc-f737-44e2-a954-892570c7294f.json",
+      "sha256": "77a49d4470fd620df02ba7ae53edcb9f2f8ba4fe1fc71376b9d192faf2725772",
+      "native_result": {
+        "operation": "settle",
+        "started": "2026-10-27T18:38:46.117676700Z",
+        "request_sha256": "444e2518935310e5a740904717689bcfc77e8c5a2c76c81f7240f97f474c0926",
+        "plan_sha256": "aec9ad950d9dc020f8623c023e42447fb429ae9e3b91001e242d1bd5955f429a",
+        "blocks": 4406,
+        "kind": "tavern",
+        "candidate": "0.1.0-candidate.41",
+        "bridge": "0.6.27",
+        "source_entities_executed": 0,
+        "commands_executed": 0,
+        "failures": 0,
+        "strict_all_state_verification": true,
+        "phase": "VERIFY",
+        "cursor": 4352,
+        "pass": 3,
+        "ticks": 254,
+        "last_work_ms": 1.557,
+        "native_full_state_export": "import-verify-only-94c5c930-3c2c-4db0-bea7-f0aaa237de4f.json",
+        "native_full_state_export_sha256": "38202f49cabaec0273a02c9045097f2c4f3ddfb4ca1565d14c6357f04e2105ca",
+        "native_block_entities": 73,
+        "convergence_changes": [
+          318,
+          0,
+          0
+        ],
+        "replayed_states": 0,
+        "full_state_property_omissions": 0,
+        "source_supplied_property_omissions": 0,
+        "all_native_be_inventory_equality": true,
+        "cleanup": "complete",
+        "owned_tickets": 0,
+        "pending_shared_futures": 0,
+        "cleanup_errors": [],
+        "status": "verified actual converged imported identities, every state property and unchanged native furnishings",
+        "finished": "2026-10-27T18:38:58.757173200Z"
+      }
+    },
+    "original_fisherman_shop_native_joins": {
+      "file": "import-joins-result-f8825cfb-20ea-4d82-89ae-ef2498b2e476.json",
+      "sha256": "6c37f6a1638a434035de2ce14e51b84755cf38f8828e18b6ad3f9f7dd675ff99",
+      "native_result": {
+        "operation": "settle",
+        "started": "2026-10-27T18:42:14.642651Z",
+        "request_sha256": "4091f9d2bcc75c1979d0168297a03938f6befb6242969245d7be057019b5d628",
+        "plan_sha256": "ea556c278659888ba2da3c5c80acec61ef1554d2d1b95caa8b9f37c0b658f730",
+        "blocks": 2252,
+        "kind": "shop",
+        "candidate": "0.1.0-candidate.41",
+        "bridge": "0.6.27",
+        "source_entities_executed": 0,
+        "commands_executed": 0,
+        "failures": 0,
+        "strict_all_state_verification": true,
+        "phase": "VERIFY",
+        "cursor": 2176,
+        "pass": 3,
+        "ticks": 146,
+        "last_work_ms": 1.8639,
+        "native_full_state_export": "import-verify-only-e790fc16-983c-4971-b488-120ac092e009.json",
+        "native_full_state_export_sha256": "13a7bf5da4805c563d5032a9d3bdf311d4d803f8910b1b022bccb7b4c80ff114",
+        "native_block_entities": 117,
+        "convergence_changes": [
+          2,
+          0,
+          0
+        ],
+        "replayed_states": 0,
+        "full_state_property_omissions": 0,
+        "source_supplied_property_omissions": 0,
+        "all_native_be_inventory_equality": true,
+        "cleanup": "complete",
+        "owned_tickets": 0,
+        "pending_shared_futures": 0,
+        "cleanup_errors": [],
+        "status": "verified actual converged imported identities, every state property and unchanged native furnishings",
+        "finished": "2026-10-27T18:42:21.907146600Z"
+      }
+    }
+  },
+  "images": [
+    {
+      "file": "docs/images/artistic-recovery/c41-bridge-roofline.png",
+      "sha256": "ae702d92f01e07d72d01703df7048f3a7ba1cd02de8ce03365ec1c1791022a8f",
+      "capture": {
+        "at": "2026-10-27T19:10:47.672643+00:00",
+        "image": "bridge-roofline.png",
+        "sha256": "ae702d92f01e07d72d01703df7048f3a7ba1cd02de8ce03365ec1c1791022a8f",
+        "bytes": 2449020,
+        "name": "bridge-roofline",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "de0b8849596931bb0b89419e91ad46cdec978463a3d7faee2c8c04649af3038f",
+        "native": {
+          "at": "2026-10-27T19:10:47.327559900Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1166.0,
+            76.0,
+            -1190.0
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": -53.130104,
+          "pitch": -15.056159,
+          "dimension": "minecraft:overworld",
+          "fps": 59,
+          "native_result": "Saved screenshot as awft-qa-c41-art-bridge-roofline.png"
+        },
+        "requested_view": {
+          "feet": [
+            1166,
+            76,
+            -1190
+          ],
+          "look_at": [
+            1182,
+            83,
+            -1178
+          ],
+          "yaw": -53.13010235415598,
+          "pitch": -15.056158974262043
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed: steep copper roof, open cupola, projecting bays and supported cornices improve the tower silhouette. No vessel-passage or grounded-walking acceptance."
+    },
+    {
+      "file": "docs/images/artistic-recovery/c41-fisherman-exterior.png",
+      "sha256": "6a1323a662232db5cea54742ffb1412dde6c0df8cd263ba5be1759778ec7d167",
+      "capture": {
+        "at": "2026-10-27T19:11:12.401786+00:00",
+        "image": "fisherman-exterior.png",
+        "sha256": "6a1323a662232db5cea54742ffb1412dde6c0df8cd263ba5be1759778ec7d167",
+        "bytes": 2443931,
+        "name": "fisherman-exterior",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "de0b8849596931bb0b89419e91ad46cdec978463a3d7faee2c8c04649af3038f",
+        "native": {
+          "at": "2026-10-27T19:11:11.639148100Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1339.0,
+            66.0,
+            -1335.0
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": 90.0,
+          "pitch": -11.928356,
+          "dimension": "minecraft:overworld",
+          "fps": 59,
+          "native_result": "Saved screenshot as awft-qa-c41-art-fisherman-exterior.png"
+        },
+        "requested_view": {
+          "feet": [
+            1339,
+            66,
+            -1335
+          ],
+          "look_at": [
+            1323,
+            71,
+            -1335
+          ],
+          "yaw": 90.0,
+          "pitch": -11.928356545157625
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed: original overhangs, supported brackets, textured blue roof and recessed frontage retained. Interior and access still need their own review."
+    },
+    {
+      "file": "docs/images/artistic-recovery/c41-pirate-tavern-exterior.png",
+      "sha256": "d8b6f5e9a3da3298d8ce0ed9d106257d0241ddc38dbdd2babf89ea83e2fa84f9",
+      "capture": {
+        "at": "2026-10-27T19:11:17.955919+00:00",
+        "image": "pirate-tavern-exterior.png",
+        "sha256": "d8b6f5e9a3da3298d8ce0ed9d106257d0241ddc38dbdd2babf89ea83e2fa84f9",
+        "bytes": 2409472,
+        "name": "pirate-tavern-exterior",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "de0b8849596931bb0b89419e91ad46cdec978463a3d7faee2c8c04649af3038f",
+        "native": {
+          "at": "2026-10-27T19:11:17.691063800Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1278.0,
+            68.0,
+            -1300.0
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": -131.42366,
+          "pitch": -22.476545,
+          "dimension": "minecraft:overworld",
+          "fps": 59,
+          "native_result": "Saved screenshot as awft-qa-c41-art-pirate-tavern-exterior.png"
+        },
+        "requested_view": {
+          "feet": [
+            1278,
+            68,
+            -1300
+          ],
+          "look_at": [
+            1295,
+            79,
+            -1315
+          ],
+          "yaw": -131.42366562500266,
+          "pitch": -22.47654614053463
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed: recognizable original asymmetrical tower, galleries and external stair retained. Neighbor integration, interior and source-entity LIFE pass remain open."
+    },
+    {
+      "file": "docs/images/artistic-recovery/c41-mill-balcony.png",
+      "sha256": "2767faa9fb8ed72f1e46003ea1765019a2f99959a1a3c7bf0caf30e74a67a605",
+      "capture": {
+        "at": "2026-10-27T19:11:23.997883+00:00",
+        "image": "mill-balcony.png",
+        "sha256": "2767faa9fb8ed72f1e46003ea1765019a2f99959a1a3c7bf0caf30e74a67a605",
+        "bytes": 2624326,
+        "name": "mill-balcony",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "de0b8849596931bb0b89419e91ad46cdec978463a3d7faee2c8c04649af3038f",
+        "native": {
+          "at": "2026-10-27T19:11:23.743770500Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1296.0,
+            77.0,
+            -981.0
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": -135.0,
+          "pitch": 8.0935955,
+          "dimension": "minecraft:overworld",
+          "fps": 59,
+          "native_result": "Saved screenshot as awft-qa-c41-art-mill-balcony.png"
+        },
+        "requested_view": {
+          "feet": [
+            1296,
+            77,
+            -981
+          ],
+          "look_at": [
+            1314,
+            75,
+            -999
+          ],
+          "yaw": -135.0,
+          "pitch": 8.093595312546448
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed: balcony projects from the mill shell with layered support and eaves. Commissioning remains stopped at missing real detector attachments."
+    },
+    {
+      "file": "docs/images/artistic-recovery/c41-rose-tavern-bar.png",
+      "sha256": "20a7638f1e57b8ee71293446f534325a5c242d7acf2cc7e7a15a0d1e6a20efa2",
+      "capture": {
+        "at": "2026-10-27T19:10:59.810307+00:00",
+        "image": "rose-tavern-bar.png",
+        "sha256": "20a7638f1e57b8ee71293446f534325a5c242d7acf2cc7e7a15a0d1e6a20efa2",
+        "bytes": 1784711,
+        "name": "rose-tavern-bar",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "de0b8849596931bb0b89419e91ad46cdec978463a3d7faee2c8c04649af3038f",
+        "native": {
+          "at": "2026-10-27T19:10:59.531460Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1303.5,
+            65.0,
+            -1271.5
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": 127.40536,
+          "pitch": -2.0338597,
+          "dimension": "minecraft:overworld",
+          "fps": 59,
+          "native_result": "Saved screenshot as awft-qa-c41-art-rose-tavern-bar.png"
+        },
+        "requested_view": {
+          "feet": [
+            1303.5,
+            65,
+            -1271.5
+          ],
+          "look_at": [
+            1295,
+            67,
+            -1278
+          ],
+          "yaw": 127.40535663140857,
+          "pitch": -2.0338598230852587
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed: main gothic tavern is too dark at floor level and the broad hall is underfurnished. New low warm lighting and intimate seating correction is required; not artistic acceptance."
+    }
+  ],
+  "checkpoint": {
+    "verified": true,
+    "id": "20261027T191930Z-f306da",
+    "sha256": "8efabed7d75aa02015ed2165ebb249c36da6e301dfd3ef8c971f0e20c9de4f5c",
+    "at": "2026-10-27T19:19:47.098653+00:00",
+    "scope": "Exact stopped private artistic checkpoint; no history pruned"
+  },
+  "native_shutdown": "Watch requested normal quit and staging stop at19:17:02UTC. Both owned Java PIDs absent and private server offline at19:18:37UTC.",
+  "failures_retained": [
+    "Candidate40 carved-pumpkin native pattern accessed an unloaded adjacent chunk; exact partially placed plot retained and repaired from authenticated preimage. Candidate41 loads bounded3x3FULL neighborhood; normal vanilla pattern logic is preserved.",
+    "Signal full verification2588309c-ac0e-4785-a08f-ca52072487ab found46 inherited Macaw roof-part expectations; complete same-ID neighbor-mask canonical correction prepared, not yet natively settled/verified.",
+    "Castle depth initial full verification50597f57 had8 incorrect connected-window part expectations. Exact pinned algorithm correction changes only verification parts; successful receipt91edb16e retained separately.",
+    "New read-only harbor craft inspectionf1994113-768f-44e2-abc1-64a0f4944dc7 refused changed persistent-entity custody. No craft creation or entity/world mutation; eight water-side knee additions excluded."
+  ],
+  "open_scope": [
+    "Main gothic tavern furnishing/lighting correction",
+    "Every-structure architectural depth coverage audit",
+    "Native canonical ridge reconciliation/full district verification",
+    "Starting plaza details and working fountain requested subsequently",
+    "South-bank forest and final habitat LIFE pass",
+    "Real mill/maritime commissioning",
+    "Strict SeedGen semantic parity",
+    "Fresh public Prism import",
+    "Tested official upgrade/final release/cleanup"
+  ],
+  "limits": "Placement counts are receipts, not artistic quality. Frame FPS is a point observation, not a benchmark. No final two-player, vessel travel, full art acceptance or release claim."
+}

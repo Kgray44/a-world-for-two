@@ -4,11 +4,12 @@
 
 **Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-Private candidate **38** starts and joins normally. The mill's six real tube
-connections, furnished mill, castle audience room and fixed drawbridge architecture
-have native results and actual game captures. The moving bridge redesign, mill
-commissioning, strict SeedGen parity and inhabited pirate spit remain in progress.
-See the [latest native results](docs/NATIVE-CANDIDATE38.md).
+Private candidate **41** starts and joins normally. The redesigned drawbridge
+completed real 55° cycles across a restart; the pirate spit, both requested
+original builds and new architectural depth have native results and game captures.
+The main gothic tavern needs a furnishing and lighting correction. The south-bank
+forest, final wildlife pass, plaza fountain, mill commissioning and strict SeedGen
+parity remain in progress. See the [latest native review](docs/NATIVE-CANDIDATE39-41.md).
 
 **Our little corner of an endless world.**
 
