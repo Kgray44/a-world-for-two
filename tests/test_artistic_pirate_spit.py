@@ -6,7 +6,7 @@ import unittest
 from control_room.common import UserError
 from tools.artistic_pirate_spit import (
     AIR, RESERVATIONS, SavedCoast, SpitPlan, dry_detour, payload, prepare,
-    rectangle, reserved, validate,
+    rectangle, reserved, tag_snbt, validate,
 )
 
 
@@ -122,6 +122,28 @@ class PirateSpitContracts(unittest.TestCase):
         self.assertEqual(after['commands'],[]);self.assertEqual(before['commands'],[])
         self.assertEqual(after['backup_sha256'],'f'*64)
         self.assertEqual(before['palette'],[AIR])
+
+    def test_native_block_entities_are_literal_snbt_strings_with_intact_items_and_text(self):
+        p=SpitPlan(registry(),SavedFixture(),'f'*64)
+        pos=1288,64,-1240
+        p.put(*pos,'minecraft:barrel',facing='up',open='false')
+        tag={'CustomName':json.dumps({'text':'The Rose — pantry'},ensure_ascii=False),
+             'Items':[{'Slot':0,'id':'minecraft:bread','count':8}],
+             'front_text':{'messages':[json.dumps({'text':'Ale / charts / music'})]},
+             'is_waxed':True}
+        p.tags[pos]=tag
+        result=json.loads(payload(p,p.blocks,'synthetic native admission',tags=True))
+        actual=result['block_entities'][0]
+        self.assertEqual(actual['pos'],list(pos))
+        self.assertIsInstance(actual['nbt'],str)
+        self.assertIn('"Slot":0b',actual['nbt'])
+        self.assertIn('"count":8',actual['nbt'])
+        self.assertNotIn('"count":8b',actual['nbt'])
+        untyped=actual['nbt'].replace('"Slot":0b','"Slot":0')
+        self.assertEqual(json.loads(untyped),tag)
+        for invalid in (-1,128,True,'0'):
+            with self.assertRaisesRegex(UserError,'Slot must be'):
+                tag_snbt({'Items':[{'Slot':invalid}]})
 
     def test_official_home_is_refused_before_any_file_write(self):
         with self.assertRaisesRegex(UserError,'separate owned artistic'):

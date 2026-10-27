@@ -1,7 +1,6 @@
 {
   "format": "awft-private-candidate40:1",
   "version": "0.1.0-candidate.40",
-  "bridge": "Real saved55program/glue audit, two genuine cycles after restart WITHOUTsetup and full17226closedverification pass; subsequent776fixedtowerdepth placed, canonical verification retains12construction-time window parts requiring normal neighbor reconciliation",
   "pack_sha256": "297e27ea7118554d22cb265840bfe7fb2d7b15788c60187c42ca4c2c8cca7fae",
   "bridge_sha256": "d2e8b8b590d73c5ce8cea0423c08ff6b2c64eff1a09c4e7d4dfd27c66a8d825f",
   "scope": "Private artistic staging only; server started; matching client not launched; official world and public31 unchanged",
@@ -60,5 +59,7 @@
       "cleanup_required": null,
       "temporary_tickets_remaining": null
     }
-  ]
+  ],
+  "bridge_version": "0.6.26",
+  "bridge_behavior": "Real saved55program/glue audit, two genuine cycles after restart WITHOUTsetup and full17226closedverification pass; subsequent776fixedtowerdepth placed, canonical verification retains12construction-time window parts requiring normal neighbor reconciliation"
 }

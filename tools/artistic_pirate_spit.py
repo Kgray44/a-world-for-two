@@ -629,13 +629,33 @@ def validate(p):
             'entities':0,'spawn_commands':0,'actual_minecraft_visual_acceptance':'PENDING'}
 
 
+def tag_snbt(value, path=()):
+    """Literal native SNBT, including ContainerHelper's byte-typed Items.Slot.
+
+    Slot must compare equal to the saved byte tag, not merely convert via getByte.
+    Modern item count remains an int. All strings retain their exact JSON text.
+    """
+    if isinstance(value,dict):
+        return '{'+','.join(json.dumps(key,ensure_ascii=False)+':'+tag_snbt(item,path+(key,))
+                            for key,item in value.items())+'}'
+    if isinstance(value,list):
+        return '['+','.join(tag_snbt(item,path+(index,)) for index,item in enumerate(value))+']'
+    if len(path)>=3 and path[-3]=='Items' and type(path[-2]) is int and path[-1]=='Slot':
+        if type(value) is not int or not 0<=value<=127:raise UserError('Native inventory Slot must be a bounded nonnegative byte')
+        return str(value)+'b'
+    if value is None or not isinstance(value,(str,bool,int,float)):
+        raise UserError('Only literal native tag values are supported')
+    return json.dumps(value,ensure_ascii=False,allow_nan=False,separators=(',',':'))
+
+
 def payload(p, states, name, *, tags=False):
     palette=sorted(set(states.values()));lookup={s:n for n,s in enumerate(palette)}
     result={'format':'awft-native-settlement:1','name':name,'created':utcnow(),
             'seed':p.registry['seed'],'world_path':p.registry['world_path'],'backup_sha256':p.backup_sha,
             'bounds':[min(a[0] for a in states),min(a[2] for a in states),max(a[0] for a in states),max(a[2] for a in states)],
             'palette':palette,'blocks':[[*pos,lookup[s]] for pos,s in sorted(states.items())],
-            'block_entities':[{'pos':list(pos),'nbt':tag} for pos,tag in sorted(p.tags.items()) if tags and pos in states],
+            'block_entities':[{'pos':list(pos),'nbt':tag_snbt(tag)}
+                              for pos,tag in sorted(p.tags.items()) if tags and pos in states],
             'commands':[],'landmarks':[]}
     return (json.dumps(result,separators=(',',':'),ensure_ascii=False)+'\n').encode()
 

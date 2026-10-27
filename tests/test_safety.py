@@ -260,6 +260,27 @@ class ConfigurationTests(Fixture):
             with self.assertRaises(UserError):
                 server.command(command, confirmed=True)
 
+    def test_import_joins_are_private_confirmed_and_exactly_typed(self):
+        server = Server(self.layout, self.storage)
+        command = 'awftimport settle import-joins-' + 'b' * 16 + ' ' + 'b' * 64
+        with patch.object(server, '_write') as write:
+            with self.assertRaises(UserError):
+                server.command(command, confirmed=True)
+            write_json(self.layout.state / 'artistic-owner.json',
+                       {'format': 'awft-artistic-stage:1', 'home': str(self.layout.home)})
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': False, 'port': 25575})
+            with self.assertRaises(UserError):
+                server.command(command)
+            server.command(command, confirmed=True)
+            write.assert_called_once_with(command)
+            for bad in [command + ' extra', command.replace('import-joins-', '../'),
+                        command.replace('b' * 64, 'invalid')]:
+                with self.assertRaises(UserError):
+                    server.command(bad, confirmed=True)
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': True})
+            with self.assertRaises(UserError):
+                server.command(command, confirmed=True)
+
 
 class PlayerTests(Fixture):
     def setUp(self):
