@@ -2,7 +2,7 @@
 
 **Final server status:** the fresh world is saved, but the server is currently offline. A subsequent startup failed in Create 6.0.10 while accessing unbound `create:chocolate_bucket`. The earlier online measurements are historical. Recovery start was rejected by automatic approval review with only the reason "blocked by policy"; it was not retried through another route.
 
-**Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
+**Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
 Candidate.31 is published; the official fresh world is installed but the server is offline.
 
@@ -30,10 +30,10 @@ download requirement. Other mods come from their pinned sources. Leave the
 optional Essential fallback off unless it is deliberately needed.
 
 The Packwiz update includes the same cinematic datapack for both clients and the
-server, loaded through Paxi. Keep this supplied data intact so SeedGen's strict
-fingerprint inputs remain aligned. Candidate.31 also supplies a narrow client
-adapter for Tectonic's terrain-pack ordering. Its final native client/server
-agreement check is pending; no relaxed fingerprint setting is selected. See
+server, loaded through Paxi. Keep this supplied data intact. Candidate.31 also
+corrects Tectonic's terrain-pack ordering, but its actual native client/server
+comparison still failed. Strict SeedGen client generation stays off, with DH
+server-download fallback; no relaxed fingerprint setting is selected. See
 [the runtime gap and repair scope](SEEDGEN-RUNTIME-GAP.md).
 
 ## Updates and troubleshooting
@@ -45,14 +45,15 @@ causes the "must be run through packwiz-installer-bootstrap" error.
 Both players relaunch the matching gameplay pack after server content changes.
 Local shader differences do not change server gameplay content. Fresh public
 download, Packwiz installation and native Prism import are separate checks for
-each released starter; candidate.31's results remain pending here. Use the
+each released starter. Candidate.31's public ZIP/checksum passed, but two fresh
+headless installations failed DNS and native fresh Prism import remains unqualified. Use the
 [published checksum](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.31)
-when it becomes available.
+to verify your download.
 
 If the server reports incompatible mods, check that both the imported instance
 and server use candidate.31. The public tunnel can connect only while the host is
-running the intended server; the authorized fresh-world handoff is still in
-progress at this documentation checkpoint.
+running the intended server. The authorized fresh-world handoff is complete;
+the server is offline as described at the top of this guide.
 
 ## Host
 

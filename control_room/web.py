@@ -126,7 +126,9 @@ class Application:
         while self.server.running() and self.server.state == 'starting' and time.monotonic() < deadline:
             time.sleep(.25)
         if self.server.state != 'online':
-            raise UserError('Minecraft did not finish starting. See Console & logs for the actual error; starting Java alone is not a successful server start.')
+            detail = getattr(self.server, 'warning', None)
+            raise UserError('Minecraft did not finish starting. See Console & logs for the actual error; starting Java alone is not a successful server start.'
+                            + (' ' + detail if detail else ''))
         return self.server.snapshot()
 
     def restart_world(self, notify=lambda _: None):

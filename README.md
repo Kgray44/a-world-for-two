@@ -2,7 +2,7 @@
 
 **Final server status:** the fresh world is saved, but the server is currently offline. A subsequent startup failed in Create 6.0.10 while accessing unbound `create:chocolate_bucket`. The earlier online measurements are historical. Recovery start was rejected by automatic approval review with only the reason "blocked by policy"; it was not retried through another route.
 
-**Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
+**Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
 **Our little corner of an endless world.**
 
@@ -18,8 +18,8 @@ Published prerelease **0.1.0-candidate.31** retains **197 enabled mods**: **191 
 and one resource pack are included. Essential is optional and disabled; enabling
 it brings the total mod selection to 198.
 
-**Current checkpoint:** candidate.31 build/publication and the authorized fresh-world
-handoff are in progress. The rebuilt settlement has actual in-game screenshot
+**Current checkpoint:** candidate.31 is published and the authorized fresh-world
+handoff is complete; the server is offline as described above. The rebuilt settlement has actual in-game screenshot
 reviews; owner artistic acceptance remains pending. See [current status](docs/STATUS.md).
 
 ## Install and join
@@ -78,9 +78,10 @@ deferred. The [compatibility inventory](docs/COMPATIBILITY.md) retains every
 requested candidate and unresolved integration; [the lock](catalog/lock.json)
 records exact versions, file hashes and client/server sides.
 
-Candidate.31 delivers the same cinematic datapack through Packwiz/Paxi and aligns
-the client-side ordering of Tectonic's built-in terrain pack. Strict SeedGen checks
-remain enabled; [final native agreement is pending](docs/SEEDGEN-RUNTIME-GAP.md).
+Candidate.31 delivers the same cinematic datapack through Packwiz/Paxi and corrects
+the client-side ordering of Tectonic's built-in terrain pack. Actual native testing
+still failed strict fingerprint agreement: SeedGen client generation stays off,
+with DH server-download fallback. [The remaining gap is documented](docs/SEEDGEN-RUNTIME-GAP.md).
 
 ## Control Room
 

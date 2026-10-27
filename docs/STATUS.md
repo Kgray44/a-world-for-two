@@ -2,7 +2,7 @@
 
 **Final server status:** the fresh world is saved, but the server is currently offline. A subsequent startup failed in Create 6.0.10 while accessing unbound `create:chocolate_bucket`. The earlier online measurements are historical. Recovery start was rejected by automatic approval review with only the reason "blocked by policy"; it was not retried through another route.
 
-**Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
+**Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
 **2026-10-27 UTC: candidate.31 published; fresh world installed; server offline.**
 
@@ -21,22 +21,27 @@ remaining strict SeedGen mismatch are open.
 | Optional fallback | Essential disabled; 198 mod records including it |
 | Graphics | Eight shaders and one resource pack |
 | Client heap | KG: 6 GiB; Sera: conservative 4 GiB |
-| Owned helpers | Control Bridge 0.6.17 build target; client Presentation 0.2.2 |
+| Owned helpers | Control Bridge 0.6.17; client Presentation 0.2.2 |
 | Catalog | 207 file records; all 223 requested candidates retained |
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
 Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
 The immutable candidate.31 lock is authoritative for released artifacts. The latest full local run passed
-**319 Python tests in 60.749 seconds**, 207-entry Packwiz validation and four Node
-session tests. Final candidate.31 CI and runtime acceptance remain separate.
+**330 Python tests in 32.418 seconds**, 207-entry Packwiz validation and four Node
+session tests. Candidate.31 source CI at `8dd64b1` passed the earlier 319 tests; runtime
+acceptance remains separate.
 Source checks are separate from native gameplay and release acceptance.
+The scheduled backup saved and verified the world before its automatic resume
+failed in Create. Control Room now preserves native failures even when Java
+returns zero and checks actual readiness after a backup. See
+[the startup investigation](CREATE-STARTUP-RECOVERY.md).
 [Compatibility](COMPATIBILITY.md) retains unresolved alternatives and
 feature-specific runtime gates.
 
 Candidate.27's harbor inspection failed on the dedicated server because reflective
 field enumeration resolved a client-only camera type. Bridge 0.6.17 retains direct
-MethodHandles access for that specific inspection; its native dedicated-server
-probe and candidate.31 runtime acceptance remain pending. The failed receipt is
+MethodHandles access for that specific inspection. This change alone does not
+qualify complete candidate.31 runtime behavior. The failed receipt is
 preserved.
 
 Tectonic retains vertical scale 1.4 and elevation boost 0.1 within Minecraft's
@@ -116,8 +121,11 @@ was already present: the actual gap is priority. The client opened it before raw
 mod roots, allowing Terralith to override 16 overlapping resources; the server
 selected Tectonic after mod data. Candidate.31 reuses and moves that exact existing
 pack after raw roots and before explicit extras, preserving native metadata,
-overlays and fingerprint code. Actual candidate.31 paired agreement remains
-pending. See [the corrected diagnosis and limits](SEEDGEN-RUNTIME-GAP.md).
+overlays and fingerprint code. Actual candidate.31 testing confirmed index 232→374
+and changed the client fingerprint to `f2fed434d47f6565`, but the server fingerprint
+remained `de19e29860fac400` and strict agreement failed. SeedGen client generation
+stays off, with DH server-download fallback; another registry difference is
+unresolved. See [the exact diagnosis and limits](SEEDGEN-RUNTIME-GAP.md).
 
 Eight shaders are pinned, including Kappa and Bliss. Chocapic remains deferred at
 the owner's request. Switching shaders caused a real client freeze/disconnection
@@ -161,10 +169,14 @@ Its single Prism ZIP is 7,078,762 bytes, SHA-256
 `3dabe6a24fe8edf03a4202afbba17ed625888678d5efcf29619d40995fa503ee`.
 Public ZIP/sidecar, updater pack/index and all 80 configuration files passed exact
 hash checks. Source CI and Pages run40495276548 passed at immutable source8dd64b1.
-Fresh headless installation FAILED: 195/201 CLI artifacts verified, six downloads
-missing after DNS errors across ForgeCDN, LDTTeam and GitHub. Optional Essential
-was enabled by the headless CLI; the GUI default remains off. No retry or mirror
-was used. Native fresh Prism import/current Sera join remain unqualified.
+Two independent fresh headless installations FAILED: each verified 195/201 CLI
+artifacts, with six downloads missing after DNS errors across ForgeCDN, LDTTeam,
+GitHub and their redirect hosts. Separate official URL downloads matched all six
+pins, so no artifact URL or licensing defect is established. Optional Essential
+was enabled by the headless CLI; the GUI default remains off. The second attempt
+was separately authorized after successful network diagnostics, in a new isolated
+directory; both failures are preserved and no mirror or DNS change was used.
+Native fresh Prism import/current Sera join remain unqualified.
 
 A startup-idle point at11:26:31 UTC measured20.0003TPS,1.4895ms/tick,
 1.285GiB heap of8GiB,3.714GiB RSS,5.925% host-normalized CPU,841Overworld

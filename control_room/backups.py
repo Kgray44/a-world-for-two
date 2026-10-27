@@ -91,7 +91,17 @@ class Backups:
                 raise
             # Restart only after integrity succeeded. A failed backup deliberately leaves the server stopped.
             if was_running and resume:
-                self.server.start(notify=notify)
+                try:
+                    self.server.start(notify=notify)
+                    self.server.wait_ready()
+                except Exception as exc:
+                    # The archive is valid even when the subsequent startup fails.
+                    # Keep both facts rather than claiming the backup restored service.
+                    receipt["resume"] = {"state": "failed", "error": str(exc), "at": utcnow()}
+                    write_json(target.with_suffix(".json"), receipt)
+                    raise UserError("Backup " + ident + " is verified, but Minecraft did not resume: " + str(exc)) from exc
+                receipt["resume"] = {"state": "online", "at": utcnow()}
+                write_json(target.with_suffix(".json"), receipt)
             return dict(receipt, id=ident)
 
     def verify_archive(self, path):

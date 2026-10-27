@@ -88,6 +88,7 @@ class Server:
         self._last_player_info = None
         self._last_player_info_at = None
         self._logger = None
+        self._reader_thread = None
         self.warning = None
         self._recover_identity()
 
@@ -98,6 +99,10 @@ class Server:
     def _recover_identity(self):
         identity = read_json(self.owner_path)
         if not identity:
+            return
+        if identity.get("state") == "failed" and identity.get("exited"):
+            self.state = "failed"
+            self.warning = identity.get("warning") or "The previous Minecraft process failed. See Console & logs."
             return
         try:
             process = psutil.Process(identity["pid"])
@@ -121,7 +126,7 @@ class Server:
                     return False
             return False
 
-    def record(self, line):
+    def record(self, line, *, process=None):
         line = re.sub(r"(?i)(access_token|password|secret|authorization)([=: ]+)\S+", r"\1\2[redacted]", line)
         # Minecraft join logs include addresses; do not copy them into dashboard bundles.
         line = re.sub(r"\[/[^\]]+\]", "[address hidden]", line)
@@ -133,10 +138,19 @@ class Server:
                                         "warning" if "WARN" in line or "Can't keep up" in line else "info"})
             if self._logger:
                 self._logger.info(line)
-            if "Done (" in line and "For help" in line:
+            # A former reader can still be draining after its JVM has exited.
+            # Retain its output, but never let it change a newer process's state.
+            if process is not None and self.process is not process:
+                return
+            if "Done (" in line and "For help" in line and self.state == "starting":
                 self.state = "online"
-            if "Encountered an unexpected exception" in line and self.state == "starting":
+            native_error = re.search(r'\[(?:main|Server thread)/(?:ERROR|FATAL)\]', line)
+            fatal = native_error and any(message in line for message in (
+                "Encountered an unexpected exception", "Failed to start the minecraft server",
+                "Failed to wait for future Registry initialization"))
+            if fatal and self.state in ("starting", "online", "failed"):
                 self.state = "failed"
+                self.warning = line
             match = re.search(r"\b([A-Za-z0-9_]{1,16}) (joined|left) the game", line)
             if match:
                 self.events.append({"at": utcnow(), "name": match[1], "event": match[2]})
@@ -153,15 +167,21 @@ class Server:
     def _reader(self, process):
         try:
             for line in process.stdout:
-                self.record(line)
+                self.record(line, process=process)
         finally:
             code = process.wait()
             with self._lock:
-                self.record("Managed Java process exited with code " + str(code))
+                self.record("Managed Java process exited with code " + str(code), process=process)
                 if self.process is process:
-                    self.state = "offline" if code == 0 else "failed"
+                    failed = code != 0 or self.state in ("starting", "failed")
+                    if failed and not self.warning:
+                        self.warning = ("Minecraft exited before reporting readiness (Java exit code " + str(code) + ")."
+                                        if self.state == "starting" else
+                                        "Minecraft process failed with Java exit code " + str(code) + ".")
+                    self.state = "failed" if failed else "offline"
                     self.identity = None
-                    write_json(self.owner_path, {"exited": utcnow(), "code": code})
+                    write_json(self.owner_path, {"exited": utcnow(), "code": code,
+                                                "state": self.state, "warning": self.warning})
 
     def start(self, notify=lambda _: None):
         with self.layout.mutation, self._lock:
@@ -223,9 +243,32 @@ class Server:
             self.state = "starting"
             self.warning = None
             self.tick.update(tps=None, mspt=None, at=None)
-            threading.Thread(target=self._reader, args=(self.process,), daemon=True).start()
+            self._reader_thread = threading.Thread(target=self._reader, args=(self.process,), daemon=True)
+            self._reader_thread.start()
             notify("Java started; waiting for NeoForge to report readiness")
             return {"state": self.state, "pid": proc.pid}
+
+    def wait_ready(self, timeout=360):
+        """Require actual readiness for an owned start; leave a slow live JVM alone."""
+        if type(timeout) not in (int, float) or not 0 < timeout <= 360:
+            raise UserError("Use a finite Minecraft readiness timeout of at most 360 seconds")
+        process = self.process
+        if process is None:
+            raise UserError("No owned Minecraft startup is available to observe")
+        deadline = time.monotonic() + timeout
+        while (self.process is process and process.poll() is None
+               and self.state == "starting" and time.monotonic() < deadline):
+            time.sleep(.1)
+        if self.process is not process:
+            raise UserError("The owned Minecraft process changed during startup")
+        if self.state == "online" and process.poll() is None:
+            return self.snapshot()
+        if process.poll() is not None and self._reader_thread:
+            self._reader_thread.join(timeout=2)
+        if self.state == "online" and process.poll() is None:
+            return self.snapshot()
+        raise UserError(self.warning or
+            "Minecraft did not finish starting. A still-running JVM was not stopped or relaunched; see Console & logs.")
 
     def _write(self, command):
         with self._lock:
