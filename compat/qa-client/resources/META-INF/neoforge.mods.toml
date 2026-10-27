@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="awft_settlement_qa"
-version="0.1.5"
+version="0.1.6"
 displayName="AWFT Settlement QA (test only)"
 displayTest="IGNORE_ALL_VERSION"
 description="Owned, expiring, loopback-only native framebuffer capture for settlement visual review. Excluded from all release manifests."
@@ -13,6 +13,18 @@ description="Owned, expiring, loopback-only native framebuffer capture for settl
 modId="neoforge"
 type="required"
 versionRange="[21.1.262]"
+side="CLIENT"
+
+[[dependencies.awft_settlement_qa]]
+modId="xaeroworldmap"
+type="required"
+versionRange="[1.47.0]"
+side="CLIENT"
+
+[[dependencies.awft_settlement_qa]]
+modId="maphorizons"
+type="required"
+versionRange="[1.1.0-awft.2]"
 side="CLIENT"
 
 [[dependencies.awft_settlement_qa]]

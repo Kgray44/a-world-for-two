@@ -49,6 +49,60 @@ SeedGen generation. The 0.1.5 helper compiled and its actual candidate 35 cached
 client export completed with 1,950 entries and no encoding errors. The paired
 native fingerprints still differ; see `docs/NATIVE-CANDIDATE35.md`.
 
+Version **0.1.6** adds explicit native Xaero map actions on the authenticated
+loopback staging endpoint `127.0.0.1:25575` only. The same listener handles them
+after the existing ownership, expiry, nonce, unique-ID, account and server checks.
+Ordinary pose, lighting, export and capture actions still reject open screens.
+Map actions accept only the exact `GuiMap` instance this helper opened in the
+same native Xaero session; they cannot capture or close another UI.
+
+Each request still supplies its own unique `id`, current authorization `nonce`
+and `action`. The map-specific fields are:
+
+| Action | Fields | Result |
+| --- | --- | --- |
+| `map-open` | `dimension`, for example `minecraft:overworld` | Opens the author's real World Map screen; only existing session dimensions are accepted. |
+| `map-view` | `center: [x,z]`, `zoom` | Changes this map's camera and invokes the native zoom limits/animation. It never moves the player. |
+| `map-status` | None | Records actual dimension, center, user/target/render scale, UI size and MapHorizons/ShareFetch diagnostics. |
+| `map-capture` | `expected_dimension`, `expected_center: [x,z]`, `expected_zoom` | Saves the actual framebuffer only after two separately rendered observations agree on the expected native view. |
+| `map-close` | None | Restores this view's previous dimension selection, target zoom and camera-attachment preference, then closes only its own screen. |
+
+Map captures share the existing **96 capture**, **8 megapixel** and storage
+reserve limits. Two distinct `RenderFrameEvent.Post` observations must report the
+requested native dimension, center within half a block, converged zoom within
+0.1%, and mutually agreeing center/zoom. A one-second polling interval or elapsed
+time never proves readiness. A request stops after 60 seconds without those
+conditions. Changed expected values under the same ID fail; a different authorized
+request cancels a pending capture with its own terminal receipt. Native map painting
+can still be incomplete when view state is ready, so inspect the actual image.
+
+Map receipts are private create-once JSON plus a SHA256 `.complete` seal. Failed
+requests are terminal and are not automatically retried or logged every poll.
+Existing images and receipts are preserved across launches. If the storage reserve
+prevents even a small failure receipt, the request is marked complete in memory
+and logs one error. An authorized normal disconnect or quit restores a currently
+safe, exact owned map view first; a detached session or another UI is never changed.
+
+The helper constructs the same native `GuiMap` as Xaero's normal open-map control.
+The pinned 1.47.0 API lacks public center access, so narrowly named typed
+MethodHandles/VarHandles read/write its camera fields and invoke native
+`changeZoom`. No class-member enumeration, second listener, custom renderer,
+discovery editing, seed lookup or generation call is added. Ordinary author
+MapHorizons **ShareFetch may download permitted server LODs when the map opens**;
+the receipt records whether it is enabled. Such downloads must be distinguished
+from a genuine coarse-only adapter result. A saved SQL payload or matching camera
+alone does not prove rendered terrain, exploration, permissions or SeedGen parity.
+
+Build with Python 3.12+ and Java 21 using `python -B -m tools.build_settlement_qa`.
+It requires the exact cached Xaero World Map 1.47.0 and MapHorizons 1.1.0-awft.2
+compile-only APIs; `--maphorizons-api PATH` can select the exact reviewed artifact
+before cache integration. Their sizes and SHA256 hashes, plus the author's nested
+XaeroLib 1.7.3, are checked. None is packaged inside the QA JAR. The bounded build
+also runs 23 pure rendered-readiness fixtures, without starting Minecraft or
+initializing native GUI handles. **Actual transformed UI linkage, native map
+rendering and a genuine coarse-only data view remain unverified.** QA 0.1.6 is
+not installed by its build helper and remains excluded from release exports.
+
 Capture requires an expiring authorization nonce, the expected account, server,
 position and a uniquely named request. It permits at most 96 captures per launch,
 with an 8-megapixel framebuffer bound,

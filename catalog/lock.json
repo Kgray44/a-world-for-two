@@ -1,13 +1,13 @@
 {
   "format": 1,
   "name": "A World for Two",
-  "version": "0.1.0-candidate.35",
+  "version": "0.1.0-candidate.37",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
-  "generated": "2026-10-27T13:32:33.058596+00:00",
+  "generated": "2026-10-27T14:45:52.042299+00:00",
   "release_status": "candidate",
-  "validation": "Gameplay pins preserved; owned bridge native restart and cycle checks pending",
+  "validation": "Only explicitly reviewed bridge/mapping artifacts changed; native restart and integration checks pending",
   "mods": [
     {
       "project_id": "zV5r3pPn",
@@ -277,15 +277,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.21",
-      "version": "0.6.21",
+      "version_id": "0.6.23",
+      "version": "0.6.23",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.21.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.21.jar",
-      "size": 247226,
+      "filename": "awft-control-bridge-0.6.23.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.23.jar",
+      "size": 247903,
       "hashes": {
-        "sha256": "033ccb2d450c6639664b758a5bf0643abf925bb7fadc806f0b01b2bc9e7c0210"
+        "sha256": "55d6bb4108c0787b8742d43a92853aca5185cfecad9c6d539ded2281f37ae4ef"
       },
       "side": "both",
       "kind": "mod",
@@ -5903,15 +5903,15 @@
       "project_id": "github:VolcanicMG/MapHorizons",
       "slug": "maphorizons",
       "name": "MapHorizons",
-      "version_id": "1.1.0+6c80ad5+awft.1",
+      "version_id": "1.1.0+6c80ad5+awft.2",
       "version": "1.1.0",
       "provider": "local-build",
       "release_type": "experimental",
-      "filename": "maphorizons-1.1.0-awft.1.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/maphorizons-1.1.0-awft.1.jar",
-      "size": 110502,
+      "filename": "maphorizons-1.1.0-awft.2.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/maphorizons-1.1.0-awft.2.jar",
+      "size": 121569,
       "hashes": {
-        "sha256": "da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93"
+        "sha256": "cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4"
       },
       "side": "both",
       "kind": "mod",
@@ -5924,11 +5924,11 @@
       "license": {
         "id": "MIT"
       },
-      "selection_reason": "High-priority experimental DH3.3.x-to-Xaero adapter, built from exact author source with selfCheck pass. SeedGen visual verification remains required; no automatic map population claimed.",
-      "status": "Integrated but awaiting runtime validation",
+      "selection_reason": "Original MIT interoperability repair for native DH coarse LOD lookup, read-only shaded SQLite and refresh races. Actual Xaero appearance, authority and SeedGen data provenance remain native test gates.",
+      "status": "Experimental native map validation pending",
       "validation": {
         "metadata": "pass",
-        "jar": "pending",
+        "jar": "pinned API compilation and 76 helper checks pass",
         "runtime": "not run"
       }
     },

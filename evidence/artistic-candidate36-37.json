@@ -1,0 +1,192 @@
+{
+  "format": "awft-artistic-candidate36-37:1",
+  "at": "2026-10-27T14:53:58.574776+00:00",
+  "scope": "Isolated staged world; official world not mutated; no public release acceptance",
+  "candidate36": {
+    "pack_sha256": "68abc751909014db990bcce07dc8179ca614662c4cd964faa83d327a3522f6e4",
+    "bridge_version": "0.6.22",
+    "bridge_sha256": "e8cc394377abe69a47fb0104864859ea4d6dc214b1a06fafcdac0a1b962aa9dd",
+    "native_authenticated_join": "pass",
+    "native_xaero_map_view": "pass; actual full-resolution control only",
+    "map_image": {
+      "file": "docs/images/artistic-recovery/xaero-native-c36-control.png",
+      "sha256": "a226fde6a45ace689ce74ef700c74305354e5c831848f5c7cf02ae1781d477c3",
+      "bytes": 372538
+    },
+    "maphorizons": "awft.2 native UI linkage; coarse-only and SeedGen provenance still pending",
+    "normal_server_client_close": "observed 14:31 UTC"
+  },
+  "candidate37": {
+    "pack_sha256": "38b015d0b69f0381ff7120a2dfbf4deb8260252d7b080c771bb66c320a45d77f",
+    "bridge_version": "0.6.23",
+    "bridge_sha256": "55d6bb4108c0787b8742d43a92853aca5185cfecad9c6d539ded2281f37ae4ef",
+    "source": "Scoped active commissioning wake; no permanent forced chunks or idle telemetry wake",
+    "native_station_attachment": "both true after 181 active resetEmptyTime calls",
+    "native_commissioning": "stopped at first tube connection; no links/water/feed/train",
+    "native_authenticated_join": "pass",
+    "strict_seedgen_parity": "refused; unchanged",
+    "visual_r3": "not yet applied"
+  },
+  "native_receipts": [
+    {
+      "file": "artistic-mill-result-50397b78-7204-47cc-98a6-c441f700ff98.json",
+      "sha256": "41d6ef0034a5821772068f15f8ed2672ce142dcd93db6d1376a48be96535cd79",
+      "bytes": 1615,
+      "candidate": "0.1.0-candidate.36",
+      "phase": "WAIT_STATIONS",
+      "error": "IllegalStateException: Actual station graph/target/direction readiness not established; native witness retained",
+      "status": "native commissioning stopped; partial native state preserved for review",
+      "station_readiness": [
+        {
+          "actual_target": [
+            1336,
+            69,
+            -994
+          ],
+          "direction_matches": true,
+          "target_matches": true,
+          "valid_track": true,
+          "position": [
+            1332,
+            71,
+            -994
+          ],
+          "graph_location_ready": true,
+          "station_point_ready": false,
+          "actual_direction": "POSITIVE"
+        },
+        {
+          "actual_target": [
+            1336,
+            69,
+            -942
+          ],
+          "direction_matches": true,
+          "target_matches": true,
+          "valid_track": true,
+          "position": [
+            1332,
+            71,
+            -942
+          ],
+          "graph_location_ready": true,
+          "station_point_ready": false,
+          "actual_direction": "NEGATIVE"
+        }
+      ],
+      "native_dimension_empty_timer_resets": null,
+      "native_tube_links": [],
+      "actual_wheat_feed_performed": false,
+      "train_created": false,
+      "cleanup_passed": true,
+      "remaining_owned_tickets": 0
+    },
+    {
+      "file": "artistic-mill-result-e2a116ea-5f8e-4450-9402-e3eaa9f8813a.json",
+      "sha256": "e8bb3900c9391250d3e9be59d1418fba0057e154b22d90905d542e2cab10ca73",
+      "bytes": 1614,
+      "candidate": "0.1.0-candidate.36",
+      "phase": "WAIT_STATIONS",
+      "error": "IllegalStateException: Actual station graph/target/direction readiness not established; native witness retained",
+      "status": "native commissioning stopped; partial native state preserved for review",
+      "station_readiness": [
+        {
+          "actual_target": [
+            1336,
+            69,
+            -994
+          ],
+          "direction_matches": true,
+          "target_matches": true,
+          "valid_track": true,
+          "position": [
+            1332,
+            71,
+            -994
+          ],
+          "graph_location_ready": true,
+          "station_point_ready": false,
+          "actual_direction": "POSITIVE"
+        },
+        {
+          "actual_target": [
+            1336,
+            69,
+            -942
+          ],
+          "direction_matches": true,
+          "target_matches": true,
+          "valid_track": true,
+          "position": [
+            1332,
+            71,
+            -942
+          ],
+          "graph_location_ready": true,
+          "station_point_ready": false,
+          "actual_direction": "NEGATIVE"
+        }
+      ],
+      "native_dimension_empty_timer_resets": null,
+      "native_tube_links": [],
+      "actual_wheat_feed_performed": false,
+      "train_created": false,
+      "cleanup_passed": true,
+      "remaining_owned_tickets": 0
+    },
+    {
+      "file": "artistic-mill-result-a22d8353-fb42-485f-971d-c4f8966e9617.json",
+      "sha256": "92e965959d59b4783e7bfb94fa2794ec3dc118f0f378e03932ad939ac219a193",
+      "bytes": 1607,
+      "candidate": "0.1.0-candidate.37",
+      "phase": "TUBES",
+      "error": "IllegalStateException: Preserve occupied or unsupported native tube face",
+      "status": "native commissioning stopped; partial native state preserved for review",
+      "station_readiness": [
+        {
+          "graph_location_ready": true,
+          "position": [
+            1332,
+            71,
+            -994
+          ],
+          "valid_track": true,
+          "target_matches": true,
+          "direction_matches": true,
+          "actual_target": [
+            1336,
+            69,
+            -994
+          ],
+          "actual_direction": "POSITIVE",
+          "station_point_ready": true
+        },
+        {
+          "graph_location_ready": true,
+          "position": [
+            1332,
+            71,
+            -942
+          ],
+          "valid_track": true,
+          "target_matches": true,
+          "direction_matches": true,
+          "actual_target": [
+            1336,
+            69,
+            -942
+          ],
+          "actual_direction": "NEGATIVE",
+          "station_point_ready": true
+        }
+      ],
+      "native_dimension_empty_timer_resets": 181,
+      "native_tube_links": [],
+      "actual_wheat_feed_performed": false,
+      "train_created": false,
+      "cleanup_passed": true,
+      "remaining_owned_tickets": 0
+    }
+  ],
+  "public_prism_unchanged": "awft-0.1.0-candidate.31"
+}

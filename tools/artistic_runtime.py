@@ -14,7 +14,7 @@ from .playtest import guard
 from .artistic_capture import CLIENT
 
 
-def upgrade(home):
+def upgrade(home, *, include_mapping=False):
     layout=Layout(home)
     owner=read_json(layout.state/'artistic-owner.json',{})
     if (owner.get('format')!='awft-artistic-stage:1'
@@ -33,8 +33,17 @@ def upgrade(home):
     previous=read_json(layout.releases/read_json(layout.home/'packwiz/active.json')['version']/'lock.json')
     old={m['slug']:m for m in previous['mods']};new={m['slug']:m for m in lock['mods']}
     changes={slug for slug in set(old)|set(new) if old.get(slug)!=new.get(slug)}
-    if not changes or not changes<={'awft-control-bridge','awft-client-presentation'}:
-        raise UserError('This operation preserves every gameplay artifact pin')
+    permitted={'awft-control-bridge','awft-client-presentation'}
+    if include_mapping:
+        m=new.get('maphorizons',{});before=old.get('maphorizons',{})
+        if (m.get('filename')!='maphorizons-1.1.0-awft.2.jar'
+                or m.get('hashes',{}).get('sha256')!='cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4'
+                or before.get('hashes',{}).get('sha256')!='da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93'
+                or m.get('side')!=before.get('side') or m.get('license',{}).get('id')!='MIT'):
+            raise UserError('The exact reviewed mapping repair and predecessor are required')
+        permitted.add('maphorizons')
+    if not changes or not changes<=permitted:
+        raise UserError('Only the explicitly admitted helper and mapping artifact changes are allowed')
     maximum=3*tree_size(REPO/'packwiz')+8*1024**2
     if maximum>64*1024**2:raise UserError('Split the manifest upgrade into a bounded step')
     guard(8*1024**2,maximum)
@@ -94,4 +103,6 @@ def upgrade(home):
 if __name__=='__main__':
     import argparse
     p=argparse.ArgumentParser();p.add_argument('--home',required=True,type=Path)
-    print(json.dumps(upgrade(p.parse_args().home)))
+    p.add_argument('--include-mapping',action='store_true')
+    args=p.parse_args()
+    print(json.dumps(upgrade(args.home,include_mapping=args.include_mapping)))

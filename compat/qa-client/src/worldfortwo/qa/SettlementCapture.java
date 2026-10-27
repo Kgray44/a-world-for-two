@@ -8,6 +8,9 @@ import net.minecraft.client.gui.screens.DisconnectedScreen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.resolver.ServerAddress;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
@@ -15,6 +18,8 @@ import net.neoforged.neoforge.client.event.RenderFrameEvent;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.time.Instant;
 import java.util.*;
 
@@ -29,8 +34,19 @@ public final class SettlementCapture {
     private int captures;
     private int worldgenExports;
     private boolean busy;
+    private long renderedFrames;
+    private NativeXaeroView mapView;
+    private PendingMapCapture pendingMapCapture;
+    private static final Set<String> MAP_ACTIONS=Set.of("map-open","map-view","map-status","map-capture","map-close");
+    private static final class PendingMapCapture {
+        final String id;
+        final MapCaptureGate gate;
+        final long started=System.nanoTime();
+        PendingMapCapture(String id,MapCaptureGate.Target target) { this.id=id;gate=new MapCaptureGate(target); }
+    }
     public SettlementCapture(){NeoForge.EVENT_BUS.addListener(this::frame);}
     private void frame(RenderFrameEvent.Post event){
+        renderedFrames++;
         if(busy || System.nanoTime()<nextCheck)return;
         nextCheck=System.nanoTime()+1_000_000_000L;
         Minecraft mc=Minecraft.getInstance();Path root=mc.gameDirectory.toPath().toAbsolutePath().normalize();
@@ -51,8 +67,15 @@ public final class SettlementCapture {
             String server=authorization.has("server")?authorization.get("server").getAsString():"127.0.0.1:25565";
             if(!Set.of("127.0.0.1:25565","127.0.0.1:25575").contains(server)
                     || !mc.getUser().getProfileId().toString().equals("32650cdf-2aaa-4f47-bb27-42ef0d1249fd"))return;
+            String action=command.get("action").getAsString();
+            if(pendingMapCapture!=null && pendingMapCapture.id.equals(id) && !action.equals("map-capture")) {
+                failMap(qa,id,action,new IllegalArgumentException("A pending capture ID cannot be reused for another action"));return;
+            }
+            if(pendingMapCapture!=null && !pendingMapCapture.id.equals(id))
+                cancelPendingMap(qa,"An explicitly authorized different request superseded the pending map capture");
             if(command.get("action").getAsString().equals("quit")){
-                completed.add(id);write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","normal Minecraft stop"));mc.stop();return;
+                completed.add(id);write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","normal Minecraft stop",
+                    "map_view_restoration",restoreMapForExit(mc)));mc.stop();return;
             }
             // Private staging only: ordinary game connection/disconnection APIs.
             // No credentials, input injection, public endpoint or server bypass.
@@ -68,9 +91,18 @@ public final class SettlementCapture {
                         "native_game_load_finished",true,"startup_overlay_absent",true,"ready_menu",mc.screen.getClass().getName()));
                 ConnectScreen.startConnecting(mc.screen,mc,ServerAddress.parseString(server),new ServerData("Owned artistic staging",server,ServerData.Type.OTHER),false,null);return;
             }
-            if(mc.player==null || mc.level==null || mc.screen!=null || mc.getCurrentServer()==null)return;
+            if(mc.player==null || mc.level==null || mc.getCurrentServer()==null)return;
             if(!mc.getCurrentServer().ip.equals(server)
                     || !mc.player.getUUID().toString().equals("32650cdf-2aaa-4f47-bb27-42ef0d1249fd"))return;
+            // Map actions require the same authenticated owner/nonce above and
+            // the exact helper-owned native GuiMap. No ordinary screen guard is
+            // relaxed: the existing actions still reject every open screen.
+            if(MAP_ACTIONS.contains(action)) { mapAction(mc,root,qa,id,server,action,command);return; }
+            if(action.equals("disconnect") && server.equals("127.0.0.1:25575") && mapView!=null && mapView.owns(mc)) {
+                completed.add(id);write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","normal staging disconnect",
+                    "map_view_restoration",restoreMapForExit(mc)));mc.disconnect(new TitleScreen());return;
+            }
+            if(mc.screen!=null)return;
             if(command.get("action").getAsString().equals("worldgen-export") && server.equals("127.0.0.1:25575")){
                 if(!mc.isGameLoadFinished() || mc.getOverlay()!=null)return;
                 completed.add(id);
@@ -133,6 +165,128 @@ public final class SettlementCapture {
                 try{receipt.put("native_result",message.getString());write(qa.resolve(id+".json"),receipt);}catch(Exception error){System.err.println("AWFT QA capture receipt: "+error);}finally{busy=false;}
             });
         }catch(Exception error){System.err.println("AWFT QA capture: "+error.getClass().getSimpleName()+": "+error.getMessage());}
+    }
+
+    private void mapAction(Minecraft mc,Path root,Path qa,String id,String server,String action,JsonObject command) {
+        try {
+            // Preserve immutable receipts across launches as well as this
+            // launch's completed set. Never reuse a screenshot's name.
+            if(Files.exists(qa.resolve(id+".json"),LinkOption.NOFOLLOW_LINKS)
+                    || Files.exists(qa.resolve(id+".complete"),LinkOption.NOFOLLOW_LINKS)) { completed.add(id);return; }
+            if(!server.equals("127.0.0.1:25575"))throw new IllegalStateException("Native map QA is staging-loopback only");
+            if(pendingMapCapture!=null && pendingMapCapture.id.equals(id) && !action.equals("map-capture"))
+                throw new IllegalArgumentException("A pending map capture ID cannot be reused for another action");
+            Map<String,Object> result;
+            switch(action) {
+                case "map-open" -> {
+                    if(mapView==null)mapView=new NativeXaeroView(mc.getUser().getProfileId());
+                    var dim=ResourceKey.create(Registries.DIMENSION,ResourceLocation.parse(command.get("dimension").getAsString()));
+                    result=mapView.open(mc,dim);
+                }
+                case "map-view" -> {
+                    if(mapView==null)throw new IllegalStateException("An explicitly opened native map is required");
+                    JsonArray center=command.getAsJsonArray("center");
+                    if(center.size()!=2)throw new IllegalArgumentException("Map center requires X and Z");
+                    result=mapView.setView(mc,center.get(0).getAsDouble(),center.get(1).getAsDouble(),command.get("zoom").getAsDouble());
+                }
+                case "map-status" -> {
+                    if(mapView==null)throw new IllegalStateException("An explicitly opened native map is required");
+                    result=mapView.snapshot(mc);
+                }
+                case "map-close" -> {
+                    if(mapView==null)throw new IllegalStateException("An explicitly opened native map is required");
+                    result=mapView.close(mc);
+                }
+                case "map-capture" -> {
+                    mapCapture(mc,root,qa,id,command);return;
+                }
+                default -> throw new IllegalArgumentException("Unsupported explicit map action");
+            }
+            finishMap(qa,id,Map.of("at",Instant.now().toString(),"action",action,"native_result",result,
+                "note","Native UI state only; actual painting, coarse-source provenance, permissions and performance require separate evidence"));
+        } catch(Throwable failure) {
+            if(failure instanceof VirtualMachineError || failure instanceof ThreadDeath)throw (Error)failure;
+            failMap(qa,id,action,failure);
+        }
+    }
+
+    private void mapCapture(Minecraft mc,Path root,Path qa,String id,JsonObject command) throws Exception {
+        if(mapView==null)throw new IllegalStateException("An explicitly opened native map is required");
+        if(captures>=96)throw new IllegalStateException("The shared 96-framebuffer capture limit is exhausted");
+        if(command.has("not_before") && Instant.now().isBefore(Instant.parse(command.get("not_before").getAsString())))return;
+        JsonArray center=command.getAsJsonArray("expected_center");
+        if(center.size()!=2)throw new IllegalArgumentException("Expected map center requires X and Z");
+        var target=new MapCaptureGate.Target(command.get("expected_dimension").getAsString(),center.get(0).getAsDouble(),
+            center.get(1).getAsDouble(),command.get("expected_zoom").getAsDouble());
+        if(pendingMapCapture==null)pendingMapCapture=new PendingMapCapture(id,target);
+        if(!pendingMapCapture.id.equals(id) || !pendingMapCapture.gate.target().equals(target))
+            throw new IllegalArgumentException("A pending capture ID cannot change its expected view");
+        if(System.nanoTime()-pendingMapCapture.started>=60_000_000_000L)
+            throw new IllegalStateException("Bounded map capture readiness expired: "+pendingMapCapture.gate.lastReason());
+        if(root.getRoot().toFile().getUsableSpace()<32_212_254_720L+128*1024*1024L
+                || Path.of("C:\\").toFile().getUsableSpace()<32_212_254_720L)
+            throw new IllegalStateException("The host storage reserve does not permit another framebuffer capture");
+        if((long)mc.getMainRenderTarget().width*mc.getMainRenderTarget().height>8_388_608L)
+            throw new IllegalStateException("The native framebuffer exceeds 8 megapixels");
+        Map<String,Object> actual=mapView.snapshot(mc);
+        var observation=new MapCaptureGate.Observation(renderedFrames,(String)actual.get("actual_view_dimension"),
+            Boolean.TRUE.equals(actual.get("dimension_ready")),(double)actual.get("camera_x"),(double)actual.get("camera_z"),
+            (double)actual.get("user_scale"),(double)actual.get("target_scale"));
+        MapCaptureGate.Evidence proof=pendingMapCapture.gate.consider(observation);
+        if(proof==null)return;
+        String filename="awft-qa-"+id+".png";
+        if(Files.exists(root.resolve("screenshots").resolve(filename),LinkOption.NOFOLLOW_LINKS))
+            throw new FileAlreadyExistsException("The requested screenshot name already exists");
+        Map<String,Object> receipt=new LinkedHashMap<>();
+        receipt.put("at",Instant.now().toString());receipt.put("action","map-capture");receipt.put("server","127.0.0.1:25575");
+        receipt.put("evidence","Actual native Minecraft framebuffer request with the exact owned Xaero screen; inspect native_result and the resulting PNG");
+        receipt.put("native_map_view",actual);receipt.put("expected_map_view",target);receipt.put("rendered_readiness",proof);
+        receipt.put("fps",mc.getFps());receipt.put("note","View readiness is not terrain painting, coarse-only source, exploration, SeedGen parity or performance acceptance");
+        busy=true;captures++;completed.add(id);pendingMapCapture=null;
+        try {
+            Screenshot.grab(mc.gameDirectory,filename,mc.getMainRenderTarget(),message->{
+                try { receipt.put("native_result",message.getString());writeNew(qa.resolve(id+".json"),receipt); }
+                catch(Exception failure) { System.err.println("AWFT QA immutable map receipt: "+failure); }
+                finally { busy=false; }
+            });
+        } catch(RuntimeException | Error failure) { busy=false;throw failure; }
+    }
+
+    private void finishMap(Path qa,String id,Object value) throws Exception {
+        completed.add(id);
+        if(pendingMapCapture!=null && pendingMapCapture.id.equals(id))pendingMapCapture=null;
+        writeNew(qa.resolve(id+".json"),value);
+    }
+    private void failMap(Path qa,String id,String action,Throwable failure) {
+        completed.add(id);
+        if(pendingMapCapture!=null && pendingMapCapture.id.equals(id))pendingMapCapture=null;
+        String message=String.valueOf(failure.getMessage());if(message.length()>1024)message=message.substring(0,1024)+" [truncated]";
+        try { writeNew(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action",action,"status","failed",
+            "error_type",failure.getClass().getName(),"error",message,"note","This unique request is complete; no automatic retry")); }
+        catch(Exception receiptError) { System.err.println("AWFT QA terminal map failure receipt: "+receiptError); }
+    }
+    private void cancelPendingMap(Path qa,String reason) {
+        PendingMapCapture previous=pendingMapCapture;pendingMapCapture=null;
+        if(previous!=null)failMap(qa,previous.id,"map-capture",new IllegalStateException(reason));
+    }
+    private Map<String,Object> restoreMapForExit(Minecraft mc) {
+        if(mapView==null || !mapView.owns(mc))return Map.of("status","no exact safe owned map to restore");
+        try { return mapView.close(mc); }
+        catch(Throwable failure) {
+            if(failure instanceof VirtualMachineError || failure instanceof ThreadDeath)throw (Error)failure;
+            return Map.of("status","restoration failed; normal disconnect/shutdown still requested","error_type",failure.getClass().getName());
+        }
+    }
+    private void writeNew(Path path,Object value) throws Exception {
+        byte[] raw=json.toJson(value).getBytes(StandardCharsets.UTF_8);
+        if(raw.length>65536)throw new IllegalStateException("Map QA receipt exceeds its bounded size");
+        if(path.getRoot().toFile().getUsableSpace()<32_212_254_720L+1024*1024L
+                || Path.of("C:\\").toFile().getUsableSpace()<32_212_254_720L)
+            throw new IllegalStateException("Storage reserve prevents writing a private failure receipt");
+        Path seal=path.resolveSibling(path.getFileName().toString().replaceFirst("\\.json$","")+".complete");
+        if(Files.exists(path,LinkOption.NOFOLLOW_LINKS) || Files.exists(seal,LinkOption.NOFOLLOW_LINKS))throw new FileAlreadyExistsException(path.toString());
+        Files.write(path,raw,StandardOpenOption.CREATE_NEW,StandardOpenOption.WRITE);
+        Files.writeString(seal,HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(raw))+"\n",StandardOpenOption.CREATE_NEW,StandardOpenOption.WRITE);
     }
     private void write(Path path,Object value)throws Exception{
         Path temporary=path.resolveSibling(path.getFileName()+".tmp");Files.writeString(temporary,json.toJson(value));Files.move(temporary,path,StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);

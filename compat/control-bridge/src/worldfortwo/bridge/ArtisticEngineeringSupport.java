@@ -66,7 +66,7 @@ import java.util.concurrent.CompletableFuture;
 public final class ArtisticEngineeringSupport {
     public interface Lease extends AutoCloseable { boolean valid(); void close() throws Exception; }
     public interface Interlock { Lease acquire(String owner, boolean simulation) throws Exception; }
-    private enum Phase { IDLE, HASH, READY, VERIFY, INITIALIZE, WAIT_STOP, TUBES, WATER, WAIT_MODE, WAIT_RUN, FEED, PROCESS, STOP, ASSEMBLE, WAIT_TRAIN, CLEANUP_REQUIRED }
+    private enum Phase { IDLE, HASH, READY, VERIFY, INITIALIZE, WAIT_STOP, WAIT_STATIONS, TUBES, WATER, WAIT_MODE, WAIT_RUN, FEED, PROCESS, STOP, ASSEMBLE, WAIT_TRAIN, CLEANUP_REQUIRED }
     private static final Gson JSON=new Gson();
     private static final String PLAN_SHA="181e2191572846967c41e77bf5b406d0dddcc484488aa60d6725728ba651b199";
     private static final String MANIFEST_SHA="4339bb54a05d9c5a478b471db880c7d80dc1f6c0f25081824c7c54b75f49f408";
@@ -97,7 +97,7 @@ public final class ArtisticEngineeringSupport {
     private Lease lease;
     private Phase phase=Phase.IDLE;
     private String action,outcome;
-    private int ticks,phaseTicks,index,linkIndex,initIndex;
+    private int ticks,phaseTicks,index,linkIndex,initIndex,dimensionWakeTicks;
     private HashInput hash;
     private boolean running,mutated,fed,assembled;
     private boolean nativeFilterChecked;
@@ -172,7 +172,7 @@ public final class ArtisticEngineeringSupport {
         JsonObject beforeProof=nativeProof("native_before",BEFORE_SHA,manifest.get("preconditions").getAsInt(),false),afterProof=nativeProof("native_after",ref("native_after_plan").get("sha256").getAsString(),plan.getAsJsonArray("blocks").size(),true);
         if(Instant.parse(beforeProof.get("finished").getAsString()).isAfter(Instant.parse(afterProof.get("started").getAsString())))throw new IllegalStateException("After proof predates historical preimage admission");
         targets.clear();chunks.clear();pending.clear();hashes.clear();fillerCells.clear();kinetics.clear();pneumaticCargo.clear();chuteCargo.clear();hopperCargo.clear();tracks.clear();samples.clear();links.clear();report.clear();
-        ticks=phaseTicks=index=linkIndex=initIndex=0;hash=null;outcome=null;running=mutated=fed=assembled=nativeFilterChecked=false;glueUUID=trainUUID=null;assemblyStation=null;
+        ticks=phaseTicks=index=linkIndex=initIndex=dimensionWakeTicks=0;hash=null;outcome=null;running=mutated=fed=assembled=nativeFilterChecked=false;glueUUID=trainUUID=null;assemblyStation=null;
         JsonArray palette=plan.getAsJsonArray("palette");
         for(JsonElement entry:plan.getAsJsonArray("blocks")){JsonArray row=entry.getAsJsonArray();if(row.size()!=4)throw new IllegalStateException("Invalid geometry row");BlockPos p=pos(row.get(0).getAsInt(),row.get(1).getAsInt(),row.get(2).getAsInt());if(targets.put(p,state(palette.get(row.get(3).getAsInt()).getAsString()))!=null)throw new IllegalStateException("Duplicate geometry");chunks.add(new ChunkPos(p));}
         if(targets.size()!=7710||chunks.size()>32)throw new IllegalStateException("Unexpected finite geometry size");
@@ -209,6 +209,22 @@ public final class ArtisticEngineeringSupport {
     }
     private void lever(boolean stop){BlockPos p=component("watermill","stop_lever"),clutch=component("watermill","clutch");BlockState s=level.getBlockState(p);if(!s.is(Blocks.LEVER)||!p.north().equals(clutch)||!s.hasProperty(BlockStateProperties.POWERED)||!ready(p))throw new IllegalStateException("Exact direct wall lever custody lost");if(s.getValue(BlockStateProperties.POWERED)!=stop&&!level.setBlock(p,s.setValue(BlockStateProperties.POWERED,stop),3))throw new IllegalStateException("Native lever state update refused");level.updateNeighborsAt(p,s.getBlock());level.updateNeighborsAt(clutch,level.getBlockState(clutch).getBlock());mutated=true;running=!stop;}
     private void stations(){for(JsonElement e:systems.getAsJsonObject("railway").getAsJsonArray("stations")){JsonObject row=e.getAsJsonObject();StationBlockEntity station=be(position(row.get("position")),StationBlockEntity.class);if(!station.edgePoint.hasValidTrack()||!station.edgePoint.getGlobalPosition().equals(position(row.get("target_track")))||station.edgePoint.getTargetDirection()!=(row.get("target_direction_positive").getAsBoolean()?Direction.AxisDirection.POSITIVE:Direction.AxisDirection.NEGATIVE)||station.getStation()==null)throw new IllegalStateException("Real station graph/target/direction not ready");}}
+    private boolean stationsReady(){
+        boolean ready=true;List<Map<String,Object>> witnesses=new ArrayList<>();
+        for(JsonElement e:systems.getAsJsonObject("railway").getAsJsonArray("stations")){
+            JsonObject row=e.getAsJsonObject();BlockPos pos=position(row.get("position")),target=position(row.get("target_track"));
+            StationBlockEntity station=be(pos,StationBlockEntity.class);
+            boolean track=station.edgePoint.hasValidTrack(),location=station.edgePoint.getGlobalPosition().equals(target);
+            boolean direction=station.edgePoint.getTargetDirection()==(row.get("target_direction_positive").getAsBoolean()?Direction.AxisDirection.POSITIVE:Direction.AxisDirection.NEGATIVE);
+            boolean graphLocation=track && station.edgePoint.determineGraphLocation()!=null,point=station.getStation()!=null;
+            witnesses.add(Map.of("position",List.of(pos.getX(),pos.getY(),pos.getZ()),"valid_track",track,
+                "actual_target",List.of(station.edgePoint.getGlobalPosition().getX(),station.edgePoint.getGlobalPosition().getY(),station.edgePoint.getGlobalPosition().getZ()),
+                "target_matches",location,"actual_direction",station.edgePoint.getTargetDirection().name(),"direction_matches",direction,
+                "graph_location_ready",graphLocation,"station_point_ready",point));
+            ready &= track && location && direction && graphLocation && point;
+        }
+        report.put("station_readiness",witnesses);report.put("native_track_graphs",Create.RAILWAYS.trackNetworks.size());return ready;
+    }
     private void connect(int n){
         JsonObject link=systems.getAsJsonObject("hypertube").getAsJsonArray("native_links").get(n).getAsJsonObject();BlockPos a=position(link.get("from")),b=position(link.get("to"));
         ITubeConnectionEntity from=be(a,ITubeConnectionEntity.class),to=be(b,ITubeConnectionEntity.class);Direction first=Direction.SOUTH,last=Direction.NORTH;
@@ -274,12 +290,18 @@ public final class ArtisticEngineeringSupport {
         try{
             if(lease==null||!lease.valid()||!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Commissioning lease/empty-world gate lost");
             if(++ticks>MAX_TICKS)throw new IllegalStateException("Finite native commissioning window expired");phaseTicks++;
+            // Temporary region tickets make holders simulation-ready but do
+            // not satisfy ServerLevel's saved forced-chunk idle branch. Wake
+            // native entity/BE ticks only within this admitted finite run;
+            // read-only inspect, idle and failed cleanup never keep it awake.
+            if(action.equals("commission")){level.resetEmptyTime();report.put("native_dimension_empty_timer_resets",++dimensionWakeTicks);}
             if(phase!=Phase.HASH&&phase!=Phase.READY&&!allReady())throw new IllegalStateException("Actual simulation/BE/entity readiness lost");
             if(phase==Phase.HASH){while(System.nanoTime()-started<4_000_000L){if(index==hashes.size()){requestChunks();next(Phase.READY);break;}if(hash==null)hash=hashes.get(index);if(hash.step()){hash=null;index++;}}}
             else if(phase==Phase.READY){if(pending.stream().anyMatch(CompletableFuture::isCompletedExceptionally))throw new IllegalStateException("Native chunk request failed");if(allReady())next(Phase.VERIFY);else if(action.equals("inspect")||phaseTicks>400)throw new IllegalStateException("Native FULL/block/entity readiness not established");}
             else if(phase==Phase.VERIFY){List<Map.Entry<BlockPos,BlockState>> rows=live;while(index<rows.size()&&System.nanoTime()-started<4_000_000L){var row=rows.get(index++);BlockState actual=level.getBlockState(row.getKey());if(actual.getBlock()!=row.getValue().getBlock())throw new IllegalStateException("Native physical/air target differs at "+row.getKey());for(Property<?> property:List.of(BlockStateProperties.AXIS,BlockStateProperties.HORIZONTAL_AXIS,BlockStateProperties.FACING,BlockStateProperties.HORIZONTAL_FACING))if(row.getValue().hasProperty(property)&&actual.hasProperty(property)&&!actual.getValue(property).equals(row.getValue().getValue(property)))throw new IllegalStateException("Native orientation differs");BlockEntity entity=level.getBlockEntity(row.getKey());if(entity instanceof KineticBlockEntity k)kinetics.add(k);if(entity instanceof PneumaticTubeBlockEntity tube)pneumaticCargo.add(tube);if(entity instanceof ChuteBlockEntity chute)chuteCargo.add(chute);if(entity instanceof net.minecraft.world.level.block.entity.HopperBlockEntity hopper)hopperCargo.add(hopper);if(BuiltInRegistries.BLOCK.getKey(actual.getBlock()).toString().startsWith("railways:track_"))tracks.add(row.getKey());}if(index==rows.size()){emptyInputs();if(action.equals("inspect")){report.put("source_only_geometry_verified",targets.size());sample();finish("native dry mill inspected; no commissioning mutation");}else next(Phase.INITIALIZE);}}
             else if(phase==Phase.INITIALIZE){gate(server);if(!nativeFilterChecked){var extractor=be(component("pneumatic","extractor"),PneumaticConnectionBlockEntity.class);ItemStack filter=extractor.getFilter();if(!filter.isEmpty()&&!BuiltInRegistries.ITEM.getKey(filter.getItem()).toString().equals("create:wheat_flour"))throw new IllegalStateException("Preserve unexpected native filter");if(filter.isEmpty()){mutated=true;extractor.setFilter(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse("create:wheat_flour")),1));}nativeFilterChecked=true;}if(initIndex<kinetics.size()){mutated=true;kinetics.get(initIndex++).attachKinetics();report.put("native_kinetic_initializations",initIndex);}else if(initIndex-kinetics.size()<tracks.size()){BlockPos p=tracks.get(initIndex++-kinetics.size());mutated=true;TrackPropagator.onRailAdded(level,p,level.getBlockState(p));report.put("native_track_initializations",initIndex-kinetics.size());}else next(Phase.WAIT_STOP);}
-            else if(phase==Phase.WAIT_STOP){if(stopped()){if(!level.getBlockState(component("watermill","stop_lever")).getValue(BlockStateProperties.POWERED)||!level.getBlockState(component("watermill","clutch")).getValue(BlockStateProperties.POWERED))throw new IllegalStateException("Real direct lever/clutch stop state disagrees");stations();next(Phase.TUBES);}else if(phaseTicks>400)throw new IllegalStateException("Actual stopped/kinetic readiness not established");}
+            else if(phase==Phase.WAIT_STOP){if(stopped()){if(!level.getBlockState(component("watermill","stop_lever")).getValue(BlockStateProperties.POWERED)||!level.getBlockState(component("watermill","clutch")).getValue(BlockStateProperties.POWERED))throw new IllegalStateException("Real direct lever/clutch stop state disagrees");next(Phase.WAIT_STATIONS);}else if(phaseTicks>400)throw new IllegalStateException("Actual stopped/kinetic readiness not established");}
+            else if(phase==Phase.WAIT_STATIONS){if(stationsReady())next(Phase.TUBES);else if(phaseTicks>400)throw new IllegalStateException("Actual station graph/target/direction readiness not established; native witness retained");}
             else if(phase==Phase.TUBES){gate(server);if(linkIndex<6)connect(linkIndex++);else{report.put("native_tube_links",links);next(Phase.WATER);}}
             else if(phase==Phase.WATER){gate(server);emptyInputs();for(JsonElement e:systems.getAsJsonObject("watermill").getAsJsonArray("water_sources")){BlockPos p=position(e);if(!level.getBlockState(p).isAir()||level.getBlockEntity(p)!=null||!level.getEntities((Entity)null,new AABB(p)).isEmpty())throw new IllegalStateException("Water source target is no longer empty owned air");}for(JsonElement e:systems.getAsJsonObject("watermill").getAsJsonArray("water_sources")){if(!level.setBlock(position(e),Blocks.WATER.defaultBlockState(),3))throw new IllegalStateException("Native water source placement refused");mutated=true;}manualModes();next(Phase.WAIT_MODE);}
             else if(phase==Phase.WAIT_MODE){if(manualModeReady()){report.put("native_entrances_manual_sneak_mode",true);lever(false);next(Phase.WAIT_RUN);}else if(phaseTicks>100)throw new IllegalStateException("Native locked/manual entry mode not ready; drive remains stopped");}

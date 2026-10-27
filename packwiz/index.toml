@@ -472,7 +472,7 @@ metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "e5e0e1c5a3c1b72159b81baa7cdb0b39b20fbe3f81d74adb005a5292d64029c6"
+hash = "7309dfc229098dc82fb7ddc962d4e2b40b5e109a8d79e28e9301b949c2eb2c1a"
 metafile = true
 
 [[files]]
@@ -1002,7 +1002,7 @@ metafile = true
 
 [[files]]
 file = "mods/maphorizons.pw.toml"
-hash = "af95d9cb3ac0062f1785259a571e2530975855e2d4b4860e2a767b56aa1b9130"
+hash = "921bdca6a76ae2c4406796f6738d242ac2981b0d25e024eef30038cdf2f12528"
 metafile = true
 
 [[files]]

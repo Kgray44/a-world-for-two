@@ -14,7 +14,7 @@ from .build_presentation import build as build_presentation, PRESENTATION_VERSIO
 from .weather_patch import build as build_weather, PATCH_VERSION
 from .seedgen_policy import apply as seedgen_policy
 
-VERSION = '0.1.0-candidate.35'
+VERSION = '0.1.0-candidate.37'
 
 
 def prepare_owned(home):
@@ -56,8 +56,8 @@ def prepare_owned(home):
     return result
 
 
-def prepare_bridge(home):
-    """Preserve every existing gameplay pin while rebuilding only the owned bridge."""
+def prepare_bridge(home, mapping_artifact=None):
+    """Build the owned bridge and optional exact mapping repair, retaining other pins."""
     layout=Layout(home);storage=Storage(layout)
     storage.reserve(32*1024**2)
     storage.reserve(4*1024**2,REPO)
@@ -85,13 +85,34 @@ def prepare_bridge(home):
             raise ValueError('Tectonic normalization differs from its reviewed LF bytes')
         normalizations.append({'file':'config/tectonic.json','before_sha256':digest(original),
             'after_sha256':digest(tectonic),'change':'CRLF to LF only; all non-line-ending bytes identical'})
+    replacements={'awft-control-bridge':bridge}
+    if mapping_artifact is not None:
+        mapping_artifact=Path(mapping_artifact).resolve()
+        expected='cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4'
+        if (not mapping_artifact.is_relative_to(layout.staging)
+                or mapping_artifact.name!='maphorizons-1.1.0-awft.2.jar'
+                or mapping_artifact.stat().st_size!=121569 or digest(mapping_artifact)!=expected):
+            raise ValueError('Only the reviewed, bounded MapHorizons awft.2 build is admitted')
+        prior=next(m for m in previous['mods'] if m['slug']=='maphorizons')
+        if prior['hashes'].get('sha256')!='da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93' or prior['license'].get('id')!='MIT':
+            raise ValueError('The exact reviewed MIT MapHorizons predecessor is required')
+        mapping=prior|{'version_id':'1.1.0+6c80ad5+awft.2','filename':mapping_artifact.name,
+            'url':'https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/'+mapping_artifact.name,
+            'size':121569,'hashes':{'sha256':expected},
+            'selection_reason':'Original MIT interoperability repair for native DH coarse LOD lookup, read-only shaded SQLite and refresh races. Actual Xaero appearance, authority and SeedGen data provenance remain native test gates.',
+            'validation':{'metadata':'pass','jar':'pinned API compilation and 76 helper checks pass','runtime':'not run'},
+            'status':'Experimental native map validation pending'}
+        target=layout.caches/'mods'/mapping_artifact.name
+        if target.exists() and digest(target)!=expected:raise ValueError('Immutable MapHorizons cache filename differs')
+        if not target.exists():shutil.copy2(mapping_artifact,target)
+        replacements['maphorizons']=mapping
     selection=read_json(REPO/'catalog/selection.json')
-    selection.update(version=VERSION,artifacts=[bridge if m['slug']=='awft-control-bridge' else m for m in selection['artifacts']])
-    items=[bridge if m['slug']=='awft-control-bridge' else m for m in previous['mods']]
+    selection.update(version=VERSION,artifacts=[replacements.get(m['slug'],m) for m in selection['artifacts']])
+    items=[replacements.get(m['slug'],m) for m in previous['mods']]
     if sum(m['slug']=='awft-control-bridge' for m in items)!=1:
         raise ValueError('Exactly one owned bridge must already exist')
     lock=previous|{'version':VERSION,'generated':utcnow(),'mods':items,
-        'validation':'Gameplay pins preserved; owned bridge native restart and cycle checks pending'}
+        'validation':'Only explicitly reviewed bridge/mapping artifacts changed; native restart and integration checks pending'}
     history=REPO/'evidence/history'/('lock-'+str(time.time_ns())+'.json')
     write_json(history,previous)
     write_json(REPO/'catalog/selection.json',selection)
@@ -100,9 +121,12 @@ def prepare_bridge(home):
         'enabled_mods':sum(m['kind']=='mod' and not(m.get('optional') and not m.get('default',True)) for m in items),
         'pack_sha256':generate_pack(REPO/'packwiz',lock),'build_directory':str(directory),
         'previous_lock_sha256':digest(history),
-        'owned_bridge':bridge,'preserved_gameplay_pins':True,
+        'owned_bridge':bridge,'preserved_gameplay_pins':mapping_artifact is None,
+        'reviewed_mapping_change':replacements.get('maphorizons'),'preserved_other_gameplay_pins':True,
         'byte_only_config_normalizations':normalizations,
-        'source_hashes':{p.relative_to(REPO).as_posix():digest(p) for p in (REPO/'compat/control-bridge').rglob('*') if p.is_file()}}
+        'source_hashes':{p.relative_to(REPO).as_posix():digest(p) for group in ('src','resources')
+            for p in (REPO/'compat/control-bridge'/group).rglob('*') if p.is_file()},
+        'noncompiled_proposals_excluded':True}
     write_json(directory/'build.json',result)
     print(result)
     return result
@@ -182,5 +206,9 @@ if __name__ == '__main__':
     parser.add_argument('--home',type=Path,default=Path(r'D:\A World for Two'))
     parser.add_argument('--bridge-only',action='store_true')
     parser.add_argument('--owned-only',action='store_true')
+    parser.add_argument('--mapping-jar',type=Path)
     args=parser.parse_args()
-    (prepare_owned if args.owned_only else prepare_bridge if args.bridge_only else prepare)(args.home)
+    if args.mapping_jar and (not args.bridge_only or args.owned_only):
+        parser.error('--mapping-jar requires the bridge-only, explicitly reviewed candidate path')
+    if args.bridge_only:prepare_bridge(args.home,args.mapping_jar)
+    else:(prepare_owned if args.owned_only else prepare)(args.home)

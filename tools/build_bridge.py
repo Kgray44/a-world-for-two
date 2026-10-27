@@ -9,7 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.21'
+BRIDGE_VERSION = '0.6.23'
 
 def build(home, destination, storage):
     storage.reserve(16 * 1024 * 1024, destination)

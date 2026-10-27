@@ -1,12 +1,12 @@
 name = "A World for Two"
 author = "KG & Sera"
-version = "0.1.0-candidate.35"
+version = "0.1.0-candidate.37"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "a87d4e51d573a2e47fb1ea941869604fd2745c38cf2c8433cd4d1c77a52f3ca4"
+hash = "267bd979c147ede358ae0d05c042e963e78ae39cd1e1d72b2ddbdb94870ede76"
 
 [versions]
 minecraft = "1.21.1"
