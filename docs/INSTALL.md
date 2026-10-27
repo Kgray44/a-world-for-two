@@ -1,12 +1,13 @@
 # Install A World for Two
 
-The public Prism release is being qualified. Source and candidate exports remain
-development artifacts until the release checks finish.
+The current [Prism prerelease](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.23)
+is public. Exact public download hashes and a fresh headless Packwiz installation
+passed. Native Prism import and remote multiplayer acceptance remain separate.
 
 ## Client
 
 1. Install [Prism Launcher](https://prismlauncher.org/) and sign into your licensed Minecraft Java account.
-2. Download the qualified `A-World-for-Two-…-Prism.zip` from this repository's Releases.
+2. Download [A-World-for-Two-0.1.0-candidate.23-Prism-r2.zip](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.23/A-World-for-Two-0.1.0-candidate.23-Prism-r2.zip).
 3. Choose **Add Instance → Import from ZIP** and select the file.
 4. Select Java 21. The instance requests 6 GiB maximum client heap; review available
    system memory on smaller computers. Sera's hardware is still unmeasured.
@@ -14,9 +15,15 @@ development artifacts until the release checks finish.
    author sources. Keep it enabled for future published updates.
 6. Choose a shader in **Video Settings → Shader Packs** after baseline startup.
    A fresh portable export starts with shaders off; existing owner clients keep their choice.
-7. Join the address supplied by the host. Authentication and the whitelist stay enabled.
+7. Choose **Join Our World → Public**. The current address is **`malls-cup.tun.ply.gg`**.
+   Authentication and the whitelist stay enabled; the host must keep the server and
+   Playit running. The KG-local entry is only for Minecraft on the host's own computer.
 
 No account credentials, worlds or host-specific Java path belongs in the ZIP.
+Revision2 includes exactly one unchanged Let's Forge Pirates JAR under the
+[author's modpack grant](PIRATE-MODPACK-PERMISSION.md), avoiding its manual API
+download requirement. Other mods come from their pinned sources. Leave the
+optional Essential fallback off unless it is deliberately needed.
 
 ## Updates and troubleshooting
 

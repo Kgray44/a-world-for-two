@@ -15,9 +15,10 @@ Pack SHA-256:
 `9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11`.
 Exact component pins and sides are in [the lock](../catalog/lock.json).
 
-The latest complete local check passed **119 Python tests**, **four JavaScript
-session tests**, JavaScript syntax and Packwiz integrity for 207 entries. These
-source checks are separate from CI, graphics, gameplay and remote acceptance.
+The published exporter/source checkpoint passed **131 Python tests in GitHub CI**,
+**four JavaScript session tests**, JavaScript syntax and Packwiz integrity for
+207 entries. Further attraction source work has its own local checks. These
+source checks are separate from graphics, gameplay and remote acceptance.
 
 The official save remains the existing permanent world. It was not regenerated or
 replaced by a test save. Tectonic uses vertical scale 1.4 and elevation boost 0.1
@@ -167,14 +168,20 @@ mechanism or multiplayer pass.
 
 ## Distribution and remaining acceptance
 
-The candidate.23 **Prism** starter is staged: **6,308,426 bytes**, SHA-256
-`412c62ae0288fe0a9fde98f39b112baaf1960e8c7521d64bc152827ebbb73c8d`.
+The candidate.23 revision2 **Prism** starter is
+[public](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.23):
+**7,072,234 bytes**, SHA-256
+`9daf9b23ab77490f1d8ac3399d4146165248d4e9d10566b434569eba87fca218`.
 It configures a 6 GiB client heap and opens the normal multiplayer list from
 **Join Our World**, with separate public and KG-local entries. Packaging and native
 server-list, archive integrity, bootstrap chain and original artwork identity checks
-passed for this exact export. Public Packwiz publication, a clean native
-Prism import through pre-launch and startup from the exact public starter remain
-pending. KG's existing owned client matched all current client artifact pins and
+passed. The exact revision2 public ZIP and checksum passed unauthenticated download
+verification. A fresh public Packwiz installation passed: 199 downloads plus the
+single author-permitted bundled pirate JAR, all 200 client artifacts and 76 static
+configurations matched, with zero missing/changed files or server-only leakage.
+The headless installer enabled optional Essential; the normal GUI-default set has
+199 artifacts with Essential off. Native Prism import and startup from the exact
+public starter remain separate. KG's existing owned client matched all current client artifact pins and
 joined the official server; its local direct-connect menu override and already
 installed files do not establish a fresh public-starter import.
 See [the release process](RELEASING.md).
@@ -187,15 +194,17 @@ test fixture was made independent of ignored private receipts. The immutable
 candidate.23 source tag is retained; publication caught five obsolete metadata
 records outside the active index. Their explicit, hash-bound publication exclusions
 now pass 14 publisher tests; the packaged tree contains only indexed files and
-manifests, with omission proofs retained. Pages deployment remains pending; no
-active mod pins changed.
+manifests, with omission proofs retained. Pages deployment passed; the immutable
+public manifest and index match their exact hashes. The stable root manifest
+remains absent, and no active mod pins changed. The public game tunnel also
+answered a Minecraft status ping from the host; Sera's actual remote login is a
+separate check. See [the publication evidence](../evidence/runtime/public-release-candidate.23.json).
 
 Finish direct post-restart drawbridge cycles, hoist and other transport/logistics commissioning, current-world
 restart and restore checks, complete mod-feature coverage, remote multiplayer,
-shader review, terrain-arrival measurements, cinematic activation and full visual
-refinement. Publish and verify the exact GitHub source, Pages manifests, authorized
-author downloads and release assets before calling the starter a one-download
-finished release.
+shader review, terrain-arrival measurements and full visual refinement. Source,
+Pages and public release artifacts are now published and checked; native Prism
+and full gameplay acceptance are still required before a qualified stable release.
 
 Cleanup remains conditional on a working, accepted build. Useful recovery snapshots,
 unique worlds and failed receipts stay preserved. Local writers reserve 30 GiB

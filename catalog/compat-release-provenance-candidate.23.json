@@ -2,7 +2,7 @@
   "format": "awft-compat-release-provenance:1",
   "candidate": "0.1.0-candidate.23",
   "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
-  "status": "Source-frozen candidate23 artifacts prepared locally; publication and qualification pending",
+  "status": "Compatibility prerelease and Prism revision2 public; exact public files and fresh headless installer verified; native Prism and remote gameplay acceptance separate",
   "source_notice_bundle": {
     "filename": "A-World-for-Two-compat-candidate.23-Notices-and-Sources.zip",
     "size": 4880566,
@@ -65,7 +65,7 @@
       "indexed_packwiz_members": 283,
       "raw_git_clean_blob_mismatches": 0,
       "concurrent_drift": 0,
-      "actual_git_tag_archive": "pending parent tag creation; no Git index/ref mutation performed here"
+      "actual_git_tag_archive": "Exact immutable payload ec3f826b65c54cedd69b5d58ec7950d3745ae9f9 validated; five individually SHA-bound unindexed historical metadata files excluded from public payload; active index/pins unchanged"
     },
     "public_source_and_live_Tectonic_config_identity": "Exact LF SHA9ca01c0e5f109c517d2ebc025d933ca30c7c9f5010019b67527b061ecb8869d5; line-ending normalization does not change terrain settings"
   },
@@ -79,14 +79,38 @@
   "lock_sha256": "2dd23419a665d8c7bcbda523719dccd2f741f90dc27fc6a49895a189138bc131",
   "index_sha256": "bf48061ae5a66d6272d4d1e7ac876fd92dda7d7d65f0641c8377a1cf7b0c63b0",
   "prism_export": {
-    "filename": "A-World-for-Two-0.1.0-candidate.23-Prism.zip",
-    "size": 6308426,
-    "sha256": "412c62ae0288fe0a9fde98f39b112baaf1960e8c7521d64bc152827ebbb73c8d",
-    "archive_entries": 87,
+    "filename": "A-World-for-Two-0.1.0-candidate.23-Prism-r2.zip",
+    "size": 7072234,
+    "sha256": "9daf9b23ab77490f1d8ac3399d4146165248d4e9d10566b434569eba87fca218",
+    "export_revision": 2,
+    "archive_entries": 89,
     "configuration_files_matched_to_exact_index": 76,
-    "native_minecraft_server_list_schema": "pass; resource-pack consent PROMPT",
+    "native_minecraft_server_list_schema": "same native validated public/local format; consent PROMPT",
+    "one_author_permitted_bundled_mod": {
+      "slug": "lets-forge-pirates",
+      "filename": "[NeoForge]Lets_Forge_Pirates_[1_21_1]_4.jar",
+      "size": 996458,
+      "sha256": "2d9da8b1d8ee4f8242f3b43a47b67b2a83f158eb0ed1c004ba5f92508888602d",
+      "permission_url": "https://www.curseforge.com/minecraft/mc-mods/lets-forge-pirates",
+      "notice": "MODPACK-NOTICES/LETS-FORGE-PIRATES.md"
+    },
+    "unauthenticated_public_download": "pass",
+    "fresh_public_headless_updater": "pass;200files including CLI-enabled optionalEssential;normal GUIdefault199",
     "fresh_native_Prism_import": "pending",
-    "public_updater_install": "pending",
-    "game_client_launch": "not run"
-  }
+    "remote_two_player_join": "pending"
+  },
+  "historical_prism_exports": [
+    {
+      "filename": "A-World-for-Two-0.1.0-candidate.23-Prism.zip",
+      "size": 6308426,
+      "sha256": "412c62ae0288fe0a9fde98f39b112baaf1960e8c7521d64bc152827ebbb73c8d",
+      "archive_entries": 87,
+      "configuration_files_matched_to_exact_index": 76,
+      "native_minecraft_server_list_schema": "pass; resource-pack consent PROMPT",
+      "fresh_native_Prism_import": "pending",
+      "public_updater_install": "pending",
+      "game_client_launch": "not run"
+    }
+  ],
+  "public_release_checkpoint": "evidence/runtime/public-release-candidate.23.json"
 }

@@ -1,0 +1,159 @@
+{
+  "format": "awft-public-release-checkpoint:1",
+  "at": "2026-10-27T04:28:35.236478+00:00",
+  "release": "https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.23",
+  "prerelease": true,
+  "stable_root": "absent",
+  "immutable_pack_tag": "awft-0.1.0-candidate.23",
+  "immutable_payload_commit": "ec3f826b65c54cedd69b5d58ec7950d3745ae9f9",
+  "exporter_source_commit": "49466fffc6faaf53d41a388dcfef6305fa5d0bb9",
+  "source_ci": {
+    "run": 40449076495,
+    "result": "success",
+    "python_tests": 131,
+    "node_session_tests": 4
+  },
+  "pages": {
+    "pages_workflow": 40447960741,
+    "source_ci": 40447946075,
+    "deployed_workflow_commit": "41aa08a7abeb384bf943be57dd61847d7fc5612a",
+    "public_files": [
+      {
+        "url": "https://kgray44.github.io/a-world-for-two/releases/0.1.0-candidate.23/pack.toml",
+        "bytes": 337,
+        "sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+        "status": 200
+      },
+      {
+        "url": "https://kgray44.github.io/a-world-for-two/releases/0.1.0-candidate.23/index.toml",
+        "bytes": 43388,
+        "sha256": "bf48061ae5a66d6272d4d1e7ac876fd92dda7d7d65f0641c8377a1cf7b0c63b0",
+        "status": 200
+      }
+    ],
+    "root_stable_manifest": "404 absent",
+    "result": "pass; exact immutable manifests public"
+  },
+  "prism_public_download": {
+    "at": "2026-10-27T04:21:22.947896+00:00",
+    "url": "https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.23/A-World-for-Two-0.1.0-candidate.23-Prism-r2.zip",
+    "bytes": 7072234,
+    "sha256": "9daf9b23ab77490f1d8ac3399d4146165248d4e9d10566b434569eba87fca218",
+    "archive_entries": 89,
+    "crc": "pass",
+    "unauthenticated_public_download": "pass",
+    "checksum_sidecar": "pass",
+    "sera_whitelist": "confirmed",
+    "native_prism_import": "awaiting Sera",
+    "remote_two_player_login": "awaiting Sera"
+  },
+  "fresh_packwiz_install": {
+    "format": "awft-fresh-packwiz-prism-r2:1",
+    "at": "2026-10-27T04:20:15.024703+00:00",
+    "result": "PASS: actual public headless file installation; no native Prism/game claim",
+    "version": "0.1.0-candidate.23",
+    "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+    "index_sha256": "bf48061ae5a66d6272d4d1e7ac876fd92dda7d7d65f0641c8377a1cf7b0c63b0",
+    "lock_sha256": "2dd23419a665d8c7bcbda523719dccd2f741f90dc27fc6a49895a189138bc131",
+    "export": {
+      "filename": "A-World-for-Two-0.1.0-candidate.23-Prism-r2.zip",
+      "bytes": 7072234,
+      "sha256": "9daf9b23ab77490f1d8ac3399d4146165248d4e9d10566b434569eba87fca218"
+    },
+    "exact_chain": {
+      "packwiz_bootstrap": {
+        "version": "v0.0.3",
+        "bytes": 98989,
+        "sha256": "a8fbb24dc604278e97f4688e82d3d91a318b98efc08d5dbfcbcbcab6443d116c"
+      },
+      "packwiz_installer": {
+        "version": "v0.5.14",
+        "bytes": 4378828,
+        "sha256": "c9f646908d340d84773948a9a7d98bc1dae250d35e1016dc6e2b8459760b5598"
+      }
+    },
+    "started": "2026-10-27T04:18:38.269440+00:00",
+    "finished": "2026-10-27T04:19:01.054319+00:00",
+    "java_exit_code": 0,
+    "resource_stop": null,
+    "installed_exact": {
+      "total": 200,
+      "by_kind": {
+        "mod": 191,
+        "shader": 8,
+        "resourcepack": 1
+      },
+      "bytes": 738607014,
+      "downloaded_artifacts": 199,
+      "unchanged_author_granted_jar_from_export": 1,
+      "missing": 0,
+      "changed": 0,
+      "server_only_leaks": 0,
+      "static_config_exact": 76
+    },
+    "author_grant": {
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lets-forge-pirates",
+      "scope": "One unchanged required JAR inside complete Prism modpack ZIP only; full included attribution/permission notice. No standalone mirror or API change.",
+      "artifact": {
+        "slug": "lets-forge-pirates",
+        "filename": "[NeoForge]Lets_Forge_Pirates_[1_21_1]_4.jar",
+        "size": 996458,
+        "sha256": "2d9da8b1d8ee4f8242f3b43a47b67b2a83f158eb0ed1c004ba5f92508888602d",
+        "permission_url": "https://www.curseforge.com/minecraft/mc-mods/lets-forge-pirates",
+        "notice": "MODPACK-NOTICES/LETS-FORGE-PIRATES.md"
+      },
+      "native_installer_evidence": [
+        "[Warning] Accepting option Essential Mod as option choosing is not implemented in the CLI",
+        "(170/283) Let�s Forge Pirates already exists (validated)",
+        "(185/283) Downloaded Essential Mod",
+        "Finished successfully!"
+      ]
+    },
+    "optional_difference": "Pinned installer0.5.14 CLI unconditionally enables Essential. This proves200files (191modJARs,8shaders,1resourcepack). Normal Prism GUI-default expectations are199files (190modJARs,8shaders,1resourcepack) with Essential OFF; GUI choices were not tested.",
+    "unproved": [
+      "Native Prism ZIP import",
+      "Java/Minecraft/NeoForge launcher component downloads",
+      "Minecraft startup or graphics",
+      "Sera licensed account/session",
+      "Remote join or two-player acceptance"
+    ],
+    "limits": {
+      "java_heap_mib": 256,
+      "active_processors": 2,
+      "priority": "below normal",
+      "gui_game_or_second_forge": false,
+      "estimated_c_bytes": 0,
+      "estimated_d_bytes": 3221225472,
+      "peak_observed_private_bytes": 746502049,
+      "monitoring_not_os_quota": true
+    },
+    "full_receipt_sha256": "023fb2bbd89c2a6182c97b9423d56fc341fdd84d4a20538e2c04df047d4a61b1",
+    "installer_log": {
+      "bytes": 12986,
+      "sha256": "79ac93a8a196d8307eeeb2e49ccc3445f50ad004d1d3a757b613e591cd6f86d7"
+    },
+    "preparation_sha256": "4e548319133172134c2e68fb35bfe8e88e61937b45d222da08a896fa60fb5796",
+    "runner_sha256": "d7385ccf1287c6dba05259605504c11b5f83597b9b33c1177b2e1c79a926f72c",
+    "prior_failed_receipt_sha256": "ad2f961064571b0bcd6116d645a8c5905612268bfe4f317d0744cbbe842792f1",
+    "original_export_preserved": true
+  },
+  "public_game_status_ping": {
+    "at": "2026-10-27T04:17:36.130502+00:00",
+    "public_address": "malls-cup.tun.ply.gg",
+    "srv_port": 36277,
+    "minecraft_status": "pass",
+    "players_online": 1,
+    "players_max": 2,
+    "version": {
+      "name": "1.21.1",
+      "protocol": 767
+    },
+    "elapsed_ms": 515.0,
+    "boundary": "Public tunnel status ping initiated from host; not a remote two-player login or Sera network acceptance"
+  },
+  "boundaries": [
+    "Native Prism import, launcher component downloads and Sera remote join not established by headless updater",
+    "Packwiz headless CLI enables optional Essential; normal GUI-default set remains199files with Essential off",
+    "Current host gameplay and construction checks have their own evidence; publication does not prove full creative acceptance"
+  ]
+}

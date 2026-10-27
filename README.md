@@ -15,13 +15,13 @@ south-bank village and grand sailing harbor. Their native block/inventory checks
 passed. Both drawbridge spans passed two native button-driven cycles at 55°;
 1,593 further architectural details and the bridge programs passed saved-world
 persistence checks. Graphical review, other attraction commissioning and release checks continue.
-The public Prism download and clean import are still pending. See [current status](docs/STATUS.md).
+The Prism prerelease is public and its fresh Packwiz download check passed.
+Native Prism import and remote two-player acceptance remain separate. See [current status](docs/STATUS.md).
 
 ## Play
 
-The prepared starter is `A-World-for-Two-0.1.0-candidate.23-Prism.zip`.
-Publication on [GitHub Releases](https://github.com/Kgray44/a-world-for-two/releases)
-and a fresh Prism import are pending. Once the verified asset is available:
+Download the [Prism instance ZIP](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.23/A-World-for-Two-0.1.0-candidate.23-Prism-r2.zip)
+from the [current prerelease](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.23).
 
 1. In Prism, choose **Add Instance → Import from ZIP** and select the starter.
 2. Sign into your licensed Minecraft Java account and select Java 21. The instance
@@ -29,6 +29,11 @@ and a fresh Prism import are pending. Once the verified asset is available:
    the exact client files from the pinned release manifest.
 3. Choose **Join Our World**, then the supplied public server entry. The KG-local
    entry is for Minecraft running on the server's own computer.
+
+Public address: **`malls-cup.tun.ply.gg`**. The ZIP starts with shaders off and
+includes the one unchanged pirate mod covered by its author's modpack grant;
+the pinned updater downloads the remaining files. Leave optional Essential off
+for the normal dedicated-server setup.
 
 The host runs the server and linked Playit game tunnel and adds players to the
 whitelist. Accounts, worlds, backups and LOD databases are not bundled in the
