@@ -14,7 +14,7 @@ from .build_presentation import build as build_presentation, PRESENTATION_VERSIO
 from .weather_patch import build as build_weather, PATCH_VERSION
 from .seedgen_policy import apply as seedgen_policy
 
-VERSION = '0.1.0-candidate.31'
+VERSION = '0.1.0-candidate.32'
 
 
 def prepare_owned(home):

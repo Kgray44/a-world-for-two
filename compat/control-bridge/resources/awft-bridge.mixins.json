@@ -2,9 +2,10 @@
   "required": true,
   "minVersion": "0.8",
   "package": "worldfortwo.bridge.mixin",
+  "plugin": "worldfortwo.bridge.RegistrateConcurrencyPlugin",
   "compatibilityLevel": "JAVA_21",
   "server": ["ChunkyLifecycleMixin", "SmallShipsConfigLifecycleMixin", "ChunkMapAccess", "DistanceManagerAccess", "DensityFingerprintMixin", "ChunkCacheAccess"],
-  "mixins": ["BlueLibVariantReloadMixin"],
-  "client": ["BddTextureParameterMixin", "BddTextureResourceMixin", "BddGlowParameterMixin", "SeedgenTectonicResourcesMixin"],
+  "mixins": ["BlueLibVariantReloadMixin", "RegistrateConstructionMixin"],
+  "client": ["BddTextureParameterMixin", "BddTextureResourceMixin", "BddGlowParameterMixin", "SeedgenTectonicResourcesMixin", "HybridAquaticSeedgenMixin"],
   "injectors": {"defaultRequire": 1}
 }
