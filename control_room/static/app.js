@@ -336,7 +336,13 @@ document.addEventListener('submit',async event=>{
 });
 document.addEventListener('input',event=>{const e=event.target;if(e.id==='inventory-filter')$$('[data-inventory-name]').forEach(r=>r.classList.toggle('hidden',!r.dataset.inventoryName.includes(e.value.toLowerCase())));if(e.id==='compat-filter')$$('[data-compat-text]').forEach(r=>r.classList.toggle('hidden',!r.dataset.compatText.includes(e.value.toLowerCase())));if(e.id==='log-query')refreshConsole().catch(e=>toast(e.message,true));});
 document.addEventListener('change',event=>{if(event.target.id==='log-level')refreshConsole().catch(e=>toast(e.message,true));});
-window.addEventListener('hashchange',()=>{state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';document.body.classList.remove('menu-open');render();});
+window.addEventListener('hashchange',()=>{
+  state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';
+  document.body.classList.remove('menu-open');
+  // Begin a newly selected page at the top; polling preserves the reading position.
+  window.scrollTo(0,0);
+  render();
+});
 window.addEventListener('resize',()=>{if(state.page==='overview')chart('overview-chart',state.history,'tps');if(state.page==='performance'){chart('tps-chart',state.history,'tps');chart('cpu-chart',state.history,'host_cpu','server_cpu');}});
 $('#modal-close').onclick=()=>$('#modal').close();$('#menu').onclick=()=>{const open=document.body.classList.toggle('menu-open');$('#menu').setAttribute('aria-expanded',String(open));};
 document.addEventListener('keydown',event=>{if(event.key==='Escape'){document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false');}});
