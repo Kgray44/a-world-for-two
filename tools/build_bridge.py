@@ -9,7 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.20'
+BRIDGE_VERSION = '0.6.21'
 
 def build(home, destination, storage):
     storage.reserve(16 * 1024 * 1024, destination)
@@ -28,6 +28,38 @@ def build(home, destination, storage):
     if not bluelib.is_file() or digest(bluelib)!='efcbc58b6f0f06062f4c8c937e049b21be3fab37f76285dd5078b6a927cc486b':
         raise UserError('The exact pinned BlueLib metadata API is required for this bridge')
     jars.append(bluelib)
+    # These exact installed APIs are compiler inputs only. Their classes and
+    # nested libraries are never copied into the owned bridge artifact.
+    api_hashes = {
+        'create-1.21.1-6.0.10.jar': 'ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a',
+        'overpressure-0.1.7.4.jar': '9c03c26bc50c637dbe1d8b9e19e9c10218687c61d335b36588f11e54805c4cf7',
+        'create_hypertube-0.6.0-NEOFORGE.jar': '7bdb8979c7ff7d3b29f7a23771b6ae4870a6dcb7ce2e4a3214fdd6059aacace8',
+        'railways-0.2.1+neoforge-mc1.21.1.jar': 'b7636c8b1b0352ed1a130dfe67f8bb574e2fc08803ed1cda4d3ea00505193914',
+    }
+    for filename, expected in api_hashes.items():
+        api = home / 'server/mods' / filename
+        if not api.is_file() or digest(api) != expected:
+            raise UserError('A pinned native engineering compile API differs: ' + filename)
+        jars.append(api)
+    nested_hashes = {
+        'flywheel-neoforge-1.21.1-1.0.6.jar': '31dda15c205eb596d3b3449ef03f6af7363a6cd35b3da4bfe916b304f9e5337e',
+        'ponder-neoforge-1.0.82+mc1.21.1.jar': '0cf4611ad853042b689ac386184c5bbe02950efcffddb49e5f604e82baddb0dc',
+        'Registrate-MC1.21-1.3.0+67.jar': '510f4041c41739f1d8ea8850ab8364d3e3a5fada8529beed5d9f479e2523db52',
+    }
+    import hashlib
+    with zipfile.ZipFile(home / 'server/mods/create-1.21.1-6.0.10.jar') as create:
+        api_dir = work / 'compile-api'
+        api_dir.mkdir()
+        for filename, expected in nested_hashes.items():
+            member = create.getinfo('META-INF/jarjar/' + filename)
+            if member.file_size > 2*1024**2:
+                raise UserError('Nested compile API exceeds the finite allocation')
+            raw = create.read(member)
+            if hashlib.sha256(raw).hexdigest() != expected:
+                raise UserError('Pinned nested compile API differs: ' + filename)
+            api = api_dir / filename
+            api.write_bytes(raw)
+            jars.append(api)
     cp = os.pathsep.join(p.as_posix() for p in jars)
     source = REPO / "compat/control-bridge"
     sources = sorted((source / "src").rglob("*.java"))

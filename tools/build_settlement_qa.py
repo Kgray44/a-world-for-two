@@ -11,7 +11,7 @@ from control_room.common import Layout, REPO, UserError, digest, write_json
 from control_room.storage import Storage
 
 
-VERSION='0.1.4'
+VERSION='0.1.5'
 
 
 def build(home=Path(r'D:\A World for Two')):

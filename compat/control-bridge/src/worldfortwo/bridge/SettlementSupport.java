@@ -3,6 +3,7 @@ package worldfortwo.bridge;
 import com.google.gson.*;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -77,6 +78,27 @@ public final class SettlementSupport {
                 c.getSource().sendFailure(Component.literal("Native fingerprint probe failed; exact error preserved"));return 0;
             }
         }));
+        root.then(Commands.literal("worldgen-inputs")
+            .then(Commands.argument("id",StringArgumentType.word())
+            .then(Commands.argument("full",BoolArgumentType.bool()).executes(c->{
+                try {
+                    MinecraftServer server=c.getSource().getServer();
+                    Path home=directory.getParent().getParent().toRealPath();
+                    JsonObject owner=JsonParser.parseString(Files.readString(home.resolve("dashboard/artistic-owner.json"))).getAsJsonObject();
+                    if(!owner.get("format").getAsString().equals("awft-artistic-stage:1")
+                        || !Path.of(owner.get("home").getAsString()).toRealPath().equals(home)
+                        || server.getPort()!=25575 || !server.getPlayerList().getPlayers().isEmpty())
+                        throw new IllegalStateException("A measured empty, owned private staging server is required");
+                    Path output=directory.resolve("worldgen-inputs");
+                    Files.createDirectories(output);
+                    Path receipt=WorldgenFingerprintDiagnostics.write(server.registryAccess(),output,
+                        StringArgumentType.getString(c,"id"),"server_registry_access",BoolArgumentType.getBool(c,"full"));
+                    success(c.getSource(),"Read-only worldgen inputs exported; inspect private status "+receipt.getFileName());return 1;
+                } catch(Exception|LinkageError error){
+                    error.printStackTrace();
+                    c.getSource().sendFailure(Component.literal("Worldgen diagnostic failed; existing inputs and strict SeedGen comparison remain unchanged"));return 0;
+                }
+            }))));
         for(String mode:List.of("noise","survey")) {
             root.then(Commands.literal(mode).then(Commands.argument("x",IntegerArgumentType.integer(-25000000,25000000))
                 .then(Commands.argument("z",IntegerArgumentType.integer(-25000000,25000000))

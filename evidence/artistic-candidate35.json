@@ -1,0 +1,94 @@
+{
+  "format": "awft-artistic-candidate35:1",
+  "at": "2026-10-27T13:55:01.051381+00:00",
+  "candidate": "0.1.0-candidate.35",
+  "pack_sha256": "905e7bd8a393e1b11000d3c5f235e54352935bb7dfdb1add332e4fc4ab6e2c13",
+  "bridge": {
+    "version": "0.6.21",
+    "size": 247226,
+    "sha256": "033ccb2d450c6639664b758a5bf0643abf925bb7fadc806f0b01b2bc9e7c0210"
+  },
+  "scope": "Isolated staging; no official world mutations or release import acceptance",
+  "native": {
+    "candidate": "0.1.0-candidate.35",
+    "bridge": "0.6.21",
+    "native_server_startup": "pass",
+    "native_authenticated_client_join": "pass",
+    "server_fingerprint": "de19e29860fac400",
+    "client_fingerprint": "4c3a3a7d33b6c9c6",
+    "strict_seedgen_parity": "refused; unchanged",
+    "registry_keys_equal": 1950,
+    "density_values_equal": 248,
+    "differing_native_noise_settings": [
+      "minecraft:nether",
+      "minecraft:overworld"
+    ],
+    "mechanical_commissioning": "Stopped at real station graph gate after kinetic/track initialization; no water, tube links, goods transfer or train created",
+    "clean_ticket_and_lease_cleanup": true,
+    "visual_r2_acceptance": "Rejected; R3 revision prepared separately",
+    "normal_server_client_stop": "observed; no owned test JVM remains"
+  },
+  "diagnostic_files": [
+    {
+      "file": "artistic-mill-result-3938d2e8-5ac3-4531-b32d-9641664a58c7.json",
+      "sha256": "571e64034ba2ec4e76230495a6b88f2924a84e61ab146ec9cc6cd5f7bd981a0a",
+      "bytes": 1099
+    },
+    {
+      "file": "c35-server-1.worldgen.jsonl",
+      "sha256": "ffde277d65bd2527c36af41f388a4475b060b7d793cb86727a78d008a3859e6a",
+      "bytes": 1022694
+    },
+    {
+      "file": "c35-server-1.worldgen.status.json",
+      "sha256": "f29e1a183e333966722e1836d401a5550ea6035d607504ecdb86729c517ca79f",
+      "bytes": 683
+    },
+    {
+      "file": "c35-client-1.worldgen.jsonl",
+      "sha256": "bfa97b9751ca36c5d879ec886b42a49de6a1e535bee70c69ae7e1b4a1d7dd332",
+      "bytes": 1022529
+    },
+    {
+      "file": "c35-client-1.worldgen.status.json",
+      "sha256": "caeca4cfb12c9c26265ea890dddb4aada67952b2b572974e142aaf6eb6701a2d",
+      "bytes": 690
+    }
+  ],
+  "visual_review": {
+    "decision": "R2 rejected by agent; owner acceptance remains open",
+    "conditions": "Actual native Minecraft images; shaders temporarily disabled; not a graphics benchmark",
+    "issues": [
+      "Disconnected roof ridge",
+      "Large plain roof planes",
+      "Plain glass in principal windows",
+      "Dark, sparse machine hall",
+      "Boxy wheelhouse"
+    ],
+    "images": [
+      {
+        "file": "docs/images/artistic-recovery/mill-r2-arrival.png",
+        "sha256": "d4ee2cbe50524abb4a28c838a57c596bdfc20c1745099a84b2323f85c319c1f5",
+        "bytes": 1414176
+      },
+      {
+        "file": "docs/images/artistic-recovery/mill-r2-ledger.png",
+        "sha256": "53ac0495094903afb7583a67b3d7bbcd85364ac69f0f8aadd858f6bab0545896",
+        "bytes": 803553
+      },
+      {
+        "file": "docs/images/artistic-recovery/mill-r2-wheelhouse.png",
+        "sha256": "335d77c60f6a1edf66d5f612447c10c404da8d9150d58a32670adbfe5b70f366",
+        "bytes": 1244312
+      }
+    ]
+  },
+  "source_checks": {
+    "python_unittest": 346,
+    "packwiz_records": 207,
+    "node_session_tests": 4,
+    "javascript_syntax": "pass"
+  },
+  "all_gameplay_pins_preserved": true,
+  "public_prism_release_unchanged": "awft-0.1.0-candidate.31"
+}

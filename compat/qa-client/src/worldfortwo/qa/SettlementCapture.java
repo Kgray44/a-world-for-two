@@ -12,6 +12,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.client.event.RenderFrameEvent;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
 import java.nio.file.*;
 import java.time.Instant;
 import java.util.*;
@@ -25,6 +27,7 @@ public final class SettlementCapture {
     private final Set<String> completed=new HashSet<>();
     private long nextCheck;
     private int captures;
+    private int worldgenExports;
     private boolean busy;
     public SettlementCapture(){NeoForge.EVENT_BUS.addListener(this::frame);}
     private void frame(RenderFrameEvent.Post event){
@@ -68,6 +71,30 @@ public final class SettlementCapture {
             if(mc.player==null || mc.level==null || mc.screen!=null || mc.getCurrentServer()==null)return;
             if(!mc.getCurrentServer().ip.equals(server)
                     || !mc.player.getUUID().toString().equals("32650cdf-2aaa-4f47-bb27-42ef0d1249fd"))return;
+            if(command.get("action").getAsString().equals("worldgen-export") && server.equals("127.0.0.1:25575")){
+                if(!mc.isGameLoadFinished() || mc.getOverlay()!=null)return;
+                completed.add(id);
+                if(worldgenExports>=1){write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","worldgen export refused","error","One bounded worldgen export is permitted per QA launch"));return;}
+                worldgenExports++;
+                boolean full=command.has("full_encodings") && command.get("full_encodings").getAsBoolean();
+                try {
+                    Path directory=qa.resolve("worldgen-inputs");
+                    if(!Files.exists(directory,LinkOption.NOFOLLOW_LINKS))Files.createDirectory(directory);
+                    Class<?> diagnostics=Class.forName("worldfortwo.bridge.WorldgenFingerprintDiagnostics",false,SettlementCapture.class.getClassLoader());
+                    var export=MethodHandles.publicLookup().findStatic(diagnostics,"writeLoadedClient",
+                        MethodType.methodType(Path.class,Path.class,String.class,boolean.class));
+                    Path receipt=(Path)export.invokeExact(directory,id,full);
+                    write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","read-only cached client worldgen input export",
+                        "status_receipt",receipt.getFileName().toString(),"full_encodings",full,"note","Inspect the immutable diagnostic status; export is not fingerprint acceptance"));
+                } catch(Throwable failure) {
+                    if(failure instanceof VirtualMachineError || failure instanceof ThreadDeath)throw (Error)failure;
+                    String message=String.valueOf(failure.getMessage());
+                    if(message.length()>1024)message=message.substring(0,1024)+" [truncated]";
+                    write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","worldgen export failed",
+                        "error_type",failure.getClass().getName(),"error",message,"note","Failed outputs remain private; no automatic retry or worldgen load was requested"));
+                }
+                return;
+            }
             if(command.get("action").getAsString().equals("disconnect") && server.equals("127.0.0.1:25575")){
                 completed.add(id);write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","normal staging disconnect"));mc.disconnect(new TitleScreen());return;
             }

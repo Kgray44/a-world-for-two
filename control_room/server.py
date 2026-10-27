@@ -316,6 +316,7 @@ class Server:
                     r"spark (tps|healthreport|gcmonitor|profiler (start --timeout (30|60|120)|stop))",
                     r"chunky (pause|cancel|progress)",
                     r"awftbuild (registry|fingerprint|status|cancel)",
+                    r"awftbuild worldgen-inputs [a-z0-9][a-z0-9-]{0,63} (true|false)",
                     r"awftbuild (noise|survey) -?\d{1,8} -?\d{1,8} \d{1,4} \d{1,3}",
                     r"awftbuild (place|verify|map) [a-f0-9]{64}"]
         patterns.append(r"data get block -?\d{1,8} -?\d{1,3} -?\d{1,8}(?: [A-Za-z0-9_.]{1,64})?")
@@ -323,11 +324,13 @@ class Server:
                      r"awftengine inspect -?\d{1,8} -?\d{1,3} -?\d{1,8}"]
         patterns += [r"awftharborcraft (status|cancel)",
                      r"awftharborcraft (inspect|create) artistic-harbor-craft-[a-f0-9]{16} [a-f0-9]{64}",
+                     r"awftmill (status|cancel)",
+                     r"awftmill (inspect|commission) mill-commission-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftattractions (status|cancel)",
                      r"awftattractions (inspect|admit) [a-z0-9-]{1,80} [a-f0-9]{64}"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
-        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftattractions (admit|cancel))", command)
+        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftmill (commission|cancel)|awftattractions (admit|cancel))", command)
         if dangerous and not confirmed:
             raise UserError("Confirm this player or world setting change first")
         self._write(command)

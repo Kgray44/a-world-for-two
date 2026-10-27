@@ -213,6 +213,32 @@ class ConfigurationTests(Fixture):
                 with self.assertRaises(UserError):
                     server.command(invalid, confirmed=True)
 
+    def test_private_worldgen_export_admits_only_typed_unique_ids(self):
+        server = Server(self.layout, self.storage)
+        with patch.object(server, '_write') as write:
+            command = 'awftbuild worldgen-inputs c35-server-1 true'
+            server.command(command)
+            write.assert_called_once_with(command)
+            for command in ['awftbuild worldgen-inputs ../outside true',
+                            'awftbuild worldgen-inputs ' + 'a' * 65 + ' true',
+                            'awftbuild worldgen-inputs id true extra',
+                            'awftbuild worldgen-inputs id 1']:
+                with self.assertRaises(UserError):
+                    server.command(command)
+
+    def test_mill_commissioning_requires_confirmation_and_typed_bundle(self):
+        server = Server(self.layout, self.storage)
+        command = 'awftmill commission mill-commission-1234567890abcdef ' + 'b' * 64
+        with patch.object(server, '_write') as write:
+            with self.assertRaises(UserError):
+                server.command(command)
+            server.command(command, confirmed=True)
+            write.assert_called_once_with(command)
+            for bad in [command + ' extra', command.replace('b' * 64, 'invalid'),
+                        command.replace('mill-commission-', '../')]:
+                with self.assertRaises(UserError):
+                    server.command(bad, confirmed=True)
+
 
 class PlayerTests(Fixture):
     def setUp(self):

@@ -27,9 +27,27 @@ The prior helper could issue its request from a loading frame. In the preserved
 candidate32 attempt the server authenticated the test UUID, rejected configuration
 as incompatible NeoForge, and the client finished startup roughly 50 seconds
 later. That failed attempt does not establish a fully loaded client's pack
-compatibility. This source repair has not been installed or tested in a running
-client; a normally authenticated connection after readiness remains separate
-runtime evidence.
+compatibility. The parent's subsequent candidate33 run verified one normal
+connection after actual readiness, without the early NeoForge rejection. This
+remains separate from the new diagnostic source and from gameplay acceptance.
+
+Version 0.1.5 adds one explicitly requested `worldgen-export` per QA launch on the
+private staging endpoint only. It requires the same owner, expiring nonce,
+authenticated online player, normal ready game and unique request ID as the other
+QA actions. A request may set `full_encodings: true`; this is opt-in private data.
+The request invokes exactly public
+`WorldgenFingerprintDiagnostics.writeLoadedClient(Path,String,boolean)` by typed
+MethodHandle. It never enumerates class members, calls SeedGen's `get` or `load`,
+changes registry data, or sends a gameplay/server command. The bridge must contain
+the parent-reviewed diagnostic class and its exact diagnostic-only codec scope.
+Candidate 35 includes both. A missing helper or unprepared cache fails explicitly
+and is not retried.
+JSONL/status files stay under the owned instance's `awft-qa/worldgen-inputs`;
+the action receipt points to the status, which must be inspected even when dispatch
+returns normally. Neither an export nor a matching diagnostic digest authorizes
+SeedGen generation. The 0.1.5 helper compiled and its actual candidate 35 cached
+client export completed with 1,950 entries and no encoding errors. The paired
+native fingerprints still differ; see `docs/NATIVE-CANDIDATE35.md`.
 
 Capture requires an expiring authorization nonce, the expected account, server,
 position and a uniquely named request. It permits at most 96 captures per launch,

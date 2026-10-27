@@ -35,11 +35,12 @@ public class ControlBridge {
     private final EngineeringSupport engineeringSupport = new EngineeringSupport();
     private String operationOwner;
     private long operationGeneration;
-    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.34","0.6.20",this::acquire);
-    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.34","0.6.20",this::acquire);
+    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.35","0.6.21",this::acquire);
+    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.35","0.6.21",this::acquire);
+    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.35","0.6.21",this::acquire);
     private final DragonTextureMirror dragonTextureMirror=new DragonTextureMirror();
 
-    private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease {
+    private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease,ArtisticEngineeringSupport.Lease {
         private final String owner;private final long generation;private boolean closed;
         WorldLease(String owner,long generation){this.owner=owner;this.generation=generation;}
         public boolean valid(){return !closed && generation==operationGeneration && owner.equals(operationOwner);}
@@ -66,6 +67,7 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(engineeringSupport::commands);
         NeoForge.EVENT_BUS.addListener(attractionSupport::commands);
         NeoForge.EVENT_BUS.addListener(harborCraftSupport::commands);
+        NeoForge.EVENT_BUS.addListener(artisticEngineeringSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::chunk);
         NeoForge.EVENT_BUS.addListener(atlasSupport::joined);
@@ -77,7 +79,7 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(cinematicSupport::left);
     }
     private void stopping(ServerStoppingEvent event){
-        attractionSupport.stopped();harborCraftSupport.stopped();
+        attractionSupport.stopped();harborCraftSupport.stopped();artisticEngineeringSupport.stop();
         engineeringSupport.stopped();settlementSupport.stopped();dragonTextureMirror.stopped();
     }
     private void started(ServerStartedEvent event) {
@@ -104,6 +106,7 @@ public class ControlBridge {
             engineeringSupport.tick(event.getServer());
             attractionSupport.tick(event.getServer());
             harborCraftSupport.tick(event.getServer());
+            artisticEngineeringSupport.tick(event.getServer());
         }
         now = System.nanoTime();
         tickNanos += now - beforeTick;

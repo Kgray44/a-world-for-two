@@ -31,7 +31,8 @@ public final class SeedgenFingerprintCodec {
     public static Codec<DensityFunction> guarded(Codec<DensityFunction> original) {
         return original.xmap(function->function,function->{
             if(function instanceof DensityFunctions.HolderHolder && StackWalker.getInstance().walk(frames->frames.anyMatch(frame->
-                frame.getClassName().equals("mobius.seedrenderer.net.SeedSharing") && frame.getMethodName().equals("computePrint"))))
+                (frame.getClassName().equals("mobius.seedrenderer.net.SeedSharing") && frame.getMethodName().equals("computePrint"))
+                || (frame.getClassName().equals("worldfortwo.bridge.WorldgenFingerprintDiagnostics") && frame.getMethodName().equals("encodeFingerprintValue")))))
                 return value(function);
             return function;
         });
