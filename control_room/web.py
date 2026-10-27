@@ -66,6 +66,7 @@ class Application:
         self.backups.start_schedule()
 
     def close(self):
+        self.mods.close()
         self.playit.close()
         self.backups.close()
         self.metrics.close()
@@ -93,7 +94,7 @@ class Application:
                 "world": {"name": "A World for Two", "seed": "hidden", "view_distance": props.get("view-distance"),
                           "simulation_distance": props.get("simulation-distance")},
                 "last_backup": history[0] if history else None, "backup_schedule_error": self.backups.last_schedule_error,
-                "sync": self.mods.sync(), 'active_test': self.active_test()}
+                "sync": self.mods.overview_sync(), 'active_test': self.active_test()}
 
     def active_test(self):
         """Identify another *owned, currently running* test without polling it."""

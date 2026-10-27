@@ -14,6 +14,31 @@ The mobile sidebar closes on outside clicks. Changes require the local origin an
 current session token. Explicit expired-token rejections refresh once; ambiguous
 requests are not replayed. An old tab may need one reload after code updates.
 
+Overview polls never hash all server mods on the request thread. One owned read-only
+background worker checks the installed receipt's complete JAR inventory, with a
+60-second freshness window. The overview reports the check's status, last completed
+time, age, receipt/manifest hashes and inventory signature. Initial, expired, changed
+or failed checks show current integrity as unknown while checking; a prior result
+retains its original time and cannot become current just because it was successful.
+
+Small receipt/manifest contents and JAR names, identities, sizes and file time metadata
+invalidate the display cache. Windows handle/path creation and change timestamps are
+normalized for cross-API comparison; same-handle change time is checked during reads.
+A full result is discarded if that
+inventory changes during hashing. Same-size edits with unchanged metadata can remain
+undetected until the next full scan after the 60-second window; this display is never
+an operation or acceptance gate. Explicit `/api/sync`, health, startup, install and
+deployment retain their strict full verification. After failed or timed-out scans,
+the same inventory receives a full 60-second retry
+delay measured from completion, even when the scan itself lasted longer than a minute.
+An actually changed inventory can request a fresh check immediately. The worker checks cancellation
+between reads of at most 1 MiB, bounds its inventory to 1,024 files / 2 GiB and checks
+a 120-second deadline between reads. Closing signals its stop event, retains its
+owned handle if an OS read is still returning, and prevents new scans or publication.
+
+The source regression tests do not establish live HTTP latency or gameplay performance.
+Reloading this source requires the host's next safe Control Room restart window.
+
 ## Atlas, storage and backups
 
 The World Atlas uses real squaremap tiles, dimension selection, player centering,
