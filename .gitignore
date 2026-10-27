@@ -19,6 +19,7 @@ evidence/runtime/*
 !evidence/runtime/settlement-cinematics-candidate.23.json
 !evidence/runtime/owner-play-candidate.23.json
 !evidence/runtime/public-release-candidate.23.json
+!evidence/runtime/two-player-session-candidate.23.json
 !evidence/runtime/seedgen-native-fingerprint.json
 .local/
 exports/*.zip

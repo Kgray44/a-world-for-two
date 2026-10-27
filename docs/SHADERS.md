@@ -28,3 +28,19 @@ Pastel 1.200 remains a cozy research candidate with version/DH questions unresol
 DH program presence is a prerequisite, not runtime acceptance. Check distant terrain,
 water transitions, three dimensions, storms, Create moving geometry, Sable ships,
 translucent entities and long frames. Do not add OptiFine to the Iris/Sodium stack.
+
+## Observed reload interruption
+
+During the official two-player session on 2026-10-27 UTC, KG selected Complementary
+Unbound r5.9.3 on HIGH. The log interval from destroying the old pipeline to the
+next render/chunk-worker progress was 44.771 seconds; the server recorded a client
+timeout during that pause. No fatal Iris compilation, out-of-memory or JVM-crash
+marker was found in that interval. Sable's queued null-channel errors appeared
+after its UDP channel closed. The game process survived and KG rejoined while
+Sera remained connected.
+
+KG subsequently selected Reimagined r5.9.3 on HIGH; its observed reload interval
+was about 0.992 seconds. These are two log intervals on a memory-constrained shared
+host, not controlled shader compilation benchmarks or proof of the underlying
+cause. Shader switching and the remaining Iris uniform warnings still require
+investigation. See [the session evidence](../evidence/runtime/two-player-session-candidate.23.json).

@@ -17,7 +17,9 @@ Exact component pins and sides are in [the lock](../catalog/lock.json).
 
 The published exporter/source checkpoint passed **131 Python tests in GitHub CI**,
 **four JavaScript session tests**, JavaScript syntax and Packwiz integrity for
-207 entries. Further attraction source work has its own local checks. These
+207 entries. The later Control Room cache source checkpoint passed **157 Python
+tests in GitHub CI**, plus the same JavaScript and Packwiz checks. Further attraction
+source work has its own local checks. These
 source checks are separate from graphics, gameplay and remote acceptance.
 
 The official save remains the existing permanent world. It was not regenerated or
@@ -94,9 +96,23 @@ be placed. Java predicate checks remain separate from the native results.
 The five-district architectural detail pass added 1,593 changes in 165 feature
 groups. Native before/place/after checks passed, and an independent stopped-backup
 audit matched every final position with zero identity or orientation differences.
-This verifies saved construction, not 3D beauty. The railway, processing line,
-Hypertube and Overpressure settlement demonstrations are still being prepared;
-their mod installation alone does not establish an operating attraction.
+This verifies saved construction, not 3D beauty. A bounded, dry watermill,
+processing line, Hypertube and passenger railway plan is staged with 16,843 targets,
+14 block-entity tags and exact saved before states. A separate maritime proposal
+contains 154 blocks, one proposed Small Ships cog, a shallow clue/reward cache and
+the tender lift's complete body/sweep and spatial entity admission contracts.
+Neither addition has been installed or commissioned. Their mod installation and
+source checks do not establish operating attractions. See [the engineering hub](SETTLEMENT-ATTRACTIONS.md)
+and [maritime proposal](MARITIME-ATTRACTIONS.md).
+
+The [per-mod showcase audit](SHOWCASE-COVERAGE.md) binds all 197 enabled JARs,
+223 requests and 16 exact native construction sources. It finds 30 mods with
+historical mod-owned blocks and 13 with supplied items. Of 95 gameplay-content
+mods, 63 have no mod-owned block/item/entity evidence in these construction plans.
+This is not a live census or proof that naturally generated wildlife/content is
+absent. Envelope, framed construction, wildlife/fairies, zipline, wagon and actual
+sailing/physics demonstrations remain explicit gaps; scenery and stocked items
+do not qualify those gameplay loops.
 
 Construction is budgeted, but a single engine action can exceed the soft work
 slice: south-bank placement recorded a 4,155 ms maximum slice while loading/placing.
@@ -126,7 +142,8 @@ needs a verified terrain-delivery solution and actual rendering review. Distant
 Horizons/SeedGen LODs are not assumed to contain newly built structures. See the
 [cinematic coverage contract](SETTLEMENT-CINEMATIC.md).
 
-The owner is using another game and Minecraft is closed. Intended-shader street,
+KG and Sera are playing the official world. Automated native construction and
+mechanism tests remain paused during their session. Intended-shader street,
 interior, harbor, sunset and night screenshots and a complete visual refinement
 pass are pending. Block counts do not establish cinematic beauty.
 
@@ -153,6 +170,15 @@ mechanism or multiplayer pass.
   RAM ranged 0.36–1.63 GiB. These are current observations, not a performance
   improvement or a two-player benchmark. Shader/client cost still needs tuning.
   See [the measured session](../evidence/runtime/owner-play-candidate.23.json).
+- Sera's actual login and simultaneous official-world play with KG are now observed.
+  A later five-minute recording contains 31 observations: 26 fresh two-player
+  samples, four stale snapshots excluded, and one final Sera-only sample. Fresh
+  two-player samples measured median 20.00 TPS, 11.74 ms/tick, 19.98 ms/tick at the
+  95th percentile of sampled means, server RSS 5.42 GiB and 0.50 GiB available host
+  RAM. KG's 19 focused game-screen samples measured 14–27 FPS (median 22); menu
+  samples are separate and Sera's client is not instrumented. KG's shader reload
+  subsequently timed out, so this is not uninterrupted multiplayer acceptance.
+  See [the two-player record](../evidence/runtime/two-player-session-candidate.23.json).
 - The idle investigation reproduced 1,682 chunk holders with nine deliberately
   forced chunks, then returned to 841 after removal and five minutes idle. Baseline
   was 49 full, 25 block-ticking, nine entity-ticking, zero forced and one spawn
@@ -162,7 +188,11 @@ mechanism or multiplayer pass.
   terrain appearing on Xaero through MapHorizons remain unverified.
 - Playit service stop/start retained the existing account and tunnel. Control Room
   provides player permissions, whitelist, coordinates, Atlas, background storage
-  scans and session-token recovery. Remote two-player acceptance remains separate.
+  scans and session-token recovery. A source fix removes whole-mod hashing from
+  every overview request and retains strict startup/deploy/health checks; it needs
+  the next safe Control Room restart and a live latency measurement. No supported
+  dashboard-only Python reload currently preserves Java's console ownership.
+  Remote login is observed; complete two-player feature acceptance remains separate.
 - Eight shaders are pinned, including Kappa and Bliss. Chocapic is deferred at the
   owner's request. Advanced pirate/physics experiments remain isolated.
 
@@ -197,11 +227,13 @@ now pass 14 publisher tests; the packaged tree contains only indexed files and
 manifests, with omission proofs retained. Pages deployment passed; the immutable
 public manifest and index match their exact hashes. The stable root manifest
 remains absent, and no active mod pins changed. The public game tunnel also
-answered a Minecraft status ping from the host; Sera's actual remote login is a
-separate check. See [the publication evidence](../evidence/runtime/public-release-candidate.23.json).
+answered a Minecraft status ping from the host. Sera then logged in and played
+alongside KG, as recorded separately; her exact public-starter import and client
+file hashes were not independently inspected. See [the publication evidence](../evidence/runtime/public-release-candidate.23.json)
+and [later two-player observations](../evidence/runtime/two-player-session-candidate.23.json).
 
 Finish direct post-restart drawbridge cycles, hoist and other transport/logistics commissioning, current-world
-restart and restore checks, complete mod-feature coverage, remote multiplayer,
+restart and restore checks, complete mod-feature coverage, multiplayer feature tests,
 shader review, terrain-arrival measurements and full visual refinement. Source,
 Pages and public release artifacts are now published and checked; native Prism
 and full gameplay acceptance are still required before a qualified stable release.

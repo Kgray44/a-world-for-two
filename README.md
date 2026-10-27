@@ -16,7 +16,8 @@ passed. Both drawbridge spans passed two native button-driven cycles at 55°;
 1,593 further architectural details and the bridge programs passed saved-world
 persistence checks. Graphical review, other attraction commissioning and release checks continue.
 The Prism prerelease is public and its fresh Packwiz download check passed.
-Native Prism import and remote two-player acceptance remain separate. See [current status](docs/STATUS.md).
+KG and Sera have both joined the official server. Native import from the exact public
+starter and full multiplayer feature acceptance remain separate. See [current status](docs/STATUS.md).
 
 ## Play
 
@@ -53,8 +54,9 @@ explain updates and the remaining distribution checks.
 The large harbor ships are detailed structural builds. Rideable craft and native
 boat tenders complement them. The drawbridge uses real water-wheel power and
 opposed 55° programs; the isolated tender hoist still needs commissioning.
-The railway, Hypertube and pneumatic logistics settlement demonstrations remain
-under construction. Seven actual-settlement cinematics are registered by the
+The railway, Hypertube and pneumatic logistics settlement demonstrations have
+reviewed source/staging plans and still require native installation and commissioning.
+Seven actual-settlement cinematics are registered by the
 running server; their client rendering and full settlement coverage still need review.
 
 Distant Horizons + SeedGen is the selected distant-terrain architecture. Voxy and
@@ -85,6 +87,8 @@ public game tunnels carry the Minecraft port. See [the Control Room guide](docs/
 - [Shaders and compatibility limits](docs/SHADERS.md)
 - [Castle](docs/ROSEWATER-CASTLE-DESIGN.md), [south-bank village](docs/SOUTH-BANK-DESIGN.md),
   [harbor](docs/GRAND-HARBOR-SHIPS-DESIGN.md) and [cinematics](docs/SETTLEMENT-CINEMATIC.md)
+- [Staged watermill and transport](docs/SETTLEMENT-ATTRACTIONS.md) and [maritime attractions](docs/MARITIME-ATTRACTIONS.md)
+- [Per-mod showcase evidence and remaining demonstrations](docs/SHOWCASE-COVERAGE.md)
 - [Release process](docs/RELEASING.md) and [third-party notices](docs/THIRD-PARTY.md)
 
 ## Develop and verify

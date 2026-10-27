@@ -1,0 +1,272 @@
+{
+  "at": "2026-10-27T04:57:08.584331+00:00",
+  "candidate": "0.1.0-candidate.23",
+  "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+  "scope": "Five-minute passive official-world recording; fresh samples with KG and Sera connected, stale observations excluded, final Sera-only sample kept separate; no scripted world edits or process restarts",
+  "start": "2026-10-27T04:38:31.598519+00:00",
+  "end": "2026-10-27T04:43:31.496149+00:00",
+  "elapsed_seconds": 300.016,
+  "raw_private_receipt_sha256": "99c3ad16f1e814bb9345cd79e757e002336668fbe3f80ce1b5306957dd72aee9",
+  "raw_bytes": 130978,
+  "samples": {
+    "total": 31,
+    "fresh": 27,
+    "both_connected": 26,
+    "sera_only": 1,
+    "excluded_stale": [
+      {
+        "sample_index": 18,
+        "age_seconds": 21.385
+      },
+      {
+        "sample_index": 19,
+        "age_seconds": 31.389
+      },
+      {
+        "sample_index": 20,
+        "age_seconds": 41.379
+      },
+      {
+        "sample_index": 21,
+        "age_seconds": 46.389
+      }
+    ],
+    "freshness_seconds": 15,
+    "errors": 0
+  },
+  "connection_evidence": {
+    "server_login_observed_utc": "2026-10-27T04:36:34.834Z",
+    "server_join_observed_utc": "2026-10-27T04:36:35.835Z",
+    "player": "RoyalSixWings",
+    "source": "Actual dedicated-server login/join lines and fresh player telemetry; addresses omitted",
+    "public_starter_native_import": "Not independently observed"
+  },
+  "units": {
+    "memory": "bytes",
+    "cpu": "percentage of whole host CPU capacity",
+    "mspt": "Mean tick milliseconds reported by bridge per sample; percentile is across sampled means, not individual ticks",
+    "tps": "Wall-clock estimator; short jitter/catch-up windows can report slightly above20"
+  },
+  "two_player_measurements": {
+    "tps": {
+      "samples": 26,
+      "min": 19.862778392729396,
+      "median": 19.998165768264528,
+      "p95_nearest_rank": 20.039615740963402,
+      "max": 20.042343319824464
+    },
+    "mspt": {
+      "samples": 26,
+      "min": 8.547001999999999,
+      "median": 11.739677475247525,
+      "p95_nearest_rank": 19.981041,
+      "max": 22.548941
+    },
+    "server_rss": {
+      "samples": 26,
+      "min": 5411819520.0,
+      "median": 5815482368.0,
+      "p95_nearest_rank": 6100496384.0,
+      "max": 6111391744.0
+    },
+    "heap_used": {
+      "samples": 26,
+      "min": 2038909608.0,
+      "median": 4044439992.0,
+      "p95_nearest_rank": 5788617384.0,
+      "max": 5937420760.0
+    },
+    "heap_max": {
+      "samples": 26,
+      "min": 8589934592.0,
+      "median": 8589934592.0,
+      "p95_nearest_rank": 8589934592.0,
+      "max": 8589934592.0
+    },
+    "server_cpu": {
+      "samples": 26,
+      "min": 11.44375,
+      "median": 16.15625,
+      "p95_nearest_rank": 20.09375,
+      "max": 21.30625
+    },
+    "host_cpu": {
+      "samples": 26,
+      "min": 54.9,
+      "median": 67.1,
+      "p95_nearest_rank": 83.7,
+      "max": 91.0
+    },
+    "host_memory_available": {
+      "samples": 26,
+      "min": 385372160.0,
+      "median": 532197376.0,
+      "p95_nearest_rank": 715886592.0,
+      "max": 772771840.0
+    },
+    "loaded_chunks": {
+      "samples": 26,
+      "min": 1521.0,
+      "median": 1540.5,
+      "p95_nearest_rank": 1677.0,
+      "max": 1677.0
+    },
+    "entities": {
+      "samples": 26,
+      "min": 233.0,
+      "median": 261.0,
+      "p95_nearest_rank": 295.0,
+      "max": 295.0
+    }
+  },
+  "dimensions": {
+    "minecraft:overworld": {
+      "loaded_chunks": {
+        "samples": 26,
+        "min": 1521.0,
+        "median": 1540.5,
+        "p95_nearest_rank": 1677.0,
+        "max": 1677.0
+      },
+      "entities": {
+        "samples": 26,
+        "min": 233.0,
+        "median": 261.0,
+        "p95_nearest_rank": 295.0,
+        "max": 295.0
+      }
+    },
+    "minecraft:the_end": {
+      "loaded_chunks": {
+        "samples": 26,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      },
+      "entities": {
+        "samples": 26,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      }
+    },
+    "minecraft:the_nether": {
+      "loaded_chunks": {
+        "samples": 26,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      },
+      "entities": {
+        "samples": 26,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "local_kg_client": {
+    "observed_samples": 24,
+    "screens": {
+      "game": 19,
+      "CuriosScreen": 1,
+      "OptionsScreen": 1,
+      "ShaderPackScreen": 3
+    },
+    "focused_in_world_game_screen_samples": 19,
+    "game_screen_measurements": {
+      "fps": {
+        "samples": 19,
+        "min": 14.0,
+        "median": 22.0,
+        "p95_nearest_rank": 27.0,
+        "max": 27.0
+      },
+      "rss": {
+        "samples": 19,
+        "min": 7772745728.0,
+        "median": 7781326848.0,
+        "p95_nearest_rank": 7825924096.0,
+        "max": 7825924096.0
+      },
+      "cpu_percent_host": {
+        "samples": 19,
+        "min": 13.94375,
+        "median": 21.825,
+        "p95_nearest_rank": 33.55625,
+        "max": 33.55625
+      },
+      "heap_used": {
+        "samples": 19,
+        "min": 5582529064.0,
+        "median": 5851418280.0,
+        "p95_nearest_rank": 6096459136.0,
+        "max": 6096459136.0
+      },
+      "heap_max": {
+        "samples": 19,
+        "min": 6442450944.0,
+        "median": 6442450944.0,
+        "p95_nearest_rank": 6442450944.0,
+        "max": 6442450944.0
+      }
+    },
+    "scope": "Only local KG presentation telemetry; menu samples excluded from game-screen summaries; no Sera FPS/RAM data"
+  },
+  "limits": [
+    "Voluntary exploration; neither a controlled load test nor a measured before/after improvement",
+    "Four stale API snapshots during a telemetry gap were excluded, not treated as current server readings",
+    "KG switched shaders during this window and subsequently timed out; do not infer uninterrupted gameplay or acceptance",
+    "Exact public Prism import and remote client file hashes were not independently inspected",
+    "No current two-player train, tube, ship, claim, cinematic-return or moving-physics acceptance",
+    "Local shader choices may have changed while menus were open; no shader-specific performance attribution",
+    "No clean idle period or disconnect-unload benchmark in this recording; limited host RAM headroom remains visible in measurements"
+  ],
+  "sampling_finished_at": "2026-10-27T04:43:31.497257+00:00",
+  "shader_reload_observation": {
+    "source": "Read-only KG client Iris/render/network log headers and dedicated-server disconnect/rejoin lines; private addresses and paths omitted",
+    "unbound": {
+      "shader": "ComplementaryUnbound_r5.9.3.zip",
+      "profile": "HIGH",
+      "pipeline_destroy_utc": "2026-10-27T04:42:53.680Z",
+      "shader_selected_utc": "2026-10-27T04:42:54.442Z",
+      "next_render_chunk_worker_progress_utc": "2026-10-27T04:43:38.451Z",
+      "observed_interval_seconds": 44.771
+    },
+    "connection": {
+      "server_timeout_utc": "2026-10-27T04:43:16.924Z",
+      "sable_udp_inactive_utc": "2026-10-27T04:43:16.927Z",
+      "queued_sable_null_channel_errors_after_resume": 10,
+      "client_timeout_ui_utc": "2026-10-27T04:43:50.141Z",
+      "kg_server_rejoin_utc": "2026-10-27T04:45:29.776Z",
+      "sera_remained_connected": true
+    },
+    "later_reimagined": {
+      "shader": "ComplementaryReimagined_r5.9.3.zip",
+      "profile": "HIGH",
+      "pipeline_destroy_utc": "2026-10-27T04:46:39.488Z",
+      "shader_selected_utc": "2026-10-27T04:46:39.921Z",
+      "observed_reload_interval_seconds": 0.992
+    },
+    "interpretation": "Reload-associated client stall and timeout; game process survived. These log intervals do not isolate shader compilation, GPU-driver wait or memory pressure.",
+    "fatal_iris_compilation_oom_or_jvm_crash_indicator_in_reviewed_interval": "not observed; this does not prove absence of resource pressure",
+    "uniform_warnings": [
+      "Unknown BIOME_PALE_GARDEN",
+      "Unknown BIOME_SULFUR_CAVES",
+      "Unknown endFlashIntensity"
+    ],
+    "separate_rejoin_issue": "Small Ships2.0.2 non-file ModConfigEvent.Reloading IllegalStateException after the initial timeout; diagnosis pending"
+  },
+  "source_cache_checkpoint": {
+    "commit": "41f06e893abb5fdd1cae049e27b27e5e3079161d",
+    "workflow_run": 40451928378,
+    "result": "success",
+    "python_tests": 157,
+    "runtime_loaded": false,
+    "live_http_latency": "not measured"
+  }
+}
