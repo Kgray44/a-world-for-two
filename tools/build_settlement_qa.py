@@ -22,10 +22,10 @@ def build(home=Path(r'D:\A World for Two')):
     jars=[named]+sorted((layout.server/'libraries').rglob('*.jar'))
     args=work/'javac.args'
     args.write_text('-proc:none\n--release\n21\n-classpath\n"'+os.pathsep.join(p.as_posix() for p in jars)+'"\n-d\n"'+classes.as_posix()+'"\n'+'\n'.join('"'+p.as_posix()+'"' for p in sorted((source/'src').rglob('*.java'))),encoding='utf-8')
-    result=subprocess.run([r'C:\Program Files\Java\jdk-21.0.10\bin\javac.exe','@'+str(args)],capture_output=True,text=True,timeout=60,creationflags=subprocess.CREATE_NO_WINDOW)
+    result=subprocess.run([r'C:\Program Files\Java\jdk-21.0.10\bin\javac.exe','-J-Xmx256m','-J-XX:ActiveProcessorCount=2','@'+str(args)],capture_output=True,text=True,timeout=60,creationflags=subprocess.CREATE_NO_WINDOW)
     (work/'javac.log').write_text(result.stdout+result.stderr,encoding='utf-8')
     if result.returncode:raise UserError('Native QA compilation failed: '+result.stderr[:2000])
-    target=work/'awft-settlement-qa-0.1.1.jar'
+    target=work/'awft-settlement-qa-0.1.3.jar'
     with zipfile.ZipFile(target,'x',zipfile.ZIP_DEFLATED) as archive:
         for folder in (classes,source/'resources'):
             for path in sorted(folder.rglob('*')):

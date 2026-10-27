@@ -11,13 +11,17 @@ crafts close by, and mountains, pirate harbors and mechanical adventures beyond.
 
 Candidate **0.1.0-candidate.23** contains **197 enabled mod JARs**, **eight shaders**
 and one resource pack. The permanent server now contains the expanded castle,
-south-bank village and grand sailing harbor. Their native block/inventory checks
-passed. Both drawbridge spans passed two native button-driven cycles at 55°;
-1,593 further architectural details and the bridge programs passed saved-world
-persistence checks. Graphical review, other attraction commissioning and release checks continue.
+south-bank village and sailing harbor. **KG and Sera rejected the settlement's
+visual quality after exploring it. The town, ships, bridges and castle are now
+undergoing an artistic rebuild, beginning with actual in-game visual prototypes.**
+Earlier block and drawbridge checks establish technical facts, not artistic quality.
+See [the recovery direction](docs/ARTISTIC-RECOVERY.md).
+The official server is currently stopped for that rebuild. A separate fresh world
+is being reviewed through real shader screenshots before deployment.
 The Prism prerelease is public and its fresh Packwiz download check passed.
-KG and Sera have both joined the official server. Native import from the exact public
-starter and full multiplayer feature acceptance remain separate. See [current status](docs/STATUS.md).
+KG and Sera have both joined the official server; KG confirms Sera used the public
+Prism-r2 ZIP. This is user-reported import/launch evidence, not a remote file-hash
+inspection or full multiplayer feature acceptance. See [current status](docs/STATUS.md).
 
 ## Play
 
@@ -41,13 +45,16 @@ whitelist. Accounts, worlds, backups and LOD databases are not bundled in the
 client ZIP. [Installation](docs/INSTALL.md) and [current release status](docs/STATUS.md#distribution-and-remaining-acceptance)
 explain updates and the remaining distribution checks.
 
-## A home worth exploring
+## The world we are building
+
+These are the pack's intended experiences. The showcase architecture is being
+rebuilt and remains subject to the visual review described above.
 
 | Around home | Beyond the doorstep |
 | --- | --- |
 | Cottage, kitchens, gardens, pets and music | Mountains, ocean exploration, ruins and archaeology |
-| Rosewater Castle with 40 named rooms | Four distinct large age-of-sail ships and furnished belowdecks |
-| Nineteen furnished south-bank businesses and homes | Lanternwater pirate quarter, quays, smaller craft and fishing |
+| Rosewater Castle, inhabited rooms and gardens | Age-of-sail ships and furnished belowdecks |
+| Dense south-bank businesses and homes | Lanternwater pirate quarter, quays, smaller craft and fishing |
 | Create workshops and mechanical attractions | Trains, Small Ships, Aeronautics/Sable and Hypertubes |
 | Weather, custom presentation and workstation scenes | Xaero's maps, parties/claims, Waystones and browser World Atlas |
 

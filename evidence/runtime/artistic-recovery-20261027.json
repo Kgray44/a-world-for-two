@@ -1,0 +1,141 @@
+{
+  "format": "awft-artistic-recovery-evidence:1",
+  "at": "2026-10-27T08:08:00Z",
+  "official_world": "Stopped; rejected old save remains separate; fresh staging has not been deployed",
+  "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+  "screenshots": [
+    {
+      "file": "docs/images/artistic-recovery/street-r3.png",
+      "sha256": "68809cfd10befe2f0d5f616109fd29f4f545a12438e38a2614bc8a4d779cc63b",
+      "source_stage": "20261027T053650Z-artistic",
+      "captured_at": "2026-10-27T07:54:03.311035200Z",
+      "camera": {
+        "feet": [
+          1224.5,
+          66,
+          -1242.5
+        ],
+        "look_at": [
+          1246,
+          70,
+          -1239
+        ],
+        "yaw": -80.75388725443676,
+        "pitch": -6.235369704904626
+      },
+      "fps_at_capture": 59,
+      "evidence": "Exact unedited Minecraft framebuffer; excluded QA helper",
+      "quality": "Work in progress; owner acceptance not inferred"
+    },
+    {
+      "file": "docs/images/artistic-recovery/chandler-r3.png",
+      "sha256": "61e2ae59437db05d70619fa3c5d46059423f9eccb4b0685ee082ca13e1e2ebea",
+      "source_stage": "20261027T053650Z-artistic",
+      "captured_at": "2026-10-27T07:54:13.371943200Z",
+      "camera": {
+        "feet": [
+          1230,
+          66,
+          -1247
+        ],
+        "look_at": [
+          1228,
+          67,
+          -1252
+        ],
+        "yaw": 158.19859051364818,
+        "pitch": 6.567610271040315
+      },
+      "fps_at_capture": 60,
+      "evidence": "Exact unedited Minecraft framebuffer; excluded QA helper",
+      "quality": "Work in progress; owner acceptance not inferred"
+    },
+    {
+      "file": "docs/images/artistic-recovery/ship-working-deck-r3.png",
+      "sha256": "4842642e0243e99127ed9f93b96233b649818be6a96448282fab17f4f16c048c",
+      "source_stage": "20261027T053650Z-artistic",
+      "captured_at": "2026-10-27T07:55:21.878645Z",
+      "camera": {
+        "feet": [
+          1155.5,
+          84,
+          -1460.5
+        ],
+        "look_at": [
+          1137,
+          73.5,
+          -1454
+        ],
+        "yaw": 70.64100582430528,
+        "pitch": 31.71995766542424
+      },
+      "fps_at_capture": 59,
+      "evidence": "Exact unedited Minecraft framebuffer; excluded QA helper",
+      "quality": "Work in progress; owner acceptance not inferred"
+    },
+    {
+      "file": "docs/images/artistic-recovery/castle-gatehouse-r2.png",
+      "sha256": "65bd4b1afb77d9f759b5f65b9d610a7f04b62602b71caafbfbaf51c8480b0550",
+      "source_stage": "20261027T053650Z-artistic",
+      "captured_at": "2026-10-27T07:02:22.237067500Z",
+      "camera": {
+        "feet": [
+          1179,
+          80,
+          -987
+        ],
+        "look_at": [
+          1203,
+          84,
+          -1008
+        ],
+        "yaw": -131.18592516570965,
+        "pitch": -4.268101645007641
+      },
+      "fps_at_capture": 59,
+      "evidence": "Exact unedited Minecraft framebuffer; excluded QA helper",
+      "quality": "Work in progress; owner acceptance not inferred"
+    },
+    {
+      "file": "docs/images/artistic-recovery/open-river-crossings-r1.png",
+      "sha256": "3ce9b50f5d84ec7e0c27a18d5de1daf2a0872230ecb9e4dc874d1155571d5058",
+      "source_stage": "20261027T053650Z-artistic",
+      "captured_at": "2026-10-27T07:32:43.081207500Z",
+      "camera": {
+        "feet": [
+          1165,
+          83,
+          -1187
+        ],
+        "look_at": [
+          1196,
+          72,
+          -1148
+        ],
+        "yaw": -38.480198248343015,
+        "pitch": 14.214789740743532
+      },
+      "fps_at_capture": 60,
+      "evidence": "Exact unedited Minecraft framebuffer; excluded QA helper",
+      "quality": "Work in progress; owner acceptance not inferred"
+    }
+  ],
+  "bridge": {
+    "result_sha256": "7e34dd07a3e28faa6a1b306cd1d13213923d9a4ff8e18b3fe647545a78ea1dc7",
+    "status": "two native button-driven open/close cycles passed at the reviewed angle; persistence and ship clearance remain separate",
+    "cycles": 2,
+    "finished": "2026-10-27T07:44:46.907776100Z",
+    "temporary_tickets_remaining": 0,
+    "cleanup_required": false,
+    "tested_opening_degrees": 55,
+    "restart_persistence": "pending",
+    "vessel_passage": "pending"
+  },
+  "artistic_status": "Owner-rejected original; screenshot-driven rebuild in progress",
+  "source_checks": {
+    "python_tests": 267,
+    "packwiz_records": 207,
+    "javascript_syntax": "pass",
+    "tier": "Local source checks, separate from visual and gameplay acceptance"
+  }
+}

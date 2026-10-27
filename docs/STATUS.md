@@ -1,8 +1,19 @@
 # Build and acceptance status
 
-Candidate **0.1.0-candidate.23**, 2026-10-27 UTC checkpoint. The permanent settlement
-expansions are installed and have native block/inventory verification receipts.
-Functional commissioning, graphical refinement and release qualification continue.
+Candidate **0.1.0-candidate.23**, 2026-10-27 UTC checkpoint. **The owner and Sera
+rejected the settlement's visual quality after actual exploration.** This includes
+the town, ships, bridges and castle. A substantial artistic rebuild takes priority;
+native block/inventory receipts do not qualify the architecture. See
+[artistic recovery](ARTISTIC-RECOVERY.md) for the representative-build and real
+graphical-review workflow. Tonight's world/player changes may be discarded under
+the owner's latest explicit instruction; a fresh start is authorized if needed.
+The official server is stopped during recovery. A separate fresh same-seed world
+is receiving authored prototypes and genuine shader screenshot revisions; it has
+not replaced the official save. Both new bridge forms are placed in staging, and
+the redesigned bascule passed two real 55° button-driven cycles. Interior,
+landscape, harbor and palace work remains active. The new hard material limits
+are three blocks in a second axis and nine blocks maximum in any axis; see the
+recovery record for their exact interpretation and current visual findings.
 
 ## Current build
 
@@ -28,7 +39,10 @@ within the existing −64..319 build range. Candidate.23 normalizes Tectonic fil
 line endings to the existing runtime bytes; its generation settings are unchanged.
 Verified backups, unique saves and failed receipts remain preserved.
 
-## What is actually built
+## Historical construction in the rejected official world
+
+This table records previous technical construction only. It is not the new
+artistic staging inventory, a visual-quality score, or a completion claim.
 
 | Area | Planned placements | Native result |
 | --- | ---: | --- |
@@ -142,10 +156,11 @@ needs a verified terrain-delivery solution and actual rendering review. Distant
 Horizons/SeedGen LODs are not assumed to contain newly built structures. See the
 [cinematic coverage contract](SETTLEMENT-CINEMATIC.md).
 
-KG and Sera are playing the official world. Automated native construction and
-mechanism tests remain paused during their session. Intended-shader street,
-interior, harbor, sunset and night screenshots and a complete visual refinement
-pass are pending. Block counts do not establish cinematic beauty.
+KG and Sera disconnected at 05:17 UTC. The server stopped cleanly at 05:26 UTC for
+recovery work. A verified stopped-world checkpoint was created before staging;
+no official world replacement has occurred at this checkpoint. Actual native
+street, interior, harbor, sunset and night review is the next artistic gate.
+Block counts do not establish cinematic beauty.
 
 The exact bridge 0.6.7 JAR passed a separate headless Windows regression: an ordinary
 reader denied mutable status replacement, progress returned an AccessDenied warning,
@@ -210,8 +225,10 @@ verification. A fresh public Packwiz installation passed: 199 downloads plus the
 single author-permitted bundled pirate JAR, all 200 client artifacts and 76 static
 configurations matched, with zero missing/changed files or server-only leakage.
 The headless installer enabled optional Essential; the normal GUI-default set has
-199 artifacts with Essential off. Native Prism import and startup from the exact
-public starter remain separate. KG's existing owned client matched all current client artifact pins and
+199 artifacts with Essential off. KG confirms Sera imported and launched the public
+Prism-r2 ZIP, and her actual server login is independently observed. This is
+user-reported import evidence; Sera's installed files were not inspected remotely.
+KG's existing owned client matched all current client artifact pins and
 joined the official server; its local direct-connect menu override and already
 installed files do not establish a fresh public-starter import.
 See [the release process](RELEASING.md).

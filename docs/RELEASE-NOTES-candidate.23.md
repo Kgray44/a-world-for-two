@@ -2,8 +2,11 @@
 
 The [Prism prerelease](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.23)
 is public. The exact ZIP, versioned Packwiz manifests and fresh public file
-installation passed verification. Native Prism import and real remote multiplayer
-remain separate acceptance checks; this is not a qualified stable release.
+installation passed verification. KG confirms Sera imported the public Prism-r2
+ZIP and joined; her server login is observed. Her remote installed bytes and full
+multiplayer feature acceptance remain separate. This is not a qualified stable
+release. **The owner rejected the hosted settlement's artistic quality; a major
+rebuild with actual in-game visual review is in progress.**
 
 ## Install and join
 
