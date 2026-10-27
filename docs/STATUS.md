@@ -1,8 +1,10 @@
 # Build and acceptance status
 
+**Final server status:** the fresh world is saved, but the server is currently offline. A subsequent startup failed in Create 6.0.10 while accessing unbound `create:chocolate_bucket`. The earlier online measurements are historical. Recovery start was rejected by automatic approval review with only the reason "blocked by policy"; it was not retried through another route.
+
 **Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-**2026-10-27 UTC: candidate.31 published; official fresh world online.**
+**2026-10-27 UTC: candidate.31 published; fresh world installed; server offline.**
 
 The fresh-world handoff completed at 11:23:08 UTC with 219 files; player,
 advancement, statistic and Effortless data were excluded. Old construction

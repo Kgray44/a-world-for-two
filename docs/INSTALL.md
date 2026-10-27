@@ -1,8 +1,10 @@
 # Install A World for Two
 
+**Final server status:** the fresh world is saved, but the server is currently offline. A subsequent startup failed in Create 6.0.10 while accessing unbound `create:chocolate_bucket`. The earlier online measurements are historical. Recovery start was rejected by automatic approval review with only the reason "blocked by policy"; it was not retried through another route.
+
 **Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-Candidate.31 is published, and the official fresh world is online.
+Candidate.31 is published; the official fresh world is installed but the server is offline.
 
 ## Client
 
