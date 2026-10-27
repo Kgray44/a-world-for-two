@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import collections
 import contextlib
+from copy import deepcopy
 import json
 import logging
 import logging.handlers
@@ -18,6 +19,7 @@ from pathlib import Path
 import psutil
 
 from .common import UserError, digest, read_json, utcnow, write_json
+from .metrics import measurement_freshness
 from .settings import properties
 
 
@@ -81,6 +83,10 @@ class Server:
         self.tick = {"tps": None, "mspt": None, "at": None, "source": "neoforge tps console (not sampled yet)"}
         self._last_probe = 0
         self.player_info = None
+        self.player_info_at = None
+        self.player_info_identity = None
+        self._last_player_info = None
+        self._last_player_info_at = None
         self._logger = None
         self.warning = None
         self._recover_identity()
@@ -283,11 +289,17 @@ class Server:
     def probe(self):
         if self.state != "online":
             self.player_info = None
+            self.player_info_at = None
             return
         try:
             self.player_info = minecraft_status(self.layout.settings()["port"])
+            self.player_info_at = time.time()
+            self.player_info_identity = (self.identity or {}).get('pid'), (self.identity or {}).get('created')
+            self._last_player_info = self.player_info
+            self._last_player_info_at = self.player_info_at
         except (OSError, ValueError, UserError):
             self.player_info = None
+            self.player_info_at = None
         if time.monotonic() - self._last_probe >= 30:
             with contextlib.suppress(UserError, OSError):
                 self._write("neoforge tps")
@@ -296,13 +308,34 @@ class Server:
     def snapshot(self):
         with self._lock:
             active = self.running()
+            now = time.time()
             tick = dict(self.tick)
-            if not active or self.state != "online":
+            tick_fresh = measurement_freshness(tick.get('at'), now)
+            roster_fresh = measurement_freshness(self.player_info_at, now)
+            identity = (self.identity or {}).get('pid'), (self.identity or {}).get('created')
+            if not active or self.state != 'online':
+                for value in (tick_fresh, roster_fresh):
+                    value.update(current=False, status='unavailable', reason='No online owned server measurement is available.')
+            if self.player_info_identity != identity:
+                roster_fresh.update(current=False, status='unavailable',
+                                    reason='The status sample does not belong to the current owned server process.')
+            if not isinstance(self.player_info, dict):
+                roster_fresh.update(current=False, status='unavailable', reason='No current Minecraft status reply is available.')
+            known = {}
+            if not tick_fresh['current']:
+                if tick.get('at'):
+                    known['tick'] = dict(tick)
                 tick.update(tps=None, mspt=None, at=None)
+            status = deepcopy(self.player_info) if roster_fresh['current'] else None
+            if status is None and self._last_player_info is not None:
+                known['status'] = {'measured_at': self._last_player_info_at,
+                                   'data': deepcopy(self._last_player_info)}
             return {"state": self.state if active or self.state == "failed" else "offline",
                     "pid": self.identity.get("pid") if self.identity and active else None,
-                    "uptime_seconds": max(0, time.time() - self.started) if active and self.started else None,
-                    "tick": tick, "status": self.player_info if active else None, "warning": self.warning,
+                    "uptime_seconds": max(0, now - self.started) if active and self.started else None,
+                    "tick": tick, "status": status, "warning": self.warning,
+                    'freshness': {'evaluated_at': now, 'tick': tick_fresh, 'player_status': roster_fresh},
+                    'last_known': known,
                     "events": list(self.events)[-30:]}
 
     def console(self, after=0, query="", level="all"):

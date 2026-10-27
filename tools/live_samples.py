@@ -13,16 +13,32 @@ from pathlib import Path
 from control_room.common import REPO, UserError, digest, read_json, utcnow, write_json
 from control_room.storage import GiB, Storage
 from control_room.common import Layout
+from control_room.metrics import measurement_freshness
 import psutil
 
 
 def fresh_tick(value, now=None):
-    if not isinstance(value, str):
+    return isinstance(value, str) and measurement_freshness(value, time.time() if now is None else now)['current']
+
+
+def fresh_players(sample, now=None):
+    """An explicitly available, current complete roster; unknown is never empty."""
+    if (not isinstance(sample, dict) or sample.get('players_available') is not True
+            or not isinstance(sample.get('players'), dict)):
         return False
-    try:
-        return -2 <= (time.time() if now is None else now) - datetime.fromisoformat(value.replace('Z', '+00:00')).timestamp() <= 15
-    except (ValueError, TypeError):
-        return False
+    now = time.time() if now is None else now
+    collection = measurement_freshness(sample.get('at'), now)
+    bridge = measurement_freshness(sample.get('bridge_at'), now, parent=collection)
+    return measurement_freshness(sample.get('player_roster_at'), now, parent=bridge)['current']
+
+
+def idle_window(sample, ever_online, idle_since, observed_at, now=None):
+    """Only consecutive available empty rosters advance a post-player idle window."""
+    if not fresh_players(sample, now):
+        return ever_online, None
+    if sample['players']:
+        return True, None
+    return ever_online, (observed_at if idle_since is None else idle_since) if ever_online else None
 
 
 def observe(home: Path, seconds=1800):
@@ -48,7 +64,8 @@ def observe(home: Path, seconds=1800):
     rows, errors, finish_reason = 0, [], 'bounded observation elapsed'
     selected = ('at', 'tps', 'mspt', 'tick_at', 'tick_source', 'server_rss', 'server_cpu', 'heap_used', 'heap_max',
                 'loaded_chunks', 'entities', 'dimensions', 'host_cpu', 'host_memory_available', 'gc_collections',
-                'gc_collection_ms', 'clients', 'atlas_renderer', 'chunk_diagnostics', 'bridge_error')
+                'gc_collection_ms', 'clients', 'atlas_renderer', 'chunk_diagnostics', 'bridge_error',
+                'bridge_at', 'player_roster_at', 'players_available', 'freshness', 'last_known')
     try:
         while time.monotonic() - started < seconds:
             storage.checkpoint(3 * GiB)
@@ -62,18 +79,17 @@ def observe(home: Path, seconds=1800):
                 row = {key: sample.get(key) for key in selected}
                 row['observed_at'] = utcnow()
                 fresh = fresh_tick(sample.get('tick_at'))
-                players = sample.get('players', {}) if fresh else {}
-                row['telemetry_fresh'] = fresh
-                row['phase'] = 'playing' if players else 'idle' if fresh else 'telemetry unavailable'
-                row['players'] = [{key: p.get(key) for key in ('name', 'dimension', 'x', 'y', 'z', 'game_mode')} for p in players.values()]
+                roster_fresh = fresh_players(sample)
+                players = sample['players'] if roster_fresh else None
+                row.update(telemetry_fresh=fresh and roster_fresh, tick_fresh=fresh, players_available=roster_fresh)
+                row['phase'] = 'playing' if players else 'idle' if roster_fresh else 'player presence unavailable'
+                row['players'] = ([{key: p.get(key) for key in ('name', 'dimension', 'x', 'y', 'z', 'game_mode')}
+                                   for p in players.values()] if players is not None else None)
                 if client:
                     settings = client / '.minecraft/config/iris.properties'
                     if settings.is_file() and settings.stat().st_size <= 8192:
                         row['shader'] = dict(re.findall(r'(?m)^(enableShaders|shaderPack)=(.*)$', settings.read_text()))
-                if players:
-                    ever_online, idle_since = True, None
-                elif fresh and ever_online:
-                    idle_since = idle_since or time.monotonic()
+                ever_online, idle_since = idle_window(sample, ever_online, idle_since, time.monotonic())
                 encoded = json.dumps(row, ensure_ascii=False).encode('utf-8') + b'\n'
                 if len(encoded) > 256 * 1024 or (output.stat().st_size if output.exists() else 0) + len(encoded) > 16 * 1024 * 1024:
                     finish_reason = 'bounded sample file reached its limit'
@@ -88,6 +104,7 @@ def observe(home: Path, seconds=1800):
                     finish_reason = 'five minutes of fresh post-disconnect idle observations'
                     break
             except (OSError, ValueError, KeyError) as error:
+                idle_since = None
                 if len(errors) < 30:
                     errors.append({'at': utcnow(), 'error': str(error)[:500]})
             time.sleep(5)

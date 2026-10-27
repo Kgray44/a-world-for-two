@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import contextlib
+from copy import deepcopy
 import csv
 import io
 import json
@@ -16,6 +17,52 @@ import psutil
 
 from .common import GiB, read_json, utcnow, write_json
 from .storage import tree_size
+
+
+LIVE_SECONDS = 15
+DIAGNOSTIC_SECONDS = 45  # Native ticket diagnostics refresh every 30 seconds.
+MAX_AGE_SECONDS = 7 * 86400
+HOST_FIELDS = ('host_cpu', 'host_memory_percent', 'host_memory_available',
+               'server_cpu', 'server_rss', 'gc_pause_ms')
+BRIDGE_FIELDS = ('heap_used', 'heap_max', 'loaded_chunks', 'entities', 'dimensions',
+                 'gc_collections', 'gc_collection_ms')
+CLIENT_FIELDS = ('fps', 'heap_used', 'heap_max', 'focused', 'in_world', 'screen',
+                 'camera', 'frame_interval_ms')
+
+
+def measurement_freshness(stamp, now, maximum=LIVE_SECONDS, parent=None):
+    """Finite response-time age, without treating an old measurement as disconnect."""
+    result = {'measured_at': stamp, 'age_seconds': None, 'max_age_seconds': maximum,
+              'current': False, 'status': 'unavailable'}
+    try:
+        if type(stamp) in (int, float) and math.isfinite(stamp):
+            measured = stamp
+        elif isinstance(stamp, str):
+            value = datetime.fromisoformat(stamp.replace('Z', '+00:00'))
+            if value.tzinfo is None:
+                raise ValueError('Timestamp has no timezone')
+            measured = value.timestamp()
+        else:
+            raise ValueError('No measurement timestamp')
+        age = now - measured
+        if not math.isfinite(age):
+            raise ValueError('Invalid measurement age')
+        result['age_seconds'] = round(min(MAX_AGE_SECONDS, max(0, age)), 3)
+        if age > MAX_AGE_SECONDS:
+            result['age_capped'] = True
+        if age < -2:
+            result.update(status='clock_skew', reason='Measurement timestamp is ahead of the current clock.')
+        elif age > maximum:
+            result.update(status='stale', reason='The last measurement exceeded its freshness window.')
+        else:
+            result.update(current=True, status='current')
+        if parent is not None and not parent['current']:
+            result.update(current=False, status=parent['status'],
+                          reason='The cached collection is unavailable or stale.')
+    except (ValueError, TypeError, OverflowError, OSError):
+        result.update(measured_at=stamp if isinstance(stamp, str) else None,
+                      reason='No valid measurement timestamp is available.')
+    return result
 
 
 class Metrics:
@@ -175,10 +222,11 @@ class Metrics:
             for key in limits:
                 sample[key] = data[key]
                 sample["unavailable"].pop(key, None)
-            sample.update(dimensions=data["dimensions"], tick_at=data["at"],
+            sample.update(dimensions=data["dimensions"], tick_at=data["at"], bridge_at=data['at'],
                           tick_source="Owned NeoForge server bridge: tick events and JVM management beans",
                           bridge_age_seconds=round(age, 2))
             sample["players"] = players
+            sample['player_roster_at'] = data['at'] if 'players' in data else None
             sample["bridge_capabilities"] = [c for c in data.get("capabilities", []) if c in ("player_permissions", "player_locations", "surface_minimap", "safe_teleport", "surface_teleport", "atlas_index", "cinematics")]
             if data.get('cinematics'):
                 from .cinematics import validate_telemetry
@@ -227,7 +275,87 @@ class Metrics:
         return alerts
 
     def latest(self):
-        return self._latest
+        """Project the authorized cached sample at response time; never rewrite history.
+
+        No probes, file reads, process checks or game commands belong on this
+        request path. A stalled collector is not an offline server or player.
+        """
+        sample = deepcopy(self._latest)
+        now = time.time()
+        snapshot = measurement_freshness(sample.get('at'), now)
+        tick = measurement_freshness(sample.get('tick_at'), now, parent=snapshot)
+        bridge = measurement_freshness(sample.get('bridge_at'), now, parent=snapshot)
+        roster = measurement_freshness(sample.get('player_roster_at'), now, parent=bridge)
+        sample['freshness'] = {'evaluated_at': now, 'snapshot': snapshot,
+                               'tick': tick, 'bridge': bridge, 'players': roster}
+        sample['last_known'] = {}
+        sample['tick_measured_at'] = sample.get('tick_at')
+        sample['bridge_measured_at'] = sample.get('bridge_at')
+        sample['bridge_age_seconds'] = bridge['age_seconds']
+        unavailable = sample.setdefault('unavailable', {})
+
+        def retain(group, fields, measured_at):
+            known = {key: sample.get(key) for key in fields if key in sample}
+            if known:
+                sample['last_known'][group] = dict(known, measured_at=measured_at)
+            for key in fields:
+                if key in sample:
+                    sample[key] = None
+
+        if not snapshot['current']:
+            retain('snapshot', HOST_FIELDS, sample.get('at'))
+            if sample.get('alerts'):
+                sample['last_known'].setdefault('snapshot', {})['alerts'] = sample['alerts']
+                sample['alerts'] = []
+        if not tick['current']:
+            retain('tick', ('tps', 'mspt', 'tick_at', 'tick_source'), sample.get('tick_at'))
+            unavailable.update(tps='A fresh tick measurement is unavailable.',
+                               mspt='A fresh tick measurement is unavailable.')
+        if not bridge['current']:
+            retain('bridge', (*BRIDGE_FIELDS, 'bridge_at', 'players', 'bridge_capabilities',
+                              'player_roster_at', 'cinematics', 'atlas_renderer', 'atlas_objects', 'atlas_claims',
+                              'atlas_index_full'), sample.get('bridge_at'))
+            sample.update(players=None, bridge_capabilities=[], cinematics={}, atlas_renderer=None,
+                          atlas_objects=[], atlas_claims={'available': False, 'items': [],
+                          'unavailable': 'Fresh server bridge telemetry is unavailable.'})
+            for key in BRIDGE_FIELDS:
+                unavailable[key] = 'Fresh server bridge telemetry is unavailable.'
+        sample['players_available'] = roster['current'] and isinstance(sample.get('players'), dict)
+        if not sample['players_available']:
+            if sample.get('players'):
+                sample['last_known']['players'] = {'players': sample['players'],
+                                                   'measured_at': sample.get('player_roster_at')}
+            sample['players'] = None
+        sample['players_online'] = len(sample['players']) if sample['players_available'] else None
+
+        diagnostic = sample.get('chunk_diagnostics')
+        if diagnostic:
+            fresh = measurement_freshness(diagnostic.get('at'), now,
+                                          DIAGNOSTIC_SECONDS, parent=bridge)
+            sample['freshness']['chunk_diagnostics'] = fresh
+            if not fresh['current']:
+                sample['last_known']['chunk_diagnostics'] = diagnostic
+                sample['chunk_diagnostics'] = {'at': diagnostic.get('at'),
+                    'unavailable': 'Chunk diagnostics are stale or unavailable; retained measurements are last known.',
+                    'freshness': fresh}
+
+        for client in sample.get('clients', []):
+            fresh = measurement_freshness(client.get('at'), now, parent=snapshot)
+            client['freshness'] = fresh
+            client['process_freshness'] = dict(snapshot)
+            client['last_known'] = {}
+            if not fresh['current']:
+                client['last_known']['game'] = {key: client[key] for key in ('at', *CLIENT_FIELDS)
+                                                if key in client}
+                for key in CLIENT_FIELDS:
+                    if key in client:
+                        client[key] = None
+            if not snapshot['current']:
+                client['last_known']['process'] = {key: client[key] for key in ('rss', 'cpu_percent_host')
+                                                   if key in client}
+                client['last_known']['process']['measured_at'] = sample.get('at')
+                client.update(rss=None, cpu_percent_host=None)
+        return sample
 
     def history(self, hours=1):
         hours = min(max(float(hours), 1 / 60), 168)

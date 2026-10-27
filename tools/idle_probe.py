@@ -14,24 +14,53 @@ from pathlib import Path
 
 from control_room.client_metrics import ClientMetrics
 from control_room.common import Layout, REPO, UserError, digest, read_json, utcnow, write_json
+from control_room.metrics import DIAGNOSTIC_SECONDS, measurement_freshness
 from control_room.web import Application, HTTPServer, make_handler
-from .live_samples import fresh_tick
+from .live_samples import fresh_players, fresh_tick
 from .playtest_update import owned_pair
+
+
+def require_idle(sample, now=None):
+    if not fresh_players(sample, now):
+        raise UserError('Player presence unavailable; no idle or force-load decision is permitted')
+    if sample['players']:
+        raise UserError('Player joined; ticket experiment interrupted and temporary tickets removed')
+
+
+def admit_probe(sample, now=None):
+    require_idle(sample, now)
+    now = time.time() if now is None else now
+    diagnostic = sample.get('chunk_diagnostics') or {}
+    dimensions = diagnostic.get('dimensions')
+    if (diagnostic.get('unavailable') or not isinstance(dimensions, dict) or not dimensions
+            or not measurement_freshness(diagnostic.get('at'), now, DIAGNOSTIC_SECONDS)['current']
+            or any(not isinstance(row, dict) or type(row.get('vanilla_forced_chunks')) is not int
+                   or row['vanilla_forced_chunks'] < 0 for row in dimensions.values())):
+        raise UserError('Forced-chunk baseline unavailable; controlled probe not run')
+    if any(row['vanilla_forced_chunks'] for row in dimensions.values()):
+        raise UserError('Existing forced chunks are preserved; controlled probe not run')
 
 
 def experiment(app):
     result = {'at':utcnow(),'pack_sha256':digest(REPO/'packwiz/pack.toml'),'status':'pending','phases':[]}
     target=app.layout.logs/('idle-ticket-probe-'+str(time.time_ns())+'.json')
     forced=False
+    def checked(sample, probe=False):
+        try:
+            (admit_probe if probe else require_idle)(sample)
+        except UserError as error:
+            result['interrupted_observation'] = {'at': utcnow(), 'reason': str(error), 'sample': copy.deepcopy(sample)}
+            raise
     def phase(name,seconds):
         end=time.monotonic()+seconds
         print('Idle probe: '+name,flush=True)
         while time.monotonic()<end:
             sample=app.metrics.latest()
             if not app.server.running():raise UserError('Server exited during the idle probe')
-            if sample.get('players'):raise UserError('Player joined; ticket experiment interrupted and temporary tickets removed')
+            checked(sample)
             time.sleep(1)
         sample=copy.deepcopy(app.metrics.latest())
+        checked(sample)
         if not fresh_tick(sample.get('tick_at')):raise UserError('Native telemetry is stale')
         result['phases'].append({'at':utcnow(),'phase':name,'sample':sample})
         write_json(target,result)
@@ -39,9 +68,7 @@ def experiment(app):
         app.start_world(notify=print)
         phase('startup without player or probe tickets',90)
         sample=app.metrics.latest()
-        dimensions=sample.get('chunk_diagnostics',{}).get('dimensions',{})
-        if any(d.get('vanilla_forced_chunks') for d in dimensions.values()):
-            raise UserError('Existing forced chunks are preserved; controlled probe not run')
+        checked(sample, probe=True)
         forced=True
         app.server._write('forceload add 2048 2048 2080 2080')
         phase('controlled nine-chunk force-load region',60)

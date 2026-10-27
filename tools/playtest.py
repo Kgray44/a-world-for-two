@@ -6,7 +6,6 @@ limited to 30 minutes, a 2 GiB test world, and 8 GiB additional managed D: data.
 from __future__ import annotations
 
 import argparse
-import contextlib
 import json
 import os
 import re
@@ -16,7 +15,6 @@ import subprocess
 import threading
 import time
 import uuid
-from datetime import datetime
 from pathlib import Path
 
 import psutil
@@ -28,6 +26,18 @@ from control_room.settings import format_properties
 from control_room.storage import Storage, tree_size
 from control_room.web import Application, HTTPServer, make_handler
 from .client import prepare as prepare_client
+from .live_samples import fresh_players, fresh_tick
+
+
+def presence_phase(phase, ever_joined, sample, now=None):
+    """Unknown observations interrupt idle timing, without asserting a disconnect."""
+    if not fresh_players(sample, now):
+        return 'player telemetry unavailable'
+    if sample['players']:
+        return 'active player gameplay'
+    if phase in ('controlled nine-chunk force-load probe', 'extended idle after force-load removal'):
+        return phase
+    return 'post-disconnect idle' if ever_joined else 'startup idle; no generation probes'
 
 
 def guard(c_bytes, d_bytes):
@@ -130,7 +140,8 @@ def run(home, ident, minutes=30):
     app.metrics.clients = ClientMetrics(parent)
     http = HTTPServer(('127.0.0.1', 8766), make_handler(app))
     thread = threading.Thread(target=http.serve_forever, kwargs={'poll_interval':.5}, daemon=True)
-    phase, phase_at, ever_joined, online_before = 'startup', time.monotonic(), False, False
+    phase, phase_at, ever_joined = 'startup', time.monotonic(), False
+    probe_forced = False
     started = time.monotonic()
     end = started + minutes * 60
     last_guard, last_sizes, sample_at = started, started, None
@@ -175,36 +186,41 @@ def run(home, ident, minutes=30):
                 last_sizes = now
             descendants = server_process.children(recursive=True)
             sample = app.metrics.latest()
-            fresh = False
-            with contextlib.suppress(ValueError):
-                fresh = -2 <= time.time() - datetime.fromisoformat((sample.get('tick_at') or '').replace('Z','+00:00')).timestamp() <= 15
-            online = fresh and bool(sample.get('players'))
+            fresh = fresh_tick(sample.get('tick_at'))
+            roster_fresh = fresh_players(sample)
+            online = bool(sample['players']) if roster_fresh else None
             if phase == 'startup':
                 if app.server.state == 'online':
                     receipt.update(startup='pass', startup_seconds=round(now-started,3))
-                    transition('startup idle; no generation probes')
+                    transition('player telemetry unavailable')
                 elif now-started >= 360:
                     raise UserError('The combined candidate did not finish server startup within six minutes')
-            if online and not online_before:
-                ever_joined = True
-                receipt['licensed_player_join_observed'] = utcnow()
-                transition('active player gameplay')
-            elif ever_joined and online_before and not online and fresh:
-                transition('post-disconnect idle')
+            if phase != 'startup':
+                next_phase = presence_phase(phase, ever_joined, sample)
+                if probe_forced and next_phase != 'controlled nine-chunk force-load probe':
+                    app.server._write('forceload remove 2048 2048 2080 2080')
+                    probe_forced = False
+                    receipt['controlled_probe_interrupted'] = 'Player presence changed or became unavailable; exact probe tickets removed'
+                if next_phase != phase:
+                    transition(next_phase)
+                if online and not ever_joined:
+                    ever_joined = True
+                    receipt['licensed_player_join_observed'] = utcnow()
             if not ever_joined and phase != 'startup' and now-started >= 900:
                 receipt['stability'] = 'No authenticated player joined within the bounded waiting period'
                 break
-            if phase == 'post-disconnect idle' and now-phase_at >= 300:
+            if phase == 'post-disconnect idle' and roster_fresh and fresh and now-phase_at >= 300:
                 # Deliberate ticket source, labelled separately from both clean idle phases.
+                probe_forced = True
                 app.server._write('forceload add 2048 2048 2080 2080')
                 transition('controlled nine-chunk force-load probe')
             elif phase == 'controlled nine-chunk force-load probe' and now-phase_at >= 60:
                 app.server._write('forceload remove 2048 2048 2080 2080')
+                probe_forced = False
                 transition('extended idle after force-load removal')
             elif phase == 'extended idle after force-load removal' and now-phase_at >= 300:
                 receipt['stability'] = 'Completed live join, disconnect, controlled tickets and five-minute unload observation'
                 break
-            online_before = online if fresh else online_before
             if gpu and now-last_gpu >= 10:
                 try:
                     result = subprocess.run([gpu,'--query-gpu=utilization.gpu,memory.used,memory.total,temperature.gpu','--format=csv,noheader,nounits'], capture_output=True,text=True,timeout=3,creationflags=subprocess.CREATE_NO_WINDOW)
@@ -213,9 +229,11 @@ def run(home, ident, minutes=30):
                 except (OSError,ValueError,IndexError,subprocess.TimeoutExpired):
                     gpu_value = None
                 last_gpu = now
-            if sample.get('at') != sample_at:
-                sample_at = sample.get('at')
-                row = {'phase':phase, 'telemetry_fresh':fresh, 'measurement':sample, 'shared_host_gpu':gpu_value}
+            sample_key = (sample.get('at'), phase, fresh, roster_fresh)
+            if sample_key != sample_at:
+                sample_at = sample_key
+                row = {'phase':phase, 'telemetry_fresh':fresh and roster_fresh, 'tick_fresh':fresh,
+                       'players_available':roster_fresh, 'measurement':sample, 'shared_host_gpu':gpu_value}
                 raw = json.dumps(row,ensure_ascii=False)
                 if len(raw.encode()) > 1024 * 1024 or (samples_path.exists() and samples_path.stat().st_size > 32 * 1024 * 1024):
                     raise UserError('Bounded playtest sample log reached its size limit')
@@ -232,6 +250,9 @@ def run(home, ident, minutes=30):
     finally:
         if app.server.running():
             try:
+                if probe_forced:
+                    app.server._write('forceload remove 2048 2048 2080 2080')
+                    probe_forced = False
                 app.server._write('say The disposable test is ending. Saving the test world now.')
                 app.server.stop(notify=print)
                 receipt['shutdown'] = 'graceful'

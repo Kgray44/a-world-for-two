@@ -10,6 +10,33 @@ Players supports verified username lookup, whitelist edits, operator levels 0–
 game mode and experience changes. Click a player for live coordinates, dimension,
 available location preview and relevant actions. Permission changes preserve prior values.
 
+Current telemetry expires independently of the HTTP connection. Every metrics response
+rechecks the cached collection, tick, owned server bridge and each owned client against
+a 15-second freshness window. Chunk-ticket diagnostics have their own 45-second window
+because their native sampling interval is 30 seconds; they also require a fresh bridge.
+The API reports finite ages, original measurement timestamps and availability. Expired
+live fields become null or unavailable, while `last_known` retains the measured values.
+Raw SQLite history and CSV timestamps are unchanged. Fresh process RSS/CPU measurements
+remain usable when only the game/bridge telemetry is stale.
+The overview's separate server snapshot applies the same age bound to console ticks
+and Minecraft-status rosters, with the roster tied to the owned PID/create-time pair.
+Expired status replies become unavailable with their original last-known timestamp;
+server state, PID, process identity and uptime continue to describe the real process.
+
+The browser rechecks measurement ages when rendering and labels delayed readings clearly.
+An expired player sample means **presence unknown**, not offline or disconnected. Current
+coordinates and live actions require a fresh complete bridge roster; retained coordinates
+are last known. A fresh roster excluding the player, or an independently stopped owned
+server process, can establish offline status. Offline whitelist and operator-file edits
+remain available; missing live telemetry never bypasses command/capability checks.
+The dormant sampling and disposable playtest tools also require an explicitly available,
+fresh complete roster for idle, disconnect and force-load decisions. Missing observations
+reset continuous idle timing; interrupted probes remove only their exact temporary tickets.
+Unknown observations and their diagnostic context remain in the private test receipts.
+These source checks do not establish live HTTP or gameplay acceptance. The host must
+apply this change at the next safe Control Room restart; no running server/client reload
+is required by the source tests.
+
 The mobile sidebar closes on outside clicks. Changes require the local origin and
 current session token. Explicit expired-token rejections refresh once; ambiguous
 requests are not replayed. An old tab may need one reload after code updates.

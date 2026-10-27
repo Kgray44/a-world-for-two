@@ -43,27 +43,41 @@ class Players:
         status = self.server.snapshot()
         measurements = self.telemetry()
         fresh = False
-        if measurements.get("tick_at") and status["state"] == "online":
+        measured_at = measurements.get('player_roster_at') or measurements.get('bridge_at') or measurements.get('tick_at')
+        if (isinstance(measured_at, str) and status["state"] == "online"
+                and measurements.get('players_available') is not False):
             try:
-                fresh = 0 <= time.time() - datetime.fromisoformat(measurements["tick_at"].replace("Z", "+00:00")).timestamp() <= 15
+                fresh = 0 <= time.time() - datetime.fromisoformat(measured_at.replace("Z", "+00:00")).timestamp() <= 15
             except (ValueError, TypeError):
                 pass
-        live = {ident: dict(value, at=measurements["tick_at"]) for ident, value in measurements.get("players", {}).items()} if fresh else {}
+        measured_players = measurements.get('players')
+        fresh = fresh and isinstance(measured_players, dict)
+        live = {ident: dict(value, at=measured_at) for ident, value in measured_players.items()} if fresh else {}
+        process_offline = status['state'] in ('offline', 'failed') and not status.get('pid')
         known = read_json(self.layout.state / "last-player-locations.json", {})
-        if live and measurements["tick_at"] != self.last_location_sample:
-            known.update({ident: dict(value, at=measurements["tick_at"]) for ident, value in live.items()})
+        if live and measured_at != self.last_location_sample:
+            known.update({ident: dict(value, at=measured_at) for ident, value in live.items()})
             known = dict(list(known.items())[-128:])
             write_json(self.layout.state / "last-player-locations.json", known)
-            self.last_location_sample = measurements["tick_at"]
+            self.last_location_sample = measured_at
         identities = {p["uuid"]: {"uuid": p["uuid"], "name": p["name"]} for p in [*whitelist, *ops, *live.values()]}
         members = []
         for ident, person in identities.items():
             op = next((x for x in ops if x["uuid"] == ident), {})
             location = live.get(ident) or known.get(ident)
+            online = ident in live if fresh else False if process_offline else None
             members.append(dict(person, whitelisted=any(x["uuid"] == ident for x in whitelist),
                 operator_level=op.get("level", 0), bypass_player_limit=op.get("bypassesPlayerLimit", False),
-                online=ident in live, location=location, location_state="live" if ident in live else "last seen" if location else "not available"))
-        return {"whitelist": whitelist, "operators": ops, "online": status.get("status", {}).get("players") if status.get("status") else None,
+                online=online, online_state='unknown' if online is None else 'online' if online else 'offline',
+                presence_source='fresh complete bridge roster' if fresh else 'owned server process is not running' if process_offline else 'current player telemetry is unavailable',
+                location=location, location_state="live" if ident in live else "last seen" if location else "not available"))
+        server_roster = (status.get('status') or {}).get('players') or {}
+        roster = {'online': len(live) if fresh else 0,
+                  'max': server_roster.get('max', self.layout.settings()['max_players']),
+                  'sample': [{'id': ident, 'name': player['name']} for ident, player in live.items()]} if fresh or process_offline else None
+        return {"whitelist": whitelist, "operators": ops, "online": roster,
+                'online_state': 'current' if fresh else 'offline' if process_offline else 'unknown',
+                'presence_note': 'Player presence is unknown when measurements expire; last-seen coordinates are historical, not a disconnect report.',
                 "events": status["events"], "online_mode": True, "members": members,
                 "capabilities": measurements.get("bridge_capabilities", []) if fresh else [],
                 "note": "Profile names and UUIDs only. Account credentials are never collected."}
