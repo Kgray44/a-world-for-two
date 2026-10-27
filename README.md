@@ -1,5 +1,7 @@
 # A World for Two
 
+**Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
+
 **Our little corner of an endless world.**
 
 ![A quiet sunset beside the village lake](assets/menu/a-world-for-two-background.jpg)
@@ -9,7 +11,7 @@ pirate waterfront, Rosewater Castle, sailing adventures and Create machinery.
 
 **Minecraft 1.21.1 · NeoForge 21.1.262 · Java 21 · Prism Launcher · Packwiz**
 
-Release target **0.1.0-candidate.31** retains **197 enabled mods**: **191 on the client** and
+Published prerelease **0.1.0-candidate.31** retains **197 enabled mods**: **191 on the client** and
 **164 on the server**, with shared mods counted on each side. Eight shader choices
 and one resource pack are included. Essential is optional and disabled; enabling
 it brings the total mod selection to 198.
@@ -21,8 +23,7 @@ reviews; owner artistic acceptance remains pending. See [current status](docs/ST
 ## Install and join
 
 1. Download the [candidate.31 Prism ZIP](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.31/A-World-for-Two-0.1.0-candidate.31-Prism.zip)
-   **after publication** is confirmed in
-   [release status](docs/STATUS.md#distribution-and-remaining-acceptance).
+   from the published candidate.31 release.
 2. In [Prism Launcher](https://prismlauncher.org/), choose **Add Instance → Import
    from ZIP**. Sign into your licensed Minecraft Java account and use **Java 21**.
 3. Set maximum memory to **6 GiB for KG** or the conservative **4 GiB for Sera**.
@@ -60,7 +61,8 @@ Reimagined. These show the current work; owner visual acceptance remains pending
 | Custom menu and animated workstation interactions | Xaero's maps, parties/claims, Waystones and browser Atlas |
 | Create workshops and a powered river drawbridge | Trains, Small Ships, Aeronautics/Sable and Hypertubes |
 
-The new town is being built and reviewed in a fresh staging world, with authored
+The new town was built and reviewed in a fresh staging world and installed as
+the official save, with authored
 streets, dry-bank homes, layered interiors, harbor approaches and original river
 crossings. [Artistic recovery](docs/ARTISTIC-RECOVERY.md) records the visual work.
 

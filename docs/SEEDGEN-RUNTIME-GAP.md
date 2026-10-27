@@ -19,7 +19,7 @@ not prove equal registered content or selected data-pack resources. SeedGen's
 strict checks remain enabled; remote terrain agreement and faithful SeedGen LOD
 generation are unqualified for this candidate.
 
-## Confirmed load-order gap and candidate.31 repair
+## Corrected load-order defect and remaining candidate.31 gap
 
 Tectonic 3.0.28 stores terrain data in `resourcepacks/tectonic`. Actual candidate.30
 inspection found that native pack **already present** in the client repository.
@@ -36,8 +36,20 @@ that resource object. Admission retains the pinned original version,
 code changes. Earlier fixture compilation/table checks do not establish the
 corrected order's actual native result.
 
-Actual candidate.31 verification remains pending. A successful login, fixture
-table or source test cannot substitute for a matching strict native comparison.
+The actual candidate.31 login at **11:20:30–33 UTC** confirmed the existing pack
+moving from index **232 to 374**. The client fingerprint changed, but parity still
+failed:
+
+| Candidate.31 native comparison | Value |
+| --- | --- |
+| Server fingerprint | `de19e29860fac400` |
+| Client fingerprint | `f2fed434d47f6565` |
+| Strict client terrain generation | Rejected; remains off |
+
+This confirms a real ordering correction, not a complete terrain repair. Another
+registered-content difference remains unresolved. Distant Horizons server-download
+fallback is retained. No further adapter change or permissive fingerprint bypass
+is selected, and no faithful client SeedGen LOD-generation claim is made.
 
 ## One bounded shutdown trial
 
@@ -60,7 +72,8 @@ SeedGen remain selected, with Voxy and Roxy excluded.
 
 - Verify the selected built-in terrain pack's priority through the narrow adapter,
   without relaxing the comparison or replacing its original metadata/overlays.
-- Run the actual candidate.31 paired fingerprint test and record its exact result.
+- Diagnose the remaining registered-content difference; the actual candidate.31
+  paired test is complete and failed strict agreement.
 - Separately exercise background LOD generation, travel, reconnect and repeated
   normal shutdown, and measure terrain arrival and resource cost.
 - Retain the mismatch and shutdown receipts. Do not reinterpret the one clean

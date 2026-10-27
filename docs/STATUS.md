@@ -1,18 +1,14 @@
 # Build and acceptance status
 
-**2026-10-27 UTC · release target 0.1.0-candidate.31**
+**Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-The pack and rebuilt settlement remain a candidate. The bridge 0.6.17 build,
-publication of the new Prism
-starter and the owner-authorized fresh-world handoff are in progress; none is
-recorded as complete at this checkpoint. The earlier town failed KG and Sera's
-visual review, so individually authored streets, cottages, ships, bridges, harbor
-works and palace wings now replace it in staging. Actual Minecraft screenshots
-guide revisions; owner artistic acceptance remains pending.
+**2026-10-27 UTC: candidate.31 published; official fresh world online.**
 
-Other Create attractions still need native installation or commissioning, and
-complete multiplayer, performance and addendum acceptance remain open. Technical
-receipts qualify only the specific checks they record.
+The fresh-world handoff completed at 11:23:08 UTC with 219 files; player,
+advancement, statistic and Effortless data were excluded. Old construction
+admissions were retired. Control Room and Playit are connected. Owner artistic
+review, additional Create commissioning, full multiplayer coverage and the
+remaining strict SeedGen mismatch are open.
 
 ## Current build
 
@@ -28,8 +24,7 @@ receipts qualify only the specific checks they record.
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
 Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
-The lock is updated when the candidate.31 build is finalized; its current version
-is authoritative for completed artifacts. The latest full local run passed
+The immutable candidate.31 lock is authoritative for released artifacts. The latest full local run passed
 **319 Python tests in 60.749 seconds**, 207-entry Packwiz validation and four Node
 session tests. Final candidate.31 CI and runtime acceptance remain separate.
 Source checks are separate from native gameplay and release acceptance.
@@ -44,8 +39,7 @@ preserved.
 
 Tectonic retains vertical scale 1.4 and elevation boost 0.1 within Minecraft's
 existing −64..319 build range. The owner authorized discarding the rejected
-world's player changes and starting fresh; final official-save handoff is pending
-here. Verified checkpoints, failed receipts and unique recovery material remain
+world's player changes and starting fresh; the official-save handoff is complete. Verified checkpoints, failed receipts and unique recovery material remain
 preserved.
 
 ## Rebuilt settlement and native review
@@ -160,23 +154,22 @@ current-world remote gameplay acceptance remains separate.
 
 ## Distribution and remaining acceptance
 
-The planned **candidate.31 Prism ZIP** is not yet recorded as published or
-freshly imported. Its [release page](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.31)
-and [direct ZIP link](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.31/A-World-for-Two-0.1.0-candidate.31-Prism.zip)
-are prepared destinations; publication and the exact public checksum remain
-pending. Do not treat the older candidate.23 starter as the matching release.
+[Candidate.31 is published](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.31).
+Its single Prism ZIP is 7,078,762 bytes, SHA-256
+`3dabe6a24fe8edf03a4202afbba17ed625888678d5efcf29619d40995fa503ee`.
+Public ZIP/sidecar, updater pack/index and all 80 configuration files passed exact
+hash checks. Source CI and Pages run40495276548 passed at immutable source8dd64b1.
+Fresh headless installation FAILED: 195/201 CLI artifacts verified, six downloads
+missing after DNS errors across ForgeCDN, LDTTeam and GitHub. Optional Essential
+was enabled by the headless CLI; the GUI default remains off. No retry or mirror
+was used. Native fresh Prism import/current Sera join remain unqualified.
 
-Historical candidate.23 Prism-r2 public download hashes, fresh Packwiz installation
-and Sera's reported Prism import/actual login remain recorded in
-[publication evidence](../evidence/runtime/public-release-candidate.23.json).
-Those results do not qualify the new archive. Candidate.31 still needs exact
-public-asset verification and a fresh install/import check; accounts, worlds,
-backups and caches remain excluded from the starter. See [release procedure](RELEASING.md).
+A startup-idle point at11:26:31 UTC measured20.0003TPS,1.4895ms/tick,
+1.285GiB heap of8GiB,3.714GiB RSS,5.925% host-normalized CPU,841Overworld
+holders and zero Nether/End holders. This is one point, not a travel/multiplayer
+benchmark. KG's6GiB profile has approved public/local server choices; its QA
+helper and staging maps/LOD history were retired.
 
-Before a qualified stable release: finish the fresh-world handoff and restart
-checks, current artifact/Prism verification, Create commissioning, multiplayer
-feature coverage, dragon/shader/cinematic review, terrain-arrival measurements and
-owner visual assessment. Cleanup follows a working, accepted build and preserves
-useful recovery snapshots and failed receipts. Local writers reserve 30 GiB
-separately on C: and D:; this monitoring rule does not constrain external
-applications or already-running writers.
+The full addendum scope remains incomplete. Preserve strict fingerprint checks,
+failed receipts and useful recovery material. Local monitored writers kept the
+30GiB reserve on each drive; this is not an OS quota or coverage of external apps.

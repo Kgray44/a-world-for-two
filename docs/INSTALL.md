@@ -1,15 +1,13 @@
 # Install A World for Two
 
-The next starter is **0.1.0-candidate.31 Prism**. **Publication is pending** at
-this checkpoint; the prepared links below become usable after the release is
-published. Check [current release status](STATUS.md#distribution-and-remaining-acceptance)
-before downloading. Earlier candidate.23 installation evidence does not qualify
-this new archive.
+**Fresh-install blocker:** one public installer attempt failed DNS lookups for `edge.forgecdn.net`, `ldtteam.jfrog.io` and `github.com`. It verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
+
+Candidate.31 is published, and the official fresh world is online.
 
 ## Client
 
 1. Install [Prism Launcher](https://prismlauncher.org/) and sign into your licensed Minecraft Java account.
-2. After publication, download [A-World-for-Two-0.1.0-candidate.31-Prism.zip](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.31/A-World-for-Two-0.1.0-candidate.31-Prism.zip)
+2. Download [A-World-for-Two-0.1.0-candidate.31-Prism.zip](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.31/A-World-for-Two-0.1.0-candidate.31-Prism.zip)
    from the [candidate.31 release](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.31).
 3. Choose **Add Instance → Import from ZIP** and select the file. Import as a new
    instance so an older installation cannot supply stale mods or configuration.

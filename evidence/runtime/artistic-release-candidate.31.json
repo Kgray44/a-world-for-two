@@ -1,0 +1,15 @@
+{
+  "format": "awft-artistic-release:1",
+  "at": "2026-10-27T11:31:49.793374+00:00",
+  "candidate": "0.1.0-candidate.31",
+  "immutable_source": "8dd64b180326e0d7719f5d46ea02c41660fa3608",
+  "official_handoff": "219 fresh files; QA/player progress excluded; old admissions retired",
+  "server": "online, Control Room and Playit linked",
+  "source_ci": "319 Python and4Node tests passed",
+  "pages_run": 40495276548,
+  "public_zip_sha256": "3dabe6a24fe8edf03a4202afbba17ed625888678d5efcf29619d40995fa503ee",
+  "fresh_install": "FAILED:195/201CLI artifacts exact,80/80configs exact; sixDNS download failures acrossForgeCDN/LDTTeam/GitHub",
+  "seedgen": "load order repaired but strict registry parity refused; DH server-download fallback",
+  "owner_artistic_acceptance": "pending",
+  "full_addendum_complete": false
+}
