@@ -78,6 +78,19 @@ public final class HybridAquaticSeedgenCompat {
 
     record WrapperTarget(ResourceLocation source,ResourceLocation target,DensityFunction value) {}
     record Report(int wrappers,boolean trench,boolean followsOffset) {}
+    record SpecificationAccess(MethodHandle companion,MethodHandle codec,MethodHandle target,MethodHandle wrapped) {}
+
+    /** Resolve without initializing HA; its Kotlin Wrapper declaring class is nonpublic. */
+    static SpecificationAccess specificationAccess(Class<?> specification)throws ReflectiveOperationException {
+        Class<?> companion=Class.forName(specification.getName()+"$Companion",false,specification.getClassLoader());
+        var specificationLookup=MethodHandles.privateLookupIn(specification,MethodHandles.lookup());
+        var companionLookup=MethodHandles.privateLookupIn(companion,MethodHandles.lookup());
+        return new SpecificationAccess(
+            specificationLookup.findStaticGetter(specification,"Companion",companion),
+            companionLookup.findVirtual(companion,"getCODEC",MethodType.methodType(Codec.class)),
+            specificationLookup.findVirtual(specification,"getTargetFunction",MethodType.methodType(ResourceLocation.class)),
+            specificationLookup.findVirtual(specification,"getWrapperFunction",MethodType.methodType(Holder.class)));
+    }
 
     interface Bindings {
         List<WrapperTarget> wrappers(ResourceManager resources,RegistryOps<JsonElement> ops)throws Throwable;
@@ -174,14 +187,14 @@ public final class HybridAquaticSeedgenCompat {
             Class<?> specification=Class.forName(wrappers.getName()+"$Wrapper");
             var wrapperLookup=MethodHandles.privateLookupIn(wrappers,MethodHandles.lookup());
             files=(FileToIdConverter)wrapperLookup.findStaticGetter(wrappers,"WRAPPER_FILES",FileToIdConverter.class).invoke();
-            Object companion=specification.getField("Companion").get(null);
-            wrapperCodec=(Codec<?>)companion.getClass().getMethod("getCODEC").invoke(companion);
-            target=MethodHandles.publicLookup().findVirtual(specification,"getTargetFunction",MethodType.methodType(ResourceLocation.class));
-            wrapped=MethodHandles.publicLookup().findVirtual(specification,"getWrapperFunction",MethodType.methodType(Holder.class));
+            var specificationApi=specificationAccess(specification);
+            Object companion=specificationApi.companion().invoke();
+            wrapperCodec=(Codec<?>)specificationApi.codec().invoke(companion);
+            target=specificationApi.target();wrapped=specificationApi.wrapped();
             substitute=wrapperLookup.findStatic(wrappers,"apply$lambda$4$lambda$3",MethodType.methodType(DensityFunction.class,DensityFunction.class,DensityFunction.class));
             Class<?> trenchClass=Class.forName(PREFIX+"TrenchCarver");
             var trenchLookup=MethodHandles.privateLookupIn(trenchClass,MethodHandles.lookup());
-            trench=trenchClass.getField("INSTANCE").get(null);
+            trench=trenchLookup.findStaticGetter(trenchClass,"INSTANCE",trenchClass).invoke();
             load=trenchLookup.findStatic(trenchClass,"apply$load",MethodType.methodType(DensityFunction.class,Registry.class,NoiseRouter.class,ResourceKey.class));
             Class<?> sequence=Class.forName("kotlin.sequences.Sequence");
             strings=trenchLookup.findVirtual(trenchClass,"strings",MethodType.methodType(sequence,JsonElement.class));

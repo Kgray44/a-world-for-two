@@ -15,6 +15,22 @@ operator lighting commands on the private staging server only. This allows
 construction between graphical reviews without repeatedly reloading the client.
 The game and server retain normal account and permission enforcement.
 
+Version 0.1.4 leaves a connection request pending until Minecraft reports game
+loading complete, the startup overlay is absent, and the current screen is an
+actual title or disconnected menu. It also requires no active world, player or
+connection. The ready menu is passed to the normal connection API and recorded
+in the request receipt. Readiness uses native state, with no sleep or elapsed-time
+threshold. The existing one-second request polling interval is not a readiness
+test.
+
+The prior helper could issue its request from a loading frame. In the preserved
+candidate32 attempt the server authenticated the test UUID, rejected configuration
+as incompatible NeoForge, and the client finished startup roughly 50 seconds
+later. That failed attempt does not establish a fully loaded client's pack
+compatibility. This source repair has not been installed or tested in a running
+client; a normally authenticated connection after readiness remains separate
+runtime evidence.
+
 Capture requires an expiring authorization nonce, the expected account, server,
 position and a uniquely named request. It permits at most 96 captures per launch,
 with an 8-megapixel framebuffer bound,

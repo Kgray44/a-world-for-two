@@ -4,6 +4,7 @@ import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.screens.ConnectScreen;
+import net.minecraft.client.gui.screens.DisconnectedScreen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.resolver.ServerAddress;
@@ -52,10 +53,17 @@ public final class SettlementCapture {
             }
             // Private staging only: ordinary game connection/disconnection APIs.
             // No credentials, input injection, public endpoint or server bypass.
-            if(command.get("action").getAsString().equals("connect") && server.equals("127.0.0.1:25575") && mc.level==null){
+            if(command.get("action").getAsString().equals("connect") && server.equals("127.0.0.1:25575")){
+                // A title screen can already exist behind the startup overlay.
+                // Leave the request pending until native loading has finished
+                // and an actual disconnected menu is ready; no elapsed-time guess.
+                if(!mc.isGameLoadFinished() || mc.getOverlay()!=null
+                        || !(mc.screen instanceof TitleScreen || mc.screen instanceof DisconnectedScreen)
+                        || mc.level!=null || mc.player!=null || mc.getConnection()!=null)return;
                 completed.add(id);
-                write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","normal authenticated staging connection requested; server login is separate evidence"));
-                ConnectScreen.startConnecting(new TitleScreen(),mc,ServerAddress.parseString(server),new ServerData("Owned artistic staging",server,ServerData.Type.OTHER),false,null);return;
+                write(qa.resolve(id+".json"),Map.of("at",Instant.now().toString(),"action","normal authenticated staging connection requested; server login is separate evidence",
+                        "native_game_load_finished",true,"startup_overlay_absent",true,"ready_menu",mc.screen.getClass().getName()));
+                ConnectScreen.startConnecting(mc.screen,mc,ServerAddress.parseString(server),new ServerData("Owned artistic staging",server,ServerData.Type.OTHER),false,null);return;
             }
             if(mc.player==null || mc.level==null || mc.screen!=null || mc.getCurrentServer()==null)return;
             if(!mc.getCurrentServer().ip.equals(server)

@@ -11,6 +11,9 @@ from control_room.common import Layout, REPO, UserError, digest, write_json
 from control_room.storage import Storage
 
 
+VERSION='0.1.4'
+
+
 def build(home=Path(r'D:\A World for Two')):
     layout=Layout(home)
     Storage(layout).reserve(16*1024**2)
@@ -25,12 +28,12 @@ def build(home=Path(r'D:\A World for Two')):
     result=subprocess.run([r'C:\Program Files\Java\jdk-21.0.10\bin\javac.exe','-J-Xmx256m','-J-XX:ActiveProcessorCount=2','@'+str(args)],capture_output=True,text=True,timeout=60,creationflags=subprocess.CREATE_NO_WINDOW)
     (work/'javac.log').write_text(result.stdout+result.stderr,encoding='utf-8')
     if result.returncode:raise UserError('Native QA compilation failed: '+result.stderr[:2000])
-    target=work/'awft-settlement-qa-0.1.3.jar'
+    target=work/('awft-settlement-qa-'+VERSION+'.jar')
     with zipfile.ZipFile(target,'x',zipfile.ZIP_DEFLATED) as archive:
         for folder in (classes,source/'resources'):
             for path in sorted(folder.rglob('*')):
                 if path.is_file():archive.write(path,path.relative_to(folder).as_posix())
-    write_json(work/'build.json',{'artifact':str(target),'sha256':digest(target),'release_excluded':True,
+    write_json(work/'build.json',{'artifact':str(target),'sha256':digest(target),'version':VERSION,'release_excluded':True,
         'sources':{p.relative_to(REPO).as_posix():digest(p) for p in source.rglob('*') if p.is_file()}})
     print(target,flush=True)
     return target

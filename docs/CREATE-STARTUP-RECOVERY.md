@@ -52,3 +52,26 @@ with only `blocked by policy`; it was not executed or retried through another
 route. The saved world, original failure, backup and isolated diagnostic receipts
 remain preserved. A materially changed candidate needs its own bounded test
 before any official deployment.
+
+## Isolated native recovery trials
+
+Candidate.32 / bridge 0.6.18 activated the exact original-class guard on both
+dedicated server and client. The separate server reached readiness at
+12:15:14 UTC. A signed-in staging login completed at 12:20:34; normal client
+quit and server shutdown completed without an orphan JVM at 12:24:47.
+This proves one native activation/start/stop, not general race freedom or an
+official recovery. The official world remained at its 11:29 saved checkpoint.
+
+Peer review identified another original race: a callback could arrive between
+`accept` draining the pending callbacks and publishing its registration. The
+exact-class fixture reproduced an orphaned callback in ten controlled rounds.
+Candidate.33 / bridge 0.6.19 verifies **both** original method bodies before
+adding synchronized flags to `accept` and `addRegisterCallback`. They share the
+same instance monitor. The revised fixture preserved and executed all callbacks,
+proved blocking on that monitor, and tested both exception-release paths. It
+does not claim every Registrate operation is generally thread-safe.
+
+Candidate.33 reached separate native server readiness and activated the revised
+guard on both sides. Its complete terrain/client commissioning and any later
+official deployment are separate results. The existing official failure remains
+visible in Control Room rather than being replaced with the staging result.

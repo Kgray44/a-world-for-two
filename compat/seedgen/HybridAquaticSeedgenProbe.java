@@ -46,6 +46,7 @@ import org.objectweb.asm.tree.analysis.BasicValue;
 public final class HybridAquaticSeedgenProbe {
     public static void main(String[] args)throws Throwable {
         tables(Path.of(args[0]),Path.of(args[1]));
+        visibility();
         net.minecraft.SharedConstants.tryDetectVersion();
         net.minecraft.server.Bootstrap.bootStrap();
         for(boolean follows:List.of(true,false))orchestration(follows);
@@ -54,6 +55,28 @@ public final class HybridAquaticSeedgenProbe {
             System.out.println("Native HA helper execution NOT RUN: requires initialized NeoForge ModList. Strict paired fingerprint acceptance remains pending.");return;
         }
         nativeHelpers();
+    }
+
+    static void visibility()throws Throwable {
+        var loader=HybridAquaticSeedgenProbe.class.getClassLoader();
+        Class<?> specification=Class.forName("dev.hybridlabs.aquatic.world.gen.densityfunction.DensityFunctionWrappers$Wrapper",false,loader);
+        if(java.lang.reflect.Modifier.isPublic(specification.getModifiers()))throw new AssertionError("Pinned nonpublic Wrapper visibility changed");
+        try {
+            MethodHandles.publicLookup().findVirtual(specification,"getTargetFunction",MethodType.methodType(ResourceLocation.class));
+            throw new AssertionError("Public lookup unexpectedly admitted the nonpublic Wrapper");
+        } catch(IllegalAccessException expected){}
+        // Exercise the exact production resolver. Do not invoke static getters:
+        // resolution needs no HA initialization, ModList, event bus or server.
+        var resolved=HybridAquaticSeedgenCompat.specificationAccess(specification);
+        Class<?> companion=Class.forName(specification.getName()+"$Companion",false,loader);
+        if(resolved.companion().type().returnType()!=companion
+                || resolved.codec().type().returnType()!=com.mojang.serialization.Codec.class
+                || resolved.target().type().returnType()!=ResourceLocation.class
+                || resolved.wrapped().type().returnType()!=Holder.class)
+            throw new AssertionError("Typed production private API resolution differs");
+        Class<?> trench=Class.forName("dev.hybridlabs.aquatic.world.gen.densityfunction.TrenchCarver",false,loader);
+        MethodHandles.privateLookupIn(trench,MethodHandles.lookup()).findStaticGetter(trench,"INSTANCE",trench);
+        System.out.println("PASS actual pinned nonpublic Wrapper regression: public access rejected; exact production private handles resolve without initializing HA");
     }
 
     static ClassNode read(Path archive,String name)throws Exception {
@@ -195,7 +218,8 @@ public final class HybridAquaticSeedgenProbe {
             }
         };
         Class<?> markerClass=Class.forName("dev.hybridlabs.aquatic.world.gen.densityfunction.DensityFunctionWrappers$WrappedMarker");
-        DensityFunction marker=(DensityFunction)markerClass.getField("INSTANCE").get(null);
+        DensityFunction marker=(DensityFunction)MethodHandles.privateLookupIn(markerClass,MethodHandles.lookup())
+            .findStaticGetter(markerClass,"INSTANCE",markerClass).invoke();
         DensityFunction reference=new DensityFunctions.HolderHolder(Holder.direct(marker));
         DensityFunction original=DensityFunctions.constant(.25);
         if(nativeApi.substitute(original,reference)!=original)throw new AssertionError("Native marker was not replaced");

@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-/** Preserve Registrate's exact registration body while serializing its per-owner writes.
+/** Preserve Registrate's exact registration/callback bodies while serializing per-owner writes.
  * The JVM owns monitor acquisition and exception-safe release; no registry is altered here.
  */
 public final class RegistrateConcurrencyPlugin implements IMixinConfigPlugin {
@@ -31,6 +31,7 @@ public final class RegistrateConcurrencyPlugin implements IMixinConfigPlugin {
     public static final String MIXIN = "worldfortwo.bridge.mixin.RegistrateConstructionMixin";
     public static final String RESOURCE = "com/tterrag/registrate/AbstractRegistrate.class";
     public static final String DESCRIPTOR = "(Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;Lcom/tterrag/registrate/builders/Builder;Lcom/tterrag/registrate/util/nullness/NonNullSupplier;Lcom/tterrag/registrate/util/nullness/NonNullFunction;)Lcom/tterrag/registrate/util/entry/RegistryEntry;";
+    public static final String CALLBACK_DESCRIPTOR = "(Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;Lcom/tterrag/registrate/util/nullness/NonNullConsumer;)Lcom/tterrag/registrate/AbstractRegistrate;";
     private static final String ARCHIVE = "Registrate-MC1.21-1.3.0+67.jar";
     private static final String CLASS_SHA256 = "f23f30cdb05c82faaa4f3fba01f8fb11873557c91b198b0a07d52b8981a925fa";
     private static final String ARCHIVE_SHA256 = "510f4041c41739f1d8ea8850ab8364d3e3a5fada8529beed5d9f479e2523db52";
@@ -49,7 +50,7 @@ public final class RegistrateConcurrencyPlugin implements IMixinConfigPlugin {
         URL original = RegistrateConcurrencyPlugin.class.getClassLoader().getResource(RESOURCE);
         try {
             String body = synchronizeExact(targetClass, original);
-            LOG.info("Pinned Registrate +67 accept registration writer now uses its native per-instance JVM monitor; original body SHA256 {}", body);
+            LOG.info("Pinned Registrate +67 accept and addRegisterCallback now share their native per-instance JVM monitor; original body SHA256 witnesses {}", body);
         } catch (IOException failure) {
             throw new IllegalStateException("Cannot verify original pinned Registrate registration writer", failure);
         }
@@ -77,19 +78,31 @@ public final class RegistrateConcurrencyPlugin implements IMixinConfigPlugin {
         new ClassReader(bytes).accept(pinned, 0);
         if (!TARGET.replace('.', '/').equals(target.name) || !pinned.superName.equals(target.superName))
             throw new IllegalStateException("Registrate registration target identity differs");
-        MethodNode expected = exact(pinned), actual = exact(target);
-        if (actual.access != Opcodes.ACC_PROTECTED || expected.access != Opcodes.ACC_PROTECTED)
-            throw new IllegalStateException("Registrate registration writer access flags differ");
+        MethodNode accept = exact(target, "accept", DESCRIPTOR);
+        MethodNode callback = exact(target, "addRegisterCallback", CALLBACK_DESCRIPTOR);
+        String acceptBody = verifyMethod(pinned, accept, Opcodes.ACC_PROTECTED);
+        String callbackBody = verifyMethod(pinned, callback, Opcodes.ACC_PUBLIC);
+        // Validate BOTH methods before mutating either. These non-static methods
+        // therefore use exactly the same owner monitor, including the gap between
+        // the original callback drain and registration publication in accept().
+        accept.access |= Opcodes.ACC_SYNCHRONIZED;
+        callback.access |= Opcodes.ACC_SYNCHRONIZED;
+        return "accept=" + acceptBody + ", addRegisterCallback=" + callbackBody;
+    }
+
+    private static String verifyMethod(ClassNode pinned, MethodNode actual, int flags) {
+        MethodNode expected = exact(pinned, actual.name, actual.desc);
+        if (actual.access != flags || expected.access != flags)
+            throw new IllegalStateException("Registrate " + actual.name + " access flags differ");
         String body = bodyDigest(expected);
         if (!body.equals(bodyDigest(actual)))
-            throw new IllegalStateException("Registrate registration writer was modified before the concurrency repair");
-        actual.access |= Opcodes.ACC_SYNCHRONIZED;
+            throw new IllegalStateException("Registrate " + actual.name + " was modified before the concurrency repair");
         return body;
     }
 
-    private static MethodNode exact(ClassNode node) {
-        List<MethodNode> matches = node.methods.stream().filter(method -> method.name.equals("accept") && method.desc.equals(DESCRIPTOR)).toList();
-        if (matches.size() != 1) throw new IllegalStateException("Exact one Registrate registration writer is required");
+    private static MethodNode exact(ClassNode node, String name, String descriptor) {
+        List<MethodNode> matches = node.methods.stream().filter(method -> method.name.equals(name) && method.desc.equals(descriptor)).toList();
+        if (matches.size() != 1) throw new IllegalStateException("Exactly one Registrate " + name + " method with the pinned descriptor is required");
         return matches.getFirst();
     }
 
@@ -98,7 +111,7 @@ public final class RegistrateConcurrencyPlugin implements IMixinConfigPlugin {
         // fresh constant pool. Debug labels/frames and computed maxs are immaterial.
         ClassWriter writer = new ClassWriter(0);
         writer.visit(Opcodes.V21, Opcodes.ACC_PUBLIC, "awft/RegistrateMethodWitness", null, "java/lang/Object", null);
-        var visitor = writer.visitMethod(Opcodes.ACC_PROTECTED, "accept", method.desc, null,
+        var visitor = writer.visitMethod(method.access, method.name, method.desc, null,
             method.exceptions == null ? null : method.exceptions.toArray(String[]::new));
         var labels = new IdentityHashMap<LabelNode, LabelNode>();
         for (AbstractInsnNode instruction : method.instructions)

@@ -61,3 +61,19 @@ offline fixture proves none of those outcomes.
 The parent integrates `HybridAquaticSeedgenMixin` into the bridge's **client**
 mixin list and owns candidate/version/build/runtime actions. These source files
 alone do not activate the adapter in an installed pack.
+
+## Candidate.32 visibility failure
+
+The actual candidate.32 callback reached the current normal-preset selection,
+then failed at public reflection of `Wrapper.Companion`. The Kotlin `Wrapper`
+declaring class is nonpublic even though its field and accessors are public.
+The correction uses an exact private lookup for both the specification and
+Companion classes, typed getter/virtual handles, and the existing private trench
+lookup for `INSTANCE`. It does not use broad accessible overrides.
+
+A regression resolves the production handles against the original nonpublic
+installed classes with initialization disabled. It also requires public lookup
+to reject that class, reproducing the original access mistake. Static getters
+are not invoked by this resolution check, so it needs no fake mod loader.
+This new regression was added source-only after the original offline receipt;
+its execution and the corrected native callback remain pending parent review.

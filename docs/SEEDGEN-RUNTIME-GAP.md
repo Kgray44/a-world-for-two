@@ -51,6 +51,33 @@ registered-content difference remains unresolved. Distant Horizons server-downlo
 fallback is retained. No further adapter change or permissive fingerprint bypass
 is selected, and no faithful client SeedGen LOD-generation claim is made.
 
+## Native Hybrid Aquatic difference and candidate repair
+
+The pinned Hybrid Aquatic server applies density wrappers followed by trench
+carving at world load. These change registered density functions and noise
+settings after ordinary data loading. SeedGen's private client registry load did
+not run that server hook. An original adapter now reuses the installed mod's
+codec, marker visitor, trench loader, constants and existing holder invoker to
+apply the same transformations before fingerprinting. It retains the strict
+comparison and all original artifact/version guards.
+
+Candidate.32 reached the real injection point, including the current registered
+normal-world preset, but failed with `IllegalAccessException`: the wrapper's
+public companion/accessor members belong to a nonpublic class. This failed
+native result is preserved and is not a fingerprint pass. Candidate.33 replaces
+those accesses with typed private lookups for the exact installed classes. The
+updated offline contract resolves those exact nonpublic APIs without pretending
+to initialize Hybrid Aquatic outside NeoForge. Real execution and paired parity
+remain a separate native test. See the [adapter and limits](../compat/seedgen/README.md).
+
+The actual candidate.33 client subsequently executed both native wrappers and
+the trench router successfully. Fingerprinting then failed on a transparent
+`DensityFunctions.HolderHolder` root. The existing narrow direct-codec adapter
+was selected only on the server. The next candidate must select that same
+actual-root encoding on both sides; its body, registered terrain values and
+strict comparison remain unchanged. Candidate.33 still refused client terrain
+generation. A native method call is not being reported as fingerprint agreement.
+
 ## One bounded shutdown trial
 
 The Distant Horizons background fallback was tested with
