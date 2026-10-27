@@ -1,6 +1,7 @@
 """Build a portable Prism import ZIP from exact source and updater pins."""
 from __future__ import annotations
 import argparse
+import hashlib
 import json
 import re
 import shlex
@@ -19,6 +20,44 @@ LOCAL_SERVER = '127.0.0.1:25565'
 SERVER_CHOICES = (('A World for Two - Public (KG and Sera)', PUBLIC_SERVER),
                   ('A World for Two - KG local computer only', LOCAL_SERVER))
 
+# This is one reviewed author-granted modpack inclusion, not a generic JAR bundler.
+# Any change to the approved file requires a fresh permission/artifact review.
+PIRATE_GRANT_URL = 'https://www.curseforge.com/minecraft/mc-mods/lets-forge-pirates'
+PIRATE_NOTICE = 'MODPACK-NOTICES/LETS-FORGE-PIRATES.md'
+PIRATE_PIN = {
+    'slug': 'lets-forge-pirates', 'provider': 'curseforge',
+    'filename': '[NeoForge]Lets_Forge_Pirates_[1_21_1]_4.jar',
+    'size': 996458, 'curseforge_project': 935975, 'curseforge_file': 5814128,
+}
+PIRATE_SHA256 = '2d9da8b1d8ee4f8242f3b43a47b67b2a83f158eb0ed1c004ba5f92508888602d'
+
+
+def approved_pirate(lock):
+    """Fail closed if the canonical lock differs from the one reviewed author file."""
+    rows=[row for row in lock['mods'] if row.get('slug')==PIRATE_PIN['slug']]
+    if len(rows)!=1:raise UserError('Exactly one reviewed Let\'s Forge Pirates file is required')
+    pin=rows[0]
+    if (any(pin.get(key)!=value for key,value in PIRATE_PIN.items())
+            or pin.get('hashes',{}).get('sha256')!=PIRATE_SHA256
+            or pin.get('kind')!='mod' or pin.get('side')!='both'
+            or pin.get('optional') is not False or pin.get('default') is not True):
+        raise UserError('Let\'s Forge Pirates inclusion changed; review the exact file and permission again')
+    return pin
+
+
+def verify_bundled_pirate(archive,pin):
+    """The only permitted bundled gameplay JAR must retain the exact locked bytes."""
+    approved_pirate({'mods':[pin]})
+    name='.minecraft/mods/'+pin['filename']
+    info=archive.getinfo(name)
+    if info.file_size!=pin['size'] or hashlib.sha256(archive.read(name)).hexdigest()!=PIRATE_SHA256:
+        raise UserError('Bundled Let\'s Forge Pirates JAR changed')
+    notice=(REPO/'docs/PIRATE-MODPACK-PERMISSION.md').read_bytes()
+    if not notice or len(notice)>65536 or archive.read(PIRATE_NOTICE)!=notice:
+        raise UserError('The exact reviewed pirate modpack permission notice is required')
+    return {'slug':pin['slug'],'filename':pin['filename'],'size':pin['size'],
+            'sha256':PIRATE_SHA256,'permission_url':PIRATE_GRANT_URL,'notice':PIRATE_NOTICE}
+
 
 def server_list():
     """Minecraft 1.21.1 ServerList's uncompressed Compound/List NBT format.
@@ -36,16 +75,16 @@ def server_list():
     return b'\x0a\x00\x00\x09'+text('servers')+b'\x0a'+struct.pack('>i',len(entries))+b''.join(entries)+b'\x00'
 
 
-def verify_archive(path,prelaunch,pins,artwork):
+def verify_archive(path,prelaunch,pins,artwork,pirate):
     """Static custody/layout checks; this does not launch or import Prism."""
     import hashlib
     with zipfile.ZipFile(path) as archive:
         names=archive.namelist()
         if archive.testzip() or len(names)!=len(set(names)):
             raise UserError('Export ZIP CRC or duplicate-entry validation failed')
-        allowed={'instance.cfg','mmc-pack.json','INSTALL.txt','CONNECT.txt','awft-export.json',
+        allowed={'instance.cfg','mmc-pack.json','INSTALL.txt','CONNECT.txt','awft-export.json',PIRATE_NOTICE,
                  '.minecraft/options.txt','.minecraft/config/iris.properties','.minecraft/servers.dat',
-                 '.minecraft/awft-tools/LICENSE.txt'}
+                 '.minecraft/awft-tools/LICENSE.txt','.minecraft/mods/'+pirate['filename']}
         allowed.update('.minecraft/awft-tools/'+pin['filename'] for pin in pins)
         allowed.update('.minecraft/'+file.relative_to(REPO/'packwiz').as_posix()
                        for file in (REPO/'packwiz/config').rglob('*') if file.is_file())
@@ -71,6 +110,10 @@ def verify_archive(path,prelaunch,pins,artwork):
                 raise UserError('Packwiz updater bytes changed inside the archive')
         if archive.read('.minecraft/servers.dat')!=server_list():
             raise UserError('Portable public/local server choices changed')
+        included=verify_bundled_pirate(archive,pirate)
+        exported=json.loads(archive.read('awft-export.json'))
+        if exported.get('modpack_bundled_artifacts')!=[included]:
+            raise UserError('Export metadata must identify the single author-permitted gameplay JAR')
         original=archive.read('.minecraft/config/fancymenu/assets/awft-background.png')
         if hashlib.sha256(original).hexdigest()!=artwork['sha256']:
             raise UserError('Original menu artwork changed inside the export')
@@ -81,6 +124,8 @@ def verify_archive(path,prelaunch,pins,artwork):
         return {'archive_entries':len(names),'uncompressed_bytes':sum(info.file_size for info in archive.infolist()),
                 'archive_crc':'pass','portable_prism_layout':'pass','pinned_bootstrap_chain':'pass',
                 'prelaunch_static_syntax':'pass','original_artwork_identity':'pass','portable_server_choices':'pass',
+                'approved_modpack_jar_identity':'pass','bundled_third_party_mod_jars':1,
+                'modpack_permission_notice':'pass',
                 'no_runtime_account_world_or_qa_files':'pass'}
 
 
@@ -98,6 +143,7 @@ def command(url):
 def build(home,url=None,revision=1):
     if type(revision) is not int or not 1<=revision<=99:raise UserError('Choose export revision 1–99')
     layout=Layout(home);lock=read_json(REPO/'catalog/lock.json')
+    pirate=approved_pirate(lock)
     errors=validate_pack(REPO/'packwiz',lock)
     if errors:raise UserError('Pack integrity failed: '+'; '.join(errors))
     url=url or 'https://kgray44.github.io/a-world-for-two/releases/'+lock['version']+'/pack.toml'
@@ -113,7 +159,16 @@ def build(home,url=None,revision=1):
         path=layout.caches/pin['filename']
         if not path.is_file() or path.stat().st_size!=pin['size'] or digest(path)!=pin['hashes']['sha256']:
             raise UserError('Pinned updater missing or changed: '+pin['filename'])
-    allocation=tree_size(REPO/'packwiz/config')+sum(p['size'] for p in tools)+2*1024*1024
+    pirate_file=layout.caches/'mods'/pirate['filename']
+    if (not pirate_file.is_file() or pirate_file.stat().st_size!=pirate['size']
+            or digest(pirate_file)!=PIRATE_SHA256):
+        raise UserError('Exact officially acquired Let\'s Forge Pirates JAR is missing or changed')
+    notice=REPO/'docs/PIRATE-MODPACK-PERMISSION.md'
+    if not notice.is_file() or not 0<notice.stat().st_size<=65536:
+        raise UserError('The reviewed pirate modpack permission notice is missing or too large')
+    included={'slug':pirate['slug'],'filename':pirate['filename'],'size':pirate['size'],
+              'sha256':PIRATE_SHA256,'permission_url':PIRATE_GRANT_URL,'notice':PIRATE_NOTICE}
+    allocation=tree_size(REPO/'packwiz/config')+sum(p['size'] for p in tools)+pirate['size']+notice.stat().st_size+2*1024*1024
     if allocation>32*1024*1024:raise UserError('Split an export larger than 32 MiB')
     reserve=guard(2*1024*1024,allocation);Storage(layout).reserve(allocation)
     suffix='' if revision==1 else '-r'+str(revision)
@@ -134,6 +189,8 @@ def build(home,url=None,revision=1):
         archive.writestr('.minecraft/options.txt','renderDistance:8\nsimulationDistance:5\nmaxFps:60\nenableVsync:true\n')
         archive.writestr('.minecraft/config/iris.properties','enableShaders=false\n')
         archive.writestr('.minecraft/servers.dat',server_list())
+        archive.write(pirate_file,'.minecraft/mods/'+pirate['filename'])
+        archive.write(notice,PIRATE_NOTICE)
         for pin in tools:archive.write(layout.caches/pin['filename'],'.minecraft/awft-tools/'+pin['filename'])
         for file in sorted((REPO/'packwiz/config').rglob('*')):
             if file.is_file():archive.write(file,'.minecraft/'+file.relative_to(REPO/'packwiz').as_posix())
@@ -143,6 +200,8 @@ def build(home,url=None,revision=1):
             '2. Sign into your own licensed Minecraft Java account and select Java 21.\n'
             '3. Launch the instance. Maximum client heap is 6 GiB; shaders initially stay off.\n'
             '4. Leave the pinned Packwiz pre-launch command enabled. It downloads exact client files.\n'
+            '   One unchanged Let\'s Forge Pirates JAR is included under its author\'s modpack grant.\n'
+            '   Read MODPACK-NOTICES/LETS-FORGE-PIRATES.md for attribution and the narrow permission.\n'
             '5. Choose Join Our World, then the Public server entry when joining from another computer.\n'
             '   The KG local entry is only for Minecraft on the dedicated server computer itself.\n'
             '6. Ask the host to whitelist your exact Java username. See CONNECT.txt for address details.\n\n'
@@ -163,11 +222,13 @@ def build(home,url=None,revision=1):
         archive.write(REPO/'docs/UPDATER-LICENSE.txt','.minecraft/awft-tools/LICENSE.txt')
         archive.writestr('awft-export.json',json.dumps({'format':'awft-prism-export:1','version':lock['version'],
             'pack_sha256':digest(REPO/'packwiz/pack.toml'),'pack_url':url,'original_artwork_sha256':artwork['sha256'],
+            'modpack_bundled_artifacts':[included],
             'status':'candidate; fresh import and public download qualification pending'}))
-    checks=verify_archive(path,prelaunch,tools,artwork)
+    checks=verify_archive(path,prelaunch,tools,artwork,pirate)
     report={'at':utcnow(),'version':lock['version'],'export_revision':revision,'pack_sha256':digest(REPO/'packwiz/pack.toml'),
         'path':str(path),'size':path.stat().st_size,'sha256':digest(path),'guard':reserve,
         'original_artwork_sha256':artwork['sha256'],'public_server':PUBLIC_SERVER,'updater_url':url,
+        'modpack_bundled_artifacts':[included],
         'checks':checks|{'fresh_prism_import':'pending','public_updater_install':'pending','client_startup':'pending'},
         'boundary':'Candidate artifact; not a published or qualified release.'}
     write_json(path.with_suffix('.json'),report)
