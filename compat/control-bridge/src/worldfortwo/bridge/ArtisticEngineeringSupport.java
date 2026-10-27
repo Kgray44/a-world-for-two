@@ -10,6 +10,7 @@ import com.pedrorok.hypertube.blocks.blockentities.TubePathBlockEntity;
 import com.pedrorok.hypertube.core.collision.TubeCollision;
 import com.pedrorok.hypertube.core.connection.BezierConnection;
 import com.pedrorok.hypertube.core.connection.SimpleConnection;
+import com.pedrorok.hypertube.core.connection.interfaces.IConnection;
 import com.pedrorok.hypertube.core.connection.interfaces.ITubeConnectionEntity;
 import com.pedrorok.hypertube.utils.TubeUtils;
 import com.simibubi.create.Create;
@@ -68,8 +69,8 @@ public final class ArtisticEngineeringSupport {
     public interface Interlock { Lease acquire(String owner, boolean simulation) throws Exception; }
     private enum Phase { IDLE, HASH, READY, VERIFY, INITIALIZE, WAIT_STOP, WAIT_STATIONS, TUBES, WATER, WAIT_MODE, WAIT_RUN, FEED, PROCESS, STOP, ASSEMBLE, WAIT_TRAIN, CLEANUP_REQUIRED }
     private static final Gson JSON=new Gson();
-    private static final String PLAN_SHA="181e2191572846967c41e77bf5b406d0dddcc484488aa60d6725728ba651b199";
-    private static final String MANIFEST_SHA="4339bb54a05d9c5a478b471db880c7d80dc1f6c0f25081824c7c54b75f49f408";
+    private static final String PLAN_SHA="89fa2079962dedb7888aaf62ae2f18d094c373421a80ce0f91bda23ddb415af1";
+    private static final String MANIFEST_SHA="f4f9bd4cd1d3bc4ff100cfe9ba417b591e7e8ede23bb1b4e3c03deb7f600d2f5";
     private static final String BEFORE_SHA="042d7717761b938bd13150aae2d58483156cd5a243bd8950c7ade247d3ee775a";
     private static final String[] MODS={"create-1.21.1-6.0.10.jar","overpressure-0.1.7.4.jar","create_hypertube-0.6.0-NEOFORGE.jar","railways-0.2.1+neoforge-mc1.21.1.jar"};
     private static final String[] MOD_SHA={"ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a","9c03c26bc50c637dbe1d8b9e19e9c10218687c61d335b36588f11e54805c4cf7","7bdb8979c7ff7d3b29f7a23771b6ae4870a6dcb7ce2e4a3214fdd6059aacace8","b7636c8b1b0352ed1a130dfe67f8bb574e2fc08803ed1cda4d3ea00505193914"};
@@ -225,10 +226,38 @@ public final class ArtisticEngineeringSupport {
         }
         report.put("station_readiness",witnesses);report.put("native_track_graphs",Create.RAILWAYS.trackNetworks.size());return ready;
     }
+    private static Map<String,Object> tubeConnectionWitness(IConnection connection){
+        if(connection==null)return Map.of("kind","empty");
+        Map<String,Object> row=new LinkedHashMap<>();row.put("native_class",connection.getClass().getName());
+        // Describe only stored native endpoints. Never follow a foreign pointer
+        // or resolve arbitrary connections while reporting why a face is refused.
+        if(connection instanceof SimpleConnection simple)row.put("stored_endpoint",tubeEndpoint(simple));
+        else if(connection instanceof BezierConnection curve){row.put("from",tubeEndpoint(curve.getFromPos()));row.put("to",tubeEndpoint(curve.getToPos()));row.put("uuid",String.valueOf(curve.getUuid()));}
+        else row.put("kind","unknown; preserved");
+        return row;
+    }
+    private static Map<String,Object> tubeEndpoint(SimpleConnection endpoint){
+        if(endpoint==null)return Map.of("kind","missing");
+        Map<String,Object> row=new LinkedHashMap<>();BlockPos p=endpoint.pos();
+        row.put("position",p==null?"unknown":List.of(p.getX(),p.getY(),p.getZ()));row.put("direction",endpoint.direction()==null?"unknown":endpoint.direction().getSerializedName());
+        row.put("offset",Float.isFinite(endpoint.offset())?endpoint.offset():"non-finite; preserved");return row;
+    }
+    private Map<String,Object> tubeFaceWitness(BlockPos position,ITubeConnectionEntity entity,Direction face,List<Direction> available,IConnection occupied){
+        var connections=entity.getConnections();Map<String,Object> row=new LinkedHashMap<>();
+        row.put("position",List.of(position.getX(),position.getY(),position.getZ()));row.put("requested_face",face.getSerializedName());
+        row.put("actual_block_state",level.getBlockState(position).toString());row.put("native_class",entity.getClass().getName());
+        row.put("native_available_faces",available.stream().map(Direction::getSerializedName).toList());row.put("requested_face_supported",available.contains(face));
+        row.put("requested_face_connection",tubeConnectionWitness(occupied));row.put("native_connection_count",connections.size());
+        row.put("native_connections",connections.stream().limit(8).map(ArtisticEngineeringSupport::tubeConnectionWitness).toList());
+        row.put("connections_truncated",connections.size()>8);return row;
+    }
     private void connect(int n){
         JsonObject link=systems.getAsJsonObject("hypertube").getAsJsonArray("native_links").get(n).getAsJsonObject();BlockPos a=position(link.get("from")),b=position(link.get("to"));
         ITubeConnectionEntity from=be(a,ITubeConnectionEntity.class),to=be(b,ITubeConnectionEntity.class);Direction first=Direction.SOUTH,last=Direction.NORTH;
-        if(from.getConnectionInDirection(first)!=null||to.getConnectionInDirection(last)!=null||!from.getFacesConnectable().contains(first)||!to.getFacesConnectable().contains(last))throw new IllegalStateException("Preserve occupied or unsupported native tube face");
+        IConnection occupiedFrom=from.getConnectionInDirection(first),occupiedTo=to.getConnectionInDirection(last);
+        List<Direction> fromFaces=List.copyOf(from.getFacesConnectable()),toFaces=List.copyOf(to.getFacesConnectable());
+        report.put("native_tube_face_readiness",Map.of("span_index",n,"from",tubeFaceWitness(a,from,first,fromFaces,occupiedFrom),"to",tubeFaceWitness(b,to,last,toFaces,occupiedTo),"existing_links_replayed",false));
+        if(occupiedFrom!=null||occupiedTo!=null||!fromFaces.contains(first)||!toFaces.contains(last))throw new IllegalStateException("Preserve occupied or unsupported native tube face; exact endpoint diagnostics recorded");
         SimpleConnection start=new SimpleConnection(a,first,from.getConnectionOffsetOnDirection(first));SimpleConnection end=new SimpleConnection(b,last.getOpposite(),-to.getConnectionOffsetOnDirection(last));BezierConnection curve=new BezierConnection(start,end);
         if(!curve.getValidation().valid()||!TubeUtils.checkBlockCollision(level,curve).valid())throw new IllegalStateException("Native Bezier/collision validation refused span");
         var points=curve.getBezierPoints(level,a);LinkedHashSet<BlockPos> writes=new LinkedHashSet<>();for(BlockPos cell:TubeCollision.occupiedVolume(points)){if(cell.equals(a)||cell.equals(b))continue;if(!fillerCells.contains(cell)||!ready(cell)||!level.getBlockState(cell).isAir()||level.getBlockEntity(cell)!=null||!level.getEntities((Entity)null,new AABB(cell)).isEmpty())throw new IllegalStateException("Native collision write escaped admitted empty air or contains an entity: "+cell);writes.add(cell);}

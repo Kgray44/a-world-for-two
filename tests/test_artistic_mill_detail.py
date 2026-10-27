@@ -1,11 +1,16 @@
 import copy
+import json
+from pathlib import Path
 import unittest
 
 from control_room.common import UserError
 from tests.test_artistic_engineering import registry as quarter_registry
 from tests.test_settlement_attractions import SurfaceWorld
 from tools.artistic_engineering import construct as quarter, payload as quarter_payload
-from tools.artistic_mill_detail import AIR, Finish, construct, payload, validate
+from tools.artistic_mill_detail import (AIR, JOIN_APIS, PLACED_R3_SHA, Finish, construct,
+    corrected_placed_states, decode, joined_dormer_top_part, joined_window_part,
+    payload, validate, verify_saved_joined_states)
+from tools.settlement_attractions import base, properties
 
 
 def registry():
@@ -131,6 +136,87 @@ class MillFinishTests(unittest.TestCase):
         self.assertIn('STAGED', native['validation'])
         self.assertEqual(len(native['block_entities']), 1)
         self.assertEqual(p.original[p.world(7, 1, 4)], AIR)
+
+
+class NativeMacawJoinTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.registry=registry()
+        quarter_plan=quarter(cls.registry,SurfaceWorld())
+        cls.r2=quarter_payload(quarter_plan,quarter_plan.blocks,'a'*64,'SYNTHETIC R2',include_tags=True)
+        cls.finish=construct(cls.registry,cls.r2,{'systems':quarter_plan.systems,'routes':quarter_plan.routes})
+        cls.fixture=json.loads((Path(__file__).parent/'fixtures/mill_native_joined_parts.json').read_text('utf-8'))
+
+    def prior_plan(self):
+        plan=payload(self.finish,self.finish.blocks,'b'*64,'Synthetic captured prior R3',True)
+        by_position={tuple(row[:3]):row for row in plan['blocks']}
+        for observed in self.fixture['observations']:
+            value=observed['original_state']
+            if value not in plan['palette']:plan['palette'].append(value)
+            by_position[tuple(observed['position'])][3]=plan['palette'].index(value)
+        return plan
+
+    def test_native_82_position_fixture_matches_corrected_canonical_builder(self):
+        self.assertEqual(self.fixture['native_apis'],JOIN_APIS)
+        self.assertEqual(self.fixture['original_placed_plan_sha256'],PLACED_R3_SHA)
+        self.assertEqual(len(self.fixture['observations']),82)
+        for observed in self.fixture['observations']:
+            pos=tuple(observed['position']);expected=self.finish.blocks[pos]
+            self.assertEqual(base(expected),base(observed['native_state']))
+            actual_fields=properties(observed['native_state'])
+            for key,value in properties(expected).items():
+                self.assertEqual(actual_fields.get(key),value,(pos,key))
+
+    def test_pinned_window_edge_and_ridge_neighbor_rules_match_native_witnesses(self):
+        for observed in self.fixture['observations']:
+            actual=properties(observed['native_state']);neighbors=observed['same_block_neighbors']
+            if base(observed['native_state']).startswith('mcwwindows:'):
+                negative,positive=('west','east') if actual['facing']=='north' else ('north','south')
+                # A single-column initial part is deliberately outside this
+                # correction. It remains exactly as captured, not normalized.
+                if neighbors[negative] or neighbors[positive]:
+                    self.assertEqual(joined_window_part(neighbors['above'],neighbors['below'],
+                        neighbors[negative],neighbors[positive]),actual['part'])
+            else:
+                self.assertEqual(joined_dormer_top_part(neighbors['east'],neighbors['west'],
+                    north=neighbors['north'],south=neighbors['south']),actual['part'])
+        with self.assertRaises(UserError):joined_dormer_top_part(True,True,north=True)
+        with self.assertRaises(UserError):joined_window_part(1,False,False,True)
+
+    def test_exactly_63_part_changes_preserve_every_position_identity_facing_and_tag(self):
+        prior=self.prior_plan();preserved=copy.deepcopy(prior)
+        corrected,changes=corrected_placed_states(self.registry,prior,self.r2)
+        self.assertEqual(prior,preserved)
+        self.assertEqual(len(changes),63)
+        self.assertEqual(sum(base(x['before']).startswith('mcwwindows:') for x in changes),54)
+        self.assertEqual(sum(base(x['before'])=='mcwroofs:spruce_top_roof' for x in changes),9)
+        self.assertEqual(set(decode(prior)),set(decode(corrected)))
+        self.assertEqual(prior['block_entities'],corrected['block_entities'])
+        self.assertEqual(prior['commands'],corrected['commands'])
+        for changed in changes:
+            before,after=changed['before'],changed['after']
+            self.assertEqual(base(before),base(after))
+            first,last=properties(before),properties(after)
+            self.assertEqual({k:v for k,v in first.items() if k!='part'},
+                             {k:v for k,v in last.items() if k!='part'})
+        # This observed vertical-only base was not one of the native failures.
+        self.assertEqual(decode(corrected)[1310,75,-994],decode(prior)[1310,75,-994])
+
+    def test_saved_verification_refuses_any_other_identity_facing_or_part_mismatch(self):
+        corrected,_=corrected_placed_states(self.registry,self.prior_plan(),self.r2)
+        actual=decode(corrected)
+        window=next(p for p,v in actual.items() if v.startswith('mcwwindows:') and properties(v).get('part')=='bot_r')
+        for replacement in ('minecraft:stone',actual[window].replace('facing=north','facing=east')
+                            .replace('facing=east','facing=south'),actual[window].replace('part=bot_r','part=bot_l')):
+            saved=Saved(actual);saved.override[window]=replacement
+            with self.assertRaises(UserError):verify_saved_joined_states(corrected,saved)
+        # Native default fields already omitted from the authored request are
+        # not newly invented expectations. Every supplied property still holds.
+        saved=Saved(actual)
+        cup=next(p for p,v in actual.items() if base(v)=='handcrafted:wood_cup')
+        fields=properties(actual[cup]);fields.update(pieces='1',waterlogged='false')
+        saved.override[cup]=base(actual[cup])+'['+','.join(k+'='+v for k,v in sorted(fields.items()))+']'
+        verify_saved_joined_states(corrected,saved)
 
 
 if __name__ == '__main__':

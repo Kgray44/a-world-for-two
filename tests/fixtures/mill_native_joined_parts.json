@@ -1,0 +1,1488 @@
+{
+  "format": "awft-native-mill-join-fixture:1",
+  "scope": "Actual pinned native38 observed states and bounded adjacency only; no world seed/save/account data",
+  "native_apis": {
+    "mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar": "8970c40ec622edd34c9b055226b403af08ab441c77303a6dc625ae18005f8184",
+    "mcw-roofs-2.3.2-mc1.21.1neoforge.jar": "25c79def993a24b05b0f8494ee9417717d469bc000d5ed7c219b47dcc3b3e9c8"
+  },
+  "original_placed_plan_sha256": "ff4fe2c333f7a67fc68c0ab90f2ced6666aa3e83d929f0e55b323a9d7c7bcdd8",
+  "checkpoint_sha256": "15ecf2148c90a994005170398232392e59a83d963b19e63de915d4d745ea1643",
+  "observations": [
+    {
+      "position": [
+        1304,
+        69,
+        -1001
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1304,
+        69,
+        -1000
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_m]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1304,
+        69,
+        -999
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1304,
+        70,
+        -1001
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1304,
+        70,
+        -1000
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1304,
+        70,
+        -999
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1304,
+        72,
+        -1001
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1304,
+        72,
+        -1000
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_m]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1304,
+        72,
+        -999
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1304,
+        73,
+        -1001
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1304,
+        73,
+        -1000
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1304,
+        73,
+        -999
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1309,
+        79,
+        -994
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1309,
+        80,
+        -1003
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1310,
+        69,
+        -996
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        69,
+        -995
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        69,
+        -992
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        69,
+        -991
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        70,
+        -996
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        70,
+        -995
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        70,
+        -992
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        70,
+        -991
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        75,
+        -1004
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        75,
+        -1003
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_m]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1310,
+        75,
+        -1002
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        75,
+        -994
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=base]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=base]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1310,
+        76,
+        -1004
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        76,
+        -1003
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1310,
+        76,
+        -1002
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        76,
+        -994
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=east,part=top]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1310,
+        79,
+        -994
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=switched_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1310,
+        80,
+        -1003
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=switched_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1311,
+        69,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1311,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1311,
+        79,
+        -994
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=switched_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1311,
+        80,
+        -1003
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=switched_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1312,
+        69,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1312,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1312,
+        79,
+        -994
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=switched_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1312,
+        80,
+        -1003
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=switched_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1313,
+        69,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1313,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1313,
+        79,
+        -994
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=top_end_270]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1313,
+        80,
+        -1003
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=switched_90]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1314,
+        80,
+        -1003
+      ],
+      "original_state": "mcwroofs:spruce_top_roof[part=top_end_90]",
+      "native_state": "mcwroofs:spruce_top_roof[part=top_end_270]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1315,
+        69,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1315,
+        70,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1315,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=single_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=single_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1315,
+        76,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1315,
+        77,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1316,
+        69,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1316,
+        70,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1316,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=single_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=single_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1316,
+        76,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1316,
+        77,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1317,
+        69,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1317,
+        70,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1317,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=single_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=single_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1319,
+        69,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1319,
+        69,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1319,
+        70,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1319,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1320,
+        69,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1320,
+        69,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_m]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1320,
+        70,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1320,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_m]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": true,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": false
+    },
+    {
+      "position": [
+        1321,
+        69,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1321,
+        69,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1321,
+        70,
+        -1006
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1321,
+        70,
+        -990
+      ],
+      "original_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_r]",
+      "native_state": "mcwwindows:dark_oak_plank_window[facing=north,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": false,
+        "west": true
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        69,
+        -1004
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        69,
+        -1003
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        69,
+        -996
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        69,
+        -995
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        69,
+        -992
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        69,
+        -991
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=bot_l]",
+      "same_block_neighbors": {
+        "above": true,
+        "below": false,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        70,
+        -1004
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        70,
+        -1003
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        70,
+        -996
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        70,
+        -995
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        70,
+        -992
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": false,
+        "east": false,
+        "south": true,
+        "west": false
+      },
+      "reviewed_part_change": true
+    },
+    {
+      "position": [
+        1322,
+        70,
+        -991
+      ],
+      "original_state": "mcwwindows:spruce_plank_window[facing=east,part=top_r]",
+      "native_state": "mcwwindows:spruce_plank_window[facing=east,part=top_l]",
+      "same_block_neighbors": {
+        "above": false,
+        "below": true,
+        "north": true,
+        "east": false,
+        "south": false,
+        "west": false
+      },
+      "reviewed_part_change": true
+    }
+  ]
+}

@@ -6,14 +6,17 @@
 
 **2026-10-27 UTC: candidate.31 published; fresh world installed; official server offline.**
 
-Private candidate 37 starts the dedicated server and authenticated client normally.
-Its bounded commissioning wake attaches both mill stations to the real Create
-graph. The first Hypertube connection correctly refuses the reversed entrance
-face; no water, goods or train were added. A precise saved-state orientation
-correction is in preparation. Candidate36 also displayed the actual Xaero map
-with MapHorizons awft.2; coarse-only SeedGen map coverage remains unproved.
-These isolated results do not change the official server or qualify a new release.
-See [native 36/37 results](NATIVE-CANDIDATE36-37.md).
+Private candidate 38 starts the dedicated server and authenticated client normally.
+The exact entrance correction permits all six native Hypertube connections and
+both real stations; commissioning then stops at the missing native detector
+attachment, with the drive stopped and no goods or train added. Mill R3,
+castle R4 and fixed drawbridge architecture are placed, strictly verified and
+reviewed in actual shader-enabled game captures. The redesigned moving leaves
+remain separate pending exact old-glue retirement and new mechanism tests.
+Candidate36 also displayed the actual Xaero map with MapHorizons awft.2;
+coarse-only SeedGen coverage remains unproved. These private results do not
+change the official server or qualify a release.
+See [native 38 results](NATIVE-CANDIDATE38.md) and [36/37 history](NATIVE-CANDIDATE36-37.md).
 
 The owner has requested the pirate town cover the entire dry spit between river
 and ocean, continuing to its narrow seaward tip. Geography is being established
@@ -36,13 +39,13 @@ remaining strict SeedGen mismatch are open.
 | Optional fallback | Essential disabled; 198 mod records including it |
 | Graphics | Eight shaders and one resource pack |
 | Client heap | KG: 6 GiB; Sera: conservative 4 GiB |
-| Owned helpers | Released bridge 0.6.17; private bridge 0.6.23; client Presentation 0.2.2 |
+| Owned helpers | Released bridge 0.6.17; private bridge 0.6.24; client Presentation 0.2.2 |
 | Catalog | 207 file records; all 223 requested candidates retained |
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
 Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
 The immutable candidate.31 lock is authoritative for released artifacts. The latest full local run passed
-**351 Python tests in 34.398 seconds**, 207-entry Packwiz validation and four Node
+**383 Python tests in 42.974 seconds**, 207-entry Packwiz validation and four Node
 session tests. Candidate.31 source CI at `8dd64b1` passed the earlier 319 tests; runtime
 acceptance remains separate.
 Source checks are separate from native gameplay and release acceptance.

@@ -794,8 +794,8 @@ def bind_commissioning(home, bundle, bridge_jar, candidate, bridge_version, nati
             or not re.fullmatch(r'0\.6\.\d+', bridge_version)):
         raise UserError('Exact separate artistic home, candidate and native bridge required')
     admission = guard(4*MIB, MAX_OUTPUT)
-    expected = {'plan': '181e2191572846967c41e77bf5b406d0dddcc484488aa60d6725728ba651b199',
-                'manifest': '4339bb54a05d9c5a478b471db880c7d80dc1f6c0f25081824c7c54b75f49f408',
+    expected = {'plan': '89fa2079962dedb7888aaf62ae2f18d094c373421a80ce0f91bda23ddb415af1',
+                'manifest': 'f4f9bd4cd1d3bc4ff100cfe9ba417b591e7e8ede23bb1b4e3c03deb7f600d2f5',
                 'before': '042d7717761b938bd13150aae2d58483156cd5a243bd8950c7ade247d3ee775a'}
     def reference(path, limit=2*MIB):
         path = Path(path).resolve()
@@ -804,7 +804,7 @@ def bind_commissioning(home, bundle, bridge_jar, candidate, bridge_version, nati
         return {'path': path.relative_to(home).as_posix(), 'bytes': path.stat().st_size, 'sha256': digest(path)}
     manifest_path, plan_path = bundle/'manifest.json', bundle/'mill-quarter.json'
     if digest(manifest_path) != expected['manifest'] or digest(plan_path) != expected['plan']:
-        raise UserError('This executable helper admits only the exact reviewed R2 physical composition')
+        raise UserError('This executable helper admits only the exact reviewed R2 composition with its two entrance facings corrected')
     manifest = read_json(manifest_path)
     before = Path(native_before).resolve()
     after = Path(native_after).resolve()

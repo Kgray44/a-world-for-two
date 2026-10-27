@@ -4,10 +4,11 @@
 
 **Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-Private candidate **37** now starts and joins normally. Actual Xaero map viewing
-and the mill's station attachment pass; tube commissioning, strict SeedGen parity,
-the expanded pirate spit and the final inhabited landscape are still in progress.
-See the [native results](docs/NATIVE-CANDIDATE36-37.md).
+Private candidate **38** starts and joins normally. The mill's six real tube
+connections, furnished mill, castle audience room and fixed drawbridge architecture
+have native results and actual game captures. The moving bridge redesign, mill
+commissioning, strict SeedGen parity and inhabited pirate spit remain in progress.
+See the [latest native results](docs/NATIVE-CANDIDATE38.md).
 
 **Our little corner of an endless world.**
 

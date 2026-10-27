@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -16,17 +17,43 @@ from control_room.common import UserError, digest, read_json, utcnow
 from tools.artistic_engineering import DRY_NATURAL, PLANTS, VOID
 from tools.artistic_materials import require_material_rule, require_outdoor_rule
 from tools.playtest import guard
-from tools.settlement_attractions import AIR, BackupWorld, base
+from tools.settlement_attractions import AIR, BackupWorld, base, properties
 
 
 ORIGIN = (1310, 67, -1000)
 LOCAL_BOUNDS = (-8, -4, -12, 14, 17, 15)
 SOURCE_PLAN_SHA = '181e2191572846967c41e77bf5b406d0dddcc484488aa60d6725728ba651b199'
 SOURCE_MANIFEST_SHA = '4339bb54a05d9c5a478b471db880c7d80dc1f6c0f25081824c7c54b75f49f408'
+PLACED_R3_SHA = 'ff4fe2c333f7a67fc68c0ab90f2ced6666aa3e83d929f0e55b323a9d7c7bcdd8'
+JOIN_APIS = {
+    'mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar': '8970c40ec622edd34c9b055226b403af08ab441c77303a6dc625ae18005f8184',
+    'mcw-roofs-2.3.2-mc1.21.1neoforge.jar': '25c79def993a24b05b0f8494ee9417717d469bc000d5ed7c219b47dcc3b3e9c8',
+}
 MAX_OUTPUT = 16*1024**2
 MAX_TARGETS = 4000
 KINETIC = ('create:', 'overpressure:', 'create_hypertube:', 'railways:')
 INVENTORIES = {'minecraft:chest', 'minecraft:barrel', 'minecraft:hopper', 'minecraft:furnace'}
+
+
+def joined_window_part(above, below, negative_neighbor, positive_neighbor):
+    """Pinned ConnectedWindow.WindowState semantics on its NORTH/EAST planes.
+
+    Negative means west for NORTH or north for EAST. Macaw names the positive
+    neighbor-only edge ``r``; that is the first cell as our coordinates increase.
+    Neighbors are the same actual block identity, not merely another window.
+    """
+    if any(type(v) is not bool for v in (above, below, negative_neighbor, positive_neighbor)):
+        raise UserError('Exact native window neighbor booleans required')
+    vertical = 'mid' if above and below else 'top' if below else 'bot' if above else 'single'
+    side = 'm' if negative_neighbor and positive_neighbor else 'l' if negative_neighbor else 'r' if positive_neighbor else None
+    return vertical+'_'+side if side else {'mid':'middle','top':'top','bot':'bottom','single':'base'}[vertical]
+
+
+def joined_dormer_top_part(east, west, *, north=False, south=False):
+    """Exact pinned RoofTopNew result for these isolated east/west ridges."""
+    if any(type(v) is not bool for v in (north,east,south,west)) or north or south:
+        raise UserError('The reviewed dormer ridge must remain an isolated east/west line')
+    return 'switched_90' if east and west else 'top_end_90' if east else 'top_end_270' if west else 'switched_0'
 
 
 def decode(plan):
@@ -118,12 +145,16 @@ class Finish:
             self.put(x, y, z, 'minecraft:mossy_cobblestone' if y == ground else 'minecraft:stone_bricks')
 
     def window(self, x, y, z, facing, width=3, height=2, wood='dark_oak'):
+        if type(width) is not int or type(height) is not int or width<1 or height<1:
+            raise UserError('Finite positive window dimensions required')
         for dy in range(height):
-            row = 'single' if height == 1 else 'bot' if dy == 0 else 'top' if dy == height-1 else 'mid'
             for n in range(width):
-                col = 'l' if n == 0 else 'r' if n == width-1 else 'm'
                 px, pz = (x+n, z) if facing in ('north', 'south') else (x, z+n)
-                part = ('base' if dy == 0 else 'top' if dy == height-1 else 'middle') if width == 1 else row+'_'+col
+                # Preserve the captured single-column initial parts. Only the
+                # horizontal rectangular joins are part of this reviewed fix;
+                # do not normalize an unrelated base/bottom lifecycle state.
+                part = (('base' if dy==0 else 'top' if dy==height-1 else 'middle') if width==1
+                        else joined_window_part(dy<height-1,dy>0,n>0,n<width-1))
                 self.put(px, y+dy, pz, 'mcwwindows:'+wood+'_plank_window',
                          facing='north' if facing in ('north', 'south') else 'east', part=part)
 
@@ -200,7 +231,8 @@ def dormer(p, center, radius, back, base_y):
         for x in range(-1, back+1):
             if z == center:
                 p.put(x, roof_y-1, z, 'minecraft:birch_wood', axis='x')
-                p.put(x, roof_y, z, 'mcwroofs:spruce_top_roof', part='top_end_90')
+                p.put(x, roof_y, z, 'mcwroofs:spruce_top_roof',
+                      part=joined_dormer_top_part(x<back,x>-1))
             else:
                 p.put(x, roof_y, z, 'mcwroofs:spruce_roof', facing='south' if z < center else 'north', half='bottom', shape='straight')
     # Close the raised cheeks/back into the original slope; an opening into
@@ -392,9 +424,136 @@ def prepare(home,registry_path,source_path,manifest_path,backup_id,backup_sha,ou
             'before_sha256':before,'placements':len(p.blocks),'bytes':sum(map(len,documents.values())),'native_action':'Not performed'}
 
 
+def corrected_placed_states(registry, original, r2_source):
+    """Derive only the reviewed automatic parts, preserving all other geometry."""
+    before=decode(original);composed=decode(r2_source)|before
+    corrected=copy.deepcopy(original);changes=[]
+    for row in corrected['blocks']:
+        pos=tuple(row[:3]);prior=original['palette'][row[3]];key=base(prior)
+        if key not in ('mcwwindows:dark_oak_plank_window','mcwwindows:spruce_plank_window','mcwroofs:spruce_top_roof'):
+            continue
+        fields=properties(prior)
+        if 'part' not in fields:
+            raise UserError('An exact original automatic-part property is required')
+        x,y,z=pos
+        same=lambda q:base(composed.get(q,AIR))==key
+        if key.startswith('mcwwindows:'):
+            facing=fields.get('facing')
+            if facing not in ('north','east'):
+                raise UserError('Unreviewed native window plane')
+            negative,positive=((x-1,y,z),(x+1,y,z)) if facing=='north' else ((x,y,z-1),(x,y,z+1))
+            if not same(negative) and not same(positive):
+                continue  # Preserve the separately observed single-column parts.
+            part=joined_window_part(same((x,y+1,z)),same((x,y-1,z)),same(negative),same(positive))
+        else:
+            part=joined_dormer_top_part(same((x+1,y,z)),same((x-1,y,z)),
+                north=same((x,y,z-1)),south=same((x,y,z+1)))
+        if part==fields['part']:
+            continue
+        schema=registry['blocks'].get(key,{})
+        if part not in schema.get('part',()):
+            raise UserError('The exact native joined part is not registered')
+        fields['part']=part
+        value=key+'['+','.join(k+'='+v for k,v in sorted(fields.items()))+']'
+        if value not in corrected['palette']:
+            corrected['palette'].append(value)
+        row[3]=corrected['palette'].index(value)
+        changes.append({'pos':list(pos),'before':prior,'after':value,
+                        'changed_properties':['part'],'same_block_identity':True})
+    if corrected['block_entities']!=original['block_entities'] or corrected['commands']!=original['commands']:
+        raise UserError('Native join correction must retain all original tag and command expectations')
+    return corrected,changes
+
+
+def verify_saved_joined_states(plan,snapshot):
+    """Require every original supplied property; omitted defaults stay omitted."""
+    for pos,expected in decode(plan).items():
+        actual=snapshot.state(pos)
+        if base(expected)!=base(actual):
+            raise UserError('Saved R3 block identity differs at '+str(pos))
+        supplied=properties(expected);observed=properties(actual)
+        for key,value in supplied.items():
+            if observed.get(key)!=value:
+                raise UserError('Saved R3 supplied property differs at '+str(pos)+' '+key)
+
+
+def prepare_joined_verification(home,registry_path,source_path,manifest_path,placed_plan,backup_id,backup_sha,output):
+    """Emit verification only for the exact already-placed native R3 finish.
+
+    It never produces a replacement placement delta or replays its inventories,
+    fluids, connections or block-entity data. A native verifier remains required.
+    """
+    home,registry_path,source_path,manifest_path,placed_plan,output=map(lambda x:Path(x).resolve(),
+        (home,registry_path,source_path,manifest_path,placed_plan,output))
+    if (not home.is_relative_to(Path(r'D:\A World for Two\staging\world-tests'))
+            or not placed_plan.is_relative_to(home/'staging') or not output.is_relative_to(home/'staging') or output.exists()):
+        raise UserError('Separate artistic home, immutable placed input and new private output required')
+    if (digest(placed_plan)!=PLACED_R3_SHA or digest(source_path)!=SOURCE_PLAN_SHA
+            or digest(manifest_path)!=SOURCE_MANIFEST_SHA):
+        raise UserError('The exact reviewed placed R3 and original R2 inputs are required')
+    if any(p.stat().st_size>8*1024**2 for p in (registry_path,source_path,manifest_path,placed_plan)):
+        raise UserError('Finite original geometry and native registry inputs required')
+    admission=guard(4*1024**2,MAX_OUTPUT)
+    for name,sha in JOIN_APIS.items():
+        if digest(home/'server/mods'/name)!=sha:
+            raise UserError('Pinned native join API differs: '+name)
+    receipt=read_json(home/'dashboard/settlement/backup-receipt.json')
+    if receipt.get('verified') is not True or receipt.get('id')!=backup_id or receipt.get('sha256')!=backup_sha:
+        raise UserError('Current parent-reviewed stopped checkpoint required for native joined-state verification')
+    registry,original,r2,manifest=map(read_json,(registry_path,placed_plan,source_path,manifest_path))
+    if any(original.get(k)!=registry.get(k) or r2.get(k)!=registry.get(k) for k in ('seed','world_path')):
+        raise UserError('Original placed geometry and actual registry world differ')
+    corrected,changes=corrected_placed_states(registry,original,r2)
+    kinds=Counter(base(row['before']) for row in changes)
+    if (len(corrected['blocks'])!=516 or len(changes)!=63
+            or sum(n for key,n in kinds.items() if key.startswith('mcwwindows:'))!=54
+            or kinds['mcwroofs:spruce_top_roof']!=9):
+        raise UserError('The reviewed correction is exactly 54 window and 9 ridge parts at the original 516 positions')
+    # Material IDs, positions, orientations, inventories and the original sign
+    # expectation are unchanged. The normal complete-building check still runs.
+    p=Finish(registry,r2,manifest);p.blocks=decode(corrected)
+    checks=validate(p)
+    snapshot=BackupWorld(home,receipt,registry)
+    try:
+        verify_saved_joined_states(corrected,snapshot)
+        sources=snapshot.sources.copy()
+    finally:snapshot.close()
+    corrected.update(name='VERIFY ONLY - exact placed R3 native Macaw joined parts',created=utcnow(),
+        backup_sha256=backup_sha,
+        validation='VERIFY ONLY. Already placed R3; no construction replay. Every supplied state and original tag expectation must be verified natively.')
+    raw=(json.dumps(corrected,separators=(',',':'),ensure_ascii=False)+'\n').encode()
+    failed=home/'dashboard/settlement/settlement-result-685728bd-d776-4bc6-97ec-8d30f66a9694.json'
+    if not failed.is_file() or failed.stat().st_size>512*1024:
+        raise UserError('Retain the original bounded failed native verification receipt')
+    details={'format':'awft-mill-native-joined-verification:1','created':utcnow(),
+        'source_sha256':digest(Path(__file__)),'original_placed_plan_sha256':PLACED_R3_SHA,
+        'original_r2_plan_sha256':SOURCE_PLAN_SHA,'original_r2_manifest_sha256':SOURCE_MANIFEST_SHA,
+        'registry_sha256':digest(registry_path),'checkpoint_id':backup_id,'checkpoint_sha256':backup_sha,
+        'native_apis':JOIN_APIS,'plan_sha256':hashlib.sha256(raw).hexdigest(),
+        'positions':516,'part_corrections':63,'window_corrections':54,'roof_corrections':9,
+        'block_identity_changes':0,'position_changes':0,'orientation_changes':0,
+        'original_block_entity_expectations_retained':True,'placement_payload_emitted':False,
+        'changes':changes,'checks':checks,'saved_sources':sources,'reserve_guard':admission,
+        'original_failed_native_verification':{'file':failed.relative_to(home).as_posix(),'sha256':digest(failed)},
+        'partial_mill_state':'Six existing native tube links and water sources are preserved. No feed or train was performed. Full R2 commissioning must not replay; any resume must explicitly bind this R3 geometry.',
+        'native_action':'None. Saved-state agreement is not a native verification or visual acceptance.'}
+    meta=(json.dumps(details,separators=(',',':'),ensure_ascii=False)+'\n').encode()
+    if len(raw)+len(meta)>MAX_OUTPUT:
+        raise UserError('Finite joined verification output exceeded')
+    output.mkdir(parents=True,exist_ok=False)
+    (output/'mill-detail-native-verify-only.json').write_bytes(raw)
+    (output/'joined-state-manifest.json').write_bytes(meta)
+    return {'output':str(output),'verify_plan_sha256':hashlib.sha256(raw).hexdigest(),
+            'manifest_sha256':hashlib.sha256(meta).hexdigest(),'positions':516,'part_corrections':63,
+            'native_actions':0,'placement_payload_emitted':False}
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('home','registry','source','manifest','output'):parser.add_argument('--'+name,type=Path,required=True)
     parser.add_argument('--backup-id',required=True);parser.add_argument('--backup-sha256',required=True)
+    parser.add_argument('--placed-plan',type=Path,help='Already placed immutable R3: emit native verification only, never another placement delta')
     a=parser.parse_args()
-    print(json.dumps(prepare(a.home,a.registry,a.source,a.manifest,a.backup_id,a.backup_sha256,a.output),indent=2))
+    result=(prepare_joined_verification(a.home,a.registry,a.source,a.manifest,a.placed_plan,a.backup_id,a.backup_sha256,a.output)
+            if a.placed_plan else prepare(a.home,a.registry,a.source,a.manifest,a.backup_id,a.backup_sha256,a.output))
+    print(json.dumps(result,indent=2))

@@ -1,0 +1,837 @@
+{
+  "provenance": {
+    "kind": "Subset of actual native NeoForge1.21.1 block-property schemas; synthetic tests are not native graphics/physics proof",
+    "registry_sha256": "63a429046bcfe54af8a5e734c5aa497be0418ee3f2e6fa14ea1b570b434f9b77",
+    "seed_and_world_path_omitted": true
+  },
+  "blocks": {
+    "chipped:boxed_dark_oak_planks": {},
+    "chipped:boxed_spruce_planks": {},
+    "chipped:carved_stone": {},
+    "chipped:detailed_dark_oak_planks": {},
+    "chipped:engraved_stone": {},
+    "chipped:etched_stone_bricks": {},
+    "chipped:nailed_dark_oak_planks": {},
+    "chipped:small_andesite_bricks": {},
+    "chipped:small_stone_bricks": {},
+    "chipped:stacked_dark_oak_planks": {},
+    "create:andesite_encased_shaft": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "create:cogwheel": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "create:large_cogwheel": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "create:mechanical_bearing": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ]
+    },
+    "create:metal_girder": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "bottom": [
+        "true",
+        "false"
+      ],
+      "top": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "x": [
+        "true",
+        "false"
+      ],
+      "z": [
+        "true",
+        "false"
+      ]
+    },
+    "create:redstone_link": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "receiver": [
+        "true",
+        "false"
+      ]
+    },
+    "create:sequenced_gearshift": {
+      "axis": [
+        "x",
+        "z"
+      ],
+      "state": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "vertical": [
+        "true",
+        "false"
+      ]
+    },
+    "create:shaft": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "create:water_wheel": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ]
+    },
+    "createdeco:industrial_iron_support": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:dark_oak_support_beam": {
+      "axis": [
+        "x",
+        "z"
+      ],
+      "pillar_connection": [
+        "nothing",
+        "4_pixels",
+        "6_pixels",
+        "8_pixels",
+        "10_pixels"
+      ],
+      "subaxis": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_bench": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_chair": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_desk": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwdoors:dark_oak_classic_door": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "upper",
+        "lower"
+      ],
+      "hinge": [
+        "left",
+        "right"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwroofs:dark_oak_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "mcwwindows:dark_oak_log_parapet": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "part": [
+        "flower",
+        "empty"
+      ]
+    },
+    "mcwwindows:dark_oak_plank_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:barrel": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "open": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:bookshelf": {},
+    "minecraft:candle": {
+      "candles": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "lit": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:cartography_table": {},
+    "minecraft:chiseled_stone_bricks": {},
+    "minecraft:dark_oak_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:dark_oak_planks": {},
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:deepslate_tile_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:flower_pot": {},
+    "minecraft:iron_bars": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:lantern": {
+      "hanging": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:lightning_rod": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:oak_sign": {
+      "rotation": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_andesite": {},
+    "minecraft:polished_andesite_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:potted_flowering_azalea_bush": {},
+    "minecraft:smooth_sandstone": {},
+    "minecraft:spruce_planks": {},
+    "minecraft:spruce_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_brick_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_brick_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_brick_wall": {
+      "east": [
+        "none",
+        "low",
+        "tall"
+      ],
+      "north": [
+        "none",
+        "low",
+        "tall"
+      ],
+      "south": [
+        "none",
+        "low",
+        "tall"
+      ],
+      "up": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "none",
+        "low",
+        "tall"
+      ]
+    },
+    "minecraft:stone_bricks": {},
+    "minecraft:stone_button": {
+      "face": [
+        "floor",
+        "wall",
+        "ceiling"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stripped_dark_oak_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:water": {
+      "level": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    "minecraft:waxed_exposed_cut_copper_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:waxed_exposed_cut_copper_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:waxed_weathered_cut_copper_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:weathered_cut_copper_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:white_terracotta": {},
+    "mythrais:wrought_iron_railing_01": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1"
+      ]
+    },
+    "createdeco:industrial_iron_sheet_metal": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    }
+  },
+  "items": []
+}

@@ -1,0 +1,207 @@
+{
+  "format": "awft-artistic-candidate38:1",
+  "at": "2026-10-27T17:28:09.159710+00:00",
+  "candidate": "0.1.0-candidate.38",
+  "pack_sha256": "b28ee9bca66ccdbf68cdc50ecf08114d4305593aecb765d83e143431abc3b667",
+  "bridge_version": "0.6.24",
+  "bridge_sha256": "7294c8fcc9c8bc98d6ad8f89b69d59cdb87ad331b5ad4985ba082d44f19b774c",
+  "native_scope": "Owned private stage; official world untouched; public release unchanged31",
+  "startup": "Dedicated server and authenticated client pass",
+  "idle_getter": "Actual transformed native getter linked; all3dimensions observed, native saved force false, no telemetry wake",
+  "mill": "Two real stations and six native tube spans pass; water present; stopped at missing native detector attachment/manual entry. No feed or train. Partial state preserved; full commissioning must not replay.",
+  "mill_r3": "Placed and native516-target verification passed after correcting63 native-derived part expectations. Original failure retained.",
+  "castle_r4": "Placed and native240-target verification passed; actual shader review completed",
+  "bridge_fixed": "Placed; corrected native-derived window part expectations passed2775/2775 with zero differences; old closed moving spans and glue unchanged",
+  "strict_seedgen": "Refusal unchanged; full Lithostitched proposal remains unintegrated",
+  "source_checks": {
+    "frozen_bridge_full_suite": 355,
+    "later_art_source_suite": 370,
+    "packwiz_records": 207,
+    "session_node_tests": 4,
+    "idle_ui_formatter_tests": 12,
+    "latest_art_source_suite": 383
+  },
+  "performance": "Only framebuffer point samples, not travel/multiplayer benchmark",
+  "images": [
+    {
+      "file": "docs/images/artistic-recovery/c38-mill-r3-arrival.png",
+      "sha256": "d180fb010578477bb57cfcbd08010fc69591b8aebe7e8e6146a598c3d03b03c7",
+      "bytes": 2631357,
+      "view": {
+        "feet": [
+          1296,
+          77,
+          -981
+        ],
+        "look_at": [
+          1314,
+          75,
+          -999
+        ],
+        "yaw": -135.0,
+        "pitch": 8.093595312546448
+      },
+      "native_fps_point": 57,
+      "visual_review": "Agent viewed; owner overall acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c38-mill-r3-hall.png",
+      "sha256": "c316f3f4882b726229f3ccf852972a7e5357731cd13884bf17babf2ff6f5c92b",
+      "bytes": 2039237,
+      "view": {
+        "feet": [
+          1317,
+          70,
+          -992
+        ],
+        "look_at": [
+          1315,
+          72,
+          -1000
+        ],
+        "yaw": 165.96375653207352,
+        "pitch": -2.6384243281087083
+      },
+      "native_fps_point": 59,
+      "visual_review": "Agent viewed; owner overall acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c38-mill-r3-wheelhouse.png",
+      "sha256": "2915d773f06b4dd2fe7e1d26982ddbdd6c83248100be8f3d20790a4623c15ea2",
+      "bytes": 2749431,
+      "view": {
+        "feet": [
+          1297,
+          73,
+          -1007
+        ],
+        "look_at": [
+          1306,
+          71,
+          -1000
+        ],
+        "yaw": -52.1250163489018,
+        "pitch": 17.614383210600014
+      },
+      "native_fps_point": 59,
+      "visual_review": "Agent viewed; owner overall acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c38-castle-bank-throne-hall.png",
+      "sha256": "fa6f4befe1964a84342e51007248adf2d7d731fecca505c3ac05bcd14e91ca9c",
+      "bytes": 2285567,
+      "view": {
+        "feet": [
+          1266,
+          74,
+          -1025
+        ],
+        "look_at": [
+          1266,
+          77,
+          -1038
+        ],
+        "yaw": 180.0,
+        "pitch": -6.059474680399831
+      },
+      "native_fps_point": 58,
+      "visual_review": "Agent viewed; owner overall acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c38-castle-bank-castle-vault.png",
+      "sha256": "580f8e58ca400b681bc58daa90095e0c0955157a1b9fa13f1e30ff49252893a6",
+      "bytes": 2315726,
+      "view": {
+        "feet": [
+          1268,
+          75,
+          -1029
+        ],
+        "look_at": [
+          1264,
+          80,
+          -1036
+        ],
+        "yaw": 150.25511870305778,
+        "pitch": -22.74525383663274
+      },
+      "native_fps_point": 60,
+      "visual_review": "Agent viewed; owner overall acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c38-castle-bank-bridge-control.png",
+      "sha256": "11f444917cf2857f08498bd0c169609c55e3213931b294fdfc139d4879c69f29",
+      "bytes": 2342834,
+      "view": {
+        "feet": [
+          1180,
+          72,
+          -1190
+        ],
+        "look_at": [
+          1183,
+          78,
+          -1177
+        ],
+        "yaw": -12.994616791916505,
+        "pitch": -18.17474338773738
+      },
+      "native_fps_point": 59,
+      "visual_review": "Agent viewed; owner overall acceptance remains open"
+    }
+  ],
+  "native_receipts": [
+    {
+      "file": "artistic-mill-result-7e9ad3da-8a87-45a4-95fa-2e1a10cd59e8.json",
+      "bytes": 4007,
+      "sha256": "e4f627a9baa367a267537504d017893f64537841a0d608eef5b1b8b4925bc239",
+      "status": "native commissioning stopped; partial native state preserved for review",
+      "failures": null,
+      "error": "IllegalStateException: Native locked/manual entry mode not ready; drive remains stopped",
+      "finished": "2026-10-27T16:35:38.650547800Z"
+    },
+    {
+      "file": "settlement-result-e5671857-6349-4657-a832-4062242eee4e.json",
+      "bytes": 378,
+      "sha256": "884c5db1f4d0a9b40069fc5013a790f881e0e9e759ab51a13b0b906f7e3006ea",
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "failures": 0,
+      "error": null,
+      "finished": "2026-10-27T17:18:58.401380300Z"
+    },
+    {
+      "file": "settlement-result-6ed88c9d-5c72-4b4f-805d-8123a9cdb612.json",
+      "bytes": 378,
+      "sha256": "4fc217f2066fd3bad44846d2e092dc9825be785118750b2dc4c9942054eddf42",
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "failures": 0,
+      "error": null,
+      "finished": "2026-10-27T17:15:58.158967800Z"
+    },
+    {
+      "file": "settlement-result-53eb2a29-30a9-4fec-8462-26052f7af943.json",
+      "bytes": 334,
+      "sha256": "5d57eee9cdd5d6b3af5a6ea726618a376d417014c72d73e7f796976617c0ac4a",
+      "status": "verification failed; inspect differences",
+      "failures": 32,
+      "error": null,
+      "finished": "2026-10-27T17:16:03.705223400Z"
+    },
+    {
+      "file": "settlement-result-55000a59-4d6a-47c9-912a-1bcb10d30434.json",
+      "bytes": 379,
+      "sha256": "27f2a7702c9ea4f45b51f3d3aea820d64587a4afb5a6404b14d18f37a61be360",
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "failures": 0,
+      "error": null,
+      "finished": "2026-10-27T17:35:25.449570500Z"
+    }
+  ],
+  "public_prism_release": "awft-0.1.0-candidate.31",
+  "stopped_checkpoint": {
+    "id": "20261027T173710Z-180512",
+    "sha256": "0f4b7ed90819e24f2a865ce6b1a61d14249576445662fd55bd6fbcefec0ae8f7",
+    "bytes": 203018214,
+    "files": 627
+  }
+}

@@ -32,6 +32,20 @@ function freshnessNotice(measurement) {
   return delayed.length?notice(`Telemetry delayed or unavailable (${delayed.join(', ')}). Current readings show — until fresh measurements arrive. Server process state and last-known player positions are separate.`,'warn'):'';
 }
 
+export function idleSimulationRows(value,current,dimension) {
+  const stamp=measurementMillis(value?.at),age=(Date.now()-stamp)/1000;
+  if(current!==true||!value||value.dimension!==dimension||!Number.isFinite(age)||age< -2||age>15)
+    return '<p class="subtle">Native idle eligibility unavailable for this dimension. A current bridge sample is required.</p>';
+  const counter=Number.isInteger(value.empty_time_ticks)&&value.empty_time_ticks>=-2147483648&&value.empty_time_ticks<=2147483647?value.empty_time_ticks:null;
+  const players=Number.isInteger(value.dimension_players)&&value.dimension_players>=0?value.dimension_players:null;
+  const branch={eligible:'Eligible',suspended:'Suspended (idle)',unknown:'Unknown'}[value.next_entity_and_block_entity_idle_branch]||'Unknown';
+  const forced=value.native_saved_forced_chunk_branch===true?'Present':value.native_saved_forced_chunk_branch===false?'None':'Unknown';
+  return `<div class="idle-simulation">${row('Native idle branch · next tick',pill(branch))}`+
+    row('Native empty-world counter',counter===null?'Unavailable':`${number(counter,0)} ticks · cutoff 300`)+
+    row('Saved forced-chunk wake status',forced)+row('Native dimension players',players===null?'Unavailable':number(players,0))+
+    `<p class="subtle">Idle state sampled ${esc(when(value.at))}. Eligibility applies to the next normal dimension tick if native inputs stay unchanged; holder counts do not measure actual entity or block-entity tick executions.${value.counter_unavailable?' Counter access unavailable: '+esc(String(value.counter_unavailable).slice(0,240))+'.':''}</p></div>`;
+}
+
 async function api(path, body) {
   const response = await localSession.request(path, body === undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
   const data = await response.json();
@@ -110,9 +124,10 @@ function chunkDiagnostics(measurement) {
   const tables=dimensions.map(([name,value])=>{
     const details=value.details||{},partial=details.truncated?'≥ ':'';
     return `<details class="chunk-dimension" open><summary><strong>${esc(name)}</strong> · ${number(value.visible_holders,0)} holders</summary>`+
-      `<div class="table-scroll"><table><thead><tr><th>Full chunks</th><th>Block ticking</th><th>Entity ticking</th><th>Pending unloads</th><th>Forced chunks</th></tr></thead><tbody><tr>`+
+      `<div class="table-scroll"><table><thead><tr><th>Full chunks</th><th>Block-ready holders</th><th>Entity-ready holders</th><th>Pending unloads</th><th>Saved vanilla forced chunks</th></tr></thead><tbody><tr>`+
       `<td>${partial}${number(value.full_chunks,0)}</td><td>${partial}${number(value.block_ticking,0)}</td><td>${partial}${number(value.entity_ticking,0)}</td><td>${number(value.pending_unloads,0)}</td><td>${number(value.vanilla_forced_chunks,0)}</td></tr></tbody></table></div>`+
       `<p class="subtle">${number(value.ticket_positions,0)} direct ticket positions · ${number(value.holders_examined,0)} holders examined · ${number(details.measurement_ms,2)} ms diagnostic cost${details.truncated?' · Bounded sample: ticking totals and ticket details may be partial.':''}</p>`+
+      idleSimulationRows(measurement.dimensions?.[name]?.idle_simulation,currentMeasurement(measurement.freshness?.bridge),name)+
       ((details.sources||[]).length?`<div class="table-scroll"><table><thead><tr><th>Ticket source</th><th>Direct tickets</th><th>Example chunk positions</th></tr></thead><tbody>${details.sources.map(source=>`<tr><td><code>${esc(source.type)}</code></td><td>${number(source.tickets,0)}</td><td>${source.examples.map(example=>`<span title="${esc(example.description)}">${number(example.chunk_x,0)}, ${number(example.chunk_z,0)} · level ${number(example.level,0)}</span>`).join('<br>')}</td></tr>`).join('')}</tbody></table></div>`:'<p class="subtle">No direct tickets in this dimension.</p>')+
       `<details><summary>NeoForge mod-owned forced chunks</summary>${details.mod_owners?.unavailable?notice(details.mod_owners.unavailable,'warn'):(details.mod_owners?.owners||[]).length?`<div class="table-scroll"><table><thead><tr><th>Controller</th><th>Owner</th><th>Requested chunks</th></tr></thead><tbody>${details.mod_owners.owners.map(owner=>`<tr><td>${esc(owner.controller)}</td><td>${esc(owner.kind)} · ${esc(owner.owner)}</td><td>${number(owner.chunks,0)} · ${owner.ticking?'ticking':'loaded'}</td></tr>`).join('')}</tbody></table></div>`:'<p class="subtle">No persistent NeoForge mod tickets recorded.</p>'}${details.mod_owners?.truncated?'<p class="subtle">Owner details are partial because the diagnostic budget was reached.</p>':''}</details>`+
       `<details><summary>Holder ticket levels</summary><p class="subtle">${Object.entries(details.ticket_levels||{}).map(([level,count])=>`Level ${esc(level)}: ${number(count,0)}`).join(' · ')}</p></details></details>`;
