@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-27T03:59:52.643505+00:00",
+  "candidate": "0.1.0-candidate.23",
+  "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+  "scene_zip_sha256": "0f0beab26f165e26a5d608d3567a94e230226e5bdf2236e5cf06de5c274b587d",
+  "saved_zip_audit_sha256": "e1879a2a1a41bab9bcaeb520f4bfe27e996389c76fa838cb363ae84a739bfa32",
+  "actual_native_registry": [
+    {
+      "id": "awft:rosewater_resolute_tour",
+      "duration_ticks": 360,
+      "camera_mode": "ABSOLUTE",
+      "events": 2
+    },
+    {
+      "id": "awft:rosewater_castle_tour",
+      "duration_ticks": 400,
+      "camera_mode": "ABSOLUTE",
+      "events": 2
+    },
+    {
+      "id": "awft:nightingales_debt_tour",
+      "duration_ticks": 360,
+      "camera_mode": "ABSOLUTE",
+      "events": 2
+    },
+    {
+      "id": "awft:lanternwater_port_tour",
+      "duration_ticks": 360,
+      "camera_mode": "ABSOLUTE",
+      "events": 2
+    },
+    {
+      "id": "awft:intro",
+      "duration_ticks": 200,
+      "camera_mode": "RELATIVE_TO_ANCHOR",
+      "events": 2
+    },
+    {
+      "id": "awft:amberwake_tour",
+      "duration_ticks": 360,
+      "camera_mode": "ABSOLUTE",
+      "events": 2
+    },
+    {
+      "id": "awft:sea_lavender_tour",
+      "duration_ticks": 360,
+      "camera_mode": "ABSOLUTE",
+      "events": 2
+    },
+    {
+      "id": "awft:settlement_intro",
+      "duration_ticks": 480,
+      "camera_mode": "ABSOLUTE",
+      "events": 2
+    }
+  ],
+  "registry_available": true,
+  "scope": "Actual post-restart Lumiera server scene registry and saved ZIP custody, not native client rendering or full settlement terrain delivery",
+  "graphics": "unverified",
+  "full_castle_to_offshore_intro": "not established; current24second intro is local core plus separate nearby tours"
+}

@@ -12,7 +12,9 @@ crafts close by, and mountains, pirate harbors and mechanical adventures beyond.
 Candidate **0.1.0-candidate.23** contains **197 enabled mod JARs**, **eight shaders**
 and one resource pack. The permanent server now contains the expanded castle,
 south-bank village and grand sailing harbor. Their native block/inventory checks
-passed; graphical refinement, mechanism commissioning and release checks continue.
+passed. Both drawbridge spans passed two native button-driven cycles at 55°;
+1,593 further architectural details and the bridge programs passed saved-world
+persistence checks. Graphical review, other attraction commissioning and release checks continue.
 The public Prism download and clean import are still pending. See [current status](docs/STATUS.md).
 
 ## Play
@@ -44,10 +46,11 @@ explain updates and the remaining distribution checks.
 | Weather, custom presentation and workstation scenes | Xaero's maps, parties/claims, Waystones and browser World Atlas |
 
 The large harbor ships are detailed structural builds. Rideable craft and native
-boat tenders complement them; the drawbridge controls and isolated tender hoist
-are still being commissioned. Seven actual-settlement cinematics have passed
-native data checks; the installed scene pack awaits startup registration checks
-and graphical review.
+boat tenders complement them. The drawbridge uses real water-wheel power and
+opposed 55° programs; the isolated tender hoist still needs commissioning.
+The railway, Hypertube and pneumatic logistics settlement demonstrations remain
+under construction. Seven actual-settlement cinematics are registered by the
+running server; their client rendering and full settlement coverage still need review.
 
 Distant Horizons + SeedGen is the selected distant-terrain architecture. Voxy and
 Roxy remain excluded. Kappa, Bliss and six other shader choices are pinned;

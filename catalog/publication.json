@@ -6,7 +6,29 @@
       "version": "0.1.0-candidate.23",
       "git_tag": "awft-0.1.0-candidate.23",
       "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
-      "status": "prerelease"
+      "status": "prerelease",
+      "tagged_metadata_exclusions": {
+        "mods/alltuttasneeds.pw.toml": {
+          "sha256": "88bab5fdeffc988f2df759a91ad064670f9c3fa63f84be5d0c11360e9b1ffc4c",
+          "reason": "Reviewed leftover All Tutta's Needs metadata in the immutable candidate.23 tag; absent from its active lock and index. Preserve tagged source bytes and omit only this unindexed file from the public payload."
+        },
+        "mods/obsidianui.pw.toml": {
+          "sha256": "fcc9c5d52090269ad33b3fc636527cf4b3c2fd5b4a532f077df550be4c35e1cf",
+          "reason": "Reviewed leftover ObsidianUI metadata in the immutable candidate.23 tag; absent from its active lock and index. Preserve tagged source bytes and omit only this unindexed file from the public payload."
+        },
+        "mods/ryoamiclights.pw.toml": {
+          "sha256": "3f83ca7523ed54265d4c92d6684bdcfa06bdf37d0bb60030eb287e7c7ec89e4b",
+          "reason": "Reviewed leftover RyoamicLights metadata in the immutable candidate.23 tag; absent from its active lock and index. Preserve tagged source bytes and omit only this unindexed file from the public payload."
+        },
+        "mods/sodium-dynamic-lights.pw.toml": {
+          "sha256": "2240050c30955f6437d6723ce1d15453081abf9e6eb57abe474cc65366802b5f",
+          "reason": "Reviewed leftover Sodium Dynamic Lights metadata in the immutable candidate.23 tag; absent from its active lock and index. Preserve tagged source bytes and omit only this unindexed file from the public payload."
+        },
+        "mods/sodium-options-api.pw.toml": {
+          "sha256": "6601a7ddfa924542d59cb9fab30acb9df1f9a29d5114e726b07c66518f953783",
+          "reason": "Reviewed leftover Sodium Options API metadata in the immutable candidate.23 tag; absent from its active lock and index. Preserve tagged source bytes and omit only this unindexed file from the public payload."
+        }
+      }
     }
   ]
 }

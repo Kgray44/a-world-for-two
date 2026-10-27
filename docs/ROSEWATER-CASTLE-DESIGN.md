@@ -6,10 +6,23 @@ sign remain. The proposal adds a connected palace around that core, with usable
 rooms, stairs, sheltered gardens and a more varied skyline. It is an original
 Minecraft design for KG and Sera; no downloaded schematic or film asset is used.
 
-This document describes a **design generator**, not a finished or visually
-accepted castle. Native installation, room-by-room play, shader review, lighting,
-restart persistence, performance measurements and cinematic integration remain
-separate required work.
+The main 134,821-position castle plan was placed and passed native identity/state
+verification with zero failures at `2026-10-27T01:41:16.710694100Z`; its exact SHA
+is `67f1bd76c75e2c66e4dd6586bb1546a52f20b3d39b00bb37227c00b0a8d1f8d5`.
+Candidate.23 then added and natively verified 465 castle detail positions in 25
+groups, including rooflights, rose gables, carved wall panels and court seats.
+See [the detail-pass record](SETTLEMENT-DETAIL-PASS.md) and its linked sanitized
+runtime evidence for the precise before/after hashes and measured work batches.
+
+These records establish installed block states. Room-by-room play, actual model
+and lighting review, shader quality, full-composite restart persistence, performance measurements
+and cinematic artistic acceptance remain separate required work. This document
+continues to describe the authored design rather than claiming a visually
+accepted castle.
+
+An independent stopped-backup audit matched all 465 new castle detail positions
+after saving, with zero block identity or orientation differences. That scoped
+detail persistence result does not substitute for walking the full castle.
 
 ## Composition and terrain
 

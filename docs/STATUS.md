@@ -31,7 +31,7 @@ Verified backups, unique saves and failed receipts remain preserved.
 | --- | ---: | --- |
 | Original plaza, cottage, gardens, barn, tree and harbor core | 96,019 | Earlier block/state/inventory verification passed |
 | Lanternwater pirate quarter | 104,341 | Earlier block/state/inventory verification passed |
-| River drawbridge structure | 12,317 | Physical verification passed; control cycles pending |
+| River drawbridge structure | 12,317 | Closed-state verification and two native 55° cycles passed; saved programs verified |
 | South-bank Bramble Steps and Willow Crown | 139,635 | Placed; 19 furnished buildings, 21 landmarks; verification passed |
 | Expanded Rosewater Castle | 134,821 | Placed; 40 named rooms; verification passed |
 | Offshore Rosewater Resolute | 23,735 | Placed; verification passed |
@@ -62,9 +62,14 @@ gangway walking and wet-hull checks remain pending. See [harbor design](GRAND-HA
 [castle design](ROSEWATER-CASTLE-DESIGN.md) and [south-bank design](SOUTH-BANK-DESIGN.md).
 
 The drawbridge's real water wheels measured 8 RPM, with 2 RPM at both sequencers
-and no overstress. This establishes power, not successful opening and closing.
-Button/radio signaling, leaf direction, clearance, repeated cycles and persistence
-remain under commissioning. Failed attempts remain available for diagnosis.
+and no overstress. Both bank buttons and the native radio network completed two
+full opposed 55° opening/closing cycles. All 11 temporary simulation tickets were
+released. Exact closed-state verification checked 12,317 positions with zero
+differences. An independent verified stopped-save audit confirmed both 55°
+reversible programs, closed/disassembled bearings and radio/power data persisted.
+Direct post-restart cycles and fully rigged vessel passage remain separate;
+automated mechanism tests are paused while the owner explores. Failed attempts
+remain preserved. See [the native checkpoint](../evidence/runtime/drawbridge-candidate.23.json).
 
 The candidate.22 restart recovery attempt stopped before sending an input because
 the saved bearings had no live contraption attachment. Its failed receipt is
@@ -76,9 +81,21 @@ native entity loading and ticking, completed kinetic initialization, actual live
 controller attachment, nonzero finite input RPM and no overstress. Failed ticket
 cleanup retains the exact handles and blocks further admission until an explicit
 cleanup succeeds. **48 regression checks passed against the actual built JAR's
-phase, power, stress, simulation and attachment predicates.** Native reattachment,
-90° recovery, 55° cycles, button/radio operation, clearance and persistence remain
-pending; the Java checks do not establish those Minecraft results.
+phase, power, stress, simulation and attachment predicates.** Subsequent actual
+Minecraft results established native attachment readiness, safe 90° recovery,
+55° cycles and button/radio operation. The earlier dry-channel expectation failed
+at 80 cells: all were naturally flowing water within the two authored wheel
+channels. A finite verify-only derivative corrected those expectations; it found
+no missing solid blocks or orientation differences and passed all 12,317 checks.
+The original plan and failed receipt remain preserved. That derivative must never
+be placed. Java predicate checks remain separate from the native results.
+
+The five-district architectural detail pass added 1,593 changes in 165 feature
+groups. Native before/place/after checks passed, and an independent stopped-backup
+audit matched every final position with zero identity or orientation differences.
+This verifies saved construction, not 3D beauty. The railway, processing line,
+Hypertube and Overpressure settlement demonstrations are still being prepared;
+their mod installation alone does not establish an operating attraction.
 
 Construction is budgeted, but a single engine action can exceed the soft work
 slice: south-bank placement recorded a 4,155 ms maximum slice while loading/placing.
@@ -90,8 +107,10 @@ settlement idle and nearby-player performance still need measurement.
 Seven new settlement scenes passed the pinned Lumiera JSON parser and native NBT
 roundtrip probe. The prepared first-join scene is 24 seconds around the actual
 core; castle, port and four ships have separate local tours. The scene ZIP is now
-installed in the official save's datapacks directory. **Activation awaits the final
-startup registry check for all seven scenes.** Delivery, real client rendering and
+installed in the official save's datapacks directory. **The restarted server's
+actual Lumiera registry contains all seven scenes plus the earlier intro.**
+The verified stopped backup contains the exact 14,942-byte scene ZIP in the
+correct save. Delivery, real client rendering and
 skip/return behavior for these scenes remain pending.
 
 The refreshed geometry manifest binds all ten verified construction sources,
@@ -125,6 +144,14 @@ mechanism or multiplayer pass.
 - Earlier gameplay commonly measured about 20 TPS, 7–14 ms/tick and focused
   59–60 FPS. Fast-travel terrain arrival remained slow; some samples had under
   1 GiB free system RAM. No new full-settlement performance improvement is claimed.
+- A new five-minute official-world session with KG connected and both server and
+  client running recorded 31 samples: median 20.00 TPS, median 12.82 ms/tick and
+  22.16 ms/tick at the 95th percentile of sampled means. Server RSS median was
+  3.55 GiB and heap use 2.11 GiB. The Complementary Reimagined client measured
+  18–33 FPS (median 26), RSS 8.71 GiB and a 6 GiB maximum Java heap. Available host
+  RAM ranged 0.36–1.63 GiB. These are current observations, not a performance
+  improvement or a two-player benchmark. Shader/client cost still needs tuning.
+  See [the measured session](../evidence/runtime/owner-play-candidate.23.json).
 - The idle investigation reproduced 1,682 chunk holders with nine deliberately
   forced chunks, then returned to 841 after removal and five minutes idle. Baseline
   was 49 full, 25 block-ticking, nine entity-ticking, zero forced and one spawn
@@ -145,11 +172,25 @@ The candidate.23 **Prism** starter is staged: **6,308,426 bytes**, SHA-256
 It configures a 6 GiB client heap and opens the normal multiplayer list from
 **Join Our World**, with separate public and KG-local entries. Packaging and native
 server-list, archive integrity, bootstrap chain and original artwork identity checks
-passed for this exact export. Public artifact/Packwiz publication, a clean native
-Prism import through pre-launch and current client startup remain pending.
+passed for this exact export. Public Packwiz publication, a clean native
+Prism import through pre-launch and startup from the exact public starter remain
+pending. KG's existing owned client matched all current client artifact pins and
+joined the official server; its local direct-connect menu override and already
+installed files do not establish a fresh public-starter import.
 See [the release process](RELEASING.md).
 
-Finish drawbridge/hoist and other transport/logistics commissioning, current-world
+The compatibility prerelease is public at
+[compat-0.1.0](https://github.com/Kgray44/a-world-for-two/releases/tag/compat-0.1.0).
+All 13 assets passed independent unauthenticated public size/hash checks, including
+the four exact custom-artifact URLs used by Packwiz. Source CI passed after its
+test fixture was made independent of ignored private receipts. The immutable
+candidate.23 source tag is retained; publication caught five obsolete metadata
+records outside the active index. Their explicit, hash-bound publication exclusions
+now pass 14 publisher tests; the packaged tree contains only indexed files and
+manifests, with omission proofs retained. Pages deployment remains pending; no
+active mod pins changed.
+
+Finish direct post-restart drawbridge cycles, hoist and other transport/logistics commissioning, current-world
 restart and restore checks, complete mod-feature coverage, remote multiplayer,
 shader review, terrain-arrival measurements, cinematic activation and full visual
 refinement. Publish and verify the exact GitHub source, Pages manifests, authorized

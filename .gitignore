@@ -14,6 +14,10 @@ evidence/runtime/*
 !evidence/runtime/seedgen-fingerprint-failure.json
 !evidence/runtime/client-input-profile.json
 !evidence/runtime/permanent-settlement-construction.json
+!evidence/runtime/drawbridge-candidate.23.json
+!evidence/runtime/settlement-detail-candidate.23.json
+!evidence/runtime/settlement-cinematics-candidate.23.json
+!evidence/runtime/owner-play-candidate.23.json
 !evidence/runtime/seedgen-native-fingerprint.json
 .local/
 exports/*.zip

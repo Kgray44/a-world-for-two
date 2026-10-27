@@ -25,6 +25,7 @@ MAX_SNAPSHOT_BYTES = 64*1024**2
 MAX_FILE_BYTES = 8*1024**2
 MAX_SNAPSHOTS = 16
 MAX_MEMBERS = 5000
+MAX_METADATA_EXCLUSIONS = 32
 VERSION = re.compile(r'[A-Za-z0-9][A-Za-z0-9._-]{0,79}')
 SECRET_FIELDS = {'accounts','account','accesstoken','refreshtoken','clienttoken',
                  'password','privatekey','apikey','sessiontoken','credentials'}
@@ -46,8 +47,11 @@ def approved_catalog(path):
         raise UserError('Approve between one and sixteen immutable snapshots')
     seen=set();tags=set()
     for row in rows:
-        if not isinstance(row,dict) or set(row)!={'version','git_tag','pack_sha256','status'}:
+        required={'version','git_tag','pack_sha256','status'}
+        if (not isinstance(row,dict) or not required<=set(row)
+                or set(row)-required-{'tagged_metadata_exclusions'}):
             raise UserError('Invalid snapshot approval')
+        metadata_exclusions(row.get('tagged_metadata_exclusions',{}))
         version=row['version']
         if not isinstance(version,str) or not VERSION.fullmatch(version):
             raise UserError('Invalid publication version')
@@ -61,6 +65,20 @@ def approved_catalog(path):
         if row['status'] not in ('prerelease','qualified'):
             raise UserError('Unknown approved snapshot status')
     return data
+
+
+def metadata_exclusions(value):
+    """Only individually reviewed, byte-bound stale mod metadata may be omitted."""
+    if not isinstance(value,dict) or len(value)>MAX_METADATA_EXCLUSIONS:
+        raise UserError('Approve at most 32 explicit tagged metadata exclusions')
+    for name,review in value.items():
+        if (not isinstance(name,str) or not re.fullmatch(r'mods/[A-Za-z0-9][A-Za-z0-9._-]{0,127}\.pw\.toml',name)
+                or not isinstance(review,dict) or set(review)!={'sha256','reason'}
+                or not isinstance(review['sha256'],str) or not re.fullmatch('[a-f0-9]{64}',review['sha256'])
+                or not isinstance(review['reason'],str) or not review['reason'].strip()
+                or len(review['reason'])>1024):
+            raise UserError('Tagged metadata exclusion needs an explicit mods/*.pw.toml path, SHA-256 and review reason')
+    return value
 
 
 def git_commit(repo,tag):
@@ -157,6 +175,25 @@ def no_account_fields(value):
         for item in value:no_account_fields(item)
 
 
+def snapshot_payload(pack,index,row):
+    expected={'pack.toml','index.toml'}|{entry['file'] for entry in index['files']}
+    if len(expected)!=2+len(index['files']):raise UserError('Duplicate Packwiz index entry')
+    excluded=metadata_exclusions(row.get('tagged_metadata_exclusions',{}))
+    if set(excluded)&expected:
+        raise UserError('Indexed Packwiz files cannot be excluded from publication')
+    actual={p.relative_to(pack).as_posix() for p in pack.rglob('*') if p.is_file()}
+    if actual!=expected|set(excluded):
+        raise UserError('Unindexed tagged files must exactly match reviewed metadata exclusions')
+    proofs=[]
+    for name,review in sorted(excluded.items()):
+        path=pack/name
+        if digest(path)!=review['sha256']:
+            raise UserError('Approved excluded metadata SHA-256 changed: '+name)
+        proofs.append({'file':name,'sha256':review['sha256'],'bytes':path.stat().st_size,
+                       'reason':review['reason'],'indexed':False,'published':False})
+    return expected,proofs
+
+
 def validate_snapshot(directory,row):
     pack=directory/'packwiz';lock_path=directory/'catalog/lock.json'
     if not (pack/'pack.toml').is_file() or not lock_path.is_file():raise UserError('Tag lacks packwiz and release lock')
@@ -173,11 +210,10 @@ def validate_snapshot(directory,row):
     if (manifest.get('index',{}).get('file')!='index.toml' or manifest['index'].get('hash-format')!='sha256'
             or index.get('hash-format')!='sha256' or len(index.get('files',[]))>3000):
         raise UserError('Unsupported tagged Packwiz index')
-    expected={'pack.toml','index.toml'}|{entry['file'] for entry in index['files']}
-    if len(expected)!=2+len(index['files']):raise UserError('Duplicate Packwiz index entry')
-    actual={p.relative_to(pack).as_posix() for p in pack.rglob('*') if p.is_file()}
-    if actual!=expected:raise UserError('Unindexed tagged files are not public payload')
-    for path in pack.rglob('*.pw.toml'):
+    expected,_=snapshot_payload(pack,index,row)
+    for relative in sorted(expected):
+        if not relative.endswith('.pw.toml'):continue
+        path=pack/relative
         meta=tomllib.loads(path.read_text());download=meta['download'];algorithm=download.get('hash-format')
         lengths={'sha1':40,'sha256':64,'sha512':128}
         if algorithm not in lengths or not re.fullmatch('[a-f0-9]{'+str(lengths[algorithm])+'}',download.get('hash','')):
@@ -245,10 +281,17 @@ def build(repo=REPO,catalog=None,output=None):
             archive=work/(str(number)+'.tar');archive_bytes=archive_tag(repo,commit,archive)
             extracted=work/str(number);payload_bytes=extract_tag(archive,extracted)
             _,files=validate_snapshot(extracted,row)
+            import tomllib
+            members,exclusion_proofs=snapshot_payload(extracted/'packwiz',
+                tomllib.loads((extracted/'packwiz/index.toml').read_text()),row)
             destination=stage/'releases'/row['version']
-            shutil.copytree(extracted/'packwiz',destination)
+            destination.mkdir(parents=True)
+            for relative in sorted(members):
+                target=destination/relative;target.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copyfile(extracted/'packwiz'/relative,target)
             shutil.copyfile(extracted/'catalog/lock.json',destination/'lock.json')
-            rows.append(row|{'git_commit':commit,'files':files,'archive_bytes':archive_bytes,'payload_bytes':payload_bytes})
+            rows.append(row|{'git_commit':commit,'files':files,'archive_bytes':archive_bytes,'payload_bytes':payload_bytes,
+                             'tagged_metadata_exclusions_verified':exclusion_proofs})
         if (stage/'pack.toml').exists() or (stage/'index.toml').exists():raise UserError('Stable root manifest must remain absent')
         (stage/'index.html').write_text(index_html(rows),encoding='utf-8')
         (stage/'.nojekyll').touch()

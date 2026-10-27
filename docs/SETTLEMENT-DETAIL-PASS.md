@@ -14,8 +14,9 @@ claim that this pass completes the owner's cinematic artistic requirements.
 
 ## Designed changes
 
-The final in-memory assembly against the actual registry and deployed source
-composite admits **1,593 changed positions in five independent district plans**.
+The final assembly against the actual registry and deployed source composite
+contains **1,593 changed positions in five independent district plans**. The
+candidate.23 native server has placed and verified these exact five deltas.
 Its 165 feature records include individual chimney flues; that number does not
 mean 165 buildings or 165 large interventions.
 
@@ -41,6 +42,56 @@ window hoods, and Handcrafted benches furnish two small paved court pockets.
 Two proposed cottage hoods are deliberately deferred: their positions contain
 the existing upper porch deck. That deck is preserved instead of being silently
 replaced to force the detail into place.
+
+## Native installation record: candidate.23
+
+On `2026-10-27`, candidate.23 with Control Bridge **0.6.9** completed all five
+districts in this order: exact before-state verification, placement, exact
+after-state verification, and native Squaremap dirty-chunk notification. All
+twenty archived operation receipts completed with **zero failures**. The final
+map-queue receipt finished at `03:22:28.215140400Z`.
+
+The run checked **2,640 before-state target/attachment positions** across the
+five precondition plans and **1,593 resulting states** after placement. It queued
+91 chunk notifications across the districts; those notifications may overlap
+and do not prove that every rendered browser tile has been reviewed.
+
+Full plan hashes, individual receipt hashes, timestamps and reported timings are
+preserved in the sanitized [candidate.23 runtime evidence](../evidence/runtime/settlement-detail-candidate.23.json).
+The bundle index SHA-256 is
+`d0926cb2a2ddab006cc046b7429817937303eb4e69e977d67773cf774854a357`.
+
+| District | Before positions | Changed positions | Groups | Maximum placement work, ms | Construction SHA prefix |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Castle | 809 | 465 | 25 | 13.7826 | `633363d69ef8` |
+| Village | 171 | 114 | 4 | 51.1710 | `1180e198d679` |
+| Pirate port | 454 | 288 | 42 | 39.2782 | `a90c32c1a3a2` |
+| South bank | 796 | 498 | 82 | 124.5632 | `fa362ed24356` |
+| Harbor quays | 410 | 228 | 12 | 8.3878 | `1eef0e316ece` |
+
+These are actual receipt-reported maximum native work batches during
+construction. The largest before-check batch was **13.9915 ms**, the largest
+placement batch **124.5632 ms**, the largest reported after-check batch
+**11.9243 ms**, and the largest reported map-queue batch **0.7992 ms**. The
+village after-check and map receipts contain no work timing; their values remain
+unknown. These measurements describe construction jobs only. Steady-state TPS,
+MSPT, CPU, RAM and client rendering require separate measurements.
+
+The 1,047 block-entity exclusions and 15,302 route-clearance cells are **source
+preflight custody**, supported by the exact predecessor plans and historical
+surveys. Native before/after checks cover the specified targets and attachments.
+They do not amount to a new audit of every preserved inventory or a walk-through
+of every route. Future full verification must compose these five intentional
+deltas over the ten predecessor plans, preserving the original receipts as
+historical evidence.
+
+Saved-data persistence **passed**: an independent audit of the verified stopped
+backup checked all 1,593 final positions, with zero identity or semantic orientation
+differences. The server subsequently restarted. This is saved-state evidence;
+live walking and model behavior remain separate checks.
+Actual model shapes, roof junctions, lighting, route/station use and shader
+quality also remain pending. Successful block identity checks establish the
+installed geometry states; artistic acceptance requires actual 3D review.
 
 ## Coordinate inventory
 
@@ -115,8 +166,8 @@ prepare_clearance(home, destination=None)  # small verify-only probe, no placeme
 Each architectural feature is transactional. An unknown previous state,
 unapproved solid replacement, unsupported component, overlapping feature,
 protected inventory, doorway/window buffer, existing vessel/drawbridge voxel,
-or recorded route conflict rejects that entire feature. The actual assembly
-protects 1,047 historically discovered/supplied block entities and 15,302
+or recorded route conflict rejects that entire feature. The source preflight
+excludes 1,047 historically discovered/supplied block entities and 15,302
 recorded route-clearance cells. Existing inventories, signs, furniture,
 machines, moving bridge geometry, ships and cannons are preserved. Existing
 full-block deck inlays keep their solid walking surface. No mobs, explosives,
@@ -130,7 +181,8 @@ The parent remains the sole live-world writer.
 
 ## Parent deployment and remaining proof
 
-For each district, in order:
+The candidate.23 run followed the first three steps below. Future revisions
+must repeat them against their own exact candidate and current backup:
 
 1. Bind the current verified backup and freshly verify the exact companion
    precondition SHA against the real world. It includes **every replacement
@@ -141,10 +193,13 @@ For each district, in order:
 4. Inspect actual exterior/interior model shapes, daylight/night lighting,
    overhang and roof junctions, window visibility, routes and working stations.
 
-Native placement, fresh before/after verification, restart persistence,
-walkthrough, measured performance and shader review of this detail pass are
-pending. Top-down map review and synthetic tests cannot prove cinematic quality.
-No Minecraft client is launched while the owner is playing another game.
+Native placement, fresh before/after verification and map-queue submission
+passed for the recorded candidate.23 plans. Exact saved-state persistence also
+passed. Walkthrough, steady-state performance, rendered-map review and shader
+review remain separate acceptance work.
+Top-down map review and synthetic tests cannot prove cinematic quality.
+Minecraft stayed closed while the owner played another game; KG's client was
+launched after the owner closed it and explicitly requested the Minecraft client.
 
 Storage compliance here covers these bounded owned writers and live reserve
 checks. It is a monitoring rule; it does not impose a quota on external games,

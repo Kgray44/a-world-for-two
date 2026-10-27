@@ -1,0 +1,198 @@
+{
+  "at": "2026-10-27T04:03:54.556013+00:00",
+  "candidate": "0.1.0-candidate.23",
+  "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+  "scope": "Five-minute voluntary owner exploration on official server with KG client simultaneously running;31 samples at10second intervals; no scripted world edits; not a controlled terrain-generation or two-player benchmark",
+  "start": "2026-10-27T03:52:58.148774+00:00",
+  "end": "2026-10-27T03:57:58.057551+00:00",
+  "elapsed_seconds": 300.016,
+  "players_online": 1,
+  "bf6": "closed by owner before this session",
+  "raw_private_receipt_sha256": "9e5ecfafdfd57c2bdc3fab59c83f901c0fd7398f1def51e41a5ac83e23c7906c",
+  "units": {
+    "memory": "bytes",
+    "server_cpu": "percentage of whole host CPU capacity",
+    "mspt": "mean tick milliseconds reported by bridge per sample; percentile below is across sampled means, not individual ticks",
+    "tps": "wall-clock estimator; short catch-up/jitter windows can report slightly above20",
+    "gc_pause_ms": "most recent log pause; not interval total"
+  },
+  "measurements": {
+    "tps": {
+      "samples": 31,
+      "min": 19.159117508695246,
+      "median": 20.001639738386473,
+      "p95_nearest_rank": 20.178690495688933,
+      "max": 20.946891251919883
+    },
+    "mspt": {
+      "samples": 31,
+      "min": 9.906930693069308,
+      "median": 12.824782178217824,
+      "p95_nearest_rank": 22.161642574257424,
+      "max": 24.02866380952381
+    },
+    "server_rss": {
+      "samples": 31,
+      "min": 3497349120.0,
+      "median": 3806973952.0,
+      "p95_nearest_rank": 3818041344.0,
+      "max": 3820920832.0
+    },
+    "heap_used": {
+      "samples": 31,
+      "min": 1621484368.0,
+      "median": 2267034264.0,
+      "p95_nearest_rank": 2954900120.0,
+      "max": 3025902232.0
+    },
+    "heap_max": {
+      "samples": 31,
+      "min": 8589934592.0,
+      "median": 8589934592.0,
+      "p95_nearest_rank": 8589934592.0,
+      "max": 8589934592.0
+    },
+    "server_cpu": {
+      "samples": 31,
+      "min": 8.61875,
+      "median": 15.86875,
+      "p95_nearest_rank": 23.91875,
+      "max": 25.80625
+    },
+    "host_cpu": {
+      "samples": 31,
+      "min": 51.3,
+      "median": 67.4,
+      "p95_nearest_rank": 86.1,
+      "max": 86.3
+    },
+    "host_memory_available": {
+      "samples": 31,
+      "min": 384237568.0,
+      "median": 552439808.0,
+      "p95_nearest_rank": 1593634816.0,
+      "max": 1745178624.0
+    },
+    "loaded_chunks": {
+      "samples": 31,
+      "min": 1519.0,
+      "median": 1521.0,
+      "p95_nearest_rank": 1550.0,
+      "max": 1560.0
+    },
+    "entities": {
+      "samples": 31,
+      "min": 183.0,
+      "median": 212.0,
+      "p95_nearest_rank": 249.0,
+      "max": 333.0
+    },
+    "gc_pause_ms": {
+      "samples": 31,
+      "min": 0.271,
+      "median": 21.2,
+      "p95_nearest_rank": 51.95,
+      "max": 77.417
+    }
+  },
+  "client": {
+    "rss": {
+      "samples": 31,
+      "min": 9186131968.0,
+      "median": 9357148160.0,
+      "p95_nearest_rank": 9564626944.0,
+      "max": 9578786816.0
+    },
+    "cpu_percent_host": {
+      "samples": 31,
+      "min": 14.1,
+      "median": 20.33125,
+      "p95_nearest_rank": 35.35625,
+      "max": 36.48125
+    },
+    "fps": {
+      "samples": 31,
+      "min": 18.0,
+      "median": 26.0,
+      "p95_nearest_rank": 30.0,
+      "max": 33.0
+    },
+    "heap_used": {
+      "samples": 31,
+      "min": 5317591104.0,
+      "median": 5823525760.0,
+      "p95_nearest_rank": 6064185056.0,
+      "max": 6064185056.0
+    },
+    "heap_max": {
+      "samples": 31,
+      "min": 6442450944.0,
+      "median": 6442450944.0,
+      "p95_nearest_rank": 6442450944.0,
+      "max": 6442450944.0
+    },
+    "in_world_samples": 31,
+    "focused_samples": 31,
+    "shader_configuration_observed_after_recording": {
+      "enabled": true,
+      "filename": "ComplementaryReimagined_r5.9.3.zip",
+      "scope": "Read from the existing owned client iris.properties; shader state was not independently sampled in every metric row"
+    }
+  },
+  "dimensions": {
+    "minecraft:overworld": {
+      "loaded_chunks": {
+        "samples": 31,
+        "min": 1519.0,
+        "median": 1521.0,
+        "p95_nearest_rank": 1550.0,
+        "max": 1560.0
+      },
+      "entities": {
+        "samples": 31,
+        "min": 183.0,
+        "median": 212.0,
+        "p95_nearest_rank": 249.0,
+        "max": 333.0
+      }
+    },
+    "minecraft:the_end": {
+      "loaded_chunks": {
+        "samples": 31,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      },
+      "entities": {
+        "samples": 31,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      }
+    },
+    "minecraft:the_nether": {
+      "loaded_chunks": {
+        "samples": 31,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      },
+      "entities": {
+        "samples": 31,
+        "min": 0.0,
+        "median": 0.0,
+        "p95_nearest_rank": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "limits": [
+    "No clean idle period or player-disconnect phase in this recording",
+    "No current second-player or WAN acceptance",
+    "Client exposes rolling frame summaries; no full frame capture or controlled input-latency trace",
+    "Host RAM headroom remained limited; do not infer a performance improvement against earlier different workloads"
+  ]
+}

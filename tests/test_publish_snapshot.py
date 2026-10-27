@@ -27,9 +27,9 @@ class PublicationTests(unittest.TestCase):
     def git(self,*args):
         return subprocess.run(['git','-C',str(self.repo),*args],check=True,capture_output=True,text=True).stdout.strip()
 
-    def snapshot(self,number,text='reviewed configuration'):
+    def snapshot(self,number,text='reviewed configuration',mods=()):
         version='0.1.0-candidate.'+str(number)
-        lock={'version':version,'minecraft':'1.21.1','neoforge':'21.1.262','java':21,'mods':[]}
+        lock={'version':version,'minecraft':'1.21.1','neoforge':'21.1.262','java':21,'mods':list(mods)}
         config=self.repo/'packwiz/config/example.toml';config.parent.mkdir(parents=True,exist_ok=True)
         config.write_text('description = '+json.dumps(text)+'\n')
         write_json(self.repo/'catalog/lock.json',lock)
@@ -42,6 +42,16 @@ class PublicationTests(unittest.TestCase):
         target=self.repo/'catalog/publication.json'
         write_json(target,{'format':'awft-publication:1','stable':stable,'snapshots':rows})
         return target
+
+    def add_tagged_metadata(self,row,name='retired'):
+        relative='mods/'+name+'.pw.toml'
+        path=self.repo/'packwiz'/relative;path.parent.mkdir(exist_ok=True)
+        path.write_text('name = "Retired synthetic fixture"\nfilename = "retired.jar"\nside = "both"\n'
+                        '[download]\nurl = "https://example.invalid/retired.jar"\nhash-format = "sha256"\n'
+                        'hash = "'+'0'*64+'"\n')
+        self.git('add','packwiz/'+relative);self.git('commit','-qm','Retired synthetic metadata')
+        self.git('tag','-f',row['git_tag'])
+        return relative,{'sha256':digest(path),'reason':'Synthetic reviewed leftover; absent from this fixture lock and index'}
 
     def test_all_approved_old_tags_survive_and_dirty_main_is_not_published(self):
         first=self.snapshot(1,'first approved snapshot')
@@ -103,6 +113,76 @@ class PublicationTests(unittest.TestCase):
         self.git('tag','-f',row['git_tag'])
         with self.assertRaisesRegex(UserError,'Runtime binaries'):
             build(self.repo,self.catalog([row]),self.base/'public')
+
+    def test_reviewed_unindexed_metadata_is_proved_and_never_copied(self):
+        row=self.snapshot(1);relative,review=self.add_tagged_metadata(row)
+        row['tagged_metadata_exclusions']={relative:review}
+        output=self.base/'public'
+        receipt=build(self.repo,self.catalog([row]),output)
+        target=output/'releases'/row['version']
+        self.assertFalse((target/relative).exists())
+        self.assertEqual({p.relative_to(target).as_posix() for p in target.rglob('*') if p.is_file()},
+                         {'pack.toml','index.toml','config/example.toml','lock.json'})
+        self.assertEqual(digest(target/'pack.toml'),row['pack_sha256'])
+        proof=receipt['snapshots'][0]['tagged_metadata_exclusions_verified']
+        self.assertEqual(len(proof),1)
+        self.assertEqual(proof[0]['file'],relative)
+        self.assertEqual(proof[0]['sha256'],review['sha256'])
+        self.assertEqual(proof[0]['reason'],review['reason'])
+        self.assertFalse(proof[0]['indexed'])
+        self.assertFalse(proof[0]['published'])
+        self.assertEqual(digest(self.repo/'packwiz'/relative),review['sha256'])
+
+    def test_tampered_reviewed_metadata_fails_closed(self):
+        row=self.snapshot(1);relative,review=self.add_tagged_metadata(row)
+        row['tagged_metadata_exclusions']={relative:review}
+        path=self.repo/'packwiz'/relative
+        path.write_text(path.read_text()+'# changed after review\n')
+        self.git('add','packwiz/'+relative);self.git('commit','-qm','Tampered synthetic metadata')
+        self.git('tag','-f',row['git_tag'])
+        output=self.base/'public'
+        with self.assertRaisesRegex(UserError,'excluded metadata SHA-256 changed'):
+            build(self.repo,self.catalog([row]),output)
+        self.assertFalse(output.exists())
+
+    def test_unknown_or_missing_exclusion_path_cannot_be_ignored(self):
+        row=self.snapshot(1);relative,review=self.add_tagged_metadata(row)
+        row['tagged_metadata_exclusions']={relative:review}
+        unknown,unknown_review=self.add_tagged_metadata(row,'unknown')
+        output=self.base/'public'
+        with self.assertRaisesRegex(UserError,'exactly match reviewed'):
+            build(self.repo,self.catalog([row]),output)
+        self.assertFalse(output.exists())
+        row['tagged_metadata_exclusions'][unknown]=unknown_review
+        row['tagged_metadata_exclusions']['mods/not-in-tag.pw.toml']=review.copy()
+        with self.assertRaisesRegex(UserError,'exactly match reviewed'):
+            build(self.repo,self.catalog([row]),output)
+
+    def test_indexed_mod_metadata_cannot_be_excluded(self):
+        mod={'project_id':'fixture','version_id':'fixture.1','slug':'indexed','name':'Indexed synthetic fixture',
+             'filename':'indexed.jar','kind':'mod','side':'both','url':'https://example.invalid/indexed.jar',
+             'hashes':{'sha256':'0'*64},'dependencies':[]}
+        row=self.snapshot(1,mods=[mod])
+        relative='mods/indexed.pw.toml'
+        row['tagged_metadata_exclusions']={relative:{'sha256':digest(self.repo/'packwiz'/relative),
+                                                   'reason':'Synthetic attempted removal of an active indexed pin'}}
+        output=self.base/'public'
+        with self.assertRaisesRegex(UserError,'Indexed Packwiz files cannot be excluded'):
+            build(self.repo,self.catalog([row]),output)
+        self.assertFalse(output.exists())
+
+    def test_exclusion_catalog_is_finite_and_only_explicit_mod_metadata(self):
+        row=self.snapshot(1)
+        review={'sha256':'0'*64,'reason':'Synthetic review'}
+        for name in ('config/example.toml','mods/*.pw.toml','mods/../outside.pw.toml',
+                     'shaderpacks/retired.pw.toml','mods/retired.jar'):
+            with self.subTest(path=name):
+                row['tagged_metadata_exclusions']={name:review}
+                with self.assertRaisesRegex(UserError,'explicit mods'):
+                    approved_catalog(self.catalog([row]))
+        row['tagged_metadata_exclusions']={'mods/retired'+str(n)+'.pw.toml':review for n in range(33)}
+        with self.assertRaisesRegex(UserError,'at most 32'):
+            approved_catalog(self.catalog([row]))
 
     def test_safe_extract_rejects_links_traversal_and_oversize_without_allocating(self):
         for name in ('packwiz/../outside','/outside','packwiz/config/accounts.json'):

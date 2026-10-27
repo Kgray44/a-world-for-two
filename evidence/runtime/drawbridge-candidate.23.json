@@ -1,0 +1,541 @@
+{
+  "format": "awft-native-drawbridge:1",
+  "at": "2026-10-27T03:59:52.543302+00:00",
+  "candidate": "0.1.0-candidate.23",
+  "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+  "bridge_version": "0.6.9",
+  "bridge_sha256": "79420b1a8d645ad8a041aecc7155eaca6a4fd60993e783cf4287e543b1e42b97",
+  "engineering_plan_sha256": "09b4a8406ea19979362c1c1bb71fed9f4a0bc839e0302d05144a9da0cc0602ff",
+  "scope": "Real official-server native Create bank-button/radio cycles, exact closed-state verification and independent stopped-save audit; graphics and post-restart cycles remain separate",
+  "cycles": {
+    "operation": "commission",
+    "started": "2026-10-27T03:12:25.868104Z",
+    "finished": "2026-10-27T03:12:48.834591900Z",
+    "cycles": 2,
+    "temporary_tickets": 11,
+    "temporary_tickets_released": 11,
+    "temporary_tickets_remaining": 0,
+    "cleanup_required": false,
+    "status": "two native button-driven open/close cycles passed at the reviewed angle; persistence and ship clearance remain separate"
+  },
+  "native_cycle_receipt_sha256": "c59ad0e658515aa9f7c1d80e10e13d857d2ea97a62132b372fd08ac05e668a7a",
+  "observations": [
+    {
+      "stage": "before",
+      "at": "2026-10-27T03:12:26.818948100Z",
+      "systems": [
+        {
+          "name": "North bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1172
+            ],
+            "angle": 0.0,
+            "isRunning": false,
+            "contraption_attached": false,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1172
+            ],
+            "instruction_type": "IDLE",
+            "isIdle": true,
+            "awaiting_input": false,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": true,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1172
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        },
+        {
+          "name": "South bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1116
+            ],
+            "angle": 0.0,
+            "isRunning": false,
+            "contraption_attached": false,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1116
+            ],
+            "instruction_type": "IDLE",
+            "isIdle": true,
+            "awaiting_input": false,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": false,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1116
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:27.378136700Z",
+      "systems": []
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:28.321544Z",
+      "systems": []
+    },
+    {
+      "stage": "open",
+      "at": "2026-10-27T03:12:32.323661700Z",
+      "systems": [
+        {
+          "name": "North bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1172
+            ],
+            "angle": -54.999954,
+            "isRunning": true,
+            "contraption_attached": true,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1172
+            ],
+            "instruction_type": "AWAIT",
+            "isIdle": false,
+            "awaiting_input": true,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": true,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1172
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        },
+        {
+          "name": "South bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1116
+            ],
+            "angle": 54.999954,
+            "isRunning": true,
+            "contraption_attached": true,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1116
+            ],
+            "instruction_type": "AWAIT",
+            "isIdle": false,
+            "awaiting_input": true,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": false,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1116
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:32.823835100Z",
+      "systems": []
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:33.823820100Z",
+      "systems": []
+    },
+    {
+      "stage": "closed",
+      "at": "2026-10-27T03:12:37.817657400Z",
+      "systems": [
+        {
+          "name": "North bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1172
+            ],
+            "angle": 0.0,
+            "isRunning": false,
+            "contraption_attached": false,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1172
+            ],
+            "instruction_type": "IDLE",
+            "isIdle": true,
+            "awaiting_input": false,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": true,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1172
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        },
+        {
+          "name": "South bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1116
+            ],
+            "angle": 0.0,
+            "isRunning": false,
+            "contraption_attached": false,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1116
+            ],
+            "instruction_type": "IDLE",
+            "isIdle": true,
+            "awaiting_input": false,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": false,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1116
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:38.343364300Z",
+      "systems": []
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:39.317391100Z",
+      "systems": []
+    },
+    {
+      "stage": "open",
+      "at": "2026-10-27T03:12:43.327760100Z",
+      "systems": [
+        {
+          "name": "North bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1172
+            ],
+            "angle": -54.999954,
+            "isRunning": true,
+            "contraption_attached": true,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1172
+            ],
+            "instruction_type": "AWAIT",
+            "isIdle": false,
+            "awaiting_input": true,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": true,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1172
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        },
+        {
+          "name": "South bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1116
+            ],
+            "angle": 54.999954,
+            "isRunning": true,
+            "contraption_attached": true,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1116
+            ],
+            "instruction_type": "AWAIT",
+            "isIdle": false,
+            "awaiting_input": true,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": false,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1116
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:43.825380400Z",
+      "systems": []
+    },
+    {
+      "stage": "button signal",
+      "at": "2026-10-27T03:12:44.823939700Z",
+      "systems": []
+    },
+    {
+      "stage": "closed",
+      "at": "2026-10-27T03:12:48.834591900Z",
+      "systems": [
+        {
+          "name": "North bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1172
+            ],
+            "angle": 0.0,
+            "isRunning": false,
+            "contraption_attached": false,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1172
+            ],
+            "instruction_type": "IDLE",
+            "isIdle": true,
+            "awaiting_input": false,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": true,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1172
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        },
+        {
+          "name": "South bascule leaf",
+          "bearing": {
+            "position": [
+              1199,
+              70,
+              -1116
+            ],
+            "angle": 0.0,
+            "isRunning": false,
+            "contraption_attached": false,
+            "getSpeed": 0.0,
+            "isOverStressed": false
+          },
+          "sequencer": {
+            "position": [
+              1203,
+              70,
+              -1116
+            ],
+            "instruction_type": "IDLE",
+            "isIdle": true,
+            "awaiting_input": false,
+            "previous_powered": false,
+            "program_open_degrees": 55,
+            "program_open_negative": false,
+            "program_reversible": true,
+            "getSpeed": 2.0,
+            "isOverStressed": false
+          },
+          "wheel": {
+            "position": [
+              1225,
+              68,
+              -1116
+            ],
+            "getSpeed": 8.0,
+            "getGeneratedSpeed": 8.0,
+            "isOverStressed": false
+          }
+        }
+      ]
+    }
+  ],
+  "closed_geometry": {
+    "operation": "verify",
+    "started": "2026-10-27T03:26:24.359456Z",
+    "finished": "2026-10-27T03:26:27.516278500Z",
+    "plan_sha256": "b57a355822c8729e9fa51c0e13dc3a94786a7a4b01edfbf8e34a8ebe60955d28",
+    "blocks": 12317,
+    "failures": 0,
+    "status": "verified actual block identities, orientation, block entities and supplied inventories",
+    "max_work_ms": 1.9136
+  },
+  "closed_geometry_receipt_sha256": "b420083ab13064d9248df46384cae423385f8e788aa652ee9fc551fc27cbcfe9",
+  "hydraulic_correction": {
+    "prior_failed_dry_expectation_receipt_sha256": "b5b52df731865b17a1922968d8c5e782e068dc4a97807e16afdfa50710e62610",
+    "differences": 80,
+    "cause": "Authored contained water-wheel channels naturally fill80 planned air positions with flowing water; zero missing solid blocks or semantic orientation differences",
+    "derivative_scope": "Verify-only expectations for those finite80 channel cells; original physical plan and failed receipt preserved. Derivative must never be placed."
+  },
+  "saved_state": {
+    "at": "2026-10-27T03:43:23.677268+00:00",
+    "audit_sha256": "cfea980a259b39859018d2d216c1e3effab4e16c6ad6a37853c6e0d5e8b0da57",
+    "backup_id": "20261027T034106Z-ecd64f",
+    "backup_sha256": "616f1f5eb67b0502b163f3cb756f5000d8498f46847e2fc1d58bfcf3bd752fed",
+    "pass": true,
+    "checks": [
+      "Exact opposed55degree reversible programs persisted, idle and input released",
+      "Both bearings saved closed0degrees, stopped and disassembled",
+      "Water wheels8RPM and sequencers2RPM with zero saved stress",
+      "All four radio roles, frequencies and semantic orientations match"
+    ],
+    "boundary": "Stopped verified saved-data custody; does not prove a new post-restart button cycle"
+  },
+  "pending": [
+    "Direct post-restart native button cycles; deferred while owner explores",
+    "Fully rigged vessel passage and rendered clearance",
+    "Real client 3D/shader review",
+    "Extended clean idle after player disconnect"
+  ]
+}

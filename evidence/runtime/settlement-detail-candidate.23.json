@@ -1,0 +1,509 @@
+{
+  "schema": 1,
+  "candidate": "0.1.0-candidate.23",
+  "control_bridge": "0.6.9",
+  "evidence_tier": "Native dedicated-server before-state checks, placement, after-state checks and Squaremap update queue; artistic and client acceptance remain separate",
+  "recorded_at_utc": "2026-10-27T03:36:31.152244+00:00",
+  "native_completed_at_utc": "2026-10-27T03:22:28.215140400Z",
+  "provenance": {
+    "generator_sha256": "d1382dbda23adb6261f0400f6f5c9ca46edda59845dbb6751018075920603199",
+    "bundle_index_sha256": "d0926cb2a2ddab006cc046b7429817937303eb4e69e977d67773cf774854a357",
+    "native_aggregate_snapshot_sha256": "6b6e458cc1cfa76ca55449713fe10eabf3a16ac5db48231a25e07b474495f479",
+    "verified_backup_sha256": "2eced031e3f94db3a2a1658cd6e3cfd902240103d6572c57a330ab3064a59a0d",
+    "raw_records": "Original private runtime plans and receipts preserved on host; only whitelisted evidence is published"
+  },
+  "totals": {
+    "districts": 5,
+    "changed_positions": 1593,
+    "feature_groups": 165,
+    "before_state_positions_across_districts": 2640,
+    "after_state_positions_across_districts": 1593,
+    "queued_chunk_notifications_across_districts": 91,
+    "queue_notifications_may_overlap": true,
+    "native_operation_failures": 0
+  },
+  "districts": [
+    {
+      "district": "castle",
+      "placements": 465,
+      "feature_groups": 25,
+      "preconditions_sha256": "b92d3aca7024f723ef737581f0ca1f217ad1e86a619d6f41e7d6bfb8391c4f07",
+      "construction_sha256": "633363d69ef872add6946795e73d24e2924ea6af294832f5b29b3af6ecd10900",
+      "native": {
+        "before": {
+          "operation": "verify",
+          "started": "2026-10-27T03:21:06.786102300Z",
+          "finished": "2026-10-27T03:21:09.212705900Z",
+          "plan_sha256": "b92d3aca7024f723ef737581f0ca1f217ad1e86a619d6f41e7d6bfb8391c4f07",
+          "blocks": 809,
+          "failures": 0,
+          "max_work_ms": 4.3208,
+          "archive_basename": "detail-castle-b92d3aca7024-before-verify.json",
+          "archive_sha256": "15bba2ae2082cf8ab8bbbd2fda07b2f035a73986e5dea7cff1e471b102c5c7ac"
+        },
+        "placement": {
+          "operation": "place",
+          "started": "2026-10-27T03:21:13.614601Z",
+          "finished": "2026-10-27T03:21:13.919108900Z",
+          "plan_sha256": "633363d69ef872add6946795e73d24e2924ea6af294832f5b29b3af6ecd10900",
+          "blocks": 465,
+          "failures": 0,
+          "max_work_ms": 13.7826,
+          "archive_basename": "detail-castle-633363d69ef8-place.json",
+          "archive_sha256": "4045010c3e47956d25194ad0bb285fa10b3393d4f304eb973449d743f13197a0"
+        },
+        "after": {
+          "operation": "verify",
+          "started": "2026-10-27T03:21:16.018445Z",
+          "finished": "2026-10-27T03:21:16.119571800Z",
+          "plan_sha256": "633363d69ef872add6946795e73d24e2924ea6af294832f5b29b3af6ecd10900",
+          "blocks": 465,
+          "failures": 0,
+          "max_work_ms": 4.1708,
+          "archive_basename": "detail-castle-633363d69ef8-verify.json",
+          "archive_sha256": "74fdc3859de8cf0249731dcb3097555f907d8a7b5fc8dc2182f801c42da03c05"
+        },
+        "map_queue": {
+          "operation": "map",
+          "started": "2026-10-27T03:21:18.669297200Z",
+          "finished": "2026-10-27T03:21:18.761797100Z",
+          "plan_sha256": "633363d69ef872add6946795e73d24e2924ea6af294832f5b29b3af6ecd10900",
+          "blocks": 465,
+          "failures": 0,
+          "max_work_ms": 0.7992,
+          "queued_chunks": 22,
+          "archive_basename": "detail-castle-633363d69ef8-map.json",
+          "archive_sha256": "e19c216009f69199ef5b12a79cbb0f4dd7c40088e337ca08f68f06e4dcebc27d"
+        }
+      },
+      "deferred_features": 0,
+      "visual_review": "pending"
+    },
+    {
+      "district": "village",
+      "placements": 114,
+      "feature_groups": 4,
+      "preconditions_sha256": "76cfdb5a161ccc3ad046bf236672e3fabaf6433083cf1e255e4c43f1e20eeb94",
+      "construction_sha256": "1180e198d6796b21195a8b4e82853b54ce7eadd95ef03638b44cb8d9deb4603d",
+      "native": {
+        "before": {
+          "operation": "verify",
+          "started": "2026-10-27T03:21:21.266984400Z",
+          "finished": "2026-10-27T03:21:21.426762800Z",
+          "plan_sha256": "76cfdb5a161ccc3ad046bf236672e3fabaf6433083cf1e255e4c43f1e20eeb94",
+          "blocks": 171,
+          "failures": 0,
+          "max_work_ms": 1.0219,
+          "archive_basename": "detail-village-76cfdb5a161c-before-verify.json",
+          "archive_sha256": "afb4394848be0f5d77eb0d81a9f16bcd559f3133b0bb73c0d4276b01044bf5a6"
+        },
+        "placement": {
+          "operation": "place",
+          "started": "2026-10-27T03:21:26.416781500Z",
+          "finished": "2026-10-27T03:21:26.485018400Z",
+          "plan_sha256": "1180e198d6796b21195a8b4e82853b54ce7eadd95ef03638b44cb8d9deb4603d",
+          "blocks": 114,
+          "failures": 0,
+          "max_work_ms": 51.171,
+          "archive_basename": "detail-village-1180e198d679-place.json",
+          "archive_sha256": "710abfa7cf73caea04781ed67cbabe4c0818edc44519939d9e2df899bce3df64"
+        },
+        "after": {
+          "operation": "verify",
+          "started": "2026-10-27T03:21:29.063295500Z",
+          "finished": "2026-10-27T03:21:29.064361900Z",
+          "plan_sha256": "1180e198d6796b21195a8b4e82853b54ce7eadd95ef03638b44cb8d9deb4603d",
+          "blocks": 114,
+          "failures": 0,
+          "max_work_ms": null,
+          "archive_basename": "detail-village-1180e198d679-verify.json",
+          "archive_sha256": "0c7f4c2b8df981ad0ca2521c2128e26e674b90308a4f8170fefe0306c0f9ca45"
+        },
+        "map_queue": {
+          "operation": "map",
+          "started": "2026-10-27T03:21:31.617042100Z",
+          "finished": "2026-10-27T03:21:31.618090500Z",
+          "plan_sha256": "1180e198d6796b21195a8b4e82853b54ce7eadd95ef03638b44cb8d9deb4603d",
+          "blocks": 114,
+          "failures": 0,
+          "max_work_ms": null,
+          "queued_chunks": 5,
+          "archive_basename": "detail-village-1180e198d679-map.json",
+          "archive_sha256": "4079a83609d16c7a83321bdbd63334bd86d9e3d6d49a0d01a142f404be9311c2"
+        }
+      },
+      "deferred_features": 2,
+      "visual_review": "pending"
+    },
+    {
+      "district": "pirate-port",
+      "placements": 288,
+      "feature_groups": 42,
+      "preconditions_sha256": "5629decd2be3c4d7a2ee3ae403e9196392ed3b8b961436571544640ecd09bafb",
+      "construction_sha256": "a90c32c1a3a2b7dbefea09e11d6b456e1d6feed0dd7ae11fb2ad4cf515b206e8",
+      "native": {
+        "before": {
+          "operation": "verify",
+          "started": "2026-10-27T03:21:34.238968700Z",
+          "finished": "2026-10-27T03:21:35.365536900Z",
+          "plan_sha256": "5629decd2be3c4d7a2ee3ae403e9196392ed3b8b961436571544640ecd09bafb",
+          "blocks": 454,
+          "failures": 0,
+          "max_work_ms": 3.0945,
+          "archive_basename": "detail-pirate-port-5629decd2be3-before-verify.json",
+          "archive_sha256": "408981a3f36adc17d6cab215ca2423294c638751dbfb9f9b9dc2d51ec65a2042"
+        },
+        "placement": {
+          "operation": "place",
+          "started": "2026-10-27T03:21:40.364921Z",
+          "finished": "2026-10-27T03:21:40.670862300Z",
+          "plan_sha256": "a90c32c1a3a2b7dbefea09e11d6b456e1d6feed0dd7ae11fb2ad4cf515b206e8",
+          "blocks": 288,
+          "failures": 0,
+          "max_work_ms": 39.2782,
+          "archive_basename": "detail-pirate-port-a90c32c1a3a2-place.json",
+          "archive_sha256": "e947010de61b7fe8b2ac4c59346bcfca333a24552b6c2c33a5d15331c0f5b32b"
+        },
+        "after": {
+          "operation": "verify",
+          "started": "2026-10-27T03:21:42.863540200Z",
+          "finished": "2026-10-27T03:21:42.915509600Z",
+          "plan_sha256": "a90c32c1a3a2b7dbefea09e11d6b456e1d6feed0dd7ae11fb2ad4cf515b206e8",
+          "blocks": 288,
+          "failures": 0,
+          "max_work_ms": 2.3014,
+          "archive_basename": "detail-pirate-port-a90c32c1a3a2-verify.json",
+          "archive_sha256": "eaa9a5aa007d62332db42d345ab8601d6dda76a7e0d1243e0c681f86c5e66296"
+        },
+        "map_queue": {
+          "operation": "map",
+          "started": "2026-10-27T03:21:45.516850200Z",
+          "finished": "2026-10-27T03:21:45.562896400Z",
+          "plan_sha256": "a90c32c1a3a2b7dbefea09e11d6b456e1d6feed0dd7ae11fb2ad4cf515b206e8",
+          "blocks": 288,
+          "failures": 0,
+          "max_work_ms": 0.2356,
+          "queued_chunks": 18,
+          "archive_basename": "detail-pirate-port-a90c32c1a3a2-map.json",
+          "archive_sha256": "0cd8b1f1cd9da1515deafb5158e9ed001d649457dfa4600da687fbb4079000e1"
+        }
+      },
+      "deferred_features": 0,
+      "visual_review": "pending"
+    },
+    {
+      "district": "south-bank",
+      "placements": 498,
+      "feature_groups": 82,
+      "preconditions_sha256": "b73f89378e979a1e202c170975f302ab2929449b5e88c30875ad8c57bac25f59",
+      "construction_sha256": "fa362ed24356f3c6cc42541ab35d8e9d56b86d89dc08e128a6cdf85c6278fc8f",
+      "native": {
+        "before": {
+          "operation": "verify",
+          "started": "2026-10-27T03:21:49.084407500Z",
+          "finished": "2026-10-27T03:21:57.118278900Z",
+          "plan_sha256": "b73f89378e979a1e202c170975f302ab2929449b5e88c30875ad8c57bac25f59",
+          "blocks": 796,
+          "failures": 0,
+          "max_work_ms": 13.9915,
+          "archive_basename": "detail-south-bank-b73f89378e97-before-verify.json",
+          "archive_sha256": "2d90b7fca2afe2f39167f0567f307ea2dd31f04b9befb8683d5b622af08130d2"
+        },
+        "placement": {
+          "operation": "place",
+          "started": "2026-10-27T03:22:03.721251600Z",
+          "finished": "2026-10-27T03:22:04.816030200Z",
+          "plan_sha256": "fa362ed24356f3c6cc42541ab35d8e9d56b86d89dc08e128a6cdf85c6278fc8f",
+          "blocks": 498,
+          "failures": 0,
+          "max_work_ms": 124.5632,
+          "archive_basename": "detail-south-bank-fa362ed24356-place.json",
+          "archive_sha256": "7611fb09d2bcd80498adb651dd82f28f56e65fa60cdbf4645302fc282b338776"
+        },
+        "after": {
+          "operation": "verify",
+          "started": "2026-10-27T03:22:07.814323800Z",
+          "finished": "2026-10-27T03:22:08.520269200Z",
+          "plan_sha256": "fa362ed24356f3c6cc42541ab35d8e9d56b86d89dc08e128a6cdf85c6278fc8f",
+          "blocks": 498,
+          "failures": 0,
+          "max_work_ms": 4.7288,
+          "archive_basename": "detail-south-bank-fa362ed24356-verify.json",
+          "archive_sha256": "26d70b3067b3f186f80e4d2523251f6482d06cc926bbc7e7668055e5ae4d6f13"
+        },
+        "map_queue": {
+          "operation": "map",
+          "started": "2026-10-27T03:22:10.666252700Z",
+          "finished": "2026-10-27T03:22:10.762231200Z",
+          "plan_sha256": "fa362ed24356f3c6cc42541ab35d8e9d56b86d89dc08e128a6cdf85c6278fc8f",
+          "blocks": 498,
+          "failures": 0,
+          "max_work_ms": 0.2084,
+          "queued_chunks": 28,
+          "archive_basename": "detail-south-bank-fa362ed24356-map.json",
+          "archive_sha256": "e4f25a7357668c554952620d4d2cafe68711605257a7dc0b6add5a83aefba36c"
+        }
+      },
+      "deferred_features": 0,
+      "visual_review": "pending"
+    },
+    {
+      "district": "harbor-quays",
+      "placements": 228,
+      "feature_groups": 12,
+      "preconditions_sha256": "6ecc37d0137c36b7486a03db32781632d52edc23550384b3b006354c0dfbd248",
+      "construction_sha256": "1eef0e316ece148bd1d051c12ec4f7c8d709a12ae72bf07eaaa4d3b0eca8a95d",
+      "native": {
+        "before": {
+          "operation": "verify",
+          "started": "2026-10-27T03:22:13.693916200Z",
+          "finished": "2026-10-27T03:22:15.713973800Z",
+          "plan_sha256": "6ecc37d0137c36b7486a03db32781632d52edc23550384b3b006354c0dfbd248",
+          "blocks": 410,
+          "failures": 0,
+          "max_work_ms": 3.2129,
+          "archive_basename": "detail-harbor-quays-6ecc37d0137c-before-verify.json",
+          "archive_sha256": "b569a7ce6dbd49a1e21cdc98dc03e6cbfe9c66718a128a1743fb10b03071aac3"
+        },
+        "placement": {
+          "operation": "place",
+          "started": "2026-10-27T03:22:21.664462700Z",
+          "finished": "2026-10-27T03:22:21.826227500Z",
+          "plan_sha256": "1eef0e316ece148bd1d051c12ec4f7c8d709a12ae72bf07eaaa4d3b0eca8a95d",
+          "blocks": 228,
+          "failures": 0,
+          "max_work_ms": 8.3878,
+          "archive_basename": "detail-harbor-quays-1eef0e316ece-place.json",
+          "archive_sha256": "a089d3b0052de24411fee96b995f65e9109a0d8c9ce3500855bfedfe8b3de4a8"
+        },
+        "after": {
+          "operation": "verify",
+          "started": "2026-10-27T03:22:25.149747700Z",
+          "finished": "2026-10-27T03:22:25.335033Z",
+          "plan_sha256": "1eef0e316ece148bd1d051c12ec4f7c8d709a12ae72bf07eaaa4d3b0eca8a95d",
+          "blocks": 228,
+          "failures": 0,
+          "max_work_ms": 11.9243,
+          "archive_basename": "detail-harbor-quays-1eef0e316ece-verify.json",
+          "archive_sha256": "fe607ca7b06e3cce81d4e2c3503a87435280b8343f03032894cf4b37bbb266b9"
+        },
+        "map_queue": {
+          "operation": "map",
+          "started": "2026-10-27T03:22:28.166129800Z",
+          "finished": "2026-10-27T03:22:28.215140400Z",
+          "plan_sha256": "1eef0e316ece148bd1d051c12ec4f7c8d709a12ae72bf07eaaa4d3b0eca8a95d",
+          "blocks": 228,
+          "failures": 0,
+          "max_work_ms": 0.3011,
+          "queued_chunks": 18,
+          "archive_basename": "detail-harbor-quays-1eef0e316ece-map.json",
+          "archive_sha256": "b08e4f04dc27e22f6ee9080eba64e6370e4eb34ffe799d9805b6ac553d6bbb4f"
+        }
+      },
+      "deferred_features": 0,
+      "visual_review": "pending"
+    }
+  ],
+  "timing_scope": {
+    "unit": "milliseconds",
+    "definition": "Receipt-reported maximum work batch for each native operation; missing timing fields remain null",
+    "maximum_before_verification_ms": 13.9915,
+    "maximum_placement_ms": 124.5632,
+    "maximum_after_verification_ms": 11.9243,
+    "maximum_map_queue_ms": 0.7992,
+    "limits": "Construction-job timings only; no TPS, steady-state MSPT, CPU, RAM, FPS or graphics benchmark is inferred"
+  },
+  "predecessor_geometry": [
+    {
+      "file": "master-45e88a165ed60ce438ec5d87094ed476faeebdaa68693ae6d1835a11eeea6aeb.json",
+      "sha256": "45e88a165ed60ce438ec5d87094ed476faeebdaa68693ae6d1835a11eeea6aeb",
+      "blocks": 96019,
+      "native_verification": {
+        "finished": "2026-10-27T00:22:53.047766700Z",
+        "failures": 0,
+        "receipt_sha256": "5e99b5efd3b746ab192960665b37ea8a572b2046b6f954081367c2c4a0b8950b"
+      }
+    },
+    {
+      "file": "pirate-port-master-3bcc8f6bdfaf4d4ff44805e9fc5e5dee1b5b8b07d50916dba04af20a67ba72ba.json",
+      "sha256": "3bcc8f6bdfaf4d4ff44805e9fc5e5dee1b5b8b07d50916dba04af20a67ba72ba",
+      "blocks": 104341,
+      "native_verification": {
+        "finished": "2026-10-27T00:37:12.845308900Z",
+        "failures": 0,
+        "receipt_sha256": "4e05b1d22107d1f2a492ce513490c4e4c2c28a2b3fac8d33c7cbb4cf78456cc5"
+      }
+    },
+    {
+      "file": "drawbridge-master-cc2bd89a14d86fc1de2236e5a4f92ca523d911bc128fcf96f91c1e6101fb8b69.json",
+      "sha256": "cc2bd89a14d86fc1de2236e5a4f92ca523d911bc128fcf96f91c1e6101fb8b69",
+      "blocks": 12317,
+      "native_verification": {
+        "finished": "2026-10-27T00:59:18.941876800Z",
+        "failures": 0,
+        "receipt_sha256": "15bd31df57062366a39ddfb29c019fd82d3e7f1d89f86d01f403aa9bb38db960"
+      }
+    },
+    {
+      "file": "rosewater-castle-plan-67f1bd76c75e2c66e4dd6586bb1546a52f20b3d39b00bb37227c00b0a8d1f8d5.json",
+      "sha256": "67f1bd76c75e2c66e4dd6586bb1546a52f20b3d39b00bb37227c00b0a8d1f8d5",
+      "blocks": 134821,
+      "native_verification": {
+        "finished": "2026-10-27T01:41:16.710694100Z",
+        "failures": 0,
+        "receipt_sha256": "3cc51f28deb3aacf8105a09b41ed04319e038c4ca9805731b0db3db3ec49cd9b"
+      }
+    },
+    {
+      "file": "south-bank-plan.json",
+      "sha256": "08b57f7489876add7477597a09d12315b8dbfbe2b8edf87eefee5bc87a7e4371",
+      "blocks": 139635,
+      "native_verification": {
+        "finished": "2026-10-27T01:37:44.567315Z",
+        "failures": 0,
+        "receipt_sha256": "7e0b7138cc5ad91061359dfa81c01685f1c2fe9d30e4cbfe3c9034ba8e5c1d74"
+      }
+    },
+    {
+      "file": "ship-rosewater-resolute-ff7ea2c32b093b0c1035c6116757dd587f52c380ac026336e020b310479df20c.json",
+      "sha256": "c612729b69ef8d3a71faf1f56996b6ab6cd57c68adbe8fbb7c0cfbeb8e5fbc84",
+      "blocks": 23735,
+      "native_verification": {
+        "finished": "2026-10-27T01:42:12.656993700Z",
+        "failures": 0,
+        "receipt_sha256": "1424daa79b25a6d9aef7d206a744b26ad67aad3b293362e9d7bd11501927d8d4"
+      }
+    },
+    {
+      "file": "ship-amberwake-5371e151069d431c05f16442a0acf3e0d364b4559ce5e3c9b5d7788ea3ebe7af.json",
+      "sha256": "f3fdaea349ea101e0e1868d4522505e2302c0971e439de5279e0f58f7a0ef115",
+      "blocks": 17323,
+      "native_verification": {
+        "finished": "2026-10-27T01:42:37.057964900Z",
+        "failures": 0,
+        "receipt_sha256": "e9743bfef1a11aef9e3d46e8f16717154f90e7446f721eb4eb57a7b16d059ab3"
+      }
+    },
+    {
+      "file": "ship-nightingales-debt-bee611906c168698b855027ad2d42b8b5f8a834d4a9d92494ef267c2e51cfaf3.json",
+      "sha256": "8552b39eca0f40eb9ab4a4357b223e52939a49fd7714ae28fc7cc5208938d235",
+      "blocks": 13281,
+      "native_verification": {
+        "finished": "2026-10-27T01:43:00.105140700Z",
+        "failures": 0,
+        "receipt_sha256": "8d443d2acfb3170a08bd3cca98fb41e667dad5cb9086c4d3d36acac5dccace56"
+      }
+    },
+    {
+      "file": "ship-sea-lavender-c90219588542a88099f8723709670d3cceddeadfa6b1a288e25ed0ad7878971e.json",
+      "sha256": "3d7129b42b6dcee83c860a0db9bfbfcdbab1c7183c31c5bef6d0c3a99042fdd7",
+      "blocks": 12476,
+      "native_verification": {
+        "finished": "2026-10-27T01:43:19.559328Z",
+        "failures": 0,
+        "receipt_sha256": "93a796f9ed8b834db71284be5cbddd3e8099a14c61c7fb8ccd534d3adbdf8c44"
+      }
+    },
+    {
+      "file": "grand-harbor-access-b6215b2d58ab762f4e43c793b0b0763bca862125c550f8c7777e38a15e76f5bc.json",
+      "sha256": "e31b6d4782283b66219c551c3a345bb361ecafa0ab313340e0a767322beaa908",
+      "blocks": 4148,
+      "native_verification": {
+        "finished": "2026-10-27T01:50:25.758703600Z",
+        "failures": 0,
+        "receipt_sha256": "3ff8fb921530904e6fa32e315fdd2d1859cf94758ee2e7edd3406a3c4baca00b"
+      }
+    }
+  ],
+  "preservation": {
+    "source_preflight_protected_block_entities": 1047,
+    "source_preflight_route_clearance_cells": 15302,
+    "source_preflight_tier": "Generator exclusions and cross-district target/attachment independence; counts are not a post-install inventory or walk-through audit",
+    "native_before_scope": "Every changed or newly added target and known structural attachment in the exact five precondition plans was checked before its district placement",
+    "native_after_scope": "All 1593 specified new states were checked after placement, including supplied state properties; no new inventory NBT was supplied by these deltas",
+    "historical_receipts": "The ten predecessor receipts remain historical. Future full verification must compose the five intentional detail deltas over their predecessors",
+    "unchanged_obligations": [
+      "Preserve original core furnishings, signs, inventories and non-adapted architecture",
+      "Preserve all original vessel and moving-drawbridge geometry and machinery",
+      "Preserve documented route clearance, doors, windows and access to existing block entities"
+    ],
+    "declared_added_world_commands": 0,
+    "declared_added_entities": 0,
+    "declared_added_continuous_simulation_systems": 0
+  },
+  "acceptance": {
+    "native_before_state": "pass",
+    "native_placement": "pass",
+    "native_after_state": "pass",
+    "squaremap_dirty_chunk_queue": "pass",
+    "rendered_tiles_review": "pending",
+    "restart_persistence": "pending",
+    "actual_3d_model_and_lighting_review": "pending",
+    "room_and_route_walkthrough": "pending",
+    "station_interaction": "pending",
+    "full_preserved_inventory_audit": "pending",
+    "shader_and_cinematic_artistic_acceptance": "pending",
+    "steady_state_performance": "pending"
+  },
+  "saved_state_persistence": {
+    "at": "2026-10-27T03:48:50.413307+00:00",
+    "pass": true,
+    "positions_checked": 1593,
+    "block_identity_failures": 0,
+    "orientation_failures": 0,
+    "audit_receipt_sha256": "e1879a2a1a41bab9bcaeb520f4bfe27e996389c76fa838cb363ae84a739bfa32",
+    "backup_sha256": "616f1f5eb67b0502b163f3cb756f5000d8498f46847e2fc1d58bfcf3bd752fed",
+    "districts": [
+      {
+        "district": "castle",
+        "positions": 465,
+        "block_identity_failures": 0,
+        "orientation_failures": 0,
+        "saved_observation_sha256": "7b7ccce43cc2ba0371fe5883056baaf845dd4fde77af6f4aad96cc0cb1d79d15"
+      },
+      {
+        "district": "village",
+        "positions": 114,
+        "block_identity_failures": 0,
+        "orientation_failures": 0,
+        "saved_observation_sha256": "d3b7aa270178ed986b08454c73f0d39ea25f71b930b6481ffb790808d17cf249"
+      },
+      {
+        "district": "pirate-port",
+        "positions": 288,
+        "block_identity_failures": 0,
+        "orientation_failures": 0,
+        "saved_observation_sha256": "b1d487f1d51c84b1207ca618458fd1f9666df2c6b2f9b99f21dbc28bb73d1427"
+      },
+      {
+        "district": "south-bank",
+        "positions": 498,
+        "block_identity_failures": 0,
+        "orientation_failures": 0,
+        "saved_observation_sha256": "b0b83c4dd9b816f61f297b86919160afa50219f81e0d498c5fcebbef7f54c884"
+      },
+      {
+        "district": "harbor-quays",
+        "positions": 228,
+        "block_identity_failures": 0,
+        "orientation_failures": 0,
+        "saved_observation_sha256": "b26cc4ffa3c3f0fe107e6ba7b09b55f04f8cd8221ec663460558e678eb3a0d94"
+      }
+    ],
+    "scope": "Independent exact-plan comparison of saved MCA data from verified stopped-world backup; derived neighbor connectivity, lighting and fluid simulation excluded; graphics remains unverified"
+  },
+  "cinematic_saved_zip": {
+    "sha256": "0f0beab26f165e26a5d608d3567a94e230226e5bdf2236e5cf06de5c274b587d",
+    "bytes": 14942,
+    "inner_archive_crc": "pass",
+    "awft_json_members": [
+      "data/awft/cutscenes/amberwake_tour.json",
+      "data/awft/cutscenes/lanternwater_port_tour.json",
+      "data/awft/cutscenes/nightingales_debt_tour.json",
+      "data/awft/cutscenes/rosewater_castle_tour.json",
+      "data/awft/cutscenes/rosewater_resolute_tour.json",
+      "data/awft/cutscenes/sea_lavender_tour.json",
+      "data/awft/cutscenes/settlement_intro.json"
+    ]
+  }
+}
