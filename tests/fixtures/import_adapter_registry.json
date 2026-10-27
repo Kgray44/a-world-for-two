@@ -1,0 +1,748 @@
+{
+  "format": "awft-native-import-schemas:1",
+  "source": "Actual candidate38 exported schemas; no world identity, downloaded geometry or runtime acceptance",
+  "blocks": {
+    "chipped:barred_spruce_trapdoor": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "chipped:bordered_calcite": {},
+    "chipped:bordered_diorite": {},
+    "chipped:bordered_prismarine": {},
+    "chipped:boxed_spruce_planks": {},
+    "chipped:brick_bordered_prismarine": {},
+    "chipped:calcite_pillar_top": {},
+    "chipped:carved_calcite": {},
+    "chipped:carved_diorite": {},
+    "chipped:carved_prismarine": {},
+    "chipped:carved_stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:center_cut_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:classic_windowed_spruce_trapdoor": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "chipped:cross_laced_spruce_planks": {},
+    "chipped:cut_calcite_column": {},
+    "chipped:cut_diorite_column": {},
+    "chipped:cut_prismarine_column": {},
+    "chipped:diorite_pillar_top": {},
+    "chipped:edged_prismarine_bricks": {},
+    "chipped:edged_stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:engraved_prismarine": {},
+    "chipped:fancy_spruce_trapdoor": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "chipped:framed_spruce_planks": {},
+    "chipped:iron_barred_spruce_trapdoor": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "chipped:knotted_stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:layered_stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:nailed_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:pegged_spruce_planks": {},
+    "chipped:prismarine_bricks": {},
+    "chipped:prismarine_pillar_top": {},
+    "chipped:reinforced_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:reinforced_stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "handcrafted:dark_oak_shelf": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right"
+      ],
+      "type": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "handcrafted:spruce_shelf": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right"
+      ],
+      "type": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "mcwwindows:dark_oak_four_window": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "windowstate": [
+        "closed",
+        "open_left",
+        "open_right",
+        "locked"
+      ]
+    },
+    "mcwwindows:spruce_four_window": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "windowstate": [
+        "closed",
+        "open_left",
+        "open_right",
+        "locked"
+      ]
+    },
+    "mcwwindows:stripped_spruce_log_four_window": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "windowstate": [
+        "closed",
+        "open_left",
+        "open_right",
+        "locked"
+      ]
+    },
+    "minecraft:acacia_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:andesite_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:birch_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:calcite": {},
+    "minecraft:chiseled_stone_bricks": {},
+    "minecraft:cobblestone_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:cracked_stone_bricks": {},
+    "minecraft:dark_oak_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:diorite": {},
+    "minecraft:jungle_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:mangrove_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:mossy_cobblestone_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:mossy_stone_bricks": {},
+    "minecraft:oak_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:oak_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_andesite_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_blackstone_brick_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_blackstone_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_blackstone_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:prismarine": {},
+    "minecraft:prismarine_bricks": {},
+    "minecraft:spruce_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:spruce_planks": {},
+    "minecraft:spruce_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:spruce_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:spruce_trapdoor": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_brick_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_brick_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_bricks": {},
+    "minecraft:stripped_spruce_wood": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    }
+  }
+}

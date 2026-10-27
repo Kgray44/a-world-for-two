@@ -1,0 +1,465 @@
+{
+  "blocks": {
+    "chipped:boxed_spruce_planks": {},
+    "chipped:small_andesite_bricks": {},
+    "dawnoftimebuilder:dark_oak_support_beam": {
+      "axis": [
+        "x",
+        "z"
+      ],
+      "pillar_connection": [
+        "nothing",
+        "4_pixels",
+        "6_pixels",
+        "8_pixels",
+        "10_pixels"
+      ],
+      "subaxis": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:spruce_support_beam": {
+      "axis": [
+        "x",
+        "z"
+      ],
+      "pillar_connection": [
+        "nothing",
+        "4_pixels",
+        "6_pixels",
+        "8_pixels",
+        "10_pixels"
+      ],
+      "subaxis": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwlights:bell_wall_lantern": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mcwwindows:dark_oak_plank_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:bell": {
+      "attachment": [
+        "floor",
+        "ceiling",
+        "single_wall",
+        "double_wall"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:chiseled_stone_bricks": {},
+    "minecraft:dark_oak_fence": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:lantern": {
+      "hanging": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:potted_allium": {},
+    "minecraft:potted_cornflower": {},
+    "minecraft:stone_brick_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:waxed_cut_copper": {},
+    "minecraft:waxed_exposed_cut_copper_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:waxed_weathered_cut_copper_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_cap_67_bright_copper": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_cap_67_oxidised": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_low_straight_67_bright_copper": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_low_straight_67_copper": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_low_straight_67_oxidised": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_peak_67_bright_copper": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mythrais:roof_up_67_bright_copper": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_up_67_copper": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:roof_up_67_oxidised": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:single_gothic_arch_upper_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "mythrais:spiral_column_stone": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mythrais:tudorpanel_tan_arch_double_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mythrais:tudorpanel_tan_arch_ellipse_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    }
+  }
+}

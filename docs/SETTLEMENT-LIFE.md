@@ -14,6 +14,16 @@ work, not a claim that entities have already been placed. Plants, trees, insects
 aquatic creatures, domestic animals, cats, dogs, villagers and suitable magical
 residents need actual habitats and reasons to occupy each district.
 
+The **entire south bank** must become a beautiful woodland filled with wildlife.
+Determine its actual dry-land extent from the saved river geography. Create a
+broad, connected forest with mixed canopy heights and species, understory,
+ferns, flowers, glades, woodland paths and distinct wet river-edge habitats.
+Weave it around the cottages, workshops and castle while keeping their views,
+entrances, usable outdoor spaces and machinery clear. Avoid a uniform plantation
+or a thin decorative tree border. Wildlife must inhabit the forest naturally,
+with small appropriate groups, suitable shelter, water and food habitats.
+This forest is part of the final LIFE pass after the architectural depth work.
+
 | Place | Environmental and resident direction |
 | --- | --- |
 | Cottage courts and quiet gardens | Flowering borders, herbs, layered shrubs, small appropriate trees, butterflies or other installed insects, cats, household activity |

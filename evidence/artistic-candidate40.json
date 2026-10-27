@@ -1,0 +1,64 @@
+{
+  "format": "awft-private-candidate40:1",
+  "version": "0.1.0-candidate.40",
+  "bridge": "Real saved55program/glue audit, two genuine cycles after restart WITHOUTsetup and full17226closedverification pass; subsequent776fixedtowerdepth placed, canonical verification retains12construction-time window parts requiring normal neighbor reconciliation",
+  "pack_sha256": "297e27ea7118554d22cb265840bfe7fb2d7b15788c60187c42ca4c2c8cca7fae",
+  "bridge_sha256": "d2e8b8b590d73c5ce8cea0423c08ff6b2c64eff1a09c4e7d4dfd27c66a8d825f",
+  "scope": "Private artistic staging only; server started; matching client not launched; official world and public31 unchanged",
+  "checks": "Actual API compile and405Python tests42.318seconds;207Packwizrecords/JSsyntax pass",
+  "spit": "All five components5000targets placed in native39 and final strict geometry/inventory verification pass. Main tavern not replayed after Slot byte-type correction.",
+  "requested_originals": "Tavern before4406passed; placement stopped atcursor2400beforeNBTphase in normal carved-pumpkin golem pattern with unloaded neighboring chunk. Exact partial state retained; shop not placed.",
+  "correction_to_checkpoint_reason": "Checkpoint reason initially called the triggering block a skull. Exact failed source row2400 is carved_pumpkin; both share the native BlockPattern/BlockInWorld readiness issue. No skull or pumpkin substitution is authorized.",
+  "checkpoint": {
+    "id": "20261027T181805Z-2a3849",
+    "sha256": "f2d216fadf76780b87caef4f4dcbb7817591bc9b368ae7f75160d96b3456cc31",
+    "bytes": 203086006
+  },
+  "open": "Native neighbor readiness/reconciliation repair, original imports, complete architectural depth, final south-bank forest and habitat population, full SeedGen parity and fresh public import",
+  "receipts": [
+    {
+      "file": "engineering-result-c4e5b8e2-5e2b-4ffe-9878-141f43af0725.json",
+      "sha256": "8c99d3bfc15d827d3f9f8b2edd6864c390305771e1be46dba60efad27f06a457",
+      "operation": "commission",
+      "status": "two native button-driven open/close cycles passed at the reviewed angle; persistence and ship clearance remain separate",
+      "error": null,
+      "failures": null,
+      "cycles": 2,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    {
+      "file": "settlement-result-7e36359b-b2dc-4f30-b719-57bf2a2f2811.json",
+      "sha256": "031c7f22052647819f68489166f9ef8da20334d8e176251ea7d10220c7dac074",
+      "operation": "verify",
+      "status": "verified actual block identities, orientation, block entities and supplied inventories",
+      "error": null,
+      "failures": 0,
+      "cycles": null,
+      "cleanup_required": null,
+      "temporary_tickets_remaining": null
+    },
+    {
+      "file": "settlement-result-f326559b-befc-40f6-a2ee-8da1aebf6069.json",
+      "sha256": "bb5daef7f4f2a0e7f993106d906db83a8788f3e3e5cf36333e74c7ff65d9eb26",
+      "operation": "verify",
+      "status": "verification failed; inspect differences",
+      "error": null,
+      "failures": 12,
+      "cycles": null,
+      "cleanup_required": null,
+      "temporary_tickets_remaining": null
+    },
+    {
+      "file": "settlement-result-1d8ba13e-5c77-4225-b23b-7a2d3d61209a.json",
+      "sha256": "035e43ad1cf5f133eedeb2db00afb9c86c2f763bd2e7c057ddb66801f63d3cce",
+      "operation": "place",
+      "status": "failed; partial world and exact plan preserved, use pre-construction backup for rollback",
+      "error": "java.lang.NullPointerException: Cannot invoke \"net.minecraft.world.level.block.state.BlockState.isAir()\" because the return value of \"net.minecraft.world.level.block.state.pattern.BlockInWorld.getState()\" is null",
+      "failures": 0,
+      "cycles": null,
+      "cleanup_required": null,
+      "temporary_tickets_remaining": null
+    }
+  ]
+}

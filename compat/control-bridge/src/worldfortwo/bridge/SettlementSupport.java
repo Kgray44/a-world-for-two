@@ -180,6 +180,8 @@ public final class SettlementSupport {
         byte[] raw=Files.readAllBytes(file);
         if(!sha(raw).equals(expected))throw new IllegalStateException("Exact plan hash differs");
         JsonObject candidate=JsonParser.parseString(new String(raw,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+        if(mode.equals("place") && candidate.has("construction_forbidden") && candidate.get("construction_forbidden").getAsBoolean())
+            throw new IllegalStateException("A native verification-only export cannot replay geometry or inventories");
         if(!candidate.get("seed").getAsString().equals(Long.toString(server.overworld().getSeed())))throw new IllegalStateException("World seed differs");
         if(!Path.of(candidate.get("world_path").getAsString()).toAbsolutePath().normalize().equals(server.getWorldPath(LevelResource.ROOT).toAbsolutePath().normalize()))throw new IllegalStateException("Actual world path differs");
         JsonObject backup=JsonParser.parseString(Files.readString(directory.resolve("backup-receipt.json"))).getAsJsonObject();
