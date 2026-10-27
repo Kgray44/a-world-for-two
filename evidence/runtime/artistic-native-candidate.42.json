@@ -1,0 +1,703 @@
+{
+  "format": "awft-native-artistic-review:1",
+  "recorded": "2026-10-27T20:52:46.663004+00:00",
+  "candidate": "0.1.0-candidate.42",
+  "bridge": "0.6.28",
+  "pack_sha256": "194c6d673cbf6481afc15797583cc9e074ba9c685dd0e3062b26f74e01af3eee",
+  "bridge_sha256": "551ed63b6b593e0e7456d632396b93593c330a9a3977933ec4e70d3f1d38da2d",
+  "source_build": {
+    "directory": "candidate-bridge-build-1793130917144681400",
+    "sha256": "20f06cab369423002beed56d79d0c934f54e0717a4deafd3303802667073dd01",
+    "frozen_files": 54
+  },
+  "scope": "Actual private dedicated server25575 and normally authenticated KG client; official world/server and public candidate31 unchanged.",
+  "receipts": {
+    "signal_complete": {
+      "file": "settlement-result-9eca2189-cea7-4b90-893f-5854da3078d3.json",
+      "sha256": "deffead1992ccb0fe17624c1a604f94911b935fa37ac10b3c710e14fd2c4e119",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:05:38.549322300Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "414d840f4d35591d361439a1712d5b83efdd173ec50d0e7242436a48210a85ff",
+        "blocks": 84480,
+        "cursor": 79,
+        "phase": 1,
+        "failures": 0,
+        "last_work_ms": 4.2177,
+        "max_work_ms": 4.2177,
+        "finished": "2026-10-27T20:06:00.713756600Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "court_complete_with_later_craft_context": {
+      "file": "settlement-result-95900388-6cef-41bd-8868-3ce3303faaf6.json",
+      "sha256": "d37841afe9352ee8332bbd004633ac4702bf1f20ca1f3a8490ab49b86ae3a6a0",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:18:10.718504Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "4e6864e09e425130345bcd8dc16e4a45cc81b50ddfb04447cdb8f71a7b81b6c7",
+        "blocks": 29836,
+        "cursor": 18,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 0.1268,
+        "max_work_ms": 0.2597,
+        "finished": "2026-10-27T20:18:18.449039200Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "bramble_complete_with_retained_vines": {
+      "file": "settlement-result-b6f10d68-1e32-4f46-aa81-08924d789ec1.json",
+      "sha256": "579011c38b313b30433597b058d5fb541f6136b3ea53d468fe6e280576012002",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:18:18.912905400Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "2b9dd47c0ef36bd113a81466c883a49b56d8268898bca289bd8e5dba497ebb08",
+        "blocks": 15759,
+        "cursor": 32,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 0.705,
+        "max_work_ms": 0.8685,
+        "finished": "2026-10-27T20:18:23.011065300Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "fountain_plaza_original_physical": {
+      "file": "settlement-result-6b35c93f-5694-412d-9a34-3d049ed895a4.json",
+      "sha256": "608424a56be68cd098ffa5e33821028347f73beb3449a3b11d426070b05af5ce",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:08:01.757239700Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "0ddc548aba5a5879b0a16c0a93b554ddab5839d2b904605c0c980c21374a22b5",
+        "blocks": 2530,
+        "cursor": 0,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 0.2124,
+        "max_work_ms": 0.3049,
+        "finished": "2026-10-27T20:08:02.399494Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "fountain_flow_baffle_physical": {
+      "file": "settlement-result-0bb5e130-4cb1-406e-ac5f-530f0144dc9a.json",
+      "sha256": "c4eb53fcd2593cda5d4937fbe273927ee6614d2cc1083fe92e7d8e57624f22fb",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:26:12.171791700Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "801d905a683533b5fe4f89c3ca2ac2a22f93de5ce5ee678225d5e75ba3fb7d24",
+        "blocks": 2530,
+        "cursor": 0,
+        "phase": 0,
+        "failures": 0,
+        "last_work_ms": 0.3149,
+        "max_work_ms": 0.336,
+        "finished": "2026-10-27T20:26:12.806346Z",
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "tavern_furnishing": {
+      "file": "settlement-result-a81411a3-c0e8-4412-b104-957660f0658a.json",
+      "sha256": "1ffb22ca7193f8946272616edd9c1cb9055231822e4b5428e8699da58c2dce4b",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:09:04.451036400Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "7a4dd44e355b29d9587e6f609e12ce054139dd6565e58367cc371d0c221effe3",
+        "blocks": 86,
+        "finished": "2026-10-27T20:09:04.453036600Z",
+        "cursor": 2,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "gallery_ceiling": {
+      "file": "settlement-result-1f9b80b0-fd1c-4f70-a11d-1470745ef319.json",
+      "sha256": "94320e548a14da86f99920e99872e255451cc9f444f37ab7163095e044b32826",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:09:23.458629100Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "881fddf4a67aaf6d8bb3bfef2c362032b35918db4d18077c49f3996e33076bc7",
+        "blocks": 26,
+        "finished": "2026-10-27T20:09:23.459629300Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "kitchen_ceiling": {
+      "file": "settlement-result-baa955fa-4788-4a8d-91e9-108cbdfb0801.json",
+      "sha256": "5c40d40f46f07e173ee67f8b36d6826a65a2ecfcff3488baa8002fd24a406b44",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:09:25.813479200Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "496b51e13ad53709de09b6e9b840eedd13ed33bb28e5b8a773a2331e5216b515",
+        "blocks": 19,
+        "finished": "2026-10-27T20:09:25.814479400Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "workshop_ceiling": {
+      "file": "settlement-result-21d1d362-9e0e-43a9-a4cd-b656cbc2bcf4.json",
+      "sha256": "f430ee9948844a7262c5517c6645b505a3e3f6fb6d35dc594bf71a7e3458da2b",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:09:28.305642100Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "92c27c18250f655493811096ec4fa13cd97b300d41155edf089a03c573ed7681",
+        "blocks": 18,
+        "finished": "2026-10-27T20:09:28.306639900Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "north_lodge_rear": {
+      "file": "settlement-result-fa3a3ba7-d345-489c-8cc6-d3d9c833dc6c.json",
+      "sha256": "747f9d319761d1011b7e833950a3e59d62999d9f0ac911ef824b08fe0e117fb4",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:09:30.712533500Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "4b729fd6ea8bb4fb15c7e92dccbd69c55f1b4c9b26d47e5c3a567078f1d24ef5",
+        "blocks": 17,
+        "finished": "2026-10-27T20:09:30.714535Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "south_lodge_rear": {
+      "file": "settlement-result-db9c94bf-1471-461a-9c92-bb756c3d505c.json",
+      "sha256": "7d570a40dca4065e4ffa7a61dfa46aa45ef8649a913c9632ba9ee7aaef86d857",
+      "native_result": {
+        "operation": "verify",
+        "started": "2026-10-27T20:09:33.101316900Z",
+        "status": "verified actual block identities, orientation, block entities and supplied inventories",
+        "plan_sha256": "ddadd70a2a1177f67a6c74c613da6dc73b483bcc9daeeb2d714e23cd17c899d2",
+        "blocks": 13,
+        "finished": "2026-10-27T20:09:33.101316900Z",
+        "cursor": 0,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    },
+    "fountain_real_fill_but_failed_stop": {
+      "file": "fountain-result-1578d638-0a2a-485a-86bb-77bfb73a4dde.json",
+      "sha256": "9b0133ad87a2d3600f5c3ad7d74211fbd8b4ca7afafa8e399e44493989a63464",
+      "native_result": {
+        "operation": "commission",
+        "started": "2026-10-27T20:29:05.011789100Z",
+        "request_sha256": "c965b1fbeae44bf9f05ee5c20696a44fea36fce00932ed3b94d431b6974a78a8",
+        "candidate": "0.1.0-candidate.42",
+        "bridge": "0.6.28",
+        "header_water_seeded": 0,
+        "inventory_or_kinetic_NBT_writes": 0,
+        "failures": 1,
+        "bounded_native_empty_timer_resets": 1295,
+        "observations": [
+          {
+            "at": "2026-10-27T20:29:05.053214300Z",
+            "phase": "native_dry_before_single_wheel_feed",
+            "wheel_rpm": 0.0,
+            "pump_rpm": 0.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": false,
+            "jet_water": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "port_block": "minecraft:air",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:09.960076600Z",
+            "phase": "periodic_FILL",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": false,
+            "jet_water": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "port_block": "minecraft:air",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:14.960933200Z",
+            "phase": "periodic_FILL",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": false,
+            "jet_water": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "port_block": "minecraft:air",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:19.954079800Z",
+            "phase": "periodic_FILL",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": false,
+            "jet_water": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "port_block": "minecraft:air",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:24.952956200Z",
+            "phase": "periodic_FILL",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": false,
+            "jet_water": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "port_block": "minecraft:air",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:29.947730900Z",
+            "phase": "periodic_FILL",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": false,
+            "jet_water": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "port_block": "minecraft:air",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:34.956330100Z",
+            "phase": "periodic_FILL",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": false,
+            "jet_water": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "port_block": "minecraft:air",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:39.665749600Z",
+            "phase": "actual_pumped_header_and_gravity_cascades",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": true,
+            "jet_water": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "port_block": "minecraft:water",
+            "manual_stop": false
+          },
+          {
+            "at": "2026-10-27T20:29:39.949514900Z",
+            "phase": "periodic_STOP",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": true,
+            "jet_water": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "port_block": "minecraft:water",
+            "manual_stop": true
+          },
+          {
+            "at": "2026-10-27T20:29:44.954774200Z",
+            "phase": "periodic_STOP",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": true,
+            "jet_water": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "port_block": "minecraft:water",
+            "manual_stop": true
+          },
+          {
+            "at": "2026-10-27T20:29:49.951462500Z",
+            "phase": "periodic_STOP",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": true,
+            "jet_water": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "port_block": "minecraft:water",
+            "manual_stop": true
+          },
+          {
+            "at": "2026-10-27T20:29:54.953168Z",
+            "phase": "periodic_STOP",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": true,
+            "jet_water": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "port_block": "minecraft:water",
+            "manual_stop": true
+          },
+          {
+            "at": "2026-10-27T20:29:59.961579700Z",
+            "phase": "periodic_STOP",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": true,
+            "jet_water": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "port_block": "minecraft:water",
+            "manual_stop": true
+          },
+          {
+            "at": "2026-10-27T20:30:04.954045500Z",
+            "phase": "periodic_STOP",
+            "wheel_rpm": -8.0,
+            "pump_rpm": 8.0,
+            "wheel_overstressed": false,
+            "pump_overstressed": false,
+            "header_is_source": true,
+            "jet_water": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "port_block": "minecraft:water",
+            "manual_stop": true
+          }
+        ],
+        "independent_wheel_sources_seeded": 1,
+        "phase": "STOP",
+        "ticks": 1294,
+        "phase_ticks": 600,
+        "error": "java.lang.IllegalStateException: Physical OFF gate or downstream drain did not complete",
+        "normal_STOP_requested": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0,
+        "cleanup_errors": [],
+        "status": "native fountain stopped; actual partial hydraulic state and receipts retained",
+        "finished": "2026-10-27T20:30:09.714160200Z"
+      }
+    }
+  },
+  "images": [
+    {
+      "file": "docs/images/artistic-recovery/c42-rose-tavern-bar.png",
+      "sha256": "dd3035b7805f27b7b0578e8bff10bd5f483c11f2a3fbd93ba88cb3ebb8a8fa8d",
+      "capture": {
+        "at": "2026-10-27T20:35:23.197951+00:00",
+        "image": "rose-tavern-bar.png",
+        "sha256": "dd3035b7805f27b7b0578e8bff10bd5f483c11f2a3fbd93ba88cb3ebb8a8fa8d",
+        "bytes": 1988394,
+        "name": "rose-tavern-bar",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "194c6d673cbf6481afc15797583cc9e074ba9c685dd0e3062b26f74e01af3eee",
+        "native": {
+          "at": "2026-10-27T20:35:22.759408Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1303.5,
+            65.0,
+            -1271.5
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": 127.40536,
+          "pitch": -2.0338597,
+          "dimension": "minecraft:overworld",
+          "fps": 58,
+          "native_result": "Saved screenshot as awft-qa-c42-art-rose-tavern-bar.png"
+        },
+        "requested_view": {
+          "feet": [
+            1303.5,
+            65,
+            -1271.5
+          ],
+          "look_at": [
+            1295,
+            67,
+            -1278
+          ],
+          "yaw": 127.40535663140857,
+          "pitch": -2.0338598230852587
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed: lower warm light now reaches the bar and furnishings; distinct displays and seating read clearly. Existing high nave remains gothic and dark. Grounded access and owner acceptance remain separate."
+    },
+    {
+      "file": "docs/images/artistic-recovery/c42-gallery-ceiling-upward.png",
+      "sha256": "f01caecc8acb920ad3710f74c1a07e556f900dfb7a16287b5e33a71d6f0d1bd0",
+      "capture": {
+        "at": "2026-10-27T20:40:04.937924+00:00",
+        "image": "gallery-ceiling-upward.png",
+        "sha256": "f01caecc8acb920ad3710f74c1a07e556f900dfb7a16287b5e33a71d6f0d1bd0",
+        "bytes": 1975562,
+        "name": "gallery-ceiling-upward",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "194c6d673cbf6481afc15797583cc9e074ba9c685dd0e3062b26f74e01af3eee",
+        "native": {
+          "at": "2026-10-27T20:40:04.387224400Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1260.5,
+            83.1,
+            -1034.5
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": -45.0,
+          "pitch": -84.045975,
+          "dimension": "minecraft:overworld",
+          "fps": 59,
+          "native_result": "Saved screenshot as awft-qa-c42-art-gallery-ceiling-upward.png"
+        },
+        "requested_view": {
+          "feet": [
+            1260.5,
+            83.1,
+            -1034.5
+          ],
+          "look_at": [
+            1261.0,
+            91.5,
+            -1034.0
+          ],
+          "yaw": -45.0,
+          "pitch": -84.04597435443313
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed: attached coffer/rib relief now projects below the previous flat floor underside. This upward view does not establish complete room comfort or every palace ceiling."
+    },
+    {
+      "file": "docs/images/artistic-recovery/c42-fountain-west-eye.png",
+      "sha256": "89ebc59b5ea6e77d25ac590a6720a42fe1036680872b28aa1b7a3c0e7d1b8e8a",
+      "capture": {
+        "at": "2026-10-27T20:34:52.964821+00:00",
+        "image": "fountain-west-eye.png",
+        "sha256": "89ebc59b5ea6e77d25ac590a6720a42fe1036680872b28aa1b7a3c0e7d1b8e8a",
+        "bytes": 2183742,
+        "name": "fountain-west-eye",
+        "stage": "20261027T053650Z-artistic",
+        "source_pack_sha256": "194c6d673cbf6481afc15797583cc9e074ba9c685dd0e3062b26f74e01af3eee",
+        "native": {
+          "at": "2026-10-27T20:34:52.503287100Z",
+          "evidence": "Actual native Minecraft framebuffer; extra test-only capture helper installed",
+          "position": [
+            1128.5,
+            66.0,
+            -1126.5
+          ],
+          "server": "127.0.0.1:25575",
+          "yaw": -98.972626,
+          "pitch": -13.899224,
+          "dimension": "minecraft:overworld",
+          "fps": 59,
+          "native_result": "Saved screenshot as awft-qa-c42-art-fountain-west-eye.png"
+        },
+        "requested_view": {
+          "feet": [
+            1128.5,
+            66,
+            -1126.5
+          ],
+          "look_at": [
+            1138,
+            70,
+            -1128
+          ],
+          "yaw": -98.9726266148964,
+          "pitch": -13.899224492622482
+        },
+        "evidence": "Actual Minecraft framebuffer with release-excluded QA capture helper; no substitute rendering",
+        "artistic_acceptance": "Pending visual inspection; capture alone does not establish quality"
+      },
+      "review": "Viewed prototype: real flowing cascades, but broad water curtains obscure carving and the exposed pipe arm and isolated lancet crest lack a cohesive silhouette. Substantial sculptural correction is required; this is not artistic acceptance."
+    }
+  ],
+  "server_worldgen_status_only": {
+    "c42-server-after-start.lithostitched.custody.json": {
+      "at": "2026-10-27T20:10:36.789790400Z",
+      "format": "awft-native-effective-custody:1",
+      "side": "actual_server_levels",
+      "owner_thread_rechecked": true,
+      "captured_inputs_still_current": true,
+      "strict_parity_proved": false,
+      "mutable_graphs_proven_immutable": false,
+      "status_file": "c42-server-after-start.lithostitched.status.json",
+      "status_sha256": "59ae55095930835ee936ac5d8260f572369567b71e14ecce66bb0f37d3e4da8d"
+    },
+    "c42-server-after-start.lithostitched.status.json": {
+      "record": "witness_status",
+      "at": "2026-10-27T20:10:36.692660600Z",
+      "side": "actual_server_levels",
+      "strict_parity_proved": false,
+      "complete_export": true,
+      "effective_state_coverage_complete": false,
+      "unknown_effective_states": 29,
+      "observed_input_identities_unchanged": true,
+      "current_client_cache_stems_owner_recheck_required": false,
+      "mutable_graphs_proven_immutable": false,
+      "bytes": 1519675,
+      "data_sha256": "398a7a6616f329e6bbefa533cff1e80a49c671768780db6d6b2d3a831dad0154",
+      "elapsed_ms": 94,
+      "acceptance": "NOT PROVED: paired current-side comparison, generation provenance and native LOD/terrain remain required; UNKNOWN never equals proof"
+    },
+    "c42-server-after-start.worldgen.status.json": {
+      "format": "awft-worldgen-input-status:1",
+      "at": "2026-10-27T20:10:36.609439800Z",
+      "side": "server_registry_access",
+      "data_file": "c42-server-after-start.worldgen.jsonl",
+      "full_encodings": true,
+      "max_output_bytes": 16777216,
+      "native_fingerprint_method_or_cache_invoked": false,
+      "recorded_data_bytes": 1022694,
+      "data_sha256": "fc5ebb66de3fb20efbf0c3f6d2da57adb5834ea231aa24b6e2edc47e6b4c405e",
+      "complete": true,
+      "entries": 1950,
+      "encoded_values": 255,
+      "native_encoding_errors": 0,
+      "native_encoding_exceptions": 0,
+      "elapsed_ms": 71,
+      "diagnostic_input_sha256": "de19e29860fac4004a023be632e2a118bac35edad175d046e095bf4552097ed6",
+      "diagnostic_native_format_prefix": "de19e29860fac400",
+      "digest_coverage": "all native encoded inputs"
+    }
+  },
+  "source_verification": {
+    "python_tests": 513,
+    "seconds": 46.988,
+    "result": "PASS",
+    "private_log_sha256": "68b96c85cbe95e77e1ed83ccbd31a192a7c1a2a09ad2d356538e9fa1d749ddbd",
+    "packwiz_entries": 207,
+    "javascript_syntax": "PASS"
+  },
+  "checkpoint": {
+    "verified": true,
+    "id": "20261027T204224Z-012e63",
+    "sha256": "ac863a5f04dd91ca88494c59ed27f138b0b87fdaefea45707b3c55e688365c05",
+    "at": "2026-10-27T20:42:34.951565+00:00",
+    "scope": "Exact stopped private artistic checkpoint; no history pruned"
+  },
+  "actual_positive_fountain_scope": "One independent wheel-feed source produced actual wheel-8RPM/pump+8RPM, native pumped header source and all four gravity cascades. No header source or kinetic/fluid/inventory NBT was fabricated.",
+  "fountain_not_complete": "Physical STOP failed. Native dust15/14/13 plus north-facing unpowered repeater and retracted piston confirm an input-direction error; source-only R4 south-facing correction is not installed. Actual photographs also require a cohesive crown/bowl/hidden-feed redesign.",
+  "preserved_failures": [
+    "First native fountain attempt had opposing north/south falls and0RPM. A single solid source baffle restored real drive/fill; original terminal remains unchanged.",
+    "Court21 expected AIR cells were later authored craft supports/path edges, proven by exact source plans and the stopped save. New verification-only context retained every position and all BEs.",
+    "Bramble4 expected AIR cells contained retained native vines connected to authored parents, already in the stopped save and outside original rooms/routes. No broad AIR exception or destructive clearing.",
+    "R3 first physical verification retained residual fluid because the small reset omitted normal neighbor settling. Normal three-target settling/drain resolved it; failed receipt is retained.",
+    "Client modded registry attempts refused raw Cristellib uppercase metadata enumerated but unreadable through the native PathPackResources grammar. No strict SeedGen acceptance or local-generation claim."
+  ],
+  "uncompleted_window_actions": [
+    "Final south-lodge camera did not complete",
+    "Night fountain view not reached",
+    "Current-client effective worldgen export not reached"
+  ],
+  "normal_shutdown": "Owned watchdog requested normal client quit and private server stop20:40:20UTC. Both owned JVMs absent and stage offline20:41; no forced game termination.",
+  "landscape": "Zero LIFE or tree seed. Historical manual-tree proposal is superseded by native saplings/default growth, a few exceptional custom landmarks only after actual review. Entire south shore to cliff-foot, abundant undergrowth and contour walks are the required expanded scope; missing saved terrain remains unknown until bounded native survey.",
+  "limits": "Counts and point FPS are not artistic or performance acceptance. No night, complete routes, two-player final gameplay, full SeedGen parity, final official upgrade or final release claim."
+}

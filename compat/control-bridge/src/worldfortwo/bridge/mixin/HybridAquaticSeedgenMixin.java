@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import worldfortwo.bridge.HybridAquaticSeedgenCompat;
+import worldfortwo.bridge.LithostitchedSeedgenCompat;
 
 /** Client-only: resources and dimension holders are live just before normal close. */
 @Pseudo
@@ -30,6 +31,11 @@ public abstract class HybridAquaticSeedgenMixin {
         PackRepository packs,List<PackResources> opened,int modPacks,int dataPacks,List<String> names,
         CloseableResourceManager resources,RegistryAccess.Frozen builtIn,List<?> everything,List<?> dynamic,
         RegistryAccess.Frozen worldgen,int defined,RegistryAccess.Frozen returned) {
-        if(withMods)HybridAquaticSeedgenCompat.apply(worldgen,resources,stems);
+        if(withMods) {
+            var currentStems=LithostitchedSeedgenCompat.currentAttemptStems(stems);
+            LithostitchedSeedgenCompat.beforeHybrid(worldgen,currentStems,wholeSet,opened,resources);
+            HybridAquaticSeedgenCompat.apply(worldgen,resources,currentStems);
+            LithostitchedSeedgenCompat.afterHybrid(worldgen);
+        }
     }
 }

@@ -59,7 +59,15 @@ public final class WorldgenFingerprintDiagnostics {
             .findStaticGetter(client,"loaded",RegistryAccess.Frozen.class);
         RegistryAccess.Frozen access=(RegistryAccess.Frozen)getter.invokeExact();
         if(access==null)throw new IllegalStateException("SeedGen has no already-prepared cached client registry access; no load was requested");
-        return write(access,privateDirectory,id,"client_cached_registry_access",fullEncodings);
+        Path receipt=write(access,privateDirectory,id,"client_cached_registry_access",fullEncodings);
+        // Dedicated code never resolves a client-only class. This entrypoint is
+        // invoked only by the already authorized native client QA action.
+        if(net.neoforged.fml.ModList.get().isLoaded("lithostitched")){
+            Class<?> hooks=Class.forName("worldfortwo.bridge.LithostitchedSeedgenClientHooks",false,
+                WorldgenFingerprintDiagnostics.class.getClassLoader());
+            hooks.getMethod("writeEffectiveDiagnostic",Path.class,String.class,RegistryAccess.Frozen.class).invoke(null,privateDirectory,id,access);
+        }
+        return receipt;
     }
 
     /** Parent wiring must pass the actual server.registryAccess(), not an exported approximation. */

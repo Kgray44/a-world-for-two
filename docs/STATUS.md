@@ -6,20 +6,22 @@
 
 **2026-10-27 UTC: candidate.31 published; fresh world installed; official server offline.**
 
-Private candidate 41 starts the dedicated server and authenticated client normally.
+Private candidate 42 starts the dedicated server and authenticated client normally.
 The redesigned moving bridge completed two real 55° cycles in candidate 39 and two
 more after a candidate 40 restart without repeating setup. Candidate 41 adds
 projecting tower bays and steep copper roofs, native reconciliation of the exact
 requested Pirate Tavern and Fisherman's Shop, and further neighborhood, castle,
 mill and maritime architectural depth. Actual shader-enabled captures show the
-main original gothic tavern still needs warmer floor-level lighting and intimate
-furnishings. The final forest/wildlife pass and newly requested plaza fountain
-remain pending. Mill commissioning still stops at the missing native detector
+main original gothic tavern now has warmer floor-level lighting and intimate
+furnishings. Candidate 42's new plaza fountain has real pumped cascades, with a
+confirmed repeater correction and a cohesive sculptural refinement still pending.
+The entire south shore to the southern cliff foot, native sapling growth, nature
+walks and final wildlife pass remain in progress. Mill commissioning still stops at the missing native detector
 attachments, with the drive stopped and no goods or train added.
 Candidate36 also displayed the actual Xaero map with MapHorizons awft.2;
 coarse-only SeedGen coverage remains unproved. These private results do not
 change the official server or qualify a release.
-See [the latest native review](NATIVE-CANDIDATE39-41.md),
+See [the latest native review](NATIVE-CANDIDATE42.md), [39–41 history](NATIVE-CANDIDATE39-41.md),
 [native 38 results](NATIVE-CANDIDATE38.md) and [36/37 history](NATIVE-CANDIDATE36-37.md).
 
 The owner has requested the pirate town cover the entire dry spit between river
@@ -44,13 +46,13 @@ remaining strict SeedGen mismatch are open.
 | Optional fallback | Essential disabled; 198 mod records including it |
 | Graphics | Eight shaders and one resource pack |
 | Client heap | KG: 6 GiB; Sera: conservative 4 GiB |
-| Owned helpers | Released bridge 0.6.17; private bridge 0.6.27; client Presentation 0.2.2 |
+| Owned helpers | Released bridge 0.6.17; private bridge 0.6.28; client Presentation 0.2.2 |
 | Catalog | 207 file records; all 223 requested candidates retained |
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
 Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
-The immutable candidate.31 lock is authoritative for released artifacts. The candidate 41
-source and architectural work passed **446 Python tests in 60.588 seconds**,
+The immutable candidate.31 lock is authoritative for released artifacts. The candidate 42
+source and architectural work passed **513 Python tests in 46.988 seconds**,
 207-entry Packwiz validation and JavaScript syntax checking. Later source additions
 have separate focused checks until the next complete run. Candidate.31 source CI
 at `8dd64b1` passed the earlier 319 tests; runtime

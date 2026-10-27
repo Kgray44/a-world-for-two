@@ -4,12 +4,14 @@
 
 **Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-Private candidate **41** starts and joins normally. The redesigned drawbridge
+Private candidate **42** starts and joins normally. The redesigned drawbridge
 completed real 55° cycles across a restart; the pirate spit, both requested
 original builds and new architectural depth have native results and game captures.
-The main gothic tavern needs a furnishing and lighting correction. The south-bank
-forest, final wildlife pass, plaza fountain, mill commissioning and strict SeedGen
-parity remain in progress. See the [latest native review](docs/NATIVE-CANDIDATE39-41.md).
+The tavern now has lower warm lighting and intimate furnishings. The new fountain
+has real pumped cascades; its shutoff and centerpiece composition still need
+correction. The expanded south-bank forest, native sapling growth, wildlife, mill
+commissioning and strict SeedGen parity remain in progress.
+See the [latest native review](docs/NATIVE-CANDIDATE42.md).
 
 **Our little corner of an endless world.**
 

@@ -9,7 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.27'
+BRIDGE_VERSION = '0.6.28'
 
 def build(home, destination, storage):
     storage.reserve(16 * 1024 * 1024, destination)
@@ -24,6 +24,11 @@ def build(home, destination, storage):
     libraries = home / "server/libraries"
     named = sorted(libraries.rglob("*-srg.jar"))
     jars = named + [p for p in sorted(libraries.rglob("*.jar")) if p not in named]
+    # Compile-only client signatures; never copied into the bridge artifact.
+    client_api=Path(os.environ["APPDATA"])/"PrismLauncher/libraries/net/minecraft/client/1.21.1-20240808.144430/client-1.21.1-20240808.144430-srg.jar"
+    if not client_api.is_file() or digest(client_api)!="a649bd3ce77f122d0f83ae1b37b4b303e662470f928b9bee5fbc76580805ffd4":
+        raise UserError("The exact installed named 1.21.1 client compile API is required")
+    jars.insert(0,client_api)
     bluelib=home/'server/mods/2.4.3-neoforge-1.21.1-bluelib-2.4.3.jar'
     if not bluelib.is_file() or digest(bluelib)!='efcbc58b6f0f06062f4c8c937e049b21be3fab37f76285dd5078b6a927cc486b':
         raise UserError('The exact pinned BlueLib metadata API is required for this bridge')
@@ -31,6 +36,9 @@ def build(home, destination, storage):
     # These exact installed APIs are compiler inputs only. Their classes and
     # nested libraries are never copied into the owned bridge artifact.
     api_hashes = {
+        'DistantHorizons-3.3.3-1.21.1-fabric-neoforge.jar': '864e70def5b0d54d619b940b66bb2784e91d3f3fc253064fdc1b3fc5786cbfab',
+        'lithostitched-1.8.1-neoforge-21.1.jar': 'e0da669fa5facc61a09b9b7bae21b322993de1fcd1eb05787adffb7309598cca',
+        'Distant Horizons SeedGen 0.9.1 for 1.21.1 NeoForge.jar': '58469f92f7cf13ff3c2928659ce1a57d7d05314b30e0779cb187b6fbfdb43b4e',
         'create-1.21.1-6.0.10.jar': 'ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a',
         'overpressure-0.1.7.4.jar': '9c03c26bc50c637dbe1d8b9e19e9c10218687c61d335b36588f11e54805c4cf7',
         'create_hypertube-0.6.0-NEOFORGE.jar': '7bdb8979c7ff7d3b29f7a23771b6ae4870a6dcb7ce2e4a3214fdd6059aacace8',
@@ -60,6 +68,17 @@ def build(home, destination, storage):
             api = api_dir / filename
             api.write_bytes(raw)
             jars.append(api)
+    # The actual loader supplies this library; extraction is compile-only.
+    universal=libraries/"net/neoforged/neoforge/21.1.262/neoforge-21.1.262-universal.jar"
+    with zipfile.ZipFile(universal) as native:
+        member=native.getinfo("META-INF/jarjar/mixinextras-neoforge-0.5.5.jar")
+        if member.file_size!=727484:
+            raise UserError("Pinned MixinExtras compile API size differs")
+        raw=native.read(member)
+        if hashlib.sha256(raw).hexdigest()!="f0c3e3c1ad835b80e70cb3f78359b71f107f74689523b4fb391f160ee487cfbf":
+            raise UserError("Pinned MixinExtras compile API differs")
+        api=api_dir/"mixinextras-neoforge-0.5.5.jar"
+        api.write_bytes(raw);jars.append(api)
     cp = os.pathsep.join(p.as_posix() for p in jars)
     source = REPO / "compat/control-bridge"
     sources = sorted((source / "src").rglob("*.java"))

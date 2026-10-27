@@ -328,7 +328,7 @@ class Server:
                      r"awftmill (inspect|commission) mill-commission-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftattractions (status|cancel)",
                      r"awftattractions (inspect|admit) [a-z0-9-]{1,80} [a-f0-9]{64}"]
-        if command.startswith(('awftbridgeglue ', 'awftimport ')):
+        if command.startswith(('awftbridgeglue ', 'awftimport ', 'awftfountain ')):
             owner = read_json(self.layout.state / 'artistic-owner.json', {})
             settings = self.layout.settings()
             if (owner.get('format') != 'awft-artistic-stage:1'
@@ -339,10 +339,12 @@ class Server:
             patterns += [r"awftbridgeglue (status|cancel)",
                          r"awftbridgeglue retire bridge-refinement-admission-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awftimport (status|cancel)",
-                         r"awftimport settle import-joins-[a-f0-9]{16} [a-f0-9]{64}"]
+                         r"awftimport settle import-joins-[a-f0-9]{16} [a-f0-9]{64}",
+                         r"awftfountain (status|cancel)",
+                         r"awftfountain (inspect|commission) fountain-[a-f0-9]{16} [a-f0-9]{64}"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
-        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|settle|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftmill (commission|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel)|awftimport (settle|cancel))", command)
+        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|settle|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftmill (commission|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel)|awftimport (settle|cancel)|awftfountain (commission|cancel))", command)
         if dangerous and not confirmed:
             raise UserError("Confirm this player or world setting change first")
         self._write(command)

@@ -97,6 +97,18 @@ public final class SettlementSupport {
                     Files.createDirectories(output);
                     Path receipt=WorldgenFingerprintDiagnostics.write(server.registryAccess(),output,
                         StringArgumentType.getString(c,"id"),"server_registry_access",BoolArgumentType.getBool(c,"full"));
+                    if(ModList.get().isLoaded("lithostitched")){
+                        RegistryAccess actual=server.registryAccess();
+                        var generators=new LinkedHashMap<net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>,net.minecraft.world.level.chunk.ChunkGenerator>();
+                        for(ServerLevel current:server.getAllLevels())generators.put(current.dimension(),current.getChunkSource().getGenerator());
+                        var captured=Map.copyOf(generators);
+                        NativeWorldgenWitnessTask.start(actual,captured,output,StringArgumentType.getString(c,"id"),"actual_server_levels",server::execute,()->{
+                            if(!server.isSameThread()||server.registryAccess()!=actual)return false;
+                            var now=new LinkedHashMap<net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>,net.minecraft.world.level.chunk.ChunkGenerator>();
+                            for(ServerLevel current:server.getAllLevels())now.put(current.dimension(),current.getChunkSource().getGenerator());
+                            return now.equals(captured);
+                        });
+                    }
                     success(c.getSource(),"Read-only worldgen inputs exported; inspect private status "+receipt.getFileName());return 1;
                 } catch(Exception|LinkageError error){
                     error.printStackTrace();
@@ -424,11 +436,18 @@ public final class SettlementSupport {
     }
     private boolean sameStructure(BlockState actual,BlockState expected){
         if(actual.getBlock()!=expected.getBlock())return false;
-        boolean derivedWindowPart=actual.getBlock().getClass().getName().equals("com.mcwwindows.kikoz.objects.ConnectedWindow")
-            && BuiltInRegistries.BLOCK.getKey(actual.getBlock()).getNamespace().equals("mcwwindows");
+        ResourceLocation id=BuiltInRegistries.BLOCK.getKey(actual.getBlock());
+        String nativeClass=actual.getBlock().getClass().getName();
+        // These two pinned native classes derive only their join geometry from
+        // real neighbors. Beds and every other authored part remain structural.
+        // Strict verification below still compares the canonical final part.
+        boolean derivedPart=nativeClass.equals("com.mcwwindows.kikoz.objects.ConnectedWindow")
+            && id.getNamespace().equals("mcwwindows")
+            || nativeClass.equals("com.mcwroofs.kikoz.objects.roofs.RoofTopNew")
+            && id.getNamespace().equals("mcwroofs") && id.getPath().endsWith("_top_roof");
         for(var property:expected.getProperties()){
             boolean structural=List.of("facing","axis","half","type","hinge","rotation").contains(property.getName())
-                || property.getName().equals("part") && !derivedWindowPart;
+                || property.getName().equals("part") && !derivedPart;
             if(structural && !actual.getValue(property).equals(expected.getValue(property)))return false;
         }
         return true;
