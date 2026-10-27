@@ -4,6 +4,11 @@
 
 **Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
+Private candidate **37** now starts and joins normally. Actual Xaero map viewing
+and the mill's station attachment pass; tube commissioning, strict SeedGen parity,
+the expanded pirate spit and the final inhabited landscape are still in progress.
+See the [native results](docs/NATIVE-CANDIDATE36-37.md).
+
 **Our little corner of an endless world.**
 
 ![A quiet sunset beside the village lake](assets/menu/a-world-for-two-background.jpg)

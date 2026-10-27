@@ -41,3 +41,30 @@ artifact, image and terminal-receipt hashes. The separate
 [R3 architectural finish](ARTISTIC-MILL-DETAIL.md) still requires native placement
 and actual visual review. Neither source material-run checks nor a successful
 station initialization establishes artistic acceptance.
+
+## Actual shader review
+
+Candidate 37's separate authenticated visit used Complementary Reimagined r5.9.3.
+The following unchanged native framebuffers were opened and inspected. The craft
+lane and covered harbor passage show the intended close, varied architecture and
+inhabited edges. The throne room still needs a more articulated ceiling and
+richer wall-side composition; it is not marked finished. The river view confirms
+the visible bridge underspan is clear of houses. The ship remains an authored
+structural sailing ship, not a physics-enabled naval vessel.
+
+![Craft lane with fitted shopfronts and planted edges](images/artistic-recovery/c37-craft-lane.png)
+
+![Covered harbor passage with lamps and working edges](images/artistic-recovery/c37-harbor-alley.png)
+
+![Throne hall requiring a further detail pass](images/artistic-recovery/c37-throne-hall.png)
+
+![Working sailing-ship deck](images/artistic-recovery/c37-ship-deck.png)
+
+![Clear bridge underspan from the river bank](images/artistic-recovery/c37-river-clearance.png)
+
+The [view record](../evidence/artistic-candidate37-views.json) binds image hashes,
+camera poses and the exact candidate. The 59–60 FPS values are isolated capture
+samples, not travel, shader-switching or multiplayer benchmarks. Both owned game
+processes stopped normally at 14:59 UTC. The owner subsequently said the world
+looked much better and requested the full pirate-spit extension and final living
+landscape; this does not close the remaining construction and gameplay work.

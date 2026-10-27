@@ -4,7 +4,22 @@
 
 **Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-**2026-10-27 UTC: candidate.31 published; fresh world installed; server offline.**
+**2026-10-27 UTC: candidate.31 published; fresh world installed; official server offline.**
+
+Private candidate 37 starts the dedicated server and authenticated client normally.
+Its bounded commissioning wake attaches both mill stations to the real Create
+graph. The first Hypertube connection correctly refuses the reversed entrance
+face; no water, goods or train were added. A precise saved-state orientation
+correction is in preparation. Candidate36 also displayed the actual Xaero map
+with MapHorizons awft.2; coarse-only SeedGen map coverage remains unproved.
+These isolated results do not change the official server or qualify a new release.
+See [native 36/37 results](NATIVE-CANDIDATE36-37.md).
+
+The owner has requested the pirate town cover the entire dry spit between river
+and ocean, continuing to its narrow seaward tip. Geography is being established
+from the actual saved terrain before authoring the connected extension. A final
+habitat and population pass follows completed construction and commissioning;
+see [the inhabited landscape requirements](SETTLEMENT-LIFE.md).
 
 The fresh-world handoff completed at 11:23:08 UTC with 219 files; player,
 advancement, statistic and Effortless data were excluded. Old construction
@@ -21,13 +36,13 @@ remaining strict SeedGen mismatch are open.
 | Optional fallback | Essential disabled; 198 mod records including it |
 | Graphics | Eight shaders and one resource pack |
 | Client heap | KG: 6 GiB; Sera: conservative 4 GiB |
-| Owned helpers | Control Bridge 0.6.17; client Presentation 0.2.2 |
+| Owned helpers | Released bridge 0.6.17; private bridge 0.6.23; client Presentation 0.2.2 |
 | Catalog | 207 file records; all 223 requested candidates retained |
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
 Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
 The immutable candidate.31 lock is authoritative for released artifacts. The latest full local run passed
-**330 Python tests in 32.418 seconds**, 207-entry Packwiz validation and four Node
+**351 Python tests in 34.398 seconds**, 207-entry Packwiz validation and four Node
 session tests. Candidate.31 source CI at `8dd64b1` passed the earlier 319 tests; runtime
 acceptance remains separate.
 Source checks are separate from native gameplay and release acceptance.

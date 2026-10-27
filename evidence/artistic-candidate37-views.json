@@ -1,0 +1,119 @@
+{
+  "format": "awft-native-artistic-views:1",
+  "at": "2026-10-27T15:06:42.086722+00:00",
+  "candidate": "0.1.0-candidate.37",
+  "pack_sha256": "38b015d0b69f0381ff7120a2dfbf4deb8260252d7b080c771bb66c320a45d77f",
+  "shaders": "Complementary Reimagined r5.9.3 enabled",
+  "actual_framebuffers": true,
+  "altered_images": false,
+  "not_performance_benchmark": true,
+  "images": [
+    {
+      "file": "docs/images/artistic-recovery/c37-craft-lane.png",
+      "sha256": "ce7b08348b5803c54c1a964d7fd4fc2525e22fe4bd20279f2cfcf3d187fc01be",
+      "bytes": 2151366,
+      "requested_view": {
+        "feet": [
+          1137,
+          68,
+          -1094.5
+        ],
+        "look_at": [
+          1152,
+          73,
+          -1102
+        ],
+        "yaw": -116.56505117707799,
+        "pitch": -11.394983693779306
+      },
+      "native_fps_point_sample": 59,
+      "judgement": "Agent viewed native capture; owner full artistic acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c37-harbor-alley.png",
+      "sha256": "4d5c08ef7e6bf61cf0b76e88f8b6eeb5a7a89025ce8e3ea9d46d066fd6a9c3cf",
+      "bytes": 1944933,
+      "requested_view": {
+        "feet": [
+          1252.5,
+          66,
+          -1235.5
+        ],
+        "look_at": [
+          1253,
+          68,
+          -1227
+        ],
+        "yaw": -3.3664606634298013,
+        "pitch": -2.5553426445251577
+      },
+      "native_fps_point_sample": 60,
+      "judgement": "Agent viewed native capture; owner full artistic acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c37-throne-hall.png",
+      "sha256": "062f1029b01772361057caec86c3b2ed7e32efbd786d58068c9f532e2a717d05",
+      "bytes": 2237708,
+      "requested_view": {
+        "feet": [
+          1266,
+          74,
+          -1025
+        ],
+        "look_at": [
+          1266,
+          77,
+          -1038
+        ],
+        "yaw": 180.0,
+        "pitch": -6.059474680399831
+      },
+      "native_fps_point_sample": 59,
+      "judgement": "Throne room requires richer ceiling and wall detail"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c37-ship-deck.png",
+      "sha256": "18f451b1445190975104fbf5e89a2051d8eec158313087c3e01ece0c37e6e8b1",
+      "bytes": 2225087,
+      "requested_view": {
+        "feet": [
+          1145.5,
+          72,
+          -1469.5
+        ],
+        "look_at": [
+          1140,
+          74,
+          -1448
+        ],
+        "yaw": 14.349332042947134,
+        "pitch": -0.9809811724835796
+      },
+      "native_fps_point_sample": 60,
+      "judgement": "Agent viewed native capture; owner full artistic acceptance remains open"
+    },
+    {
+      "file": "docs/images/artistic-recovery/c37-river-clearance.png",
+      "sha256": "10e329aa31efdb1fe4037b757703d5820c2953a4e9a55e6165d6aff52c9b499d",
+      "bytes": 2329002,
+      "requested_view": {
+        "feet": [
+          1168,
+          64,
+          -1144
+        ],
+        "look_at": [
+          1193,
+          73,
+          -1144
+        ],
+        "yaw": -90.0,
+        "pitch": -16.446600411676684
+      },
+      "native_fps_point_sample": 60,
+      "judgement": "Agent viewed native capture; owner full artistic acceptance remains open"
+    }
+  ],
+  "native_client_server_stop": "Observed normal close14:59 UTC",
+  "official_world_mutations": 0
+}
