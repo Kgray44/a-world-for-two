@@ -1,12 +1,12 @@
 # Native bridge, pirate spit and architectural depth review
 
-Candidates39–41 were tested in the separate artistic world. Candidate41 uses
-bridge0.6.27; it is a private build, not the published candidate31. The official
+Candidates 39–41 were tested in the separate artistic world. Candidate 41 uses
+bridge 0.6.27; it is a private build, separate from published candidate 31. The official
 server remains offline and its saved world has not received these later changes.
 
-The redesigned drawbridge completed two real button/radio-driven55° cycles in
-candidate39 and another two after a candidate40 restart, without repeating setup.
-Its thin leaves keep the river open. The candidate41 tower pass adds steep copper
+The redesigned drawbridge completed two real button/radio-driven 55° cycles in
+candidate 39 and another two after a candidate 40 restart, without repeating setup.
+Its thin leaves keep the river open. The candidate 41 tower pass adds steep copper
 hips, an open cupola, projecting bays, layered cornices and supported corners.
 Normal native neighbor updates and complete physical verification passed.
 Vessel passage and grounded player circulation remain separate checks.
@@ -50,7 +50,7 @@ Exact source/artifact hashes, native receipts, preserved failures and image hash
 are in [the candidate41 record](../evidence/runtime/artistic-native-candidate.41.json).
 
 Both private JVMs shut down normally after the capture window. The retained
-checkpoint is20261027T191930Z-f306da, SHA256
+checkpoint is 20261027T191930Z-f306da, SHA256
 `8efabed7d75aa02015ed2165ebb249c36da6e301dfd3ef8c971f0e20c9de4f5c`.
 No final LIFE pass has run. The entire south bank is being planned as varied
 woodland with protected routes, views and habitat-based wildlife. The starting
@@ -59,4 +59,8 @@ operation checks.
 
 Mill detector attachments and full commissioning, strict SeedGen parity, the
 complete inhabited landscape, a clean public Prism import and the final tested
-official upgrade/release remain open. Published candidate31 stays immutable.
+official upgrade/release remain open. Published candidate 31 stays immutable.
+
+The source verification run passed 446 Python tests in 60.588 seconds, Packwiz's
+207-entry integrity check and JavaScript syntax checking. This is separate from
+native art, physics, gameplay and release acceptance.

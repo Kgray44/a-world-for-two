@@ -49,9 +49,11 @@ remaining strict SeedGen mismatch are open.
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
 Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
-The immutable candidate.31 lock is authoritative for released artifacts. The latest full local run passed
-**383 Python tests in 42.974 seconds**, 207-entry Packwiz validation and four Node
-session tests. Candidate.31 source CI at `8dd64b1` passed the earlier 319 tests; runtime
+The immutable candidate.31 lock is authoritative for released artifacts. The candidate 41
+source and architectural work passed **446 Python tests in 60.588 seconds**,
+207-entry Packwiz validation and JavaScript syntax checking. Later source additions
+have separate focused checks until the next complete run. Candidate.31 source CI
+at `8dd64b1` passed the earlier 319 tests; runtime
 acceptance remains separate.
 Source checks are separate from native gameplay and release acceptance.
 The scheduled backup saved and verified the world before its automatic resume
