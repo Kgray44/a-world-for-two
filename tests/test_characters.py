@@ -36,12 +36,24 @@ class CharacterTests(unittest.TestCase):
         return self.service.save(profile, self.service.snapshot()['revision'])
 
     def external(self):
+        dedicated = patch.dict(os.environ, {'SMARTVILLAGERS_API_KEY': 'test-private-credential'})
+        dedicated.start()
+        self.addCleanup(dedicated.stop)
         profile = self.detail()['character']
         profile['ai'].update(enabled=True, provider='openai', model='test-model', cooldown_seconds=5)
         self.save(profile)
         self.service.settings({'expected': self.service.snapshot()['revision'], 'changes': {
-            'external_enabled': True, 'input_usd_per_million': 1, 'output_usd_per_million': 2,
+            'external_enabled': False, 'input_usd_per_million': 1, 'output_usd_per_million': 2,
             'model': 'test-model', 'daily_budget_usd': 1}})
+        state = self.service._read()
+        policy = self.service._model_policy(state['config']['settings'], 'test-model')
+        policy.update(verified=True, at='2026-10-28T00:00:00+00:00',
+                      credential_signature=self.service._credential_signature('test-private-credential'),
+                      request_signature=self.service._request_signature(state['config']['settings'], 'test-model', policy['reasoning_effort']))
+        state['provider_policies']['test-model'] = policy
+        self.service._write(state)
+        with patch.dict(os.environ, {'SMARTVILLAGERS_API_KEY': 'test-private-credential'}):
+            self.service.settings({'expected': self.service.snapshot()['revision'], 'changes': {'external_enabled': True}})
 
     def test_defaults_are_distinct_unbound_and_offline(self):
         snapshot = self.service.snapshot()
@@ -51,7 +63,8 @@ class CharacterTests(unittest.TestCase):
         self.assertEqual(10, len({c['name'] for c in snapshot['characters']}))
         self.assertTrue(all(c['entity_uuid'] is None and not c['ai_enabled'] for c in snapshot['characters']))
         self.assertFalse(snapshot['settings']['external_enabled'])
-        self.assertEqual('', snapshot['settings']['model'])
+        self.assertEqual('gpt-6-luna', snapshot['settings']['model'])
+        self.assertFalse(snapshot['settings']['connection_verified'])
         self.assertTrue(all(c['loaded'] is None for c in snapshot['characters']))
 
     def test_curated_dialogue_has_district_voices_and_bounded_lines(self):
@@ -246,7 +259,8 @@ class CharacterTests(unittest.TestCase):
         with patch.dict(os.environ, {'SMARTVILLAGERS_API_KEY': 'test-private-credential'}), patch.object(self.service, '_provider') as provider:
             preview = self.service.preview({'id': 'barnacle-bill', 'message': 'Hello', 'external_opt_in': True})
             self.assertEqual('scripted', preview['mode'])
-            self.assertIn('price estimates', preview['diagnostic'])
+            self.assertFalse(self.service.snapshot()['settings']['external_enabled'])
+            self.assertFalse(self.service.snapshot()['settings']['connection_verified'])
             self.assertIsNone(preview['usage'])
             provider.assert_not_called()
 

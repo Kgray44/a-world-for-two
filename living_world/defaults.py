@@ -6,10 +6,12 @@ from copy import deepcopy
 CATEGORIES = ('greetings', 'jokes', 'contextual', 'goodbyes', 'weather', 'nearby_player',
               'nighttime', 'tavern', 'catchphrases', 'starters', 'animals')
 
-SETTINGS = {'external_enabled': False, 'provider': 'openai', 'model': '',
+SETTINGS = {'external_enabled': False, 'provider': 'openai', 'model': 'gpt-6-luna',
             'key_env': 'SMARTVILLAGERS_API_KEY', 'max_concurrent': 2, 'timeout_seconds': 15,
+            'endpoint': 'https://api.openai.com/v1/chat/completions', 'reasoning_effort': 'none',
+            'response_tokens': 120, 'requests_per_minute': 6, 'requests_per_day': 100,
             'requests_per_hour': 24, 'daily_budget_usd': .5,
-            'input_usd_per_million': 0, 'output_usd_per_million': 0}
+            'input_usd_per_million': .10, 'output_usd_per_million': .50}
 
 
 def personality(style, traits, backstory, quirks, **changes):
@@ -238,6 +240,7 @@ def character_defaults():
                    'dialogue': {'lines': {key: [] for key in CATEGORIES}, 'frequency_seconds': 90,
                                 'cooldown_seconds': 45, 'humor_intensity': 5, 'max_response_chars': 280},
                    'ai': {'enabled': False, 'provider': 'scripted', 'model': '', 'context_turns': 6,
+                          'reasoning_effort': 'global',
                           'memory_enabled': False, 'memory_limit': 12, 'memory_retention_days': 7,
                           'max_response_tokens': 120, 'temperature': .7, 'requests_per_hour': 12,
                           'cooldown_seconds': 20, 'allowed_triggers': ['player'], 'allowed_players': [],

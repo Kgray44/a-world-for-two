@@ -6,6 +6,7 @@ as an action. External previews are called through the dashboard's background Jo
 from __future__ import annotations
 
 import copy
+import contextlib
 import hashlib
 import json
 import math
@@ -23,12 +24,22 @@ from pathlib import Path
 import psutil
 
 from living_world.defaults import CATEGORIES, SETTINGS, TEMPLATES, character_defaults, configuration
+from .character_secrets import CredentialStore, DEDICATED_ENV
 from .common import UserError, atomic_write, contained, read_json, utcnow
 
 MAX_STATE = 8 * 1024 * 1024
 MAX_EXPORT = 1024 * 1024
 MAX_CHARACTERS = 64
 HISTORY_LIMIT = 12
+OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions'
+MODEL_PRESETS = {
+    'gpt-6-luna': {'id': 'gpt-6-luna', 'name': 'GPT-6 Luna', 'reasoning_supported': True,
+                   'reasoning_efforts': ['none', 'low', 'medium', 'high', 'xhigh', 'max'],
+                   'temperature_supported': True, 'input_usd_per_million': .10, 'output_usd_per_million': .50},
+    'gpt-6.1-sol': {'id': 'gpt-6.1-sol', 'name': 'GPT-6.1 Sol', 'reasoning_supported': True,
+                    'reasoning_efforts': ['low', 'medium', 'high', 'xhigh', 'max'],
+                    'temperature_supported': False, 'input_usd_per_million': 2, 'output_usd_per_million': 10},
+}
 CAPABILITIES = {
     'registry': True, 'scripted_preview': True, 'external_preview': True, 'preview_memory': True,
     'district_lore': True, 'runtime_export': True, 'entity_delete': False,
@@ -181,8 +192,11 @@ def validate_profile(value):
     if result['ai']['provider'] not in ('scripted', 'openai', 'anthropic'):
         raise UserError('Choose scripted, OpenAI or Anthropic for previews')
     result['ai']['model'] = _text(ai.get('model', ''), 'Model', 100)
+    result['ai']['reasoning_effort'] = ai.get('reasoning_effort', 'global') or 'global'
+    if result['ai']['reasoning_effort'] not in ('global', 'none', 'low', 'medium', 'high', 'xhigh', 'max'):
+        raise UserError('Choose a supported reasoning effort or inherit the global setting')
     for key, low, high in (('context_turns', 0, 12), ('memory_limit', 0, 32), ('memory_retention_days', 1, 90),
-                           ('max_response_tokens', 16, 400), ('requests_per_hour', 1, 60), ('cooldown_seconds', 5, 3600)):
+                           ('max_response_tokens', 32, 2048), ('requests_per_hour', 1, 60), ('cooldown_seconds', 5, 3600)):
         result['ai'][key] = _number(ai.get(key, base['ai'][key]), key, low, high, True)
     result['ai']['temperature'] = _number(ai.get('temperature', .7), 'Creativity', 0, 1)
     result['ai']['allowed_triggers'] = _list(ai.get('allowed_triggers', ['player']), 'Allowed triggers', 1, 20)
@@ -241,10 +255,19 @@ def validate_settings(value):
     if result['provider'] not in ('openai', 'anthropic'):
         raise UserError('Choose OpenAI or Anthropic')
     result['model'] = _text(result['model'], 'Default model', 100)
+    if result['model'] and not re.fullmatch(r'[A-Za-z0-9_.:/-]{1,100}', result['model']):
+        raise UserError('Use a valid model identifier')
+    if result['endpoint'] != OPENAI_ENDPOINT:
+        raise UserError('This integration currently supports the official OpenAI Chat Completions endpoint only')
+    if result['reasoning_effort'] not in ('none', 'low', 'medium', 'high', 'xhigh', 'max'):
+        raise UserError('Choose a supported reasoning effort')
+    if result['model'] in MODEL_PRESETS and result['reasoning_effort'] not in MODEL_PRESETS[result['model']]['reasoning_efforts']:
+        raise UserError('This model does not support that reasoning effort; choose a supported setting')
     result['key_env'] = _text(result['key_env'], 'Credential environment reference', 80, True)
-    if not re.fullmatch(r'[A-Z][A-Z0-9_]{2,79}', result['key_env']):
-        raise UserError('Use an uppercase environment variable name, never an API key')
-    for key, low, high in (('max_concurrent', 1, 2), ('timeout_seconds', 2, 30), ('requests_per_hour', 1, 120)):
+    if result['key_env'] != DEDICATED_ENV:
+        raise UserError('Use SMARTVILLAGERS_API_KEY or the dedicated protected store; ambient API keys are never discovered')
+    for key, low, high in (('max_concurrent', 1, 2), ('timeout_seconds', 2, 30), ('requests_per_hour', 1, 120),
+                           ('response_tokens', 32, 2048), ('requests_per_minute', 1, 30), ('requests_per_day', 1, 1000)):
         result[key] = _number(result[key], key, low, high, True)
     for key, low, high in (('daily_budget_usd', 0, 10), ('input_usd_per_million', 0, 1000), ('output_usd_per_million', 0, 1000)):
         result[key] = _number(result[key], key, low, high)
@@ -266,10 +289,12 @@ class Characters:
         self._last = {}
         self._lock = threading.RLock()
         self._rng = random.SystemRandom()
+        self.credentials = CredentialStore(layout, storage)
 
     def _read(self):
         if not self.path.exists():
-            return {'config': configuration(), 'history': {}, 'memories': {}, 'usage': [], 'diagnostics': []}
+            return {'config': configuration(), 'history': {}, 'memories': {}, 'usage': [], 'diagnostics': [],
+                    'provider_policies': {}, 'provider_status': {}}
         path = contained(self.layout.state, 'characters/registry.json')
         if path.stat().st_size > MAX_STATE:
             raise UserError('Character registry exceeds its bounded storage limit')
@@ -280,6 +305,11 @@ class Characters:
             if any(not isinstance(value.get(key), kind) for key, kind in (('history', dict), ('memories', dict), ('usage', list), ('diagnostics', list))):
                 raise ValueError()
             if any(not isinstance(value['config'].get(key), kind) for key, kind in (('characters', list), ('districts', list), ('settings', dict))):
+                raise ValueError()
+            value['config']['settings'] = validate_settings(value['config']['settings'])
+            value.setdefault('provider_policies', {})
+            value.setdefault('provider_status', {})
+            if not isinstance(value['provider_policies'], dict) or not isinstance(value['provider_status'], dict):
                 raise ValueError()
             return value
         except (OSError, ValueError, TypeError) as exc:
@@ -320,8 +350,17 @@ class Characters:
 
     def _public_settings(self, state):
         settings = validate_settings(state['config']['settings'])
-        settings['credential_configured'] = bool(os.environ.get(settings['key_env']))
-        settings['cost_estimate_configured'] = settings['input_usd_per_million'] > 0 and settings['output_usd_per_million'] > 0
+        status = self.credentials.status()
+        verification = self._verification(state)
+        settings['credential_configured'] = status['configured']
+        settings['credential_source'] = status['source']
+        settings['credential_error'] = status['error']
+        selected_policy = self._model_policy(settings, settings['model'])
+        settings['cost_estimate_configured'] = selected_policy['input_usd_per_million'] > 0 and selected_policy['output_usd_per_million'] > 0
+        settings['connection_verified'] = verification['verified']
+        settings['verification'] = {k: v for k, v in verification.items() if k != 'model_policies'}
+        settings['verified_models'] = [{'id': ident, **p} for ident, p in verification['model_policies'].items()]
+        settings['model_presets'] = copy.deepcopy(list(MODEL_PRESETS.values()))
         return settings
 
     def snapshot(self, query='', district='', kind=''):
@@ -343,10 +382,185 @@ class Characters:
                              'last_known': last_known,
                              'recent_activity': next((u['at'] for u in reversed(state['usage']) if u.get('id') == p['id']), None)})
         return {'revision': _hash(state), 'characters': rows, 'templates': copy.deepcopy(TEMPLATES),
-                'districts': copy.deepcopy(state['config']['districts']), 'capabilities': copy.deepcopy(CAPABILITIES),
+                'districts': copy.deepcopy(state['config']['districts']), 'capabilities': self._capabilities(native),
                 'settings': self._public_settings(state), 'diagnostics': state['diagnostics'][-20:],
                 'usage': self._usage_summary(state), 'runtime': self._runtime_status(state, native),
-                'default_ids': [p['id'] for p in character_defaults()]}
+                'default_ids': [p['id'] for p in character_defaults()], 'provider_status': self.provider_status(state, native)}
+
+    @staticmethod
+    def _credential_signature(key):
+        return hashlib.sha256(key.encode('utf8')).hexdigest() if key else ''
+
+    @staticmethod
+    def _request_signature(settings, model, effort):
+        return _hash({'provider': settings['provider'], 'endpoint': settings['endpoint'], 'model': model,
+                      'reasoning_effort': effort, 'response_tokens': settings['response_tokens'],
+                      'input_price': settings['input_usd_per_million'], 'output_price': settings['output_usd_per_million']})
+
+    @staticmethod
+    def _model_policy(settings, model, requested_effort=None):
+        preset = MODEL_PRESETS.get(model)
+        effort = requested_effort if requested_effort not in (None, '', 'global') else settings['reasoning_effort']
+        if preset and effort not in preset['reasoning_efforts']:
+            effort = preset['reasoning_efforts'][0]
+        return {'model': model, 'endpoint': OPENAI_ENDPOINT, 'reasoning_effort': effort,
+                'reasoning_efforts': list(preset['reasoning_efforts']) if preset else [effort],
+                'reasoning_supported': bool(preset) or effort != 'none',
+                'temperature_supported': bool(preset and preset['temperature_supported'] and effort == 'none'),
+                'response_tokens': settings['response_tokens'],
+                'input_usd_per_million': preset['input_usd_per_million'] if preset else settings['input_usd_per_million'],
+                'output_usd_per_million': preset['output_usd_per_million'] if preset else settings['output_usd_per_million']}
+
+    def _verification(self, state, key=None):
+        settings = state['config']['settings']
+        if key is None:
+            try:
+                key, _ = self.credentials.load()
+            except (OSError, ValueError, UserError):
+                key = ''
+        signature = self._credential_signature(key)
+        policies = {}
+        for model, policy in state['provider_policies'].items():
+            if policy.get('verified') is True and signature and policy.get('credential_signature') == signature and policy.get('endpoint') == settings['endpoint']:
+                policies[model] = {k: copy.deepcopy(v) for k, v in policy.items() if k not in ('credential_signature', 'request_signature')}
+        model = settings['model']
+        effective = self._model_policy(settings, model)
+        selected = state['provider_policies'].get(model, {})
+        verified = bool(settings['provider'] == 'openai' and model in policies and
+                        selected.get('request_signature') == self._request_signature(settings, model, effective['reasoning_effort']))
+        return {'verified': verified, 'at': selected.get('at') if verified else None, 'model': model,
+                'endpoint': settings['endpoint'], 'reasoning_effort': effective['reasoning_effort'],
+                'response_tokens': settings['response_tokens'], 'model_policies': policies}
+
+    def provider_status(self, state=None, native=None):
+        state = self._read() if state is None else state
+        native = self._native() if native is None else native
+        credentials = self.credentials.status()
+        verification = self._verification(state)
+        stored = state['provider_status']
+        restarted = False
+        try:
+            key, _ = self.credentials.load()
+            native_provider = native.get('provider', {})
+            fingerprint = native_provider.get('credential_fingerprint')
+            restarted = bool(native['current'] and key and fingerprint and fingerprint == self._credential_signature(key))
+            mismatch = bool(native['current'] and key and (not native_provider.get('credential_configured') or fingerprint != self._credential_signature(key)))
+        except (OSError, ValueError, UserError):
+            mismatch = False
+        return {'configured': credentials['configured'], 'credential_source': credentials['source'],
+                'credential_error': credentials['error'], 'verified': verification['verified'],
+                'external_enabled': bool(state['config']['settings']['external_enabled'] and verification['verified']),
+                'model': verification['model'], 'endpoint': verification['endpoint'],
+                'reasoning_effort': verification['reasoning_effort'],
+                'verified_models': [{'id': ident, **policy} for ident, policy in verification['model_policies'].items()],
+                'last_successful_call': copy.deepcopy(stored.get('last_successful_call')),
+                'last_error': copy.deepcopy(stored.get('last_error')), 'auto_disabled_reason': stored.get('auto_disabled_reason'),
+                'restart_required': bool(mismatch or stored.get('credential_rotated') and not restarted),
+                'usage': self._combined_usage(state), 'preview_usage': self._usage_summary(state),
+                'native_adapter_version': native.get('adapter_version'),
+                'native_generation_policy_available': bool(native['current'] and 'generation_policy' in native.get('capabilities', [])),
+                'native_usage': self._native_usage(native),
+                'note': 'Credential rotation needs a normal dedicated-server restart; Save and Apply cannot replace a running Java process environment.'}
+
+    @staticmethod
+    def _capabilities(native):
+        result = copy.deepcopy(CAPABILITIES)
+        current = native['current']
+        caps = native.get('capabilities', [])
+        result['runtime']['per_npc_model'] = bool(current and 'per_character_model' in caps)
+        result['runtime']['generation_policy'] = bool(current and 'generation_policy' in caps)
+        result['runtime']['returned_usage'] = bool(current and 'returned_usage' in caps)
+        result['runtime']['adapter_version'] = native.get('adapter_version') if current else None
+        result['runtime']['note'] = (
+            'The current adapter supports tested per-character models and generation settings. Memory retention and correction remain preview controls.'
+            if result['runtime']['generation_policy'] else
+            'Per-character model and generation settings need the updated adapter 0.2.0 and its current acknowledgement. Provider previews remain separate; memory retention and correction are preview controls.')
+        return result
+
+    def _combined_usage(self, state):
+        preview = self._usage_summary(state)
+        day, now = datetime.now(timezone.utc).date().isoformat(), time.time()
+        try:
+            ledger = self._spending_ledger()
+            preview_reserved, preview_count, recent = self._preview_spending(state, ledger, day, now)
+            native_current_day = ledger.get('day') == day
+            native_reserved = ledger.get('reserved_usd', 0) if native_current_day else 0
+            _number(native_reserved, 'Retained native spending', 0, 1_000_000)
+            native_count = ledger.get('day_requests', 0) if native_current_day else 0
+            if native_reserved and 'day_requests' not in ledger:
+                native_count = None
+            elif native_count is not None:
+                _number(native_count, 'Retained native admissions', 0, 1_000_000, True)
+            native_rows = ledger.get('requests', [])
+            if not isinstance(native_rows, list) or len(native_rows) > 128:
+                raise ValueError()
+            native_counts = self._counts(ledger.get('day_usage', {})) if native_current_day else {}
+            measured = ({key: (preview['measured_counts'] or {}).get(key, 0) + native_counts.get(key, 0)
+                         for key in ('input', 'output', 'total')} if preview['measured_counts'] or native_counts else None)
+            native_estimate = ledger.get('day_estimated_token_cost_usd', 0) if native_current_day else 0
+            _number(native_estimate, 'Native usage cost estimate', 0, 1_000_000)
+            return {'scope': 'combined_minecraft_previews_and_connection_tests', 'available': True,
+                    'requests_today': preview_count + native_count if native_count is not None else None,
+                    'requests_last_minute': sum(-2 <= now - r.get('at', -1) / 1000 < 60 for r in native_rows + recent),
+                    'requests_last_hour': sum(-2 <= now - r.get('at', -1) / 1000 < 3600 for r in native_rows + recent),
+                    'reserved_cost_today_usd': round(preview_reserved + native_reserved, 8),
+                    'measured_counts': measured, 'estimated_token_cost_usd':
+                        round((preview['estimated_token_cost_usd'] or 0) + native_estimate, 8) if measured else None,
+                    'actual_cost_usd': None, 'note': 'Combined conservative local reservations share one locked allowance. '
+                        'Returned token metadata can be incomplete; provider account billing remains authoritative.'}
+        except (OSError, ValueError, TypeError, AttributeError, UserError):
+            return {'scope': 'combined_minecraft_previews_and_connection_tests', 'available': False,
+                    'requests_today': None, 'requests_last_minute': None, 'requests_last_hour': None,
+                    'reserved_cost_today_usd': None, 'measured_counts': None, 'estimated_token_cost_usd': None,
+                    'actual_cost_usd': None, 'note': 'Retained combined spending is unavailable. Admission fails closed and previous charges remain preserved.'}
+
+    def _native_usage(self, native):
+        unavailable = {'available': False, 'scope': 'minecraft', 'note': 'Authenticated native usage is unavailable'}
+        if not native['current'] or 'returned_usage' not in native.get('capabilities', []):
+            return unavailable
+        try:
+            path = contained(self.layout.state, 'characters/native-budget.json')
+            if not path.is_file() or path.stat().st_size > 262144:
+                return unavailable
+            ledger = read_json(path)
+            if not isinstance(ledger, dict) or ledger.get('format') != 'awft-native-ai-usage:2' or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', ledger.get('day', '')):
+                return unavailable
+            rows = ledger.get('requests', [])
+            if not isinstance(rows, list) or len(rows) > 128:
+                return unavailable
+            current_day = ledger['day'] == datetime.now(timezone.utc).date().isoformat()
+            usage = ledger.get('day_usage', {})
+            counts = self._counts(usage) if isinstance(usage, dict) else {}
+            for key in ('day_requests', 'day_dispatched'):
+                _number(ledger.get(key, 0), key, 0, 1_000_000, True)
+            for key in ('reserved_usd', 'day_estimated_token_cost_usd'):
+                _number(ledger.get(key, 0), key, 0, 1_000_000)
+            return {'available': True, 'scope': 'minecraft', 'day': ledger['day'], 'current_day': current_day,
+                    'requests_today': ledger.get('day_requests', 0) if current_day else 0,
+                    'dispatched_today': ledger.get('day_dispatched', 0) if current_day else 0,
+                    'reserved_cost_today_usd': ledger.get('reserved_usd', 0) if current_day else 0,
+                    'measured_counts': counts if current_day else {},
+                    'estimated_token_cost_usd': ledger.get('day_estimated_token_cost_usd', 0) if current_day else 0,
+                    'actual_cost_usd': None, 'note': 'Native observed responses and conservative reservations; provider billing remains authoritative.'}
+        except (OSError, ValueError, TypeError, UserError):
+            return unavailable
+
+    def credential(self, body):
+        _object(body, ('api_key', 'expected'), 'Dedicated credential entry')
+        with self._lock, self.layout.mutation:
+            state = self._read()
+            self._check(state, body.get('expected'))
+            if os.environ.get(DEDICATED_ENV):
+                raise UserError('SMARTVILLAGERS_API_KEY already manages the dedicated credential. Update that environment value instead; an ignored replacement was not stored.')
+            self.credentials.save(body.get('api_key'))
+            state['provider_policies'] = {}
+            state['config']['settings']['external_enabled'] = False
+            state['provider_status'].update(credential_rotated=True, last_error=None)
+            self._write(state)
+            status = self.credentials.status()
+            return {'revision': _hash(state), 'credential_configured': status['configured'],
+                    'credential_source': status['source'], 'restart_required': True,
+                    'note': 'Dedicated credential protected for this Windows user. Test Connection before enabling AI; a normal server restart is required to pass a rotated key to Java.'}
 
     def _runtime_status(self, state, native=None):
         native = self._native() if native is None else native
@@ -424,6 +638,14 @@ class Characters:
                       'config_sha256': config_sha, 'revision': _text(sample.get('revision', ''), 'Native revision', 100),
                       'error': _text(sample.get('error', ''), 'Native error', 300),
                       'reason': 'Retained sample; current server identity or freshness unavailable'}
+            provider = sample.get('provider', {})
+            if isinstance(provider, dict):
+                fingerprint = provider.get('credential_fingerprint')
+                result['provider'] = {'credential_configured': provider.get('credential_configured') is True,
+                                      'credential_fingerprint': fingerprint if isinstance(fingerprint, str) and re.fullmatch(r'[0-9a-f]{64}', fingerprint) else None}
+            result['adapter_version'] = _text(sample.get('adapter_version', ''), 'Native adapter version', 32)
+            result['capabilities'] = [cap for cap in sample.get('capabilities', []) if cap in
+                                      ('per_character_model', 'generation_policy', 'verified_model_gate', 'returned_usage')]
             try:
                 process = psutil.Process(pid)
                 owned = abs(process.create_time() - created) <= .1 and Path(process.cwd()).resolve() == self.layout.server.resolve()
@@ -452,8 +674,17 @@ class Characters:
     def _usage_summary(state):
         day = datetime.now(timezone.utc).date().isoformat()
         today = [x for x in state['usage'] if x['at'].startswith(day)]
-        return {'requests_today': len(today), 'reserved_cost_today_usd': round(sum(x.get('reserved_usd', 0) for x in today), 6),
-                'measured_cost_usd': None, 'note': 'Reserved cost is a conservative estimate using administrator-entered rates; provider billing is authoritative.'}
+        now = time.time()
+        counts = {key: sum(x.get('counts', {}).get(key, 0) for x in today) for key in ('input', 'output', 'total')}
+        available = any(x.get('counts') for x in today)
+        return {'scope': 'control_room_previews_and_connection_tests', 'requests_today': len(today), 'reserved_cost_today_usd': round(sum(x.get('reserved_usd', 0) for x in today), 6),
+                'requests_last_minute': sum(now - x['time'] < 60 for x in state['usage']),
+                'requests_last_hour': sum(now - x['time'] < 3600 for x in state['usage']),
+                'successful_requests_today': sum(x.get('status') == 'ok' for x in today),
+                'measured_counts': counts if available else None,
+                'estimated_token_cost_usd': round(sum(x.get('estimated_token_cost_usd', 0) for x in today), 8) if available else None,
+                'actual_cost_usd': None, 'measured_cost_usd': None,
+                'note': 'Counts come from provider responses. Reserved and token-derived costs are estimates; provider billing is authoritative.'}
 
     def detail(self, ident):
         state = self._read()
@@ -462,7 +693,7 @@ class Characters:
         position, last_known, loaded = self._position(p, native)
         return {'revision': _hash(state), 'character': copy.deepcopy(p),
                 'history': [{k: v for k, v in x.items() if k != 'profile'} for x in reversed(state['history'].get(ident, []))],
-                'memories': self._memories(state, p), 'capabilities': copy.deepcopy(CAPABILITIES),
+                'memories': self._memories(state, p), 'capabilities': self._capabilities(native),
                 'district': next((copy.deepcopy(d) for d in state['config']['districts'] if d['id'] == p['district']), None),
                 'runtime': self._runtime_status(state, native), 'has_defaults': ident in {p['id'] for p in character_defaults()},
                 'position': position, 'last_known': last_known, 'loaded': loaded}
@@ -581,6 +812,13 @@ class Characters:
             self._check(state, body.get('expected'))
             changes = _object(body.get('changes'), SETTINGS, 'Settings')
             state['config']['settings'] = validate_settings(state['config']['settings'] | changes)
+            if state['config']['settings']['external_enabled']:
+                if 'external_enabled' in changes and not self._verification(state)['verified']:
+                    raise UserError('Test Connection must succeed for the current model, endpoint and settings before enabling external AI')
+                if not self._verification(state)['verified']:
+                    state['config']['settings']['external_enabled'] = False
+                else:
+                    state['provider_status'].pop('auto_disabled_reason', None)
             self._write(state)
             return {'revision': _hash(state), 'settings': self._public_settings(state), 'note': 'Preview settings saved. No external request was made.'}
 
@@ -658,6 +896,12 @@ class Characters:
                     raise UserError('A stable entity UUID cannot be bound to two runtime profiles')
                 entities.add(profile['entity_uuid'])
         result['settings'] = validate_settings(result['settings'])
+        result['provider_verification'] = self._verification(state)
+        native = self._native()
+        native_ready = self._updated_adapter(native)
+        result['required_adapter_version'] = '0.2.0'
+        if not result['provider_verification']['verified'] or not native_ready or not self._native_credential_matches(native):
+            result['settings']['external_enabled'] = False
         result['revision'] = _hash(state)
         # Credential reference and browser provider settings never become client/runtime credentials.
         result['settings'] = {key: value for key, value in result['settings'].items() if key != 'key_env'}
@@ -673,9 +917,36 @@ class Characters:
             path = contained(self.layout.state, 'characters/runtime.json')
             self.storage.reserve(2 * MAX_EXPORT, self.folder)
             atomic_write(path, _encoded(exported))
+            waiting = state['config']['settings']['external_enabled'] and not exported['settings']['external_enabled']
+            waiting_note = ('The current dedicated credential is not active in the updated Minecraft process. '
+                            'Restart the dedicated server normally to pass the protected credential, then Apply again.'
+                            if self._updated_adapter(self._native()) else
+                            'Install/start the updated adapter 0.2.0, verify its current acknowledgement, then Apply again.')
             return {'status': 'staged', 'revision': exported['revision'], 'path': str(path), 'acknowledged': False,
-                    'note': 'Validated runtime proposal staged. An installed adapter watches this file and acknowledges its exact hash after application; '
+                    'external_enabled': exported['settings']['external_enabled'],
+                    'note': 'External AI remains disabled in the staged runtime. ' + waiting_note + ' Saved desired settings were preserved.' if waiting else
+                            'Validated runtime proposal staged. An installed adapter watches this file and acknowledges its exact hash after application; '
                             'otherwise owner deployment is required. Game application is pending acknowledgement.'}
+
+    @staticmethod
+    def _updated_adapter(native):
+        try:
+            version = tuple(int(x) for x in native.get('adapter_version', '').split('.'))
+        except ValueError:
+            return False
+        return bool(native['current'] and version >= (0, 2, 0) and
+                    {'generation_policy', 'verified_model_gate'} <= set(native.get('capabilities', [])))
+
+    def _native_credential_matches(self, native):
+        if not self._updated_adapter(native):
+            return False
+        try:
+            key, _ = self.credentials.load()
+            provider = native.get('provider', {})
+            return bool(key and provider.get('credential_configured') and
+                        provider.get('credential_fingerprint') == self._credential_signature(key))
+        except (OSError, ValueError, UserError):
+            return False
 
     @staticmethod
     def _relevant_lore(state, profile, message):
@@ -771,44 +1042,275 @@ class Characters:
         result['latency_ms'] = round((time.perf_counter() - started) * 1000, 2)
         return result
 
+    @staticmethod
+    def _counts(usage):
+        return {{'prompt_tokens': 'input', 'completion_tokens': 'output', 'total_tokens': 'total',
+                 'input_tokens': 'input', 'output_tokens': 'output'}[k]: v for k, v in usage.items()
+                if k in ('prompt_tokens', 'completion_tokens', 'total_tokens', 'input_tokens', 'output_tokens')
+                and type(v) is int and 0 <= v <= 1_000_000}
+
+    @contextlib.contextmanager
+    def _spending_lock(self):
+        """Same nonblocking byte-zero lock used by the existing native budget writer."""
+        self.storage.reserve(1024, self.folder)
+        path = contained(self.layout.state, 'characters/spending.lock')
+        path.parent.mkdir(parents=True, exist_ok=True)
+        descriptor = os.open(path, os.O_RDWR | os.O_CREAT, 0o600)
+        locked = False
+        try:
+            if not os.fstat(descriptor).st_size:
+                os.write(descriptor, b'\0')
+            os.lseek(descriptor, 0, os.SEEK_SET)
+            try:
+                if os.name == 'nt':
+                    import msvcrt
+                    msvcrt.locking(descriptor, msvcrt.LK_NBLCK, 1)
+                else:
+                    import fcntl
+                    fcntl.lockf(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB, 1)
+                locked = True
+            except OSError:
+                raise UserError('Shared AI spending ledger is busy; scripted fallback remains active') from None
+            yield
+        finally:
+            if locked:
+                os.lseek(descriptor, 0, os.SEEK_SET)
+                if os.name == 'nt':
+                    import msvcrt
+                    msvcrt.locking(descriptor, msvcrt.LK_UNLCK, 1)
+                else:
+                    import fcntl
+                    fcntl.lockf(descriptor, fcntl.LOCK_UN, 1)
+            os.close(descriptor)
+
+    def _spending_ledger(self):
+        path = contained(self.layout.state, 'characters/native-budget.json')
+        if not path.is_file():
+            return {}
+        if path.stat().st_size > 262144:
+            raise UserError('Shared AI spending ledger exceeds its finite bound; previous charges were preserved')
+        value = read_json(path)
+        if not isinstance(value, dict) or value.get('format') not in (None, 'awft-native-ai-usage:2'):
+            raise UserError('Shared AI spending ledger is not recognized; previous charges were preserved')
+        return value
+
+    @staticmethod
+    def _preview_spending(state, ledger, day, now):
+        today = [u for u in state['usage'] if u['at'].startswith(day)]
+        old_same = ledger.get('preview_day') == day
+        spent = max(ledger.get('preview_reserved_usd', 0) if old_same else 0, sum(u['reserved_usd'] for u in today))
+        count = max(ledger.get('preview_day_requests', 0) if old_same else 0, len(today))
+        _number(spent, 'Retained preview spending', 0, 1_000_000)
+        _number(count, 'Retained preview admissions', 0, 1_000_000, True)
+        recent = {}
+        for row in ledger.get('preview_recent', []):
+            if isinstance(row, dict) and type(row.get('at')) in (int, float) and -2 <= now - row['at'] / 1000 < 86400:
+                recent[str(row.get('id'))] = row
+        for u in state['usage']:
+            if now - u['time'] < 86400:
+                ident = u.get('request_id') or hashlib.sha256(f"{u['id']}|{u['time']}".encode()).hexdigest()[:32]
+                recent[ident] = {'id': ident, 'at': round(u['time'] * 1000), 'character': u['id']}
+        return spent, count, sorted(recent.values(), key=lambda r: r['at'])[-128:]
+
+    def _reserve_request(self, settings, policy, size, output_cap, ident, profile=None, kind='preview'):
+        rates = (policy['input_usd_per_million'], policy['output_usd_per_million'])
+        if min(rates) <= 0 or settings['daily_budget_usd'] <= 0:
+            return None, 'Enter conservative input/output price estimates and a positive daily budget before external requests'
+        reserved = ((size + 256) * rates[0] + output_cap * rates[1]) / 1_000_000
+        now, day = time.time(), datetime.now(timezone.utc).date().isoformat()
+        with self._lock, self.layout.mutation:
+            current = self._read()
+            if self._closed or current['config']['settings'] != settings:
+                return None, 'Character settings changed before the request; test again'
+            if profile is not None and _hash(self._find(current, ident)) != _hash(profile):
+                return None, 'Character changed before the request; preview again'
+            if self._active >= settings['max_concurrent']:
+                return None, 'AI concurrency limit reached; no request was queued'
+            last = max((u['time'] for u in current['usage'] if u['id'] == ident), default=0)
+            if profile is not None and now - last < profile['ai']['cooldown_seconds']:
+                return None, 'Character conversation cooldown is active'
+            minute = [u for u in current['usage'] if now - u['time'] < 60]
+            hourly = [u for u in current['usage'] if now - u['time'] < 3600]
+            if len(minute) >= settings['requests_per_minute']:
+                return None, 'AI requests-per-minute limit reached'
+            if len(hourly) >= settings['requests_per_hour'] or profile is not None and sum(u['id'] == ident for u in hourly) >= profile['ai']['requests_per_hour']:
+                return None, 'Hourly AI request limit reached'
+            try:
+                with self._spending_lock():
+                    latest = self._read()
+                    if latest['config']['settings'] != settings or profile is not None and _hash(self._find(latest, ident)) != _hash(profile):
+                        return None, 'Character settings changed before spending admission; test again'
+                    current = latest
+                    ledger = self._spending_ledger()
+                    native_same = ledger.get('day') == day
+                    native_spent = ledger.get('reserved_usd', 0) if native_same else 0
+                    _number(native_spent, 'Retained native spending', 0, 1_000_000)
+                    if native_spent and 'day_requests' not in ledger:
+                        return None, 'Retained native admission count is unknown; previous spending was preserved'
+                    native_count = ledger.get('day_requests', 0) if native_same else 0
+                    _number(native_count, 'Retained native admissions', 0, 1_000_000, True)
+                    preview_spent, preview_count, preview_recent = self._preview_spending(current, ledger, day, now)
+                    native_rows = ledger.get('requests', [])
+                    if not isinstance(native_rows, list) or len(native_rows) > 128:
+                        return None, 'Retained native request metadata is invalid; previous spending was preserved'
+                    combined_minute = sum(-2 <= now - r.get('at', -1) / 1000 < 60 for r in native_rows) + sum(-2 <= now - r['at'] / 1000 < 60 for r in preview_recent)
+                    combined_hour = sum(-2 <= now - r.get('at', -1) / 1000 < 3600 for r in native_rows) + sum(-2 <= now - r['at'] / 1000 < 3600 for r in preview_recent)
+                    if combined_minute >= settings['requests_per_minute'] or combined_hour >= settings['requests_per_hour']:
+                        return None, 'Combined Minecraft and preview AI rate limit reached'
+                    reason = 'Daily AI request allowance reached' if native_count + preview_count >= settings['requests_per_day'] else 'Daily estimated AI budget reached' if native_spent + preview_spent + reserved > settings['daily_budget_usd'] else None
+                    if reason:
+                        current['config']['settings']['external_enabled'] = False
+                        current['provider_status']['auto_disabled_reason'] = reason
+                        self._write(current)
+                        return None, reason + '; external AI disabled, scripted fallback active'
+                    request_id = uuid.uuid4().hex
+                    preview_recent.append({'id': request_id, 'at': round(now * 1000), 'character': ident})
+                    ledger.update(format='awft-native-ai-usage:2', preview_day=day, preview_reserved_usd=preview_spent + reserved,
+                                  preview_day_requests=preview_count + 1, preview_recent=preview_recent[-128:])
+                    encoded = _encoded(ledger)
+                    if len(encoded) > 262144:
+                        return None, 'Shared AI spending ledger reached its finite bound; previous charges were preserved'
+                    self.storage.reserve(524288, self.folder)
+                    atomic_write(contained(self.layout.state, 'characters/native-budget.json'), encoded)
+                    # Charge is retained above even if this private history write fails. No refund or replay.
+                    current['usage'] = [u for u in current['usage'] if now - u['time'] < 86400]
+                    current['usage'].append({'id': ident, 'request_id': request_id, 'at': utcnow(), 'time': now,
+                                             'reserved_usd': reserved, 'model': policy['model'], 'kind': kind,
+                                             'input_usd_per_million': rates[0], 'output_usd_per_million': rates[1], 'status': 'reserved'})
+                    self._write(current)
+            except (OSError, ValueError, TypeError, AttributeError, UserError):
+                return None, 'Shared AI spending ledger is busy or unavailable; previous charges were preserved and no request was sent'
+            self._active += 1
+            return {'id': request_id, 'reserved_usd': reserved}, None
+
+    @staticmethod
+    def _failure_code(exc):
+        if isinstance(exc, urllib.error.HTTPError):
+            return {401: 'authentication_failed', 403: 'permission_denied', 404: 'model_unavailable', 429: 'rate_limited'}.get(exc.code, 'provider_http_error')
+        return 'timeout_or_network_error' if isinstance(exc, (OSError, TimeoutError)) else 'invalid_provider_response'
+
+    def _record_request(self, request_id, model, started, usage=None, error=None):
+        with self._lock, self.layout.mutation:
+            state = self._read()
+            row = next((u for u in state['usage'] if u.get('request_id') == request_id), None)
+            counts = self._counts(usage or {})
+            latency = round((time.perf_counter() - started) * 1000, 2)
+            if row is not None:
+                row.update(status='provider_error' if error else 'ok', counts=counts, latency_ms=latency)
+                if usage and isinstance(usage.get('_actual_model'), str):
+                    row['actual_model'] = usage['_actual_model'][:100]
+                row['estimated_token_cost_usd'] = (counts.get('input', 0) * row['input_usd_per_million'] + counts.get('output', 0) * row['output_usd_per_million']) / 1_000_000
+            if error:
+                state['provider_status']['last_error'] = {'at': utcnow(), 'code': error,
+                    'message': 'The provider request did not succeed. Credentials, raw provider errors and conversation text were not logged.'}
+            else:
+                state['provider_status'].update(last_error=None, last_successful_call={
+                    'at': utcnow(), 'model': model, 'kind': row.get('kind') if row else 'unknown', 'counts': counts, 'latency_ms': latency})
+            self._write(state)
+
+    @staticmethod
+    def _models(key, timeout):
+        request = urllib.request.Request('https://api.openai.com/v1/models', headers={'Authorization': 'Bearer ' + key,
+            'User-Agent': 'AWorldForTwo-CharacterConnection/1'}, method='GET')
+        with urllib.request.build_opener(_NoRedirect()).open(request, timeout=timeout) as response:
+            raw = response.read(524289)
+        if len(raw) > 524288:
+            raise UserError('Account model inventory exceeded 512 KiB')
+        value = json.loads(raw)
+        rows = value.get('data')
+        if not isinstance(rows, list) or len(rows) > 1000:
+            raise UserError('Account model inventory is invalid or exceeds its bound')
+        return sorted({row['id'] for row in rows if isinstance(row, dict) and isinstance(row.get('id'), str)
+                       and re.fullmatch(r'[A-Za-z0-9_.:/-]{1,100}', row['id'])})
+
+    def test_connection(self, body):
+        _object(body, ('expected', 'external_opt_in', 'model'), 'Connection test')
+        if body.get('external_opt_in') is not True:
+            raise UserError('Explicitly authorize the context-free provider connection test')
+        started = time.perf_counter()
+        state = self._read()
+        self._check(state, body.get('expected'))
+        settings = state['config']['settings']
+        if settings['provider'] != 'openai':
+            raise UserError('Connection verification currently supports OpenAI only; scripted mode remains available')
+        model = _text(body.get('model') or settings['model'], 'Selected model', 100, True)
+        if not re.fullmatch(r'[A-Za-z0-9_.:/-]{1,100}', model):
+            raise UserError('Use a valid selected model identifier')
+        key, _ = self.credentials.load()
+        if not key:
+            raise UserError('Configure the dedicated protected OpenAI credential first')
+        policy = self._model_policy(settings, model)
+        cap = min(settings['response_tokens'], 256)
+        charge, error = self._reserve_request(settings, policy, 200, cap, '__connection_test__', kind='connection_test')
+        if error:
+            return {'verified': False, 'diagnostic': error, 'revision': _hash(self._read()), 'usage': None}
+        usage = None
+        try:
+            models = self._models(key, settings['timeout_seconds'])
+            # No player, NPC, lore, server, memory, coordinates or administrator context.
+            answer, usage = self._provider('openai', model, key, 'Connection verification. Reply with the single word OK.',
+                'Reply OK.', {'max_response_tokens': cap, 'temperature': .7, '_policy': policy}, settings['timeout_seconds'])
+            if not isinstance(answer, str) or not answer.strip() or len(answer) > 1024 or key in answer:
+                raise UserError('Selected model did not return a usable small response within the configured limit')
+            with self._lock, self.layout.mutation:
+                current = self._read()
+                current_key, _ = self.credentials.load()
+                if self._credential_signature(current_key) != self._credential_signature(key):
+                    raise UserError('Dedicated credential changed during verification; test the current credential again')
+                policy.update(verified=True, at=utcnow(), credential_signature=self._credential_signature(key),
+                              request_signature=self._request_signature(settings, model, policy['reasoning_effort']))
+                if model not in current['provider_policies'] and len(current['provider_policies']) >= 16:
+                    raise UserError('At most 16 tested model policies are retained; remove an unused policy before testing another')
+                current['provider_policies'][model] = policy
+                self._write(current)
+            self._record_request(charge['id'], model, started, usage)
+            current = self._read()
+            return {'verified': True, 'connection_current': self._verification(current)['verified'], 'models': models[:128],
+                    'model': model, 'endpoint': settings['endpoint'], 'reasoning_effort': policy['reasoning_effort'],
+                    'model_listed': model in models, 'model_count': len(models),
+                    'usage': {'counts': self._counts(usage), 'estimated_reserved_usd': charge['reserved_usd'], 'actual_cost_usd': None},
+                    'latency_ms': round((time.perf_counter() - started) * 1000, 2), 'revision': _hash(current),
+                    'diagnostic': None, 'note': 'Account model listing and a tiny selected-model text request succeeded. No game or player context was sent.'}
+        except (OSError, ValueError, KeyError, TypeError, UserError) as exc:
+            code = self._failure_code(exc)
+            self._record_request(charge['id'], model, started, usage, code)
+            return {'verified': False, 'model': model, 'endpoint': settings['endpoint'], 'usage': {'counts': self._counts(usage or {})},
+                    'diagnostic': code + ': provider verification failed; scripted fallback remains active', 'revision': _hash(self._read())}
+        finally:
+            with self._lock:
+                self._active -= 1
+
     def _external(self, state, p, message, lore, started):
         settings = state['config']['settings']
         provider = p['ai']['provider']
-        key = os.environ.get(settings['key_env'], '')
+        try:
+            key, _ = self.credentials.load()
+        except (OSError, ValueError, UserError):
+            key = ''
         model = p['ai']['model'] or settings['model']
         if not key or not model:
             return self._fallback(state, p, lore, 'Provider credentials or model are not configured')
-        if settings['input_usd_per_million'] <= 0 or settings['output_usd_per_million'] <= 0 or settings['daily_budget_usd'] <= 0:
-            return self._fallback(state, p, lore, 'Enter conservative input/output price estimates and a positive daily budget before external previews')
+        verification = self._verification(state, key)
+        if provider != 'openai' or not verification['verified'] or model not in verification['model_policies']:
+            return self._fallback(state, p, lore, 'Test Connection must verify the current provider settings and selected model before external previews')
+        policy = copy.deepcopy(verification['model_policies'][model])
+        effort = p['ai'].get('reasoning_effort', 'global')
+        if effort in ('global', ''):
+            effort = settings['reasoning_effort'] if settings['reasoning_effort'] in policy['reasoning_efforts'] else policy['reasoning_efforts'][0]
+        if effort not in policy['reasoning_efforts']:
+            return self._fallback(state, p, lore, 'This character reasoning effort is not supported by the tested model')
+        policy['reasoning_effort'] = effort
+        policy['temperature_supported'] = bool(MODEL_PRESETS.get(model, {}).get('temperature_supported') and effort == 'none')
         prompt = self._prompt(state, p, lore)
-        # One token per UTF-8 byte is deliberately conservative for the reservation.
-        reserved = ((len(prompt.encode('utf8')) + len(message.encode('utf8')) + 256) * settings['input_usd_per_million']
-                    + p['ai']['max_response_tokens'] * settings['output_usd_per_million']) / 1_000_000
-        now = time.time()
-        with self._lock, self.layout.mutation:
-            current = self._read()
-            current_profile = self._find(current, p['id'])
-            if self._closed or _hash(current_profile) != _hash(p) or current['config']['settings'] != settings:
-                return self._fallback(state, p, lore, 'Character settings changed before the request; preview again')
-            if self._active >= settings['max_concurrent']:
-                return self._fallback(state, p, lore, 'AI concurrency limit reached; no request was queued')
-            last_persisted = max((u['time'] for u in current['usage'] if u['id'] == p['id']), default=0)
-            if now - max(last_persisted, self._last.get(('request', p['id']), 0)) < p['ai']['cooldown_seconds']:
-                return self._fallback(state, p, lore, 'Character conversation cooldown is active')
-            recent = [u for u in current['usage'] if now - u['time'] < 3600]
-            if len(recent) >= settings['requests_per_hour'] or sum(u['id'] == p['id'] for u in recent) >= p['ai']['requests_per_hour']:
-                return self._fallback(state, p, lore, 'Hourly AI request limit reached')
-            day = datetime.now(timezone.utc).date().isoformat()
-            spent = sum(u['reserved_usd'] for u in current['usage'] if u['at'].startswith(day))
-            if spent + reserved > settings['daily_budget_usd']:
-                return self._fallback(state, p, lore, 'Daily estimated AI budget reached')
-            current['usage'] = [u for u in current['usage'] if now - u['time'] < 86400]
-            current['usage'].append({'id': p['id'], 'at': utcnow(), 'time': now, 'reserved_usd': reserved})
-            self._write(current)
-            self._active += 1
-            self._last[('request', p['id'])] = now
+        cap = min(p['ai']['max_response_tokens'], settings['response_tokens'])
+        charge, error = self._reserve_request(settings, policy, len(prompt.encode('utf8')) + len(message.encode('utf8')), cap, p['id'], p)
+        if error:
+            return self._fallback(state, p, lore, error)
+        usage = None
         try:
-            answer, usage = self._provider(provider, model, key, prompt, message, p['ai'], settings['timeout_seconds'])
+            ai = dict(p['ai'], max_response_tokens=cap, _policy=policy)
+            answer, usage = self._provider(provider, model, key, prompt, message, ai, settings['timeout_seconds'])
+            self._record_request(charge['id'], model, started, usage)
             answer = _text(answer, 'Provider response', 8000, True)[:p['dialogue']['max_response_chars']]
             if key in answer:
                 raise UserError('Provider response contained credential material')
@@ -826,14 +1328,11 @@ class Characters:
                         self._write(current)
             return {'response': answer, 'mode': 'external', 'personality': copy.deepcopy(p['personality']),
                     'lore': lore, 'latency_ms': round((time.perf_counter() - started) * 1000, 2),
-                    'usage': {'provider': provider, 'model': model, 'counts': {
-                        {'prompt_tokens': 'input', 'completion_tokens': 'output', 'total_tokens': 'total',
-                         'input_tokens': 'input', 'output_tokens': 'output'}[k]: v for k, v in usage.items()
-                        if k in ('prompt_tokens', 'completion_tokens', 'total_tokens', 'input_tokens', 'output_tokens')
-                        and type(v) is int and 0 <= v <= 1_000_000}, 'estimated_reserved_usd': round(reserved, 6),
+                    'usage': {'provider': provider, 'model': model, 'counts': self._counts(usage), 'estimated_reserved_usd': round(charge['reserved_usd'], 6),
                               'actual_cost_usd': None}, 'diagnostic': None,
                     'note': 'External preview only. No game message or command was sent. Actual billing is reported by the provider.'}
-        except (OSError, ValueError, KeyError, TypeError, UserError):
+        except (OSError, ValueError, KeyError, TypeError, UserError) as exc:
+            self._record_request(charge['id'], model, started, usage, self._failure_code(exc))
             return self._fallback(state, p, lore, 'AI provider failed, timed out or returned an invalid response; scripted dialogue remains available')
         finally:
             with self._lock:
@@ -908,7 +1407,13 @@ class Characters:
         if provider == 'openai':
             url = 'https://api.openai.com/v1/chat/completions'
             payload = {'model': model, 'messages': [{'role': 'system', 'content': prompt}, {'role': 'user', 'content': message}],
-                       'max_completion_tokens': ai['max_response_tokens'], 'temperature': ai['temperature'], 'store': False}
+                       'max_completion_tokens': ai['max_response_tokens'], 'store': False}
+            policy = ai.get('_policy', {})
+            effort = policy.get('reasoning_effort', 'none')
+            if policy.get('reasoning_supported'):
+                payload['reasoning_effort'] = effort
+            if policy.get('temperature_supported') and effort == 'none':
+                payload['temperature'] = ai['temperature']
             headers = {'Authorization': 'Bearer ' + key}
         else:
             url = 'https://api.anthropic.com/v1/messages'
@@ -927,6 +1432,8 @@ class Characters:
         # Return only finite token counts, never arbitrary provider metadata or error bodies.
         safe_usage = {k: v for k, v in usage.items() if k in ('prompt_tokens', 'completion_tokens', 'total_tokens', 'input_tokens', 'output_tokens')
                       and type(v) is int and 0 <= v <= 1_000_000}
+        if isinstance(value.get('model'), str) and re.fullmatch(r'[A-Za-z0-9_.:/-]{1,100}', value['model']):
+            safe_usage['_actual_model'] = value['model']
         answer = value['choices'][0]['message']['content'] if provider == 'openai' else '\n'.join(x['text'] for x in value['content'] if x.get('type') == 'text')
         return answer, safe_usage
 
