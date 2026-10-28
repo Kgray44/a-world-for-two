@@ -226,16 +226,19 @@ class ConfigurationTests(Fixture):
                 with self.assertRaises(UserError):
                     server.command(command)
 
-    def test_mill_commissioning_requires_confirmation_and_typed_bundle(self):
+    def test_retained_mill_resume_requires_confirmation_and_typed_bundle(self):
         server = Server(self.layout, self.storage)
-        command = 'awftmill commission mill-commission-1234567890abcdef ' + 'b' * 64
+        write_json(self.layout.state / 'artistic-owner.json',
+                   {'format': 'awft-artistic-stage:1', 'home': str(self.layout.home)})
+        self.layout.save_settings(self.layout.settings() | {'permanent_world': False, 'port': 25575})
+        command = 'awftmill resume mill-resume-1234567890abcdef ' + 'b' * 64
         with patch.object(server, '_write') as write:
             with self.assertRaises(UserError):
                 server.command(command)
             server.command(command, confirmed=True)
             write.assert_called_once_with(command)
             for bad in [command + ' extra', command.replace('b' * 64, 'invalid'),
-                        command.replace('mill-commission-', '../')]:
+                        command.replace('mill-resume-', '../')]:
                 with self.assertRaises(UserError):
                     server.command(bad, confirmed=True)
 
@@ -328,7 +331,7 @@ class ConfigurationTests(Fixture):
                     ('awftfountain', 'reset', 'inspect', 'fountain-'),
                     ('awftfountain', 'recover-gate', 'inspect', 'fountain-'),
                     ('awftfountain', 'park-gate', 'inspect', 'fountain-'),
-                    ('awftmill', 'resume', 'inspect', 'mill-commission-')]
+                    ('awftmill', 'resume', 'inspect', 'mill-resume-')]
         for family, mutation, observation, prefix in commands:
             command = family + ' ' + mutation + ' ' + prefix + 'e' * 16 + ' ' + 'e' * 64
             with self.subTest(family=family), patch.object(server, '_write') as write:

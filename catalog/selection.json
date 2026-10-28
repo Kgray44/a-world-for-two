@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-candidate.50",
+  "version": "0.1.0-candidate.53",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
@@ -1200,15 +1200,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.36",
-      "version": "0.6.36",
+      "version_id": "0.6.39",
+      "version": "0.6.39",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.36.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.36.jar",
-      "size": 660685,
+      "filename": "awft-control-bridge-0.6.39.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.39.jar",
+      "size": 690954,
       "hashes": {
-        "sha256": "13d1b1ff7c2405fadb750d57aa2d58231496f560fd4880c0a7153265be164aac"
+        "sha256": "496a22cf30d517dbc2bcae2806f6412c17a0656c081d0cb8fb76d0c2c8d9c1d4"
       },
       "side": "both",
       "kind": "mod",

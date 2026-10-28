@@ -334,10 +334,9 @@ class Server:
         patterns += [r"awftharborcraft (status|cancel)",
                      r"awftharborcraft (inspect|create) artistic-harbor-craft-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftmill (status|cancel)",
-                     r"awftmill (inspect|commission) mill-commission-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftattractions (status|cancel)",
                      r"awftattractions (inspect|admit) [a-z0-9-]{1,80} [a-f0-9]{64}"]
-        if command.startswith(('awftengine repair-radio ', 'awftbridgeglue ', 'awftimport ', 'awftfountain ', 'awfttrees ', 'awfttreepatch ', 'awftrelocate ', 'awftlife ', 'awftchains ', 'awftbridgetop ', 'awftmill resume ')):
+        if command.startswith(('awftengine repair-radio ', 'awftbridgeglue ', 'awftimport ', 'awftfountain ', 'awfttrees ', 'awfttreepatch ', 'awftrelocate ', 'awfttransport ', 'awftlife ', 'awftchains ', 'awftbridgetop ', 'awftmill inspect ', 'awftmill resume ')):
             owner = read_json(self.layout.state / 'artistic-owner.json', {})
             settings = self.layout.settings()
             if (owner.get('format') != 'awft-artistic-stage:1'
@@ -355,6 +354,7 @@ class Server:
                          r"awfttrees (describe|grow) trees-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awfttreepatch (status|cancel)",
                          r"awfttreepatch (inspect|grow) treepatch-[a-f0-9]{16} [a-f0-9]{64}",
+                         r"awfttransport snapshot [a-z0-9_-]{1,32}",
                          r"awftrelocate (status|cleanup)",
                          r"awftrelocate (inspect|move|inspect-moved) relocation-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awftlife (status|cancel)",
@@ -363,7 +363,7 @@ class Server:
                          r"awftchains (create|prepare-create|inspect|verify-restart) chains-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awftbridgetop (status|cancel)",
                          r"awftbridgetop inspect bridge-topside-inspection-[a-f0-9]{16} [a-f0-9]{64}",
-                         r"awftmill resume mill-commission-[a-f0-9]{16} [a-f0-9]{64}"]
+                         r"awftmill (inspect|resume) mill-resume-[a-f0-9]{16} [a-f0-9]{64}"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
         dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|settle|cancel)|awftengine (setup|commission|close|repair-radio|cancel)|awftharborcraft (create|cancel)|awftmill (commission|resume|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel)|awftimport (settle|cancel)|awftfountain (commission|reset|recover-gate|park-gate|cancel)|awfttrees (grow|cancel)|awfttreepatch (grow|cancel)|awftrelocate (move|cleanup)|awftlife (seed|cancel)|awftchains (create|prepare-create|cancel)|awftbridgetop cancel)", command)

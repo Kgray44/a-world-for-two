@@ -92,7 +92,7 @@ class PerformanceCaptureTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             patched_bridge('')
         root = Path(__file__).resolve().parents[1]
-        original = (root / 'compat/control-bridge/src/worldfortwo/bridge/ControlBridge.java').read_text()
+        original = (root / 'tests/fixtures/performance-control-bridge-preintegration.java').read_text(encoding='utf8')
         patched = patched_bridge(original)
         self.assertIn('performanceTicks.finished(now - beforeTick)', patched)
         with self.assertRaises(ValueError):
