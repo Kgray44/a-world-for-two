@@ -18,6 +18,7 @@ import time
 import urllib.error
 import urllib.request
 import uuid
+import weakref
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -32,6 +33,8 @@ MAX_EXPORT = 1024 * 1024
 MAX_CHARACTERS = 64
 HISTORY_LIMIT = 12
 OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions'
+_SPENDING_LOCKS = weakref.WeakValueDictionary()
+_SPENDING_LOCKS_GUARD = threading.Lock()
 MODEL_PRESETS = {
     'gpt-6-luna': {'id': 'gpt-6-luna', 'name': 'GPT-6 Luna', 'reasoning_supported': True,
                    'reasoning_efforts': ['none', 'low', 'medium', 'high', 'xhigh', 'max'],
@@ -1095,10 +1098,21 @@ class Characters:
         """Same nonblocking byte-zero lock used by the existing native budget writer."""
         self.storage.reserve(1024, self.folder)
         path = contained(self.layout.state, 'characters/spending.lock')
-        path.parent.mkdir(parents=True, exist_ok=True)
-        descriptor = os.open(path, os.O_RDWR | os.O_CREAT, 0o600)
+        # POSIX record locks belong to the process: a second handle in this same
+        # Python process can otherwise reacquire and release another writer's lock.
+        identity = os.path.normcase(str(path.resolve()))
+        with _SPENDING_LOCKS_GUARD:
+            process_lock = _SPENDING_LOCKS.get(identity)
+            if process_lock is None:
+                process_lock = threading.Lock()
+                _SPENDING_LOCKS[identity] = process_lock
+        if not process_lock.acquire(blocking=False):
+            raise UserError('Shared AI spending ledger is busy; scripted fallback remains active')
+        descriptor = None
         locked = False
         try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            descriptor = os.open(path, os.O_RDWR | os.O_CREAT, 0o600)
             if not os.fstat(descriptor).st_size:
                 os.write(descriptor, b'\0')
             os.lseek(descriptor, 0, os.SEEK_SET)
@@ -1114,15 +1128,21 @@ class Characters:
                 raise UserError('Shared AI spending ledger is busy; scripted fallback remains active') from None
             yield
         finally:
-            if locked:
-                os.lseek(descriptor, 0, os.SEEK_SET)
-                if os.name == 'nt':
-                    import msvcrt
-                    msvcrt.locking(descriptor, msvcrt.LK_UNLCK, 1)
-                else:
-                    import fcntl
-                    fcntl.lockf(descriptor, fcntl.LOCK_UN, 1)
-            os.close(descriptor)
+            try:
+                if descriptor is not None:
+                    try:
+                        if locked:
+                            os.lseek(descriptor, 0, os.SEEK_SET)
+                            if os.name == 'nt':
+                                import msvcrt
+                                msvcrt.locking(descriptor, msvcrt.LK_UNLCK, 1)
+                            else:
+                                import fcntl
+                                fcntl.lockf(descriptor, fcntl.LOCK_UN, 1)
+                    finally:
+                        os.close(descriptor)
+            finally:
+                process_lock.release()
 
     def _spending_ledger(self):
         path = contained(self.layout.state, 'characters/native-budget.json')

@@ -229,6 +229,20 @@ class ProviderTests(unittest.TestCase):
             models.assert_not_called()
             provider.assert_not_called()
 
+    def test_shared_spending_lock_excludes_another_service_in_the_same_process(self):
+        other = Characters(self.layout, Mock())
+        try:
+            with self.service._spending_lock():
+                with self.assertRaisesRegex(UserError, 'ledger is busy'):
+                    with other._spending_lock():
+                        self.fail('Second service acquired an already owned spending ledger')
+            with other._spending_lock():
+                with self.assertRaisesRegex(UserError, 'ledger is busy'):
+                    with self.service._spending_lock():
+                        self.fail('Original service bypassed the second owner')
+        finally:
+            other.close()
+
     def test_prior_preview_charges_seed_shared_summary_without_refund(self):
         with patch.dict(os.environ, {'SMARTVILLAGERS_API_KEY': KEY}), patch.object(self.service, '_models', return_value=['gpt-6-luna']), patch.object(self.service, '_provider', return_value=('OK', {})):
             self.configure()
