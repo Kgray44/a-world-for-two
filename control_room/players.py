@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import re
+import threading
 import time
 import urllib.request
 from datetime import datetime
@@ -32,9 +33,12 @@ class Players:
         self.telemetry = telemetry
         self.storage.reserve(2 * 1024 * 1024)
         self.last_location_sample = None
+        self._snapshot_lock = threading.RLock()
 
     def snapshot(self):
-        with self.layout.mutation:
+        # Read atomic access files while a world job owns layout.mutation.
+        # Only last-seen dashboard bookkeeping needs serialization here.
+        with self._snapshot_lock:
             return self._snapshot()
 
     def _snapshot(self):

@@ -7,13 +7,13 @@ export class LocalSession {
     this.home=bootstrap.home;this.token=bootstrap.csrf;this.changed(this.token);
   }
   async refresh(){
-    if(!this.refreshing)this.refreshing=(async()=>{const response=await this.fetcher('/api/bootstrap',{cache:'no-store'});if(!response.ok)throw new Error('Control Room restarted. Reload this page to reconnect.');this.bind(await response.json());})().finally(()=>{this.refreshing=null;});
+    if(!this.refreshing)this.refreshing=(async()=>{const response=await this.fetcher('/api/bootstrap',{cache:'no-store',signal:AbortSignal.timeout(15000)});if(!response.ok)throw new Error('Control Room restarted. Reload this page to reconnect.');this.bind(await response.json());})().finally(()=>{this.refreshing=null;});
     return this.refreshing;
   }
   async request(path,options={}){
     if(typeof path!=='string'||!path.startsWith('/api/'))throw new Error('Control Room requests must use its local API.');
     const mutate=(options.method||'GET').toUpperCase()==='POST';
-    const send=()=>{const headers=new Headers(options.headers||{});if(mutate)headers.set('X-AWFT-CSRF',this.token);return this.fetcher(path,{cache:'no-store',...options,headers});};
+    const send=()=>{const headers=new Headers(options.headers||{});if(mutate)headers.set('X-AWFT-CSRF',this.token);return this.fetcher(path,{cache:'no-store',...options,headers,signal:options.signal||AbortSignal.timeout(15000)});};
     const sentToken=this.token;
     let response=await send();
     if(response.status===403&&mutate){

@@ -4,6 +4,8 @@ import contextlib
 import hmac
 import io
 import json
+import logging
+import logging.handlers
 import mimetypes
 import os
 import secrets
@@ -12,6 +14,7 @@ import socket
 import subprocess
 import threading
 import time
+import traceback
 import urllib.error
 import urllib.parse
 import zipfile
@@ -28,7 +31,7 @@ from .common import REPO, Layout, UserError, contained, digest, read_json, utcno
 from .install import Installer
 from .graphics import Graphics
 from .playit import Playit
-from .jobs import Jobs
+from .jobs import Jobs, safe_message
 from .metrics import Metrics
 from .mod_manager import ModManager
 from .pack import public_pack_file, validate_pack, verify_installed
@@ -44,10 +47,15 @@ class Application:
         self.storage = Storage(self.layout)
         self.storage.reserve(80 * 1024 * 1024)
         self.layout.create()
+        self.error_logger = logging.getLogger('awft-dashboard-' + str(self.layout.home))
+        self.error_logger.setLevel(logging.ERROR)
+        if not self.error_logger.handlers:
+            self.error_logger.addHandler(logging.handlers.RotatingFileHandler(
+                self.layout.logs / 'dashboard-errors.log', maxBytes=512 * 1024, backupCount=2, encoding='utf-8'))
         self.server = Server(self.layout, self.storage)
         self.settings = Settings(self.layout, self.storage, self.server)
         self.settings.initialize()
-        self.jobs = Jobs()
+        self.jobs = Jobs(self.layout.state / 'jobs.json', self.storage, lambda exc: report_error(self, exc))
         self.metrics = Metrics(self.layout, self.storage, self.server)
         self.backups = Backups(self.layout, self.storage, self.server)
         self.mods = ModManager(self.layout, self.storage, self.server, self.backups)
@@ -71,6 +79,7 @@ class Application:
         self.backups.close()
         self.metrics.close()
         self.jobs.close()
+        self.atlas.close()
         # Closing a dashboard never silently kills or abandons a writing world.
         if self.server.running():
             self.server.stop()
@@ -165,7 +174,7 @@ class Application:
             "/api/bootstrap": lambda: {"app_id": "awft-control-room", "home": str(self.layout.home), "csrf": self.token, "version": __version__,
                                        'test_context': read_json(self.layout.state / 'test-owner.json', None)},
             "/api/overview": self.overview,
-            "/api/storage": lambda: (self.storage.breakdown(force=True), self.storage.snapshot(live=True))[1] if first("refresh") == "1" else self.storage.snapshot(live=True),
+            "/api/storage": lambda: self.storage.snapshot(live=True, refresh=first('refresh') == '1'),
             "/api/metrics": self.metrics.latest, "/api/sync": self.mods.sync,
             '/api/diagnostics/chunks': lambda: self.metrics.latest().get('chunk_diagnostics', {'unavailable': 'Start the server with the updated Control Bridge to collect chunk diagnostics.'}),
             "/api/players": self.players.snapshot, "/api/backups": self.backups.list,
@@ -333,6 +342,14 @@ def re_full_filename(name):
     return isinstance(name, str) and re.fullmatch(r"[A-Za-z0-9_.-]+\.txt", name)
 
 
+def report_error(app, exc):
+    ident = secrets.token_hex(6)
+    logger = getattr(app, 'error_logger', logging.getLogger(__name__))
+    detail = ''.join(traceback.format_exception(type(exc), exc, exc.__traceback__, limit=8))
+    logger.error('Error reference %s\n%s', ident, safe_message(detail, 10000))
+    return ident
+
+
 class HTTPServer(ThreadingHTTPServer):
     daemon_threads = True
     allow_reuse_address = False
@@ -409,15 +426,16 @@ def make_handler(app):
                     relative = urllib.parse.unquote(path.removeprefix("/pack/"))
                     file = public_pack_file(release, relative)
                     return self.send(200, file.read_bytes(), mimetypes.guess_type(file)[0] or 'application/octet-stream')
-                files = {"/": "index.html", "/app.js": "app.js", '/session.js': 'session.js', "/style.css": "style.css", "/mark.svg": "mark.svg", '/atlas.js': 'atlas.js', '/cinematics.js': 'cinematics.js', '/vendor/leaflet.js': 'vendor/leaflet.js', '/vendor/leaflet.css': 'vendor/leaflet.css'}
+                files = {"/": "index.html", "/app.js": "app.js", '/session.js': 'session.js', '/polling.js': 'polling.js', '/atlas-state.js': 'atlas-state.js', "/style.css": "style.css", "/mark.svg": "mark.svg", '/atlas.js': 'atlas.js', '/cinematics.js': 'cinematics.js', '/vendor/leaflet.js': 'vendor/leaflet.js', '/vendor/leaflet.css': 'vendor/leaflet.css'}
                 if path not in files:
                     return self.send(404, {"error": "Page not found"})
                 file = REPO / "control_room/static" / files[path]
                 return self.send(200, file.read_bytes(), mimetypes.guess_type(file)[0] or "application/octet-stream")
             except UserError as exc:
-                self.send(400, {"error": str(exc)})
-            except (OSError, ValueError, KeyError) as exc:
-                self.send(503, {"error": "This view is temporarily unavailable: " + str(exc)[:300]})
+                self.send(400, {"error": safe_message(exc)})
+            except Exception as exc:
+                ident = report_error(app, exc)
+                self.send(503, {"error": "This view is temporarily unavailable. Inspect logs/dashboard-errors.log; error reference " + ident + '.'})
 
         def do_POST(self):
             reason = self.security_error(mutate=True)
@@ -444,9 +462,10 @@ def make_handler(app):
                     raise UserError("Request body must be a JSON object")
                 self.send(200, app.post(urllib.parse.urlsplit(self.path).path, body))
             except UserError as exc:
-                self.send(400, {"error": str(exc)})
-            except (ValueError, KeyError, TypeError) as exc:
-                self.send(400, {"error": "Invalid request: " + str(exc)[:200]})
-            except Exception:
-                self.send(503, {"error": "The operation failed. Its files and diagnostic receipts were preserved."})
+                self.send(400, {"error": safe_message(exc)})
+            except (ValueError, KeyError, TypeError):
+                self.send(400, {"error": "Invalid request. Check the supplied fields and refresh before trying again."})
+            except Exception as exc:
+                ident = report_error(app, exc)
+                self.send(503, {"error": "The operation failed. Inspect preserved files and logs/dashboard-errors.log; error reference " + ident + '.'})
     return Handler
