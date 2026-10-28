@@ -1,0 +1,111 @@
+{
+  "recorded_at_utc": "2026-10-28T23:24:36Z",
+  "status": "OPENAI_SOURCE_IMPLEMENTED_NATIVE_DEMO_PENDING",
+  "source_commit": "740c32eaf444afdbe97f953af7564235ba27906f",
+  "implemented": [
+    "Existing Character Studio provider panel, Luna default, editable global and per-character model IDs and global/Luna/Sol/custom selection.",
+    "Dedicated SMARTVILLAGERS_API_KEY or Windows user-bound DPAPI ciphertext outside runtime, registry, exports and world backups; no ambient OPENAI_API_KEY adoption.",
+    "Direct one-time masked credential submission, explicit model-list and tiny context-free connection tests, current-policy verification before enabling requests.",
+    "Native adapter 0.2.0 uses the pinned upstream transport with request-scoped verified model, reasoning, supported temperature, response tokens and selected-model prices.",
+    "Shared locked allowance and frequency/day admission for previews, connection tests and Minecraft; returned token counts and sanitized recent outcomes remain separate from estimates and billing.",
+    "Native application fails external AI closed until authenticated adapter 0.2.0 and the current dedicated credential are acknowledged; scripted mode remains available.",
+    "Observed UI defect fixed: preset selection no longer locks model IDs, and model blur no longer rebuilds the editor or swallows the next Save click."
+  ],
+  "local_tests": {
+    "full_python": {
+      "source_commit": "0767d156f66840ab8ffbd37ab65b3e57994209d7",
+      "command": "python -m unittest discover -s tests -v",
+      "total": 1194,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 1,
+      "seconds": 73.525,
+      "result": "pass",
+      "private_log": ".local/living-world/openai-full-suite-r1.log",
+      "private_log_sha256": "73149c252d594d94d22216f6d3ecba0421f8c3c0eec6c7d1f71e84661ba578e0"
+    },
+    "focused_final_python_jvm": {
+      "total": 72,
+      "seconds": 28.867,
+      "result": "pass",
+      "includes": [
+        "Actual Windows DPAPI synthetic-key roundtrip, ciphertext location and no plaintext export",
+        "Actual Java/Python byte-lock interoperability in both directions",
+        "Pinned upstream provider/body callback execution and pure generation/usage policy checks",
+        "HTTP credential submission never becomes a Job; connection Job strips unknown secret fields",
+        "Luna/Sol/custom verification, combined allowance, prior-charge retention and sanitized native outcome status"
+      ],
+      "scope": "The later two native-status regressions and model-editability changes are covered by this focused run and frontend tests; the preceding full run is preserved at its exact source."
+    },
+    "frontend": {"total": 34, "result": "pass", "app_and_characters_syntax": "pass"},
+    "server_lifecycle_startup": {"total": 21, "result": "pass"},
+    "canonical_pack": {"mods": 208, "errors": [], "tier": "manifest integrity", "changed": false},
+    "tier": "Actual local Python, HTTP, DPAPI and JVM execution; provider responses, sessions and game observations in these tests are synthetic."
+  },
+  "native_build": {
+    "version": "0.2.0",
+    "native_source_commit": "dec04ab",
+    "native_subtree": "cc07f6b09169b83c87e4d1adc28b13dc9103a9f2",
+    "private_artifact": ".local/living-world/awft-living-world-0.2.0-final-r1.jar",
+    "bytes": 70852,
+    "sha256": "093b7a487e664c7ef7a8e73c2fb2d2e4dca3f2da17944dd678c0e4dabcd31a70",
+    "compiler": "Java 21",
+    "input_hashes": {
+      "chattingvillagers-neoforge-1.21.1-1.1.0.jar": "a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a",
+      "smartvillagers-neoforge-1.21.1-2.0.0.jar": "bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630"
+    },
+    "tier": "API compilation only; native Mixin/startup/gameplay not run by this lane.",
+    "master_staged_folder": "staging/living-world-openai-0.2.0",
+    "staged_bytes": 711958,
+    "active_runtime_installation": false,
+    "older_c7_staging_preserved": true
+  },
+  "browser_and_preview": {
+    "earlier_actual_browser": "Desktop/mobile provider panel, Luna/Sol reasoning/temperature controls, disabled external settings save and missing-credential guards were observed before the final model-unlock fix.",
+    "earlier_screenshots": "Original JPEGs are retained privately and are not presented as current editable-model screenshots.",
+    "model_unlock": "Current source and DOM event regressions pass. Human input detection stopped further browser automation.",
+    "fresh_review_url": "http://localhost:18776/#characters?id=barnacle-bill",
+    "owned_python_pid": 48528,
+    "process_created": 1793229621.5715172,
+    "ownership_record": ".local/provider-ui-preview/dashboard/preview-process.json",
+    "purpose": "Isolated owner review; this home is not the shared Minecraft runtime.",
+    "observed_provider_status": {
+      "configured": false,
+      "verified": false,
+      "external_enabled": false,
+      "model": "gpt-6-luna",
+      "reasoning_effort": "none",
+      "native_adapter_version": null,
+      "requests_today": 0
+    }
+  },
+  "external_ai_acceptance": {
+    "requested_model_ids_documented": true,
+    "account_access_verified": false,
+    "authorized_owner_credential_configured": false,
+    "real_provider_requests_by_this_lane": 0,
+    "real_ai_npc_gameplay": "NOT RUN"
+  },
+  "coordination": {
+    "user_confirmed_construction_session_finished": true,
+    "master_cleared_stale_human_marker_after_actual_checks": true,
+    "master_prioritizes_pirate_city_candidate59": true,
+    "npc_runtime_client_window_requested": true,
+    "npc_runtime_client_window_granted": false,
+    "immediate_milestone": "One real Tortuga pirate villager delivering custom dialogue; then a Studio edit observed in Minecraft and actual opted-in AI when configured."
+  },
+  "remaining": [
+    "Serialized master source/mod integration and actual Mixin/startup qualification",
+    "One real Tortuga NPC binding, custom scripted reply and Studio edit reaching Minecraft",
+    "Owner credential entry through the secure UI, real account/model test and opted-in AI response in Minecraft",
+    "Normal restart persistence, real multiplayer and measured game performance before population expansion"
+  ],
+  "invariants": {
+    "no_new_ai_transport_or_framework": true,
+    "official_world_or_client_changed_by_this_lane": false,
+    "eula_or_account_actions_taken": false,
+    "keys_downloaded_jars_logs_worlds_or_caches_committed": false,
+    "native_acceptance_claimed": false,
+    "published_pack_changed": false
+  }
+}

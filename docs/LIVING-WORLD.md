@@ -41,7 +41,7 @@ The district API accepts a dimension and explicit min/max X/Y/Z coordinates.
 | --- | --- |
 | Ambient villagers | Chatting Villagers 1.1.0; 121 original district lines plus 16 two-speaker exchanges. Dynamic selection uses current personal/district data, weather/time conditions, native anti-repeat IDs and quiet global limits. Native behavior remains unqualified. |
 | Named conversations | Smart Villagers 2.0.0; the adapter selects enabled, UUID-bound villager profiles. Native asynchronous HTTP and text displays are retained. Names, personality instructions and relevant approved lore are composed at the request boundary. |
-| Global game AI | Studio's global **OpenAI** provider/model policy reaches upstream through the adapter after Apply. `SMARTVILLAGERS_API_KEY` stays in the server process environment. Per-character provider/model overrides and Anthropic currently configure dashboard previews only. |
+| Global game AI | Studio's verified global **OpenAI** policy reaches upstream through adapter 0.2.0 after Apply. Dedicated server credentials use `SMARTVILLAGERS_API_KEY`, supplied from its environment or the encrypted Windows user store. Tested per-character model overrides use the same native transport; per-character provider changes and Anthropic remain preview scope. |
 | Scripted fallback | Personal/district dialogue works without a provider. Missing consent, configuration, pricing, capacity or provider availability falls back to text. |
 | Bubbles | Enabled by default. Per-character enable/disable is supported by adapter source. Native bubble distance/lifetime are global upstream settings; per-character controls are visibly unavailable. |
 | Memories | Dashboard preview memory has bounded retention, correction, removal and reset. Native memory can be disabled and context is capped at eight upstream exchanges; native retention/correction UI is unavailable. Previously persisted upstream memories are not deleted merely by disabling future storage. |
@@ -57,11 +57,17 @@ The eight templates also include a judgmental cat and a loyal, ridiculous dog.
 
 ## Privacy, costs and resource limits
 
-External AI starts disabled, with no model selected. Configure current model rates
-and a server-side environment variable before enabling it. Each dashboard external
+External AI starts disabled. New registries prefer GPT-6 Luna with none reasoning;
+existing model choices are preserved. Configure the dedicated server credential and
+verify account/model/endpoint compatibility before enabling it. Each dashboard external
 test requires explicit consent; normal game chat requires upstream player consent,
 and the adapter independently checks consent even for the upstream operator test path.
 No large local language model is launched.
+The [OpenAI setup guide](LIVING-WORLD-OPENAI.md) covers masked one-time key entry,
+connection testing, model overrides, generation limits and the real gameplay sequence.
+Keys never enter registry/runtime exports. Credential rotation requires a normal server
+restart; stale or pre-0.2 adapters receive an AI-disabled snapshot until updated and
+authenticated, followed by Apply again.
 
 Only relevant non-secret facts/rumors are retrieved. Unknowns and forbidden topics
 are excluded, and missing facts require an admission of uncertainty. Obvious unsupported
@@ -78,9 +84,11 @@ Native requests have a hard cap of two concurrent calls, per-character cooldowns
 persisted hourly admission and a conservative daily cost reservation. The adapter
 rechecks the exact configuration, player consent, loaded entity and proximity after
 disk admission, immediately before upstream's nonblocking network call. The native
-token ceiling is 120 and upstream display ceiling is 180 characters. Native ledger
-reservations are not refunded on failures. Dashboard previews and native game requests
-enforce their budgets **separately**; the configured amount is not a pooled account cap.
+default token budget is 120 and upstream display ceiling is 180 characters. Response
+budgets and supported reasoning settings follow the verified selected-model policy.
+Ledger reservations are not refunded on failures. Dashboard previews, connection tests
+and native game requests share the configured daily allowance under a nonblocking
+cross-process lock. Limits apply to this integration; other account usage is outside it.
 Administrator-entered rates are estimates, and provider billing is authoritative.
 
 Permissions are checked again after the provider responds. A delayed reply binds the
@@ -162,6 +170,12 @@ the supplied `expected` revision. Conversation previews run as existing backgrou
    failed receipts. A profile removal is not entity deletion. Publish no unqualified pack.
 
 ## Current evidence and remaining acceptance
+
+The OpenAI extension and editable-model correction are recorded in
+[the 0.2.0 source receipt](../evidence/living-world/openai-qualification.json).
+Its key security, model policies, shared allowance, HTTP and JVM checks pass; actual
+Minecraft installation and the one-villager demonstration still need the master's
+execution window. Read [OpenAI setup](LIVING-WORLD-OPENAI.md) for the secure owner flow.
 
 The latest integrated source results are recorded in
 [the integration receipt](../evidence/living-world/integration-qualification.json).
