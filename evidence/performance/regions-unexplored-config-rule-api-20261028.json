@@ -1,0 +1,120 @@
+{
+  "format": "awft-ru-config-rule-analysis:1",
+  "native_execution": false,
+  "strict_parity_proved": false,
+  "loaded_native_config_values_verified": false,
+  "artifact": {
+    "filename": "regions-unexplored-0.6.3-neoforge-21.1.jar",
+    "bytes": 6641783,
+    "sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b"
+  },
+  "classes": {
+    "net/regions_unexplored/worldgen/rulesource/ConfigRuleSource": {
+      "bytes": 6069,
+      "sha256": "35ee1d2e26f1bb266c16493aa9d7caed8c6d1fed7b35e35cb3f0a8b54f88e7d1",
+      "fields": [
+        {
+          "access_flags": "0x12",
+          "name": "key",
+          "descriptor": "Ljava/lang/String;"
+        },
+        {
+          "access_flags": "0x12",
+          "name": "onEnabled",
+          "descriptor": "Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;"
+        },
+        {
+          "access_flags": "0x12",
+          "name": "onDisabled",
+          "descriptor": "Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;"
+        }
+      ],
+      "reviewed_methods": [
+        {
+          "name": "apply",
+          "descriptor": "(Lnet/minecraft/world/level/levelgen/SurfaceRules$Context;)Lnet/minecraft/world/level/levelgen/SurfaceRules$SurfaceRule;",
+          "calls": [
+            "net/regions_unexplored/config/RUConfigHandler.COMMONLnet/regions_unexplored/config/state/common/RUCommonConfig;",
+            "net/regions_unexplored/worldgen/rulesource/ConfigRuleSource.keyLjava/lang/String;",
+            "net/regions_unexplored/config/state/common/RUCommonConfig.test(Ljava/lang/String;)Z",
+            "net/regions_unexplored/worldgen/rulesource/ConfigRuleSource.onEnabledLnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;",
+            "net/regions_unexplored/worldgen/rulesource/ConfigRuleSource.onDisabledLnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;",
+            "net/minecraft/world/level/levelgen/SurfaceRules$RuleSource.apply(Ljava/lang/Object;)Ljava/lang/Object;"
+          ]
+        }
+      ]
+    },
+    "net/regions_unexplored/config/state/common/RUCommonConfig": {
+      "bytes": 9721,
+      "sha256": "713dea8fc70c5f6fe9ec1b4bc9d2d38820d5b717edcc5cb43680654213343e62",
+      "fields": [
+        {
+          "access_flags": "0x1",
+          "name": "misc",
+          "descriptor": "Lnet/regions_unexplored/config/state/common/RUCommonConfig$Misc;"
+        },
+        {
+          "access_flags": "0x1",
+          "name": "vanillaChanges",
+          "descriptor": "Lnet/regions_unexplored/config/state/common/RUCommonConfig$VanillaChanges;"
+        }
+      ],
+      "reviewed_methods": [
+        {
+          "name": "test",
+          "descriptor": "(Ljava/lang/String;)Z",
+          "calls": [
+            "java/lang/String.startsWith(Ljava/lang/String;)Z",
+            "net/regions_unexplored/config/state/common/RUCommonConfig.vanillaChangesLnet/regions_unexplored/config/state/common/RUCommonConfig$VanillaChanges;",
+            "net/regions_unexplored/config/state/common/RUCommonConfig$VanillaChanges.togglesLjava/util/Map;",
+            "java/lang/String.substring(I)Ljava/lang/String;",
+            "java/util/Map.getOrDefault(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
+            "java/lang/Boolean.booleanValue()Z",
+            "java/lang/String.hashCode()I",
+            "java/lang/String.equals(Ljava/lang/Object;)Z",
+            "java/lang/String.equals(Ljava/lang/Object;)Z",
+            "net/regions_unexplored/config/state/common/RUCommonConfig.miscLnet/regions_unexplored/config/state/common/RUCommonConfig$Misc;",
+            "net/regions_unexplored/config/state/common/RUCommonConfig$Misc.customDirtsZ",
+            "net/regions_unexplored/config/state/common/RUCommonConfig.miscLnet/regions_unexplored/config/state/common/RUCommonConfig$Misc;",
+            "net/regions_unexplored/config/state/common/RUCommonConfig$Misc.paintedPlanksZ",
+            "net/regions_unexplored/RegionsUnexplored.LOGGERLorg/slf4j/Logger;",
+            "org/slf4j/Logger.error(Ljava/lang/String;Ljava/lang/Object;)V"
+          ]
+        }
+      ]
+    },
+    "net/regions_unexplored/config/RUConfigHandler": {
+      "bytes": 7298,
+      "sha256": "7573358723bd1424d084cc12da20e91b5be35d57893aadaff4e6930fc8ad31e0",
+      "fields": [
+        {
+          "access_flags": "0x9",
+          "name": "COMMON",
+          "descriptor": "Lnet/regions_unexplored/config/state/common/RUCommonConfig;"
+        }
+      ],
+      "reviewed_methods": []
+    }
+  },
+  "config_files": [
+    {
+      "side": "server",
+      "relative": "regions_unexplored/common.json",
+      "bytes": 21803,
+      "sha256": "d7f2b587b17e79e4f53984252be21832d30039f65038f3a0a71f0c80ab6815ca"
+    },
+    {
+      "side": "client",
+      "relative": "regions_unexplored/common.json",
+      "bytes": 21803,
+      "sha256": "d7f2b587b17e79e4f53984252be21832d30039f65038f3a0a71f0c80ab6815ca"
+    }
+  ],
+  "exact_config_file_bytes_match": true,
+  "conclusion": "The native rule applies RUConfigHandler.COMMON.test(key) and then the selected onEnabled/onDisabled branch. COMMON and its settings are mutable. Matching encoded branches or matching disk files do not establish the live selected rule; current owner-thread state still requires paired witness and change checks. Fifteen retained custom-surface UNKNOWN leaves were this class; eleven injector codec UNKNOWNs and three router encoding exceptions remain separate.",
+  "parse_limit": "Ordinary json.loads rejects native commented common.json. No config repair or altered parser was used; comparison hashes exact original bytes only.",
+  "analysis_interval_started_at_utc": "2026-10-28T19:45:23Z",
+  "client_artifact_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+  "exact_server_client_artifacts_match": true,
+  "analysis_interval_completed_at_utc": "2026-10-28T19:47:18.961483+00:00"
+}

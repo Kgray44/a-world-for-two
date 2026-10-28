@@ -1,6 +1,6 @@
 # Distant terrain and performance qualification
 
-Status at 2026-10-28 19:22 UTC: two authorized passive slices completed. Fresh
+Status at 2026-10-28: two authorized passive slices completed. Fresh
 candidate.50 refuses an uninitialized Moonlight data provider. Current strict
 SeedGen parity, map fidelity and complete gameplay performance are **unqualified**.
 The master owns runtime installation, both saves and the next test session. This
@@ -39,6 +39,22 @@ and unsupported-operation exceptions. There is no paired current client effectiv
 witness. Identical UNKNOWNs cannot establish parity. Private witnesses include
 native seed state and must remain outside Git and public reports.
 
+Subsequent installed-class inspection identified all15 retained custom-surface
+UNKNOWN leaves as Regions Unexplored0.6.3 `ConfigRuleSource`. Its native `apply`
+reads mutable `RUConfigHandler.COMMON.test(key)` and chooses `onEnabled` or
+`onDisabled`; its codec records the key and both branches. Matching encoded
+definitions cannot establish which live branch is selected. The exact server and
+client RU JARs match, as do the21,803byte `regions_unexplored/common.json` files
+(SHA256 `d7f2b587b17e79e4f53984252be21832d30039f65038f3a0a71f0c80ab6815ca`).
+Those are physical artifact/configuration observations, not loaded-object/value
+proof. The11 native injector codec UNKNOWNs and3 router encoding exceptions remain
+separate. The [bounded API/config evidence](../evidence/performance/regions-unexplored-config-rule-api-20261028.json)
+records exact class hashes and native calls without seed data or native execution.
+Next effective witnesses must capture the actual common-config identity, native
+predicate result and both ordered branches on each current owner thread, with
+before/after change checks. Do not remove UNKNOWN or change configuration to make
+the diagnostic agree.
+
 The historical candidate.48/bridge 0.6.34 client lifecycle on October 28:
 resource custody refused Moonlight's exact `CachePathPackResources` provider for
 `supplementaries:generated_pack`; fallback registry loading also failed, and the
@@ -61,6 +77,18 @@ source-only fix must run the genuine Moonlight early resource lifecycle before
 registry loading. Calling a cache empty, directly faking its delegate, or ignoring
 the regeneration/error path is prohibited. Raw current failure logs remain private
 and hash-bound in the [current50 evidence](../evidence/performance/candidate50-client-city-qa-20261028.json).
+
+A separate [source-only native initialization proposal](../compat/proposals/seedgen-moonlight-init/README.md)
+is now frozen in [PR7](https://github.com/Kgray44/a-world-for-two/pull/7),
+head `d38042529efa088976f673a9aac54aa57b8c61c9`. It prepares original resources
+before both registry loads using Moonlight's own early lifecycle. It observes
+native absorbed generation errors, retains a cache backup, and blocks later
+attempts with a persistent pending marker if preparation fails. Java21 API compile
+and budget/gate regressions pass against the installed0.6.37 API reference;
+both exact-head CI validate jobs pass. That does not establish Mixin transformation,
+native generation, parity or correct predicted terrain. The master owns active
+bridge integration, install and the exclusive client test window. All original
+comparisons and the current server-DH fallback remain required.
 
 The pinned SeedGen configuration still has prediction enabled/AUTO, ordinary
 structures/trees/water features enabled, extended distance disabled and server
@@ -255,7 +283,10 @@ a prerequisite, not measured compatibility.
 
 ## Instrumentation and bounded runtime procedure
 
-`compat/performance/TickWindow.java` is an unapplied helper for master integration.
+`compat/performance/TickWindow.java` is the source-reviewed helper handed to the master.
+Master's source and installed0.6.37 API reference now contain the helper; fresh
+runtime tick-window exports remain pending. The retained candidate50 captures
+precede that integration and cannot retroactively supply individual tick spikes.
 Its five anchored ControlBridge edits add per-window tick max/p50/p95/p99, exact
 threshold counts and separate tick-start gaps. Overflow preserves count, mean,
 maximum and threshold counts while withholding incomplete percentiles. Cross-window
@@ -263,9 +294,8 @@ stalls remain visible. The helper does not alter any tick, registry or generatio
 rule. The Java 21 fixture uses 64 MiB/two CPUs and is synthetic only.
 
 `tools.performance_handoff` creates a fresh private source/patch/fixture receipt;
-it installs nothing. Master copies the helper into active bridge sources, reviews
-the diff against the current ControlBridge, builds one new immutable candidate,
-and retains the prior artifact/configuration rollback. Current API aggregation
+it installs nothing. The master owns active source integration, candidate builds,
+installation and the prior artifact/configuration rollback. Current API aggregation
 does not forward the added field, so the passive recorder reads the native file.
 
 `python -B -m tools.performance --window <master-window.json> --seconds 120`
@@ -280,12 +310,20 @@ For server-only idle capture omit the client from `processes`; no client launch
 is needed. Client metrics then remain unavailable by design.
 
 It records native TPS/window means, available tick spikes, sampled client frame
-windows, heaps/GC counters, process RSS/CPU-time/I/O, per-core host load, physical
+windows, heaps/server-GC counters, process RSS/CPU-time/I/O, per-core host load, physical
 RAM, Windows commit headroom/page-in rates, shared GPU use and bounded directory
 sizes including WALs. Repeated native snapshots are deduplicated; stale or foreign
 process data stays unavailable. Menus/focus states stay separate. Window percentiles
 cannot be pooled into an invented global frame percentile. Windows page-ins also
 include file-backed memory and do not by themselves prove pagefile thrashing.
+Screen/focus/world context is observed at export; transitions inside a retained
+frame window are not identified. Empty/invalid timing measurements stay unknown;
+a missing counter in one retained tick window withholds its total. Actual measured
+zeros remain valid. Existing native work-over250ms and start-gap-over100ms counts
+are reported directly without deriving them from mean MSPT.
+The current client presentation snapshot does not expose client GC counters;
+client collections/pauses remain unmeasured. Server GC totals cannot substitute
+for them, and collector elapsed time is not a measured individual pause.
 
 After the first50slice exposed the ambiguity of a shared data folder, optional
 `watch_files` metadata was added for up to12 exact files. Use separate names for
