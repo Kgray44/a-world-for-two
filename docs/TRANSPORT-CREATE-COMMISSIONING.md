@@ -63,6 +63,41 @@ Cable travel, braking, safe arrival and restart remain **unverified**.
 
 ### Full halo diagnosis and ordinary-completion proposal
 
+**Current prioritized source freeze:** the exact command/coordinate plan is
+[`zipline-normal-full-plan-47point-r1.json`](../compat/control-bridge/proposals/transport-commission-r1/zipline-normal-full-plan-47point-r1.json),
+397,705bytes, SHA
+`703bed33e58d25739f50edace65beeef1b5f3eedc0e07b842b4d6e8f747ed7af`.
+It replaces the earlier22large-survey grouping with47 single-sample operations:
+radius16/step256 means one sample, one radius1 ticket and nine FULL(true) futures.
+The deterministic cover touches316 unique FULL-request columns and covers every
+one of the296 bad columns; optimality is not claimed (simple lower bound33).
+First proposed command is `awftbuild survey 904 -1448 16 256`, sampling chunk55,−92
+and covering the actual first failure54,−93. Each point has625 generation-column
+dependencies and841 conservative ticket/light columns. Global unions are3,244
+and3,887 respectively;2,382 envelope columns lie outside the original2,002 halo.
+The whole envelope is chunks[38,−107] through[100,−21]. Every exact point, command,
+target and envelope is retained in the plan, bound to both saved archives and the
+actual master/source/API hashes. No new helper/JAR is needed for its command path.
+
+**Admission remains failed:** no maximum additional generation allocation on C/D
+has been qualified. The existing survey has no demonstrated generator byte cap;
+neither the8MiB reader cap nor4MiB native READY check caps worldgen writes. The
+plan's successful C4MiB/D0 ReserveGuard covers only source JSON, not runtime
+generation. Do not replace that missing bound with an average chunk-size forecast.
+Only master may admit a separately bounded operation after reserve checks.
+
+Each point has a300second observation budget, with an owner-verified cancel at
+240seconds if needed. Native `neighborWait>600` counts server calls, not seconds;
+cancel releases the ticket but does not cancel shared generation futures. If
+zero tickets/futures and actual idle cannot be proved by300seconds, stop the
+sequence with live work and receipts retained. Timeout never authorizes a next
+point, restart, force termination or replay. Genuine completion, ordinary save,
+a supplemental archive and a fresh full-halo census precede any new cable lease.
+
+Optional new stock-adapter work was stopped at the master's request; its
+[held checkpoint](../compat/control-bridge/proposals/transport-commission-r1/STOCK-ADAPTER-HELD.md)
+is explicitly unqualified. No stock or generation command was sent.
+
 `tools.transport_chain_halo` now diagnoses the exact2,002 saved columns against
 an explicit immutable archive. It pins the native controller/survey source,
 genuine zero-mutation refusal metadata and named-server ticket/loading API
