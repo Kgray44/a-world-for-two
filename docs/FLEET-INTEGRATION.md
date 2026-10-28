@@ -40,6 +40,12 @@ unqualified body cells and the remaining major-ship water-return dependencies.
 The [saved native-craft audit](FLEET-SAVED-CRAFT.md) confirms both original craft
 are retained exactly once; their next step is current inspection and use. The
 later refused inspection is not evidence that the craft need creation.
+The [pinned craft controls](FLEET-CRAFT-CONTROLS.md) identify actual persisted
+bindings, driver-seat checks, sail/cargo behavior and the cannon-fire key.
+The [supplemental clearance census](FLEET-CLEARANCE-CENSUS.md) resolves unwritten
+body cells and supplies a second small camera correction. A
+[finite three-skiff supply proposal](FLEET-SKIFF-KITS.md) preserves the original
+craft while preparing the requested additional boats for ordinary player launch.
 
 Scoped active files are `tools/grand_harbor_fleet.py`,
 `tools/grand_harbor_smallcraft.py`, `tools/grand_harbor_berth.py`,

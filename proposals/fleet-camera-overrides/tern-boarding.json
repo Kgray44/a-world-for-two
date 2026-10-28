@@ -1,0 +1,19 @@
+{
+  "format": "awft-fleet-camera-overrides:1",
+  "status": "SOURCE CAMERA RECIPE ONLY; no image, native call or world action",
+  "batch_manifest_sha256": "6c3aa58711e9a7b2032e559ba8e16c04419bbf40c9721acb3011f4850a59079f",
+  "clearance_manifest_sha256": "0522e1dda5cd3b42f0652f8264354314284796b093dd9397a6092dc7af94dfe3",
+  "geometry_and_placement_changes": 0,
+  "reason": "The original boarding-landing frame has an AIR floor. This independently checked intended landing anchor has prospective timber support and observed original AIR body cells.",
+  "integration": "Apply alongside the unchanged accepted-smallcraft deck override after actual admitted placement. Replace only Tern boarding-landing. Reverify current support/body and use a fresh capture prefix; no global camera offset or walking acceptance is implied.",
+  "vessels": [
+    {
+      "key": "tern-pilot-cutter",
+      "camera_source_sha256": "367882e5dbf72e988692b958736545154c41f323707d2ece47fba557a6b0043c",
+      "source_view": "independently checked intended Boarding landing anchor",
+      "world_views": [
+        {"name": "boarding-landing", "feet": [1163.5, 65, -1338.5], "look_at": [1166, 66, -1342]}
+      ]
+    }
+  ]
+}

@@ -122,6 +122,23 @@ that additional saved evidence.
 
 ## Anchor and ladder results, with evidence limits
 
+The subsequent actual saved-Lark audit is retained at
+`H/staging/fleet-lark-access-f1ea6dd6bf327964`, report SHA-256
+`f1ea6dd6bf3279645c4e1c89352c74acc0ff26b9b3af36322bf2fe0626a29507`.
+It genuinely read35,197 saved6ad3a8 block states, using actual saved supports and
+every queried feet/head cell rather than absent-source AIR. The conservative
+grid reached all16 Lark rooms through5,264 support cells. All16 anchors have
+full timber floors and AIR feet/head, with zero body BE conflicts. The saved
+lower-shell flood check encloses all seven low-deck anchors. Native water
+updates, collision shapes and actual walking remain unverified.
+
+The48-anchor-cell native VERIFY-only supplement has SHA-256
+`388e1b7ab987994ded79df204838bb512b8bd5695b79d883ba3fe47ac734f6cc`.
+Both private files total6,516bytes. No original furniture, inventory, geometry,
+runtime or entity was written. This evidence concerns the retained actual Lark;
+the [supplemental three-craft census](FLEET-CLEARANCE-CENSUS.md) clearly marks
+authored prospective hull cells separately from observed original states.
+
 All **68 named room anchors** were checked for their structural floor and two
 body cells. No new authored solid obstruction was found. Forty-six anchors have
 both body cells explicitly represented as source AIR/interactable traversal
