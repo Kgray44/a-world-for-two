@@ -65,6 +65,16 @@ district marker; weather and time restrictions use their separate fields.
 Installing only the JSON files without the adapter intentionally yields no
 district matches. Never remove district conditions to make a test pass.
 
+The adapter also selects ambient remarks directly from the acknowledged current
+registry. Personal authored lines take priority over current district lines;
+weather and nighttime categories keep their own conditions, and native excluded
+line IDs prevent immediate repeats. A registry reload therefore changes ambient
+content without regenerating upstream JSON. Sixteen original two-speaker exchanges
+(four per initial district) provide actual villager-to-villager banter using the
+native A/B speaker convention. Personal starters plus contextual replies override
+those exchanges; additional districts can use their own starter/reply pools.
+No-marker contexts retain upstream behavior.
+
 The quiet profile has 90-second villager cooldowns, a three-message player
 budget per minute, quieter nights, bubbles enabled and ambient chat disabled.
 `builtInDialogue=false` prevents re-seeding stock jokes. On an existing install,
@@ -72,6 +82,12 @@ master must preserve its prior catalog and disable or remove only confirmed
 stock pools through a reviewed migration; the exporter deletes nothing.
 Named AI profiles require the adapter's Chatting exclusion hook to prevent
 overlapping ambient and AI bubbles. Its behavior remains a native test gate.
+Per-character ambient frequency/cooldown is charged only after a line has nearby
+recipients, under the upstream global frequency ceiling. Applying cooldown to the
+shared exclusion hook would prematurely cancel two-speaker conversations; the
+adapter instead gates the send operation. Character bubble enable/disable and
+profile display names are honored for ambient lines. Per-character bubble range
+and lifetime remain unavailable; those upstream settings are global.
 
 The public Chatting GitHub main commit
 `5be7f1facb63031af7457320b27652ce10c60dae` contains older Fabric-only code.
