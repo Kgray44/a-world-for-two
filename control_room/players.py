@@ -131,6 +131,12 @@ class Players:
             write_json(self.layout.logs / ("player-permissions-" + str(time.time_ns()) + ".json"),
                 {"at": utcnow(), "player": who["name"], "uuid": who["uuid"], "from_level": who["operator_level"], "to_level": level, "bypass": bypass, "persistence": "confirmed"})
             notify("Saved " + who["name"] + " permission level " + str(level))
+            if level == 0:
+                # An operator-only identity may intentionally leave every roster.
+                # Report the confirmed edit without recreating access or presence.
+                return {"uuid": who["uuid"], "name": who["name"], "operator_level": 0,
+                        "bypass_player_limit": False, "persistence": "confirmed",
+                        "note": "Operator permissions removed; whitelist access unchanged."}
             return self.details(name)
 
     def game_action(self, name, action, value=None, confirmed=False, notify=lambda _: None):
