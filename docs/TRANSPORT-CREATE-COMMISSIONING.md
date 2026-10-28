@@ -79,6 +79,18 @@ The whole envelope is chunks[38,−107] through[100,−21]. Every exact point, c
 target and envelope is retained in the plan, bound to both saved archives and the
 actual master/source/API hashes. No new helper/JAR is needed for its command path.
 
+Post-freeze validation against the newer actual pre53 supplement
+`20261028T200610Z-9891ba`, archive SHA
+`52a0f45781e3182f9a9c8ce5a3259447f71cd9066fea77aa0d33546b23f5b605`,
+found the **same exact296 target coordinates**,1,706 flag-qualified columns and
+no other predicate failures. All296 remain covered by the frozen47-point plan's
+316 unique FULL requests; neither that plan's bytes nor canonical6ad custody was
+changed. The8.093second read used56,512,512bytes maximum observed RSS and produced
+only private `.local/zipline-supplemental-9891ba-radius14-r1.json`,668,919bytes,
+SHA `0e44a63c5af2faed972e72dc8ed1ac8271adc6fdb5eee730befc5b2329cc599d`.
+This is saved-archive revalidation, with zero native actions/live-persisted reads
+and zero world writes; it does not qualify the pending runtime allocation bound.
+
 **Admission remains failed:** no maximum additional generation allocation on C/D
 has been qualified. The existing survey has no demonstrated generator byte cap;
 neither the8MiB reader cap nor4MiB native READY check caps worldgen writes. The
