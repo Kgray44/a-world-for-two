@@ -1,0 +1,48 @@
+{
+  "format": "awft-unapplied-graphics-presets:1",
+  "status": "Proposed starting settings; controlled current-candidate measurements pending",
+  "runtime_installed_by_this_proposal": false,
+  "strict_seedgen_checks": "Unchanged; refusal retains server DH fallback",
+  "shared_server": {
+    "heap": "Retain the existing 8 GiB maximum initially; actual host headroom governs admission",
+    "dh_workers": 2,
+    "dh_worker_runtime_ratio": "0.5",
+    "dh_generator_plan": "SURFACE_THEN_CHUNKS",
+    "dh_chunk_generator_mode": "SURFACE",
+    "dh_limit_if_server_unhealthy": true,
+    "dh_generation_request_rate": 4,
+    "limitation": "Unvisited surface LODs can omit features. Real full chunks and their updated LODs remain authoritative. No new server setting is applied."
+  },
+  "profiles": [
+    {
+      "id": "balanced",
+      "client_maximum_heap_mib": 4096,
+      "vanilla_render_chunks": 6,
+      "client_simulation_chunks": 4,
+      "dh_radius_chunks": 64,
+      "dh_workers": 1,
+      "dh_worker_runtime_ratio": "0.5",
+      "shader": "Off for qualification; optional pinned MakeUp Ultra Fast Low only after an A/B run",
+      "maphorizons_cache_regions": 16,
+      "local_dynamic_lighting": "Off initially",
+      "fps_cap": 60,
+      "qualification": "Sera hardware and remote frametimes remain unknown. 4 GiB is a starting allocation, not proof of adequate heap."
+    },
+    {
+      "id": "higher-quality",
+      "client_maximum_heap_mib": 6144,
+      "vanilla_render_chunks": 10,
+      "client_simulation_chunks": 6,
+      "dh_radius_chunks": 128,
+      "dh_workers": 2,
+      "dh_worker_runtime_ratio": "0.5",
+      "shader": "Pinned Complementary Reimagined 5.9.3 Medium, with shaders-off control",
+      "maphorizons_cache_regions": 32,
+      "local_dynamic_lighting": "Off during the comparison; evaluate separately if requested",
+      "fps_cap": 60,
+      "qualification": "Proposed KG starting preset on the RTX 5070 laptop. Do not promote HIGH or Unbound based on historical log intervals."
+    }
+  ],
+  "application": "Master applies a preset only to the closed existing owned client, retaining exact previous configuration bytes/hashes and artifact identity. Keep rollback receipts and caches. Do not modify catalog or Packwiz concurrently.",
+  "benchmark": "Keep resolution, power mode, route, world/checkpoint, actors, machine state and warm-cache state fixed. A locked 60 FPS requires frame-interval/spike evidence; a change of terrain or population invalidates a causal A/B comparison."
+}
