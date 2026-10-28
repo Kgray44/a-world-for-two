@@ -31,9 +31,13 @@ and exact source hashes rather than rebinding an older manifest.
 The [first exact Wren deployment batch](FLEET-WREN-BATCH.md) supplies the selected
 saved-world berth, exact before/support/place/after hashes and21 actual-camera
 recipes. Its construction-world/native deployment remains master-only.
+The [fresh berth census](FLEET-BERTH-CENSUS.md) also supplies passing Tern and
+Salt Marigold batches and the exact unresolved Petrel, Mercy and Reed Fin blockers.
 
 Scoped active files are `tools/grand_harbor_fleet.py`,
-`tools/grand_harbor_smallcraft.py`, their two test files, this report and
+`tools/grand_harbor_smallcraft.py`, `tools/grand_harbor_berth.py`,
+`tools/grand_harbor_remaining_berths.py`, `tools/grand_harbor_smallcraft_berths.py`,
+their scoped test files, this report and
 `docs/FLEET-MARITIME-COMMISSIONING.md`. The custody patch under
 `proposals/fleet-craft-custody-diagnostics/` is a proposed shared-bridge change;
 the active bridge, pack manifests, runtime and saves are untouched.
@@ -83,7 +87,7 @@ From the owned fleet source checkout, with Python3.12+ and installed pinned
 dependencies:
 
 ```powershell
-python -B -m tools.grand_harbor_fleet --registry 'D:\A World for Two\staging\world-tests\20261027T053650Z-artistic\dashboard\settlement\registry.json' --output 'D:\A World for Two\staging\world-tests\20261027T053650Z-artistic\staging\fleet-NEW-IMMUTABLE-ID'
+python -B -m tools.grand_harbor_fleet --registry 'D:\A World for Two\staging\world-tests\20261027T053650Z-artistic\staging\fleet-registry-provenance-8cfa5ae7\registry-original.json' --output 'D:\A World for Two\staging\world-tests\20261027T053650Z-artistic\staging\fleet-NEW-IMMUTABLE-ID'
 ```
 
 The exporter checks live ReserveGuard after serialization and before its first
@@ -162,7 +166,8 @@ subsequent read-only support audit for controls, lanterns, beds and doors.
 
 ## Integration and remaining acceptance
 
-The first-berth source must bind the actual30624d archive, registry, source hashes,
+The current first-berth source binds the actual6ad3a8 archive, retained historical
+registry and source hashes. Native admission must additionally bind the current
 world, candidate and origin/rotation. Require saved exact clear targets and
 under-keel depth, then **fresh actual native BEFORE verification** immediately
 before any master placement. Unknown chunks, natural terrain, construction,
