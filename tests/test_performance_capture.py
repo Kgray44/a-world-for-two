@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
-from tools.performance import (MASTER, describe, directory_size, native_snapshot,
+from tools.performance import (MASTER, capture, describe, directory_size, native_snapshot,
                                summarize, validate_window)
 from tools.performance_handoff import patched_bridge
 
@@ -97,6 +97,38 @@ class PerformanceCaptureTests(unittest.TestCase):
         self.assertIn('performanceTicks.finished(now - beforeTick)', patched)
         with self.assertRaises(ValueError):
             patched_bridge(patched)
+
+    def test_server_only_capture_deduplicates_without_launching_a_client(self):
+        # A synthetic recorder fixture, never a real Minecraft measurement.
+        with tempfile.TemporaryDirectory() as root:
+            home, client = Path(root) / 'home', Path(root) / 'client'
+            (home / 'staging').mkdir(parents=True)
+            window = dict(server_home=str(home), client_root=str(client), candidate='test-only',
+                          pack_sha256='a' * 64, workload='synthetic idle fixture', configuration='fixture',
+                          processes={'server': dict(pid=42, created=NOW-60, cwd=str(home / 'server'))})
+            clock = [100.0]
+            def read(path, *args):
+                return window if Path(path).name == 'window.json' else dict(version='test-only', pack_sha256='a' * 64)
+            with patch('tools.performance.json_file', side_effect=read), \
+                    patch('tools.performance.validate_window', return_value=NOW+120), \
+                    patch('tools.performance.time.time', return_value=NOW), \
+                    patch('tools.performance.time.monotonic', side_effect=lambda: clock[0]), \
+                    patch('tools.performance.time.sleep', side_effect=lambda delay: clock.__setitem__(0, clock[0]+delay)), \
+                    patch('tools.performance.guard', return_value={'allowed': True}), \
+                    patch('tools.performance.PagingCounters') as paging, \
+                    patch('tools.performance.memory_pressure', return_value={'available': False}), \
+                    patch('tools.performance.gpu_sample', return_value={'available': False}), \
+                    patch('tools.performance.config_hashes', return_value={'fixture': 'b'*64}), \
+                    patch('tools.performance.psutil.virtual_memory', return_value=Mock(total=1000, available=500)), \
+                    patch('tools.performance.psutil.disk_usage', return_value=Mock(free=10**12)), \
+                    patch('tools.performance.native_snapshot', return_value={'at': iso(NOW), 'tps': 20, 'mspt': 1}) as native:
+                paging.return_value.sample.return_value = {'available': False}
+                result = capture('window.json', seconds=2)
+            self.assertEqual(native.call_count, 2)
+            self.assertEqual(result['summary']['native_server_snapshots'], 1)
+            self.assertEqual(result['summary']['native_client_snapshots'], 0)
+            receipt = json.loads((Path(result['directory']) / 'result.json').read_bytes())
+            self.assertFalse(receipt['client_recording_requested'])
 
 
 if __name__ == '__main__':

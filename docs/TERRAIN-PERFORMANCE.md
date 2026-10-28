@@ -46,6 +46,19 @@ installed in candidate.49/bridge 0.6.35. No fresh candidate.49 client result exi
 Candidate.50/bridge 0.6.36 is master-owned integration work. Earlier log failures
 must not be relabelled as its result.
 
+The pinned SeedGen configuration still has prediction enabled/AUTO, ordinary
+structures/trees/water features enabled, extended distance disabled and server
+generation enabled. The retained native log identifies SeedGen 0.9.1 with DH 3.3.3:
+its own guards skip two optimization mixins whose DH signatures differ and skip
+redundant SQLite tuning. Those logged decisions are not reasons to force-enable
+an incompatible mixin. GPU compute self-test success is not registry parity.
+
+The original fingerprint covers the six registries listed by the diagnostic;
+it does not value-hash every possible worldgen registry. WORLDGEN's four proposed
+structure-set spacing edits therefore require exact matching selected Paxi bytes,
+load order and paired loaded structure-set observations as well as the unchanged
+native gate. Never rebind c35 evidence to that later configuration.
+
 `python -B -m tools.terrain_parity fingerprint --server <status> --client <status>`
 compares bounded, hash-bound original diagnostic files. `effective` compares the
 native effective witnesses and their exact owner-thread custody receipts. Both
@@ -102,7 +115,20 @@ These objects have distinct meanings:
 The pinned `maphorizons-1.1.0-awft.2.jar` and its retained original source were
 inspected read-only. The terrain highlighter returns colors through Xaero's native
 highlight path and checks its genuine discovery height before painting. Existing
-exploration payload/state code is separate. The source establishes the intended
+exploration payload/state code is separate. The installed server/client artifacts
+both match the current 121,569-byte pin, SHA-256
+`cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4`.
+`ExploredClient`, its State record and `TerrainHighlighter` are byte-identical
+between retained awft.1 and awft.2 artifacts; the refresh changed the selected DH
+source/region classes instead.
+
+The actual retained candidate.48 log at 11:27:54 UTC records attachment and a
+7,872-source refresh. At 11:28:09 it reports 28,056 Xaero region queries, 3,408
+color calls and three computed regions, with painting running. That proves scoped
+native callback/index activity. It is not a pixel/terrain or exploration-bit
+comparison. The current candidate still needs those checks.
+
+The source establishes the intended
 separation; before/after native map views, real-discovery precedence, unchanged
 exploration bits, denied visibility, dimension transitions and reconnect remain
 required runtime tests. Do not equate matching database row counts with these tests.
@@ -164,11 +190,14 @@ does not forward the added field, so the passive recorder reads the native file.
 
 `python -B -m tools.performance --window <master-window.json> --seconds 120`
 records an existing session only. The explicit window binds candidate, pack,
-two real JVM process generations/cwds, workload, configuration and expiry. It
+the server and optional existing client JVM generations/cwds, workload, configuration and expiry. It
 never starts/stops games, sends commands, changes graphics or moves players.
 Output is a unique `H/staging/terrain-performance-*` folder, capped at 12 MiB
 sample data inside a 16 MiB allocation, with both-drive ReserveGuard checks.
 Source capture does not control the running games' separate allocations.
+
+For server-only idle capture omit the client from `processes`; no client launch
+is needed. Client metrics then remain unavailable by design.
 
 It records native TPS/window means, available tick spikes, sampled client frame
 windows, heaps/GC counters, process RSS/CPU-time/I/O, per-core host load, physical

@@ -221,9 +221,11 @@ def capture(window_path, seconds=60):
     if (active.get('version'), active.get('pack_sha256')) != (window['candidate'], window['pack_sha256']):
         raise ValueError('Installed candidate differs from the master window')
     expected = window['processes']
-    if set(expected) != {'server', 'client'} or expected['server']['cwd'] != str(home / 'server') or expected['client']['cwd'] != str(client / '.minecraft'):
-        raise ValueError('Exact two process/cwd identities required')
-    for side in ('server', 'client'):
+    if (not isinstance(expected, dict) or set(expected) not in ({'server'}, {'server', 'client'})
+            or expected['server']['cwd'] != str(home / 'server')
+            or ('client' in expected and expected['client']['cwd'] != str(client / '.minecraft'))):
+        raise ValueError('Exact server and optional existing-client process/cwd identities required')
+    for side in expected:
         if (type(expected[side].get('pid')) is not int or expected[side]['pid'] <= 0
                 or type(expected[side].get('created')) not in (int, float)
                 or not math.isfinite(expected[side]['created']) or expected[side]['created'] <= 0):
@@ -234,7 +236,9 @@ def capture(window_path, seconds=60):
     output = home / 'staging' / ('terrain-performance-' + str(time.time_ns()))
     output.mkdir()
     (output / 'window.json').write_text(json.dumps(window, indent=2) + '\n', encoding='utf-8')
-    paths = {'server': home / 'dashboard/server-metrics.json', 'client': client / '.minecraft/awft-client-metrics.json'}
+    paths = {'server': home / 'dashboard/server-metrics.json'}
+    if 'client' in expected:
+        paths['client'] = client / '.minecraft/awft-client-metrics.json'
     seen, rows, errors, byte_count = {}, [], [], 0
     started, last_guard, last_gpu, last_sizes = time.monotonic(), time.monotonic(), 0, 0
     counters, gpu, sizes = PagingCounters(), None, {}
@@ -243,6 +247,7 @@ def capture(window_path, seconds=60):
                'pack_sha256': window['pack_sha256'], 'configuration': window['configuration'],
                'workload': window['workload'], 'reserve_guard': reserve, 'native_game_actions': 0,
                'source_sha256': digest(Path(__file__)), 'status': 'interrupted',
+               'processes': expected, 'client_recording_requested': 'client' in expected,
                'reserve_coverage': 'Owned recorder only; external games/applications and pre-existing writers are not constrained by this monitoring rule.'}
     try:
         with (output / 'samples.jsonl').open('xb') as stream:

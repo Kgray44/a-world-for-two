@@ -48,3 +48,16 @@ Runtime, visual, multiplayer, restart, official-save integration and owner accep
 remain pending for this checkpoint. Historical c23 gameplay observations establish
 a problem (KG 14–27 FPS and one 44.771-second reload-associated interruption), not
 a current shader ranking or a measured improvement. Final release is held.
+
+Sprint clock: master supplied the owner directive timestamp18:26:08 UTC October28;
+hard handover is00:26:08 UTC October29 (20:26 EDT October28). A follow-up source
+change allows server-only idle capture without launching a client; its eight
+focused performance tests pass. Current source includes retained native MapHorizons
+callback activity and installed-artifact identity; current visual/discovery
+acceptance still remains open.
+
+WORLDGEN dependency: preserve exactly matching final client/server Paxi bytes and
+order. Native SeedGen's six-registry fingerprint does not value-hash structure
+sets; require WORLDGEN's paired actual loaded structure-set observations for its
+four selected spacing edits. No client-only frequency/biome/height change and no
+reuse of historical receipts for that later worldgen configuration.
