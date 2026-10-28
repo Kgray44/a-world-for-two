@@ -9,6 +9,8 @@ from tools.grand_harbor_access_repairs import (
     AIR, CHECKPOINT, CHECKPOINT_SHA, TIMBER, WHEEL, WHEEL_STATE, LARK_DECK,
     LARK_TARGETS, WREN_ORIGIN, WREN_ROTATION, WREN_BACKING, WREN_LADDERS,
     WREN_PLATFORM, WREN_CLEARANCE, rotate_point, build_lark_repair, build_wren_request, states,
+    LARK_RETURN_POSTS, LARK_RETURN_LADDERS, LARK_RETURN_SLAB, LARK_RETURN_SLAB_STATE,
+    build_lark_return,
 )
 
 
@@ -128,6 +130,52 @@ class AccessRepairTests(unittest.TestCase):
         original['block_entities'][0]['pos'] = list(target)
         with self.assertRaisesRegex(UserError, 'block entity'):
             build_wren_request(self.registry, Snapshot(), receipt(), original)
+
+    def return_snapshot(self):
+        field = {(x, y, z): 'minecraft:water[level=0]' for x in range(1160, 1167)
+                 for z in range(-1451, -1448) for y in (61, 62)}
+        field[LARK_RETURN_SLAB] = LARK_RETURN_SLAB_STATE
+        return Snapshot(field)
+
+    def test_lark_return_adds_four_dry_backed_cells_and_preserves_slab(self):
+        result = build_lark_return(self.registry, self.return_snapshot(), receipt())
+        delta = states(result['placement'])
+        self.assertEqual(len(delta), 4)
+        for pos in LARK_RETURN_POSTS:
+            self.assertEqual(delta[pos], TIMBER)
+        for pos in LARK_RETURN_LADDERS:
+            self.assertEqual(delta[pos], 'minecraft:ladder[facing=east,waterlogged=false]')
+            self.assertEqual(delta[pos[0]-1, pos[1], pos[2]], TIMBER)
+        self.assertNotIn(LARK_RETURN_SLAB, delta)
+        self.assertEqual(states(result['after'])[LARK_RETURN_SLAB], LARK_RETURN_SLAB_STATE)
+        self.assertEqual(result['scope']['exact_before_after_cells'], 105)
+        self.assertEqual(result['scope']['source_water_cells'], 34)
+        self.assertEqual(result['scope']['BE_inventory_glue_entity_writes'], 0)
+        self.assertEqual(result['placement']['commands'], [])
+        self.assertEqual(result['placement']['block_entities'], [])
+        self.assertIsNone(result['scope']['authority'])
+
+    def test_lark_return_refuses_ice_plant_occupied_target_BE_and_unknown(self):
+        probes = [(LARK_RETURN_POSTS[0], 'minecraft:stone'), ((1164, 62, -1450), 'minecraft:ice'),
+                  ((1164, 61, -1450), 'minecraft:seagrass'), ((1164, 62, -1450), 'minecraft:water[level=1]'),
+                  ((1161, 66, -1450), 'minecraft:oak_planks'), (LARK_RETURN_LADDERS[0], None)]
+        for pos, value in probes:
+            snapshot = self.return_snapshot()
+            snapshot.field[pos] = value
+            with self.subTest(pos=pos, value=value), self.assertRaises(UserError):
+                build_lark_return(self.registry, snapshot, receipt())
+        snapshot = self.return_snapshot()
+        snapshot.protected.add(LARK_RETURN_POSTS[1])
+        with self.assertRaisesRegex(UserError, 'BE'):
+            build_lark_return(self.registry, snapshot, receipt())
+
+    def test_lark_return_refuses_changed_slab_or_stale_checkpoint(self):
+        snapshot = self.return_snapshot()
+        snapshot.field[LARK_RETURN_SLAB] = 'minecraft:spruce_slab[type=bottom,waterlogged=false]'
+        with self.assertRaises(UserError):
+            build_lark_return(self.registry, snapshot, receipt())
+        with self.assertRaises(UserError):
+            build_lark_return(self.registry, self.return_snapshot(), receipt() | {'sha256': '0'*64})
 
 
 if __name__ == '__main__':

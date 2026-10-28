@@ -164,7 +164,7 @@ installed. See [commissioning and custody details](FLEET-MARITIME-COMMISSIONING.
 The retained Lark source has an unsupported south-facing wheel at local
 `(0,17,25)`. Genuine6ad3a8 reads confirmed that saved wheel and its existing BE,
 the two missing northern support cells and the actual deck below. The
-[two-block support proposal and dependent Wren return ladder](FLEET-ACCESS-REPAIRS.md)
+[two-block helm support, four-block Lark water return and dependent Wren ladder](FLEET-ACCESS-REPAIRS.md)
 preserve existing BEs/inventories. Current native state and behavior remain
 unverified. No current Lark geometry or contents were overwritten. All six new
 templates passed the read-only support audit for controls, lanterns, beds and doors.

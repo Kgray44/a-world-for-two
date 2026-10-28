@@ -114,6 +114,12 @@ or native admission, neighbor-survival result, inventory write or placement
 authority is claimed. The master must inspect current surroundings before
 considering this small source dependency.
 
+Subsequent exact6ad3a8 reads qualified those four targets, the actual retained
+top slab, exit headroom and finite skiff approach as a **saved-only** proposal.
+See [the current access batch](FLEET-ACCESS-REPAIRS.md), which preserves all earlier
+access files. No native survival, boat use, lease or placement is established by
+that additional saved evidence.
+
 ## Anchor and ladder results, with evidence limits
 
 All **68 named room anchors** were checked for their structural floor and two

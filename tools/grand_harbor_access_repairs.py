@@ -33,6 +33,11 @@ WHEEL = (1140, 80, -1425)
 WHEEL_STATE = 'create:copper_valve_handle[facing=south,waterlogged=false]'
 LARK_DECK = (1140, 78, -1426)
 LARK_TARGETS = ((1140, 79, -1426), (1140, 80, -1426))
+LARK_RETURN_POSTS = ((1160, 63, -1450), (1160, 64, -1450))
+LARK_RETURN_LADDERS = ((1161, 63, -1450), (1161, 64, -1450))
+LARK_RETURN_SLAB = (1159, 64, -1450)
+LARK_RETURN_SLAB_STATE = 'minecraft:spruce_slab[type=top,waterlogged=false]'
+HELM_PLACEMENT_SHA = '68cc8091bd5b213dc495cda6bbaf687895fba01edbd17f05806c18f2a21387bb'
 WREN_ORIGIN, WREN_ROTATION = (1000, 63, -1366), 1
 WREN_BACKING = (17, 0, 0)
 WREN_LADDERS = ((18, 0, 0), (18, 1, 0))
@@ -80,6 +85,50 @@ def build_lark_repair(registry, snapshot, receipt):
                   'native_BE_before_after': 'Master must read the actual existing wheel BE/config before and after. Preserve all fields/inventories; no source tag or inventory replay.',
                   'behavior': 'Uncommissioned architectural wheel; no steering claim',
                   'authority': None},
+    }
+
+
+def build_lark_return(registry, snapshot, receipt):
+    """Add a full support beside the top slab; never replace that slab."""
+    checked_checkpoint(receipt)
+    targets = set(LARK_RETURN_POSTS) | set(LARK_RETURN_LADDERS)
+    headroom = {(x, y, -1450) for x in (1159, 1160, 1161) for y in (65, 66)}
+    approach_xz = {(x, z) for x in range(1162, 1167) for z in range(-1451, -1448)}
+    water = {(x, y, z) for x, z in approach_xz for y in (61, 62)}
+    water.update((x, y, -1450) for x in (1160, 1161) for y in (61, 62))
+    air = {(x, y, z) for x, z in approach_xz for y in range(63, 67)} | targets | headroom
+    expected = {p: 'minecraft:water[level=0]' for p in water} | {p: AIR for p in air}
+    expected[LARK_RETURN_SLAB] = LARK_RETURN_SLAB_STATE
+    before = {}
+    for pos, wanted in sorted(expected.items()):
+        observed = saved_state(snapshot, pos)
+        if observed != wanted or pos in snapshot.protected:
+            raise UserError('Lark return target/support/approach occupied, changed, non-source-water or BE: '+str((pos, observed, wanted)))
+        before[pos] = observed
+    native = ArtisticShip(registry, (0, 0, 0), 0)
+    timber = native.state(TIMBER)
+    ladder = native.state('minecraft:ladder', facing='east', waterlogged=False)
+    delta = {p: timber for p in LARK_RETURN_POSTS} | {p: ladder for p in LARK_RETURN_LADDERS}
+    after = before | delta
+    for pos in LARK_RETURN_LADDERS:
+        if after.get((pos[0]-1, pos[1], pos[2])) != timber:
+            raise UserError('East-facing Lark return ladder requires its full west backing')
+    return {
+        'before': native_plan(registry, before, 'Lark return exact6ad3a8 BEFORE VERIFY ONLY'),
+        'support': native_plan(registry, {p: state for p, state in before.items() if p not in targets},
+                               'Lark retained top slab headroom and two-layer skiff water VERIFY ONLY'),
+        'placement': native_plan(registry, delta, 'Lark additive ordinary post and water-return ladder', verify=False),
+        'after': native_plan(registry, after, 'Lark return full105-cell AFTER VERIFY ONLY'),
+        'scope': {'ordinary_blocks_added': 4, 'post_cells': [list(p) for p in LARK_RETURN_POSTS],
+                  'ladder_cells': [list(p) for p in LARK_RETURN_LADDERS],
+                  'ladder_facing': 'east', 'waterlogged': False,
+                  'existing_top_slab_retained': list(LARK_RETURN_SLAB),
+                  'exact_before_after_cells': len(before), 'source_water_cells': len(water),
+                  'air_cells': len(air), 'exit_headroom_cells': len(headroom),
+                  'approach': {'X': [1162, 1166], 'Z': [-1451, -1449], 'water_Y': [61, 62],
+                               'air_Y': [63, 66], 'width': 3, 'length': 5},
+                  'saved_BEs_in_mask': 0, 'BE_inventory_glue_entity_writes': 0, 'authority': None,
+                  'native_requirement': 'Master current native BEFORE/support/orientation/survival/BE and complete entity-AABB census plus exclusive lease. Actual skiff boarding, water return, collision, multiplayer and restart remain unverified.'},
     }
 
 
@@ -185,6 +234,7 @@ def prepare(home=HOME, output=None):
     snapshot = BackupWorld(home, receipt, registry)
     try:
         lark = build_lark_repair(registry, snapshot, receipt)
+        lark_return = build_lark_return(registry, snapshot, receipt)
         wren = build_wren_request(registry, snapshot, receipt, old_after)
         sources = snapshot.sources[:]
     finally:
@@ -195,18 +245,26 @@ def prepare(home=HOME, output=None):
         'lark/retained-support-VERIFY-ONLY.json': canonical(lark['support']),
         'lark/two-ordinary-blocks-placement.json': canonical(lark['placement']),
         'lark/complete-after-VERIFY-ONLY.json': canonical(lark['after']),
+        'lark-return/current-before-VERIFY-ONLY.json': canonical(lark_return['before']),
+        'lark-return/retained-support-water-VERIFY-ONLY.json': canonical(lark_return['support']),
+        'lark-return/four-ordinary-blocks-placement.json': canonical(lark_return['placement']),
+        'lark-return/complete-after-VERIFY-ONLY.json': canonical(lark_return['after']),
         'wren/prospective-request-NONEXECUTABLE.json': canonical(wren['request']),
         'wren/current-new-original-cells-VERIFY-ONLY.json': canonical(wren['new_current']),
         'wren/prospective-full-before-VERIFY-ONLY.json': canonical(wren['before']),
         'wren/prospective-support-VERIFY-ONLY.json': canonical(wren['support']),
         'wren/prospective-updated-full-after-VERIFY-ONLY.json': canonical(wren['after']),
     }
+    if hashlib.sha256(files['lark/two-ordinary-blocks-placement.json']).hexdigest() != HELM_PLACEMENT_SHA:
+        raise UserError('Existing Lark helm placement must remain byte-identical')
     manifest = {
         'format': 'awft-fleet-access-repairs:1', 'checkpoint_id': CHECKPOINT, 'checkpoint_sha256': CHECKPOINT_SHA,
         'source_sha256': digest(Path(__file__)), 'imported_source_hashes': pins,
         'historical_registry_sha256': REGISTRY_SHA,
         'registry_status': 'Historical bridge0.6.29 property export; actual current native palette proof pending master',
-        'lark_scope': lark['scope'], 'wren_prospective_scope': wren['scope'], 'wren_dependency': wren['request']['dependency'],
+        'lark_scope': lark['scope'], 'lark_return_scope': lark_return['scope'],
+        'unchanged_helm_placement_sha256': HELM_PLACEMENT_SHA,
+        'wren_prospective_scope': wren['scope'], 'wren_dependency': wren['request']['dependency'],
         'saved_region_sources': sources,
         'files': {name: {'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw)} for name, raw in files.items()},
         'native_calls': 0, 'world_writes': 0, 'BE_or_inventory_writes': 0,
@@ -230,6 +288,7 @@ def prepare(home=HOME, output=None):
             stream.write(raw)
     return {'directory': str(output), 'manifest_sha256': digest(output/'manifest.json'),
             'bytes': sum(map(len, files.values())), 'lark_scope': lark['scope'],
+            'lark_return_scope': lark_return['scope'],
             'wren_prospective_scope': wren['scope'], 'native_calls': 0, 'world_writes': 0}
 
 
