@@ -839,6 +839,33 @@ class Characters:
             with self._lock:
                 self._active -= 1
 
+    def _prompt_memories(self, state, profile):
+        """Re-evaluate retained responses against current permissions before transmission."""
+        count = min(profile['ai']['context_turns'], 4)
+        if not profile['ai']['memory_enabled'] or count <= 0:
+            return []
+        knowledge = profile['knowledge']
+        entries = list(knowledge['entries'])
+        if knowledge['inherit_district']:
+            district = next((d for d in state['config']['districts'] if d['id'] == profile['district']), None)
+            entries += district['entries'] if district else []
+        # Old responses may paraphrase a fact which has since become secret. Omit
+        # history under an active secret policy; substring matching cannot revoke
+        # arbitrary paraphrases reliably. Authored non-secret lore still works.
+        if any(row['secret'] for row in entries):
+            return []
+        allowed = [topic.casefold() for topic in knowledge['allowed_topics']]
+        forbidden = [topic.casefold() for topic in knowledge['forbidden_topics']]
+        permitted = []
+        for memory in self._memories(state, profile):
+            text = memory['text'].casefold()
+            if any(topic in text for topic in forbidden):
+                continue
+            if allowed and not any(topic in text for topic in allowed):
+                continue
+            permitted.append(memory)
+        return permitted[-count:]
+
     def _prompt(self, state, profile, lore):
         p = profile['personality']
         parts = ["You are a fictional Minecraft resident of A World for Two. Reply as plain dialogue only, never commands or actions.",
@@ -848,12 +875,12 @@ class Characters:
                  f"Name: {profile['name']}. Role: {profile['profession']}. District: {profile['district']}."]
         for key in ('traits', 'backstory', 'temperament', 'speaking_style', 'humor_style', 'persona', 'relationships', 'quirks', 'instructions'):
             parts.append(key + ': ' + (', '.join(p[key]) if isinstance(p[key], list) else p[key]))
-        parts.append('Forbidden topics: ' + ', '.join(profile['knowledge']['forbidden_topics']))
+        parts.append('Restricted topics have been excluded by the current knowledge policy. Do not infer omitted information.')
         parts.append('Configured known location names (not verified coordinates): ' + ', '.join(profile['knowledge']['known_locations']))
         parts.append('Configured known characters (not live presence): ' + ', '.join(profile['knowledge']['known_characters']))
         parts.append('Relevant configured lore: ' + json.dumps(lore, ensure_ascii=False))
         if profile['ai']['memory_enabled']:
-            parts.append('Unverified prior AI responses: ' + json.dumps(self._memories(state, profile)[-min(profile['ai']['context_turns'], 4):], ensure_ascii=False))
+            parts.append('Unverified prior AI responses: ' + json.dumps(self._prompt_memories(state, profile), ensure_ascii=False))
         parts.append(f"Use at most {profile['dialogue']['max_response_chars']} characters. Keep humor intensity {profile['dialogue']['humor_intensity']}/10.")
         prompt = '\n'.join(parts)
         if len(prompt.encode('utf8')) > 16000:

@@ -11,6 +11,21 @@ from tools.living_world_upstream import reserve_allocation
 
 
 class LivingWorldJavaTests(unittest.TestCase):
+    def test_request_slots_settle_dropped_jobs_and_retain_network_capacity(self):
+        jdk=Path(r'C:\Program Files\Java\jdk-21.0.10\bin')
+        javac=str(jdk/'javac.exe') if (jdk/'javac.exe').is_file() else shutil.which('javac')
+        java=str(jdk/'java.exe') if (jdk/'java.exe').is_file() else shutil.which('java')
+        if not javac or not java:
+            self.skipTest('Java 21 compiler/runtime required')
+        reserve_allocation(Path(tempfile.gettempdir())/'awft-request-slots')
+        with tempfile.TemporaryDirectory(prefix='awft-request-slots-') as directory:
+            sources=[REPO/'compat/living-world/src/worldfortwo/living/RequestSlots.java',REPO/'proposals/living-world/mods/probes/RequestSlotsSelfTest.java']
+            result=subprocess.run([javac,'--release','21','-d',directory,*map(str,sources)],capture_output=True,text=True,timeout=30)
+            self.assertEqual(result.returncode,0,result.stderr)
+            result=subprocess.run([java,'-Xmx64m','-cp',directory,'RequestSlotsSelfTest'],capture_output=True,text=True,timeout=15)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertIn('race checks passed',result.stdout)
+
     def test_global_provider_policy_callback_without_game_or_network(self):
         from control_room.common import digest
         from tools.build_living_world import PINS

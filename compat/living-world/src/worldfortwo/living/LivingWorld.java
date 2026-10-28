@@ -19,7 +19,6 @@ import java.security.MessageDigest;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BooleanSupplier;
 import tn.naizo.smartvillagers.ai.*;
 
@@ -36,7 +35,7 @@ public final class LivingWorld {
     private static volatile WatchService watcher;
     private static volatile Thread watchThread;
     private static volatile long lifecycle;
-    private static final AtomicInteger activeRequests=new AtomicInteger();
+    private static final RequestSlots<AiResponse> requests=new RequestSlots<>();
     private long ticks;
     public LivingWorld(){
         NeoForge.EVENT_BUS.addListener(this::commands);
@@ -47,12 +46,13 @@ public final class LivingWorld {
     private void started(ServerStartedEvent event){
         lifecycle++;
         io=new ThreadPoolExecutor(1,1,0,TimeUnit.SECONDS,new ArrayBlockingQueue<>(4),r->{Thread t=new Thread(r,"awft-characters-io");t.setDaemon(true);return t;},new ThreadPoolExecutor.AbortPolicy());
+        requests.open();
         reload(event.getServer());
         watch(event.getServer());
     }
     private void stopped(ServerStoppingEvent event){
         lifecycle++;
-        ExecutorService owned=io;io=null;if(owned!=null)owned.shutdownNow();
+        ExecutorService owned=io;io=null;requests.close(AiResponse.failure("Server stopping; conversation cancelled"));if(owned!=null)owned.shutdownNow();
         WatchService ownedWatcher=watcher;watcher=null;if(ownedWatcher!=null)try{ownedWatcher.close();}catch(Exception ignored){}
         Thread ownedThread=watchThread;watchThread=null;if(ownedThread!=null)ownedThread.interrupt();
         WorldCharacters.current=new WorldCharacters(new JsonObject());hash="";error="Server stopping";
@@ -152,10 +152,9 @@ public final class LivingWorld {
     public static CompletableFuture<AiResponse> request(AiProvider provider,AiRequest request,MinecraftServer server,String character,BooleanSupplier stillAllowed){
         ExecutorService owned=io;if(owned==null)return CompletableFuture.completedFuture(AiResponse.failure("Character service unavailable"));
         int cap=Math.max(1,Math.min(2,WorldCharacters.integer(WorldCharacters.current.settings(),"max_concurrent",2)));
-        int active;
-        do{active=activeRequests.get();if(active>=cap)return CompletableFuture.completedFuture(AiResponse.failure("Character concurrency limit; scripted fallback"));}while(!activeRequests.compareAndSet(active,active+1));
-        CompletableFuture<AiResponse> result=new CompletableFuture<>();
-        result.whenComplete((answer,failure)->activeRequests.decrementAndGet());
+        var lease=requests.acquire(cap);
+        if(lease==null)return CompletableFuture.completedFuture(AiResponse.failure("Character concurrency limit; scripted fallback"));
+        CompletableFuture<AiResponse> result=lease.future();
         long epoch=lifecycle;
         try{owned.execute(()->{
             try{
@@ -191,13 +190,25 @@ public final class LivingWorld {
                 // after disk admission, immediately before upstream's nonblocking sendAsync call.
                 server.execute(()->{
                     try{
-                    if(io!=owned||lifecycle!=epoch||!stillAllowed.getAsBoolean()){result.complete(AiResponse.failure("Conversation no longer active; scripted fallback"));return;}
-                    provider.complete(request).orTimeout(30,TimeUnit.SECONDS).whenComplete((answer,failure)->{
-                        if(failure!=null)result.complete(AiResponse.failure("Provider unavailable; scripted fallback"));else result.complete(answer);
-                    });}catch(Exception ignored){result.complete(AiResponse.failure("Provider unavailable; scripted fallback"));}
+                    if(io!=owned||lifecycle!=epoch||!stillAllowed.getAsBoolean()){lease.complete(AiResponse.failure("Conversation no longer active; scripted fallback"));return;}
+                    if(!lease.start()){lease.complete(AiResponse.failure("Conversation cancelled before provider dispatch"));return;}
+                    var upstream=provider.complete(request);
+                    // Never mutate the provider future with orTimeout: a logical deadline
+                    // is not proof that its underlying HTTP exchange has terminated.
+                    CompletableFuture.delayedExecutor(30,TimeUnit.SECONDS).execute(()->lease.timeout(AiResponse.failure("Provider response deadline; scripted fallback")));
+                    upstream.whenComplete((answer,failure)->{
+                        lease.networkFinished();
+                        if(io!=owned||lifecycle!=epoch){lease.complete(AiResponse.failure("Conversation runtime ended"));return;}
+                        try{server.execute(()->{
+                            try{
+                                if(io!=owned||lifecycle!=epoch||!stillAllowed.getAsBoolean()){lease.complete(AiResponse.failure("Conversation permission changed before response"));return;}
+                                lease.complete(failure!=null?AiResponse.failure("Provider unavailable; scripted fallback"):answer);
+                            }catch(Exception ignored){lease.complete(AiResponse.failure("Conversation no longer available"));}
+                        });}catch(Exception ignored){lease.complete(AiResponse.failure("Conversation runtime ended"));}
+                    });}catch(Exception ignored){lease.complete(AiResponse.failure("Provider unavailable; scripted fallback"));}
                 });
-            }catch(Exception ignored){result.complete(AiResponse.failure("AI budget, pricing or storage gate unavailable; scripted fallback"));}
-        });}catch(RejectedExecutionException ignored){result.complete(AiResponse.failure("Character worker busy; scripted fallback"));}
+            }catch(Exception ignored){lease.complete(AiResponse.failure("AI budget, pricing or storage gate unavailable; scripted fallback"));}
+        });}catch(RejectedExecutionException ignored){lease.complete(AiResponse.failure("Character worker busy; scripted fallback"));}
         return result;
     }
 }

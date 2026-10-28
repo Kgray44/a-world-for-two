@@ -92,6 +92,14 @@ public final class WorldCharactersSelfTest {
         check(value.admit(bill, 3700001), "Expired hourly entries should free bounded slots");
         Object memory = new Object(); value.memory(memory, BILL);
         check(!WorldCharacters.memoryEnabled(memory), "Memory off by default");
+        JsonObject memoryDocument=document.deepCopy();
+        memoryDocument.getAsJsonArray("characters").get(0).getAsJsonObject().getAsJsonObject("ai").addProperty("memory_enabled",true);
+        WorldCharacters.current=new WorldCharacters(memoryDocument);
+        check(WorldCharacters.memoryEnabled(memory), "An enabled bound profile can retain memories");
+        memoryDocument.getAsJsonArray("characters").get(0).getAsJsonObject().addProperty("enabled",false);
+        WorldCharacters.current=new WorldCharacters(memoryDocument);
+        check(!WorldCharacters.memoryEnabled(memory), "Disabling a profile prevents new retained exchanges");
+        WorldCharacters.current=value;
         JsonObject animal = bill.deepCopy(); animal.addProperty("kind", "animal");
         check(!value.enabled(animal), "Animal authoring cannot silently enable a villager adapter");
         document.getAsJsonArray("characters").add(bill.deepCopy());

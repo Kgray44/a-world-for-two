@@ -39,7 +39,7 @@ public final class WorldCharacters {
     public String revision(){return text(document,"revision");}
     public JsonObject settings(){return object(document,"settings");}
     public void memory(Object memory,UUID entity){MEMORIES.put(memory,entity.toString());}
-    public static boolean memoryEnabled(Object memory){String entity=MEMORIES.get(memory);return entity!=null&&flag(object(current.byEntity.get(entity),"ai"),"memory_enabled");}
+    public static boolean memoryEnabled(Object memory){String entity=MEMORIES.get(memory);var config=current;var profile=config.byEntity.get(entity);return entity!=null&&config.enabled(profile)&&flag(object(profile,"ai"),"memory_enabled");}
     public static JsonObject object(JsonObject parent,String key){return parent!=null&&parent.has(key)&&parent.get(key).isJsonObject()?parent.getAsJsonObject(key):new JsonObject();}
     public static JsonArray array(JsonObject parent,String key){return parent!=null&&parent.has(key)&&parent.get(key).isJsonArray()?parent.getAsJsonArray(key):new JsonArray();}
     public static String text(JsonObject parent,String key){return parent!=null&&parent.has(key)&&!parent.get(key).isJsonNull()?parent.get(key).getAsString():"";}

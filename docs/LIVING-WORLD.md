@@ -68,6 +68,12 @@ are excluded, and missing facts require an admission of uncertainty. Obvious uns
 coordinate-shaped replies are refused. These guards do not prove arbitrary generated
 prose true; owner review remains necessary. AI output is never a server command or action.
 
+Retained exchanges are checked against the current topic policy before reuse. An active
+personal or inherited district secret suppresses all retained history: an old response
+may paraphrase information that has since become private. Setting context turns to zero
+forwards no preview history. Disabling a native profile prevents new memory storage;
+it does not delete historical upstream data.
+
 Native requests have a hard cap of two concurrent calls, per-character cooldowns,
 persisted hourly admission and a conservative daily cost reservation. The adapter
 rechecks the exact configuration, player consent, loaded entity and proximity after
@@ -76,6 +82,22 @@ token ceiling is 120 and upstream display ceiling is 180 characters. Native ledg
 reservations are not refunded on failures. Dashboard previews and native game requests
 enforce their budgets **separately**; the configured amount is not a pooled account cap.
 Administrator-entered rates are estimates, and provider billing is authoritative.
+
+Permissions are checked again after the provider responds. A delayed reply binds the
+original player object, loaded villager and configuration; delivery is cancelled before
+display or memory writes if the session, configuration, dimension, proximity or required
+consent changes. Logical response deadlines retain request capacity until the original
+provider future finishes. Shutdown settles queued futures, including replies waiting for
+Minecraft's executor, while unresolved provider calls still count against capacity after
+a same-process restart. These are source/JVM checks; main-lane native tests remain required.
+
+The ambient adapter admits at most three emissions per minute and two simultaneous
+bubbles for each present potential observer, including bubbles-only output. Disjoint
+audiences have independent budgets. Shared displays are suppressed if any such observer
+has opted out. The audience estimate includes vanilla view scaling; later arrivals and
+modified clients are outside that emission-time guarantee. Distance and lifetime remain
+global native settings. Dynamic two-speaker dialogue also supplies the nonzero count
+required by the upstream scheduler when its stock conversation pool is disabled.
 
 The registry permits 64 profiles, a 1 MiB runtime export and an 8 MiB retained registry.
 History retains twelve versions per profile. Preview memories are separate from authored
@@ -141,14 +163,21 @@ the supplied `expected` revision. Conversation previews run as existing backgrou
 
 ## Current evidence and remaining acceptance
 
-The focused registry, HTTP, backup, frontend, upstream-schema and JVM checks pass.
-The full inherited suite ran 1,137 tests with three import errors and one skip: the
+The latest source correction and test results are recorded in
+[the correction receipt](../evidence/living-world/correction-qualification.json).
+The original receipt and binary below are historical and **held**: subsequent review
+found missing ambient scheduler activation, bubbles-only rate admission, stale history,
+delayed-reply and shutdown ownership defects. Use only the corrected source candidate
+identified by the new receipt for the main lane's private runtime qualification.
+
+At the previous source checkpoint, focused registry, HTTP, backup, frontend,
+upstream-schema and JVM checks passed. That full suite ran 1,137 tests with three import errors and one skip: the
 starting commit references absent `tools/artistic_tortuga_coast_batches.py` and
 `tools/artistic_tortuga_west_approved_blocks.py` through three unchanged artistic tests.
 Both modules were already absent at base `3d337e4`;
 this lane does not copy the main owner's uncommitted construction work to hide the gap.
 
-[The sanitized qualification receipt](../evidence/living-world/qualification.json) records the exact build and checks.
+[The historical qualification receipt](../evidence/living-world/qualification.json) preserves that superseded build and checks.
 
 A real NeoForge loader probe discovered all three mods, retained `eula=false`, exited
 at the EULA refusal and created no world. No target classes were exported by Mixin
@@ -176,9 +205,9 @@ Actual browser capture; this does not establish in-game or final-head browser ac
 The owner selected the **main development lane** to coordinate and execute the remaining
 in-game tests. Exact-head [CI run 40776960802](https://github.com/Kgray44/a-world-for-two/actions/runs/40776960802)
 confirmed the same three inherited import errors (1,137 tests, three platform/input skips).
-No source check was bypassed. A subsequent current-source browser check reloaded the saved
+No source check was bypassed. A subsequent browser check at that source checkpoint reloaded the saved
 joke after a dashboard restart, reproduced it in ambient preview, checked visibly disabled
 unsupported bubble controls and checked the 390 × 844 mobile breakpoint without document
 overflow. The temporary viewport was restored.
 
-![Current-source Character Studio desktop check](images/living-world/character-studio-desktop.png)
+![Character Studio desktop check at the prior source checkpoint](images/living-world/character-studio-desktop.png)

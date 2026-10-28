@@ -9,6 +9,8 @@
     "CharacterSelectionMixin",
     "PersonaMixin",
     "ConversationMixin",
+    "PendingReplyMixin",
+    "ReplyTaskMixin",
     "MemoryMixin",
     "AmbientDialogueMixin",
     "BubbleMixin",

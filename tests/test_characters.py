@@ -337,6 +337,45 @@ class CharacterTests(unittest.TestCase):
             self.assertEqual('scripted', result['mode'])
             provider.assert_not_called()
 
+    def test_zero_context_never_forwards_retained_preview_memories(self):
+        state = self.service._read()
+        profile = self.service._find(state, 'barnacle-bill')
+        profile['ai'].update(memory_enabled=True, context_turns=0)
+        state['memories'][profile['id']] = [{'id': 'retained', 'at': datetime.now(timezone.utc).isoformat(),
+            'text': 'Retained unique fictional harbor incident.', 'source': 'synthetic fixture'}]
+        self.assertEqual([], self.service._prompt_memories(state, profile))
+        self.assertNotIn('Retained unique fictional harbor incident', self.service._prompt(state, profile, []))
+
+    def test_preview_memory_is_restricted_by_current_topics_and_secret_policy(self):
+        state = self.service._read()
+        profile = self.service._find(state, 'barnacle-bill')
+        profile['ai'].update(memory_enabled=True, context_turns=4)
+        profile['knowledge'].update(allowed_topics=['harbor'], forbidden_topics=['password'], entries=[])
+        stamp = datetime.now(timezone.utc).isoformat()
+        state['memories'][profile['id']] = [
+            {'id': 'private', 'at': stamp, 'text': 'The fictional harbor password was marigold.', 'source': 'synthetic fixture'},
+            {'id': 'public', 'at': stamp, 'text': 'The harbor sails needed mending.', 'source': 'synthetic fixture'},
+            {'id': 'unrelated', 'at': stamp, 'text': 'The castle had a ribbon contest.', 'source': 'synthetic fixture'}]
+        prompt = self.service._prompt(state, profile, [])
+        self.assertIn('harbor sails needed mending', prompt)
+        self.assertNotIn('marigold', prompt)
+        self.assertNotIn('ribbon contest', prompt)
+        district = next(d for d in state['config']['districts'] if d['id'] == profile['district'])
+        district['entries'][0]['secret'] = True
+        self.assertEqual([], self.service._prompt_memories(state, profile))
+        self.assertNotIn('harbor sails needed mending', self.service._prompt(state, profile, []))
+        profile['knowledge']['inherit_district'] = False
+        self.assertEqual(['public'], [m['id'] for m in self.service._prompt_memories(state, profile)])
+        profile['knowledge']['entries'] = [{'id': 'revoked', 'kind': 'fact', 'text': 'An old fact is now private.',
+            'topics': ['harbor'], 'source': 'synthetic owner policy', 'secret': True}]
+        self.assertEqual([], self.service._prompt_memories(state, profile))
+
+    def test_forbidden_topic_values_are_not_sent_as_prompt_content(self):
+        state = self.service._read()
+        profile = self.service._find(state, 'barnacle-bill')
+        profile['knowledge']['forbidden_topics'] = ['unique-private-policy-value']
+        self.assertNotIn('unique-private-policy-value', self.service._prompt(state, profile, []))
+
     def native(self, age=0, loaded=True, correct_pid=True):
         p = self.detail()['character']
         p['entity_uuid'] = '6b7ecd27-5506-48a3-bd2f-932f3b010940'

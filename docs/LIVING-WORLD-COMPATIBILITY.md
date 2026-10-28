@@ -74,6 +74,8 @@ content without regenerating upstream JSON. Sixteen original two-speaker exchang
 native A/B speaker convention. Personal starters plus contextual replies override
 those exchanges; additional districts can use their own starter/reply pools.
 No-marker contexts retain upstream behavior.
+The adapter's `getConversationCount` return hook admits configured dynamic exchanges
+when the native stock count is zero; otherwise upstream never calls `pickConversation`.
 
 The quiet profile has 90-second villager cooldowns, a three-message player
 budget per minute, quieter nights, bubbles enabled and ambient chat disabled.
@@ -88,6 +90,11 @@ shared exclusion hook would prematurely cancel two-speaker conversations; the
 adapter instead gates the send operation. Character bubble enable/disable and
 profile display names are honored for ambient lines. Per-character bubble range
 and lifetime remain unavailable; those upstream settings are global.
+Native's chat-only rate ledger does not cover shared text displays. The adapter adds
+atomic admission for every present potential observer (three per minute, two active),
+accounts for vanilla client view scaling and suppresses shared bubbles around opted-out
+observers. Independent audiences do not consume each other's allowance. Later arrivals
+and clients outside vanilla view behavior require separate runtime assessment.
 
 The public Chatting GitHub main commit
 `5be7f1facb63031af7457320b27652ce10c60dae` contains older Fabric-only code.
@@ -128,6 +135,11 @@ per-NPC retention, model or voice controls through this config. Studio-side
 memory and supported adapter controls must remain explicit about their scope.
 The `/villagerai test` path bypasses the ordinary chat consent check upstream;
 the adapter's independent provider gate must cover that path too.
+Current-policy topic filtering and secret-history omission apply before retained exchanges
+are sent. Queued responses bind the original session/entity/configuration and revalidate
+consent, loaded state, dimension and proximity before display and memory. Shutdown settles
+queued replies; an adapter deadline does not release an unresolved provider's permit.
+Pure JVM regressions and compilation cover these policies, not Mixin application.
 [Pinned Smart Villagers source](https://github.com/MeherBenSalem/CivilizationAI/tree/a619f2b577277246b353894d77140ff78f8c9c03/1.21.1).
 
 ## Optional voices and animals
