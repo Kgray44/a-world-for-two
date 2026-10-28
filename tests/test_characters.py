@@ -212,6 +212,17 @@ class CharacterTests(unittest.TestCase):
         self.assertNotIn('key_env', exported['settings'])
         self.assertFalse((self.layout.server / 'config/awft-living-world.json').exists())
 
+    def test_stage_revalidates_manual_file_edits_without_overwriting_them(self):
+        self.save(self.detail()['character'])
+        state = json.loads(self.service.path.read_text())
+        state['config']['characters'][0]['voice']['enabled'] = True
+        self.service.path.write_text(json.dumps(state))
+        revision = self.service.snapshot()['revision']
+        with self.assertRaisesRegex(UserError, 'unavailable'):
+            self.service.apply(revision)
+        self.assertTrue(json.loads(self.service.path.read_text())['config']['characters'][0]['voice']['enabled'])
+        self.assertFalse((self.service.folder / 'runtime.json').exists())
+
     def test_external_requires_global_profile_and_per_request_opt_in(self):
         self.external()
         with patch.dict(os.environ, {'SMARTVILLAGERS_API_KEY': 'test-private-credential'}), patch.object(self.service, '_provider') as provider:
@@ -376,6 +387,13 @@ class CharacterTests(unittest.TestCase):
         (self.service.folder / 'native.json').write_text(json.dumps(sample))
         with patch('control_room.characters.psutil.Process', return_value=process):
             self.assertTrue(self.detail()['runtime']['acknowledged'])
+            self.assertTrue(self.detail()['runtime']['current_profile_applied'])
+            newer = self.detail()['character']
+            newer['personality']['speaking_style'] = 'A newly edited voice, not yet staged.'
+            self.save(newer)
+            self.assertTrue(self.detail()['runtime']['acknowledged'], 'The exact older staged bytes are still acknowledged')
+            self.assertFalse(self.detail()['runtime']['current_profile_applied'], 'Newer registry edits cannot borrow an older acknowledgement')
+            self.assertEqual('older_snapshot_acknowledged', self.detail()['runtime']['status'])
             sample['config_sha256'] = '0' * 64
             (self.service.folder / 'native.json').write_text(json.dumps(sample))
             self.assertFalse(self.detail()['runtime']['acknowledged'])

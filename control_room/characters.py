@@ -23,7 +23,7 @@ from pathlib import Path
 import psutil
 
 from living_world.defaults import CATEGORIES, SETTINGS, TEMPLATES, character_defaults, configuration
-from .common import UserError, atomic_write, contained, digest, read_json, utcnow
+from .common import UserError, atomic_write, contained, read_json, utcnow
 
 MAX_STATE = 8 * 1024 * 1024
 MAX_EXPORT = 1024 * 1024
@@ -39,7 +39,8 @@ CAPABILITIES = {
                 'named_uuid_selection': True, 'player_opt_in': True,
                 'note': 'Game integration uses the separately deployed adapter and upstream provider. '
                         'Provider/model and memory controls here configure Control Room previews. '
-                        'Staging a profile does not acknowledge a running game.'}}
+                        'An installed adapter watches staged profiles and reports their exact hash after application. '
+                        'Without that acknowledgement, game application remains pending.'}}
 
 
 def _encoded(value):
@@ -269,13 +270,20 @@ class Characters:
             raise UserError('Character registry exceeds its bounded storage limit')
         try:
             value = read_json(path)
-            if not isinstance(value, dict) or value.get('config', {}).get('format') != 'awft-living-world:1':
+            if not isinstance(value, dict) or not isinstance(value.get('config'), dict) or value['config'].get('format') != 'awft-living-world:1':
+                raise ValueError()
+            if any(not isinstance(value.get(key), kind) for key, kind in (('history', dict), ('memories', dict), ('usage', list), ('diagnostics', list))):
+                raise ValueError()
+            if any(not isinstance(value['config'].get(key), kind) for key, kind in (('characters', list), ('districts', list), ('settings', dict))):
                 raise ValueError()
             return value
         except (OSError, ValueError, TypeError) as exc:
             raise UserError('Character registry could not be read; preserve it and restore a verified backup') from exc
 
     def _write(self, state):
+        profiles = {p['id']: p for p in state['config']['characters']}
+        # Retention affects retrieval immediately; the next bounded mutation also removes expired bytes.
+        state['memories'] = {ident: self._memories(state, profiles[ident]) for ident in state['memories'] if ident in profiles}
         raw = _encoded(state)
         if len(raw) > MAX_STATE:
             raise UserError('Character history reached 8 MiB; export retained profiles before removing old registry entries')
@@ -306,7 +314,7 @@ class Characters:
         state['history'][profile['id']] = records[-HISTORY_LIMIT:]
 
     def _public_settings(self, state):
-        settings = copy.deepcopy(state['config']['settings'])
+        settings = validate_settings(state['config']['settings'])
         settings['credential_configured'] = bool(os.environ.get(settings['key_env']))
         settings['cost_estimate_configured'] = settings['input_usd_per_million'] > 0 and settings['output_usd_per_million'] > 0
         return settings
@@ -338,14 +346,30 @@ class Characters:
     def _runtime_status(self, state, native=None):
         native = self._native() if native is None else native
         path = self.folder / 'runtime.json'
-        staged_hash = digest(path) if path.is_file() and path.stat().st_size <= MAX_EXPORT else None
+        staged_hash, staged_revision = None, None
+        if path.is_file():
+            try:
+                path = contained(self.layout.state, 'characters/runtime.json')
+                if path.stat().st_size <= MAX_EXPORT:
+                    raw = path.read_bytes()
+                    if len(raw) <= MAX_EXPORT:
+                        document = json.loads(raw)
+                        staged_hash = hashlib.sha256(raw).hexdigest()
+                        staged_revision = document.get('revision') if isinstance(document, dict) else None
+            except (OSError, ValueError, UserError):
+                pass
         acknowledged = bool(native['current'] and not native.get('error') and staged_hash and native.get('config_sha256') == staged_hash)
-        return {'status': 'acknowledged' if acknowledged else 'staged' if staged_hash else 'not_staged',
+        current_revision = _hash(state)
+        current_applied = acknowledged and staged_revision == current_revision
+        return {'status': 'acknowledged' if current_applied else 'older_snapshot_acknowledged' if acknowledged else 'staged' if staged_hash else 'not_staged',
                 'acknowledged': acknowledged, 'native_current': native['current'], 'native_at': native.get('at'),
                 'native_config_sha256': native.get('config_sha256'), 'staged_sha256': staged_hash,
+                'staged_revision': staged_revision, 'current_revision': current_revision,
+                'current_profile_applied': current_applied,
                 'native_revision': native.get('revision'), 'diagnostic': native.get('error') or native.get('reason'),
-                'note': 'Owned runtime acknowledged the exact staged configuration.' if acknowledged else
-                        'Save applies to Control Room previews immediately. Stage prepares owner deployment; game reload is separate.'}
+                'note': 'Owned runtime acknowledged the current registry snapshot.' if current_applied else
+                        'Owned runtime acknowledged an older staged snapshot; newer registry changes have not been applied.' if acknowledged else
+                        'Save updates previews immediately. Stage submits to the installed adapter watcher; game application needs its exact-hash acknowledgement.'}
 
     def _native(self):
         """Accept current samples only from the exact dashboard-owned server process."""
@@ -595,6 +619,40 @@ class Characters:
     def export_configuration(self):
         state = self._read()
         result = copy.deepcopy(state['config'])
+        # Revalidate the persistent file too, including administrator edits outside the UI.
+        _object(result, ('format', 'characters', 'districts', 'settings'), 'Runtime configuration')
+        if len(result['characters']) > MAX_CHARACTERS:
+            raise UserError('Runtime supports at most 64 special characters')
+        result['characters'] = [validate_profile(p) for p in result['characters']]
+        ids, entities, district_ids = set(), set(), set()
+        for district in result['districts']:
+            _object(district, ('id', 'name', 'entries', 'dialogue', 'bounds'), 'District')
+            ident = _text(district.get('id'), 'District identifier', 64, True)
+            if not re.fullmatch(r'[a-z0-9][a-z0-9_-]{0,63}', ident) or ident in district_ids:
+                raise UserError('Runtime district identifiers must be valid and unique')
+            district_ids.add(ident)
+            district['name'] = _text(district.get('name'), 'District name', 100, True)
+            district['entries'] = validate_lore(district.get('entries', []))
+            district['dialogue'] = validate_lines(district.get('dialogue', {}))
+            if 'bounds' in district:
+                bounds = _object(district['bounds'], ('dimension', 'min_x', 'max_x', 'min_y', 'max_y', 'min_z', 'max_z'), 'District bounds')
+                if bounds.get('dimension') not in ('minecraft:overworld', 'minecraft:the_nether', 'minecraft:the_end'):
+                    raise UserError('Choose a supported district dimension')
+                for key in ('min_x', 'max_x', 'min_y', 'max_y', 'min_z', 'max_z'):
+                    _number(bounds.get(key), key, -30000000, 30000000, True)
+                if any(bounds['min_' + key] > bounds['max_' + key] for key in ('x', 'y', 'z')):
+                    raise UserError('District minimum bounds must not exceed maximum bounds')
+        if len(district_ids) > 16:
+            raise UserError('Use at most 16 district dialogue profiles')
+        for profile in result['characters']:
+            if profile['id'] in ids or profile['district'] not in district_ids:
+                raise UserError('Runtime character identifiers must be unique and districts must exist')
+            ids.add(profile['id'])
+            if profile['entity_uuid']:
+                if profile['entity_uuid'] in entities:
+                    raise UserError('A stable entity UUID cannot be bound to two runtime profiles')
+                entities.add(profile['entity_uuid'])
+        result['settings'] = validate_settings(result['settings'])
         result['revision'] = _hash(state)
         # Credential reference and browser provider settings never become client/runtime credentials.
         result['settings'] = {key: value for key, value in result['settings'].items() if key != 'key_env'}
@@ -611,7 +669,8 @@ class Characters:
             self.storage.reserve(2 * MAX_EXPORT, self.folder)
             atomic_write(path, _encoded(exported))
             return {'status': 'staged', 'revision': exported['revision'], 'path': str(path), 'acknowledged': False,
-                    'note': 'Validated runtime proposal staged. The owner must deploy and reload it; the running game has not acknowledged these settings.'}
+                    'note': 'Validated runtime proposal staged. An installed adapter watches this file and acknowledges its exact hash after application; '
+                            'otherwise owner deployment is required. Game application is pending acknowledgement.'}
 
     @staticmethod
     def _relevant_lore(state, profile, message):
@@ -728,7 +787,8 @@ class Characters:
                 return self._fallback(state, p, lore, 'Character settings changed before the request; preview again')
             if self._active >= settings['max_concurrent']:
                 return self._fallback(state, p, lore, 'AI concurrency limit reached; no request was queued')
-            if now - self._last.get(('request', p['id']), 0) < p['ai']['cooldown_seconds']:
+            last_persisted = max((u['time'] for u in current['usage'] if u['id'] == p['id']), default=0)
+            if now - max(last_persisted, self._last.get(('request', p['id']), 0)) < p['ai']['cooldown_seconds']:
                 return self._fallback(state, p, lore, 'Character conversation cooldown is active')
             recent = [u for u in current['usage'] if now - u['time'] < 3600]
             if len(recent) >= settings['requests_per_hour'] or sum(u['id'] == p['id'] for u in recent) >= p['ai']['requests_per_hour']:
@@ -778,6 +838,8 @@ class Characters:
         for key in ('traits', 'backstory', 'temperament', 'speaking_style', 'humor_style', 'persona', 'relationships', 'quirks', 'instructions'):
             parts.append(key + ': ' + (', '.join(p[key]) if isinstance(p[key], list) else p[key]))
         parts.append('Forbidden topics: ' + ', '.join(profile['knowledge']['forbidden_topics']))
+        parts.append('Configured known location names (not verified coordinates): ' + ', '.join(profile['knowledge']['known_locations']))
+        parts.append('Configured known characters (not live presence): ' + ', '.join(profile['knowledge']['known_characters']))
         parts.append('Relevant configured lore: ' + json.dumps(lore, ensure_ascii=False))
         if profile['ai']['memory_enabled']:
             parts.append('Unverified prior AI responses: ' + json.dumps(self._memories(state, profile)[-min(profile['ai']['context_turns'], 4):], ensure_ascii=False))
