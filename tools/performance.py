@@ -12,6 +12,7 @@ import math
 import os
 from pathlib import Path
 import shutil
+import stat
 import subprocess
 import time
 
@@ -64,6 +65,9 @@ def validate_window(window, now):
     watches = window.get('watch_directories', {})
     if not isinstance(watches, dict) or len(watches) > 6 or any(not isinstance(k, str) or len(k) > 64 or not isinstance(v, str) for k, v in watches.items()):
         raise ValueError('At most six named bounded metadata watches')
+    files = window.get('watch_files', {})
+    if not isinstance(files, dict) or len(files) > 12 or any(not isinstance(k, str) or len(k) > 64 or not isinstance(v, str) for k, v in files.items()):
+        raise ValueError('At most twelve named file metadata watches')
     return end
 
 
@@ -101,6 +105,7 @@ def native_snapshot(path, expected, side, now):
     result['rss_bytes'] = process.memory_info().rss
     result['cpu_time_seconds'] = sum(process.cpu_times()[:2])
     result['process_io'] = process.io_counters()._asdict()
+    result['process_observed_at'] = utcnow()
     return result
 
 
@@ -122,6 +127,23 @@ def directory_size(root, seconds=.25, max_entries=10000):
                 elif child.is_file(follow_symlinks=False):
                     total += child.stat(follow_symlinks=False).st_size
     return {'complete': True, 'logical_bytes_including_wal': total, 'entries': entries}
+
+
+def file_size(path):
+    """Observe one exact DB/WAL/SHM file, without reading or opening SQLite."""
+    path = Path(path)
+    try:
+        if path.is_symlink() or path.is_junction():
+            return {'available': False, 'reason': 'Linked file metadata refused'}
+        value = path.stat()
+        if not stat.S_ISREG(value.st_mode):
+            return {'available': False, 'reason': 'Not an ordinary file'}
+        return {'available': True, 'exists': True, 'logical_bytes': value.st_size,
+                'modified_ns': value.st_mtime_ns}
+    except FileNotFoundError:
+        return {'available': True, 'exists': False, 'logical_bytes': 0}
+    except OSError as error:
+        return {'available': False, 'reason': type(error).__name__}
 
 
 def gpu_sample():
@@ -295,6 +317,13 @@ def capture(window_path, seconds=60):
                             raise ValueError('Metadata watch must remain within the existing runtime/client')
                         sizes[name] = directory_size(folder)
                     row['directory_sizes'] = sizes
+                    row['file_sizes'] = {}
+                    for name, path in window.get('watch_files', {}).items():
+                        target = Path(path)
+                        resolved = target.resolve()
+                        if not (resolved.is_relative_to(home) or resolved.is_relative_to(client)):
+                            raise ValueError('File metadata watch must remain within the existing runtime/client')
+                        row['file_sizes'][name] = file_size(target)
                     last_sizes = loop
                 raw = (json.dumps(row, allow_nan=False) + '\n').encode()
                 if len(raw) > 256 * 1024 or byte_count + len(raw) > MAX_OUTPUT:

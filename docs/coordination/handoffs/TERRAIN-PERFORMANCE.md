@@ -80,3 +80,11 @@ Directory snapshots cannot isolate exact LOD-file growth, which stays explicitly
 unavailable for this slice. See the main report for host CPU/GPU/page-in evidence
 and the exact statistical limits. The passive lease has ended; no further runtime
 window or action is presumed.
+
+Follow-up measurement correction is source-ready: optional exact DB/WAL/SHM
+metadata watches (maximum12files, no SQLite connection/content reads) and distinct
+OS process-observation timestamps. This closes the folder-attribution ambiguity
+for a future authorized slice; it does not invent first50slice LOD growth.
+The19focused performance/parity tests pass, including unrelated-file exclusion,
+WAL appearance and unreadable-metadata refusal. No repeat full suite or new game
+run was performed for this small change.

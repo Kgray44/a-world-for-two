@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
-from tools.performance import (MASTER, capture, describe, directory_size, native_snapshot,
+from tools.performance import (MASTER, capture, describe, directory_size, file_size, native_snapshot,
                                summarize, validate_window)
 from tools.performance_handoff import patched_bridge
 
@@ -97,6 +97,25 @@ class PerformanceCaptureTests(unittest.TestCase):
         self.assertIn('performanceTicks.finished(now - beforeTick)', patched)
         with self.assertRaises(ValueError):
             patched_bridge(patched)
+
+    def test_exact_lod_file_and_wal_sizes_exclude_unrelated_data(self):
+        with tempfile.TemporaryDirectory() as root:
+            database = Path(root) / 'DistantHorizons.sqlite'
+            wal = Path(root) / 'DistantHorizons.sqlite-wal'
+            unrelated = Path(root) / 'other.dat'
+            database.write_bytes(b'fixture-data')
+            before = file_size(database)
+            unrelated.write_bytes(b'x' * 74)
+            self.assertEqual(file_size(database)['logical_bytes'], before['logical_bytes'])
+            self.assertFalse(file_size(wal)['exists'])
+            wal.write_bytes(b'x' * 32)
+            self.assertEqual(file_size(wal)['logical_bytes'], 32)
+
+    def test_unknown_file_metadata_does_not_become_zero_growth(self):
+        with patch('tools.performance.Path.stat', side_effect=PermissionError):
+            result = file_size('unavailable.sqlite')
+        self.assertFalse(result['available'])
+        self.assertNotIn('logical_bytes', result)
 
     def test_server_only_capture_deduplicates_without_launching_a_client(self):
         # A synthetic recorder fixture, never a real Minecraft measurement.

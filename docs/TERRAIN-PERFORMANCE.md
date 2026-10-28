@@ -155,7 +155,7 @@ binds the private data and result receipt hashes.
 |25 fresh native server snapshots|Sampled window-mean MSPT median2.379, p952.628, max3.295ms; TPS median19.995|No individual tick-spike data before the queued51helper. These are percentiles of sampled means.|
 |Actual loaded population|0players,841loaded chunk holders,30loaded entities in all snapshots|Does not represent the completed city or target LIFE population.|
 |Server memory|RSS4.154–4.155GB; heap used1.723–1.895GB,8GiB maximum|RSS is not JVM heap; no leak conclusion from two minutes.|
-|Server CPU time|32.609CPU seconds over118.455poll-wall seconds; approximately1.72% of16-logical-CPU host capacity|Not a main-thread peak profiler.|
+|Server CPU time|32.609CPU seconds over118.454poll-wall seconds; approximately1.72% of16-logical-CPU host capacity|Not a main-thread peak profiler.|
 |Host CPU|Mean39.74%, highest sampled host mean83.56%|Shared application load, not attributable to Minecraft alone.|
 |Host memory|Minimum physical available2,695,761,920bytes (2.51GiB); minimum Windows commit headroom10,244,313,088bytes|Client closed; combined-client headroom still requires admission.|
 |GC cumulative counters|No increase between first/last accepted native snapshots|Does not prove absence of individual pauses outside those observations.|
@@ -238,6 +238,16 @@ process data stays unavailable. Menus/focus states stay separate. Window percent
 cannot be pooled into an invented global frame percentile. Windows page-ins also
 include file-backed memory and do not by themselves prove pagefile thrashing.
 
+After the first50slice exposed the ambiguity of a shared data folder, optional
+`watch_files` metadata was added for up to12 exact files. Use separate names for
+the existing `DistantHorizons.sqlite`, `-wal` and `-shm` companions. It reads only
+ordinary-file metadata within the owned home/client, without opening SQLite.
+An absent companion is disclosed as absent; an unreadable file stays unavailable
+instead of becoming zero growth. Each observation is non-atomic and timestamped.
+OS process CPU samples also have their own observation timestamp, distinct from
+the native five-second snapshot timestamp. These additions are not retroactive
+measurements of the first50slice.
+
 Master supplies current approval out of band; a JSON file is a provenance record,
 not an operating-system lock or independent authority. Its minimal schema is:
 
@@ -258,7 +268,8 @@ not an operating-system lock or independent authority. Its minimal schema is:
     "server": {"pid": 0, "created": 0, "cwd": "REPLACE with H/server"},
     "client": {"pid": 0, "created": 0, "cwd": "REPLACE with client/.minecraft"}
   },
-  "watch_directories": {}
+  "watch_directories": {},
+  "watch_files": {}
 }
 ```
 
