@@ -1,0 +1,78 @@
+--- a/compat/control-bridge/src/worldfortwo/bridge/HarborCraftSupport.java
++++ b/compat/control-bridge/src/worldfortwo/bridge/HarborCraftSupport.java
+@@ -292,15 +292,18 @@
+         if(tag.hasUUID("UUID")){UUID id=tag.getUUID("UUID");if(counts.containsKey(id))counts.put(id,counts.get(id)+1);}
+         ListTag passengers=tag.getList("Passengers",Tag.TAG_COMPOUND);if(passengers.size()>256)throw new IllegalStateException("Unbounded pending passengers");for(Tag passenger:passengers)pendingUuid((CompoundTag)passenger,counts,depth+1,visited);
+     }
++    private record PendingUuidSnapshot(Map<UUID,Integer> counts,List<List<Integer>> chunks,Set<String> regions){}
+     @SuppressWarnings({"unchecked","rawtypes"})
+-    private static CompletableFuture<Map<UUID,Integer>> pendingUuidCounts(IOWorker worker,Set<UUID> identities)throws Exception {
++    private static CompletableFuture<PendingUuidSnapshot> pendingUuidCounts(IOWorker worker,Set<UUID> identities)throws Exception {
+         Method submit=IOWorker.class.getDeclaredMethod("submitTask",Supplier.class);submit.setAccessible(true);
+         Field pending=field(IOWorker.class,"pendingWrites"),data=field(Class.forName("net.minecraft.world.level.chunk.storage.IOWorker$PendingStore"),"data");
+-        Supplier<Either<Map<UUID,Integer>,Exception>> query=()->{
++        Supplier<Either<PendingUuidSnapshot,Exception>> query=()->{
+             try{Map<UUID,Integer> counts=new LinkedHashMap<>();for(UUID id:identities)counts.put(id,0);
+                 Map<ChunkPos,?> writes=(Map<ChunkPos,?>)pending.get(worker);if(writes.size()>MAX_STORAGE_CHUNKS)throw new IllegalStateException("Pending entity writes exceed finite bound");int bytes=0;int[] visited={0};
+                 for(Object write:writes.values()){CompoundTag tag=(CompoundTag)data.get(write);if(tag==null)continue;int size=tag.sizeInBytes();if(size<0||size>2*1024*1024||(bytes+=size)>32*1024*1024)throw new IllegalStateException("Pending entity NBT exceeds finite bound");ListTag list=tag.getList("Entities",Tag.TAG_COMPOUND);for(Tag entity:list)pendingUuid((CompoundTag)entity,counts,0,visited);}
+-                return Either.left(counts);
++                List<List<Integer>> keys=new ArrayList<>();Set<String> regions=new TreeSet<>();
++                for(ChunkPos pos:writes.keySet()){keys.add(List.of(pos.x,pos.z));regions.add("r."+Math.floorDiv(pos.x,32)+"."+Math.floorDiv(pos.z,32)+".mca");}
++                return Either.left(new PendingUuidSnapshot(counts,keys,regions));
+             }catch(Exception error){return Either.right(error);}
+         };
+         return (CompletableFuture)submit.invoke(worker,query);
+@@ -375,19 +378,50 @@
+         byte[] bytes=JSON.toJson(Map.of("format","awft-native-craft-reservation:1","uuid",id.toString(),"manifest_sha256",manifestSha,"world_path",level.getServer().getWorldPath(LevelResource.ROOT).toString(),"game_time",level.getGameTime(),"at",Instant.now().toString(),"status","reserved before native creation; never silently retry a missing/moved/unloaded craft")).getBytes(StandardCharsets.UTF_8);
+         try(FileChannel channel=FileChannel.open(target,StandardOpenOption.CREATE_NEW,StandardOpenOption.WRITE)){ByteBuffer data=ByteBuffer.wrap(bytes);while(data.hasRemaining())channel.write(data);channel.force(true);}
+     }
++    // Failure-only bounded diagnostics. These observations never admit a craft.
++    private static Map<String,Object> custodyStamp(DiskStamp stamp) {
++        if(stamp==null)return null;
++        return Map.of("bytes",stamp.bytes(),"modified",stamp.modified().toString(),"header_sha256",stamp.offsets());
++    }
++    private static List<Map<String,Object>> custodyDelta(List<DiskStamp> before,List<DiskStamp> after) {
++        Map<String,DiskStamp> old=new TreeMap<>(),now=new TreeMap<>();
++        for(DiskStamp stamp:before)old.put(stamp.path().getFileName().toString(),stamp);
++        for(DiskStamp stamp:after)now.put(stamp.path().getFileName().toString(),stamp);
++        Set<String> names=new TreeSet<>(old.keySet());names.addAll(now.keySet());
++        List<Map<String,Object>> changes=new ArrayList<>();
++        for(String name:names){DiskStamp a=old.get(name),b=now.get(name);if(Objects.equals(a,b))continue;
++            Map<String,Object> row=new LinkedHashMap<>();row.put("path",name);
++            row.put("change",a==null?"added":b==null?"removed":"changed");
++            row.put("before",custodyStamp(a));row.put("after",custodyStamp(b));changes.add(row);
++            if(changes.size()>=64)break;}
++        return changes;
++    }
++    private void recordCustodyChange(Store store,List<DiskStamp> current,PendingUuidSnapshot pending) {
++        Map<String,Object> diagnostic=new LinkedHashMap<>();
++        diagnostic.put("dimension",store.dimension.dimension().location().toString());
++        diagnostic.put("files_before",store.files.size());diagnostic.put("files_after",current.size());
++        diagnostic.put("maximum_file_changes",64);diagnostic.put("changes",custodyDelta(store.files,current));
++        diagnostic.put("pending_snapshot",Map.of("pending_count",pending.chunks().size(),"chunks",pending.chunks(),
++            "regions",pending.regions(),"maximum_chunks",MAX_STORAGE_CHUNKS));
++        report.put("custody_change",diagnostic);
++    }
++
+     private void commit(MinecraftServer server)throws Exception {
+         long begin=System.nanoTime(),gameTime=level.getGameTime();if(!ready()||!server.isSameThread())throw new IllegalStateException("Actual block/entity readiness changed");currentReceipts(server);
+         if(Files.size(modPath)!=modSize||Files.getLastModifiedTime(modPath).toMillis()!=modModified)throw new IllegalStateException("Pinned mod changed during custody");
+-        boolean create=action.equals("create");Map<Store,CompletableFuture<Map<UUID,Integer>>> fresh=new LinkedHashMap<>();
++        boolean create=action.equals("create");Map<Store,CompletableFuture<PendingUuidSnapshot>> fresh=new LinkedHashMap<>();
+         for(Store store:stores)fresh.put(store,pendingUuidCounts(store.worker,Set.copyOf(ids.values())));
+         Map<String,Integer> queued=new LinkedHashMap<>();for(UUID id:ids.values())queued.put(id.toString(),0);
+         // These native I/O mailbox queries run during this same server tick.
+         // The timeout is finite; no server-thread entity unload can occur while
+         // this atomic method validates the returned pending NBT and disk stamps.
+-        for(var item:fresh.entrySet())for(var count:item.getValue().get(5,TimeUnit.MILLISECONDS).entrySet())queued.put(count.getKey().toString(),queued.get(count.getKey().toString())+count.getValue());
++        Map<Store,PendingUuidSnapshot> pendingSnapshots=new LinkedHashMap<>();
++        for(var item:fresh.entrySet()){PendingUuidSnapshot pending=item.getValue().get(5,TimeUnit.MILLISECONDS);pendingSnapshots.put(item.getKey(),pending);
++            for(var count:pending.counts().entrySet())queued.put(count.getKey().toString(),queued.get(count.getKey().toString())+count.getValue());}
+         report.put("same_tick_pending_uuid_matches",queued);
+         Map<String,Integer> loaded=new LinkedHashMap<>();for(UUID id:ids.values())loaded.put(id.toString(),0);
+-        for(Store store:stores){if(!store.files.equals(diskFiles(store.path,new LinkedHashSet<>())))throw new IllegalStateException("Persistent entity region custody changed; no creation performed");
++        for(Store store:stores){List<DiskStamp> current=diskFiles(store.path,new LinkedHashSet<>());
++            if(!store.files.equals(current)){recordCustodyChange(store,current,pendingSnapshots.get(store));throw new IllegalStateException("Persistent entity region custody changed; no creation performed");}
+             if(!store.positions.containsAll(store.keys.join()))throw new IllegalStateException("New pending persistent entity write escaped the completed scan");
+             for(UUID id:ids.values())if(store.manager.isLoaded(id))loaded.put(id.toString(),loaded.get(id.toString())+1);}
+         report.put("persistent_uuid_matches",diskMatches);report.put("loaded_uuid_matches",loaded);report.put("persistent_entity_chunks_read",storageReadCount);report.put("persistent_nbt_bytes",storageBytes);

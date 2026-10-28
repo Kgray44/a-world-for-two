@@ -105,7 +105,7 @@ def boarding(p):
     # A backed return ladder reaches below the landing; it is not a boat entity.
     for y in (0, 1):
         p.put(width+2, y, 0, 'minecraft:dark_oak_log', axis='y')
-        p.put(width+3, y, 0, 'minecraft:ladder', facing='east', waterlogged=y <= 0)
+        p.put(width+3, y, 0, 'minecraft:ladder', facing='east', waterlogged=y < 0)
     p.room('Boarding landing', 'boarding', (width+1, 1, 1), 'Two-wide low landing and backed return ladder; real skiff embarkation pending')
     p.room('Working deck', 'weather', (1, 1, -1), 'Clear fore-and-aft working route')
     p.fittings.append({'kind': 'boarding interface', 'local_floor': [width+1, 1, 1],

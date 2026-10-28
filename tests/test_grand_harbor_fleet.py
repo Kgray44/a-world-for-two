@@ -108,6 +108,13 @@ class FleetGeometryTests(unittest.TestCase):
                     if str(item['id']).startswith('createbigcannons:'):
                         self.assertIn(str(item['id']), {'createbigcannons:worm'})
 
+    def test_waterline_fittings_do_not_create_a_raised_water_source(self):
+        for key in fleet.SPECS:
+            d = self.documents[key]
+            for (_, y, _), state in block_map(d).items():
+                if y >= 0:
+                    self.assertNotEqual(properties(state).get('waterlogged'), 'true', key)
+
     def test_capture_recipes_require_real_images_without_creating_them(self):
         for d in self.documents.values():
             recipe = fleet.capture_recipe(d)

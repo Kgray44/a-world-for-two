@@ -515,7 +515,7 @@ def working_deck(p):
         x = side*(max(p.width(z, y) for y in range(-3, f+4))+4)
         p.spar((side*(abs(x)-3), f+3, z), (x, f+3, z))
         for y in range(-2, f+3):
-            p.put(x, y, z, 'minecraft:chain', axis='y', waterlogged=y <= 0)
+            p.put(x, y, z, 'minecraft:chain', axis='y', waterlogged=y < 0)
         p.box(x-2, -2, z, x+2, -2, z, 'minecraft:iron_bars')
         p.put(x, -1, z, 'minecraft:iron_bars')
     # Hatch coamings and a closed cargo hatch leave the main lane on starboard.
