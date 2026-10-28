@@ -108,6 +108,13 @@ class FleetGeometryTests(unittest.TestCase):
                     if str(item['id']).startswith('createbigcannons:'):
                         self.assertIn(str(item['id']), {'createbigcannons:worm'})
 
+    def test_mess_ration_locker_survives_bulkheads_and_companionways(self):
+        for key in fleet.SPECS:
+            names = {json.loads(str(nbtlib.parse_nbt(row['nbt'])['CustomName']))['text']
+                     for row in self.documents[key]['block_entities']
+                     if 'CustomName' in nbtlib.parse_nbt(row['nbt'])}
+            self.assertIn('Mess utensils and rations', names, key)
+
     def test_waterline_fittings_do_not_create_a_raised_water_source(self):
         for key in fleet.SPECS:
             d = self.documents[key]

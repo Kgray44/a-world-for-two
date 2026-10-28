@@ -377,7 +377,8 @@ def berthing(p):
         p.table(-4, floor+1, z)
         if z % 2:
             p.chair(-6, floor+1, z, 'east')
-    p.chest(-3, floor+1, mess_z+6, 'Mess utensils and rations', ['minecraft:bowl', 'minecraft:bread', 'minecraft:cooked_cod'])
+    ration_z = min(mess_z+6, s.aft-16)
+    p.chest(-3, floor+1, ration_z, 'Mess utensils and rations', ['minecraft:bowl', 'minecraft:bread', 'minecraft:cooked_cod'])
     p.room('Crew berthing', 'berth', (2, floor, -8), 'Anchored hammocks and personal lockers; watches share compact space')
     p.room('Crew mess', 'berth', (2, floor, mess_z+2), 'Laid communal table and separate ration locker')
     aft = s.aft-15
