@@ -39,7 +39,8 @@ public abstract class ConversationMixin {
         var old=request.context();int count=Math.min(8,Math.max(0,WorldCharacters.integer(ai,"context_turns",6)));
         var history=WorldCharacters.flag(ai,"memory_enabled")?old.recentHistory():List.<VillagerMemory.Exchange>of();
         if(history.size()>count)history=history.subList(history.size()-count,history.size());
-        history=history.stream().map(exchange->new VillagerMemory.Exchange(WorldCharacters.limit(exchange.playerMessage(),1000),WorldCharacters.limit(exchange.villagerReply(),400))).toList();
+        history=history.stream().filter(exchange->config.historyAllowed(p,exchange.playerMessage(),exchange.villagerReply()))
+            .map(exchange->new VillagerMemory.Exchange(WorldCharacters.limit(exchange.playerMessage(),1000),WorldCharacters.limit(exchange.villagerReply(),400))).toList();
         // Do not forward upstream's player name/health/held item/coordinates/admin context.
         var context=new VillagerContext(rules+"\n"+authored+"\n"+lore,persona,history,0,old.professionKey(),old.playerLanguage(),"","");
         int max=Math.max(40,Math.min(400,WorldCharacters.integer(WorldCharacters.object(p,"dialogue"),"max_response_chars",280)));

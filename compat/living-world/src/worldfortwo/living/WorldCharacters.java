@@ -124,6 +124,18 @@ public final class WorldCharacters {
             List.of("This machine requires only one small adjustment.","Is that the adjustment where we leave the building?"),
             List.of("KG says the train has tremendous potential.","Can we persuade some of it to become brakes?"),
             List.of("The contraption passed every test.","We should eventually write a second test.")));
+    public boolean hasAmbientExchanges(){
+        for(JsonObject district:districts.values()){
+            if(EXCHANGES.containsKey(text(district,"id")))return true;
+            JsonObject dialogue=object(district,"dialogue");
+            if(!array(dialogue,"starters").isEmpty()&&!array(dialogue,"contextual").isEmpty())return true;
+        }
+        for(JsonObject profile:byEntity.values())if(enabled(profile)){
+            JsonObject own=object(object(profile,"dialogue"),"lines");
+            if(!array(own,"starters").isEmpty()&&!array(own,"contextual").isEmpty())return true;
+        }
+        return false;
+    }
     public List<String> ambientExchange(Set<String> states){
         JsonObject profile=ambientProfile(states);if(profile==null)return List.of();
         JsonObject own=object(object(profile,"dialogue"),"lines");
@@ -142,6 +154,26 @@ public final class WorldCharacters {
     public String line(JsonObject profile,String category){
         List<String> pool=lines(profile,category);if(pool.isEmpty())pool=lines(profile,"greetings");
         return pool.isEmpty()?"I haven't a reliable answer for that. Ask me something local.":limit(pool.get(ThreadLocalRandom.current().nextInt(pool.size())),integer(object(profile,"dialogue"),"max_response_chars",280));
+    }
+    /** Current permission changes also govern old exchanges, not only new lore.
+     * Any active secret omits all native history: an older reply may paraphrase a
+     * revoked fact, so substring matching cannot reliably revoke that knowledge.
+     * This is a conservative transmission policy, not a claim of semantic detection.
+     */
+    public boolean historyAllowed(JsonObject profile,String playerMessage,String villagerReply){
+        if(!enabled(profile))return false;
+        JsonObject knowledge=object(profile,"knowledge");
+        List<JsonElement> entries=new ArrayList<>(array(knowledge,"entries").asList());
+        if(flag(knowledge,"inherit_district"))entries.addAll(array(districts.get(text(profile,"district")),"entries").asList());
+        for(JsonElement entry:entries)if(flag(entry.getAsJsonObject(),"secret"))return false;
+        String exchange=(playerMessage+"\n"+villagerReply).toLowerCase(Locale.ROOT);
+        for(JsonElement forbidden:array(knowledge,"forbidden_topics"))if(exchange.contains(forbidden.getAsString().toLowerCase(Locale.ROOT)))return false;
+        JsonArray allowed=array(knowledge,"allowed_topics");
+        if(!allowed.isEmpty()){
+            for(JsonElement topic:allowed)if(exchange.contains(topic.getAsString().toLowerCase(Locale.ROOT)))return true;
+            return false;
+        }
+        return true;
     }
     public String lore(JsonObject profile,String message){
         JsonObject knowledge=object(profile,"knowledge");

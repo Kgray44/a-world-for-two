@@ -49,6 +49,27 @@ public final class WorldCharactersSelfTest {
         WorldCharacters filtered=new WorldCharacters(document);
         String safe=filtered.lore(filtered.profile(BILL),"harbor");
         check(!safe.contains("UNKNOWN")&&!safe.contains("PRIVATE CARGO"),"Unknown kinds and forbidden content must be filtered even under an allowed query");
+        // A current secret suppresses even an old paraphrase with no exact shared words.
+        check(!value.historyAllowed(bill,"What was the old toll?","Three emeralds to sail past the watch."),"Inherited secret must omit all old history");
+        JsonObject historyDocument=document.deepCopy();
+        var historyEntries=historyDocument.getAsJsonArray("districts").get(0).getAsJsonObject().getAsJsonArray("entries");
+        for(JsonElement entry:historyEntries)entry.getAsJsonObject().addProperty("secret",false);
+        WorldCharacters publicHistory=new WorldCharacters(historyDocument);
+        JsonObject publicBill=publicHistory.profile(BILL);
+        check(publicHistory.historyAllowed(publicBill,"What is in the harbor?","Ships and patient gulls."),"Normal permitted history should remain available");
+        check(!publicHistory.historyAllowed(publicBill,"What is the harbor password?","The old word was moonbeam."),"New forbidden-topic policy must apply to stored player messages");
+        check(!publicHistory.historyAllowed(publicBill,"Any harbor news?","The password changed yesterday."),"New forbidden-topic policy must apply to stored replies");
+        JsonArray allowedTopics=new JsonArray();allowedTopics.add("harbor");
+        historyDocument.getAsJsonArray("characters").get(0).getAsJsonObject().getAsJsonObject("knowledge").add("allowed_topics",allowedTopics);
+        WorldCharacters restrictedHistory=new WorldCharacters(historyDocument);
+        check(!restrictedHistory.historyAllowed(restrictedHistory.profile(BILL),"How was the castle?","Quite drafty."),"Current allowed-topic policy must omit unrelated history");
+        check(restrictedHistory.historyAllowed(restrictedHistory.profile(BILL),"Harbor news?","The gull is still in charge."),"An allowed history topic remains available");
+        historyEntries.get(0).getAsJsonObject().addProperty("secret",true);
+        WorldCharacters revokedHistory=new WorldCharacters(historyDocument);
+        check(!revokedHistory.historyAllowed(revokedHistory.profile(BILL),"Harbor news?","The gull is still in charge."),"Marking a previously public fact secret must revoke old-history transmission");
+        historyDocument.getAsJsonArray("characters").get(0).getAsJsonObject().getAsJsonObject("knowledge").addProperty("inherit_district",false);
+        WorldCharacters isolatedHistory=new WorldCharacters(historyDocument);
+        check(isolatedHistory.historyAllowed(isolatedHistory.profile(BILL),"Harbor news?","The gull is still in charge."),"A non-inherited district secret must not suppress unrelated personal history");
         document.getAsJsonArray("districts").get(0).getAsJsonObject().getAsJsonObject("bounds").addProperty("min_y",64);
         document.getAsJsonArray("districts").get(0).getAsJsonObject().getAsJsonObject("bounds").addProperty("max_y",80);
         WorldCharacters spatial=new WorldCharacters(document);
@@ -58,6 +79,8 @@ public final class WorldCharactersSelfTest {
         check(value.ambientLines(markers,"clear","day",false).stream().anyMatch(l->l.text().contains("invoice")),"Dynamic personal dialogue missing");
         check(value.ambientLines(java.util.Set.of(),"clear","day",false).isEmpty(),"Unknown area must fall through");
         check(value.ambientExchange(markers).size()==2,"District needs an actual two-speaker exchange");
+        check(value.hasAmbientExchanges(),"Native count gate must discover configured district exchanges");
+        check(!new WorldCharacters(new JsonObject()).hasAmbientExchanges(),"Empty configuration must not advertise exchanges");
         check(value.ambientReady(BILL,100),"Initial ambient remark should be ready");
         value.ambientSent(BILL,100);
         check(!value.ambientReady(BILL,101),"Ambient cooldown must survive individual selection calls");
