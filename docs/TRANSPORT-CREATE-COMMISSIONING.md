@@ -100,7 +100,9 @@ ReserveGuard before admitting it. Source-only proposal fields identify every
 sample/FULL/envelope coordinate for review. After actual completion, save normally,
 retain a supplemental archive, rerun the complete halo audit, and obtain fresh
 native geometry/body proofs plus a new cable lease. Do not fill guessed NBT flags
-or weaken the native no-generation gate. Ten focused halo tests pass.
+or weaken the native no-generation gate. Eleven focused halo tests pass. Floating
+lighting flags use native floor-to-byte semantics; nonfinite/out-of-range values
+refuse classification rather than receiving guessed Java-overflow behavior.
 
 ```powershell
 python -B -m tools.transport_chain_halo --home H `
@@ -371,6 +373,13 @@ all27-slot native preimage and a separately admitted lease; none is wired or run
 They enforce unique native destination names, actual Mill present-train identity,
 exact no-loot single chests and a loaded comparator-free callback apron. Naming
 uses the normal native UI because `updateName` walks world-backed track data.
+
+During scheduled tests, KG and Sera board the passenger seats. Pinned Create6.0.10
+`CarriageContraptionEntity.startControlling` cancels navigation and pauses the
+schedule when a real player takes the manual controls; such a run cannot prove
+automatic scheduled travel. The native block-conductor interaction accepts the
+genuine configured item through ordinary main-hand use. These API checks do not
+replace actual boarding/application tests or establish account permissions.
 
 `tools.transport_commission logistics --before <native.json> --after <native.json>`
 checks all declared item/component counts against the pinned real recipes:

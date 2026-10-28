@@ -55,6 +55,17 @@ class CableHaloTests(unittest.TestCase):
   document,kinds,lists,_=read_chunk(region(54,-93,nbt(54,-93)),54,-93);kinds['DataVersion']=2
   self.assertIn('version',classify(document,kinds,lists,(54,-93))['failed'])
 
+ def test_float_lighting_flags_follow_native_floor_without_guessing_extremes(self):
+  document,kinds,lists,_=read_chunk(region(54,-93,nbt(54,-93)),54,-93)
+  for kind in (5,6):
+   kinds['isLightOn']=kind
+   for value,qualified in ((-255.5,False),(-.5,True),(256.,False),(1.,True)):
+    document['isLightOn']=value
+    self.assertEqual('lighting'not in classify(document,kinds,lists,(54,-93))['failed'],qualified)
+   for value in (float('nan'),float('inf'),2**32):
+    document['isLightOn']=value
+    with self.assertRaises(UserError):classify(document,kinds,lists,(54,-93))
+
  def test_finite_generation_dependency_count_does_not_authorize_or_bound_disk(self):
   _,halo,_=derive_columns(NODES,metadata())
   proposal=generation_proposal([{'chunk':[54,-93],'failed':['non_FULL']}],halo,metadata())

@@ -10,6 +10,7 @@ import argparse
 from collections import Counter,defaultdict
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 import time
@@ -103,7 +104,14 @@ def classify(document,kinds,lists,position):
  sections=document.get('sections',[])
  if kinds.get('sections')!=9 or lists.get('sections')!=10 or not isinstance(sections,list)or not 1<=len(sections)<=64:failed.append('sections')
  if 'below_zero_retrogen'in document:failed.append('retrogen')
- light=kinds.get('isLightOn')in(1,2,3,4,5,6)and(int(document.get('isLightOn',0))&255)!=0
+ light_kind=kinds.get('isLightOn');light_value=document.get('isLightOn',0)
+ # FloatTag/DoubleTag.getAsByte use Mth.floor, not Python's truncating int.
+ # Refuse nonfinite/out-of-int-range flags rather than guess Java overflow.
+ if light_kind in(5,6):
+  require(isinstance(light_value,(int,float))and math.isfinite(light_value)and -2**31<=light_value<2**31,
+          'Unknown nonfinite/out-of-int-range native floating lighting flag')
+  light=(math.floor(light_value)&255)!=0
+ else:light=light_kind in(1,2,3,4)and(int(light_value)&255)!=0
  if not light:failed.append('lighting')
  return {'chunk':list(position),'classification':'UNQUALIFIED'if failed else'NBT_FLAGS_QUALIFIED','failed':failed,
          'status':document.get('Status'),'DataVersion':document.get('DataVersion'),'isLightOn':document.get('isLightOn'),
