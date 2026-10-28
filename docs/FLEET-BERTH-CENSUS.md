@@ -73,6 +73,12 @@ source camera recipe. Exact placement SHA-256 values are:
 | Tern | `d08bd3848bbb7c0b4e08c335bcc7c105d036bed0c36d81e3baea7f8e509f8939` |
 | Salt Marigold | `eb9598af1da9f5023dc8e3db8a315bf610253ee7374bfa883e0f0d52c9bb087e` |
 
+For actual smallcraft deck captures, apply the
+[camera-only override](../proposals/fleet-camera-overrides/accepted-smallcraft.json):
+the generic `deck` pose inherited from the major ships sits offboard. Its corrected
+pose is the existing clear onboard `working-deck` view. The original batch,
+placement and immutable camera files remain preserved. Other views are unchanged.
+
 ## Held vessels and exact blockers
 
 `H/staging/fleet-remaining-912a00f2497053b7` is 1,535,513 bytes; manifest SHA-256

@@ -33,11 +33,14 @@ saved-world berth, exact before/support/place/after hashes and21 actual-camera
 recipes. Its construction-world/native deployment remains master-only.
 The [fresh berth census](FLEET-BERTH-CENSUS.md) also supplies passing Tern and
 Salt Marigold batches and the exact unresolved Petrel, Mercy and Reed Fin blockers.
+The [circulation audit](FLEET-CIRCULATION-AUDIT.md) records source camera fixes,
+unqualified body cells and the remaining major-ship water-return dependencies.
 
 Scoped active files are `tools/grand_harbor_fleet.py`,
 `tools/grand_harbor_smallcraft.py`, `tools/grand_harbor_berth.py`,
 `tools/grand_harbor_remaining_berths.py`, `tools/grand_harbor_smallcraft_berths.py`,
 `tools/grand_harbor_access_repairs.py`,
+`tools/grand_harbor_hoist_demo.py`,
 their scoped test files, this report and
 `docs/FLEET-MARITIME-COMMISSIONING.md`. The custody patch under
 `proposals/fleet-craft-custody-diagnostics/` is a proposed shared-bridge change;

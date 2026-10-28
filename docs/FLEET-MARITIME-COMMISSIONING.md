@@ -90,6 +90,38 @@ SNBT or new entity types. A changed or occupied current berth requires a reviewe
 source change and fresh admission. Historical coordinates are not placement
 authority. Use the engine's typed entity load/add path only after all gates pass.
 
+## Wren minimum cargo-hoist request
+
+`tools/grand_harbor_hoist_demo.py` prepares a **nonexecutable** one-block testweight
+request after genuine6ad3a8 reads and static inspection of seven pinned Create
+classes. The immutable private batch is `H/staging/fleet-hoist-bd542b186ebdbf80`,
+88,719 bytes; manifest SHA-256
+`bd542b186ebdbf80d3d29a51f95a483a5c85d06f5ea8e14fbcc690258ab68be0`.
+All11 output hashes were independently checked. Eight targeted refusal/dependency
+tests passed in1.164seconds. No executable placement, native action or successful
+motion is supplied or claimed.
+
+After actual Wren placement/full verification, the candidate load is **one empty
+ordinary spruce plank** at `(1013,78,-1380)`, directly below the source pulley
+`(1013,79,-1380)`. The source hand crank is `(1013,79,-1372)`. Five other payload
+neighbors are AIR; the candidate one-pulse path stays in the existing72-cell load
+reservation. Existing hull, drive, rails and all nine inventory tags are preserved.
+No glue, chest, boat or passenger is requested. The actual saved original volume
+was read as AIR, while the Wren structure remains explicitly prospective.
+
+The native pulley assembles below its actual offset and searches the connected
+structure. **Assembly mutates the mechanism; it is not a read-only preview.**
+The proposed direct crank has a source32rpm/10tick pulse; its conditional
+`10*32/512=0.625` travel calculation is not measured speed or a stop guarantee.
+Actual network speed, offset, mirror/attachment state, movement mode, empty
+occupancy and a safe stop must be established first. `MOVE_NEVER_PLACE` and
+`MOVE_PLACE_RETURNED` affect disassembly; no default is assumed. A master test
+must observe exactly one payload block, zero storage/passengers, genuine speed0,
+safe reversal, return and normal disassembly. Any unknown leaves this request
+blocked and the derrick uncommissioned. Preserve native rope/contraption states;
+never replay the old AIR/stock plan as cleanup. The request retains the exact
+original Wren completion dependency and composes any admitted ladder addon.
+
 ## Serialized native windows
 
 Each window needs a master-issued operation/expiry, exact save/candidate/JAR and
