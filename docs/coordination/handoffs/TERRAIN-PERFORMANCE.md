@@ -110,3 +110,31 @@ and existing test cases; no edits or full suite were run for that review.
 No qualified automatic Xaero/MapHorizons-to-Control-Room export/sync contract is
 established by this lane. Private native QA view state is not such an API; retain
 the UI's unverified synchronization wording.
+
+Separate Moonlight initialization checkpoint: branch `codex/seedgen-moonlight-init`
+starts at frozen performance43c2f3a and changes only
+`compat/proposals/seedgen-moonlight-init/`, its evidence-custody test, and this handoff.
+It wraps native manager construction before the two native registry loads and
+dispatches exact native refresh/prepare/reload/state publication with actual packs.
+Native absorbed failures, partial output and resource bounds fail closed. A
+persistent owned gate prevents later launches from reusing partial output under
+an old native cache fingerprint. No active bridge/catalog/Packwiz/runtime edit.
+
+Final Java21 compile against installed0.6.37 APIs and the pure budget/gate fixture
+pass; two receipt-custody tests pass. No Mixin transformer, native generation,
+Minecraft bootstrap, world/account/network or full suite was run. Exact API
+inspection independently verifies native method descriptors, call order and all
+reviewed absorbed-error sites. Private final probe:
+`H/staging/moonlight-init-offline-1793216279793545200`; receipt SHA
+`4f713db8e7337bab161f2a7273579caf00401b8e76cb273e6801fe3828523c80`.
+Published `verification.json` binds exact proposal Java source hashes and explicitly
+records installed/runtime-qualified/strict-parity as false.
+
+Master integration instructions and manual stopped-cache recovery are in that
+proposal's README. Native cache preparation forecasts an additional1GiB on the
+actual game drive, separately from build/install allocations; it preserves30GiB
+on both drives and retained failed evidence. The deadline is cooperative, not a
+hard native-call timeout. This monitor does not control external/existing writers.
+Next dependencies: master review/build and one exclusive client window; fresh
+paired strict fingerprints/resources/effective state and actual predicted terrain
+then remain required. Server-generated DH fallback remains the release path.

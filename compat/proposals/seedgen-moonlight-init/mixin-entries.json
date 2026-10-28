@@ -1,0 +1,11 @@
+{
+  "scope": "Source proposal only. Merge into the existing client array after review; never register on the server.",
+  "client": [
+    "MoonlightSeedgenResourcesMixin",
+    "MoonlightProviderFailureMixin",
+    "MoonlightStateCommitMixin",
+    "MoonlightCacheWriteMixin",
+    "MoonlightSinkObserverMixin",
+    "SupplementariesFailureMixin"
+  ]
+}
