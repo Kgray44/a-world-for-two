@@ -14,6 +14,8 @@ sprint handover is **2026-10-29 00:26:08 UTC / October28 20:26:08 EDT**.
 Branch: `codex/historic-harbor-fleet`; base
 `3333bc60646cc594093063ed514a3e51246e35b0`.
 [Draft PR3](https://github.com/Kgray44/a-world-for-two/pull/3).
+Current feature-code checkpoint: `28a354f6efe4382664a3af7d6a1468e6adbe4270`.
+Subsequent report-only changes preserve those tested source bytes.
 
 | Commit | Reviewable change |
 | --- | --- |
@@ -35,6 +37,9 @@ The [fresh berth census](FLEET-BERTH-CENSUS.md) also supplies passing Tern and
 Salt Marigold batches and the exact unresolved Petrel, Mercy and Reed Fin blockers.
 The [circulation audit](FLEET-CIRCULATION-AUDIT.md) records source camera fixes,
 unqualified body cells and the remaining major-ship water-return dependencies.
+The [saved native-craft audit](FLEET-SAVED-CRAFT.md) confirms both original craft
+are retained exactly once; their next step is current inspection and use. The
+later refused inspection is not evidence that the craft need creation.
 
 Scoped active files are `tools/grand_harbor_fleet.py`,
 `tools/grand_harbor_smallcraft.py`, `tools/grand_harbor_berth.py`,
@@ -130,7 +135,15 @@ Normal tests use sanitized native property-enum
 fixtures; all seven designs were also built against the actual exported native
 registry read-only.
 
-The subsequent replacement AGENTS instructions required full unittest discovery.
+The final feature-code checkpoint `28a354f` passed full discovery on2026-10-28:
+**1,021 tests in126.333seconds, no failures, one skipped**. The Windows symlink
+fixture remains skipped for WinError1314; no privilege or gate was bypassed.
+Pack validation again passed208 records/no errors, and JavaScript syntax passed.
+The private full output is `.local/fleet-verification/unittest-20261028T1953Z.txt`.
+Its SHA-256 is `c09ebb98101b7b2e1551694886ca8c6530e68110bd67ff3b6800daa5b7c0f2cf`.
+This final source run launches no Minecraft instance and proves no gameplay.
+
+The earlier replacement AGENTS instructions required full unittest discovery.
 That exact command completed on2026-10-28: **988 tests in148.598seconds, no
 failures, one skipped**. The skipped test is the real symlink fixture in
 `test_bridge_release_pack`: Windows refused creation with WinError1314. No
@@ -177,7 +190,7 @@ world, candidate and origin/rotation. Require saved exact clear targets and
 under-keel depth, then **fresh actual native BEFORE verification** immediately
 before any master placement. Unknown chunks, natural terrain, construction,
 inventories, occupants and protected routes are conflicts, not replaceable AIR.
-Preserve candidate50 startup and the master's serialized test windows.
+Preserve the current installed candidate and the master's serialized test windows.
 
 After placement, normal block updates, full native state/BE checks and actual
 bow/stern/broadside/elevated/deck/belowdeck photographs decide corrections. Then
@@ -189,7 +202,8 @@ matched bounded harbor performance samples remain separate requirements.
 | --- | --- |
 | Original source structures and belowdecks | Implemented; targeted source checks pass |
 | Current new structure placement and graphic quality | Pending master batch and actual Minecraft views |
-| Actual cog/skiff creation and sailing | Pending current custody diagnosis and native admission |
+| Original cog/tender retention | Each original UUID is saved once in6ad3a8; preserve intents, tags and actual wildlife passengers |
+| Actual sailing, rowing and cargo use | Pending current native inspection and player use; no repeat creation |
 | Embarkation, collision, hoist, cannon interaction | Pending actual operation |
 | Two-player use | Pending KG and Sera participation |
 | Restart persistence | Pending current normal restart and reinspection |

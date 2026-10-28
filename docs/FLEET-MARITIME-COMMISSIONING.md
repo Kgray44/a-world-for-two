@@ -12,7 +12,7 @@ handoff. Coordinate tests through the master and run only one heavy live test.
 | Item | What exists | Remaining acceptance |
 | --- | --- | --- |
 | Major historic ships | Original static structure templates, belowdecks and source checks in `tools/grand_harbor_fleet.py` | Current placement, actual graphics, collision, walking and preservation of existing contents |
-| Real sailing cog and rowing tender | `tools/artistic_harbor_craft.py`, fixed native `HarborCraftSupport` recipes | Fresh admission, creation if lawful, controls, boarding, shared cargo, departure/return and restart |
+| Real sailing cog and rowing tender | Original two native identities genuinely retained once each in6ad3a8; candidate28 historically verified8/8 cog parts | Current native inspection, controls, boarding, shared cargo, departure/return and restart; **no second creation** |
 | Cargo derricks and boat tackle | Architectural fittings; native Create parts alone do not prove a connected drive or lifted load | Exact transmission, load/sweep admission, native movement and persistence |
 | Cannon service bays | Oriented native cannon blocks and maintenance tools; guns remain unloaded/unassembled | Actual access, collision and normal empty interaction; no harbor firing test authorized |
 
@@ -78,7 +78,9 @@ unchanged until the master reviews and integrates the proposal.
 
 Before proposing that window, reconcile current loaded, pending and persistent
 custody for the **original** requested identities, plus all reservation/intention
-files. These are historic requested UUIDs, not evidence of existing entities:
+files. The [saved-craft clarification](FLEET-SAVED-CRAFT.md) records genuine6ad3a8
+retention for both original UUIDs, their historical native creation/inspection,
+and the cog's two real wildlife passengers. Current loaded state remains pending:
 
 | Recipe | Original requested UUID | Original proposed position |
 | --- | --- | --- |
@@ -138,12 +140,14 @@ receipt and partial state. Player arrival stops construction admission.
    infrastructure and all unknown occupants are preserved. Require a clean
    terminal with owned tickets/streams/leases released. Inspection creates no
    craft. Resolve the custody diagnostic before scheduling creation.
-2. **One authorized creation, at most5minutes.** Bind new immutable current
-   documents/checkpoint without changing requested identities. Native same-tick
-   preimages, AABBs and custody must pass before the durable one-shot reservation
-   and actual add. Inspect root, multipart children, hull/sail state and original
-   cargo capacity after normal initialization. Any unknown/partial outcome stops
-   further creation; retain the actual entity and reconcile it.
+2. **Existing craft reconciliation, at most5minutes.** Bind immutable current
+   inspection documents/checkpoint without changing original identities. Both
+   original craft already have preserved creation and saved-retention evidence;
+   do not repeat create. Inspect root, multipart children, actual passengers,
+   hull/sail state, original cargo and capacity using the master's current native
+   evidence. The cog's pigeon and butterfly are preserved actors, not disposable
+   test fixtures. Any unknown/partial inspection outcome remains explicit; retain
+   actual entities, intents and inventories while reconciling it.
 3. **Actual player craft use, at most15minutes.** Master obtains the existing
    client's exclusive slot and owner's authorized participation. Walk the apron;
    board normally; use the pinned mod's actual controls; furl/unfurl, depart north
