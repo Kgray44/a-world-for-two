@@ -115,6 +115,16 @@ class FleetGeometryTests(unittest.TestCase):
                 if y >= 0:
                     self.assertNotEqual(properties(state).get('waterlogged'), 'true', key)
 
+    def test_new_manual_controls_have_support_on_their_pinned_opposite_face(self):
+        back = {'north': (0, 0, 1), 'south': (0, 0, -1), 'east': (-1, 0, 0),
+                'west': (1, 0, 0), 'up': (0, -1, 0), 'down': (0, 1, 0)}
+        for key in fleet.SPECS:
+            cells = block_map(self.documents[key])
+            for pos, state in cells.items():
+                if fleet.identifier(state) in {'create:hand_crank', 'create:copper_valve_handle'}:
+                    neighbor = tuple(a+b for a, b in zip(pos, back[properties(state)['facing']]))
+                    self.assertNotEqual(cells.get(neighbor, fleet.AIR), fleet.AIR, (key, pos))
+
     def test_capture_recipes_require_real_images_without_creating_them(self):
         for d in self.documents.values():
             recipe = fleet.capture_recipe(d)

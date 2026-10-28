@@ -463,6 +463,8 @@ def captain(p):
         p.put(-1, f+1, z+3, 'handcrafted:dark_oak_cupboard', facing='south', type=1)
     p.floor_lamp(0, f, s.aft-5)
     p.room("Captain's cabin", 'weather', (2, f, z+1), 'Private berth, chart table, correspondence, window seating and ship model')
+    p.box(0, s.decks[4]+1, s.quarter_start+1, 0, s.decks[4]+2, s.quarter_start+1,
+          'minecraft:dark_oak_log', axis='y')
     p.put(0, s.decks[4]+1, s.quarter_start+2, 'minecraft:dark_oak_fence')
     p.put(0, s.decks[4]+2, s.quarter_start+2, 'create:copper_valve_handle', facing='south')
     p.put(-2, s.decks[4]+1, s.quarter_start+2, 'minecraft:cartography_table')
@@ -764,7 +766,10 @@ def build(registry, key):
         p.tags = {(x, y-63, z): nbt for (x, y, z), nbt in p.tags.items()}
         design = {'name': 'Rosewater Lark', 'role': '28-gun offshore frigate',
                   'berth': 'offshore', 'sail_state': 'partially-unfurled-drying',
-                  'basis': 'Existing original R3 frigate, retained as one design; native revision still requires current review'}
+                  'basis': 'Existing original R3 frigate, retained as one design; native revision still requires current review',
+                  'known_source_support_issue': {'wheel': [0, 17, 25], 'required_north_backing': [0, 17, 24],
+                                                 'proposed_connected_backing': [[0, 16, 24], [0, 17, 24]],
+                                                 'current_world_state': 'UNKNOWN; master exact preimage required; preserve all current overlays'}}
     elif key in SPECS:
         p = FleetShip(registry, SPECS[key])
         for operation in (hull, raised_decks, magazine_and_stores, berthing, galley_and_guns,

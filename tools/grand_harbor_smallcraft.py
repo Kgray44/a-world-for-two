@@ -131,6 +131,7 @@ def cabin(p):
               hinge='right', open=False, powered=False)
     p.bed(-1, 1, front+1, s.accent)
     p.put(-1, 2, back-1, 'minecraft:cartography_table')
+    p.put(0, 2, back-1, 'minecraft:cartography_table')
     p.put(0, 3, back-1, 'lfpirates:ship_in_bottle', facing='north', waterlogged=False)
     p.put(0, 4, front+2, 'minecraft:lantern', hanging=True, waterlogged=False)
     p.chest(-2, 2, front+3, 'Pilot charts' if len(s.mast_positions) == 1 else 'Fishing and coastal stores',

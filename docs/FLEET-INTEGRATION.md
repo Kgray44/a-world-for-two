@@ -19,6 +19,7 @@ Branch: `codex/historic-harbor-fleet`; base
 | --- | --- |
 | `2c280de9a869b6e4a2f9da66f013b4f2ac0b8732` | Four major original structure templates, complete belowdecks and immutable NBT/JSON/view exports |
 | `8994b749b18875a4b2026daee39676ebfe543e2f` | Three distinct small vessels; connected manual cargo derricks, guarded operator access, backed-ladder graph and explicit load sweep |
+| `20d8870dfa4bc539c2bfca7f97b8aae9b8ef3ed3` | Correct sea-level waterlogging, detailed commissioning report and separately proposed custody diagnostics |
 
 The subsequent waterline correction keeps fittings at localY0 dry: the existing
 native harbor survey defines water as worldY<63, and the proposed waterline
@@ -108,8 +109,8 @@ node --check control_room/static/app.js
 
 Pack validation passed with208 manifest records and no errors; JavaScript syntax
 passed. The latest sprint directive requests targeted checks, so the full suite
-was not repeated. After the waterline correction, **23 affected tests passed
-in10.040seconds**. Normal tests use sanitized native property-enum
+was not repeated. After the waterline and fitting-support corrections,
+**24 affected tests passed in8.743seconds**. Normal tests use sanitized native property-enum
 fixtures; all seven designs were also built against the actual exported native
 registry read-only.
 
@@ -125,6 +126,13 @@ cause remains UNKNOWN. The proposed diagnostics patch preserves refusal and
 existing original UUIDs and records the missing bounded before/after differences.
 Java21 compilation and a focused reflection probe passed; no modified bridge was
 installed. See [commissioning and custody details](FLEET-MARITIME-COMMISSIONING.md).
+
+The retained Lark source also has an unsupported south-facing wheel at local
+`(0,17,25)`: required north backing`(0,17,24)` is AIR. The actual current-world
+wheel state is UNKNOWN. The master should inspect it and, only with exact current
+preimages, consider connected backing at`(0,16,24)` and`(0,17,24)`. No current
+Lark geometry or contents were overwritten. All six new templates passed the
+subsequent read-only support audit for controls, lanterns, beds and doors.
 
 ## Integration and remaining acceptance
 
