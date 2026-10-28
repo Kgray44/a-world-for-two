@@ -231,3 +231,99 @@ the retained 4 KiB QA harness. The reader used approximately **37 MB RSS**, had
 **zero child processes**, and was retired at **19:19:48Z** after its browser tab
 closed. Port 18765 was verified released. No installed code, native/world/config
 file, account, tunnel, player or Minecraft process was changed by that reader.
+
+## Integrated candidate.51: actual controller browser smoke
+
+The master integrated the frozen Control Room changes as **f1e8c70** and the
+map/transport notes as **35f3af7**. The primary checkout was **59ab966c7a8b22ff012ee2ac907cfae06fc5b982**
+when inspected at 19:28Z. The master restarted its controller while the game was
+offline. Actual loopback listener **127.0.0.1:8766** belonged to Python **7068**,
+created **19:21:07Z**. No second Application or game JVM was started by CONTROL.
+The master reports installed candidate.51 / bridge0.6.37, JAR
+`cb634e9c848b11d6f2cb90533de8f91779dc56b8420a37857ae9b2bf75bce2a6`, pack
+`ea98d75560d5ccc58f597ffab040fee7ae8af7b9e38f9b8496b55f1aa296c4bb`.
+Those artifact identities are master-supplied, not rehashed by this reader.
+
+Actual deployed `app.js`, `atlas.js`, `session.js`, `polling.js` and
+`atlas-state.js` matched the primary checkout byte for byte and frozen **8ef3ece**
+after checkout newline normalization. The native **Start world** job
+`a1dd3a31212c4fd2b89ca93f215b5035` was complete at **19:24:10.584603Z**;
+the actual controller reported **online, PID2108**, with zero online players.
+This establishes a successful master-triggered start through the integrated
+controller. CONTROL did not issue the action or observe the entire preflight.
+
+Browser smoke at **19:26-19:28Z** used the actual 8766 Application, not the prior
+read-only harness. Atlas displayed real terrain and correctly dated last-seen KG
+coordinates. Searching **Willow** found one historical named-entity observation;
+switching to Nether removed that Overworld result, and returning restored it.
+The integration panel explicitly described the partial/unverified adapters.
+Performance displayed live TPS/MSPT, process CPU/RSS, heap, history and the
+Overworld's **841 holders / 49 full / 25 block-ready / 9 entity-ready**, with
+zero pending unloads and zero saved vanilla forced chunks. The diagnostic cost
+shown was **0.68 ms**, one observation. Idle-branch eligibility was labelled
+separately from actual entity/block-entity tick executions.
+
+Players/access showed the two real offline whitelist entries and operator levels
+3 and 4. Settings, storage, 208-file candidate.51 mod inventory, retained backup
+records and Connectivity loaded. Task history showed the actual completed start.
+No permission/configuration/mod/backup/tunnel controls were invoked. Playit was
+stopped, unlinked and externally unverified. The recorded browser event window
+contained **zero non-GET requests, zero JavaScript exceptions and zero console
+warnings/errors**. The browser tab was closed after the smoke.
+
+At **19:29:16Z**, one bounded GET set measured overview **82.840 ms**, metrics
+**17.222 ms**, jobs **2.276 ms**, Atlas **11.882 ms**, chunk diagnostics **2.696 ms**
+and sync **1024.206 ms**. Metrics were **19.9987 TPS / 2.390742 MSPT**,
+RSS **4,255,727,616 bytes**, heap-used **2,150,090,088 bytes**, and 30 entities.
+Atlas inventory remained **26 tiles / 526,213 bytes**, measured19:29:01Z in
+**47 ms**; actual tiles had changed19:27:03Z. These are individual uncontrolled
+observations, not a sustained overhead or benchmark acceptance. Python RSS was
+approximately **46.5 MB** at19:28Z. A qualification-script request to the incorrect
+`/static/app.js` route first returned404; the source-declared `/app.js` route was
+then used. That probe mistake is retained in the private receipt.
+
+Private receipts: `runtime/verification/integrated-native-candidate51.json`,
+`integrated-browser-candidate51.json`, `integrated-atlas-candidate51.png` and
+`integrated-performance-candidate51.png`. None is committed. The 19:29:33Z guard
+passed a bounded4MiB C allocation with **122,117,562,368 C bytes** and
+**284,115,083,264 D bytes** free. This monitors owned writers; it does not constrain
+external applications or pre-existing writers.
+
+## Requirement-by-requirement acceptance boundary
+
+The implementation and safe fallbacks are integrated. Full goal acceptance
+remains open where native mutation, remote clients or missing adapters are named
+below. A visible button or a synthetic test alone is not runtime acceptance.
+
+| Requested capability | Current evidence / exact remaining boundary |
+| --- | --- |
+| Start, stop, restart, status | Integrated master-triggered start and actual online status proved. Earlier master stop observed on old controller. New-source native stop/restart cycle still needs the master's serialized window. |
+| Startup failure | Actual isolated browser EULA refusal and correct failed task; mocked child-exit/readiness regressions pass. No deliberate installed native startup failure was induced. |
+| TPS/MSPT and history | Actual integrated browser and fresh bridge values proved; measured history is displayed. Sustained finished-world load qualification belongs to performance/master. |
+| CPU, RAM, heap, disk | Actual process/host/heap samples and cached storage inventory displayed. Disk measurements show age and managed-writer coverage. |
+| Chunk-holder/ticking diagnostics | Actual native holder, ticket, ready-range and idle-input records displayed. They do not establish individual entity/BE tick progress. |
+| Player locations, permissions, whitelist, operator levels | Actual offline access records and historical coordinates displayed; expiry/permission safety tests pass. Live player movement and native access edits have not been exercised by CONTROL. |
+| Backups, restore, recovery | Real retained verified backup records displayed; synthetic exact-byte restore/corruption/traversal tests pass. No official-world restore performed. Native recovery remains master-owned. |
+| Configuration and optimization | Actual forms load; isolated save/reload and stale-edit/seed/restart protections tested. No installed server setting changed by CONTROL. |
+| Packwiz management/update state | Actual candidate.51 pinned inventory and sync endpoint available. No remote version lookup, candidate deployment or rollback performed by CONTROL. Inventory entries correctly retain runtime-pending status. |
+| Transport/Create diagnostics | Source contract linked above; no continuous dashboard/network-train feed consumed. Candidate.51 native observer commissioning is TRANSPORT/master-owned and does not establish Atlas integration. |
+| Population/wildlife diagnostics | Actual aggregate entity counts and historical named entities available. No species/population-health dashboard adapter is integrated; no census or unsupported wildlife API is claimed. |
+| Playit | Actual stopped/unlinked state and missing local IPC reported; protocol/redaction/action tests pass. Starting/linking/remote joining remains owner/master work. Dashboard remains loopback-only. |
+| Safe errors and task history | Durable interrupted-job, bounded/redacted error tests and isolated backend restart/session recovery passed; actual integrated start history displayed. Native backend restart with an active job was not induced. |
+| Accurate current map tiles | Six real map batch receipts reconciled to two actual files/HTTP bytes; integrated UI serves actual changed terrain cache with separate render/measurement times. Every final-world edit/pixel is not yet qualified. |
+| Search, waypoints, shared collections | Actual historical location search/dimension filtering proved; isolated waypoint create/search and atomic shared/private import/export tests pass. No native shared waypoint mutation performed. |
+| Live player markers/dimensions | Native dimensions and offline last-seen markers displayed; expiry tests pass. Zero-player smoke cannot establish live movement or cross-dimension player tracking. |
+| Claims/parties | Actual current zero-claim snapshot displayed; independent45s expiry and bounded geometry tested. Nonempty boundary display and party membership/permission editing have no runtime proof; party editor has no verified adapter. |
+| Xaero/MapHorizons sync | Explicitly unverified; Atlas JSON exchange does not synchronize client files or DH/MapHorizons tiles. No suitable automatic adapter has been qualified. |
+| Structures | Actual discovered records with observation times displayed/searchable; source evidence preserved by annotation tests. |
+| Moving objects, trains, ships, airships, named pets | Historical named entities visible; supported loaded entity observations are freshness-bound. Continuous train-network/virtual-airship positions have no verified dashboard adapter. No current vehicle movement was observed. This is not a claim that all upstream APIs are impossible. |
+| Safe teleport / return history | Bridge/dimension validation and bounded audit behavior tested synthetically. No actual human player teleport or return was performed. Master-controlled player participation is required for native acceptance. |
+| Mobile, async work, polling | Actual isolated390x844 menu dismissal/no horizontal overflow, delayed-response navigation race and backend reconnect passed. Controlled Node tests prove hidden/overlap/backoff behavior; IAB did not expose a genuinely hidden tab in that run. |
+| Local security | Actual listener127.0.0.1:8766 and origin/token/loopback regressions verified; public connectivity instructions target only25575. No public dashboard exposure or tunnel reconfiguration performed. |
+
+For final release, master should serialize the remaining native stop/restart and
+checkpoint/recovery qualification, real player movement and approved teleport/
+return, any approved access/configuration edits, and remote Playit/client joins.
+Reuse the existing single runtime and preserve both named saves. Unsupported or
+unverified sync/party/vehicle/population adapters remain explicit limitations;
+they must not be replaced by invented positions or broadened sprint features.
