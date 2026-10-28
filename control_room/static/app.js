@@ -1,5 +1,6 @@
 'use strict';
 import {LocalSession} from './session.js';
+import {VisiblePoller} from './polling.js';
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -47,7 +48,9 @@ export function idleSimulationRows(value,current,dimension) {
 }
 
 async function api(path, body) {
-  const response = await localSession.request(path, body === undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  let response;
+  try {response = await localSession.request(path, body === undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});}
+  catch(error){if(['TimeoutError','AbortError'].includes(error.name))throw new Error('Control Room did not respond in time. An action may still be running; check Task history and server state before retrying.');throw error;}
   const data = await response.json();
   if(!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
   return data;
@@ -278,13 +281,14 @@ async function refresh() {
     if(context){context.hidden=!activeTest;context.replaceChildren();if(activeTest){context.append(document.createTextNode('Your playtest world is running. This page manages the main installation. '));const link=document.createElement('a');link.href=activeTest.url;link.textContent='Open the live playtest Control Room →';context.append(link);}}
     $('#connection').className='connection';$('#connection').innerHTML='<i></i> Connected locally';
     $('#last-update').textContent=measurementLabel(state.overview.metrics?.freshness?.snapshot);
-    if(!state.history.length || Date.now()-(state.historyAt||0)>15000){state.history=await api('/api/history?hours=1');state.historyAt=Date.now();}
-    for(const j of state.jobs){if(['failed','complete'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);toast(j.status==='failed'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status==='failed');}}
+    if(['overview','performance'].includes(state.page)&&(!state.historyAt || Date.now()-state.historyAt>60000)){state.history=await api('/api/history?hours=1');state.historyAt=Date.now();}
+    for(const j of state.jobs){if(['failed','complete','interrupted'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);toast(j.status!=='complete'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status!=='complete');}}
     if(['overview','performance'].includes(state.page))await render();else if(state.page==='storage')storagePage(await api('/api/storage'));else if(state.page==='console')await refreshConsole();else if(state.page==='connectivity'&&!$('#modal').open&&!document.activeElement?.closest('form'))await connectivityPage();
     showJobs();
     if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');$('#whitelist-list').innerHTML=whitelistHtml(d);}
     await refreshPlayerDetails();
-  }catch(error){$('#connection').className='connection error';$('#connection').innerHTML='<i></i> Connection lost';$('#last-update').textContent='Waiting to reconnect · live data is stale';}
+    return true;
+  }catch(error){$('#connection').className='connection error';$('#connection').innerHTML='<i></i> Connection lost';$('#last-update').textContent='Waiting to reconnect · live data is stale';return false;}
   finally{state.busy=false;}
 }
 
@@ -357,8 +361,10 @@ window.addEventListener('hashchange',()=>{
   // Begin a newly selected page at the top; polling preserves the reading position.
   window.scrollTo(0,0);
   render();
+  poller.wake();
 });
 window.addEventListener('resize',()=>{if(state.page==='overview')chart('overview-chart',state.history,'tps');if(state.page==='performance'){chart('tps-chart',state.history,'tps');chart('cpu-chart',state.history,'host_cpu','server_cpu');}});
 $('#modal-close').onclick=()=>$('#modal').close();$('#menu').onclick=()=>{const open=document.body.classList.toggle('menu-open');$('#menu').setAttribute('aria-expanded',String(open));};
 document.addEventListener('keydown',event=>{if(event.key==='Escape'){document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false');}});
-(async()=>{try{const bootstrap=await api('/api/bootstrap');localSession.bind(bootstrap);if(bootstrap.test_context){$('.local-tag').textContent='DISPOSABLE TEST';document.title='A World for Two · Disposable playtest';}state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';await refresh();await render();setInterval(refresh,3000);}catch(error){$('#main').innerHTML=header('Your world is taking a moment.','Open Control Room with the local launch script.')+notice(error.message,'error');}})();
+const poller=new VisiblePoller(async()=>{if(!await refresh())throw new Error('Dashboard unavailable');},{delay:()=>state.jobs.some(j=>['queued','running'].includes(j.status))?3000:['overview','performance','players','console','connectivity'].includes(state.page)?5000:15000});
+(async()=>{try{const bootstrap=await api('/api/bootstrap');localSession.bind(bootstrap);if(bootstrap.test_context){$('.local-tag').textContent='DISPOSABLE TEST';document.title='A World for Two · Disposable playtest';}state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';await refresh();await render();}catch(error){$('#main').innerHTML=header('Your world is taking a moment.','Open Control Room with the local launch script.')+notice(error.message,'error');}finally{poller.start();}})();

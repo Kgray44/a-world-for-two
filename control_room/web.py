@@ -28,7 +28,7 @@ from .common import REPO, Layout, UserError, contained, digest, read_json, utcno
 from .install import Installer
 from .graphics import Graphics
 from .playit import Playit
-from .jobs import Jobs
+from .jobs import Jobs, safe_message
 from .metrics import Metrics
 from .mod_manager import ModManager
 from .pack import public_pack_file, validate_pack, verify_installed
@@ -47,7 +47,7 @@ class Application:
         self.server = Server(self.layout, self.storage)
         self.settings = Settings(self.layout, self.storage, self.server)
         self.settings.initialize()
-        self.jobs = Jobs()
+        self.jobs = Jobs(self.layout.state / 'jobs.json', self.storage)
         self.metrics = Metrics(self.layout, self.storage, self.server)
         self.backups = Backups(self.layout, self.storage, self.server)
         self.mods = ModManager(self.layout, self.storage, self.server, self.backups)
@@ -71,6 +71,7 @@ class Application:
         self.backups.close()
         self.metrics.close()
         self.jobs.close()
+        self.atlas.close()
         # Closing a dashboard never silently kills or abandons a writing world.
         if self.server.running():
             self.server.stop()
@@ -165,7 +166,7 @@ class Application:
             "/api/bootstrap": lambda: {"app_id": "awft-control-room", "home": str(self.layout.home), "csrf": self.token, "version": __version__,
                                        'test_context': read_json(self.layout.state / 'test-owner.json', None)},
             "/api/overview": self.overview,
-            "/api/storage": lambda: (self.storage.breakdown(force=True), self.storage.snapshot(live=True))[1] if first("refresh") == "1" else self.storage.snapshot(live=True),
+            "/api/storage": lambda: self.storage.snapshot(live=True, refresh=first('refresh') == '1'),
             "/api/metrics": self.metrics.latest, "/api/sync": self.mods.sync,
             '/api/diagnostics/chunks': lambda: self.metrics.latest().get('chunk_diagnostics', {'unavailable': 'Start the server with the updated Control Bridge to collect chunk diagnostics.'}),
             "/api/players": self.players.snapshot, "/api/backups": self.backups.list,
@@ -409,15 +410,15 @@ def make_handler(app):
                     relative = urllib.parse.unquote(path.removeprefix("/pack/"))
                     file = public_pack_file(release, relative)
                     return self.send(200, file.read_bytes(), mimetypes.guess_type(file)[0] or 'application/octet-stream')
-                files = {"/": "index.html", "/app.js": "app.js", '/session.js': 'session.js', "/style.css": "style.css", "/mark.svg": "mark.svg", '/atlas.js': 'atlas.js', '/cinematics.js': 'cinematics.js', '/vendor/leaflet.js': 'vendor/leaflet.js', '/vendor/leaflet.css': 'vendor/leaflet.css'}
+                files = {"/": "index.html", "/app.js": "app.js", '/session.js': 'session.js', '/polling.js': 'polling.js', '/atlas-state.js': 'atlas-state.js', "/style.css": "style.css", "/mark.svg": "mark.svg", '/atlas.js': 'atlas.js', '/cinematics.js': 'cinematics.js', '/vendor/leaflet.js': 'vendor/leaflet.js', '/vendor/leaflet.css': 'vendor/leaflet.css'}
                 if path not in files:
                     return self.send(404, {"error": "Page not found"})
                 file = REPO / "control_room/static" / files[path]
                 return self.send(200, file.read_bytes(), mimetypes.guess_type(file)[0] or "application/octet-stream")
             except UserError as exc:
-                self.send(400, {"error": str(exc)})
-            except (OSError, ValueError, KeyError) as exc:
-                self.send(503, {"error": "This view is temporarily unavailable: " + str(exc)[:300]})
+                self.send(400, {"error": safe_message(exc)})
+            except Exception:
+                self.send(503, {"error": "This view is temporarily unavailable. Inspect the local console and preserved files, then refresh this view."})
 
         def do_POST(self):
             reason = self.security_error(mutate=True)
@@ -444,9 +445,9 @@ def make_handler(app):
                     raise UserError("Request body must be a JSON object")
                 self.send(200, app.post(urllib.parse.urlsplit(self.path).path, body))
             except UserError as exc:
-                self.send(400, {"error": str(exc)})
-            except (ValueError, KeyError, TypeError) as exc:
-                self.send(400, {"error": "Invalid request: " + str(exc)[:200]})
+                self.send(400, {"error": safe_message(exc)})
+            except (ValueError, KeyError, TypeError):
+                self.send(400, {"error": "Invalid request. Check the supplied fields and refresh before trying again."})
             except Exception:
                 self.send(503, {"error": "The operation failed. Its files and diagnostic receipts were preserved."})
     return Handler

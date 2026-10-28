@@ -5,6 +5,7 @@ import contextlib
 import json
 import math
 import re
+import threading
 import time
 import uuid
 from datetime import datetime
@@ -174,7 +175,13 @@ class Atlas:
         self.annotations_path = layout.state / 'atlas-landmark-notes.json'
         self.options_path = layout.state / 'atlas-settings.json'
         self.root = layout.server / 'squaremap/web/tiles'
-        self._scan_at, self._cache = 0, {'bytes': 0, 'tiles': 0, 'last_update': None}
+        self._scan_at = self._attempt_at = 0
+        self._cache = {'bytes': None, 'tiles': None, 'last_update': None, 'measured_at': None, 'revision': 'pending'}
+        self._inventory_lock = threading.Lock()
+        self._inventory_worker = None
+        self._inventory_error = None
+        self._inventory_epoch = 0
+        self._stop = threading.Event()
         self._last_index_at = None
 
     def options(self):
@@ -316,32 +323,68 @@ class Atlas:
             return options
 
     def cache(self, force=False):
-        if force or time.monotonic() - self._scan_at >= 30:
-            total = tiles = 0
-            latest = 0
+        """HTTP requests return a timestamped sample; one owned worker reads metadata."""
+        with self._inventory_lock:
+            updating = bool(self._inventory_worker and self._inventory_worker.is_alive())
+            if not self._stop.is_set() and not updating and (force or not self._attempt_at or time.monotonic() - self._attempt_at >= 30):
+                epoch = self._inventory_epoch
+                self._inventory_worker = threading.Thread(target=self._measure_cache, args=(epoch,), daemon=True, name='awft-atlas-inventory')
+                self._inventory_worker.start()
+                updating = True
+            age = max(0, time.monotonic() - self._scan_at) if self._scan_at else None
+            return dict(self._cache, updating=updating, scan_error=self._inventory_error,
+                        age_seconds=round(age, 2) if age is not None else None,
+                        current=age is not None and age < 60 and not self._inventory_error and not self._stop.is_set(), refresh_seconds=30)
+
+    def _measure_cache(self, epoch):
+        started = time.monotonic()
+        total = tiles = latest = 0
+        try:
             for slug in DIMENSIONS.values():
                 for level in range(6):
+                    if self._stop.is_set():
+                        return
                     zoom = contained(self.layout.server, f'squaremap/web/tiles/{slug}/{level}')
                     if not zoom.is_dir():
                         continue
                     for path in zoom.glob('*.png'):
+                        if self._stop.is_set():
+                            return
+                        if time.monotonic() - started > 8:
+                            raise UserError('Atlas inventory exceeded its eight-second metadata budget; rendering stays paused until a complete sample is available')
                         if path.is_symlink() or not re.fullmatch(r'-?\d{1,8}_-?\d{1,8}\.png', path.name):
                             raise UserError('Unexpected linked or invalid map tile')
                         try:
-                            stat = path.stat(); total += stat.st_size; tiles += 1; latest = max(latest, stat.st_mtime)
+                            stat = path.stat(); total += stat.st_size; tiles += 1; latest = max(latest, stat.st_mtime_ns)
                         except FileNotFoundError:
                             pass
                         if tiles > 100_000:
                             raise UserError('Atlas cache inventory reached its file limit; rendering must stay paused')
-            self._cache = {'bytes': total, 'tiles': tiles, 'last_update': latest or None}
-            self._scan_at = time.monotonic()
-        return self._cache
+            with self._inventory_lock:
+                if epoch == self._inventory_epoch and not self._stop.is_set():
+                    self._cache = {'bytes': total, 'tiles': tiles, 'last_update': latest / 1e9 if latest else None,
+                                   'measured_at': utcnow(), 'scan_ms': round((time.monotonic() - started) * 1000, 2),
+                                   'revision': f'{tiles}-{total}-{latest}'}
+                    self._scan_at = time.monotonic()
+                    self._inventory_error = None
+        except (OSError, UserError) as exc:
+            with self._inventory_lock:
+                if epoch == self._inventory_epoch and not self._stop.is_set():
+                    self._inventory_error = str(exc)[:400]
+        finally:
+            with self._inventory_lock:
+                self._attempt_at = time.monotonic()
+
+    def close(self):
+        self._stop.set()
+        if self._inventory_worker:
+            self._inventory_worker.join(timeout=2)
 
     def monitor(self, measurements, force=False):
         options = self.options()
         cache = self.cache()
-        at_limit = cache['bytes'] >= options['cache_limit_mib'] * 1024 * 1024
-        desired = {'paused': options['paused'] or at_limit, 'cache_limit_reached': at_limit,
+        at_limit = cache['bytes'] is not None and cache['bytes'] >= options['cache_limit_mib'] * 1024 * 1024
+        desired = {'paused': options['paused'] or at_limit or not cache['current'], 'cache_limit_reached': at_limit,
                    'chunks_per_interval': options['chunks_per_interval'], 'interval_seconds': options['interval_seconds']}
         path = self.layout.state / 'atlas-control.json'
         if force or read_json(path) != desired:
@@ -355,8 +398,14 @@ class Atlas:
             worlds.append({'id': dim, 'slug': slug, 'rendered': bool(settings),
                            'spawn': settings.get('spawn'), 'zoom': settings.get('zoom', {'max': 3, 'def': 3, 'extra': 2})})
         measurements = self.metrics.latest()
+        roster = self.players.snapshot()
+        returns = read_json(self.layout.state / 'atlas-returns.json', {})
+        history = read_json(self.layout.state / 'atlas-return-history.json', [])
         return {'backend': 'squaremap 1.3.2', 'worlds': worlds, 'waypoints': self.waypoints(), 'revision': self.revision(),
-                'players': self.players.snapshot()['members'], 'options': self.options(), 'cache': self.cache(),
+                'freshness': measurements.get('freshness', {}),
+                'return_locations': returns, 'return_history': history[-100:][::-1],
+                'players': roster['members'], 'players_state': roster.get('online_state'), 'players_measured_at': utcnow(),
+                'options': self.options(), 'cache': self.cache(),
                 'renderer': measurements.get('atlas_renderer'), 'objects': measurements.get('atlas_objects', []),
                 'claims': measurements.get('atlas_claims', {'available': False, 'items': [], 'unavailable': 'Claim boundaries need the updated server bridge.'}),
                 'teleport_modes': ['near-y', 'surface'] if 'surface_teleport' in measurements.get('bridge_capabilities', []) else ['near-y'],
@@ -364,7 +413,19 @@ class Atlas:
                 'index_bytes': (self.layout.state / 'atlas-index.json').stat().st_size if (self.layout.state / 'atlas-index.json').exists() else 0,
                 'interval_note': 'Changing the background interval takes effect at the next server start. Pause and chunk budget apply on the next bridge sample.',
                 'boundary': 'Tiles show real rendered chunks. Blank areas are unrendered or unexplored; SeedGen visual LODs are separate. Personal collections are excluded from shared exports; this local administrator can inspect all collections.',
-                'xaero_sync': 'No automatic Xaero waypoint adapter has been verified. Atlas JSON import/export does not synchronize client waypoint files.'}
+                'xaero_sync': 'No automatic Xaero waypoint adapter has been verified. Atlas JSON import/export does not synchronize client waypoint files.',
+                'integrations': [
+                    {'name': 'Squaremap terrain', 'status': 'configured' if any(w['rendered'] for w in worlds) else 'unavailable',
+                     'detail': 'Existing server-rendered PNG tiles only. Tile timestamps describe the render cache; they do not prove every recent world edit is rendered.'},
+                    {'name': 'Players, structures and named entities', 'status': 'current' if 'atlas_index' in measurements.get('bridge_capabilities', []) else 'unavailable',
+                     'detail': 'Owned bridge observations in loaded chunks. Structures and unloaded objects retain their observation times; distant entities are not searched.'},
+                    {'name': 'Open Parties and Claims', 'status': 'current' if measurements.get('atlas_claims', {}).get('available') else 'unavailable',
+                     'detail': 'Bounded claim records from the server bridge. Party membership and party permission editing have no verified dashboard adapter.'},
+                    {'name': 'Trains, ships and airships', 'status': 'partial',
+                     'detail': 'Loaded ship and contraption entities can be observed. Create railway-network and virtual airship positions have no verified dashboard adapter; API suitability remains to be qualified with the transport owner.'},
+                    {'name': 'Xaero and MapHorizons synchronization', 'status': 'unverified',
+                     'detail': 'Client mapping and DH terrain are separate from Squaremap. No automatic shared-waypoint or tile synchronization is verified.'},
+                ]}
 
     def tile(self, dimension, zoom, name):
         if dimension not in DIMENSIONS.values() or not re.fullmatch(r'[0-5]', str(zoom)) or not re.fullmatch(r'-?\d{1,8}_-?\d{1,8}\.png', name):
@@ -390,7 +451,10 @@ class Atlas:
                 for path in folder.iterdir():
                     if re.fullmatch(r'-?\d{1,8}_-?\d{1,8}\.png', path.name) and path.is_file() and not path.is_symlink():
                         released += path.stat().st_size; path.unlink(); count += 1
-        self._scan_at = 0
+        with self._inventory_lock:
+            self._inventory_epoch += 1
+            self._scan_at = self._attempt_at = 0
+            self._cache = {'bytes': None, 'tiles': None, 'last_update': None, 'measured_at': None, 'revision': 'pending'}
         write_json(self.layout.logs / ('atlas-cache-cleanup-' + str(time.time_ns()) + '.json'), {'at': utcnow(), 'tiles': count, 'bytes': released, 'world_files_touched': False})
         return {'removed_tiles': count, 'released_bytes': released}
 
@@ -438,6 +502,11 @@ class Atlas:
                     write_json(self.layout.logs / ('teleport-' + ident + '.json'), dict(request, result=result))
                     if result.get('status') != 'complete':
                         raise UserError(result.get('error', 'Destination safety check refused teleportation'))
+                    history_path = self.layout.state / 'atlas-return-history.json'
+                    history = read_json(history_path, [])
+                    history.append({'id': ident, 'at': result.get('at', utcnow()), 'name': who['name'], 'uuid': who['uuid'],
+                                    'previous': result.get('previous'), 'destination': result.get('destination')})
+                    write_json(history_path, history[-100:])
                     return result
                 time.sleep(.1)
             raise UserError('Teleport result is pending. Inspect task history and the console before retrying.')
