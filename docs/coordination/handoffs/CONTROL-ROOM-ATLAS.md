@@ -372,3 +372,42 @@ navigation and startup logs remain private. The first browser open preceded
 listener readiness and was refused; the owned process stayed alive and was not
 restarted on that observation failure. All of this is browser/file-backed
 qualification with synthetic payloads, not native Minecraft recovery acceptance.
+
+### Corrected explicit verification outcomes
+
+The master granted source-only `Backups.verify/list` ownership. Focused source
+commit **92ea1c858d6c22c149f7a1f0983f31e9a2087ba3** resolves the stale integrity
+badge described above. It preserves the original creation JSON **byte for byte**,
+the original expected SHA and all archive bytes. Separate bounded16KiB
+`<backup-id>.verification.json` records store the explicit check time/outcome.
+Pending/failed result writes cannot advertise a newly successful check: unknown
+is persisted before reading, then replaced by the terminal result. Verification
+holds the existing mutation lock and reserve/checkpoint protections.
+
+List reads never hash an archive. They read cached outcomes and compare only
+size, mtime/ctime, inode and device; changed archives become **unknown** until
+explicit verification. Oversized/malformed sidecars are unknown and excluded
+from the backup list. Original SHA validation bounds the ledger allocation.
+The UI distinguishes a recorded **Last check** from historical **At creation**.
+
+**10 focused tests passed** (eight new plus the two existing backup tests),
+including corrupt/archive-change/reopen behavior, exact provenance preservation,
+no hashing in list, reserve refusal, terminal-write failure and bounded metadata.
+Independent source review found no blocking regression; both suggested bound
+checks were added. Syntax/diff checks passed.
+
+Actual browser task **e42c74163cc94707b755ce1c4e04e23e** correctly failed the
+damaged fixture archive at19:42:39Z. The automatically refreshed row displayed
+**failed · Last check Oct28,3:42PM**. Screenshot:
+`runtime/verification/recovery-corrupt-archive-corrected.png`. The test backend
+was retired after all jobs were terminal; Python44196 and port18765 were verified
+gone, with no remaining child process. Its peak observed RSS was about39.5MB.
+Source/fixtures/valid and damaged ZIPs/failed receipts remain preserved.
+
+Deployment: selectively integrate **ebe9cb6** for event-driven list refresh and
+**92ea1c8** for verification outcomes; the intervening **4a7eb1a** is documentation
+only. Reload browser tabs after the JavaScript change. The Python change requires
+a master-scheduled controller restart; do not stop the controller while it owns
+a live Minecraft process. The native7068 controller still ran the prior integrated
+8ef3ece implementation during this follow-up. No live backup revalidation or
+native restore was dispatched by CONTROL.
