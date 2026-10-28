@@ -205,6 +205,9 @@ public final class TransportObservationSupport {
         report.put("process_started",ProcessHandle.current().info().startInstant().orElseThrow().toString());
         report.put("candidate",candidate);report.put("bridge",bridge);
         report.put("world",server.getWorldPath(LevelResource.ROOT).toAbsolutePath().normalize().toString());report.put("game_time",world.getGameTime());
+        report.put("train_position_scope",Map.of("dimension","minecraft:overworld","min_x",1288,"max_x",1350,"min_z",-1020,"max_z",-910));
+        report.put("ship_positions",Map.of("availability","unavailable","reason","No fleet position adapter is queried by this observer"));
+        report.put("airship_positions",Map.of("availability","unavailable","reason","No airship position adapter is queried by this observer"));
         List<Map<String,Object>> players=new ArrayList<>();
         for(var player:server.getPlayerList().getPlayers()){
             var vehicle=player.getRootVehicle();Map<String,Object> row=new LinkedHashMap<>();
@@ -215,8 +218,9 @@ public final class TransportObservationSupport {
         }report.put("players",players);
         List<Map<String,Object>> trains=new ArrayList<>();
         if(Create.RAILWAYS.trains.size()>128)throw new IllegalStateException("Train observation bound exceeded");
+        int unknownPositions=0;report.put("native_registered_train_count",Create.RAILWAYS.trains.size());
         for(Train train:Create.RAILWAYS.trains.values()){
-            var position=train.getPositionInDimension(world.dimension());if(position.isEmpty())continue;BlockPos p=position.get();
+            var position=train.getPositionInDimension(world.dimension());if(position.isEmpty()){unknownPositions++;continue;}BlockPos p=position.get();
             if(p.getX()<1288||p.getX()>1350||p.getZ()< -1020||p.getZ()> -910)continue;
             Map<String,Object> row=new LinkedHashMap<>();row.put("uuid",train.id.toString());row.put("position",xyz(p));row.put("speed",train.speed);
             row.put("invalid",train.invalid);row.put("derailed",train.derailed);row.put("double_ended",train.doubleEnded);row.put("graph_id",train.graph==null?null:train.graph.id.toString());
@@ -232,7 +236,8 @@ public final class TransportObservationSupport {
             if(context.stream().mapToInt(String::length).sum()>16384)throw new IllegalStateException("Native condition context exceeds finite observation bound");
             row.put("schedule_condition_context",context);
             List<Integer> seats=new ArrayList<>();for(var carriage:train.carriages){var entity=carriage.anyAvailableEntity();seats.add(entity==null||entity.getContraption()==null?-1:entity.getContraption().getSeats().size());}row.put("seats",seats);trains.add(row);
-        }report.put("trains",trains);report.put("stations",List.of(station(world,MILL),station(world,HALT)));report.put("track_graph",graph(world));report.put("tube_links",tubes(world));
+        }report.put("trains",trains);report.put("train_position_unavailable_count",unknownPositions);
+        report.put("stations",List.of(station(world,MILL),station(world,HALT)));report.put("track_graph",graph(world));report.put("tube_links",tubes(world));
         List<Map<String,Object>> drives=new ArrayList<>();for(BlockPos p:List.of(new BlockPos(1315,71,-1000),new BlockPos(1320,70,-1000),new BlockPos(1313,71,-1000),new BlockPos(1331,71,-991),new BlockPos(1331,71,-943))){
             if(loaded(world,p)&&world.getBlockEntity(p) instanceof KineticBlockEntity be)drives.add(Map.of("position",xyz(p),"available",true,"rpm",be.getSpeed(),"overstressed",be.isOverStressed(),"needs_update",be.needsSpeedUpdate(),"block_state",world.getBlockState(p).toString()));
             else drives.add(Map.of("position",xyz(p),"available",false));

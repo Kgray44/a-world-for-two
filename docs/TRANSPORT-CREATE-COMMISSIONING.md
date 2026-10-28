@@ -72,6 +72,21 @@ producer. It never writes a request into the dashboard or invokes the command.
 Source checkpoint: `20261028T180051Z-30624d`, archive SHA
 `3cb269d28ae1ccbac882a44d35277d82c83582274abad2f1cf3b41566d3e9b24`.
 
+Master's genuine native50 verification subsequently passed both fields:
+`settlement-result-543017ff-e116-41ac-ac0b-a3e2f339539a.json`
+(`37b814a28ced88e6aebe75d4fef3be00aad98666527733145e82ace228ba5d88`)
+for1,163 installed targets, and
+`settlement-result-7b1bc8a4-2439-49a4-bc5e-0804cf8b87dc.json`
+(`8deb2e29ec67c8919f9fb356633c205ed3783c7949f89a8c457853055e122518`)
+for5,607 body cells. The source-only binder authenticated both complete clean
+receipts and original e55 BEFORE into
+`H/staging/transport-chain-paired-306-native50-r1/manifest.json`, SHA
+`1f0ee6d72ffe8fd09a79a733380c7bf4ab835643a160f7b32bf0e78464422bd7`.
+Its `geometry-sets.json` SHA is
+`31d4d5b6887ff3a74cc7e9a31ede8046303208d45a834eb3e92c41a3e7030ba7`.
+Master received the exact unexecuted R4 producer argv. This is actual native
+geometry verification; cable creation, riding and restart remain pending.
+
 | Private artifact | SHA-256 / result |
 | --- | --- |
 | `transport-306-chain-readiness-r1/manifest.json` | `19d5520226b19caffdf1abafb7c61b4405cf0b560e3bbaf7bd73faefd000a9eb` |
@@ -162,6 +177,9 @@ it never invokes native world-backed graph discovery. It records actual player
 UUIDs/positions/train boarding/tube-travel flags, native stations/graph/train IDs,
 conductors, schedule contents/progress, drive RPM and all declared cargo stores,
 transit and nearby dropped items. Unloaded fields remain unavailable.
+The exact [Control Room/Atlas contract](TRANSPORT-OBSERVATION-CONTRACT.md)
+defines receipt custody, scope and unavailable train/ship/airship cases; it does
+not advertise a currently installed endpoint.
 
 `CopperWrenPassengerSchedule.java` constructs a real noncyclic Create schedule:
 Mill → Orchard → Mill,20second dwell AND at least1or2 seated players, final
