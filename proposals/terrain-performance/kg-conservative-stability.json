@@ -34,11 +34,11 @@
     }
   },
   "prediction": {
-    "status": "Deferred for this conservative fallback profile",
-    "reason": "Latest qualified client attempt refused an uninitialized Moonlight cache. No safe native integration window yet; closed-client physical headroom is below the observed previous client RSS plus margin.",
+    "status": "Explicitly deferred by master for this sprint; PR7 native attempt will not run",
+    "reason": "Latest qualified client attempt refused an uninitialized Moonlight cache. Master selected strict server-generated DH fallback and one short conservative gameplay session instead of spending release-critical time on optional prediction.",
     "native_switch_proof": "Pinned SeedGen0.9.1 SeedSharing.tellServerWhatWeHave reads client serverGeneration and returns at bytecode9 when false, before ClientWorldgen.get at35. Native onWorld has the same early return before WorldBasis.fromSeed. The separate enabled=false selects the native master-off behavior. Client-only switches; no fingerprint comparison or provider data is altered.",
     "seedgen_jar_sha256": "58469f92f7cf13ff3c2928659ce1a57d7d05314b30e0779cb187b6fbfdb43b4e",
-    "one_moonlight_attempt": "Master may use frozen PR7 for one separate private attempt only when its genuine prerequisites/resources/window are satisfied. A refusal returns to this deferred profile; no new diagnostic framework or repeated attempt loop."
+    "moonlight_proposal": "PR7 remains frozen, uninstalled and available for later separate qualification. No attempt loop or further diagnostic framework during this stabilization window."
   },
   "server_fallback": {
     "apply_server_changes": false,
@@ -49,24 +49,25 @@
     "policy": "Keep server DH generation/downloads and authoritative FULL-chunk updates. Do not copy the client seedgen.json onto the server. SURFACE LODs may omit decoration until real full chunks update them. Keep all strict compatibility code and requested mods."
   },
   "memory_admission": {
-    "physical_available_before_client_bytes": 10737418240,
-    "commit_headroom_before_client_bytes": 8589934592,
+    "recommended_physical_available_before_client_bytes": 10737418240,
+    "recommended_commit_headroom_before_client_bytes": 8589934592,
+    "integrity_gate": false,
     "basis": "Practical starting targets derived from the observed7.88GB client RSS plus host margin, not a guarantee. Latest closed-client observation had4.77GB physical available and14.73GB commit headroom. Shader/prediction reductions may lower actual demand, but that improvement has not been measured.",
-    "owner_action": "Master/owner checkpoints and closes unnecessary competing workloads until admission is met. Do not kill unrelated processes or use working-set trimming as proof of freed commit. If admission cannot be met, defer the native client attempt and report the resource blocker."
+    "owner_action": "Master reports the owner explicitly accepts paging/lag and wants the one short conservative launch despite physical RAM below this recommendation. Current13.7GiB commit headroom can accommodate that controlled session. Root coordinates the existing server and one client; this worker starts no extra native process. Measure actual pressure and responsiveness. Do not kill unrelated processes or use working-set trimming as proof of freed commit. Disk-reserve and existing runtime integrity rules remain mandatory."
   },
   "application_and_rollback": [
     "Master owns application. Confirm the existing client is stopped and no competing native window is active.",
     "Run ReserveGuard with finite actual backup/write forecasts and preserve30GiB separately on C and D. Four current config files total less than64KiB; a1MiB private rollback/config-write allowance is conservative for this edit, separate from any client/cache/game allocation.",
     "Retain exact original bytes/hashes of options.txt, iris.properties, DistantHorizons.toml, seedgen.json and existing launcher heap settings in a new owned private rollback folder. Preserve cache contents.",
     "Edit only the listed keys and preserve unrelated settings, key bindings and shader-pack selection. Record the new hashes. Do not alter permanent-world data, explored terrain, server worldgen configuration, catalog or release pins for this profile.",
-    "Launch only in the master-authorized resource-admitted window. Verify SeedGen stays opted out, server DH data remains available and ordinary gameplay/chunk updates work.",
+    "Launch only in the master/Transport-authorized window, including the owner's accepted paging/lag tradeoff. Verify SeedGen stays opted out, server DH data remains available and ordinary gameplay/chunk updates work.",
     "Restore the original exact config bytes only with the client stopped if rollback is required. No automatic cache deletion, world reset, fake parity or account authentication."
   ],
   "focused_gameplay_check": [
     "One current-candidate join and120-180seconds of focused game-screen walking/look-around through the actual current settlement, including a real DH horizon. Master controls input; this worker may passively record under an explicit window.",
     "Use existing native tick windows/client frame telemetry and Windows physical/commit sensors. Label route, population, shader-off state, resolution and actual candidate/process generations. Do not relabel mixed menus as gameplay or infer responsiveness from60FPS/20TPS alone.",
     "Report frame/tick maxima and available percentiles, stall/timeout observations, physical/commit minima and cache/terrain behavior. Export-time focus flags do not identify every transition inside a frame window.",
-    "If physical availability falls below1GiB or commit headroom below2GiB, notify the master to bring the owned client to a safe checkpoint; the passive recorder does not kill games. These are intervention thresholds, not proof that values above them guarantee smoothness.",
+    "If physical availability falls below1GiB or commit headroom below2GiB, report the observation promptly to the master/Transport for their native control decision; the owner has accepted paging/lag and the passive recorder does not kill games. Values above these observation thresholds do not guarantee smoothness.",
     "No current two-player result is claimed. Sera hardware/client performance remains unverified."
   ],
   "observed_config_baseline_sha256": {
