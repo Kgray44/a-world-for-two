@@ -14,6 +14,37 @@ The master reports candidate.50 installed; all bindings must use the actual
 installed identities when the native window opens. Sprint handover is
 2026-10-29 00:26:08 UTC, 20:26:08 EDT on October 28.
 
+## Current checkpoint update: 6ad3a8
+
+Master stopped candidate50 normally and produced checkpoint
+`20261028T191243Z-6ad3a8`, SHA
+`0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2`.
+The306 source/proofs below remain historical and cannot authorize the next runtime.
+Fresh immutable-archive scans passed without relabelling any old receipt:
+
+| Current private artifact under H/staging | SHA-256 |
+| --- | --- |
+| `transport-6ad3-chain-readiness-r1/manifest.json` | `da09b2dc54f5d0871734cde554fc80deea13d5bf0289a8739186a96f4cb3e29d` |
+| `transport-6ad3-retained-inputs-r1/manifest.json` | `8b85096cf399bd81c16d98fdd2787f4c743418b7cd37b8ec0305ab653303e95e` |
+| `zipline-current1163-VERIFY-ONLY.json` in that retained folder | `9de368c1db4ed420092531ce2386a28bbad9fd34833f9bcbcd5e7665d58ef384` |
+| `zipline-current-body-VERIFY-ONLY.json` | `9315aef692fd44ac432718de82342784cb57bd908c4048f6049d1cf9c04902b4` |
+| `mill-current7941-VERIFY-ONLY.json` | `4ba4e12083cff9ea6ebe0d95d15b58f899f0ba43b81111bbceac27e6c61fbc4b` |
+| `transport-conductor-four-cell-6ad3-r1/manifest.json` | `e91e39dbb33770b8c010a9d5a503e20e858ca5f8fb4039809ee9c405f1ff5887` |
+
+Results remain217 saved FULL, zero unknown, zero saved knots, all5,607 body cells
+clear,22 ordinary physical differences preserved and a qualified7,941-target mill
+preimage with42 native fillers. The actual saved barrel/starter inventories are
+unchanged:14chains; wheat16, iron4, wrench1 and empty starter slot3. Native51
+verification and any delegated operation still require fresh proofs and an
+explicit master lease. No old proof is reissued as a current one.
+
+The conductor producer now accepts `--inputs-sha <exact new manifest SHA>` for a
+new independently generated source checkpoint. It verifies actual source bytes,
+the original mill geometry/filler custody and matching checkpoint bindings;
+altered labels, unknown geometry and tampered plan bytes refuse. The306 default
+retains its original exact identity. Nine focused conductor tests pass, including
+the three new checkpoint/tamper cases; total targeted transport coverage is37.
+
 ## Immediate integration checkpoint
 
 1. Correct the console bundle mismatch before attempting recovery. Active Java

@@ -1,10 +1,14 @@
 """Synthetic conductor geometry/material gates, never native conductor proof."""
 from copy import deepcopy
+import hashlib
+import json
+from pathlib import Path
+import tempfile
 import unittest
 
 from control_room.common import UserError
 from tools.transport_conductor_overlay import (
-    BOGEYS, BURNERS, CONTROLS, ITEM_CLASS, SEATS, proposal_from_plan, qualify_materials,
+    BOGEYS, BURNERS, CONTROLS, GEOMETRY_SHA, ITEM_CLASS, SEATS, load_source, proposal_from_plan, qualify_materials,
 )
 
 
@@ -31,6 +35,37 @@ def materials():
 
 
 class ConductorOverlayTests(unittest.TestCase):
+    def write_source(self,folder,*,checkpoint='1'*64,geometry=GEOMETRY_SHA):
+        plan=source();plan['backup_sha256']=checkpoint
+        raw=json.dumps(plan).encode();(folder/'mill-current7941-VERIFY-ONLY.json').write_bytes(raw)
+        manifest={'format':'awft-transport-saved-inputs:1','checkpoint_id':'synthetic-new-checkpoint','checkpoint_sha256':checkpoint,
+                  'mill_preimage':{'targets':7941,'retained_filler_cells':42,'source_geometry_sha256':geometry},
+                  'files':{'mill-current7941-VERIFY-ONLY.json':{'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}}}
+        encoded=json.dumps(manifest).encode();(folder/'manifest.json').write_bytes(encoded)
+        return hashlib.sha256(encoded).hexdigest()
+
+    def test_new_checkpoint_requires_its_explicit_manifest_and_actual_plan_bytes(self):
+        with tempfile.TemporaryDirectory()as name:
+            folder=Path(name);sha=self.write_source(folder)
+            plan,manifest,_=load_source(folder,sha)
+            self.assertEqual(plan['backup_sha256'],'1'*64)
+            self.assertEqual(manifest['checkpoint_id'],'synthetic-new-checkpoint')
+            with self.assertRaises(UserError):load_source(folder,'0'*64)
+            path=folder/'mill-current7941-VERIFY-ONLY.json';path.write_bytes(path.read_bytes()+b' ')
+            with self.assertRaises(UserError):load_source(folder,sha)
+
+    def test_unknown_geometry_cannot_be_adopted_under_a_new_source_digest(self):
+        with tempfile.TemporaryDirectory()as name:
+            folder=Path(name);sha=self.write_source(folder,geometry='f'*64)
+            with self.assertRaises(UserError):load_source(folder,sha)
+
+    def test_different_checkpoint_labels_cannot_rebind_existing_plan(self):
+        with tempfile.TemporaryDirectory()as name:
+            folder=Path(name);self.write_source(folder)
+            path=folder/'manifest.json';manifest=json.loads(path.read_bytes());manifest['checkpoint_sha256']='2'*64
+            raw=json.dumps(manifest).encode();path.write_bytes(raw)
+            with self.assertRaises(UserError):load_source(folder,hashlib.sha256(raw).hexdigest())
+
     def test_four_cell_block_conductors_keep_three_passenger_seats_and_two_bogeys(self):
         result=proposal_from_plan(source(),{'runtime_exercised':False})
         before=result['before'];after=result['after_proposal'];keep=result['preserve']
