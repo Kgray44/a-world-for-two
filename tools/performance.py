@@ -208,6 +208,18 @@ def summarize(rows):
                and s['tick_window'].get('format') == 'awft-tick-window:1']
     frames = [s['frame_interval_ms'] for s in gameplay if isinstance(s.get('frame_interval_ms'), dict)]
     all_frames = [s['frame_interval_ms'] for s in clients if isinstance(s.get('frame_interval_ms'), dict)]
+    def maximum(values):
+        values = [v for v in values if type(v) in (int, float) and math.isfinite(v) and v >= 0]
+        return max(values, default=None)
+
+    def tick_maximum(field):
+        return maximum(w[field].get('max') for w in windows if isinstance(w.get(field), dict)
+                       and type(w[field].get('observations')) is int and w[field]['observations'] > 0)
+
+    def tick_count(field):
+        values = [w.get(field) for w in windows]
+        # A missing counter in one retained native window invalidates the total.
+        return sum(values) if values and all(type(v) is int and v >= 0 for v in values) else None
     gc_delta = None
     if len(servers) >= 2 and all(type(s.get('gc_collection_ms')) in (int, float) for s in (servers[0], servers[-1])):
         delta = servers[-1]['gc_collection_ms'] - servers[0]['gc_collection_ms']
@@ -219,15 +231,18 @@ def summarize(rows):
             'sampled_focused_gameplay_fps': describe(s.get('fps') for s in gameplay),
             'gc_collector_elapsed_delta_ms': gc_delta,
             'tick_spike_observations': {'windows': len(windows),
-                'max_work_ms': max((w.get('work_ms', {}).get('max') or 0 for w in windows), default=None),
-                'over_50ms': sum(w.get('work_over_50ms', 0) for w in windows) if windows else None,
-                'over_100ms': sum(w.get('work_over_100ms', 0) for w in windows) if windows else None,
-                'max_start_gap_ms': max((w.get('start_gap_ms', {}).get('max') or 0 for w in windows), default=None)},
+                'max_work_ms': tick_maximum('work_ms'),
+                'over_50ms': tick_count('work_over_50ms'),
+                'over_100ms': tick_count('work_over_100ms'),
+                'over_250ms': tick_count('work_over_250ms'),
+                'start_gaps_over_100ms': tick_count('start_gaps_over_100ms'),
+                'max_start_gap_ms': tick_maximum('start_gap_ms')},
             'sampled_client_frame_windows': {'windows': len(frames),
-                'worst_retained_frame_ms': max((f.get('max', 0) for f in frames), default=None),
-                'worst_window_p95_ms': max((f.get('p95', 0) for f in frames), default=None),
+                'worst_retained_frame_ms': maximum(f.get('max') for f in frames),
+                'worst_window_p95_ms': maximum(f.get('p95') for f in frames),
+                'context': 'Screen/focus/world state at export only; transition frames inside a window are not identified',
                 'global_frame_percentiles': 'Unavailable; retained window aggregates cannot establish them'},
-            'all_client_states_worst_retained_frame_ms': max((f.get('max', 0) for f in all_frames), default=None),
+            'all_client_states_worst_retained_frame_ms': maximum(f.get('max') for f in all_frames),
             'host_physical_available_bytes': describe(r['host']['memory_available_bytes'] for r in rows),
             'windows_commit_headroom_bytes': describe(r['host'].get('windows_memory', {}).get('commit_headroom_bytes') for r in rows),
             'boundary': 'Only observed snapshots/windows. Missing intervals, unfocused/menu frames and unperformed workloads remain unqualified. No gameplay acceptance inferred.'}
