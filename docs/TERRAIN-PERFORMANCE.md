@@ -1,6 +1,7 @@
 # Distant terrain and performance qualification
 
-Status at 2026-10-28 18:30 UTC: source tooling is implemented. Current strict
+Status at 2026-10-28 18:45 UTC: source tooling is implemented and one current
+passive server-only slice has completed. Current strict
 SeedGen parity, map fidelity and complete gameplay performance are **unqualified**.
 The master owns runtime installation, both saves and the next test session. This
 lane has not launched Minecraft, modified either save or changed installed settings.
@@ -140,6 +141,36 @@ MapHorizons describes its highlight/exploration boundary in its
 [pinned README](https://github.com/VolcanicMG/MapHorizons/blob/6c80ad5be5fff2c373388dfd6ff433667edd7217/README.md).
 
 ## Performance evidence and recommended settings
+
+Candidate.50 completed one master-authorized 120-second passive recording during
+the18:41–18:44UTC window. It was labelled **mixed construction/readiness**, not
+clean idle. It used the existing server, with no client launch or game command.
+The recorder completed normally, retained235,452 sample bytes and left the same
+master JVM running. The
+[sanitized result](../evidence/performance/candidate50-mixed-readiness-20261028.json)
+binds the private data and result receipt hashes.
+
+| Current50 observation | Measured result | Limit |
+| --- | --- | --- |
+|25 fresh native server snapshots|Sampled window-mean MSPT median2.379, p952.628, max3.295ms; TPS median19.995|No individual tick-spike data before the queued51helper. These are percentiles of sampled means.|
+|Actual loaded population|0players,841loaded chunk holders,30loaded entities in all snapshots|Does not represent the completed city or target LIFE population.|
+|Server memory|RSS4.154–4.155GB; heap used1.723–1.895GB,8GiB maximum|RSS is not JVM heap; no leak conclusion from two minutes.|
+|Server CPU time|32.609CPU seconds over118.455poll-wall seconds; approximately1.72% of16-logical-CPU host capacity|Not a main-thread peak profiler.|
+|Host CPU|Mean39.74%, highest sampled host mean83.56%|Shared application load, not attributable to Minecraft alone.|
+|Host memory|Minimum physical available2,695,761,920bytes (2.51GiB); minimum Windows commit headroom10,244,313,088bytes|Client closed; combined-client headroom still requires admission.|
+|GC cumulative counters|No increase between first/last accepted native snapshots|Does not prove absence of individual pauses outside those observations.|
+|Shared GPU|23queries, median0% utilization, maximum13%|No Minecraft client or game GPU/FPS attribution.|
+|Host page-ins/disk|Maximum sampled page-ins3,109.76pages/s; worst sampled average transfer latency28.55ms|File-backed page-ins included; not proof of pagefile thrashing or worst individual I/O.|
+|Overworld data-folder size|158,025,284 to158,025,358bytes across bounded metadata observations|Contains other files: the74byte increase is not attributable to LOD growth. Exact per-LOD-file growth remains unavailable.|
+
+The concrete current finding is limited host headroom before the client starts;
+the server was not the dominant whole-host CPU consumer in this slice. Client
+FPS/frametimes, chunk-generation/load spans and the populated/operating/travel
+workloads remain missing. Configuration hashes stayed complete and unchanged,
+but no causal A/B improvement or final gameplay acceptance is claimed. Native
+snapshots summarize preceding roughly5second windows; the first one precedes the
+first host poll. Both drives stayed above30GiB during the recorder's owned writes;
+that monitoring did not constrain master game writes or external applications.
 
 There is no completed current-candidate configuration comparison yet. Historical
 candidate.23's five-minute real two-player observation is useful evidence of a

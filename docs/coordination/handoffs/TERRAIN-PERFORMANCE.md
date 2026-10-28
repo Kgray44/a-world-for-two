@@ -61,3 +61,22 @@ order. Native SeedGen's six-registry fingerprint does not value-hash structure
 sets; require WORLDGEN's paired actual loaded structure-set observations for its
 four selected spacing edits. No client-only frequency/biome/height change and no
 reuse of historical receipts for that later worldgen configuration.
+
+Current50 runtime checkpoint: master authorized one passive server-only120second
+capture inside18:41–18:44UTC, labelled mixed construction/readiness, not clean idle.
+It completed with zero capture errors,25fresh native snapshots/113host rows and
+235,452sample bytes; same master JVM remained live. No game command, process or
+config action occurred. Private result directory:
+`H/staging/terrain-performance-1793212877321890700`, result SHA
+`a2ec3b20e393c0cae0cd25263036517ac8984812b14872e138dbe6eea543b457`.
+Public sanitized evidence is
+`evidence/performance/candidate50-mixed-readiness-20261028.json`.
+
+Window-mean MSPT median2.379/p952.628/max3.295ms;0players/841loaded holders/30entities;
+no GC-counter increase. Individual tick spikes remain unavailable until51helper.
+Minimum physical headroom was2.51GiB with the client closed; OS commit headroom
+minimum9.54GiB. No client FPS, full-workload or configuration comparison is claimed.
+Directory snapshots cannot isolate exact LOD-file growth, which stays explicitly
+unavailable for this slice. See the main report for host CPU/GPU/page-in evidence
+and the exact statistical limits. The passive lease has ended; no further runtime
+window or action is presumed.
