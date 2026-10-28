@@ -24,6 +24,15 @@ Checkpoint`20261028T180051Z-30624d`, SHA-256
 The manifest also pins actual registry, native helpers, protected sources and
 read-only saved region members. It grants no write authority.
 
+The pinned registry is a historical native export from
+`2026-10-27T23:11:56.377525200Z`, bridge`0.6.29`, SHA-256
+`8cfa5ae77e20b8b5c1730b2928c55156557ebecb7e84480142088bda04ef92c4`.
+Its original bytes are retained at
+`H/staging/fleet-registry-provenance-8cfa5ae7/registry-original.json`.
+It is not a current candidate50 palette export. Fresh master-owned native
+parsing/BEFORE/AFTER validation must qualify current runtime states; the frozen
+source checks alone do not do so.
+
 | File | Master operation | Exact SHA-256 |
 | --- | --- | --- |
 | `current-before-VERIFY-ONLY.json` | Fresh native VERIFY immediately before placement | `2c932d70570dd6ec4cd7af53af16c3239946961bd8292a964281d01100216976` |

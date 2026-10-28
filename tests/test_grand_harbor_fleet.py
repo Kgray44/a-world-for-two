@@ -18,7 +18,7 @@ import tools.grand_harbor_fleet as fleet
 def registry():
     r = lark_registry()
     blocks = r['blocks']
-    # Additional property enums copied from the actual candidate49 registry.
+    # Additional enums from the frozen native1.21.1 export (bridge0.6.29).
     for color in ('green', 'red', 'white'):
         blocks['minecraft:'+color+'_bed'] = deepcopy(blocks['minecraft:blue_bed'])
         blocks['minecraft:'+color+'_wool'] = {}

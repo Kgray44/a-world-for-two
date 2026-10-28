@@ -122,6 +122,24 @@ Normal tests use sanitized native property-enum
 fixtures; all seven designs were also built against the actual exported native
 registry read-only.
 
+The subsequent replacement AGENTS instructions required full unittest discovery.
+That exact command completed on2026-10-28: **988 tests in148.598seconds, no
+failures, one skipped**. The skipped test is the real symlink fixture in
+`test_bridge_release_pack`: Windows refused creation with WinError1314. No
+privilege or fixture gate was bypassed. Pack validation and JavaScript syntax
+also passed again. The retained full output is private at
+`.local/fleet-verification/unittest-20261028T1901Z.txt`; it is not committed.
+
+The frozen registry has explicit historical provenance: native export
+`2026-10-27T23:11:56.377525200Z`, bridge`0.6.29`, SHA-256
+`8cfa5ae77e20b8b5c1730b2928c55156557ebecb7e84480142088bda04ef92c4`.
+It is not a fresh candidate49/50 registry. Its exact3,375,094bytes are preserved
+at`H/staging/fleet-registry-provenance-8cfa5ae7/registry-original.json` before any
+master refresh of the mutable runtime pointer. Native enum/source checks against
+that file do not prove current runtime palette, block survival or gameplay.
+Current native validation remains mandatory. This correction changes no hull,
+inventory, protected mask or frozen deployment batch.
+
 During development, source checks correctly refused bilge-intersecting stores,
 unanchored or construction-intersecting rope, material-run violations and wrong
 drive/load/ladder arrangements. Those source failures were corrected before
