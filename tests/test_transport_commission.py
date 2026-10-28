@@ -188,15 +188,16 @@ class TransportCustodyTests(unittest.TestCase):
             raw=b'{"format":"a","format":"b"}';path.write_bytes(raw);marker.write_text(hashlib.sha256(raw).hexdigest())
             with self.assertRaises(UserError):read_observation(path)
 
-    def test_both_conductor_seats_fit_inside_existing_carriage(self):
+    def test_both_block_conductors_fit_inside_existing_carriage(self):
         plan=construction_contract();self.assertFalse(plan['world_write_authority'])
         railway=plan['railway'];changes=railway['conductor_overlay']
         controls={tuple(row['position']):row['proposed_facing'] for row in changes if 'proposed_facing'in row}
-        seats=[tuple(row['position']) for row in changes if row.get('proposed_block')=='create:blue_seat']
-        for seat in seats:
-            control=next(p for p in controls if abs(p[2]-seat[2])==1)
-            self.assertEqual(controls[control],'south' if control[2]<seat[2] else 'north')
-            self.assertTrue(1335<=seat[0]<=1337 and 70<=seat[1]<=75 and -993<=seat[2]<=-985)
+        conductors=[tuple(row['position']) for row in changes if row.get('proposed_block')=='create:blaze_burner']
+        self.assertEqual(len(conductors),2)
+        for conductor in conductors:
+            control=next(p for p in controls if abs(p[2]-conductor[2])==1)
+            self.assertEqual(controls[control],'south' if control[2]<conductor[2] else 'north')
+            self.assertTrue(1335<=conductor[0]<=1337 and 70<=conductor[1]<=75 and -993<=conductor[2]<=-985)
         self.assertEqual(len(railway['retained_passenger_seats']),3)
         self.assertTrue(all(value=='PENDING' for value in plan['acceptance'].values()))
 

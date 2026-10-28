@@ -124,12 +124,20 @@ cells, including the original three source cells.
 working coordinates and separate four-cell conductor proposal. Pinned Create
 requires a conductor immediately adjacent to an appropriately facing control.
 The old three seats are two blocks from the controls. The proposal flips controls
-at1336,72,−993 and−985 and adds seats at−992 and−986, retaining the three passenger
-seats. Two genuine supported conductors are required without taking LIFE actors.
-**Do not apply this overlay to the existing7,941 recovery contract.** It needs its
-own current preimage, reviewed composite and five-seat assembly invariant. The
-existing recovery may first establish its original scoped three-seat carriage;
-changing it then requires explicit disassembly/reassembly custody.
+at1336,72,−993 and−985 and adds filled-burner block conductors at−992 and−986,
+retaining all three passenger seats. This supersedes the first two-extra-seat
+idea. The pinned native item class stores its captured-blaze property in the
+registered item, and ordinary placement supplies SMOULDERING. That heat qualifies
+as a native conductor without fuel. Require two actual plain filled-burner items,
+their real native `hasCapturedBlaze()` getter and a genuine two-item debit; never
+forge captured-blaze NBT, use an empty burner or borrow LIFE animals.
+`tools.transport_conductor_overlay` authenticates the immutable306 inputs and
+exact native API class hashes, producing a separately placement-forbidden four-cell
+proposal and explicit stock/safety gates. **Do not apply this overlay to the
+existing7,941 recovery contract.** It needs its own current preimage and reviewed
+composite. The existing recovery may first establish its original scoped
+three-seat carriage; changing it then requires explicit disassembly/reassembly
+custody. Native conductor presence, proximity/heat safety and travel remain pending.
 
 The intended wider route/loop is still unfinished. A52-block shuttle round trip
 does not establish completion of that route. Coordinate any extension footprint
@@ -176,12 +184,20 @@ access visually. The snapshot does not observe zipline client physics.
 
 Measure fresh TPS/MSPT from the existing native bridge during matched baseline,
 active transport and stopped idle windows, recording sample time/PID, loaded
-chunks and tick count. No performance delta has been measured here; old idle
+chunks and tick count. The source-only `tools.transport_performance` collector
+reads that existing file, observes the actual process PID/start/CWD and accepts
+only fresh distinct nonoverlapping native intervals. Use `python -B -m
+tools.transport_performance --home H --phase baseline --seconds 60 --output
+H/staging/<new-source-folder>`. Repeat
+with declared phases `active-transport` and `stopped-idle` only in master-coordinated
+windows. It starts no JVM, sends no command and controls no player. It reports
+tick-weighted mean MSPT and the worst interval mean, preserving errors; these are
+not per-tick percentiles or causal attribution. No performance delta has been measured here; old idle
 metrics are not attributable transport evidence. Inventory/schedule/link identity
 comparisons do not replace a successful post-restart ride.
 
 Source checks: full969-test suite passed with one skip before the final targeted
-hardening; current transport23 tests pass. Two revised existing safety fixtures
+hardening; current transport34 tests pass. Two revised existing safety fixtures
 also pass against the proposed console implementation. Pack manifest validation and JavaScript
 syntax passed. Both new Java proposals compile against the exact installed named
 Java21 server/mod APIs without a client API. One diff export initially used CRLF

@@ -11,6 +11,7 @@ import com.pedrorok.hypertube.core.travel.TravelManager;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.millstone.MillstoneBlockEntity;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlockItem;
 import com.simibubi.create.content.logistics.chute.ChuteBlockEntity;
 import com.simibubi.create.content.logistics.depot.DepotBlockEntity;
 import com.simibubi.create.content.trains.entity.CarriageContraptionEntity;
@@ -77,7 +78,9 @@ public final class TransportObservationSupport {
         String components=value.getComponentsPatch().toString();
         if(components.length()>4096)throw new IllegalStateException("Stack components exceed finite observation bound");
         return Map.of("slot",slot,"item",BuiltInRegistries.ITEM.getKey(value.getItem()).toString(),
-            "count",value.getCount(),"components",components,"plain",value.getComponentsPatch().isEmpty());
+            "count",value.getCount(),"components",components,"plain",value.getComponentsPatch().isEmpty(),
+            "native_item_class",value.getItem().getClass().getName(),
+            "has_captured_blaze",value.getItem() instanceof BlazeBurnerBlockItem burner&&burner.hasCapturedBlaze());
     }
     private static List<Map<String,Object>> items(IItemHandler inventory) {
         if(inventory.getSlots()>54)throw new IllegalStateException("Unexpected inventory size");

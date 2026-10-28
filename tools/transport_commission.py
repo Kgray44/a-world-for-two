@@ -237,15 +237,16 @@ def construction_contract():
     for z, old, new in ((-993, 'north', 'south'), (-985, 'south', 'north')):
         changes.append({'position': [1336, 72, z], 'expected_block': 'create:controls',
                         'expected_facing': old, 'proposed_facing': new})
-    for z in (-992, -986):
+    for z, facing in ((-992, 'north'), (-986, 'south')):
         changes.append({'position': [1336, 72, z], 'expected_block': 'minecraft:air',
-                        'proposed_block': 'create:blue_seat'})
+                        'proposed_block': 'create:blaze_burner',
+                        'proposed_properties': {'blaze': 'smouldering', 'facing': facing}})
     return {'format': 'awft-transport-construction-contract:1', 'world_write_authority': False,
             'status': 'PROPOSED; exact current native preimage and a new composite recovery/assembly contract required',
             'railway': {'mill_station': [1332,71,-994], 'orchard_station': [1332,71,-942],
                         'track_start': [1336,69,-997], 'track_end': [1336,69,-936], 'track_blocks': 62,
                         'station_names': [MILL, ORCHARD], 'conductor_overlay': changes,
-                        'conductor_inputs': 'Two genuine native supported conductors, separately owned; do not take LIFE actors or synthesize passengers',
+                        'conductor_inputs': 'Two genuine plain filled create:blaze_burner items; native item class/hasCapturedBlaze getter and actual two-item debit required. No LIFE actors, captured-blaze NBT or synthetic passengers.',
                         'retained_passenger_seats': [[1336,72,z] for z in (-991,-989,-987)],
                         'scheduled_operation': 'Finite mill/orchard/mill round trip;20second dwell AND1or2 seated players; final zero-player unloading; noncyclic'},
             'hypertube': {'entrances': [[1331,71,-991],[1331,71,-943]],
