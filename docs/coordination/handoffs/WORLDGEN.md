@@ -19,7 +19,7 @@ settings, height, seed and every requested compatibility record remain intact.
 The earlier broader experiment is held outside the integration commit.
 
 Tests: 967 total source tests, 965 passed and two Windows link-fixture skips;
-fifteen targeted worldgen tests passed; 208-entry pack validation, JS syntax,
+eighteen targeted worldgen tests passed; 208-entry pack validation, JS syntax,
 four session tests, exact master-proposal verification and actual Java21 API
 compilation passed. No source test failed. No Minecraft test has run in this lane.
 
@@ -27,6 +27,14 @@ Measured synthetic result: selected candidates1228->1344 (+9.45%) across eight
 fixed512x512-chunk windows, using the archived306 construction seed read-only.
 All39 supported unconditional grids8366->8482 (+1.39%). No native performance,
 collision, terrain-fit or generated-count result is claimed.
+
+Second checkpoint adds actual historical saved-world observations:2,450 FULL
+chunks,20,421 partial chunks,627,200 surface columns and37 valid saved structure
+starts from verified306. A private all22,871-record payload/status inventory is
+retained; the committed report is sanitized. Terralith/RU/river/coast/ocean content
+exists in this old constructed footprint; no updated native A/B or timing follows.
+The reusable reader's first zero-length-MCA-header failure and correction are
+preserved. All18 current focused tests pass. No new Minecraft process ran.
 
 Dependencies: TERRAIN-PERFORMANCE chat `01a183b9-759d-7161-b786-b9149472d8b0`
 was sent the exact scope and strict-parity requirement. Both endpoints must use

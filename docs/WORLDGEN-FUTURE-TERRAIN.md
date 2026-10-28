@@ -103,6 +103,41 @@ load order and registration hooks must be inspected natively. Author-stated
 [Tectonic compatibility](https://modrinth.com/mod/tectonic) with Terralith and
 TerraBlender biome mods is a prerequisite, not qualification of this exact stack.
 
+### Actual saved-world baseline
+
+`archived-native-baseline-v2.json` records real saved chunk observations from the
+same hash-verified historical construction archive, without starting Minecraft:
+
+- **2,450 FULL chunks**, **20,421 partial chunks**, and **627,200 surface columns**.
+- **37 valid saved structure starts**, including Philip's ancient dungeon,
+  Terralith ruins/mining outposts/refineries, an ocean wreck, ocean ruins and a
+  Supplementaries road sign. These are saved starts, not inferred grid positions.
+- Actual surface biome columns from vanilla, Terralith, Regions Unexplored and
+  Hybrid Aquatic include cold river, grassy/gravel beaches, cold/deep ocean,
+  cold trench, flower fields, shrubland, willow forest and highlands.
+- Stored WORLD_SURFACE values span **Y55..209**, including trees and buildings.
+  This is not an untouched-terrain or mountain-height benchmark.
+
+There are 123 archived region members, 81 of them zero-length. The observer
+records each empty member and its digest as containing no chunk records; its
+native file state remains unqualified. It neither treats that as valid generated
+terrain nor claims native corruption. The reusable reader's initial empty-header
+failure and exact correction are preserved in `archived-reader-failure-v1.json`.
+All nonempty malformed headers, unsupported/external chunks, truncated records
+and invalid decompression still fail closed.
+
+A private inventory pins the payload digest, status and coordinates of **every
+one of the 22,871 recorded chunks**, including partials. Neither the inventory nor
+world bytes enter Git. The four enriched sets have no valid start recorded in
+this limited FULL-chunk footprint. New qualification must sample their actual
+eligible biomes, rather than extrapolate these historical counts.
+
+This is historical native saved-world evidence. There is still no updated native
+A/B sample, fresh-generation timing, current registry/parity result or restart
+comparison. The existing constructed footprint is not a representative random
+sample. `tools.worldgen_saved_baseline` reproduces this bounded archive study and
+preserves the full/private versus summarized/public evidence boundary.
+
 ## Implemented verification tools
 
 - `tools.worldgen_refinement` emits a new review directory only. It validates all
@@ -137,7 +172,8 @@ Verification at this checkpoint:
 
 - Python 3.12.10: 967 tests, 965 passed and two Windows junction/symlink fixture
   skips; 133.930 seconds inside unittest. No test failed.
-- Fifteen targeted worldgen tests passed, including exact frozen receipt/payload
+- Eighteen targeted worldgen tests passed, including bounded saved-region decoding,
+  negative chunk slots, truncated/external records, exact frozen receipt/payload
   seals, drift rejection, tag cycles,
   negative grids, changed seeds/workloads, unexpected native registry edits and
   restart differences. Their invented input fixtures are source tests only and
@@ -190,7 +226,9 @@ one pair into sustained or two-player performance acceptance.
    Preserve all failed outcomes. Check a mixed-generation frontier in a disposable
    test: retain a baseline-generated patch, add new adjacent terrain after the
    update, and compare every preexisting chunk's blocks, biomes, saved starts and
-   block entities across save/restart. Investigate every difference. No chunk
+   block entities across save/restart. Preserve/inventory existing partial chunks
+   too; unloaded or non-FULL records are not automatically new terrain. Investigate
+   every difference. No chunk
    deletion, retrogen, feature replay, forced population or NBT rewrite is allowed.
 3. The master schedules an empty-server maintenance window and verifies a current
    retained backup plus explored-chunk/player/container provenance. A coordinate
