@@ -328,6 +328,15 @@ class Metrics:
             sample['players'] = None
         sample['players_online'] = len(sample['players']) if sample['players_available'] else None
 
+        claims = sample.get('atlas_claims')
+        if isinstance(claims, dict):
+            fresh = measurement_freshness(claims.get('at'), now, DIAGNOSTIC_SECONDS, parent=bridge)
+            sample['freshness']['atlas_claims'] = fresh
+            if not fresh['current']:
+                sample['last_known']['atlas_claims'] = claims
+                sample['atlas_claims'] = {'at': claims.get('at'), 'available': False, 'items': [],
+                    'unavailable': 'Claim boundaries are stale or unavailable; retained observations are last known.'}
+
         diagnostic = sample.get('chunk_diagnostics')
         if diagnostic:
             fresh = measurement_freshness(diagnostic.get('at'), now,
