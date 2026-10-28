@@ -16,6 +16,7 @@ from tools.transport_commission import (
     reconcile_logistics, reconcile_restart,
 )
 from tools.transport_saved_inputs import _inventory, complete_body, verification_plan
+from tools.transport_chain_bind import native_terminal
 
 
 def item(name, count, slot=0, *, components='{}', plain=True):
@@ -161,6 +162,22 @@ class TransportPersistenceTests(unittest.TestCase):
 
 
 class TransportCustodyTests(unittest.TestCase):
+    def test_chain_binding_only_accepts_canonical_owned_native_terminals(self):
+        with tempfile.TemporaryDirectory()as folder:
+            home=Path(folder).resolve();native=home/'dashboard/settlement';native.mkdir(parents=True)
+            good=native/'settlement-result-12345678-abcd-abcd-abcd-1234567890ab.json';good.write_text('{}')
+            self.assertEqual(native_terminal(home,good),good)
+            copied=home/good.name;copied.write_text('{}')
+            with self.assertRaises(UserError):native_terminal(home,copied)
+            renamed=native/'invented-native-proof.json';renamed.write_text('{}')
+            with self.assertRaises(UserError):native_terminal(home,renamed)
+
+    def test_chain_binding_refuses_non_json_empty_terminal(self):
+        with tempfile.TemporaryDirectory()as folder:
+            home=Path(folder).resolve();native=home/'dashboard/settlement';native.mkdir(parents=True)
+            good=native/'settlement-result-12345678-abcd-abcd-abcd-1234567890ab.json';good.write_bytes(b'')
+            with self.assertRaises(UserError):native_terminal(home,good)
+
     def test_marker_tamper_and_duplicate_json_keys_are_refused(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder)/'observation.json';raw=json.dumps(observation()).encode();path.write_bytes(raw)

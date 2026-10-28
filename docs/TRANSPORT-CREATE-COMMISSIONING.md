@@ -55,6 +55,18 @@ installed identities when the native window opens. Sprint handover is
    into the master-owned dashboard; **only master runs that step and the command**.
    No request or native completion marker was fabricated by this workstream.
 
+The source-only `tools.transport_chain_bind` now assembles those exact paired
+references after both genuine native results exist. Invoke it with `--home H`,
+`--inputs H/staging/transport-306-retained-inputs-r2`, its manifest SHA above,
+`--study H/staging/transport-306-chain-readiness-r1`, its manifest SHA above,
+`--native-full <actual canonical1163 terminal>`,
+`--native-body <actual canonical5607 terminal>` and a new immediate
+`--output H/staging/<owned-name>`. The hash arguments are `--inputs-sha` and
+`--study-sha`. It refuses absent/stale/dirty/incorrect native receipts, wrong
+target sets, altered historical BEFORE or checkpoint advancement. Its output
+contains `geometry-sets.json` and unexecuted exact argv for the existing R4
+producer. It never writes a request into the dashboard or invokes the command.
+
 ## Exact source outputs
 
 Source checkpoint: `20261028T180051Z-30624d`, archive SHA
@@ -169,7 +181,8 @@ metrics are not attributable transport evidence. Inventory/schedule/link identit
 comparisons do not replace a successful post-restart ride.
 
 Source checks: full969-test suite passed with one skip before the final targeted
-hardening; current transport21 tests pass. Pack manifest validation and JavaScript
+hardening; current transport23 tests pass. Two revised existing safety fixtures
+also pass against the proposed console implementation. Pack manifest validation and JavaScript
 syntax passed. Both new Java proposals compile against the exact installed named
 Java21 server/mod APIs without a client API. One diff export initially used CRLF
 and failed `git apply --check`; UTF8/LF byte output corrected it and the check now
