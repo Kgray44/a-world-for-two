@@ -196,6 +196,14 @@ exists yet, and source tests do not establish actual item delivery.
    the dashboard allowlist. Do not overwrite a chest tag or broaden that list.
    After stocking, take a fresh full-slot native inspection. No stocking, debit,
    attachment or refund has been performed here.
+   The optional source-only `CopperWrenConstructionStock.supplyFixedHardware`
+   now offers a supported native API path for a separately admitted parent:
+   fixed detector2/burner2/blank schedule1 into proven empty slots3/4/5,
+   explicit creative-authoring additions, exact all27-slot custody and a fixed
+   non-replayable world ledger. It refuses loot-bearing/unexpected chests and
+   comparator callbacks; it has no console hook and has not run. See the rail
+   proposal instructions below. Prove this initial stock operation before the
+   logistics baseline; count no created hardware as processing output.
 4. Bind existing retained recovery with
    `compat/control-bridge/proposals/mill-resume/prepare.py`, inspect first, then
    bind resume from that genuine fresh result. Preserve the original WAIT_MODE
@@ -356,6 +364,14 @@ Master installs the value on a legitimate schedule item and hands it to a real
 conductor through ordinary gameplay after both conductor directions are native
 ready. Normal completion stops circulation, reducing unnecessary idle work.
 
+The [rail API and manual deployment plan](../compat/control-bridge/proposals/transport-commission-r1/RAIL-NAMING-SCHEDULE-ITEM.md)
+adds bounded station-name preflight, genuine blank-item configuration and optional
+fixed creative hardware supply. They require an authenticated parent, a fresh
+all27-slot native preimage and a separately admitted lease; none is wired or run.
+They enforce unique native destination names, actual Mill present-train identity,
+exact no-loot single chests and a loaded comparator-free callback apron. Naming
+uses the normal native UI because `updateName` walks world-backed track data.
+
 `tools.transport_commission logistics --before <native.json> --after <native.json>`
 checks all declared item/component counts against the pinned real recipes:
 16wheat yields16..48flour with even excess,0..16seeds; one ingot yields one sheet.
@@ -428,8 +444,10 @@ Source checks: full969-test suite passed with one skip before the final targeted
 hardening; the current material/passenger/commission/conductor/performance set of
 60 targeted tests passes. Two revised existing safety fixtures
 also pass against the proposed console implementation. Pack manifest validation and JavaScript
-syntax passed. Both new Java proposals compile against the exact installed named
-Java21 server/mod APIs without a client API. One diff export initially used CRLF
+syntax passed. The observer/factory and three rail preparation helpers compile
+against named Java21 dedicated-server/mod APIs without a client API. The rail
+compile's old active bridge path disappeared during the master's version change;
+it was requalified against the exact0.6.39 API and compiled successfully. One diff export initially used CRLF
 and failed `git apply --check`; UTF8/LF byte output corrected it and the check now
 passes. Native51 geometry and body verification passed, and its one cable creation
 attempt refused before mutation as recorded above. No successful passenger,
