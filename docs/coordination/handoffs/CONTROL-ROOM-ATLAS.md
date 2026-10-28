@@ -455,3 +455,58 @@ not constrain unrelated applications or pre-existing writers.
 Automatic approval review rejected an optional read-only startup timing script,
 returning only **blocked by policy**. It was not executed or substituted with a
 timing claim. The permitted browser state/readiness observations above completed.
+
+## Offline access browser qualification and accurate removal outcomes
+
+Source commit **e9ecbfd2d4b4ff7c45117ecf5db5ffa2b93e1bec** changes only the final
+level0 result in `Players.permissions`, plus three regression tests. The master
+granted this narrow source-only scope. All permission/session/native-running and
+snapshot concurrency gates remain intact. A confirmed operator removal returns
+an operation receipt rather than re-querying an identity that may intentionally
+have left all roster sources. It does not add whitelist access, recreate a roster
+entry, or return an invented current presence/location.
+
+The actual browser used `runtime/access-browser-home`, clearly labelled
+**DISPOSABLE TEST**, with no game install, no world and EULAfalse. Synthetic
+`ControlFixture`/`OpOnlyFixture`/`FixedOnlyFixture` identities were test file data.
+Only public Mojang name/UUID lookup was used for KG's separate test whitelist
+add/remove; no account authentication or actual native player change occurred.
+
+- Operator level2 save completed **8bd1a9e1e51541169d6ba6006c2290f0**.
+  Level3 with player-limit bypass subsequently completed **453dbc1eb6fc4381a56c554d9ceee10d**.
+  Invalid member+bypass was rejected in the UI before submission. Offline game
+  mode/XP controls were disabled and location was unavailable.
+- Mojang verified KG's public name/UUID before the add confirmation. Test-only
+  whitelist add **a359d29f4c384191a5274debaadfdb6d** and removal
+  **fd26bf5d43804860961eb7c316e6afcf** completed. Final test whitelist retained
+  only its synthetic ControlFixture entry; the native whitelist was untouched.
+- The pre-fix operator-only demotion **601c195968ec462ab6c260fb883c8e5f**
+  incorrectly failed after ops removal and a **19:53:14.175147Z** confirmed audit.
+  That failed task and bytes were preserved. An independent in-memory review
+  reproduced the same final-lookup defect.
+- A separate synthetic identity tested the corrected source after restarting
+  only the owned Python backend. **cf153566d20b42f6a3cd3dfe7cfc6182** completed
+  with level0/persistenceconfirmed, no online/location fields, and no remaining
+  operator or whitelist identity. Whitelisted ControlFixture demotion
+  **9ebd821c31f649708ca71f83d6e26ae0** also completed while preserving its whitelist.
+
+**Six focused tests passed** (three new plus existing PlayerTests), covering the
+real task outcome, retained whitelist access, rejected confirmation and failed
+persistence. Independent review found no regression; diff checks passed. Actual
+browser console inspection showed no warnings/errors. This is actual UI and
+file-backed offline qualification, not live permission enforcement acceptance.
+
+Private evidence: `access-browser-before-result-fix.json`,
+`access-browser-after-result-fix.json`, `access-operator-removal-complete.png`,
+ownership records and `access-browser-retirement.json`. After all tasks became
+terminal, the browser closed and both owned Python PIDs53840/52868 were retired;
+port18765 was released with no child process left. Final observed helper RSS was
+about39.9MB. The 19:55:08Z bounded128MiB C forecast passed with C122,084,089,856
+and D283,807,010,816 free bytes; unrelated/pre-existing writers remain outside
+this monitoring rule.
+
+Source pickup queue is now **ebe9cb6**, **92ea1c8**, **e9ecbfd**, on
+`codex/control-room-recovery-feedback`; documentation commits may be selected
+separately. Native7068 still used the prior integrated8ef3ece Python code at this
+observation. The two Python follow-ups require the master's scheduled controller
+restart; Java-only upgrades do not deploy them.
