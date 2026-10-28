@@ -177,6 +177,15 @@ public final class NativeChainRouteSupport {
         long reserve=32_212_254_720L;
         if(Files.getFileStore(Path.of("C:\\")).getUsableSpace()<reserve+2*1024*1024L||Files.getFileStore(Path.of("D:\\")).getUsableSpace()<reserve+2*1024*1024L)throw new IllegalStateException("Finite chain-route journal would exceed either drive reserve");
     }
+    private void releasePack()throws Exception{
+        if(!candidate.matches("[A-Za-z0-9][A-Za-z0-9_.-]{0,79}")||candidate.endsWith("."))throw new IllegalStateException("Unsafe active release candidate");
+        JsonObject active=JsonParser.parseString(new String(bounded(owned("packwiz/active.json"),65536),StandardCharsets.UTF_8)).getAsJsonObject();
+        JsonObject installed=JsonParser.parseString(new String(bounded(owned("server/installed.json"),2*1024*1024),StandardCharsets.UTF_8)).getAsJsonObject();
+        String expected=request.get("pack_sha256").getAsString();
+        if(!expected.matches("[a-f0-9]{64}")||!active.get("version").getAsString().equals(candidate)||!installed.get("pack_version").getAsString().equals(candidate)
+            ||!active.get("pack_sha256").getAsString().equals(expected)||!installed.get("pack_sha256").getAsString().equals(expected)
+            ||!hash(bounded(owned("packwiz/releases/"+candidate+"/pack.toml"),65536)).equals(expected))throw new IllegalStateException("Actual active installed versioned release pack differs");
+    }
     private void begin(MinecraftServer server,String op,String bundle,String expected)throws Exception{
         if(busy()||lease!=null||!tickets.isEmpty()||!pending.isEmpty())throw new IllegalStateException("A chain-route transaction or cleanup already owns its lease");
         report.clear();observations.clear();knots.clear();ids.clear();chunks.clear();savedEndpointNeighborhood.clear();persistedReadColumns.clear();persistedReadOrder.clear();persistedReads.clear();persistedFacts.clear();critical.clear();outcome=null;cleanupPublished=false;
@@ -201,7 +210,7 @@ public final class NativeChainRouteSupport {
         if(!owner.get("format").getAsString().equals("awft-artistic-stage:1")||!Path.of(owner.get("home").getAsString()).toRealPath().equals(home)
             ||!active.get("version").getAsString().equals(candidate)||!installed.get("pack_version").getAsString().equals(candidate)
             ||!active.get("pack_sha256").getAsString().equals(request.get("pack_sha256").getAsString())
-            ||!installed.get("pack_sha256").getAsString().equals(request.get("pack_sha256").getAsString()))throw new IllegalStateException("Owned active/installed pack custody differs");
+            ||!installed.get("pack_sha256").getAsString().equals(request.get("pack_sha256").getAsString()))throw new IllegalStateException("Owned active/installed pack custody differs");releasePack();
         archive(CHAINS_FILE,CHAINS_SHA);archive("zipline-1.5.3+1.21.1-neoforge.jar",request.get("zipline_jar_sha256").getAsString());
         archive("awft-control-bridge-"+bridge+".jar",request.get("bridge_jar_sha256").getAsString());configs();
         route=read(request.getAsJsonObject("route"),MAX_BYTES);routeSha=request.getAsJsonObject("route").get("sha256").getAsString();level=server.overworld();

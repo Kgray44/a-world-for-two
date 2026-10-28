@@ -20,7 +20,8 @@ class CraftLaneTests(unittest.TestCase):
         self.assertEqual(6,len(checks['materials']))
         self.assertEqual(12,len(checks['furnished_room_access']))
         self.assertEqual(5,checks['complete_beds'])
-        self.assertTrue(checks['all_authored_outdoor_runs_at_most_nine'])
+        self.assertEqual(checks['outdoor_material_rule']['violations'], [])
+        self.assertIn('one-axis', checks['outdoor_material_rule']['rule'])
         path=checks['continuous_cottage_to_bascule_path']['local_floor_path']
         self.assertEqual([52,-1,24],path[-1])
         self.assertTrue(any('immersive_melodies:lute' in tag for tag in self.d.p.tags.values()))

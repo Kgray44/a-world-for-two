@@ -46,6 +46,7 @@ public final class EngineeringSupport {
     private String mode="idle";
     private int phase, elapsed, phaseTicks, cycles, readySamples;
     private long nextWrite;
+    private NativeRadioLifecycle radioLifecycle;
     private java.util.function.BooleanSupplier admissionGate=()->true;
     public void admissionGate(java.util.function.BooleanSupplier gate){admissionGate=Objects.requireNonNull(gate);}
     public boolean busy(){return !mode.equals("idle") || level!=null || !tickets.isEmpty();}
@@ -53,7 +54,7 @@ public final class EngineeringSupport {
 
     public void commands(RegisterCommandsEvent event){
         var root=Commands.literal("awftengine").requires(s->s.getEntity()==null && s.hasPermission(4) && admissionGate.getAsBoolean());
-        for(String action:List.of("setup","commission","close"))root.then(Commands.literal(action)
+        for(String action:List.of("setup","commission","close","repair-radio"))root.then(Commands.literal(action)
             .then(Commands.argument("sha256",StringArgumentType.word()).executes(c->{
                 try {admit(c.getSource().getServer(),action,StringArgumentType.getString(c,"sha256"));return 1;}
                 catch(Exception error){throw new RuntimeException(error);}
@@ -128,7 +129,8 @@ public final class EngineeringSupport {
             for(String slot:List.of("first","last"))if(!BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(radio.get(slot).getAsString())))throw new IllegalStateException("Unknown native radio frequency item");
         }
         if(chunks.size()>32)throw new IllegalStateException("Commissioning chunk bound exceeded");
-        level=server.overworld();plan=candidate;mode=action;phase=elapsed=phaseTicks=cycles=readySamples=0;
+        if(action.equals("repair-radio"))repairAdmission(server,candidate,sha);
+        level=server.overworld();plan=candidate;mode=action;phase=elapsed=phaseTicks=cycles=readySamples=0;radioLifecycle=null;
         report.clear();observations.clear();report.put("operation",action);report.put("started",Instant.now().toString());report.put("plan_sha256",sha);report.put("status","loading temporary simulation tickets");
         // NeoForge distinguishes loading a chunk from forcing its simulation when
         // no player is nearby. Commissioning needs actual BE ticks, not just FULL
@@ -157,6 +159,68 @@ public final class EngineeringSupport {
         if(entity==null || !entity.getClass().getName().equals("com.simibubi.create.content.redstone.link.RedstoneLinkBlockEntity"))throw new IllegalStateException("Expected native Create redstone link");
         Field f=entity.getClass().getDeclaredField("link");f.setAccessible(true);return f.get(entity);
     }
+
+    private byte[] radioOwned(String relative,int cap)throws Exception{
+        Path home=directory.getParent().getParent().toAbsolutePath().normalize(),path=home.resolve(relative).normalize();
+        if(!path.startsWith(home))throw new IllegalStateException("Radio custody path escaped owner");
+        for(Path p=path;!p.equals(home);p=p.getParent())if(Files.isSymbolicLink(p))throw new IllegalStateException("Redirected radio custody path");
+        if(!Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS)||Files.size(path)<=0||Files.size(path)>cap||!path.toRealPath().equals(path))throw new IllegalStateException("Bounded regular radio custody artifact required");
+        return Files.readAllBytes(path);
+    }
+    private String radioSha(byte[] raw)throws Exception{return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(raw));}
+    private JsonObject radioJson(String relative,int cap)throws Exception{return JsonParser.parseString(new String(radioOwned(relative,cap),java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();}
+    private void repairAdmission(MinecraftServer server,JsonObject candidate,String expectedPlan)throws Exception{
+        if(!server.isSameThread()||!server.getPlayerList().getPlayers().isEmpty()||server.getPort()!=25575||!admissionGate.getAsBoolean())throw new IllegalStateException("Exact empty private repair interlock required");
+        Path home=directory.getParent().getParent().toAbsolutePath().normalize(),stages=Path.of("D:/A World for Two/staging/world-tests").toRealPath();
+        if(!home.toRealPath().equals(home)||!home.getParent().equals(stages)||!server.getWorldPath(LevelResource.ROOT).toRealPath().equals(home.resolve("world/RosewaterArtistic").toRealPath()))throw new IllegalStateException("Exact artistic repair ancestry required");
+        if(Files.exists(directory.resolve("tree-growth-quarantine.json"))||Files.exists(directory.resolve("radio-repair-quarantine.json")))throw new IllegalStateException("Parent recovery/quarantine remains unresolved");
+        JsonObject custody=candidate.getAsJsonObject("radio_repair_custody");
+        if(custody==null||!custody.get("format").getAsString().equals("awft-native-retained-radio-repair:1"))throw new IllegalStateException("Explicit reviewed lifecycle-only repair custody required");
+        JsonObject current=radioJson("dashboard/settlement/backup-receipt.json",4096),owner=radioJson("dashboard/artistic-owner.json",65536);
+        if(!current.get("verified").getAsBoolean()||!current.get("sha256").equals(candidate.get("backup_sha256"))||!owner.get("format").getAsString().equals("awft-artistic-stage:1")||!Path.of(owner.get("home").getAsString()).toRealPath().equals(home)||!owner.get("backup").equals(current.get("id"))||!owner.get("backup_sha256").equals(current.get("sha256")))throw new IllegalStateException("Actual repair owner/current checkpoint differs");
+        if(!radioSha(radioOwned("dashboard/settlement/engineering-plan.json",256*1024)).equals(expectedPlan))throw new IllegalStateException("Admitted repair plan changed");
+        JsonObject active=radioJson("packwiz/active.json",65536),installed=radioJson("server/installed.json",1024*1024);
+        String version=custody.get("candidate_version").getAsString(),bridge=custody.get("bridge_version").getAsString();
+        if(!version.matches("[A-Za-z0-9][A-Za-z0-9_.-]{0,79}")||version.endsWith(".")||!active.get("version").getAsString().equals(version)||!installed.get("pack_version").getAsString().equals(version)||!active.get("pack_sha256").equals(installed.get("pack_sha256"))||!active.get("pack_sha256").equals(custody.get("pack_sha256"))||!radioSha(radioOwned("packwiz/releases/"+version+"/pack.toml",65536)).equals(active.get("pack_sha256").getAsString())||!net.neoforged.fml.ModList.get().getModContainerById("awft_control_bridge").orElseThrow().getModInfo().getVersion().toString().equals(bridge))throw new IllegalStateException("Actual repair pack/helper custody differs");
+        Map<String,Class<?>> classes=Map.of("engineering_class_sha256",EngineeringSupport.class,"lifecycle_class_sha256",NativeRadioLifecycle.class,"facts_class_sha256",RadioLifecycleFacts.class);
+        for(var entry:classes.entrySet())try(var in=entry.getValue().getResourceAsStream(entry.getValue().getSimpleName()+".class")){
+            if(in==null)throw new IllegalStateException("Repair class unavailable");byte[] raw=in.readNBytes(256*1024+1);
+            if(raw.length>256*1024||!radioSha(raw).equals(custody.get(entry.getKey()).getAsString()))throw new IllegalStateException("Actual repair class differs");
+        }
+        JsonObject ref=custody.getAsJsonObject("native_full_verification");String path=ref.get("path").getAsString();
+        if(!path.matches("dashboard/settlement/settlement-result-[a-f0-9-]{36}\\.json"))throw new IllegalStateException("Original actual native verification receipt required");
+        byte[] raw=radioOwned(path,1024*1024);String sha=radioSha(raw);
+        if(raw.length!=ref.get("bytes").getAsInt()||!sha.equals(ref.get("sha256").getAsString())||!new String(radioOwned(path+".complete",128),java.nio.charset.StandardCharsets.UTF_8).trim().equals(sha))throw new IllegalStateException("Authentic marked native full proof differs");
+        JsonObject proof=JsonParser.parseString(new String(raw,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+        Instant finished=Instant.parse(proof.get("finished").getAsString()),now=Instant.now();
+        if(!proof.get("operation").getAsString().equals("verify")||proof.get("blocks").getAsInt()!=20703||!proof.get("plan_sha256").equals(candidate.get("construction_sha256"))||proof.get("failures").getAsInt()!=0||proof.get("cleanup_required").getAsBoolean()||proof.get("temporary_tickets_remaining").getAsInt()!=0||proof.get("pending_shared_chunk_futures").getAsInt()!=0||proof.has("ticket_cleanup_error")||finished.isBefore(now.minusSeconds(300))||finished.isAfter(now.plusSeconds(5)))throw new IllegalStateException("Fresh clean complete20703 native bridge proof required");
+        if(candidate.getAsJsonArray("systems").size()!=2)throw new IllegalStateException("Exactly the two reviewed55degree bascules required");
+    }
+    @SuppressWarnings("unchecked")
+    private void requireClosedRadioRepair(MinecraftServer server)throws Exception{
+        if(!mode.equals("repair-radio"))throw new IllegalStateException("Radio recovery phase changed");
+        repairAdmission(server,plan,String.valueOf(report.get("plan_sha256")));
+        var values=snapshot();if(!position(values,false,false))throw new IllegalStateException("Radio repair requires both actual spans closed/disassembled/idle with released input");
+        int i=0;Set<BlockPos> expectedSequencers=new HashSet<>(Set.of(new BlockPos(1203,70,-1172),new BlockPos(1203,70,-1116)));
+        for(Map<String,Object> value:values){
+            JsonObject system=plan.getAsJsonArray("systems").get(i++).getAsJsonObject();
+            Map<String,Object> gear=(Map<String,Object>)value.get("sequencer");
+            BlockPos seq=pos(system.getAsJsonArray("sequencer"));int z=seq.getZ();
+            if(!expectedSequencers.remove(seq)||!pos(system.getAsJsonArray("bearing")).equals(new BlockPos(1199,70,z))||!pos(system.getAsJsonArray("wheel")).equals(new BlockPos(1225,68,z))||system.get("open_negative").getAsBoolean()!=(z==-1172))throw new IllegalStateException("Exact retained north/south mechanical component positions required");
+            if(system.get("open_angle_degrees").getAsInt()!=55||!Boolean.TRUE.equals(gear.get("program_reversible"))||((Number)gear.get("program_open_degrees")).intValue()!=55||!Boolean.valueOf(system.get("open_negative").getAsBoolean()).equals(gear.get("program_open_negative")))throw new IllegalStateException("Exact retained reversible55degree programs required; never rewritten");
+            var instructions=required(system,"sequencer","com.simibubi.create.content.kinetics.transmission.sequencer.SequencedGearshiftBlockEntity").saveWithFullMetadata(level.registryAccess()).getList("Instructions",Tag.TAG_COMPOUND);
+            String[] types={"TURN_ANGLE","AWAIT","TURN_ANGLE","END"};boolean negative=z==-1172;
+            String[] modifiers={negative?"BACK":"FORWARD","FORWARD",negative?"FORWARD":"BACK","FORWARD"};
+            if(instructions.size()!=4)throw new IllegalStateException("Retain all four native instruction records");
+            for(int n=0;n<4;n++){
+                var instruction=instructions.getCompound(n);
+                if(!instruction.getAllKeys().equals(Set.of("Type","Modifier","Value"))||!instruction.contains("Value",Tag.TAG_INT)||!instruction.getString("Type").equals(types[n])||!instruction.getString("Modifier").equals(modifiers[n])||instruction.getInt("Value")!=(n%2==0?55:1))throw new IllegalStateException("Complete typed native program differs; lifecycle repair never edits instructions");
+            }
+            Map<String,Object> wheel=(Map<String,Object>)value.get("wheel");
+            if(Math.abs(((Number)gear.get("getSpeed")).doubleValue()-2)>.001||Math.abs(((Number)wheel.get("getSpeed")).doubleValue()-8)>.001||Math.abs(((Number)wheel.get("getGeneratedSpeed")).doubleValue()-8)>.001)throw new IllegalStateException("Retained native2RPM sequencer and8RPM water power required; never injected");
+        }
+    }
+
     private void configureRadios()throws Exception{
         for(JsonElement e:plan.getAsJsonArray("radios")){
             JsonObject radio=e.getAsJsonObject();BlockEntity entity=level.getBlockEntity(pos(radio.getAsJsonArray("position")));
@@ -273,6 +337,8 @@ public final class EngineeringSupport {
         return row;
     }
     private void pulse(int index,boolean open,boolean recovery)throws Exception{
+        if(mode.equals("repair-radio"))throw new IllegalStateException("Lifecycle repair can NEVER press a button");
+        if(radioLifecycle!=null)radioLifecycle.requireIdleMembers();
         // Inspect again in this server tick, immediately before a real input.
         // Never leave a latched input waiting for a powerless/stressed network.
         var values=snapshot();report.put("systems",values);
@@ -367,6 +433,10 @@ public final class EngineeringSupport {
             // Vanilla suspends entity and block-entity ticks after 300 empty
             // ticks, even if custom tickets kept chunks loaded. Wake only this
             // bounded commissioning operation; normal empty-world idling resumes.
+            if(mode.equals("repair-radio")){
+                repairAdmission(server,plan,String.valueOf(report.get("plan_sha256")));
+                if(!admissionGate.getAsBoolean()||elapsed>900)throw new IllegalStateException("Radio repair interlock/deadline changed");
+            }
             level.resetEmptyTime();
             if(elapsed>3600)throw new IllegalStateException("Three-minute commissioning timeout; native state retained");
             if(phase==0){
@@ -394,7 +464,16 @@ public final class EngineeringSupport {
                 if(readySamples<2){report.put("status","waiting for concrete native simulation and attachment readiness");progress();return;}
                 readySamples=0;
                 report.put("status","native simulation and controller attachment ready; "+mode+" in progress");
-                if(mode.equals("setup")){for(JsonElement e:plan.getAsJsonArray("systems"))setup(e.getAsJsonObject());configureRadios();phase=1;phaseTicks=0;}
+                if(mode.equals("repair-radio")){
+                    requireClosedRadioRepair(server);
+                    radioLifecycle=new NativeRadioLifecycle(level,plan.getAsJsonArray("radios"),()->requireClosedRadioRepair(server));
+                    report.put("retained_radio_before",radioLifecycle.facts());
+                    NativeJournal.progress(directory,"engineering-status.json",report);
+                    radioLifecycle.reattachMissingReceiversOnce();
+                    report.put("retained_radio_after_initializer",radioLifecycle.facts());
+                    phase=4;phaseTicks=0;
+                }
+                else if(mode.equals("setup")){for(JsonElement e:plan.getAsJsonArray("systems"))setup(e.getAsJsonObject());configureRadios();phase=1;phaseTicks=0;}
                 else {
                     var values=snapshot();
                     observations.add(Map.of("at",Instant.now().toString(),"stage","before","systems",values,"radios",radios()));
@@ -404,10 +483,27 @@ public final class EngineeringSupport {
                         pulse(1,true,true);phase=3;
                     }else{
                         if(!position(values,false,false))throw new IllegalStateException("Begin cycle checks only with closed, disassembled, idle native spans");
-                        pulse(0,false,false);phase=2;
+                        radioLifecycle=new NativeRadioLifecycle(level,plan.getAsJsonArray("radios"),()->{
+                            if(!admissionGate.getAsBoolean()||!mode.equals("commission"))throw new IllegalStateException("Radio cycle interlock changed");
+                        });
+                        radioLifecycle.requireIdleMembers(); // Missing RX refuses; commission never repairs.
+                        phase=5;
                     }
                     phaseTicks=readySamples=0;
                 }
+            }else if(phase==4){
+                report.put("retained_radio_readiness",radioLifecycle.facts());
+                if(radioLifecycle.observeIdleFortyTicks()){
+                    report.put("actual_retained_radio_membership_idle_40_ticks",true);
+                    report.put("buttons_pressed_by_repair",0);
+                    finish("normal retained receiver lifecycle registration stable for40ticks; no input, setup, frequency, program or glue change; cycles/restart unqualified");return;
+                }
+                if(phaseTicks>200)throw new IllegalStateException("Retained radio membership did not remain stable within bounded repair window");
+            }else if(phase==5){
+                if(radioLifecycle.observeIdleFortyTicks()){
+                    report.put("native_radio_idle_readiness_40_ticks",true);
+                    pulse(0,false,false);phase=2;phaseTicks=readySamples=0;
+                }else if(phaseTicks>200)throw new IllegalStateException("Radio membership did not remain ready; no input sent");
             }else if(phase==1 && phaseTicks>=60){report.put("systems",snapshot());finish("native glue and real sequencer programs configured; operation not yet accepted");return;}
             else if(phase==2 || phase==3){
                 if(phaseTicks%10!=0)return;
@@ -425,12 +521,13 @@ public final class EngineeringSupport {
                 }else if(phaseTicks>1200)throw new IllegalStateException("Native "+(open?"opening":"closing")+" did not reach the required angle");
             }
             progress();
-        }catch(Exception error){report.put("error",error.toString());finish("commissioning failed; exact native state and observations preserved");}
+        }catch(Exception|LinkageError error){report.put("error",error.toString());finish("commissioning failed; exact native state and observations preserved");}
     }
     private void progress()throws Exception{
         if(System.nanoTime()>nextWrite){report.put("phase",phase);report.put("ticks",elapsed);report.put("observations",observations);NativeJournal.progress(directory,"engineering-status.json",report);nextWrite=System.nanoTime()+2_000_000_000L;}
     }
     private void finish(String status){
+        if(radioLifecycle!=null)report.put("native_receiver_initializer_attempts",radioLifecycle.initializerAttempts());
         report.put("status",status);report.put("finished",Instant.now().toString());report.put("observations",observations);
         int released=((Number)report.getOrDefault("temporary_tickets_released",0)).intValue();
         List<Object> failures=new ArrayList<>();
@@ -456,7 +553,7 @@ public final class EngineeringSupport {
             report.put("status",status+"; cleanup_required: retry awftengine cancel before any new admission");
             observations.add(Map.of("at",Instant.now().toString(),"stage","temporary-ticket cleanup required","dimension",dimension,"failures",failures));
             mode="cleanup_required";
-        }else{level=null;mode="idle";}
+        }else{level=null;mode="idle";radioLifecycle=null;}
         try{NativeJournal.terminal(directory,"engineering",report);NativeJournal.progress(directory,"engineering-status.json",report);}catch(Exception error){System.err.println("AWFT engineering journal: "+error);}
     }
     private void write(String name,Object data)throws Exception{

@@ -1,0 +1,33 @@
+# Explicit4000-resident LIFE scale
+
+This is source only. It has created no animals, insects, aquatics, people, population authority, native measurement or actor intent. The seven actual residents already added remain in the original namespace; their records are never replayed or replaced.
+
+The owner’s new scale request explicitly supersedes64 as the project’s final population ceiling. This proposal adds an explicit4000-managed-resident budget and1–64-member cohorts through protocol v4. `HabitatLifePolicy.WORLD_POPULATION_CAP=64` and legacy v3 remain unchanged for compatibility. A legacy request does not silently become a4000 request. Source changes do not imply4000 actors exist or that this population has passed a performance test.
+
+## Preserved native behavior
+
+The ordinary native factories, actual pinned classes/categories, native obstruction and spawn predicates, finalize event/cancellation, collision, UUID identity, native AI/ownership flags, persistence, real bed/job POIs and complete habitat fields remain intact. The existing diagnostic-only branch identifies the native hook that refused a spawn without calling it twice. An additional crowding refusal runs before factory creation. No `NoAI`, fake owner, forced profession, copied entity NBT, particles standing in for actors, fake player or replacement of uncertain UUIDs is introduced.
+
+Global counts include every retained intent, including uncertain/missing actors. The existing original `population.json` bytes and namespace must match an explicit SHA. They are preserved as the historical64 identity. A separately durable `scale-budget.json` records the explicit4000 override in that same population directory. It must match subsequent v4 requests exactly; another namespace or an automatic authority replacement refuses. New actor intent remains durable before native addition. A failed/partial cohort keeps its real actors and intents and is not replayed.
+
+Per-species caps and per-kind32m habitat caps are explicit inputs. Each cohort needs a complete current stopped all-world UUID and habitat-entity census. The latter counts all serialized entities/passengers in each requested tile, including unmanaged ones. Native preview also checks currently loaded entities. Saved counts plus projected managed intents deliberately double-count some old actors to form a conservative occupancy bound; this is labelled as a bound, not an actual census number. HOME residents still need distinct genuine vanilla HOME/job POIs and proven routes; decorative beds do not become POIs.
+
+The helper parses the complete retained ledger once per cohort instead of reparsing up to4000 files for every actor. It keeps a fixed projection under the same exclusive maintenance lease, detects foreign directory changes, audits retained immutable intent metadata in bounded256-file/2ms slices, and waits for the first complete audit before adding actors. Only its own completed durable writes advance its directory stamp. The next cohort scans the real ledger again. This controlled-workflow monitoring is not an operating-system lock against unrelated external programs.
+
+Native cleanup retries remain busy while pending resources exist. The immutable terminal receipt is published independently before the optional progress view; a publication failure cannot silently mark the controller idle.
+
+## Inputs and staged execution
+
+`ScaledLifeBudget` requires an explicit `awft-owner-scaled-life-budget:1` input: the actual world/namespace, curation SHA, original population-identity SHA, `maximum_residents:4000`, `cohort_maximum:64`, normal native AI, retained-intent counting and explicit species/habitat limits. This proposal does not manufacture that authority.
+
+Every cohort also needs `awft-reviewed-life-population-ramp:1`, bound to its exact current checkpoint, recipe and budget. Ramp ceilings are128,512,1024,2048 and4000. Beyond128, the parent must review genuine native AI/resource measurements and provide their unchanged file references. These stages are measurement gates, not invented TPS/RAM/FPS results. Native server/client responsiveness, active versus unloaded populations, AI behavior and persistence need actual observation as the population increases.
+
+The old southern coordinate rectangle is not reused. V4 woodland recipes require a new current one-metre `awft-measured-south-life-extent:1` source, truthful eastern-shore/cliff-foot measurement, the exact member anchor and every known habitat column. Town members retain their separate authenticated authored-site authority. Current full fountain/bridge/machine/cable/AIR/route protections remain mandatory. Cohorts still have at most32temporary chunks, a finite1800tick lease, at most262,144complete witness cells and bounded32MiB plans. Release all tickets/futures afterward; never keep the whole population globally loaded.
+
+`tools/native_scaled_life.py` provides the strict64-member stopped census and a producer for actual installed v4 class hashes. It binds a reviewed `awft-scaled-life-cohort-source:1` manifest containing the ordinary recipe/woodland/fountain/safety/UUID references plus `population_budget`, `population_ramp` and `habitat_census`. Seed also requires the ordinary exact habitat plan, genuine fresh native full verification and scoped LIFE readiness. The producer requires a genuine matching current-class no-spawn INSPECT receipt and preserves every existing request. It emits typed commands only, never submits them. Actual installed v4 classes are required; no placeholder hashes are accepted.
+
+## Integration/evidence
+
+Review the proposed `NativeHabitatLifeSupport.java` with `ScaledLifeBudget.java` as an additive replacement of the frozen diagnostic-only48 source. Keep `HabitatLifePolicy.java` unchanged. The existing `awftlife` command/tick/stop/busy/interlock wiring remains applicable; the version and immutable candidate build belong to the parent.
+
+An actual isolated Java21/API compile and pure quota fixture passed against installed48 Minecraft/NeoForge dependencies: result SHA256 `dc5b0dca8ba477bb6b4ff7dd6b1eae46bd9250e74ff6546b73d5a73dbaa50054`. The earlier compiler-local variable collision and exact failed sources/logs are retained. Synthetic fixtures exercise explicit4000 versus legacy64, global/local/ramp/species/type/AI requirements; they create no real authority or measurements. Source-boundary tests verify the exact derivation and preserved normal factory/spawn/identity/legacy budget code. The final seal binds these sources. Native cohorts, living behavior, restart persistence, performance at scale and artistic/ecological acceptance remain pending.

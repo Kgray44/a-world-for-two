@@ -1,0 +1,18 @@
+{
+  "format": "awft-scaled-LIFE-source:1",
+  "created": "2026-10-28T16:28:38.469063+00:00",
+  "base_sha256": "f7bcc9844ea6b25bab24349b8f7c9030b6feaef764b03ebb0557509a6687678a",
+  "generator_sha256": "c89c4ccfaacf88628692af18ff6c3362000777432e9f9eb0aec44b48e3533b94",
+  "reserve_guard": {
+    "utc": "2026-10-28T16:28:38.2432900Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 119729541120,
+    "dFreeBytes": 285162700800,
+    "estimatedCBytes": 8388608,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "native_actions": 0,
+  "API_compile": "PENDING"
+}

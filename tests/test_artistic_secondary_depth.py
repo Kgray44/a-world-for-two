@@ -87,8 +87,9 @@ class SecondaryDepthCustody(TestCase):
   with self.assertRaisesRegex(UserError,'perpendicular stair join'):validate(p)
 
  def test_whole_predecessor_participates_in_material_rule(self):
-  old={(x,91,-1036):'minecraft:stone' for x in range(1250,1259)}
-  p=fixture(old,originals={'castle':dict(old),'bridge':{}});p.put(1259,91,-1036,'minecraft:stone')
+  old={(x,91,z):'minecraft:stone' for x in range(1258,1262) for z in range(-1037,-1034)}
+  p=fixture(old,originals={'castle':dict(old),'bridge':{}})
+  for x in range(1258,1262):p.put(x,91,-1034,'minecraft:stone')
   with self.assertRaisesRegex(ValueError,'Complete castle'):validate(p)
 
  def test_stairlike_mod_profile_is_not_ignored_because_of_its_name(self):

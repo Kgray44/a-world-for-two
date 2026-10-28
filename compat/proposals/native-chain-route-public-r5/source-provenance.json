@@ -1,0 +1,7 @@
+{
+  "format": "awft-owned-versioned-release-pack-fix:1",
+  "public_predecessor": "compat/proposals/native-chain-route-public-r4/NativeChainRouteSupport.java",
+  "public_predecessor_sha256": "f4b9bed3711a951dd13340d67b728cd501cf7d79d8716460df4ad48d61b4a934",
+  "source_sha256": "7e6620e1b9c8762aa68d73ff8f912823936586cb7f697b4cb3d5d7732fb1f7f0",
+  "scope": "Only validate actual owned versioned release manifest against candidate active installed request; no other helper behavior/version/JAR/runtime changes"
+}

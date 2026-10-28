@@ -1,0 +1,23 @@
+{
+  "format": "awft-dense-tree-patch-source:1",
+  "created": "2026-10-28T16:06:03.123874+00:00",
+  "base_sources": {
+    "NativeTreeGrowthSupport": "cce647921a1a6bb07751e8883556ec71804306b053b6f9ba0ae9936832ffff77",
+    "TreeGrowthScope": "eeacf850d6cb4eb43732b83c847143819df6953b1ba89ad2aaf842034dc69ed1",
+    "TreeBeeAudit": "12dac3641b71c4af83a14183f3a0ec231eba244b5683f2f172b77f3380848c87"
+  },
+  "reserve_guard": {
+    "utc": "2026-10-28T16:06:02.9502487Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 119720452096,
+    "dFreeBytes": 285402578944,
+    "estimatedCBytes": 8388608,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "native_actions": 0,
+  "native_or_density_acceptance": false,
+  "API_compile": "PENDING",
+  "generator_sha256": "ed70ad83b91b53dfe0ab0ffadb4a648e79f6e2c72b2f0f316ebf490275985c05"
+}

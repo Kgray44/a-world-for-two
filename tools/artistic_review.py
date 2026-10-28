@@ -183,7 +183,7 @@ def native(home, command, *, plan_path=None, timeout=300):
         if not path.is_relative_to(layout.home.parents[2]) or path.stat().st_size>32*1024**2:
             raise UserError('Staging plan path/size differs')
         raw=path.read_bytes(); expected=hashlib.sha256(raw).hexdigest()
-        allowed=('awftengine setup '+expected,'awftengine commission '+expected,'awftengine close '+expected) if engineering else ('awftbuild place '+expected,'awftbuild verify '+expected,'awftbuild map '+expected,'awftbuild settle '+expected)
+        allowed=('awftengine setup '+expected,'awftengine commission '+expected,'awftengine close '+expected,'awftengine repair-radio '+expected) if engineering else ('awftbuild place '+expected,'awftbuild verify '+expected,'awftbuild map '+expected,'awftbuild settle '+expected)
         if command not in allowed:
             raise UserError('Native command must bind the exact source plan')
         plan=json.loads(raw)
@@ -212,6 +212,7 @@ def native(home, command, *, plan_path=None, timeout=300):
                 'two native button-driven open/close cycles passed at the reviewed angle; persistence and ship clearance remain separate',
                 'native button returned both previously open spans to closed, disassembled and idle; no program or angle was fabricated',
                 'native spans already closed and idle; no input sent')
+            completed = completed or result.get('status') == 'normal retained receiver lifecycle registration stable for40ticks; no input, setup, frequency, program or glue change; cycles/restart unqualified'
             completed = completed or result.get('status') == 'existing construction chunks queued through squaremap\'s native update mechanism'
             completed = completed or result.get('status') == 'normal native neighbor shapes reconciled; no source state, inventory or command replay'
             if (not completed

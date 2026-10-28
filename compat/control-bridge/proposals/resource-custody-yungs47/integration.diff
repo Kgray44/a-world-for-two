@@ -1,0 +1,24 @@
+--- active/LithostitchedSeedgenResources.java
++++ proposal/LithostitchedSeedgenResources.java
+@@ -94,9 +94,11 @@
+         };
+         try {
+             Class<?> type=pack.getClass();
++            // One exact native dynamic provider is inventoried through its own API.
++            var runtimeIds=YungLocatePackCustody.matches(pack)?YungLocatePackCustody.inventory(pack):null;
+             // An unknown subclass could override any listed/read resource method.
+             if(type!=PathPackResources.class&&type!=VanillaPackResources.class&&type!=CompositePackResources.class
+-                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class)
++                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null)
+                 throw new IOException("Unsupported actual PackResources implementation: "+type.getName()+" pack="+pack.packId());
+             // Check that a file-backed native pack is actually open, rather than
+             // allowing its logged failed-open path to masquerade as an empty pack.
+@@ -160,6 +162,8 @@
+                 for(var entry:directories.entrySet())for(String dir:entry.getValue())pack.listResources(PackType.SERVER_DATA,entry.getKey(),dir,collect);
+                 if(!ids.equals(nested))throw new IOException("Native file resource inventory is incomplete");
+                 ids.addAll(expected);
++            }else if(runtimeIds!=null) {
++                ids.addAll(runtimeIds);
+             }else if(type==EmptyPackResources.class) {
+                 // Exact pinned NeoForge class has no namespaces/resources/filters.
+                 try(InputStream input=EmptyPackResources.class.getResourceAsStream("EmptyPackResources.class")) {

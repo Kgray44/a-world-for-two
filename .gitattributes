@@ -10,5 +10,12 @@
 *.cmd text eol=crlf
 packwiz/** text=auto eol=lf
 compat/control-bridge/** text=auto eol=lf
+compat/qa-client/** text=auto eol=lf
+compat/proposals/**/*.java text eol=lf
+# Frozen proposal receipts pin literal source bytes, including retained CRLF.
+# Preserve those bytes in Git instead of silently changing their recorded hashes.
+compat/proposals/** -text whitespace=cr-at-eol
+compat/control-bridge/proposals/** -text whitespace=cr-at-eol
 # Unified diff context markers on otherwise empty lines are significant bytes.
-compat/proposals/**/*.patch whitespace=-blank-at-eol
+compat/proposals/**/*.patch whitespace=cr-at-eol,-blank-at-eol
+compat/proposals/**/*.diff whitespace=cr-at-eol,-blank-at-eol

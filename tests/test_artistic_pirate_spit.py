@@ -108,10 +108,17 @@ class PirateSpitContracts(unittest.TestCase):
         p=StreetProof();p.walks[1294,-1240]=63;p.blocks[1294,63,-1240]='minecraft:stone_bricks';p.owners[1294,63,-1240]='lanes'
         with self.assertRaisesRegex(UserError,'disconnected or over-steep'):validate(p)
 
-    def test_outdoor_nine_cap_is_not_hidden_by_owner_groups(self):
+    def test_outdoor_single_axis_border_is_allowed_without_owner_group_tricks(self):
         p=StreetProof()
         for x in range(1290,1300):p.blocks[x,63,-1250]='minecraft:andesite';p.owners[x,63,-1250]='different-group'
-        with self.assertRaisesRegex(ValueError,'outdoor nine-block'):validate(p)
+        validate(p)
+
+    def test_large_outdoor_uniform_field_is_not_hidden_by_owner_groups(self):
+        p=StreetProof()
+        for x in range(1290,1300):
+            for z in range(-1270,-1260):
+                p.blocks[x,63,z]='minecraft:andesite';p.owners[x,63,z]=str(x%2)
+        with self.assertRaisesRegex(ValueError,'outdoor multi-axis'):validate(p)
 
     def test_before_and_after_share_exact_positions_without_commands(self):
         p=SpitPlan(registry(),SavedFixture(),'f'*64)

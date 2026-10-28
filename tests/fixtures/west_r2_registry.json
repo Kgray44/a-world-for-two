@@ -1,0 +1,1226 @@
+{
+  "blocks": {
+    "chipped:boxed_dark_oak_planks": {},
+    "chipped:detailed_dark_oak_planks": {},
+    "dawnoftimebuilder:charred_spruce_beam": {
+      "axis_x": [
+        "true",
+        "false"
+      ],
+      "axis_y": [
+        "true",
+        "false"
+      ],
+      "axis_z": [
+        "true",
+        "false"
+      ],
+      "bottom": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:charred_spruce_roof_support": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:charred_spruce_timber_frame_pillar": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "dawnoftimebuilder:dark_oak_beam": {
+      "axis_x": [
+        "true",
+        "false"
+      ],
+      "axis_y": [
+        "true",
+        "false"
+      ],
+      "axis_z": [
+        "true",
+        "false"
+      ],
+      "bottom": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "farmersdelight:cutting_board": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "farmersdelight:dark_oak_cabinet": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "open": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_bench": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_chair": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_couch": {
+      "color": [
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_counter": {
+      "counter": [
+        "acacia_planks",
+        "andesite",
+        "bamboo_planks",
+        "birch_planks",
+        "blackstone",
+        "bricks",
+        "calcite",
+        "cherry_planks",
+        "crimson_planks",
+        "dark_oak_planks",
+        "deepslate",
+        "diorite",
+        "dripstone_block",
+        "granite",
+        "jungle_planks",
+        "mangrove_planks",
+        "oak_planks",
+        "quartz_block",
+        "smooth_stone",
+        "spruce_planks",
+        "warped_planks"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "type": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "handcrafted:dark_oak_desk": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_drawer": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right"
+      ],
+      "type": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "handcrafted:dark_oak_nightstand": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_shelf": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right"
+      ],
+      "type": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "handcrafted:dark_oak_table": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "shape": [
+        "single",
+        "center",
+        "north_center",
+        "east_center",
+        "south_center",
+        "west_center",
+        "north_south_center",
+        "east_west_center",
+        "north_east_corner",
+        "north_west_corner",
+        "south_east_corner",
+        "south_west_corner",
+        "north_side",
+        "east_side",
+        "south_side",
+        "west_side"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:stackable_book": {
+      "books": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "seed": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63",
+        "64",
+        "65",
+        "66",
+        "67",
+        "68",
+        "69",
+        "70",
+        "71",
+        "72",
+        "73",
+        "74",
+        "75",
+        "76",
+        "77",
+        "78",
+        "79",
+        "80",
+        "81",
+        "82",
+        "83",
+        "84",
+        "85",
+        "86",
+        "87",
+        "88",
+        "89",
+        "90",
+        "91",
+        "92",
+        "93",
+        "94",
+        "95",
+        "96",
+        "97",
+        "98",
+        "99",
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "109",
+        "110",
+        "111",
+        "112",
+        "113",
+        "114",
+        "115",
+        "116",
+        "117",
+        "118",
+        "119",
+        "120",
+        "121",
+        "122",
+        "123",
+        "124",
+        "125",
+        "126",
+        "127",
+        "128",
+        "129",
+        "130",
+        "131",
+        "132",
+        "133",
+        "134",
+        "135",
+        "136",
+        "137",
+        "138",
+        "139",
+        "140",
+        "141",
+        "142",
+        "143",
+        "144",
+        "145",
+        "146",
+        "147",
+        "148",
+        "149",
+        "150",
+        "151",
+        "152",
+        "153",
+        "154",
+        "155",
+        "156",
+        "157",
+        "158",
+        "159",
+        "160",
+        "161",
+        "162",
+        "163",
+        "164",
+        "165",
+        "166",
+        "167",
+        "168",
+        "169",
+        "170",
+        "171",
+        "172",
+        "173",
+        "174",
+        "175",
+        "176",
+        "177",
+        "178",
+        "179",
+        "180",
+        "181",
+        "182",
+        "183",
+        "184",
+        "185",
+        "186",
+        "187",
+        "188",
+        "189",
+        "190",
+        "191",
+        "192",
+        "193",
+        "194",
+        "195",
+        "196",
+        "197",
+        "198",
+        "199",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "209",
+        "210",
+        "211",
+        "212",
+        "213",
+        "214",
+        "215",
+        "216",
+        "217",
+        "218",
+        "219",
+        "220",
+        "221",
+        "222",
+        "223",
+        "224",
+        "225",
+        "226",
+        "227",
+        "228",
+        "229",
+        "230",
+        "231",
+        "232",
+        "233",
+        "234",
+        "235",
+        "236",
+        "237",
+        "238",
+        "239",
+        "240",
+        "241",
+        "242",
+        "243",
+        "244",
+        "245",
+        "246",
+        "247",
+        "248",
+        "249",
+        "250",
+        "251",
+        "252",
+        "253",
+        "254",
+        "255",
+        "256"
+      ]
+    },
+    "handcrafted:terracotta_thin_pot": {},
+    "handcrafted:wood_cup": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "pieces": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwdoors:dark_oak_cottage_door": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "upper",
+        "lower"
+      ],
+      "hinge": [
+        "left",
+        "right"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwlights:tavern_wall_lantern": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mcwroofs:dark_oak_lower_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "mcwroofs:dark_oak_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "mcwroofs:dark_oak_top_roof": {
+      "part": [
+        "pyramid",
+        "switched_0",
+        "switched_90",
+        "four_way",
+        "top_end_0",
+        "top_end_90",
+        "top_end_180",
+        "top_end_270",
+        "top_outer_0",
+        "top_outer_90",
+        "top_outer_180",
+        "top_outer_270",
+        "three_way_0",
+        "three_way_90",
+        "three_way_180",
+        "three_way_270"
+      ]
+    },
+    "mcwroofs:deepslate_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "mcwroofs:deepslate_top_roof": {
+      "part": [
+        "pyramid",
+        "switched_0",
+        "switched_90",
+        "four_way",
+        "top_end_0",
+        "top_end_90",
+        "top_end_180",
+        "top_end_270",
+        "top_outer_0",
+        "top_outer_90",
+        "top_outer_180",
+        "top_outer_270",
+        "three_way_0",
+        "three_way_90",
+        "three_way_180",
+        "three_way_270"
+      ]
+    },
+    "mcwroofs:spruce_lower_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "mcwroofs:spruce_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "mcwroofs:spruce_top_roof": {
+      "part": [
+        "pyramid",
+        "switched_0",
+        "switched_90",
+        "four_way",
+        "top_end_0",
+        "top_end_90",
+        "top_end_180",
+        "top_end_270",
+        "top_outer_0",
+        "top_outer_90",
+        "top_outer_180",
+        "top_outer_270",
+        "three_way_0",
+        "three_way_90",
+        "three_way_180",
+        "three_way_270"
+      ]
+    },
+    "mcwwindows:dark_oak_plank_window": {
+      "facing": [
+        "north",
+        "east"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom",
+        "top_l",
+        "top_m",
+        "top_r",
+        "mid_l",
+        "mid_m",
+        "mid_r",
+        "bot_l",
+        "bot_m",
+        "bot_r",
+        "single_l",
+        "single_m",
+        "single_r"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:andesite": {},
+    "minecraft:barrel": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "open": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:bookshelf": {},
+    "minecraft:brown_bed": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "occupied": [
+        "true",
+        "false"
+      ],
+      "part": [
+        "head",
+        "foot"
+      ]
+    },
+    "minecraft:brown_terracotta": {},
+    "minecraft:cartography_table": {},
+    "minecraft:cobbled_deepslate": {},
+    "minecraft:crafting_table": {},
+    "minecraft:dark_oak_planks": {},
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_wall_sign": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:dark_oak_wood": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:furnace": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "lit": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:gray_terracotta": {},
+    "minecraft:grindstone": {
+      "face": [
+        "floor",
+        "wall",
+        "ceiling"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "minecraft:light_gray_terracotta": {},
+    "minecraft:loom": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "minecraft:polished_andesite": {},
+    "minecraft:smoker": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "lit": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:spruce_planks": {},
+    "minecraft:spruce_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_brick_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stripped_dark_oak_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:stripped_spruce_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:stripped_spruce_wood": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "mythrais:curved_corbel_dark_oak": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "supplementaries:candle_holder": {
+      "candles": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "face": [
+        "floor",
+        "wall",
+        "ceiling"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "lit": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "supplementaries:globe_sepia": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "rotation": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "supplementaries:hourglass": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "light_level": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "supplementaries:jar": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "light_level": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    }
+  },
+  "provenance": "Exact property schemas read from the current pinned native artistic registry; no world seed, paths, MCA or player data."
+}

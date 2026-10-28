@@ -1,0 +1,17 @@
+# First eight living residents
+
+The candidate48 producer prepares one v3 LIFE inspection for the eight individually reviewed habitats in the retained `b498b28…` source. It preserves the existing population namespace and stable member UUIDs. It creates no Minecraft entity, durable intent, installed request, owner, profession or `NoAI` setting.
+
+The selected residents are one deer, bird, firefly, shima enaga, ladybug, koi, duck and sheltered improved cat. The exact 3,242 saved habitat cells were independently reread from checkpoint31, including the fish water volume, duck shore exit, retained leaf habitat and the cat’s source-backed shelter route. All match the original source. The complete world UUID census is bound to the **current checkpoint and actual v3 recipe**, rather than the earlier producer’s mistaken namespace argument. All eight requested UUIDs are absent. Saved durable managed intents are zero; the proposed total is eight of the unchanged cap of64.
+
+Eight successful tree terminal/outcome audits and their complete current saved BE fields establish zero **new** nests, stored bees or live bee UUIDs from those operations. This is not a global zero-bee claim. The original tree09 quarantine and failure receipts remain in the parent’s retained review folder; its independently recorded resolution authorizes no retry or world rollback. Any active quarantine still refuses this producer.
+
+The new explicit safety index retains the complete current bascule/towers/topside, Rosebridge, watermill, actual R5 sculpture and full service reservation, and complete western v2 cable/frames/stations/cliff approach. It never replaces geometric or fluid witnesses with a bounding rectangle. The accepted old-spit cat uses authenticated v3 authored-town authority; forest tree exclusions are not used to ban all town interiors.
+
+Readiness applies only to these eight exact habitat fields and their reviewed routes. It does not claim that the town, forest, artwork, animal behavior or the owner’s acceptance is complete. The four native readiness fields are scoped explicitly to those individual bare habitats under the parent’s delegated review.
+
+Run `python -m tools.artistic_first_life_requests48 inspect --home <owned-stage> --output <new-private-staging-folder>` to prepare the immutable inspection inputs. Actual installed candidate48 release, helper JAR and three native class resources are authenticated. No flat Packwiz artifact or fabricated class pin is created.
+
+The parent must run a real native full habitat verification, then review and install the inspection request and run its emitted typed command. The producer’s separate `seed` mode requires both the marked fresh full3,242-cell verification and the marked successful inspection for the exact request/recipe, including all eight actual admissibility observations and zero entity/ledger writes. It rejects stale, partial, mismatched or incompletely cleaned results. Only then can it emit a new seed request for parent review and execution. A passing inspection does not prove a successful spawn: ordinary native factories, collision/medium/footing checks, spawn hooks and finalization remain in the unchanged native controller.
+
+Five focused boundary tests cover actual future-field names, incomplete observations, changed request/class/recipe, prior writes, pending cleanup, stale proofs and incomplete habitat coverage. These are source tests. Native seeding, living AI behavior, appearance, persistence and resource effects require separate real observations and receipts.

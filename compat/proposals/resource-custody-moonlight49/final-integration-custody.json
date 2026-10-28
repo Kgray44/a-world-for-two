@@ -1,0 +1,60 @@
+{
+  "format": "awft-moonlight-custody-final-integration:1",
+  "created": "2026-10-28T15:52:21.479641+00:00",
+  "state": "SOURCE_AND_OFFLINE_API_PASS_NATIVE_LIFECYCLE_PENDING",
+  "frozen_base_sha256": "092b095e841972280caa48b866e26fa0ae28bf77507517efe14cce6f8d5dc8df",
+  "final_sources": {
+    "MoonlightCachePackCustody.java": "81ee382697909288181b33d8590d495a1bf7c61f25b289a91763c5c044adb2e9",
+    "LithostitchedSeedgenResources.java": "89c86c43fe4bbe15a9d8e05a64d2c7da41d115f3a5ff7c12aabadb70b1d04976",
+    "MoonlightRuntimePackProbe.java": "676c83867148bcaaf25db9f6b709f98a09938f5328596dffee4098aa45c73b07",
+    "integration.diff": "ed23bc3be8c01436452b69f2ac5d041c4c3f7b8f18d545cd53abe3d54909d7fe",
+    "README.md": "b4a431e929bf9c4aa6bcf41c0f72ef91f833377ce901f3fdd0ccaed10340050f",
+    "probe.py": "7ea9c9f197b6445fc82595a344785ccc98e5b818e4eddc8482c8b676c3844a49",
+    "LithostitchedSeedgenResources48-base.java.txt": "092b095e841972280caa48b866e26fa0ae28bf77507517efe14cce6f8d5dc8df"
+  },
+  "deterministic_transform_sha256": "22fce68801d504b8258463e8a3b501077708329f301f6b2a270045a59083f23f",
+  "historical_initial_draft": {
+    "file": "integration-custody.json",
+    "sha256": "7670038c99d8add80ec307c3401a344b5e7b5e20639e1f1044e6b45be3746734",
+    "role": "Retained initial draft only; proposed source hash is superseded by this additive final receipt"
+  },
+  "actual_api_receipt": {
+    "private_folder": "resource-moonlight49-offline-1793202326354560100",
+    "sha256": "1bf3db1426cda0f7d80658a828bfe069f206541f06ba57aa89b7a65ce830869a",
+    "compile_exit": 0,
+    "probe_exit": 0,
+    "initialized_empty_cache_case_passed": true
+  },
+  "prior_actual_api_receipt": {
+    "private_folder": "resource-moonlight49-offline-1793201719177397200",
+    "sha256": "2757e423f14ecb197f0a0b062c77cf0f9acdaa27ad28939ea3f189c65da98838"
+  },
+  "retained_failed_draft_folders": [
+    "resource-moonlight49-offline-1793201476847203500",
+    "resource-moonlight49-offline-1793201608400922500"
+  ],
+  "source_boundary_tests": {
+    "command": "python -m unittest tests.test_moonlight_custody_proposal -v",
+    "passed": 3,
+    "reported_seconds": 0.002
+  },
+  "native_world_or_network_actions": 0,
+  "active_source_mutations_by_this_proposal": 0,
+  "remaining_native_gates": [
+    "Real ModList/JAR/classloader/module access",
+    "Original generator initialization and stable lifecycle",
+    "Complete current ordered opened/effective provider list",
+    "Strict provisional/authenticated client/server fingerprint and semantic parity",
+    "Real packet acceptance, LOD generation and worker/logout cleanup"
+  ],
+  "reserve_guard": {
+    "utc": "2026-10-28T15:52:21.2966177Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 119962148864,
+    "dFreeBytes": 285434085376,
+    "estimatedCBytes": 2097152,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  }
+}

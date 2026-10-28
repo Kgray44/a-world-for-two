@@ -35,6 +35,8 @@ public final class SettlementCapture {
     private int worldgenExports;
     private boolean busy;
     private long renderedFrames;
+    private String readyCaptureKey;
+    private long readyCaptureFrame;
     private NativeXaeroView mapView;
     private PendingMapCapture pendingMapCapture;
     private static final Set<String> MAP_ACTIONS=Set.of("map-open","map-view","map-status","map-capture","map-close");
@@ -142,7 +144,10 @@ public final class SettlementCapture {
                 JsonArray pose=command.getAsJsonArray("position");
                 double x=pose.get(0).getAsDouble(),y=pose.get(1).getAsDouble(),z=pose.get(2).getAsDouble();
                 float yaw=command.get("yaw").getAsFloat(),pitch=command.get("pitch").getAsFloat();
-                if(!Double.isFinite(x+y+z+yaw+pitch) || x<800 || x>1600 || z< -1800 || z> -800 || y<48 || y>220 || Math.abs(yaw)>360 || Math.abs(pitch)>90)return;
+                // The authorized south-shore forest extends to the cliff foot
+                // near z=-616; the zipline starts at z=-760. Keep the surveyed
+                // private area finite while allowing native review of both.
+                if(!Double.isFinite(x+y+z+yaw+pitch) || x<800 || x>1600 || z< -1800 || z> -560 || y<48 || y>220 || Math.abs(yaw)>360 || Math.abs(pitch)>90)return;
                 String mode=command.get("gamemode").getAsString();if(!mode.equals("spectator") && !mode.equals("survival"))return;
                 completed.add(id);mc.options.hideGui=mode.equals("spectator");mc.options.pauseOnLostFocus=false;
                 mc.player.connection.sendCommand("gamemode "+mode);
@@ -154,17 +159,40 @@ public final class SettlementCapture {
             JsonArray position=command.getAsJsonArray("expected_position");
             double dx=mc.player.getX()-position.get(0).getAsDouble(),dy=mc.player.getY()-position.get(1).getAsDouble(),dz=mc.player.getZ()-position.get(2).getAsDouble();
             if(dx*dx+dy*dy+dz*dz>9)return;
+            // A teleport receipt proves the actor moved, not that the client
+            // received its native chunks. DH terrain alone cannot qualify a
+            // building screenshot. These are read-only client cache checks;
+            // no chunk request, world generation or fallback renderer is used.
+            JsonArray look=command.has("expected_look_at")?command.getAsJsonArray("expected_look_at"):position;
+            if(!nativeViewChunksPresent(mc,position) || !nativeViewChunksPresent(mc,look)) {
+                readyCaptureKey=null;return;
+            }
+            String readyKey=id+position+look;
+            if(!readyKey.equals(readyCaptureKey)) { readyCaptureKey=readyKey;readyCaptureFrame=renderedFrames;return; }
+            if(renderedFrames-readyCaptureFrame<30)return;
             if(root.getRoot().toFile().getUsableSpace()<32_212_254_720L+128*1024*1024L)return;
             if((long)mc.getMainRenderTarget().width*mc.getMainRenderTarget().height>8_388_608L)return;
             busy=true;captures++;completed.add(id);
             Map<String,Object> receipt=new LinkedHashMap<>();
             receipt.put("at",Instant.now().toString());receipt.put("evidence","Actual native Minecraft framebuffer; extra test-only capture helper installed");
             receipt.put("position",List.of(mc.player.getX(),mc.player.getY(),mc.player.getZ()));
+            receipt.put("native_camera_and_target_chunk_neighborhoods_present",true);
+            receipt.put("rendered_frames_after_native_chunk_readiness",renderedFrames-readyCaptureFrame);
             receipt.put("server",server);receipt.put("yaw",mc.player.getYRot());receipt.put("pitch",mc.player.getXRot());receipt.put("dimension",mc.level.dimension().location().toString());receipt.put("fps",mc.getFps());
             Screenshot.grab(mc.gameDirectory,"awft-qa-"+id+".png",mc.getMainRenderTarget(),message->{
                 try{receipt.put("native_result",message.getString());write(qa.resolve(id+".json"),receipt);}catch(Exception error){System.err.println("AWFT QA capture receipt: "+error);}finally{busy=false;}
             });
         }catch(Exception error){System.err.println("AWFT QA capture: "+error.getClass().getSimpleName()+": "+error.getMessage());}
+    }
+
+    private static boolean nativeViewChunksPresent(Minecraft mc,JsonArray point) {
+        if(point.size()!=3)return false;
+        double x=point.get(0).getAsDouble(),y=point.get(1).getAsDouble(),z=point.get(2).getAsDouble();
+        if(!Double.isFinite(x+y+z) || x<800 || x>1600 || z< -1800 || z> -560 || y<48 || y>320)return false;
+        int cx=Math.floorDiv((int)Math.floor(x),16),cz=Math.floorDiv((int)Math.floor(z),16);
+        for(int ox=-1;ox<=1;ox++)for(int oz=-1;oz<=1;oz++)
+            if(!mc.level.getChunkSource().hasChunk(cx+ox,cz+oz))return false;
+        return true;
     }
 
     private void mapAction(Minecraft mc,Path root,Path qa,String id,String server,String action,JsonObject command) {

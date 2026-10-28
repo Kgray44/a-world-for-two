@@ -1,0 +1,38 @@
+{
+  "format": "awft-proposed-runtime-resource-custody:1",
+  "active": false,
+  "native_world_actions": false,
+  "source_base_sha256": "d2e4649cf128c5573f7e5e48c2a4d5050ef80276a566ac0565a89ecd1178bc27",
+  "pinned_provider_jar_sha256": "375e0b2f988ab4f5bde182166c0f0b102377adc8f823660c24ade08b0b3cde56",
+  "pinned_provider_class_sha256": "eb26bbbc9e71adccff0e52ec00853c9506b24f9adc83f2f6a9b78cfdbd753ebd",
+  "offline_actual_api_probe_passed": true,
+  "native_full_loader_acceptance": false,
+  "strict_fingerprint_or_sharing_accepted": false,
+  "probe_receipt_sha256": "c65985db98beb1f4604c89425e61a6c56cc890dda7274b252c6b1fa38e4ff0c5",
+  "files": {
+    "integration.diff": {
+      "bytes": 1731,
+      "sha256": "a965a3d1c9a3f1460069e028dcce68335ae633d0a8cdcf213132f7c91f4b2553"
+    },
+    "LithostitchedSeedgenResources.java": {
+      "bytes": 25861,
+      "sha256": "092b095e841972280caa48b866e26fa0ae28bf77507517efe14cce6f8d5dc8df"
+    },
+    "probe.py": {
+      "bytes": 5139,
+      "sha256": "161f6396195b052fd8b3e997bd010325c645c63249f9ad4c9b848d049381b255"
+    },
+    "README.md": {
+      "bytes": 4840,
+      "sha256": "702c0487a3eea12fbc929035572518df3fc9ef988ae40ce0493772ac9c91532f"
+    },
+    "YungLocatePackCustody.java": {
+      "bytes": 4852,
+      "sha256": "b837a8b838211b7c0663a4f528f644f6f82d252ed7cc216c5337b238b34b72e4"
+    },
+    "YungRuntimePackProbe.java": {
+      "bytes": 4171,
+      "sha256": "4f59381b4c8e385ce528a79e99e4fe603766766f3a4915638a61db1e75d78ecb"
+    }
+  }
+}

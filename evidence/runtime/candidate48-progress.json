@@ -1,0 +1,232 @@
+{
+  "format": "awft-sanitized-private-native48-progress:1",
+  "at": "2026-10-28T15:48:55.496783+00:00",
+  "candidate": "0.1.0-candidate.48",
+  "bridge": "0.6.34",
+  "public_prerelease_unchanged": "0.1.0-candidate.31",
+  "final_release_published": false,
+  "full_goal_complete": false,
+  "pack_sha256": "0e5775d8d22771e97b34b5b9f508af7baf001e6371d80588315ef08261eeed0b",
+  "bridge_artifact": {
+    "bytes": 584264,
+    "sha256": "071fe778b27c9450c6a9a7b602825ee2ff19bfcdba9f23ba3cb24302bd6b4b1d"
+  },
+  "source_checks": {
+    "python_tests": 911,
+    "passed": 910,
+    "skipped": 1,
+    "seconds": 102.48,
+    "private_log_sha256": "e1cd9799b3dec95de7730e8b477a31de63e57fc7886b48bd026926cdc03c09cc",
+    "packwiz_entries": 208,
+    "packwiz_errors": 0,
+    "javascript_syntax": "passed"
+  },
+  "native_bridge": {
+    "radio_lifecycle_repair": {
+      "receipt": "engineering-result-8de08696-c249-4a08-984c-911603b45cf3.json",
+      "sha256": "96f2eb2c59d4e640c201441a29d37e2f1f7286c3321a0f3bd1504fd458840b12"
+    },
+    "repair_button_pulses": 0,
+    "two_real_cycles": {
+      "receipt": "engineering-result-c4938a49-07f8-4a24-8d92-b40546a3fa16.json",
+      "sha256": "7fe1289a42d9127048c1051b91e1d573dc670d5db21c71f78bdffc8e3e1f2bdf"
+    },
+    "cycles": 2,
+    "open_degrees": 55,
+    "current_restart_and_vessel_clearance": false
+  },
+  "fountain": {
+    "revised_body_real_fill_flow_stop_drain_reopen": {
+      "receipt": "fountain-result-f419b47b-32e5-44ae-b766-8fe5fb8a6dd1.json",
+      "sha256": "e7bf4ff1675f2e028fdac46b21b9930777731a3051ad6f1af1612bb5455572fb"
+    },
+    "functional_candidate": "0.1.0-candidate.47",
+    "candidate48_carved_addition_targets": 26,
+    "wet_composition_positions": 2532,
+    "post_ornament_restart_operation_unqualified": true
+  },
+  "forest": {
+    "native_new_candidate48_trees": [
+      {
+        "plot": "south48-continuation-10",
+        "receipt": "tree-growth-result-d984d596-687b-4a73-9971-37080bfa45a9.json",
+        "sha256": "c86d55ac6c2734cfc39d9abc4e8027e6bdc1009ebf81ea311b70406b351d1044"
+      },
+      {
+        "plot": "south48-continuation-11",
+        "receipt": "tree-growth-result-be72b5f9-516f-4bac-a45f-5b1b833f96b3.json",
+        "sha256": "54bc4c4b04c5135e65fb0383e0b6b4fd24a5e3dae78d7fc9e3e8f28537d5b094"
+      },
+      {
+        "plot": "south48-continuation-13",
+        "receipt": "tree-growth-result-1efb09b3-bbfe-4358-b27f-af655515394e.json",
+        "sha256": "f9f3bac127ecfce67c293877825e6d1ab6a3ee03aa7a97f7b0e8d4e2c38ad445"
+      },
+      {
+        "plot": "south48-continuation-14",
+        "receipt": "tree-growth-result-216072a4-af2f-4605-b42b-9d68335fe957.json",
+        "sha256": "552fd4ed8262f254e091f1fdfd21821174b375ba02ecb1096c1d278a03d40019"
+      },
+      {
+        "plot": "south48-continuation-15",
+        "receipt": "tree-growth-result-83ebeafe-c5c0-40f1-8d64-3418fe9b8e33.json",
+        "sha256": "d8a64ccb9e166d4769730782607e5998a4dc7b43b14d445e0be43aec7254283e"
+      },
+      {
+        "plot": "south48-continuation-16",
+        "receipt": "tree-growth-result-6fe721c7-fc57-4941-a05e-b6a523010bee.json",
+        "sha256": "59d70aceb26a4b23fdb6ce41024396b74013736f802d43d69bfa07525ee1dc26"
+      },
+      {
+        "plot": "south48-continuation-18",
+        "receipt": "tree-growth-result-8256bf5b-a742-4bc5-b6d9-716932800f89.json",
+        "sha256": "99d0ffb6d4b3ce9e183e038fca6b8037ef530597bcf184f460a3ea0d94149cdd"
+      },
+      {
+        "plot": "south48-continuation-19",
+        "receipt": "tree-growth-result-d73ac496-dd9b-406c-bae4-5f0e98150544.json",
+        "sha256": "9d0d990f85ff4ee327cc76907dd3b57b3a744aefe582ffe84139af87533ac478"
+      },
+      {
+        "plot": "south48-continuation-20",
+        "receipt": "tree-growth-result-c874e115-b861-457d-8da2-1e63ccee33b5.json",
+        "sha256": "236d665124aaedf6c8a3cb80a17ce557c815e605e3a4f3c4e2f10bf6cf0aa503"
+      },
+      {
+        "plot": "south48-continuation-21",
+        "receipt": "tree-growth-result-88c1c5d6-54e1-4c1f-8ff9-df7d73324e9f.json",
+        "sha256": "0826f1917fdb1e60ef859564823d8b9b4e67c8432bf442e108987a420cb1a25e"
+      },
+      {
+        "plot": "south48-continuation-22",
+        "receipt": "tree-growth-result-bea784da-8189-471a-9c3f-8cd549360a0a.json",
+        "sha256": "db3a976fec4b82b7987ed634ca05b1bdfc913e43addcfa198250c8b4a8e67feb"
+      },
+      {
+        "plot": "south48-continuation-23",
+        "receipt": "tree-growth-result-14adddc1-8697-4cb5-ae63-ff2fcc2e1480.json",
+        "sha256": "0cf27608ae085b754ec8ffcde9d3285c1567ea56a89a7b9c6a9fc219eeb6c008"
+      },
+      {
+        "plot": "south48-continuation-24",
+        "receipt": "tree-growth-result-f774b71a-b0f0-42f0-ac0b-d303409387a9.json",
+        "sha256": "b7bc1e53693a4aa5f5c0004903521ae1525778888ccdfdb460b3d9f7962244be"
+      },
+      {
+        "plot": "south48-continuation-25",
+        "receipt": "tree-growth-result-5f5132a5-20c6-49a3-b16e-e7c8844a3c67.json",
+        "sha256": "bf8fd6933379be556b56ab3fd1fa5ba83cf20b524cb5748bbecd2ef18fda09da"
+      }
+    ],
+    "held": [
+      {
+        "plot": "south48-continuation-12",
+        "stage": "full-state native preimage refusal; no retry",
+        "receipt": "tree-growth-result-1687462a-1345-48ed-9a16-9421138c4829.json",
+        "sha256": "c0f622b39fea320a3be38bf295a1a5fc85e772ee022aa9ea65dd89ba023dfd39"
+      },
+      {
+        "plot": "south48-continuation-17",
+        "stage": "native before-field mismatch; no growth attempt"
+      }
+    ],
+    "whole_south_shore_complete": false,
+    "native_visual_ecology_and_current_persistence_accepted": false
+  },
+  "botanical": {
+    "new_states_placed_and_settled": 3284,
+    "native_after_receipts": [
+      "settlement-result-0aba16a2-2cc5-4758-8bab-2a37c4a7da9f.json",
+      "settlement-result-8204d66d-b935-402a-a7c1-1c315f868886.json",
+      "settlement-result-a401fce7-585d-4ec9-b712-6de37434e54e.json"
+    ],
+    "held_sector": {
+      "states": 396,
+      "reason": "native before-field mismatch; no placement"
+    },
+    "townwide_pass_complete": false
+  },
+  "living_life": {
+    "native_seed": {
+      "receipt": "habitat-life-result-9107e8fc-0901-4699-95d9-4651f047bae6.json",
+      "sha256": "bd709e1e53df5f0b1653ed7b55dcb876a27bc65470b495b3831965c4e366b7e0"
+    },
+    "actual_added": 7,
+    "failures": 0,
+    "normal_AI_flags": true,
+    "cleanup_passed": true,
+    "forced_daytime_firefly": false,
+    "villagers_added": 0,
+    "behavior_visual_restart_and_population_complete": false
+  },
+  "north_city": {
+    "whole_bank_needs_same_dense_Tortuga_style": true,
+    "buildings_should_occupy_most_buildable_ground": true,
+    "narrow_irregular_alleys_not_paving_filler": true,
+    "full_bank_artistic_acceptance": false,
+    "additional_quill_cluster": {
+      "buildings": 4,
+      "scenes": 9,
+      "main_floor_columns": 326,
+      "narrow_alley_columns": 70,
+      "native_placement_settlement_full_check": true,
+      "whole_bank_artistic_acceptance": false
+    }
+  },
+  "remaining": [
+    "continuous dense north-bank architecture and full3D relief",
+    "whole south-shore woodland and complete botanical/living LIFE",
+    "western zipline native construction and ride",
+    "train station refinement, assembled trains and complete route/loop",
+    "Hypertube and pneumatic commissioning, passenger travel and restart",
+    "full detailed fleet and actual sailing craft",
+    "current mechanism restart and safe vessel clearance",
+    "strict SeedGen parity and map integration",
+    "current multiplayer, travel, graphics and sustained performance",
+    "clean matching public Prism import and final release",
+    "selective cleanup after completion"
+  ],
+  "native_images": [
+    {
+      "path": "docs/images/native48/hypertube-line.png",
+      "sha256": "b64d3227f85ada09810f525853cdf6540d26c23d7b85c4ec1592e196b3cf5a04",
+      "bytes": 3035587,
+      "evidence": "Unchanged actual native Minecraft framebuffer",
+      "candidate": "0.1.0-candidate.48",
+      "qa_version": "0.1.8",
+      "native_chunks_present": true,
+      "current_functional_or_whole_world_acceptance": false
+    },
+    {
+      "path": "docs/images/native48/fisherman-counter.png",
+      "sha256": "61d3e011453b4cbe38f47d33c488cebe2b4360ee31ec5a0b557064458d395bac",
+      "bytes": 2012917,
+      "evidence": "Unchanged actual native Minecraft framebuffer",
+      "candidate": "0.1.0-candidate.48",
+      "qa_version": "0.1.8",
+      "native_chunks_present": true,
+      "current_functional_or_whole_world_acceptance": false
+    }
+  ],
+  "latest_retained_checkpoint": {
+    "id": "20261028T161905Z-06e1e7",
+    "sha256": "b0315f548e55a389bb01a3caeb4c5a8532abb3e6599f6a0a77785c6c4916dece",
+    "archive_bytes": 243170766,
+    "source_bytes": 330756534,
+    "files": 665,
+    "normal_stop_verified": true,
+    "history_pruned": false
+  },
+  "latest_owner_scope": {
+    "pirate_city_top_priority": true,
+    "all_expansions_unaccepted_until_original_style_and_irregular_dense_layout_match": true,
+    "mature_forest_spacing_metres": [
+      4,
+      5
+    ],
+    "forest_east_extent_matches_north_land_east_edge": true,
+    "requested_living_population": "several thousand real living creatures with normal AI",
+    "requested_greenery": "many thousand; full forest and town pass",
+    "currently_achieved": false
+  }
+}

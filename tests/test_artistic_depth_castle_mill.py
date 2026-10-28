@@ -104,8 +104,8 @@ class PhysicalDepthTests(unittest.TestCase):
         with self.assertRaisesRegex(UserError,'support path'):supported_geometry(p)
 
     def test_material_rule_checks_complete_predecessor_not_only_the_layer(self):
-        states={(1250+x,100,-1000):'minecraft:oak_door[facing='+('north' if x%2 else 'east')+
-                ',half=lower,hinge=left,open=false,powered=false]' for x in range(10)}
+        states={(1250+x,100+y,-1000):'minecraft:oak_door[facing='+('north' if x%2 else 'east')+
+                ',half=lower,hinge=left,open=false,powered=false]' for x in range(4) for y in range(4)}
         p=Depth('castle',self.registry,states,Saved(states))
         with self.assertRaisesRegex(ValueError,'material run rule'):validate(p)
 

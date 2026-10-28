@@ -20,7 +20,7 @@ from control_room.common import UserError, digest, utcnow
 from tools.artistic_street import StreetPlan, rectangle, layer, edge, GUARD, MAX_BUNDLE, MIB
 from tools.artistic_cottages import framed_room, roof, window, door, stair
 from tools.artistic_street_life import Life, DISPLAY_ARTIFACTS, bed_pairs
-from tools.artistic_materials import require_material_rule, material_runs
+from tools.artistic_materials import require_material_rule, require_outdoor_rule
 
 
 ORIGIN = (1136, 67, -1118)
@@ -366,9 +366,8 @@ def check(d):
             if d.p.blocks.get((x,yy,z),'minecraft:air').split('[',1)[0] not in allowed:blocked.append([x,yy,z])
     if blocked:raise UserError('Furnished craft lane blocks its preserved body route: '+str(blocked[:10]))
     materials=[require_material_rule({p:s for p,s in d.p.blocks.items() if d.p.owners[p]==lot.name},lot.name) for lot in lots()]
-    excessive=[r for r in material_runs(d.p.blocks) if r['exceeds_nine']]
-    if excessive:raise UserError('Craft outdoor material run exceeds nine: '+str(excessive[:5]))
-    return {'materials':materials,'all_authored_outdoor_runs_at_most_nine':True,'reserved_body_cells':len(d.p.navigation),'blocked':[],'complete_beds':bed_pairs(d),
+    outdoor=require_outdoor_rule(d.p.blocks,'craft lane outdoors')
+    return {'materials':materials,'outdoor_material_rule':outdoor,'reserved_body_cells':len(d.p.navigation),'blocked':[],'complete_beds':bed_pairs(d),
             'continuous_cottage_to_bascule_path':lane_access(d.p),'furnished_room_access':room_access(d.p),
             'exact_exclusion_masks':d.p.mask_provenance,'reviewed_cottage_air_connector_cells':[list(p) for p in sorted(d.p.connector_overrides)],'native_walking_and_artistic_acceptance':'pending'}
 

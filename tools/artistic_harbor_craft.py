@@ -16,7 +16,7 @@ import uuid
 
 from control_room.common import Layout, REPO, UserError, atomic_write, digest, read_json, utcnow
 from control_room.storage import Storage
-from tools.artistic_materials import material_runs, require_material_rule
+from tools.artistic_materials import require_outdoor_rule, require_material_rule
 from tools.settlement import Plan
 from tools.settlement_maritime_attractions import (
     AIR, WATER, COG_NAME, COG_POSITION, SMALLSHIPS_SOURCE,
@@ -220,8 +220,7 @@ def proposal(registry, survey, existing_document, backup):
     routes, walking = landing(p)
     composite = {**existing, **p.blocks}
     material = require_material_rule(p.blocks, NAME)
-    if any(row['exceeds_nine'] for row in material_runs(composite)):
-        raise UserError('The addition joins an outdoor harbor material run longer than nine')
+    require_outdoor_rule(composite,'combined authored harbor')
     clearance = {}
     shapes = regions()
     for boxes in shapes.values():

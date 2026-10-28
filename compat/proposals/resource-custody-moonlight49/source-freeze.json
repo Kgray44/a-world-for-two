@@ -1,0 +1,56 @@
+{
+  "format": "awft-original-source-freeze:1",
+  "created": "2026-10-28T15:52:21.483213+00:00",
+  "status": "FROZEN_REVIEWABLE_SOURCE_OFFLINE_API_PASS_NATIVE_PENDING",
+  "base_sha256": "092b095e841972280caa48b866e26fa0ae28bf77507517efe14cce6f8d5dc8df",
+  "files": {
+    "compat/proposals/resource-custody-moonlight49/final-integration-custody.json": {
+      "bytes": 2928,
+      "sha256": "1f97e3be79ba1a9754807f1407461dbb1c18e00f259f97aac60c98faa23a95be"
+    },
+    "compat/proposals/resource-custody-moonlight49/integration-custody.json": {
+      "bytes": 711,
+      "sha256": "7670038c99d8add80ec307c3401a344b5e7b5e20639e1f1044e6b45be3746734"
+    },
+    "compat/proposals/resource-custody-moonlight49/integration.diff": {
+      "bytes": 7341,
+      "sha256": "ed23bc3be8c01436452b69f2ac5d041c4c3f7b8f18d545cd53abe3d54909d7fe"
+    },
+    "compat/proposals/resource-custody-moonlight49/LithostitchedSeedgenResources.java": {
+      "bytes": 29974,
+      "sha256": "89c86c43fe4bbe15a9d8e05a64d2c7da41d115f3a5ff7c12aabadb70b1d04976"
+    },
+    "compat/proposals/resource-custody-moonlight49/LithostitchedSeedgenResources48-base.java.txt": {
+      "bytes": 25861,
+      "sha256": "092b095e841972280caa48b866e26fa0ae28bf77507517efe14cce6f8d5dc8df"
+    },
+    "compat/proposals/resource-custody-moonlight49/MoonlightCachePackCustody.java": {
+      "bytes": 10210,
+      "sha256": "81ee382697909288181b33d8590d495a1bf7c61f25b289a91763c5c044adb2e9"
+    },
+    "compat/proposals/resource-custody-moonlight49/MoonlightRuntimePackProbe.java": {
+      "bytes": 9899,
+      "sha256": "676c83867148bcaaf25db9f6b709f98a09938f5328596dffee4098aa45c73b07"
+    },
+    "compat/proposals/resource-custody-moonlight49/probe.py": {
+      "bytes": 5511,
+      "sha256": "7ea9c9f197b6445fc82595a344785ccc98e5b818e4eddc8482c8b676c3844a49"
+    },
+    "compat/proposals/resource-custody-moonlight49/README.md": {
+      "bytes": 5820,
+      "sha256": "b4a431e929bf9c4aa6bcf41c0f72ef91f833377ce901f3fdd0ccaed10340050f"
+    },
+    "tests/test_moonlight_custody_proposal.py": {
+      "bytes": 1912,
+      "sha256": "b8836a513ada9f96517047f3f290640ad45847d188e6474e34f90a79241b2160"
+    },
+    "tools/artistic_moonlight_custody_proposal.py": {
+      "bytes": 7350,
+      "sha256": "22fce68801d504b8258463e8a3b501077708329f301f6b2a270045a59083f23f"
+    }
+  },
+  "final_actual_api_result_sha256": "1bf3db1426cda0f7d80658a828bfe069f206541f06ba57aa89b7a65ce830869a",
+  "final_integration_custody_sha256": "1f97e3be79ba1a9754807f1407461dbb1c18e00f259f97aac60c98faa23a95be",
+  "native_actions": 0,
+  "build_install_publish_actions": 0
+}

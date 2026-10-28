@@ -13,7 +13,7 @@ from pathlib import Path
 from control_room.common import Layout, REPO, UserError, digest, utcnow
 from control_room.storage import Storage, tree_size
 
-VERSION = "0.1.6"
+VERSION = "0.1.8"
 MAX_BYTES = 16 * 1024**2
 JDK = Path(r"C:\Program Files\Java\jdk-21.0.10\bin")
 API_PINS = {

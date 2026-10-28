@@ -1,0 +1,49 @@
+{
+  "format": "awft-retained-radio-lifecycle-source-freeze:1",
+  "status": "REVIEWABLE UNINSTALLED PROPOSAL",
+  "active_47_Java_or_Control_Room_changed": false,
+  "native_or_world_actions": 0,
+  "new_button_inputs": 0,
+  "root_cause_timing_confirmed": false,
+  "pinned_Create_jar_sha256": "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a",
+  "base_EngineeringSupport_sha256": "5cca33b8cdb9363b574fbefad02f132c0e4d02de9cf3b5e15b82b3cf4c0f682c",
+  "base_Control_Room_server_sha256": "f3eda64f690239713499e49e80d206c6e05bf50483c4a7a8a61966fb4ec8f917",
+  "files": {
+    "EngineeringSupport.java": {
+      "bytes": 50109,
+      "sha256": "24d36a411e2e96a23e40a1719599fcf6891f8612693bde44093fac026e748f47"
+    },
+    "NativeRadioLifecycle.java": {
+      "bytes": 12882,
+      "sha256": "e7d635c3004424fb54e13ebf722b56c5f856b8c35eafb0c49cdf863a671fc5cd"
+    },
+    "RadioLifecycleFacts.java": {
+      "bytes": 1320,
+      "sha256": "8f92beceac979e00e5c45960d0136bb937610bf167fce2f6986338caf1d18dc8"
+    },
+    "RadioLifecycleProbe.java": {
+      "bytes": 1931,
+      "sha256": "6c30d1271dc36e64edb0f5d7b09c2a2e4d0e1834abe0c439e53bef2bc7bd2b8f"
+    },
+    "server.py.proposed": {
+      "bytes": 23718,
+      "sha256": "dc7b899cd1d683ecfbab4473430f2dee58f18bf71c5594d69cd4a814a09b57f6"
+    },
+    "server-command-allowlist.patch": {
+      "bytes": 3111,
+      "sha256": "c91348398c6b9f15497ca2f219451ec7f5630a42f4fd5e2afcdf6eb4b29bfd37"
+    },
+    "EngineeringSupport.patch": {
+      "bytes": 19374,
+      "sha256": "b3d3ca26c99ad41da97c72b7de507717e7e6b904707dceb8ee7f95832d5b78bb"
+    },
+    "README.md": {
+      "bytes": 5614,
+      "sha256": "95d218b67c0922bdeaf1179d76f55e088545d15bb3f329521204d8334fb713a1"
+    }
+  },
+  "python_proposed_dispatch_tests_passed": 4,
+  "Java_pure_branch_assertions_passed": 15,
+  "final_actual47_API_compile_receipt_sha256": "c8ab4ffb680abca67589b98a8e21a2acffa8b5a34490f14fdf8164e4d9795691",
+  "actual_runtime48_class_metadata_required": true
+}

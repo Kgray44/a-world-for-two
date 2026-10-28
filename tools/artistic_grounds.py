@@ -10,7 +10,7 @@ import subprocess
 
 from control_room.common import UserError, digest, utcnow
 from tools.artistic_street import StreetPlan, GUARD, MAX_BUNDLE, MIB
-from tools.artistic_materials import material_runs
+from tools.artistic_materials import require_outdoor_rule
 from tools.settlement_attractions import BackupWorld
 
 
@@ -123,8 +123,7 @@ def construct(registry,snapshot,exclusions):
 
 
 def check(p):
-    long=[r for r in material_runs(p.blocks) if r['exceeds_nine']]
-    if long:raise UserError('Outdoor grounds material run exceeds nine: '+str(long[:4]))
+    require_outdoor_rule(p.blocks,'outdoor grounds')
     for (x,z),f in p.path.items():
         for y in (f+1,f+2):
             if p.blocks.get((x,y,z),p.snapshot.state((x,y,z)))!='minecraft:air':raise UserError('A garden detail obstructs the actual two-wide route')

@@ -1,0 +1,33 @@
+{
+  "format": "awft-life-spawn-diagnostic-proposal:1",
+  "created": "2026-10-28T14:33:12.233804+00:00",
+  "base_sha256": "b90b7b1f92ac170a8c5ea6383970fc72ff56ca51347c590ed819bfd6f69551f9",
+  "generator_sha256": "1157a9bcf10f7bf6f0fa9790524f0871df64443b59aa9a88629c0e9e5516da0a",
+  "native_actions": 0,
+  "installed": false,
+  "API_compile_pending": true,
+  "reserve_guard": {
+    "utc": "2026-10-28T14:33:12.0204531Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 120170348544,
+    "dFreeBytes": 285515800576,
+    "estimatedCBytes": 2097152,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "files": {
+    "NativeHabitatLifeSupport.java": {
+      "bytes": 68043,
+      "sha256": "f7bcc9844ea6b25bab24349b8f7c9030b6feaef764b03ebb0557509a6687678a"
+    },
+    "NativeHabitatLifeSupport.patch": {
+      "bytes": 5173,
+      "sha256": "6b03880346021005922a1018f867d6ee74d4fdcfd817c1d42e22575b5c9c1dbe"
+    },
+    "README.md": {
+      "bytes": 904,
+      "sha256": "10429dcce447f83d9f82a9199a71113c91c7107f1fd21a19634ce5d0cc795549"
+    }
+  }
+}

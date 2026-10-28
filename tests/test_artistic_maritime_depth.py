@@ -69,8 +69,9 @@ class MaritimeDepthCustody(TestCase):
 
     def test_full_existing_building_participates_in_material_rule(self):
         bases={name:{} for name in ENVELOPES}
-        bases['drowned-rose']={(x,64,-1280):'minecraft:dark_oak_planks' for x in range(1291,1300)}
-        p=fixture(bases);p.group='drowned-rose';p.put(1300,64,-1280,'minecraft:dark_oak_planks')
+        bases['drowned-rose']={(x,y,-1280):'minecraft:dark_oak_planks' for x in range(1291,1295) for y in range(64,67)}
+        p=fixture(bases);p.group='drowned-rose'
+        for x in range(1291,1295):p.put(x,67,-1280,'minecraft:dark_oak_planks')
         with self.assertRaisesRegex(ValueError,'complete depth composite'):validate(p)
 
     def test_overlay_does_not_mutate_immutable_base(self):

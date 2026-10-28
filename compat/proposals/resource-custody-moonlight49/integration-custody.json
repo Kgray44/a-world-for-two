@@ -1,0 +1,18 @@
+{
+  "created": "2026-10-28T15:26:51.596837+00:00",
+  "base_sha256": "092b095e841972280caa48b866e26fa0ae28bf77507517efe14cce6f8d5dc8df",
+  "generator_sha256": "2525162aa940f6a743616829919c098a3f898e01dfdb68029199ef518b7ea03d",
+  "native_actions": 0,
+  "active_files_edited": 0,
+  "reserve_guard": {
+    "utc": "2026-10-28T15:26:51.3267232Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 120025317376,
+    "dFreeBytes": 285455884288,
+    "estimatedCBytes": 2097152,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "proposed_source_sha256": "f15e0b7c763291e4141a7f0d8ade8b7780fad670ea732a685b0e2566dd17e1dc"
+}

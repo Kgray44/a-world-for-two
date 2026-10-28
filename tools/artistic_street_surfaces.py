@@ -16,7 +16,7 @@ import re
 import subprocess
 
 from control_room.common import UserError, digest, utcnow
-from tools.artistic_materials import material_runs
+from tools.artistic_materials import require_outdoor_rule
 from tools.artistic_street import designs, GUARD, MAX_BUNDLE, MIB
 from tools.artistic_street_life import construct as lived_in, check as life_check, native_delta as life_delta
 from tools.artistic_street_details import Details
@@ -55,9 +55,7 @@ def construct(registry):
     # Original life checks still examine the complete furnished geometry.
     original.p = d.p
     checks = life_check(original)
-    excessive = [row for row in material_runs(d.p.blocks) if row['exceeds_nine']]
-    if excessive:
-        raise UserError('Authored street still has a run longer than nine: '+str(excessive[:8]))
+    require_outdoor_rule(d.p.blocks,'authored street surfaces')
     return d, changes, checks
 
 
@@ -94,7 +92,7 @@ def prepare(home, registry_path, r3_path, output, backup_sha):
         'source_sha256': digest(Path(__file__)), 'baseline_r3_sha256': R3_SHA, 'plan_sha256': sha,
         'reviewed_staging_backup_sha256': backup_sha, 'placements': len(changes), 'block_entities_replayed': 0,
         'declared_x_joint_stations': list(X_JOINTS), 'declared_z_joint_stations': list(Z_JOINTS),
-        'all_authored_material_runs_at_most_nine': True, 'complete_building_rules': checks['materials'],
+        'outdoor_material_rule': require_outdoor_rule(d.p.blocks,'authored street surfaces'), 'complete_building_rules': checks['materials'],
         'furniture_and_circulation_checks': checks, 'storage_guard': reserve,
         'changes': [{'local': list(p)}|v for p, v in sorted(changes.items())],
         'visual_status': 'Pending actual native review of outdoor paving and garden composition; no artistic acceptance inferred'}

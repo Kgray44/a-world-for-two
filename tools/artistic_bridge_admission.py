@@ -9,6 +9,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import struct
 import uuid
 import zipfile
@@ -75,6 +76,40 @@ class TypedNBTReader(NBTReader):
         return [kind, value]
 
 
+def entity_chunk_record(raw, sector, count, expected_chunk):
+    """Read one complete native entity record, including valid unpadded EOF.
+
+    RegionFile may leave the final allocated sector physically unpadded. Only
+    its unused tail is optional: header, declared payload, EOF and NBT remain
+    mandatory. No file is padded, extracted, repaired or changed here.
+    """
+    offset = sector*4096
+    rounded_end = ((len(raw)+4095)//4096)*4096
+    if sector < 2 or not count or (sector+count)*4096 > rounded_end or offset+5 > len(raw):
+        raise UserError('Bad entity region sector')
+    length = int.from_bytes(raw[offset:offset+4], 'big')
+    if not 1 < length <= count*4096-4 or offset+4+length > len(raw):
+        raise UserError('Bad or incomplete entity chunk length')
+    mode, packed = raw[offset+4], raw[offset+5:offset+4+length]
+    if mode not in (1, 2, 3):
+        raise UserError('Unsupported entity compression')
+    if mode == 3:
+        decoded = packed
+    else:
+        decoder = zlib.decompressobj(31 if mode == 1 else 15)
+        decoded = decoder.decompress(packed, MAX_CHUNK+1)
+        if decoder.unconsumed_tail or decoder.unused_data or not decoder.eof:
+            raise UserError('Entity chunk exceeds bound, has trailing compressed data or is truncated')
+    if len(decoded) > MAX_CHUNK:
+        raise UserError('Entity chunk exceeds bound')
+    plain, typed = NBTReader(decoded).read(), TypedNBTReader(decoded).read()
+    if (plain.get('DataVersion') != 3955 or plain.get('Position') != list(expected_chunk)
+            or typed[1].get('DataVersion') != [3, 3955]
+            or typed[1].get('Position') != [11, list(expected_chunk)]):
+        raise UserError('Exact native entity chunk coordinates, types and DataVersion3955 required')
+    return plain, typed
+
+
 def saved_glue(home, registry, checkpoint_id, checkpoint_sha):
     """Authenticate complete ZIP and bounded entity members; no live MCA access."""
     path = home/'backups'/(checkpoint_id+'.zip')
@@ -100,20 +135,14 @@ def saved_glue(home, registry, checkpoint_id, checkpoint_sha):
             # no saved chunks. Any nonempty truncated header remains a failure.
             if len(raw) == 0: continue
             if len(raw) < 8192: raise UserError('Truncated nonempty entity region header')
+            region_name = re.fullmatch(r'r\.(-?\d+)\.(-?\d+)\.mca', Path(record['path']).name)
+            if region_name is None: raise UserError('Exact native entity region filename required')
+            rx, rz = map(int, region_name.groups())
             for slot in range(1024):
                 loc = int.from_bytes(raw[4*slot:4*slot+4], 'big'); sector, count = loc >> 8, loc & 255
-                if not sector: continue
-                if sector < 2 or not count or (sector+count)*4096 > len(raw): raise UserError('Bad entity region sector')
-                offset = sector*4096; length = int.from_bytes(raw[offset:offset+4], 'big')
-                if not 1 < length <= count*4096-4: raise UserError('Bad entity chunk length')
-                mode, packed = raw[offset+4], raw[offset+5:offset+4+length]
-                if mode not in (1, 2, 3): raise UserError('Unsupported entity compression')
-                if mode == 3: decoded = packed
-                else:
-                    decoder = zlib.decompressobj(31 if mode == 1 else 15); decoded = decoder.decompress(packed, MAX_CHUNK+1)
-                    if decoder.unconsumed_tail or not decoder.eof: raise UserError('Entity chunk exceeds bound or is truncated')
-                if len(decoded) > MAX_CHUNK: raise UserError('Entity chunk exceeds bound')
-                plain, typed = NBTReader(decoded).read(), TypedNBTReader(decoded).read()
+                if not loc: continue
+                expected_chunk = (rx*32+(slot&31), rz*32+(slot>>5))
+                plain, typed = entity_chunk_record(raw, sector, count, expected_chunk)
                 entries = plain.get('Entities', [])
                 typed_entries = typed[1].get('Entities', [9, {'values': []}])[1]['values']
                 if len(entries) != len(typed_entries): raise UserError('Typed/untyped entity inventory differs')

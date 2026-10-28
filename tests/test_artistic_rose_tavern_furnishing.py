@@ -84,8 +84,9 @@ class RoseFurnishingCustody(TestCase):
         with self.assertRaisesRegex(UserError,'blocks an intimate scene approach'):validate(p)
 
     def test_material_limit_includes_retained_existing_building(self):
-        before={(x,65,-1279):'minecraft:oak_planks' for x in range(1291,1300)}
-        p=fixture(before);p.put(1300,65,-1279,'minecraft:oak_planks')
+        before={(x,y,-1279):'minecraft:oak_planks' for x in range(1291,1295) for y in range(65,68)}
+        p=fixture(before)
+        for x in range(1291,1295):p.put(x,68,-1279,'minecraft:oak_planks')
         with self.assertRaisesRegex(ValueError,'complete furnished/depth composite'):validate(p)
 
     def test_capstan_height_and_metadata_cannot_fake_floor_lighting(self):

@@ -16,7 +16,7 @@ import re
 
 from control_room.common import Layout, REPO, UserError, atomic_write, digest, read_json, utcnow, write_json
 from control_room.storage import Storage
-from tools.artistic_materials import material_runs, require_material_rule
+from tools.artistic_materials import require_outdoor_rule, require_material_rule
 from tools.artistic_ship import revision_plans
 from tools.settlement import Plan
 
@@ -153,13 +153,10 @@ class HarborPlan(Plan):
     def material_proof(self):
         proofs = [require_material_rule({pos: state for pos, state in self.blocks.items() if self.owners[pos] == zone}, zone)
                   for zone in sorted(set(self.owners.values()))]
-        # Scope boundaries never excuse an uninterrupted >9 run across outdoor
-        # paving, retaining work, pier boards or adjacent authored structures.
-        if violations := [row for row in material_runs(self.blocks) if row['exceeds_nine']]:
-            raise UserError('Complete harbor, including outdoor surfaces, exceeds nine: '+str(violations[:5]))
-        self.global_max9 = {'scope': 'Every authored harbor position, including outdoor surfaces',
-                            'positions': len(self.blocks), 'material_state_facing_ignored': True,
-                            'maximum_allowed_run': 9, 'violations': []}
+        # A scope boundary cannot hide a broad uniform field. Intentional
+        # one-axis quay borders, beams and roof edges have no length cap.
+        self.global_max9 = require_outdoor_rule(self.blocks,'complete authored harbor') | {
+                            'positions': len(self.blocks), 'material_state_facing_ignored': True}
         return proofs
 
     def encoded(self):

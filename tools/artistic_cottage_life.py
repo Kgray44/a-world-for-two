@@ -18,7 +18,7 @@ from control_room.common import UserError, digest, utcnow
 from tools.artistic_cottages import construct as cottage, check as cottage_check, ORIGIN, MAIN, BAKER, WEAVER, GLASS
 from tools.artistic_street import GUARD, MAX_BUNDLE, MIB
 from tools.artistic_street_life import Life, DISPLAY_ARTIFACTS, bed_pairs
-from tools.artistic_materials import material_runs
+from tools.artistic_materials import require_outdoor_rule
 
 
 BASELINE_SHA = '19b20bd76764f7cbd8c2f05706eab4149b93168f629ecd9c96a95a400911275c'
@@ -237,11 +237,9 @@ def access(d):
 
 
 def check(d):
-    excessive = [row for row in material_runs(d.p.blocks) if row['exceeds_nine']]
-    if excessive:
-        raise UserError('Authored cottage outdoor surface exceeds nine: '+str(excessive[:4]))
+    outdoor = require_outdoor_rule(d.p.blocks, 'authored cottage grounds')
     return {'cottage': cottage_check(d.p), 'furnished_access': access(d), 'complete_beds': bed_pairs(d),
-            'all_authored_outdoor_runs_at_most_nine': True}
+            'outdoor_material_rule': outdoor}
 
 
 def suspend_lights(d):

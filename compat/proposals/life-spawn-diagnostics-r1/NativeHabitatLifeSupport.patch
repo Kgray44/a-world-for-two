@@ -1,0 +1,40 @@
+--- native48/NativeHabitatLifeSupport.java
++++ diagnostic-only/NativeHabitatLifeSupport.java
+@@ -377,13 +377,35 @@
+     private boolean identity(Resident row,Entity entity){return entity instanceof Mob&&entity.level()==level&&entity.getType()==row.type&&entity.getClass().getName().equals(row.nativeClass)&&entity.getTags().contains("awft_life")&&entity.getTags().contains(row.tag)&&row.habitat.contains(entity.position());}
+     private Entity current(MinecraftServer server,UUID uuid){Entity found=null;for(ServerLevel dimension:server.getAllLevels()){Entity value=dimension.getEntity(uuid);if(value!=null){if(found!=null)throw new IllegalStateException("UUID is loaded in more than one dimension; preserve both");found=value;}}return found;}
+     private void flags(Mob mob,boolean newborn){boolean tame=false,owner=false;if(mob instanceof TamableAnimal pet){tame=pet.isTame();owner=pet.getOwnerUUID()!=null;}HabitatLifePolicy.live(mob.isNoAi(),mob.isPassenger()||!mob.getPassengers().isEmpty(),mob.isAlive(),newborn,tame,owner);if(mob instanceof Enemy)throw new IllegalStateException("Hostile native class refused");}
++    /** Failure-only observations; do not rerun a predicate or consume random. */
++    private IllegalStateException spawnRefusal(Resident row,Mob mob,String step){
++        Map<String,Object> facts=new LinkedHashMap<>();
++        facts.put("uuid",row.uuid.toString());facts.put("entity",row.id);facts.put("rejected_step",step);
++        facts.put("spawn_type","STRUCTURE");facts.put("predicates_reexecuted_for_diagnostics",0);
++        try{
++            BlockPos p=mob.blockPosition();BlockState below=level.getBlockState(p.below());
++            facts.put("block_position",List.of(p.getX(),p.getY(),p.getZ()));facts.put("below_state",below.toString());
++            facts.put("sky_light",level.getBrightness(net.minecraft.world.level.LightLayer.SKY,p));
++            facts.put("block_light",level.getBrightness(net.minecraft.world.level.LightLayer.BLOCK,p));
++            facts.put("raw_brightness_zero_sky_darken",level.getRawBrightness(p,0));
++            facts.put("max_local_raw_brightness",level.getMaxLocalRawBrightness(p));
++            facts.put("sky_darken",level.getSkyDarken());facts.put("day_time",level.getDayTime());
++            facts.put("is_day",level.isDay());facts.put("is_thundering",level.isThundering());
++            facts.put("can_see_sky",level.canSeeSky(p));
++            facts.put("biome",level.getBiome(p).unwrapKey().map(key->key.location().toString()).orElse("unregistered"));
++            if(row.id.equals("naturalist:firefly"))facts.put("below_in_native_firefly_spawn_tag",below.is(net.minecraft.tags.TagKey.<Block>create(net.minecraft.core.registries.Registries.BLOCK,ResourceLocation.parse("naturalist:fireflies_spawnable_on"))));
++        }catch(RuntimeException diagnosticError){facts.put("context_read_error",diagnosticError.toString());}
++        report.put("spawn_hook_failure",facts);
++        return new IllegalStateException("Ordinary native species spawn/position hook refused "+row.uuid+" at "+step);
++    }
+     private Mob preview(Resident row)throws Exception{
+         Entity created=row.type.create(level);if(!(created instanceof Mob mob)||!created.getClass().getName().equals(row.nativeClass))throw new IllegalStateException("Native entity factory/class differs");
+         mob.setUUID(row.uuid);mob.moveTo(row.x,row.y,row.z,0,0);flags(mob,true);classPin(row,mob);factoryTraits(row,mob,false);
+         for(var entry:row.before.entrySet())if(!level.getBlockState(entry.getKey()).equals(entry.getValue()))throw new IllegalStateException("Actual FULL habitat preimage changed at "+entry.getKey());
+         habitat(row,mob);
+-        if(!mob.checkSpawnObstruction(level)||!SpawnPlacements.checkSpawnRules(row.type,level,MobSpawnType.STRUCTURE,mob.blockPosition(),level.random)
+-            ||!EventHooks.checkSpawnPosition(mob,level,MobSpawnType.STRUCTURE))throw new IllegalStateException("Ordinary native species spawn/position hooks refused "+row.uuid);
++        if(!mob.checkSpawnObstruction(level))throw spawnRefusal(row,mob,"mob.checkSpawnObstruction");
++        if(!SpawnPlacements.checkSpawnRules(row.type,level,MobSpawnType.STRUCTURE,mob.blockPosition(),level.random))throw spawnRefusal(row,mob,"SpawnPlacements.checkSpawnRules");
++        if(!EventHooks.checkSpawnPosition(mob,level,MobSpawnType.STRUCTURE))throw spawnRefusal(row,mob,"EventHooks.checkSpawnPosition");
+         return mob;
+     }
+     private Map<String,Object> observation(Resident row,Mob mob,boolean existing)throws Exception{CompoundTag tag=mob.saveWithoutId(new CompoundTag());byte[] raw=tag.toString().getBytes(StandardCharsets.UTF_8);if(raw.length>65536)throw new IllegalStateException("Native resident NBT exceeds diagnostic bound");boolean owner=mob instanceof TamableAnimal pet&&pet.getOwnerUUID()!=null;return Map.of("uuid",row.uuid.toString(),"type",BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).toString(),"native_class",mob.getClass().getName(),"position",List.of(mob.getX(),mob.getY(),mob.getZ()),"existing_preserved",existing,"NoAI",mob.isNoAi(),"has_native_owner",owner,"native_nbt_sha256",sha(raw));}

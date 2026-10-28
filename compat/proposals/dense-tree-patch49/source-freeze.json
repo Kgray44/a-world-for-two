@@ -1,0 +1,89 @@
+{
+  "format": "awft-original-source-freeze:1",
+  "created": "2026-10-28T16:24:02.199835+00:00",
+  "status": "SOURCE_AND_REAL_API_PASS_NATIVE_PATCH_PENDING",
+  "files": {
+    "compat/proposals/dense-tree-patch49/DensePatchTransactionProbe.java": {
+      "bytes": 4218,
+      "sha256": "e0351f86bb1cd34469a296f882a0e1015d6f68314cf2b806eea2c6ebde920ed5"
+    },
+    "compat/proposals/dense-tree-patch49/initial-custody.json": {
+      "bytes": 924,
+      "sha256": "0d621e5dc4cb612c304043791c817db8bd6eccd53ddca24776da6db8b2b7556e"
+    },
+    "compat/proposals/dense-tree-patch49/NativeTreeGrowthSupport48-base.java.txt": {
+      "bytes": 41387,
+      "sha256": "cce647921a1a6bb07751e8883556ec71804306b053b6f9ba0ae9936832ffff77"
+    },
+    "compat/proposals/dense-tree-patch49/NativeTreePatchReadiness.java": {
+      "bytes": 5566,
+      "sha256": "abe05ea12dd0a140755757ab5070e37dcf099a139773602b30363238c6d20d90"
+    },
+    "compat/proposals/dense-tree-patch49/NativeTreePatchSupport.diff": {
+      "bytes": 53487,
+      "sha256": "01b3b45d727008c33050a10a93a51c1fead0409375f14eb20ad90996af8b132e"
+    },
+    "compat/proposals/dense-tree-patch49/NativeTreePatchSupport.java": {
+      "bytes": 55992,
+      "sha256": "da19efd2d19d48614e7b6295180ba919d8be30c70dc81ad589e4a9fccb315919"
+    },
+    "compat/proposals/dense-tree-patch49/probe.py": {
+      "bytes": 5209,
+      "sha256": "22a95cf9cbfa55d906c2b0e8c862c9ed97dc175ffb5acf11bcc94d6fda12fa4c"
+    },
+    "compat/proposals/dense-tree-patch49/README.md": {
+      "bytes": 7717,
+      "sha256": "bdb1524a8c876a6337390a4992ff262792a32c9fa62fadd01fdd877708a48a51"
+    },
+    "compat/proposals/dense-tree-patch49/TreeBeeAudit.diff": {
+      "bytes": 2269,
+      "sha256": "3fc9b88fdd2aad9d8c6cad9c2bba16aa785ee5d12b1c0a528aa3d5f55c45ff5c"
+    },
+    "compat/proposals/dense-tree-patch49/TreeBeeAudit.java": {
+      "bytes": 10756,
+      "sha256": "756ae9d853ef67e0c8d2ca6c4272932683e9bc3b5b94c1aa65f403fccb340aee"
+    },
+    "compat/proposals/dense-tree-patch49/TreeBeeAudit48-base.java.txt": {
+      "bytes": 10324,
+      "sha256": "12dac3641b71c4af83a14183f3a0ec231eba244b5683f2f172b77f3380848c87"
+    },
+    "compat/proposals/dense-tree-patch49/TreeGrowthScope.diff": {
+      "bytes": 4579,
+      "sha256": "ba54ade866f27d49826dfd522fd6d067baee41d18eb1f4a20961ff164e385ebf"
+    },
+    "compat/proposals/dense-tree-patch49/TreeGrowthScope.java": {
+      "bytes": 10062,
+      "sha256": "5a308c7812f8c27bc7a93cb704bf016cf098ed11d7d34b2f3839d914fd801773"
+    },
+    "compat/proposals/dense-tree-patch49/TreeGrowthScope48-base.java.txt": {
+      "bytes": 8136,
+      "sha256": "eeacf850d6cb4eb43732b83c847143819df6953b1ba89ad2aaf842034dc69ed1"
+    },
+    "tests/test_dense_tree_patch_proposal.py": {
+      "bytes": 3335,
+      "sha256": "bfe26ad2a5c83e6b02fc3d772a6ea55778eb93e5b76f9ab0d5c1d9d4e62b393f"
+    },
+    "tools/artistic_dense_tree_patch_proposal.py": {
+      "bytes": 33605,
+      "sha256": "c26dbcb033af43493c0f101bd0a8a62322629c182d5cdd170a507c46ea5e8aab"
+    },
+    "tools/native_dense_tree_patch.py": {
+      "bytes": 8377,
+      "sha256": "5688c257259979625c54a3b7b4b2d91698f12b4e19498ee3eab49207db0f8304"
+    }
+  },
+  "actual_API_result_sha256": "f18ee56bed3bbfd4507edc4afc382f00b519d78c155181de217d1497898002f6",
+  "actual_API_private_folder": "dense-tree-patch49-offline-1793204587598406500",
+  "focused_source_tests_passed": 4,
+  "prior_actual_API_result_sha256": "75bd152fd0179a570cd12a2a40e7b7b1f2b0d96ad72016f1bfd087bd44406924",
+  "prior_API_exact_source_copies_retained": true,
+  "native_actions": 0,
+  "build_install_actions": 0,
+  "native_remaining": [
+    "Current expanded eligible-land and prior-root custody review",
+    "Actual first patch inspect and grow",
+    "Loaded tags/normal native leaf overlap and before-after outcomes",
+    "Actual cancellation/pending-read cleanup",
+    "Mature density and remaining eligible-gap coverage map"
+  ]
+}

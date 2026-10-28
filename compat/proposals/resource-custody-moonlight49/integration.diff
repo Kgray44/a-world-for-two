@@ -1,0 +1,104 @@
+--- native48/LithostitchedSeedgenResources.java
++++ proposal/LithostitchedSeedgenResources.java
+@@ -76,6 +76,7 @@
+                 out.resource(id.toString(),resource::open);
+             }
+         }
++        for(var view:out.cachedViews)view.unchanged();
+         return new Attestation(identities,HexFormat.of().formatHex(out.digest.digest()),out.entries,out.bytes);
+     }
+     /** The native listing is cross-checked against a strict finite root walk:
+@@ -96,9 +97,11 @@
+             Class<?> type=pack.getClass();
+             // One exact native dynamic provider is inventoried through its own API.
+             var runtimeIds=YungLocatePackCustody.matches(pack)?YungLocatePackCustody.inventory(pack):null;
++            var moonlight=MoonlightCachePackCustody.matches(pack)?MoonlightCachePackCustody.inspect(pack):null;
++            if(moonlight!=null)out.cachedViews.add(moonlight);
+             // An unknown subclass could override any listed/read resource method.
+             if(type!=PathPackResources.class&&type!=VanillaPackResources.class&&type!=CompositePackResources.class
+-                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null)
++                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null)
+                 throw new IOException("Unsupported actual PackResources implementation: "+type.getName()+" pack="+pack.packId());
+             // Check that a file-backed native pack is actually open, rather than
+             // allowing its logged failed-open path to masquerade as an empty pack.
+@@ -162,6 +165,8 @@
+                 for(var entry:directories.entrySet())for(String dir:entry.getValue())pack.listResources(PackType.SERVER_DATA,entry.getKey(),dir,collect);
+                 if(!ids.equals(nested))throw new IOException("Native file resource inventory is incomplete");
+                 ids.addAll(expected);
++            }else if(moonlight!=null) {
++                moonlightInventory(pack,moonlight,out,ids,rawNames);
+             }else if(runtimeIds!=null) {
+                 ids.addAll(runtimeIds);
+             }else if(type==EmptyPackResources.class) {
+@@ -185,6 +190,7 @@
+                 out.text("native-selected-readability");out.text(id.toString());out.number(parserRejected?1:0);out.number(source==null?0:1);
+                 out.resource(id.toString(),source);
+             }
++            if(moonlight!=null)moonlight.unchanged();
+             return new Inventory(ids,Map.copyOf(readable));
+         }catch(IOException failure){throw failure;}
+         catch(UncheckedIOException failure){throw failure.getCause();}
+@@ -214,6 +220,55 @@
+         if(source==null&&!attestedNativeAbsence(pack.getClass(),id,rawNames,children))
+             throw new IOException("Enumerated native pack resource is unavailable: pack="+pack.packId()+" class="+pack.getClass().getName()+" id="+id);
+         return source;
++    }
++    /** Strict folder bytes plus the exact original cached provider's public API.
++     * Manually declared empty namespaces are legal; undisclosed raw namespaces,
++     * a partial/stale native trie or a missing selected resource are not. */
++    private static void moonlightInventory(PackResources pack,MoonlightCachePackCustody.View view,
++            Accumulator out,TreeSet<ResourceLocation> ids,TreeSet<String> rawNames)throws IOException {
++        out.text("moonlight-cached-folder:1");out.text(view.delegate.getClass().getName());
++        out.text(PackType.SERVER_DATA.name());
++        out.number(view.rootBytes.size());
++        for(String name:new TreeSet<>(view.rootBytes.keySet())){
++            var source=pack.getRootResource(name.split("/",-1));
++            if(source==null)throw new IOException("Original Moonlight root resource disappeared");
++            out.resource("moonlight-root/"+name,source);
++        }
++        Path data=view.root.resolve("data");
++        var actualNamespaces=pathNamespaces(data,out);
++        if(!view.namespaces.containsAll(actualNamespaces))throw new IOException("Moonlight raw data has undisclosed namespaces");
++        for(String namespace:new TreeSet<>(view.namespaces))
++            ids.addAll(pathIds(namespace,data.resolve(namespace),out,rawNames));
++        var found=new TreeSet<ResourceLocation>();int[] visits={0};
++        PackResources.ResourceOutput collect=(id,supplier)->{
++            if(++visits[0]>MAX_ENTRIES||System.nanoTime()-out.deadline>=0||supplier==null||!found.add(id))
++                throw new IllegalStateException("Moonlight native resource enumeration is duplicate/partial/unbounded");
++        };
++        if(view.delegate.getClass()==PathPackResources.class){
++            var cachedNamespaces=new TreeSet<>(view.delegate.getNamespaces(PackType.SERVER_DATA));
++            if(!cachedNamespaces.equals(actualNamespaces))throw new IOException("Moonlight native path namespaces changed");
++            // Normal PathPackResources uses nonempty prefixes. Root-level files
++            // are still independently walked/hashed and read by getResource.
++            var dirs=new TreeMap<String,TreeSet<String>>();var nested=new TreeSet<ResourceLocation>();
++            for(var id:ids){int split=id.getPath().indexOf('/');if(split>=0){
++                String prefix=id.getPath().substring(0,split);
++                if(prefix.isEmpty()||prefix.equals(".")||prefix.equals(".."))throw new IOException("Moonlight native path prefix requires separate custody");
++                dirs.computeIfAbsent(id.getNamespace(),ignored->new TreeSet<>()).add(prefix);nested.add(id);
++            }}
++            for(var entry:dirs.entrySet())for(String prefix:entry.getValue())
++                pack.listResources(PackType.SERVER_DATA,entry.getKey(),prefix,collect);
++            if(!found.equals(nested))throw new IOException("Moonlight original path resource inventory is incomplete");
++        }else{
++            // The pinned wrapper owns its namespace set. Its FastSearch
++            // delegate reports an empty namespace set even for populated
++            // indices; that method is not the wrapper's namespace authority.
++            // Exact original list/get coverage below must still equal EVERY
++            // independently walked native ID, so a stale trie still refuses.
++            for(String namespace:new TreeSet<>(view.namespaces))
++                pack.listResources(PackType.SERVER_DATA,namespace,"",collect);
++            if(!found.equals(ids))throw new IOException("Moonlight original cached trie is stale or incomplete");
++        }
++        view.unchanged();
+     }
+     private static BasicFileAttributes attributes(Path path)throws IOException {
+         try{return Files.readAttributes(path,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);}
+@@ -345,6 +400,7 @@
+         }
+     }
+     private static final class Accumulator {
++        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();
+         final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;
+         void visit()throws IOException {
+             if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw new IOException("Native server-data inventory exceeded its finite traversal bound");

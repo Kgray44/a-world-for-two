@@ -198,8 +198,21 @@ public final class NativeTreeGrowthSupport {
         }
         TreeGrowthScope scope=new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor));
         try{
+            report.put("this_growth_owned_setter_invoked",false);
+            long recheckStarted=System.nanoTime();
+            int rechecked=PreMutationFieldCheck.requireUnchanged(before,level::getBlockState,drift->{
+                report.put("pre_mutation_full_preimage_passed",false);
+                report.put("pre_mutation_drift",Map.of("position",List.of(drift.position().getX(),drift.position().getY(),drift.position().getZ()),
+                    "expected",stateText(drift.expected()),"actual",drift.actual()==null?"UNKNOWN_OR_UNAVAILABLE":stateText(drift.actual()),
+                    "checked_cells",drift.checkedCells()));
+            });
+            report.put("pre_mutation_full_preimage_passed",true);report.put("pre_mutation_rechecked_cells",rechecked);
+            report.put("pre_mutation_recheck_ms",(System.nanoTime()-recheckStarted)/1_000_000.0);
+            // Same server-thread call: no tick/yield between this WHOLE pass,
+            // the nonmutating hook witness, and the first owned physical setter.
             scope.hookWitness(root);
             // Set before invocation: a native setter may throw after a partial physical write.
+            report.put("this_growth_owned_setter_invoked",true);
             mutated=true;if(!level.setBlock(root,sapling,3))throw new IllegalStateException("Native sapling placement refused");
             for(int n=0;n<MAX_ATTEMPTS;n++){
                 BlockState current=level.getBlockState(root);if(current.getBlock()!=sapling.getBlock())break;
@@ -220,8 +233,12 @@ public final class NativeTreeGrowthSupport {
             report.put("native_bee_audit",beeAudit.success(scope.attempted));report.put("native_changed_log_blocks",logs);report.put("native_changed_leaf_blocks",leaves);report.put("guarded_write_calls",scope.writes);report.put("guard_read_calls",scope.reads);
             archive(after,"NATIVE_GROWN_OUTCOME_NOT_VISUAL_ACCEPTANCE",null,beBefore,beAfter,null);
         }catch(Throwable failure){
-            if(mutated){worldResidual=true;try{recoverGrowth(scope,failure,beBefore,beeAudit);}catch(Throwable recoveryFailure){quarantine(recoveryFailure);}}
-            throw new IllegalStateException("Native growth failed; exact restoration or quarantine recorded",failure);
+            if(mutated){
+                worldResidual=true;try{recoverGrowth(scope,failure,beBefore,beeAudit);}catch(Throwable recoveryFailure){quarantine(recoveryFailure);}
+                throw new IllegalStateException("Native growth failed; exact restoration or quarantine recorded",failure);
+            }
+            report.put("refused_before_owned_mutation",true);
+            throw new IllegalStateException("Native tree refused before its first owned mutation; unowned drift preserved without restoration",failure);
         }finally{
             try{scope.close();}catch(Throwable closeFailure){quarantine(closeFailure);throw new IllegalStateException("Native growth scope did not close cleanly; further planting blocked",closeFailure);}
         }

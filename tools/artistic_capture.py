@@ -65,7 +65,8 @@ def capture(stage_home, name, position, target, *, prefix, settle=8):
         'position':position,'yaw':yaw,'pitch':pitch,'gamemode':'spectator'})
     wait_for(qa/(pose+'.json'))
     time.sleep(settle)
-    write_json(qa/'request.json', {'nonce':auth['nonce'],'id':ident,'action':'capture','expected_position':position})
+    write_json(qa/'request.json', {'nonce':auth['nonce'],'id':ident,'action':'capture',
+        'expected_position':position,'expected_look_at':target})
     wait_for(qa/(ident+'.json'))
     wait_for(image)
     native=read_json(qa/(ident+'.json'))

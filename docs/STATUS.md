@@ -1,116 +1,94 @@
 # Build and acceptance status
 
 **Documentation checkpoint: 2026-10-28 UTC.** Public candidate.31 remains the
-published immutable prerelease. Private candidate.46 reached native readiness,
-stopped and saved normally, then restarted for a private preview last observed
-ONLINE on port 25575. The licensed owner client then authenticated and joined;
-full gameplay and final release acceptance remain open. See the
-[candidate.46 recovery record](NATIVE-CANDIDATE46.md).
+published immutable prerelease. Private candidate.48 reached native readiness
+and a licensed owner join. Construction, mechanism commissioning and visual
+refinement continue; the complete world and final release are not accepted.
+See the [candidate.48 native record](NATIVE-CANDIDATE48.md).
 
 ## Public download and private development
 
 | Component | Public prerelease | Private development |
 | --- | --- | --- |
-| Candidate | **0.1.0-candidate.31** | **0.1.0-candidate.46** |
-| Availability | Published immutable Prism starter | Private preview observed online; unreleased |
+| Candidate | **0.1.0-candidate.31** | **0.1.0-candidate.48** |
+| Availability | Immutable Prism starter | Running owned preview; unreleased |
 | Enabled mods | **197 total; 191 client; 164 server** | **198 total; 192 client; 165 server** |
-| Owned server helper | Bridge 0.6.17 | Bridge 0.6.32 |
-| Fresh installation | ZIP/checksum verified; clean Prism import unqualified | Final starter and clean import pending |
-| Runtime scope | Historical records below | Startup, normal save/stop, restart and one licensed owner join; broader gameplay acceptance pending |
+| Owned server helper | Bridge 0.6.17 | Bridge 0.6.34 |
+| Fresh installation | ZIP/checksum verified; clean Prism import unqualified | Matching final starter and clean import pending |
+| Runtime scope | Historical named records | Startup, licensed owner join, scoped construction and native mechanisms; full multiplayer pending |
 
-Shared mods count on both sides. Essential is optional and disabled. Both use
+Shared mods count on both sides; Essential is optional and disabled. Both use
 Minecraft 1.21.1, NeoForge 21.1.262 and Java 21. Eight shaders and one resource pack
 are pinned. KG's maximum client heap is 6 GiB; Sera's conservative profile is 4 GiB.
+The [development lock](../catalog/lock.json) contains 208 files and 199 mod records,
+198 enabled by default. [Compatibility](COMPATIBILITY.md) preserves all 224 requested
+candidates. These are development counts, not a claim that all integration work
+is finished. Public candidate.31 retains its own immutable snapshot.
 
-The [development lock](../catalog/lock.json) now tracks candidate.46: 208 files,
-including 199 mod records with 198 enabled by default. The published candidate.31
-starter retains its immutable snapshot. [Compatibility](COMPATIBILITY.md) preserves
-all 224 requested candidates, including unresolved alternatives.
-
-The compiled private bridge is **558,236 bytes**, SHA-256
-`5a40c5a968645d10a94efde647c197f73f1f3381a972f29fd04fe24a200eb6ce`.
-Its private pack manifest SHA-256 is
-`0daa15709f5300f42c64f4e794418ffb06c38b270c4e612c34ef67c18aeae370`.
-Compilation, focused source tests and API fixtures are separate from native
-startup, current-world persistence, gameplay, performance and owner acceptance.
+The private bridge is 584,264 bytes, SHA-256
+`071fe778b27c9450c6a9a7b602825ee2ff19bfcdba9f23ba3cb24302bd6b4b1d`.
+Its pack manifest SHA-256 is
+`0e5775d8d22771e97b34b5b9f508af7baf001e6371d80588315ef08261eeed0b`.
 
 ## Work in progress
 
-| Area | Evidence already available | Still required |
+| Area | Current evidence | Remaining work |
 | --- | --- | --- |
-| Continuous north-bank pirate village | Several private building groups, shops, streets and furnishings have actual placement/readback results | Fill the remaining qualified dry land coherently; verify connected routes and complete interiors; review the whole village in game |
-| Full 3D architecture | Native depth layers exist across neighborhoods, castle, mill and maritime builds; further sources preserve routes and inventories | Finish projecting/recessed exterior details and sensible interior ceilings across every structure, then review actual views |
-| Main drawbridge | Earlier private builds completed real powered 55° cycles and restart checks; fixed ornament has native results | Admit new moving ornaments against current glue custody, then repeat physical cycles and restart checks |
-| Fountain centerpiece | Refined R5 sculpture is placed with native geometry verification | Complete the new sculpture's powered fill, four-jet flow, STOP/drain/reopen, restart and artistic review |
-| Native woodland | **Seven native-grown outcomes are durable; an eighth lost all 36 owned changed cells in the crash and remains unreplayed** | Continue broader forest coverage and canopy/route/structure clearance review; retain the lost attempt and failed receipts |
-| Botanical greenery | Separate authored recipes cover flowers, climbers, window planting, hedges and supported boughs | Complete placement, native survival/settling and visual review across town and woodland |
-| Living LIFE | Guarded habitat/resident sources and admission controllers are prepared | **No curated LIFE cohort has been spawned**; complete current habitats/census, native admission, persistence and behavior checks |
-| Cliff-to-town zipline | Western route, detailed stations/frames and guarded native cable controller are prepared | Actual loading, real stocked cable creation, continuous riding, braking, streaming and restart proof |
-| Mill and transport demonstrations | Partial native mill/tube construction and separate engineering recipes exist | Complete working recipes, train/tube interaction, restart and performance commissioning |
-| Distant terrain and graphics | Distant Horizons + SeedGen retained; earlier mapping/client observations preserved | Strict current client/server SeedGen parity, coarse-only map coverage and current graphics/travel benchmarks |
+| Whole north-bank pirate city | First muted western shop/headland corrections and eastern reshaping/infill clusters have native results | Buildings must occupy most buildable ground; tightly interlock varied masses with narrow crooked alleys. Correct all rejected bright/grid extensions, retain accepted originals and household contents, and review actual views |
+| Full 3D architecture | New projecting/recessed entry, window and carved details are placed; actual hall views still show plain areas | Continue exterior and sensible interior relief across every structure; no flat or boxed fallback |
+| Main drawbridge | Current ornamented spans passed separate receiver repair and two actual 55-degree cycles | Normal restart, vessel clearance, player use and final visual review |
+| Fountain centerpiece | Revised body passed real pumped fill, four cascades, STOP/drain/reopen in47;26 carved additions and wet composition verified in 48 | Final artwork, current operation/persistence and player use |
+| Southern forest | 14 additional native saplings grew in 48; earlier durable outcomes retained | Dense continuous coverage across the entire south shore to the cliff; native silhouette/ecology and persistence review |
+| Greenery LIFE | 3,284 additional southern plant/vine states placed and settled; one 396-state sector held before placement | Finish woodland and town-wide flowers, climbers, planters and undergrowth, retaining native survival and paths |
+| Living LIFE | First seven animals/small creatures admitted through ordinary hooks with normal AI flags | Broader population, actual behavior/persistence and genuinely usable HOME/job POIs before town residents; firefly held for darkness |
+| Station, trains and route | Mill/short shuttle infrastructure placed; retained native tube/processing partial state preserved | Correctly resume commissioning, assemble/drive trains and finish a complete route/loop; no powered-network claim from blocks |
+| Hypertubes and Overpressure | Existing native links and mill installations have scoped partial records | Complete normal detector/input, power, routing, passenger travel, chunk crossings and restart checks |
+| Western zipline | Detailed stations/frames and finite route source prepared | Native stocked cable creation, continuous riding/braking, streaming and restart |
+| Harbor and fleet | Static flagship prototype and harbor work exist | Complete detailed fleet, furnish/inspect ships and commission actual sailing craft; static hulls do not establish mobility |
+| Distant terrain/graphics | DH+SeedGen retained; strict current provider failure preserved | Exact Moonlight generated-pack custody and genuine parity, map integration, travel/shader/current resource benchmarks |
 
-The hard material rules apply to complete authored buildings: a single block ID
-may exceed three consecutive blocks on at most one Cartesian axis, and no
-unbroken material run may exceed nine on any axis. Different facing properties
-are not material breaks. Real depth, irregular human-scale streets, decorations
-and atmosphere remain part of the artistic brief.
+The material rule permits intentional unlimited one-axis beams, borders, fences
+and roof edges. A building's same block ID cannot exceed three consecutive cells
+on multiple Cartesian axes. Facing differences are not material breaks. Detail,
+varied proportions and actual visual composition remain required. See the
+[north-bank correction](NORTH-BANK-ARTISTIC-REDESIGN.md). Open paving is not a
+substitute for occupied building footprint; tiny purposeful courts are exceptions.
 
-Botanical greenery and living LIFE are separate passes. Native-grown tree
-outcomes and any naturally generated occupants need their own census; they are
-not a curated animal or resident population. Sources, masks, inventories and
-native placement counts do not establish a finished, inhabited settlement.
+## Native and source evidence
 
-The owner's visual approval applies to the small pirate-town area used as the
-quality reference. Full-scope artistic acceptance remains open. Existing game
-images are unchanged historical captures of their named candidates and camera
-views. See [artistic recovery](ARTISTIC-RECOVERY.md),
-[botanical art](ARTISTIC-BOTANICAL-PASS.md), [whole south bank](WHOLE-SOUTH-BANK-FOREST.md),
-[forest rollout](FOREST-ROLLOUT-AND-UNDERSTORY.md), [living landscape](SETTLEMENT-LIFE.md)
-and [fountain recovery](FOUNTAIN-CENTERPIECE-RECOVERY.md).
+The source suite completed 911 tests in 102.480 seconds: 910 passed and one Windows
+real-symlink fixture skipped. Packwiz reported 208 entries/no errors; Control Room
+JavaScript syntax passed. Additional source changes have focused checks and the
+release-excluded QA helper has exact-JAR compilation. Source fixtures are not
+native art, player travel, multiplayer or performance evidence.
 
-## Runtime and release gates
+Candidate.48's fourteen grown-tree results retain two separate held plots and
+all original failures. Seven requests initially left undispatched by stale
+telemetry were attempted only after fresh empty-server evidence; no failed tree
+was automatically retried. Tree09's earlier quarantine was resolved by exact
+parent review of 29,160 retained cells, preserving two unowned water/ice phase
+changes and the original quarantine/failed receipts. No world rollback occurred.
 
-Candidate.46 reached actual readiness around 04:35 UTC, then completed a normal
-stop and verified clean checkpoint. A second private preview JVM was observed
-ONLINE. One warmup interval measured 20 TPS and 2.12 ms/tick; this is not a travel,
-multiplayer or sustained-performance benchmark. The clean checkpoint contains
-637 source files and has SHA-256
-`4384206f639659b09b2d332d2eb058241ca6dc15298f3808745025ed85992fac`.
+Native before-state failure also held a western path batch without placement.
+Its saved unsupported gravel-over-water stacks require a separately reviewed
+stable route. A later botanical sector likewise remains unplaced after its
+before-field failure. These are not hidden by changing expected states.
 
-The read-only crash audit retained all 37 eastern houses, 10 western buildings,
-the western streets and the 118-target Rose exterior addition. Only two already
-authorized bed cells differ within the compared architecture groups. Seven tree
-outcomes are durable; the eighth outcome lost its 36 owned log/leaf changes and
-has not been automatically replayed. No curated LIFE cohort has been spawned.
+See the [scoped runtime record](NATIVE-CANDIDATE48.md) and
+[sanitized receipts](../evidence/runtime/candidate48-progress.json). The accepted
+small original pirate area remains the quality reference. The whole north bank,
+full forest, fleet and all mechanisms still need final review. Current screenshots
+with unready client terrain are failed visual evidence, not accepted artwork.
 
-The source suite passed **754 Python tests in 69.998 seconds**, 208-entry Packwiz
-validation and Control Room JavaScript syntax checking. The corrected tree-scope
-snapshot passed a collection-only 131,072-key probe in **158.380 ms** under a
-256 MiB heap/two-CPU bound. That probe created no native world. Its source fix and
-candidate.46 startup do not qualify a complete forest or general performance.
+## Release gates
 
-The build also includes bounded cable preparation and read-only bridge inspection
-using the shared maintenance interlock. Their source/API checks do not establish
-a live ride, new bridge motion or current multiplayer acceptance. Exact scope is
-in the [curated recovery evidence](../evidence/runtime/candidate46-recovery.json).
-
-The fountain's real pumped flow in candidate.42 remains valid historical evidence
-for that earlier geometry and run. It does not qualify the revised R5 centerpiece
-or candidate.46. Likewise, earlier owner connections and two-player sessions keep
-their original pack/world scope. Current startup, travel, input responsiveness,
-shader switching and resource measurements must be recorded separately.
-
-Strict SeedGen agreement is still unresolved. DH server LOD download fallback
-remains selected while current native client/server parity is verified; Voxy and
-Roxy remain excluded. [SeedGen history and limits](SEEDGEN-RUNTIME-GAP.md) retain
-the exact earlier mismatch. A source repair alone does not establish agreement.
-
-Before a replacement public release: finish the remaining implementation and
-native review, produce the matching Prism starter, verify its pinned Packwiz
-installation and clean native Prism import, then record matching multiplayer and
-performance results. No candidate.46 final release is published by this update.
-Useful recovery checkpoints and failed receipts remain preserved; selective
-staging cleanup follows completion and acceptance.
+Before replacing the public release: finish the requested implementation and
+native visual review, qualify current operation/persistence and two-player/travel
+performance, build the matching Prism ZIP and verify a clean native Prism import.
+Strict SeedGen parity remains unresolved; DH server LOD downloads remain the
+fallback. No fingerprint checks were relaxed and no final48 pack is published.
+Useful checkpoints, human progress and failed receipts remain private and intact.
+Selective staging cleanup follows completion and preserves useful recovery data.
 
 ## Historical records
 
@@ -131,8 +109,8 @@ Each record below applies to its named candidate and timestamp.
   trials are recorded in the same history; the old failure is not the current
   candidate.46 startup result.
 - **Private native development:** [candidate.43](NATIVE-CANDIDATE43.md),
-  [candidate.42](NATIVE-CANDIDATE42.md), [candidates.39–41](NATIVE-CANDIDATE39-41.md),
-  [candidate.38](NATIVE-CANDIDATE38.md) and [candidates.36–37](NATIVE-CANDIDATE36-37.md).
+  [candidate.42](NATIVE-CANDIDATE42.md), [candidates.39â€“41](NATIVE-CANDIDATE39-41.md),
+  [candidate.38](NATIVE-CANDIDATE38.md) and [candidates.36â€“37](NATIVE-CANDIDATE36-37.md).
   These retain real prior startup, owner login, construction, captures, native
   mechanisms and failed fountain/reset outcomes.
 - **Earlier gameplay measurements:** [candidate.23 owner session](../evidence/runtime/owner-play-candidate.23.json)

@@ -1,12 +1,12 @@
 # Compatibility inventory
 
-Current lock: **0.1.0-candidate.46**, Minecraft 1.21.1, NeoForge 21.1.262, Java 21.
+Current lock: **0.1.0-candidate.48**, Minecraft 1.21.1, NeoForge 21.1.262, Java 21.
 
 224 requested candidates are retained. The lock contains 208 exact files: 199 mod entries (198 enabled by default), 8 client shader packs and 1 resource packs. Optional file defaults and sides are listed individually below.
 
-Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.46, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.
+Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.48, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.
 
-Lock SHA-256: `f377ecba9826b6ae3ef007fe4d8b090fdfe99972c7f0294bbc86f2f6cf4325a9`. Pack SHA-256: `0daa15709f5300f42c64f4e794418ffb06c38b270c4e612c34ef67c18aeae370`.
+Lock SHA-256: `6e891cfbc5e2209cd9d7034324c002c9a1b35ca9f26301fadc290d4d18754eaa`. Pack SHA-256: `0e5775d8d22771e97b34b5b9f508af7baf001e6371d80588315ef08261eeed0b`.
 
 ## Recorded runtime scope
 
@@ -259,7 +259,7 @@ These are top-level downloadable files; bundled nested loader libraries are not 
 | [Let's Do] Farm & Charm<br>`letsdo-farm_and_charm-neoforge-1.1.29.jar` | 1.1.29 | both | On | sha512: `b9ac57d7fd0056310603f926dcdf5dfe5821d6bd0a573ab7f626d57b32e273e5a24d30a789f028afe90674cee18107d7a99097871484f4d98f50bb54aa0e595c` |
 | [Let's Do] Vinery<br>`letsdo-vinery-neoforge-1.5.6.jar` | 1.5.6 | both | On | sha512: `51c31c756de0f54a91f28c4d072925e0793ae70aefde2d23ea7ca3c5b7050ce04cc1885531ea459d1ea6adefb05d7c37616e3c9102f0fea50234f04043f6b970` |
 | [UNOFFICIAL] TaCZ 1.21.1 NeoForge Port<br>`tacz-neoforge-1.21.1-1.1.8-hotfix-r7.jar` | 1.1.8-hotfix-r7 | both | On | sha512: `7700ed99a080729c3aa21f9619e018fbe9e2303cfbcaa463175ee5170553a000b692bc4cfa2e8ce0778747eed34dcc0197fb5e4344bb258cff1ba90adc842642` |
-| A World for Two Control Bridge<br>`awft-control-bridge-0.6.32.jar` | 0.6.32 | both | On | sha256: `5a40c5a968645d10a94efde647c197f73f1f3381a972f29fd04fe24a200eb6ce` |
+| A World for Two Control Bridge<br>`awft-control-bridge-0.6.34.jar` | 0.6.34 | both | On | sha256: `071fe778b27c9450c6a9a7b602825ee2ff19bfcdba9f23ba3cb24302bd6b4b1d` |
 | A World for Two Presentation<br>`awft-client-presentation-0.2.3.jar` | 0.2.3 | client | On | sha256: `abac3a99a94aec9c02141dfde3a9b82a7f5d3cf4f9b4ab44c3cea9ba17ea80a6` |
 | Advanced Weather<br>`advancedweather-0.1.2+awft.3.jar` | 0.1.2+awft.3 | both | On | sha256: `40ffeb077e7c550de485d1d9c923874683811d52e6e9c7fafa614b0888e99f10` |
 | Almanac<br>`Almanac-1.21.1-2-neoforge-1.5.2.jar` | 1.5.2 | server | On | sha512: `b8c87ce784d1afee68cf8943dd64be899d9a25d111aeec1d72f1c80431cacaf71c1b4d6eb16bdaaaa36bdfd3cd4df653e8575cb567f5cdbecdefc581ad187177` |

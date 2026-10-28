@@ -1,0 +1,7 @@
+{
+  "format": "awft-owned-versioned-release-pack-fix:1",
+  "public_predecessor": "compat/proposals/bridge-topside-readonly-r2/RetainedBridgeGlueInspection.java",
+  "public_predecessor_sha256": "f8d7582bb2c17233987de73cd6744e74d29bcc2bbeb7273fc7a07211f83231a1",
+  "source_sha256": "6882449c657828991312219ad651aa37483fd2a578783487fff9d612b8ea90c3",
+  "scope": "Only validate actual owned versioned release manifest against candidate active installed request; no other helper behavior/version/JAR/runtime changes"
+}

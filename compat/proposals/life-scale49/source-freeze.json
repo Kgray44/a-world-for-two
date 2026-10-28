@@ -1,0 +1,76 @@
+{
+  "format": "awft-original-source-freeze:1",
+  "created": "2026-10-28T16:46:43.675043+00:00",
+  "status": "SOURCE_AND_ACTUAL_API_PASS_NATIVE_SCALE_PENDING",
+  "files": {
+    "compat/proposals/life-scale49/initial-custody.json": {
+      "bytes": 656,
+      "sha256": "983f14a1f89cf2f838cdccee8ef65532cb9b63917f1e204ab6e5ef4b5b7e860a"
+    },
+    "compat/proposals/life-scale49/integration.diff": {
+      "bytes": 45823,
+      "sha256": "b08a4b972c883317b772ba0537a26c1923adaccee73e1e4e3f38e0761d8556fc"
+    },
+    "compat/proposals/life-scale49/LifeScaleBudgetProbe.java": {
+      "bytes": 3814,
+      "sha256": "e8c3b68b2cba625ca3bd77c303025c10f37300cbd8e596231c282fc9606e96d3"
+    },
+    "compat/proposals/life-scale49/NativeHabitatLifeSupport.java": {
+      "bytes": 81821,
+      "sha256": "ddc0848049858ec60a78049901e0c451446b7d0588d1a4514fe39ae1f7345865"
+    },
+    "compat/proposals/life-scale49/NativeHabitatLifeSupport48-diagnostic-base.java.txt": {
+      "bytes": 68043,
+      "sha256": "f7bcc9844ea6b25bab24349b8f7c9030b6feaef764b03ebb0557509a6687678a"
+    },
+    "compat/proposals/life-scale49/probe.py": {
+      "bytes": 5135,
+      "sha256": "16c9fb1f286a5ebe159bdb4cade660789d00733e8b97c3e118aac001e0c81704"
+    },
+    "compat/proposals/life-scale49/README.md": {
+      "bytes": 6647,
+      "sha256": "0c163081182cfb551fea0a5ab5e6ba540301e7fdef24efa5843cb8cc53f59e44"
+    },
+    "compat/proposals/life-scale49/ScaledLifeBudget.java": {
+      "bytes": 5633,
+      "sha256": "1e050df060a334642e4c5e8292aada09c02a092e00d75ea4f3b9d1fb56a30bf1"
+    },
+    "tests/test_life_scale_proposal.py": {
+      "bytes": 2341,
+      "sha256": "ef706cafcc62762bf6ee222fc95edd7ba3930c4cf8724019004538e64d806317"
+    },
+    "tests/test_scaled_life_census.py": {
+      "bytes": 1377,
+      "sha256": "78aa6a2e46c563ee887099988c7963548f6779b4a2e6d03f62c7267ba2bd490d"
+    },
+    "tools/artistic_life_scale_proposal.py": {
+      "bytes": 20633,
+      "sha256": "0044b2f7e023f2b5e51ec499f2fe38d3f4a1040218b51cddf0836722b5855608"
+    },
+    "tools/native_scaled_life.py": {
+      "bytes": 12900,
+      "sha256": "7b3e2460e683e782ffeb4e769ccafc09c7a580d8dbcb4d321f567fe6f9793bca"
+    }
+  },
+  "actual_API_result_sha256": "dc5b0dca8ba477bb6b4ff7dd6b1eae46bd9250e74ff6546b73d5a73dbaa50054",
+  "actual_API_private_folder": "life-scale49-offline-1793205760787703600",
+  "focused_source_and_census_tests_passed": 6,
+  "retained_failed_compile": {
+    "private_folder": "life-scale49-offline-1793205700622204900",
+    "result_sha256": "1458ef084efeeee69fe4e8f5038347f1b4b5255a316b3a7992e4a17515834fe5",
+    "exact_failed_sources_retained": true
+  },
+  "native_actions": 0,
+  "real_budget_authorities_or_actors_created": 0,
+  "build_install_actions": 0,
+  "legacy_policy_default": 64,
+  "explicit_v4_global_budget": 4000,
+  "explicit_v4_cohort_maximum": 64,
+  "native_remaining": [
+    "Actual current expanded habitat sources and census",
+    "Owner-authorized world-specific scaled budget preserving original population identity",
+    "Native first64-member inspect/seed and normal AI/POI behavior",
+    "Measurement-bound128/512/1024/2048/4000 ramp",
+    "Actual saved/restart persistence and resource measurements; no global forcing"
+  ]
+}

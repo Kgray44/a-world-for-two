@@ -41,12 +41,15 @@ overhanging upper floors, enclosed courts and coherent waterfront activity.
 Each building needs a purpose and usable interior. Individual footprints, roof
 profiles, elevations and frontages are authored rather than repeated box templates.
 
-The owner's two hard material rules apply to **every complete building**, including
-floors, roofs and framing. An uninterrupted run of one block material may exceed
-three blocks in at most one Cartesian axis, and may never exceed nine blocks in
-any axis. Different facing/axis properties of the same block do not evade these
-limits. Use actual structural joints, openings, dividers and distinct construction
-elements. Passing this geometry check does not make an unattractive design good.
+The current material rule applies to **every complete building**, including
+floors, roofs and framing. A material may exceed three blocks in at most one
+Cartesian axis. The owner now permits unlimited one-axis runs where useful for
+roof edges, fences, beams and borders; the former unconditional nine-block cap
+is superseded. Different facing properties do not count as material changes.
+Use real structural joints, openings and construction elements. Passing this
+geometry check does not make an unattractive design good. The latest
+[north-bank correction and full depth-pass brief](NORTH-BANK-ARTISTIC-REDESIGN.md)
+preserves the original accepted pirate lane and current human progress.
 
 Decoration, atmosphere and small purposeful scenes must receive more design effort
 than shells: fitted trade counters, stocked wall displays, household groups,

@@ -1,0 +1,21 @@
+{
+  "format": "awft-tree-pre-mutation-source-freeze:1",
+  "source": {
+    "NativeTreeGrowthSupport.java": "cce647921a1a6bb07751e8883556ec71804306b053b6f9ba0ae9936832ffff77",
+    "PreMutationFieldCheck.java": "c9a1a2069cfead4a22d6ca2ee6b125bc0eefda115b5c10124d43af9cf92d152b",
+    "PreMutationSequenceProbe.java": "4accdde323731f50ca601834a759f90f0f9bc25b661d9fd4be3432957c90148b",
+    "NativeTreeGrowthSupport.patch": "eb1caa37507ba62718d12c9d3637da44a2c2f6f7931a26c2796d97af66184764",
+    "README.md": "531949e7424d9c53bf00dc4066c4efb7b4e2a30f2c81110a32852923b6dc3e0f"
+  },
+  "base_native47_source_sha256": "97dee07c7cd05d449f66c992c4f16f0b75d681548922408e3c6b7c97def4fe8f",
+  "actual47_API_compile_receipt_sha256": "d0f527759d01a67a4204f72bf64382b771cf91c588b7ffd282d78d3038c459a2",
+  "pure_sequence_probe_passed": true,
+  "python_boundary_tests_passed": 4,
+  "review_tool_sha256": "1d73008137fdf3635e745c7c1a8773ad0feb6240b2001a6e5cdb32ecfb783fd6",
+  "review_tests_sha256": "8e3984a976ed90a5a6f4ca8ff42f0a5e728cb2378cb8e62e09b2392bb9902971",
+  "native_residual_archive_sha256": "0e66aab7885d9d01664289783348dfaae5a7760a4d19377cddc806e3c9be464b",
+  "private_saved31_review_sha256": "386da4c4259c07c43b525c7ef36c8ff4b4f869641464b13deb2d816b7fd1a06d",
+  "quarantine_sha256_retained": "b2c8a01ddba588b87eaeac87e8a6ca442924e52c9728be2fe3283dbaaec1fdc0",
+  "native_actions_world_writes_flag_clears_or_growth_retries": 0,
+  "release_authority_created": false
+}

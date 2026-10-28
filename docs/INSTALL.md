@@ -2,10 +2,10 @@
 
 The public download is the immutable **candidate.31 prerelease**. Its ZIP and
 checksum were verified; a clean native Prism import remains unqualified.
-**Private candidate.46 has reached native startup and restarted for a preview**,
-with further client, multiplayer and feature validation still pending. The public
+**Private candidate.48 has reached native startup and a licensed owner join**,
+with further multiplayer and feature validation still pending. The public
 candidate.31 ZIP does not contain that private work. See [current status](STATUS.md)
-and [the candidate.46 recovery record](NATIVE-CANDIDATE46.md).
+and [the candidate.48 record](NATIVE-CANDIDATE48.md).
 
 ## Client
 
@@ -25,9 +25,10 @@ and [the candidate.46 recovery record](NATIVE-CANDIDATE46.md).
    check. Its KG-local entry is for a client on the host computer.
 
 Private previews require the separately supplied matching instance and preview
-entry. Candidate.31 and candidate.46 are different packs; do not use the public
-starter as proof of compatibility with the private preview. A current authenticated
-candidate.46 client join has not yet been recorded.
+entry. Candidate.31 and candidate.48 are different packs; use the instance that
+matches the host's candidate. One authenticated owner join is recorded for the
+private candidate.48; its clean public import and matching two-player acceptance
+remain pending.
 
 Accounts, worlds, backups and host-specific Java paths stay out of the ZIP. The
 starter includes one unchanged Let's Forge Pirates JAR under the
@@ -53,7 +54,7 @@ If a server reports incompatible mods, first verify that its candidate matches
 the imported instance. Public tunneling also requires the intended game server
 and Playit service to be running. Candidate.31's older Create registration failure
 and rejected unchanged recovery attempt remain in the
-[startup history](CREATE-STARTUP-RECOVERY.md); candidate.46 has its own successful
+[startup history](CREATE-STARTUP-RECOVERY.md); candidate.48 has its own successful
 private startup record.
 
 Strict SeedGen client/server parity remains unresolved. DH server LOD downloads

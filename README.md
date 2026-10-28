@@ -14,20 +14,24 @@ waterfront, Rosewater Castle, sailing adventures and Create machinery.
 | Build | Availability | Enabled mods |
 | --- | --- | --- |
 | **Public candidate.31** | Published, immutable prerelease; fresh Prism import remains unqualified | **197 total · 191 client · 164 server** |
-| **Private candidate.46** | Private preview observed online; validation in progress; unreleased | **198 total · 192 client · 165 server** |
+| **Private candidate.48** | Native preview running; construction and qualification in progress; unreleased | **198 total · 192 client · 165 server** |
 
 Shared mods count on both sides. Essential is optional and disabled. Eight shader
 choices and one resource pack are pinned. The public starter retains its own
-candidate.31 snapshot; it does not contain the private candidate.46 work.
+candidate.31 snapshot; it does not contain the private candidate.48 work.
 
 The full build is still in progress: a continuous, dense north-bank pirate town;
 a complete 3D architecture pass; flowers, climbers and native-grown woodland;
-and a separate living LIFE pass for animals and residents. Seven native-grown
-trees are confirmed in saved data; no curated LIFE population has been spawned.
-The refined fountain sculpture is placed, with its full powered-function test
-still pending. Candidate.46 completed native startup, a normal save/stop and a
-private preview restart. The licensed owner client has now joined; full
-multiplayer, public-import and full-world acceptance remain open. See [current status](docs/STATUS.md) and [the recovery record](docs/NATIVE-CANDIDATE46.md).
+and a separate living LIFE pass for animals and residents. Candidate.48 added
+14 successful native-grown tree outcomes, 3,284 undergrowth/vine states and the
+first seven curated animals and small creatures. New western shops and an
+eastern infill cluster are placed, with visual refinement continuing. The
+ornamented drawbridge completed two real 55° cycles; current restart and vessel
+clearance checks remain open. The fountain's revised body passed powered
+fill/flow/STOP/drain/reopen in candidate.47, followed by a small carved addition
+and wet-state preservation checks in candidate.48. These are scoped runtime
+results, not full-world acceptance. See [current status](docs/STATUS.md) and
+[the candidate.48 record](docs/NATIVE-CANDIDATE48.md).
 
 ## Install the public prerelease
 
