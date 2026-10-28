@@ -42,11 +42,15 @@ class LivingWorldJavaTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='awft-provider-probe-') as directory:
             classes=Path(directory);classpath=os.pathsep.join(map(str,jars))
             sources=[REPO/'compat/living-world/src/worldfortwo/living/WorldCharacters.java',
+                     REPO/'compat/living-world/src/worldfortwo/living/NativeRequestPolicy.java',
                      REPO/'compat/living-world/src/worldfortwo/living/mixin/ProviderConfigMixin.java',
+                     REPO/'compat/living-world/src/worldfortwo/living/mixin/NativeTransportMixin.java',
                      REPO/'proposals/living-world/mods/probes/ProviderPolicySelfTest.java']
             compiled=subprocess.run([str(jdk/'javac.exe'),'--release','21','-proc:none','-encoding','UTF-8','-cp',classpath,'-d',str(classes),*map(str,sources)],capture_output=True,text=True,timeout=30)
             self.assertEqual(compiled.returncode,0,compiled.stderr)
-            run=subprocess.run([str(jdk/'java.exe'),'-Xmx64m','-cp',str(classes)+os.pathsep+classpath,'ProviderPolicySelfTest'],capture_output=True,text=True,timeout=15)
+            # Deliberately non-secret fixture: callback execution never invokes HTTP.
+            fixture_environment=dict(os.environ,SMARTVILLAGERS_API_KEY='fixture-only-not-a-provider-key')
+            run=subprocess.run([str(jdk/'java.exe'),'-Xmx64m','-cp',str(classes)+os.pathsep+classpath,'ProviderPolicySelfTest'],capture_output=True,text=True,timeout=15,env=fixture_environment)
             self.assertEqual(run.returncode,0,run.stderr)
             self.assertIn('Actual provider policy callback passed',run.stdout)
 

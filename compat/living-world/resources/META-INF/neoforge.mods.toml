@@ -3,7 +3,7 @@ loaderVersion="[4,)"
 license="MIT"
 [[mods]]
 modId="awft_living_world"
-version="0.1.0"
+version="0.2.0"
 displayName="A World for Two · Living World"
 description='''Narrow district, personality and privacy adapter for pinned villager mods.'''
 [[dependencies.awft_living_world]]

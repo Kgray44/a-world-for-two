@@ -14,7 +14,8 @@
     "MemoryMixin",
     "AmbientDialogueMixin",
     "BubbleMixin",
-    "ProviderConfigMixin"
+    "ProviderConfigMixin",
+    "NativeTransportMixin"
   ],
   "injectors": {
     "defaultRequire": 1

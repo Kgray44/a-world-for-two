@@ -83,6 +83,42 @@ public final class LivingWorld {
         while(!Files.exists(existing,LinkOption.NOFOLLOW_LINKS))existing=existing.getParent();
         if(Files.isSymbolicLink(existing)||!existing.toRealPath().equals(existing))throw new IllegalStateException("Linked runtime paths refused");
     }
+    /** Same byte-zero lock as the dashboard; busy admission fails without retries. */
+    private static SharedSpendingLock spendingLock()throws Exception{
+        Path path=STATE.resolve("spending.lock");safePath(path);
+        if(!space(8192))throw new IllegalStateException("Storage reserve reached");
+        Files.createDirectories(path.getParent());
+        return SharedSpendingLock.acquire(path);
+    }
+    private static void seedPreview(JsonObject ledger,long now)throws Exception{
+        String day=Instant.ofEpochMilli(now).atZone(java.time.ZoneOffset.UTC).toLocalDate().toString();
+        if(day.equals(WorldCharacters.text(ledger,"preview_day")))return;
+        Path registry=STATE.resolve("registry.json");safePath(registry);
+        double reserved=0;long count=0;JsonArray recent=new JsonArray();
+        if(Files.exists(registry)){
+            if(Files.size(registry)>8*1024*1024)throw new IllegalStateException("Preview history exceeds its bound");
+            byte[] raw;try(var stream=Files.newInputStream(registry)){raw=stream.readNBytes(8*1024*1024+1);}
+            if(raw.length>8*1024*1024)throw new IllegalStateException("Preview history exceeds its bound");
+            JsonObject state=JsonParser.parseString(new String(raw,StandardCharsets.UTF_8)).getAsJsonObject();
+            for(JsonElement entry:WorldCharacters.array(state,"usage")){
+                JsonObject row=entry.getAsJsonObject();double epoch=row.get("time").getAsDouble();
+                double charge=row.get("reserved_usd").getAsDouble();
+                if(!Double.isFinite(epoch)||epoch<0||!Double.isFinite(charge)||charge<0)throw new IllegalStateException("Preview history is invalid");
+                long at=(long)(epoch*1000);String recorded=Instant.ofEpochMilli(at).atZone(java.time.ZoneOffset.UTC).toLocalDate().toString();
+                if(day.equals(recorded)){reserved+=charge;count++;}
+                if(now-at<86400000L){
+                    String character=WorldCharacters.text(row,"id"),requestId=WorldCharacters.text(row,"request_id");
+                    if(requestId.isEmpty())requestId=HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest((character+"|"+row.get("time").getAsString()).getBytes(StandardCharsets.UTF_8))).substring(0,32);
+                    JsonObject safe=new JsonObject();safe.addProperty("at",at);safe.addProperty("id",requestId);
+                    safe.addProperty("character",character.matches("[a-z0-9_-]{1,64}")?character:"__preview__");recent.add(safe);
+                }
+            }
+        }
+        if(!Double.isFinite(reserved))throw new IllegalStateException("Preview reservation total is invalid");
+        while(recent.size()>128)recent.remove(0);
+        ledger.addProperty("preview_day",day);ledger.addProperty("preview_reserved_usd",reserved);
+        ledger.addProperty("preview_day_requests",count);ledger.add("preview_recent",recent);
+    }
     private static void reload(MinecraftServer server){
         ExecutorService owned=io;long epoch=lifecycle;if(owned==null)return;
         try{owned.execute(()->{
@@ -105,7 +141,7 @@ public final class LivingWorld {
         try{owned.execute(()->{
             try{
                 // The same guarded writer creates the directory before registering native events.
-                atomic(STATE.resolve("adapter.json"),"{\"format\":\"awft-living-world-adapter:1\",\"version\":\"0.1.0\"}");
+                atomic(STATE.resolve("adapter.json"),"{\"format\":\"awft-living-world-adapter:1\",\"version\":\"0.2.0\"}");
                 WatchService own=FileSystems.getDefault().newWatchService();
                 STATE.register(own,StandardWatchEventKinds.ENTRY_CREATE,StandardWatchEventKinds.ENTRY_MODIFY,StandardWatchEventKinds.ENTRY_DELETE);
                 watcher=own;
@@ -142,8 +178,12 @@ public final class LivingWorld {
             characters.add(row);
         }
         JsonObject value=new JsonObject();value.addProperty("format","awft-living-world-state:1");value.addProperty("at",Instant.now().toString());
+        value.addProperty("adapter_version","0.2.0");
+        JsonArray capabilities=new JsonArray();for(String capability:List.of("per_character_model","generation_policy","verified_model_gate","returned_usage"))capabilities.add(capability);
+        value.add("capabilities",capabilities);
         value.addProperty("pid",ProcessHandle.current().pid());value.addProperty("process_started",ProcessHandle.current().info().startInstant().orElse(Instant.EPOCH).toString());
         value.addProperty("config_sha256",hash);value.addProperty("revision",WorldCharacters.current.revision());value.addProperty("error",error);value.add("characters",characters);
+        value.add("provider",NativeRequestPolicy.providerState());
         writing=true;
         try{io.execute(()->{try{atomic(STATE.resolve("native.json"),GSON.toJson(value));}catch(Exception ignored){}finally{writing=false;}});}
         catch(RejectedExecutionException ignored){writing=false;}
@@ -151,6 +191,12 @@ public final class LivingWorld {
     /** Persist a conservative maximum charge before reusing upstream's asynchronous transport. */
     public static CompletableFuture<AiResponse> request(AiProvider provider,AiRequest request,MinecraftServer server,String character,BooleanSupplier stillAllowed){
         ExecutorService owned=io;if(owned==null)return CompletableFuture.completedFuture(AiResponse.failure("Character service unavailable"));
+        WorldCharacters configuration=WorldCharacters.current;
+        NativeRequestPolicy.Policy policy;
+        try{
+            if(!NativeRequestPolicy.credentialPresent())throw new IllegalStateException();
+            policy=NativeRequestPolicy.select(configuration,character);
+        }catch(Exception ignored){return CompletableFuture.completedFuture(AiResponse.failure("Dedicated credential or verified character model unavailable; scripted fallback"));}
         int cap=Math.max(1,Math.min(2,WorldCharacters.integer(WorldCharacters.current.settings(),"max_concurrent",2)));
         var lease=requests.acquire(cap);
         if(lease==null)return CompletableFuture.completedFuture(AiResponse.failure("Character concurrency limit; scripted fallback"));
@@ -158,46 +204,35 @@ public final class LivingWorld {
         long epoch=lifecycle;
         try{owned.execute(()->{
             try{
-                JsonObject settings=WorldCharacters.current.settings();
-                double input=settings.has("input_usd_per_million")?settings.get("input_usd_per_million").getAsDouble():0;
-                double output=settings.has("output_usd_per_million")?settings.get("output_usd_per_million").getAsDouble():0;
-                double budget=settings.has("daily_budget_usd")?settings.get("daily_budget_usd").getAsDouble():0;
-                if(!(input>0&&output>0&&budget>0&&Double.isFinite(input)&&Double.isFinite(output)&&Double.isFinite(budget)))throw new IllegalStateException();
-                Path ledger=STATE.resolve("native-budget.json");JsonObject usage=new JsonObject();
-                safePath(ledger);
-                if(Files.exists(ledger)){
-                    if(Files.size(ledger)>8192)throw new IllegalStateException();usage=JsonParser.parseString(Files.readString(ledger)).getAsJsonObject();
+                JsonObject settings=configuration.settings();
+                try(var shared=spendingLock()){
+                    Path ledger=STATE.resolve("native-budget.json");JsonObject usage=new JsonObject();safePath(ledger);
+                    if(Files.exists(ledger)){
+                        if(Files.size(ledger)>NativeUsage.MAX_LEDGER_BYTES)throw new IllegalStateException();usage=JsonParser.parseString(Files.readString(ledger)).getAsJsonObject();
+                    }
+                    long now=System.currentTimeMillis();seedPreview(usage,now);
+                    int inputBound=NativeRequestPolicy.reservationBytes(policy,PromptBuilder.buildSystemPrompt(request.context()),PromptBuilder.buildUserPrompt(request.playerMessage()));
+                    NativeUsage.reserve(usage,policy,settings,WorldCharacters.object(configuration.profileById(character),"ai"),character,now,inputBound);
+                    String reserved=GSON.toJson(usage);if(reserved.getBytes(StandardCharsets.UTF_8).length>NativeUsage.MAX_LEDGER_BYTES)throw new IllegalStateException();atomic(ledger,reserved);
                 }
-                String day=java.time.LocalDate.now(java.time.ZoneOffset.UTC).toString();
-                double charged=day.equals(WorldCharacters.text(usage,"day"))?usage.get("reserved_usd").getAsDouble():0;
-                // Context is capped below 10k characters; charge UTF-8 bytes plus generous message overhead.
-                int inputBound=PromptBuilder.buildSystemPrompt(request.context()).getBytes(StandardCharsets.UTF_8).length+request.playerMessage().getBytes(StandardCharsets.UTF_8).length+2048;
-                int outputBound=tn.naizo.smartvillagers.config.SmartVillagersConfig.get().maxTokens();
-                if(outputBound<1||outputBound>512)throw new IllegalStateException();
-                double cost=(inputBound*input+outputBound*output)/1000000.0;
-                if(!Double.isFinite(charged)||charged<0||charged+cost>budget)throw new IllegalStateException();
-                JsonArray recent=new JsonArray();long now=System.currentTimeMillis(),latest=0;int individual=0;
-                for(JsonElement item:WorldCharacters.array(usage,"requests")){
-                    JsonObject row=item.getAsJsonObject();long at=row.get("at").getAsLong();
-                    if(now-at>=3600000L)continue;if(at>now+2000L)throw new IllegalStateException();
-                    recent.add(row);if(character.equals(WorldCharacters.text(row,"character"))){individual++;latest=Math.max(latest,at);}
-                }
-                JsonObject profile=WorldCharacters.current.profileById(character),ai=WorldCharacters.object(profile,"ai");
-                if(recent.size()>=Math.max(1,Math.min(60,WorldCharacters.integer(settings,"requests_per_hour",24)))||individual>=Math.max(1,Math.min(60,WorldCharacters.integer(ai,"requests_per_hour",12)))||latest>0&&now-latest<Math.max(5,WorldCharacters.integer(ai,"cooldown_seconds",20))*1000L)throw new IllegalStateException();
-                JsonObject attempt=new JsonObject();attempt.addProperty("character",character);attempt.addProperty("at",now);recent.add(attempt);
-                usage.add("requests",recent);usage.addProperty("day",day);usage.addProperty("reserved_usd",charged+cost);atomic(ledger,GSON.toJson(usage));
                 // Recheck loaded entities, consent and the exact configuration on the server executor
                 // after disk admission, immediately before upstream's nonblocking sendAsync call.
                 server.execute(()->{
                     try{
                     if(io!=owned||lifecycle!=epoch||!stillAllowed.getAsBoolean()){lease.complete(AiResponse.failure("Conversation no longer active; scripted fallback"));return;}
                     if(!lease.start()){lease.complete(AiResponse.failure("Conversation cancelled before provider dispatch"));return;}
-                    var upstream=provider.complete(request);
+                    CompletableFuture<AiResponse> upstream;
+                    try(var scope=NativeRequestPolicy.enter(policy)){upstream=provider.complete(request);}
                     // Never mutate the provider future with orTimeout: a logical deadline
                     // is not proof that its underlying HTTP exchange has terminated.
-                    CompletableFuture.delayedExecutor(30,TimeUnit.SECONDS).execute(()->lease.timeout(AiResponse.failure("Provider response deadline; scripted fallback")));
+                    CompletableFuture.delayedExecutor(policy.timeoutSeconds(),TimeUnit.SECONDS).execute(()->{
+                        if(lease.future().isDone())return;
+                        policy.capture().deadline();recordUsage(owned,epoch,policy,"deadline");
+                        lease.timeout(AiResponse.failure("Provider response deadline; scripted fallback"));
+                    });
                     upstream.whenComplete((answer,failure)->{
                         lease.networkFinished();
+                        recordUsage(owned,epoch,policy,failure==null&&answer!=null&&answer.ok()?"ok":"provider_error");
                         if(io!=owned||lifecycle!=epoch){lease.complete(AiResponse.failure("Conversation runtime ended"));return;}
                         try{server.execute(()->{
                             try{
@@ -210,5 +245,19 @@ public final class LivingWorld {
             }catch(Exception ignored){lease.complete(AiResponse.failure("AI budget, pricing or storage gate unavailable; scripted fallback"));}
         });}catch(RejectedExecutionException ignored){lease.complete(AiResponse.failure("Character worker busy; scripted fallback"));}
         return result;
+    }
+    private static void recordUsage(ExecutorService owned,long epoch,NativeRequestPolicy.Policy policy,String terminal){
+        if(io!=owned||lifecycle!=epoch)return;
+        JsonObject observed=policy.capture().snapshot(terminal);
+        try{owned.execute(()->{
+            if(io!=owned||lifecycle!=epoch)return;
+            try(var shared=spendingLock()){
+                Path ledger=STATE.resolve("native-budget.json");safePath(ledger);
+                if(!Files.isRegularFile(ledger)||Files.size(ledger)>NativeUsage.MAX_LEDGER_BYTES)return;
+                JsonObject usage=JsonParser.parseString(Files.readString(ledger)).getAsJsonObject();
+                NativeUsage.finish(usage,policy.capture().id(),observed);
+                String data=GSON.toJson(usage);if(data.getBytes(StandardCharsets.UTF_8).length<=NativeUsage.MAX_LEDGER_BYTES)atomic(ledger,data);
+            }catch(Exception ignored){/* A missing receipt remains unknown; no synthetic usage is substituted. */}
+        });}catch(RejectedExecutionException ignored){/* Admission receipt remains available; returned usage may be unknown. */}
     }
 }
