@@ -447,19 +447,32 @@ class Characters:
             mismatch = bool(native['current'] and key and (not native_provider.get('credential_configured') or fingerprint != self._credential_signature(key)))
         except (OSError, ValueError, UserError):
             mismatch = False
+        native_usage = self._native_usage(native)
+        def latest(first, second):
+            def stamp(value):
+                try:
+                    parsed = datetime.fromisoformat(value['at'].replace('Z', '+00:00'))
+                    return parsed.timestamp() if parsed.tzinfo is not None else float('-inf')
+                except (KeyError, ValueError, TypeError):
+                    return float('-inf')
+            return copy.deepcopy(second if stamp(second) > stamp(first) else first)
+        success = latest(stored.get('last_successful_call'), native_usage.get('last_successful_call'))
+        error = latest(stored.get('last_error'), native_usage.get('last_error'))
+        if success is not None and latest(success, error) == success:
+            error = None
         return {'configured': credentials['configured'], 'credential_source': credentials['source'],
                 'credential_error': credentials['error'], 'verified': verification['verified'],
                 'external_enabled': bool(state['config']['settings']['external_enabled'] and verification['verified']),
                 'model': verification['model'], 'endpoint': verification['endpoint'],
                 'reasoning_effort': verification['reasoning_effort'],
                 'verified_models': [{'id': ident, **policy} for ident, policy in verification['model_policies'].items()],
-                'last_successful_call': copy.deepcopy(stored.get('last_successful_call')),
-                'last_error': copy.deepcopy(stored.get('last_error')), 'auto_disabled_reason': stored.get('auto_disabled_reason'),
+                'last_successful_call': success,
+                'last_error': error, 'auto_disabled_reason': stored.get('auto_disabled_reason'),
                 'restart_required': bool(mismatch or stored.get('credential_rotated') and not restarted),
                 'usage': self._combined_usage(state), 'preview_usage': self._usage_summary(state),
                 'native_adapter_version': native.get('adapter_version'),
                 'native_generation_policy_available': bool(native['current'] and 'generation_policy' in native.get('capabilities', [])),
-                'native_usage': self._native_usage(native),
+                'native_usage': native_usage,
                 'note': 'Credential rotation needs a normal dedicated-server restart; Save and Apply cannot replace a running Java process environment.'}
 
     @staticmethod
@@ -535,12 +548,40 @@ class Characters:
                 _number(ledger.get(key, 0), key, 0, 1_000_000, True)
             for key in ('reserved_usd', 'day_estimated_token_cost_usd'):
                 _number(ledger.get(key, 0), key, 0, 1_000_000)
+            last_success, last_error = None, None
+            for row in rows:
+                if not isinstance(row, dict) or row.get('status') not in ('ok', 'provider_error', 'deadline'):
+                    continue
+                at, latency = row.get('at'), row.get('latency_ms')
+                if type(at) not in (int, float) or not math.isfinite(at) or not 1_000_000_000_000 <= at <= time.time() * 1000 + 2000:
+                    continue
+                if latency is not None and (type(latency) not in (int, float) or not math.isfinite(latency) or not 0 <= latency <= 3_600_000):
+                    continue
+                model = row.get('model') or row.get('requested_model')
+                if not isinstance(model, str) or not re.fullmatch(r'[A-Za-z0-9_.:/-]{1,120}', model):
+                    continue
+                event = {'at': datetime.fromtimestamp(at / 1000, timezone.utc).isoformat(), 'kind': 'minecraft',
+                         'model': model, 'latency_ms': latency,
+                         'time_basis': 'Recorded Minecraft request start time; latency is recorded separately',
+                         'source': 'authenticated_native_budget_ledger'}
+                failure = row['status'] in ('provider_error', 'deadline') or row.get('delivery_status') == 'deadline'
+                if failure:
+                    event.update(code='minecraft_deadline' if row['status'] == 'deadline' or row.get('delivery_status') == 'deadline' else 'minecraft_provider_error',
+                                 message='Minecraft AI request failed or reached its response deadline; scripted fallback remained available. Raw errors and conversation text are not included.')
+                    if last_error is None or at > last_error[0]:
+                        last_error = (at, event)
+                elif row.get('dispatched') is True:
+                    event['counts'] = self._counts(row.get('usage', {})) if isinstance(row.get('usage'), dict) else {}
+                    if last_success is None or at > last_success[0]:
+                        last_success = (at, event)
             return {'available': True, 'scope': 'minecraft', 'day': ledger['day'], 'current_day': current_day,
                     'requests_today': ledger.get('day_requests', 0) if current_day else 0,
                     'dispatched_today': ledger.get('day_dispatched', 0) if current_day else 0,
                     'reserved_cost_today_usd': ledger.get('reserved_usd', 0) if current_day else 0,
                     'measured_counts': counts if current_day else {},
                     'estimated_token_cost_usd': ledger.get('day_estimated_token_cost_usd', 0) if current_day else 0,
+                    'last_successful_call': last_success[1] if last_success else None,
+                    'last_error': last_error[1] if last_error else None,
                     'actual_cost_usd': None, 'note': 'Native observed responses and conservative reservations; provider billing remains authoritative.'}
         except (OSError, ValueError, TypeError, UserError):
             return unavailable

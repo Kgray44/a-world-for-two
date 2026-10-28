@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import tempfile
+import time
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
@@ -264,6 +265,54 @@ class ProviderTests(unittest.TestCase):
                 native['provider']['credential_fingerprint'] = '0' * 64
                 self.assertFalse(self.service.export_configuration()['settings']['external_enabled'])
                 self.assertTrue(self.service.provider_status()['restart_required'])
+
+    def test_provider_status_merges_sanitized_native_outcomes_using_recorded_start_times(self):
+        self.configure()
+        now = time.time()
+        state = self.service._read()
+        state['provider_status']['last_successful_call'] = {
+            'at': datetime.fromtimestamp(now - 30, timezone.utc).isoformat(), 'model': 'gpt-6-luna',
+            'kind': 'connection_test', 'counts': {'total': 3}, 'latency_ms': 10}
+        self.service._write(state)
+        rows = [
+            {'at': (now - 20) * 1000, 'latency_ms': 400, 'model': 'gpt-6.1-sol', 'status': 'ok',
+             'dispatched': True, 'usage': {'prompt_tokens': 10, 'completion_tokens': 5, 'total_tokens': 15},
+             'raw_error': KEY, 'reply': 'Private test content must not be returned'},
+            {'at': (now - 10) * 1000, 'latency_ms': 15000, 'requested_model': 'gpt-6-luna', 'status': 'deadline',
+             'dispatched': True, 'raw_error': KEY}]
+        ledger = {'format': 'awft-native-ai-usage:2', 'day': datetime.now(timezone.utc).date().isoformat(),
+                  'day_requests': 2, 'day_dispatched': 2, 'reserved_usd': .001, 'requests': rows}
+        path = self.service.folder / 'native-budget.json'
+        path.write_text(json.dumps(ledger))
+        native = {'current': True, 'characters': [], 'adapter_version': '0.2.0', 'capabilities': ['returned_usage']}
+        with patch.object(self.service, '_native', return_value=native):
+            status = self.service.provider_status()
+            self.assertEqual('minecraft', status['last_successful_call']['kind'])
+            self.assertEqual('gpt-6.1-sol', status['last_successful_call']['model'])
+            self.assertEqual(15, status['last_successful_call']['counts']['total'])
+            self.assertIn('start time', status['last_successful_call']['time_basis'])
+            self.assertEqual('minecraft_deadline', status['last_error']['code'])
+            self.assertNotIn(KEY, json.dumps(status))
+            self.assertNotIn('Private test content', json.dumps(status))
+            rows.append({'at': (now - 5) * 1000, 'latency_ms': 300, 'model': 'gpt-6-luna', 'status': 'ok', 'dispatched': True})
+            path.write_text(json.dumps(ledger))
+            self.assertIsNone(self.service.provider_status()['last_error'], 'A later successful recorded request clears the older error state')
+
+    def test_stale_native_or_undispatched_success_cannot_become_last_successful_call(self):
+        self.configure()
+        ledger = {'format': 'awft-native-ai-usage:2', 'day': datetime.now(timezone.utc).date().isoformat(),
+                  'requests': [{'at': time.time() * 1000, 'latency_ms': 10, 'model': 'gpt-6-luna',
+                                'status': 'ok', 'dispatched': False}]}
+        (self.service.folder / 'native-budget.json').write_text(json.dumps(ledger))
+        native = {'current': True, 'characters': [], 'capabilities': ['returned_usage']}
+        with patch.object(self.service, '_native', return_value=native):
+            self.assertIsNone(self.service.provider_status()['last_successful_call'])
+            ledger['requests'][0]['dispatched'] = True
+            (self.service.folder / 'native-budget.json').write_text(json.dumps(ledger))
+            native['current'] = False
+            status = self.service.provider_status()
+            self.assertIsNone(status['last_successful_call'])
+            self.assertFalse(status['native_usage']['available'])
 
     def test_openai_payload_sends_temperature_only_when_supported_and_never_for_reasoning_modes(self):
         response = Mock()
