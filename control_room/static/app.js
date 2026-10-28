@@ -310,7 +310,8 @@ async function refresh() {
     state.connected=true;$('#connection').className='connection';$('#connection').innerHTML='<i></i> Connected locally';
     $('#last-update').textContent=measurementLabel(state.overview.metrics?.freshness?.snapshot);
     if(['overview','performance'].includes(state.page)&&(!state.historyAt || Date.now()-state.historyAt>60000)){state.history=await api('/api/history?hours=1');state.historyAt=Date.now();}
-    for(const j of state.jobs){if(['failed','complete','interrupted'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);state.backupsDirty=true;toast(j.status!=='complete'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status!=='complete');}}
+    for(const j of state.jobs){if(['failed','complete','interrupted'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);if(state.jobsLoaded){state.backupsDirty=true;toast(j.status!=='complete'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status!=='complete');}}}
+    state.jobsLoaded=true;
     if(['overview','performance'].includes(state.page))await render();else if(state.page==='storage')storagePage(await api('/api/storage'));else if(state.page==='console')await refreshConsole();else if(state.page==='connectivity'&&!$('#modal').open&&!document.activeElement?.closest('form'))await connectivityPage();
     else if(state.page==='backups'&&state.backupsDirty&&!$('#modal').open)await backupsPage();
     showJobs();
