@@ -8,13 +8,56 @@ adds source preparation, a narrow console correction proposal, observations and
 arithmetic audits. **It does not claim commissioned transport.**
 
 H means `D:\A World for Two\staging\world-tests\20261027T053650Z-artistic`.
-All private outputs below are beneath `H/staging/`; no world, account, installed
-runtime, active bridge, Packwiz or primary checkout was changed by this workstream.
-The master reports candidate.50 installed; all bindings must use the actual
+Source-preparation outputs are beneath `H/staging/`. One master-leased cable
+attempt wrote its exact request and native result under `H/dashboard/settlement/`;
+the native controller refused before helper world mutations. No account,
+installed bridge, Packwiz or primary checkout was changed by this workstream.
+Private candidate.51 / bridge0.6.37 is installed; all bindings must use the actual
 installed identities when the native window opens. Sprint handover is
 2026-10-29 00:26:08 UTC, 20:26:08 EDT on October 28.
 
 ## Current checkpoint update: 6ad3a8
+
+### Actual Native51 cable attempt: refused before mutation
+
+Master granted the single-operation lease `transport-cable51-once`, issued
+19:39:14.446126UTC and expiring19:44:14.446126UTC. We authenticated actual PID2108,
+process birth1793215348.1041014, server CWD, candidate51/bridge0.6.37, pack/JAR,
+verified6ad backup and fresh zero-player roster; ReserveGuard admitted C0/D512MiB.
+Fresh genuine Native51 FULL1163 and body5607 completed before the attempt:
+
+| Native file under H/dashboard/settlement | SHA-256 |
+| --- | --- |
+| `settlement-result-aa6bc023-1f06-454b-bf21-f3e1b13e9752.json` | `f5db4ce90d0c5da12ecdc0fdc16576add4f03e87ad48ff03d19dc8987ad151b0` |
+| `settlement-result-484f394f-1b3a-4311-867d-85216bc05ca1.json` | `7af38886c1fe49c6b060b07dd43088ffb61d8df61c02324380040d6f94336092` |
+| `chain-route-result-61abd071-12c4-4da9-8c3c-eb9b408c70dd.json` | `004e0969fabfa27e87c6365286c00a2d9e1630570f22c7de87dd118f3b69a85c` |
+
+The one command began19:40:48.663548400UTC and finished19:40:48.876884600UTC.
+Its actual persisted dependency/light halo is **2,002 columns**, radius14;
+217 saved FULL endpoint-neighborhood columns do not qualify that larger halo.
+Native preflight refused `UNKNOWN/non-FULL/retrogen/lighting/version/coordinate
+persisted chunk at [54, -93]`. The immutable6ad archive independently shows that
+column exists with DataVersion3955/correct coordinates but **Status=minecraft:biomes**
+and no `isLightOn`. This saved diagnosis does not replace the live native refusal.
+
+Actual outcome: failures1, added0, attached0, chain debits0, helper mutations0,
+tickets/wakes before persisted validation0; cleanup_passed=true,
+cleanup_required=false, cleanup_errors=[], temporary tickets0, shared futures0
+and current persisted reads pending0. The exact terminal marker and final status
+file agree. No cancel, retry, refund, replacement or other native command was sent.
+Clean release was observed at19:41:36UTC and reported to master before expiry.
+The successful terminal publisher returns the deployed controller to IDLE after
+releasing its maintenance lease; no extra status command was authorized.
+
+Request `332c58c26c2c29e4f8275d117e513d049c2ef44162302545fdcf01b76282cdbb`
+and route `c8262d70347b2b93ee05aaf0114704b4ad11fd9b98cfc6ab4cf838fadda5a84f`
+remain preserved. Paired source manifest under
+`transport-chain-paired-6ad3-native51-r1/` is
+`1652a56e08c76d5a691af7dbb690a6b970dea97c2a49856b1fbf5e2b968027e6`.
+Do not retry this request. Completing missing terrain through normal generation
+needs a separately bounded master operation, followed by a verified checkpoint,
+fresh readiness/geometry and a new exact lease. Never weaken the FULL/light gate.
+Cable travel, braking, safe arrival and restart remain **unverified**.
 
 Master stopped candidate50 normally and produced checkpoint
 `20261028T191243Z-6ad3a8`, SHA
@@ -45,17 +88,48 @@ altered labels, unknown geometry and tampered plan bytes refuse. The306 default
 retains its original exact identity. Nine focused conductor tests pass, including
 the three new checkpoint/tamper cases; total targeted transport coverage is37.
 
+## Strict material custody across mill recovery
+
+`tools.transport_commission logistics` defaults to exact unrelated-item
+conservation. A whole-resume before/after capture will also contain two legitimate
+detector-installation debits. They may be qualified only through
+`tools.transport_material_audit.derive_equipment_debits`, using canonical native
+observation/inspection/resume terminals and exact completion markers, the actual
+request and deployed bridge digest, and all ten durable WEST/feed/assembly records.
+The observer's read gate prevents manufacturing a convenient mid-resume baseline.
+
+The derived witness validates all27 slots through both one-item equipment debits,
+the real16wheat/1iron feed, assembly and final observation, including raw native
+JSON hash chains without their one trailing LF. Unfamiliar components/SNBT,
+partial/replayed ledgers, different JVM/world/bridge, unclean completion and any
+other item loss refuse. It does not modify or replace a native observation.
+
+After genuine captures exist, run from this checkout (paths are placeholders for
+the actual canonical native files):
+
+```powershell
+python -B -m tools.transport_commission logistics --before BEFORE --after AFTER `
+  --home H --native-resume ACTUAL_RESUME_TERMINAL --bridge-jar-sha256 ACTUAL_DEPLOYED_SHA
+```
+
+No arbitrary witness JSON is accepted by that CLI. The two equipment decreases
+remain explicit in `actual_item_deltas` and `equipment_installation_debits`.
+Twelve focused synthetic material tests pass; no real resume/equipment witness
+exists yet, and source tests do not establish actual item delivery.
+
 ## Immediate integration checkpoint
 
-1. Correct the console bundle mismatch before attempting recovery. Active Java
-   and its producer require `mill-resume-<16hex>`, while Control Room still admits
-   `mill-commission-<16hex>`. `console_revision.py` under
+1. The master integrated the console bundle correction for candidate51. Active
+   Java, its producer and the current master allowlist use `mill-resume-<16hex>`.
+   Revalidate the actual dashboard's loaded revision before recovery;
+   `console_revision.py` under
    `compat/control-bridge/proposals/transport-commission-r1/` prints a narrow diff
    for `control_room/server.py` and its existing safety fixtures. Run it from the
-   master checkout after integration, inspect the diff, then apply it there.
+   master checkout only if the original mismatch remains. It refuses an already
+   changed source context; do not rerun it blindly on the integrated revision.
    It removes obsolete commission admission, requires the existing private
    artistic owner/port gate for inspect and resume, and retains confirmation for
-   resume. Changed source context refuses revision. No general console bypass.
+   resume. No general console bypass.
 2. In the master's exclusive empty-player window, verify the current 7,941-target
    mill preimage and the 1,163-target zipline geometry using the existing guarded
    `tools.artistic_review.native` / `awftbuild verify <exact SHA>` path. Every
