@@ -6,7 +6,7 @@ import unittest
 from control_room.common import UserError
 from tools.artistic_fountain_centerpiece import (
     AIR,CURB,FULL_WHITE,HEADER,INTAKE_PIPE,JET_WITNESSES,MARS,OUTPUT_PATH,
-    STOP_LEVER,WATER_CROSS,WHEEL_SOURCE,admit_checkpoint_mode,compose,has_items,key,post_reset_precondition,state,validate,
+    STOP_LEVER,WATER_CROSS,WHEEL_SOURCE,admit_checkpoint_mode,compose,has_items,key,normal_owned_copper_aging,post_reset_precondition,state,validate,
 )
 from tools.artistic_spawn_plaza import construct
 
@@ -99,6 +99,15 @@ class FountainCenterpieceTests(unittest.TestCase):
         self.assertTrue(has_items({'nested':{'item':{'id':'minecraft:diamond','Count':1}}}))
         self.assertTrue(has_items({'CustomName':'Captain’s keepsake'}))
         self.assertTrue(has_items({'LootTable':'minecraft:chests/buried_treasure'}))
+
+    def test_saved_owned_trim_may_age_without_authorizing_waxing_or_foreign_replacement(self):
+        pos=(1123,65,-1131);base={pos:'minecraft:cut_copper'}
+        for actual in ('minecraft:exposed_cut_copper','minecraft:weathered_cut_copper','minecraft:oxidized_cut_copper'):
+            self.assertEqual(post_reset_precondition(pos,actual,base),actual)
+        for actual in ('minecraft:waxed_cut_copper','minecraft:copper_block','minecraft:exposed_cut_copper_slab[type=bottom,waterlogged=false]'):
+            with self.assertRaisesRegex(UserError,'outside normal fountain flow'):
+                post_reset_precondition(pos,actual,base)
+        self.assertFalse(normal_owned_copper_aging('minecraft:weathered_cut_copper','minecraft:cut_copper'))
 
     def test_dry_mode_refuses_a_wet_checkpoint_or_prospective_air(self):
         p=self.make();base=p.base

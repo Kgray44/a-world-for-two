@@ -1,0 +1,20 @@
+{
+  "format": "awft-native-fountain-reset-proposal:1",
+  "created": "2026-10-27T23:02:32.246355+00:00",
+  "source_base_sha256": "cab045da9c7851507fd9bbd6ba4611550dcf70c53080f7f2d5e6b434e07ab656",
+  "active_source_unchanged": true,
+  "files": {
+    "NativeFountainSupport.java": "aabeee216128e74e1bba9fe0e4bb7e6aa47881d61fcb71199c577cc95d1454e2",
+    "NativeFountainSupport.patch": "87a5337e9749826a237a13f2dcb6f6488d9e956eac8e27fbdafa69d61f703048",
+    "README.md": "037dbe89889b731069167f073a84dd0becec80018b95b9dd311c188488a1b17b"
+  },
+  "compile_proof": {
+    "path": "D:\\A World for Two\\staging\\world-tests\\20261027T053650Z-artistic\\staging\\fountain-reset-native-compile-20261027T2302Z\\compile-result.json",
+    "sha256": "2b2faebd36f64aaffac1d7486eb9fc470277f5e39c161da65193510a129663b6",
+    "exit": 0
+  },
+  "native_actions": 0,
+  "runtime_changes": 0,
+  "world_writes": 0,
+  "native_reset_acceptance": false
+}

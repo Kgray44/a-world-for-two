@@ -1,0 +1,11 @@
+{
+  "format": "awft-original-additive-chain-r4:1",
+  "controller_public_predecessor": "compat/proposals/native-chain-route-public-r3/NativeChainRouteSupport.java",
+  "controller_predecessor_sha256": "403f7180016f1e69e5b6c57b6948846e505bdfec420f3fcc8d184ca803ead069",
+  "producer_public_predecessor": "tools/artistic_chain_route_request.py",
+  "producer_predecessor_sha256": "d03ca28a9ed421bb9d5f2352a9f70d78bd70ad2b6c90cd3195d13f0683a1b5d4",
+  "private_original_consulted": false,
+  "literal_private_seed_in_source": false,
+  "native_world_actions": 0,
+  "scope": "Explicit format2 prepare-create; original create keeps already-FULL refusal; bounded current persisted FULL/halo proof before all ticketing/wake, then same-lease unchanged native creation body"
+}

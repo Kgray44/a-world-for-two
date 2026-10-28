@@ -2,13 +2,32 @@
 from __future__ import annotations
 
 import os
+import hashlib
 import subprocess
 import zipfile
 from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-PRESENTATION_VERSION = '0.2.2'
+PRESENTATION_VERSION = '0.2.3'
+
+
+def zipline_apis(home):
+    """Exact compile-only APIs. No third-party class enters the owned JAR."""
+    pins = (
+        ('zipline-1.5.3+1.21.1-neoforge.jar', 89295,
+         '47db8340965b18aefc3d809af9fecc9e0e0a05a01da59e40bf66cca135c91ed182fbb46ee249682e56ffb46c22723491b48827a34ee75d01dd7a3c8045cee334'),
+        ('connectiblechains-2.4.4+1.21.1-neoforge.jar', 293575,
+         'c09a3a354a26ce0dc511c2364332975222fae8515101f524de5e724f3a191eb75ffb4f381b8c78907f885d7a7e86f1ce7b883d56921fb5f31709466446efe00a'),
+    )
+    result = []
+    for filename, size, expected in pins:
+        path = Path(home)/'caches/mods'/filename
+        if (not path.is_file() or path.is_symlink() or path.stat().st_size != size
+                or hashlib.sha512(path.read_bytes()).hexdigest() != expected):
+            raise UserError('Exact pinned compile-only zipline API is required: '+filename)
+        result.append(path)
+    return result
 
 
 def build(home, destination, storage):
@@ -23,7 +42,7 @@ def build(home, destination, storage):
     classes = work / 'classes'
     classes.mkdir(parents=True)
     libraries = home / 'server/libraries'
-    jars = [named] + sorted(libraries.rglob('*.jar'))
+    jars = [named] + zipline_apis(home) + sorted(libraries.rglob('*.jar'))
     cp = os.pathsep.join(p.as_posix() for p in jars)
     source = REPO / 'compat/client-presentation'
     sources = sorted((source / 'src').rglob('*.java'))
@@ -50,5 +69,5 @@ def build(home, destination, storage):
         'size':destination.stat().st_size, 'hashes':{'sha256':digest(destination)}, 'side':'client', 'kind':'mod',
         'request':None, 'world_sensitive':False, 'optional':False, 'default':True, 'dependencies':[],
         'license':{'id':'MIT'}, 'source':'https://github.com/Kgray44/a-world-for-two',
-        'selection_reason':'Owned native menu toolbar, cinematic arbitration, bounded client measurements and Small Ships remote-config lifecycle correction. No world renderer or player movement.',
+        'selection_reason':'Owned native menu toolbar, cinematic arbitration, bounded client measurements, Small Ships remote-config lifecycle correction and real loaded-chain handoff provider. Native ZiplineLogic retains rider movement and collision.',
         'status':'Integrated but awaiting runtime validation', 'validation':{'metadata':'pass','jar':'pending','runtime':'not run'}}

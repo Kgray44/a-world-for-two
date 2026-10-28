@@ -1,0 +1,133 @@
+--- a/compat/control-bridge/src/worldfortwo/bridge/NativeFountainSupport.java
++++ b/compat/control-bridge/src/worldfortwo/bridge/NativeFountainSupport.java
+@@ -35,7 +35,7 @@
+  * Create pump normally deadheads at a full header; gravity drives the cascades.
+  */
+ public final class NativeFountainSupport {
+-    private enum Phase { IDLE, LOAD, GEOMETRY, DRY, FILL, STOP, RESTART, RESET_WHEEL, RESET_DRAIN, RESET_CONTROLS, CLEANUP }
++    private enum Phase { IDLE, LOAD, GEOMETRY, DRY, FILL, STOP, RESTART, RESET_WHEEL, RESET_DRAIN, RESET_CONTROLS, GATE_HOLD, GATE_OPEN, CLEANUP }
+     private record Target(BlockPos pos,BlockState state){}
+     private static final Gson JSON=new Gson();
+     private static final BlockPos WHEEL=new BlockPos(1145,66,-1130),PUMP=new BlockPos(1140,66,-1129),
+@@ -64,7 +64,7 @@
+     public boolean busy(){return phase!=Phase.IDLE;}
+     public void commands(RegisterCommandsEvent event){
+         var root=Commands.literal("awftfountain").requires(s->s.getEntity()==null&&s.hasPermission(4));
+-        for(String action:List.of("inspect","commission","reset"))root.then(Commands.literal(action)
++        for(String action:List.of("inspect","commission","reset","recover-gate"))root.then(Commands.literal(action)
+             .then(Commands.argument("bundle",StringArgumentType.word()).then(Commands.argument("sha256",StringArgumentType.word()).executes(c->{
+                 if(busy())return 0;
+                 try{begin(c.getSource().getServer(),action,StringArgumentType.getString(c,"bundle"),StringArgumentType.getString(c,"sha256"));return 1;}
+@@ -132,6 +132,7 @@
+             }
+         }
+         if(action.equals("reset"))admitReset();
++        if(action.equals("recover-gate"))admitGateRecovery();
+         for(int x=1119>>4;x<=1149>>4;x++)for(int z=-1136>>4;z<=-1120>>4;z++)chunks.add(new ChunkPos(x,z));
+         for(Target target:targets)chunks.add(new ChunkPos(target.pos));if(chunks.size()>16)throw new IllegalStateException("Finite fountain chunk envelope exceeded");
+         lease=interlock.acquire("fountain:"+expected,true);if(lease==null||!lease.valid())throw new IllegalStateException("Exclusive native lease required");
+@@ -229,6 +230,75 @@
+         }else throw new IllegalStateException("Unexpected reset phase");
+     }
+ 
++
++    private static final String GATE_BACKUP_SHA="9bc10263e655b70468d9aad2a4b6787c7d50068f68b7292ef91e60757d627de8",
++        GATE_BEFORE_SHA="67086be86d69902fdbf8e14cf4783d9b7c8a076df168e596effd399d1543958d",
++        GATE_MOVING_SHA="a60c57b8140243214045b29bf4899aec2bd88eb10408ba9a7417f26c44f3e834";
++    private void admitGateRecovery()throws Exception{
++        if(!request.get("backup_sha256").getAsString().equals(GATE_BACKUP_SHA)
++            ||!request.getAsJsonObject("recover_gate_before").get("sha256").getAsString().equals(GATE_BEFORE_SHA)
++            ||!request.getAsJsonObject("recover_gate_moving").get("sha256").getAsString().equals(GATE_MOVING_SHA))throw new IllegalStateException("Exact preserved owned moving-gate checkpoint/source required");
++        JsonObject plan=resetReference(request.getAsJsonObject("recover_gate_before"),65536),moving=resetReference(request.getAsJsonObject("recover_gate_moving"),65536),proof=resetReference(request.getAsJsonObject("recover_gate_native_verify"),65536);
++        JsonObject proofRef=request.getAsJsonObject("recover_gate_native_verify");Path proofPath=owned(proofRef.get("path").getAsString());
++        if(!proofPath.getParent().equals(journal)||!proofPath.getFileName().toString().matches("settlement-result-[a-f0-9-]{36}\\.json")
++            ||!new String(bounded(proofPath.resolveSibling(proofPath.getFileName()+".complete"),128),StandardCharsets.US_ASCII).trim().equals(proofRef.get("sha256").getAsString()))throw new IllegalStateException("Actual owned gate before proof/marker required");
++        if(!proof.get("operation").getAsString().equals("verify")||!proof.get("plan_sha256").getAsString().equals(GATE_BEFORE_SHA)
++            ||!proof.get("status").getAsString().equals("verified actual block identities, orientation, block entities and supplied inventories")
++            ||proof.get("blocks").getAsInt()!=14||proof.has("error")||proof.get("failures").getAsInt()!=0||proof.get("cleanup_required").getAsBoolean()
++            ||proof.get("temporary_tickets_remaining").getAsInt()!=0||proof.get("pending_shared_chunk_futures").getAsInt()!=0
++            ||proof.has("cleanup_failures")&&proof.get("cleanup_failures").getAsInt()!=0)throw new IllegalStateException("Fresh complete clean actual14-state gate before verification required");
++        Instant start=Instant.parse(proof.get("started").getAsString()),finish=Instant.parse(proof.get("finished").getAsString()),now=Instant.now();
++        if(start.isAfter(finish)||finish.isAfter(now)||finish.isBefore(now.minusSeconds(1800)))throw new IllegalStateException("Gate before proof is stale/future/out of order");
++        if(!plan.get("format").getAsString().equals("awft-native-settlement:1")||!plan.get("backup_sha256").equals(request.get("backup_sha256"))
++            ||!plan.get("seed").equals(request.get("seed"))||!plan.get("world_path").equals(request.get("world_path"))
++            ||!plan.get("verification_only").getAsBoolean()||!plan.get("construction_forbidden").getAsBoolean()
++            ||plan.getAsJsonArray("commands").size()!=0||plan.getAsJsonArray("block_entities").size()!=0
++            ||!moving.get("checkpoint_sha256").getAsString().equals(GATE_BACKUP_SHA))throw new IllegalStateException("Only exact retained read-only gate preimages admitted");
++        JsonObject saved=moving.getAsJsonObject("saved_moving_BE"),savedState=saved.getAsJsonObject("blockState");
++        if(!saved.get("id").getAsString().equals("minecraft:piston")||saved.get("x").getAsInt()!=OPEN_PLUG.getX()||saved.get("y").getAsInt()!=OPEN_PLUG.getY()||saved.get("z").getAsInt()!=OPEN_PLUG.getZ()
++            ||saved.get("source").getAsInt()!=1||saved.get("extending").getAsInt()!=1||saved.get("facing").getAsInt()!=2
++            ||!savedState.get("Name").getAsString().equals("minecraft:piston_head"))throw new IllegalStateException("Saved moving source head ownership differs");
++        Set<BlockPos> allowed=new HashSet<>(JETS);allowed.addAll(List.of(WHEEL_SOURCE,HEADER,LEVER,PISTON,PORT,OPEN_PLUG,INTAKE,WHEEL,PUMP,new BlockPos(1138,73,-1125)));
++        JsonArray rows=plan.getAsJsonArray("blocks"),palette=plan.getAsJsonArray("palette");Set<BlockPos> unique=new HashSet<>();
++        if(rows.size()!=14||allowed.size()!=14||palette.size()>14)throw new IllegalStateException("Finite exact gate baseline required");
++        for(JsonElement entry:rows){JsonArray row=entry.getAsJsonArray();if(row.size()!=4)throw new IllegalStateException("Exact gate before row required");BlockPos pos=new BlockPos(row.get(0).getAsInt(),row.get(1).getAsInt(),row.get(2).getAsInt());
++            if(!allowed.contains(pos)||!unique.add(pos))throw new IllegalStateException("Foreign gate recovery target refused");targets.add(new Target(pos,parse(palette.get(row.get(3).getAsInt()).getAsString())));}
++        report.put("gate_before_native_proof",proofRef.deepCopy());report.put("gate_recovery_maximum_ticks",600);report.put("moving_BE_state_writes",0);report.put("piston_plug_or_source_block_writes",0);
++    }
++    private boolean noMovingGateBE(){return !(level.getBlockEntity(PISTON) instanceof net.minecraft.world.level.block.piston.PistonMovingBlockEntity)
++        &&!(level.getBlockEntity(OPEN_PLUG) instanceof net.minecraft.world.level.block.piston.PistonMovingBlockEntity)
++        &&!(level.getBlockEntity(PORT) instanceof net.minecraft.world.level.block.piston.PistonMovingBlockEntity);}
++    private boolean gateSourcesDry(){return level.getBlockState(WHEEL_SOURCE).isAir()&&level.getBlockState(HEADER).isAir()&&JETS.stream().allMatch(p->level.getBlockState(p).isAir());}
++    private void startGateRecovery(){
++        // No resetEmptyTime was issued during LOAD/GEOMETRY. Read the real
++        // frozen moving head BEFORE allowing ordinary simulation to resume.
++        if(!(level.getBlockEntity(OPEN_PLUG) instanceof net.minecraft.world.level.block.piston.PistonMovingBlockEntity moving)
++            ||!moving.getMovedState().equals(parse("minecraft:piston_head[facing=north,short=false,type=sticky]"))
++            ||moving.getDirection()!=net.minecraft.core.Direction.NORTH||!moving.isSourcePiston()||!moving.isExtending()
++            ||!Float.isFinite(moving.getProgress(0))||!Float.isFinite(moving.getProgress(1))||moving.getProgress(0)<0||moving.getProgress(1)>1
++            ||!zeroDrive()||!gateSourcesDry()||!source(INTAKE)||!level.getBlockState(PORT).is(Blocks.CHISELED_QUARTZ_BLOCK))throw new IllegalStateException("Actual owned dry source-head MovingBE metadata differs");
++        Map<String,Object> meta=new LinkedHashMap<>();meta.put("moved_state",moving.getMovedState().toString());meta.put("direction",moving.getDirection().getName());meta.put("source",moving.isSourcePiston());meta.put("extending",moving.isExtending());meta.put("progress0",moving.getProgress(0));meta.put("progress1",moving.getProgress(1));meta.put("last_native_tick",moving.getLastTicked());report.put("actual_moving_BE_read_before_wake",meta);
++        nativePlug=level.getBlockState(PORT);sample("recover_gate_exact_frozen_before_wake");stopLever(true);next(Phase.GATE_HOLD);
++    }
++    private void tickGateRecovery(){
++        if(!zeroDrive()||!gateSourcesDry()||!source(INTAKE))throw new IllegalStateException("Gate recovery must stay dry and unpowered");
++        BlockState piston=level.getBlockState(PISTON),diode=level.getBlockState(new BlockPos(1138,73,-1125));
++        if(phase==Phase.GATE_HOLD){
++            boolean on=level.getBlockState(LEVER).getValue(BlockStateProperties.POWERED)&&piston.is(Blocks.STICKY_PISTON)&&piston.getValue(BlockStateProperties.FACING)==net.minecraft.core.Direction.NORTH&&piston.getValue(BlockStateProperties.EXTENDED)
++                &&level.getBlockState(OPEN_PLUG).equals(parse("minecraft:piston_head[facing=north,short=false,type=sticky]"))&&level.getBlockState(PORT).equals(nativePlug)&&noMovingGateBE();
++            if(on)stable++;else stable=0;
++            if(stable>=40){sample("recover_gate_actual_ON_extended_head_settled");stopLever(false);next(Phase.GATE_OPEN);}
++            else if(phaseTicks>220)throw new IllegalStateException("Normal awake extension/head did not settle");
++        }else if(phase==Phase.GATE_OPEN){
++            boolean off=!level.getBlockState(LEVER).getValue(BlockStateProperties.POWERED)&&piston.is(Blocks.STICKY_PISTON)&&piston.getValue(BlockStateProperties.FACING)==net.minecraft.core.Direction.NORTH&&!piston.getValue(BlockStateProperties.EXTENDED)
++                &&level.getBlockState(OPEN_PLUG).equals(nativePlug)&&level.getBlockState(PORT).isAir()&&diode.is(Blocks.REPEATER)&&diode.getValue(BlockStateProperties.HORIZONTAL_FACING)==net.minecraft.core.Direction.SOUTH&&!diode.getValue(BlockStateProperties.POWERED)&&noMovingGateBE();
++            if(off)stable++;else stable=0;
++            if(stable>=40){sample("recover_gate_actual_OFF_retracted_quartz_returned");report.put("actual_normal_gate_recovered",true);report.put("fresh_stopped_dry_checkpoint_required",true);
++                finish("actual awake normal ON/OFF gate recovery passed; no piston/source/BE/NBT writes; fresh dry checkpoint required",false);}
++            else if(phaseTicks>300)throw new IllegalStateException("Normal awake OFF/retraction/plug return did not settle");
++        }else throw new IllegalStateException("Unexpected gate recovery phase");
++    }
++
+     @SuppressWarnings({"rawtypes","unchecked"})private static BlockState parse(String text){
+         String[] parts=text.split("\\[",2);ResourceLocation id=ResourceLocation.parse(parts[0]);if(!BuiltInRegistries.BLOCK.containsKey(id))throw new IllegalStateException("Unregistered fountain block");BlockState state=BuiltInRegistries.BLOCK.get(id).defaultBlockState();
+         if(parts.length==2)for(String token:parts[1].substring(0,parts[1].length()-1).split(",")){String[] pair=token.split("=",2);Property prop=state.getBlock().getStateDefinition().getProperty(pair[0]);if(prop==null)throw new IllegalStateException("Unknown fountain property");state=state.setValue(prop,(Comparable)prop.getValue(pair[1]).orElseThrow());}return state;
+@@ -246,13 +316,14 @@
+     public void tick(MinecraftServer server){
+         if(phase==Phase.IDLE)return;if(phase==Phase.CLEANUP){cleanup();return;}long began=System.nanoTime();
+         try{
+-            if(++ticks>(operation.equals("reset")?1800:2400)||!server.isSameThread()||lease==null||!lease.valid()||!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Native fountain lease/empty-server/thread/deadline refused");
+-            phaseTicks++;if(operation.equals("commission")||operation.equals("reset")){level.resetEmptyTime();report.put("bounded_native_empty_timer_resets",++wakeTicks);}
++            if(++ticks>(operation.equals("recover-gate")?600:operation.equals("reset")?1800:2400)||!server.isSameThread()||lease==null||!lease.valid()||!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Native fountain lease/empty-server/thread/deadline refused");
++            phaseTicks++;if(operation.equals("commission")||operation.equals("reset")||operation.equals("recover-gate")&&(phase==Phase.GATE_HOLD||phase==Phase.GATE_OPEN)){level.resetEmptyTime();report.put("bounded_native_empty_timer_resets",++wakeTicks);}
+             if(phase==Phase.LOAD){if(pending.stream().anyMatch(f->!f.isDone()))return;for(var f:pending)f.join();pending.clear();if(!ready())return;next(Phase.GEOMETRY);}
+             if(!ready())throw new IllegalStateException("Actual ticking fountain chunks unavailable");checkpoint();
+-            if(phase==Phase.GEOMETRY){while(index<targets.size()&&System.nanoTime()-began<4_000_000L){Target t=targets.get(index++);BlockState actual=level.getBlockState(t.pos);if(operation.equals("reset")&&!actual.equals(t.state))throw new IllegalStateException("Exact wet reset before changed at "+t.pos);if(actual.getBlock()!=t.state.getBlock())throw new IllegalStateException("Fountain geometry changed at "+t.pos);for(Property<?> p:t.state.getProperties())if(Set.of("facing","axis","half","type","part","hinge").contains(p.getName())&&!actual.getValue(p).equals(t.state.getValue(p)))throw new IllegalStateException("Fountain orientation changed at "+t.pos);}
+-                if(index==targets.size()){if(operation.equals("reset")){startReset();return;}if(operation.equals("inspect")){sample("read_only_inspection");finish("actual fountain snapshot; no mutation or commissioning acceptance",false);}else next(Phase.DRY);}return;}
+-            if(operation.equals("reset")){tickReset();}
++            if(phase==Phase.GEOMETRY){while(index<targets.size()&&System.nanoTime()-began<4_000_000L){Target t=targets.get(index++);BlockState actual=level.getBlockState(t.pos);if((operation.equals("reset")||operation.equals("recover-gate"))&&!actual.equals(t.state))throw new IllegalStateException("Exact wet reset before changed at "+t.pos);if(actual.getBlock()!=t.state.getBlock())throw new IllegalStateException("Fountain geometry changed at "+t.pos);for(Property<?> p:t.state.getProperties())if(Set.of("facing","axis","half","type","part","hinge").contains(p.getName())&&!actual.getValue(p).equals(t.state.getValue(p)))throw new IllegalStateException("Fountain orientation changed at "+t.pos);}
++                if(index==targets.size()){if(operation.equals("recover-gate")){startGateRecovery();return;}if(operation.equals("reset")){startReset();return;}if(operation.equals("inspect")){sample("read_only_inspection");finish("actual fountain snapshot; no mutation or commissioning acceptance",false);}else next(Phase.DRY);}return;}
++            if(operation.equals("recover-gate")){tickGateRecovery();}
++            else if(operation.equals("reset")){tickReset();}
+             else if(phase==Phase.DRY){
+                 if(!level.getBlockState(WHEEL_SOURCE).isAir()||level.getBlockEntity(WHEEL_SOURCE)!=null||!level.getEntities((Entity)null,new AABB(WHEEL_SOURCE)).isEmpty()||water(HEADER)||!jets(false))throw new IllegalStateException("Actual wheel-source/header/jet dry baseline is absent; do not replay commissioning");
+                 if(kinetic(WHEEL,"create:water_wheel").getSpeed()!=0||kinetic(PUMP,"create:mechanical_pump").getSpeed()!=0||!source(INTAKE))throw new IllegalStateException("Unexpected pre-powered fountain or missing real basin intake");
+@@ -277,7 +348,7 @@
+             }
+             report.put("phase",phase.name());report.put("ticks",ticks);report.put("phase_ticks",phaseTicks);
+             if(phase!=Phase.IDLE&&phase!=Phase.CLEANUP){
+-                if(ticks%100==0&&Set.of(Phase.FILL,Phase.STOP,Phase.RESTART,Phase.RESET_WHEEL,Phase.RESET_DRAIN,Phase.RESET_CONTROLS).contains(phase))sample("periodic_"+phase.name());
++                if(ticks%100==0&&Set.of(Phase.FILL,Phase.STOP,Phase.RESTART,Phase.RESET_WHEEL,Phase.RESET_DRAIN,Phase.RESET_CONTROLS,Phase.GATE_HOLD,Phase.GATE_OPEN).contains(phase))sample("periodic_"+phase.name());
+                 if(ticks%40==0)NativeJournal.progress(journal,"fountain-status.json",report);
+             }
+         }catch(Exception|LinkageError error){report.put("error",error.toString());report.put("failures",1);finish("native fountain stopped; actual partial hydraulic state and receipts retained",true);}

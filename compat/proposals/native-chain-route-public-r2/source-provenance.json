@@ -1,0 +1,8 @@
+{
+  "status": "SOURCE_ONLY_UNCOMPILED",
+  "original_private_source_sha256": "ffb62bd01a73fda6c5befd26275440bf10ce1af97dc0802fa9a973fb0b4533cf",
+  "public_source_sha256": "a8471ae19eea8b9e3dcb1f5dafec1fa85997fb6705cd6a4e700b4e82cb01992d",
+  "change": "Removed literal private seed; retains exact authenticated route-vs-native world seed, owned path and current checkpoint/proof checks",
+  "private_value_in_public_source": false,
+  "runtime_or_world_actions": 0
+}

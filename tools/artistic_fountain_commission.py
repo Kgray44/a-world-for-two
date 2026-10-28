@@ -20,16 +20,16 @@ from control_room.common import UserError
 from tools.playtest import guard
 
 HOME = Path(r'D:\A World for Two\staging\world-tests\20261027T053650Z-artistic')
-CANDIDATE = '0.1.0-candidate.42'
-BRIDGE = '0.6.28'
-PACK_SHA = '194c6d673cbf6481afc15797583cc9e074ba9c685dd0e3062b26f74e01af3eee'
-BRIDGE_SHA = '551ed63b6b593e0e7456d632396b93593c330a9a3977933ec4e70d3f1d38da2d'
-CLASS_SHA = '71df50be157c1f59884710d4af0eaa476de588b65e391420daf5f3de21c6eeea'
-BACKUP_ID = '20261027T204224Z-012e63'
-BACKUP_SHA = 'ac863a5f04dd91ca88494c59ed27f138b0b87fdaefea45707b3c55e688365c05'
-PLAN_SHA = '56df548d3cbc4c16900334a3e38af56c33f2fb5c294e70d8107cb62552600a82'
-MANIFEST_SHA = '473320785b01b58110f24fe5869598a051ffbd4d2cae5db48c2758c8811afe4a'
-BUNDLE = 'staging/artistic-fountain-centerpiece-r5-20261027T2109Z'
+CANDIDATE = '0.1.0-candidate.45'
+BRIDGE = '0.6.31'
+PACK_SHA = '93237c82beee383d85a532df178d51d29646d168f6e322ed3baeeba986cbdce1'
+BRIDGE_SHA = 'd5126437fb6e041d9a6f2bb021cb81f9721092b76399fc34156ccd111a02e815'
+CLASS_SHA = 'ac53fb7efee4c95d26cd813a8189de0384a3ad79f15fbe1fbe148ecb66e823ae'
+BACKUP_ID = '20261028T022348Z-3c15d0'
+BACKUP_SHA = '0ae2cd00d57269b35d15ecc96a6d9d7e2c44f88f8e39d3ec5522cee4037229e8'
+PLAN_SHA = 'ce85c167a6c3e831bdbb33996d17352c6902329858b4f65d8349ac222f1942be'
+MANIFEST_SHA = '28d03159a83ba4d3f3fa7d7b58e1c559a6698ac2c2c4d447aa34b8e8f7895145'
+BUNDLE = 'staging/artistic-fountain-r5-ACTUAL-DRY45-1793155163050141000'
 STATUS = 'verified actual block identities, orientation, block entities and supplied inventories'
 BLOCKS = 2532
 
@@ -119,7 +119,7 @@ def check_context(home, owner, active, installed, settings, registry, checkpoint
     if (active.get('version') != CANDIDATE or installed.get('pack_version') != CANDIDATE
             or active.get('pack_sha256') != PACK_SHA or installed.get('pack_sha256') != PACK_SHA
             or owner.get('pack_sha256') != PACK_SHA):
-        raise UserError('Actual candidate42 ownership/installed pack custody differs')
+        raise UserError('Actual candidate45 ownership/installed pack custody differs')
     if (checkpoint.get('verified') is not True or checkpoint.get('id') != BACKUP_ID
             or checkpoint.get('sha256') != BACKUP_SHA or owner.get('backup') != BACKUP_ID
             or owner.get('backup_sha256') != BACKUP_SHA):

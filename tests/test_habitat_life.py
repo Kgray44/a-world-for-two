@@ -7,7 +7,7 @@ from types import SimpleNamespace
 
 from control_room.common import UserError
 from tools.artistic_south_forest import LIFE,residents
-from tools.habitat_life import census,entity_uuid,final_plaza_clear,make_recipes,members_for_group
+from tools.habitat_life import census,decode_entity_chunks,entity_uuid,final_plaza_clear,make_recipes,members_for_group
 
 
 def text(value):
@@ -19,6 +19,8 @@ def compound(row):
     for key,value in row.items():
         if isinstance(value,str):result+=b'\x08'+text(key)+text(value)
         elif key=='UUID':result+=b'\x0b'+text(key)+struct.pack('>i4i',4,*value)
+        elif key=='Position':result+=b'\x0b'+text(key)+struct.pack('>i2i',2,*value)
+        elif key=='DataVersion':result+=b'\x03'+text(key)+struct.pack('>i',value)
         elif key=='Pos':result+=b'\x09'+text(key)+b'\x06'+struct.pack('>i3d',3,*value)
         elif key=='Tags':result+=b'\x09'+text(key)+b'\x08'+struct.pack('>i',len(value))+b''.join(text(v) for v in value)
         elif key in ('Passengers','Entities'):result+=b'\x09'+text(key)+b'\x0a'+struct.pack('>i',len(value))+b''.join(compound(v) for v in value)
@@ -26,11 +28,13 @@ def compound(row):
     return result+b'\x00'
 
 
-def region(rows):
-    raw=b'\x0a\x00\x00'+compound({'Entities':rows});packed=zlib.compress(raw);payload=struct.pack('>i',len(packed)+1)+b'\x02'+packed
+def region(rows,position=(0,0),version=3955,padded=True,extra=b'',decoded_extra=b'',mode=2):
+    raw=b'\x0a\x00\x00'+compound({'DataVersion':version,'Position':position,'Entities':rows})+decoded_extra
+    packed=(raw if mode==3 else zlib.compress(raw,wbits=31 if mode==1 else 15))+extra
+    payload=struct.pack('>i',len(packed)+1)+bytes([mode])+packed
     sectors=(len(payload)+4095)//4096
     header=struct.pack('>I',2*256+sectors)+bytes(8192-4)
-    return header+payload+bytes(sectors*4096-len(payload))
+    return header+payload+(bytes(sectors*4096-len(payload)) if padded else b'')
 
 
 class Snapshot:
@@ -46,6 +50,32 @@ class Ground:
 
 
 class HabitatLifeTests(unittest.TestCase):
+    def test_complete_unpadded_final_record_is_identical_to_padded_entity_census(self):
+        padded=region([]);unpadded=region([],padded=False)
+        self.assertLess(len(unpadded),len(padded))
+        self.assertEqual(list(decode_entity_chunks(unpadded,(0,0))),list(decode_entity_chunks(padded,(0,0))))
+        for mode in (1,2,3):
+            self.assertEqual(list(decode_entity_chunks(region([],padded=False,mode=mode))),
+                             list(decode_entity_chunks(padded)))
+
+    def test_missing_record_bytes_and_fabricated_sector_extent_remain_refused(self):
+        raw=region([],padded=False)
+        for changed in (raw[:-1],raw[:8196],struct.pack('>I',2*256+2)+raw[4:]):
+            with self.subTest(size=len(changed)),self.assertRaises(UserError):
+                list(decode_entity_chunks(changed))
+        truncated=bytearray(raw[:-1]);truncated[8192:8196]=struct.pack('>I',int.from_bytes(raw[8192:8196],'big')-1)
+        with self.assertRaises(UserError):list(decode_entity_chunks(truncated))
+
+    def test_trailing_compressed_data_or_nbt_and_wrong_record_identity_are_refused(self):
+        for raw,expected_region in ((region([],extra=b'untrusted-tail'),None),
+                                    (region([],decoded_extra=b'\x00'),None),
+                                    (region([],position=(1,0)),None),
+                                    (region([]),(1,0)),(region([],version=999999),None)):
+            with self.subTest(expected_region=expected_region),self.assertRaises(UserError):
+                list(decode_entity_chunks(raw,expected_region))
+        raw=bytearray(region([],padded=False));raw[8196]=130
+        with self.assertRaises(UserError):list(decode_entity_chunks(raw))
+
     def test_saved_UUID_formats_and_malformed_identity(self):
         key=uuid.UUID(int=1);words=list(struct.unpack('>4i',key.bytes))
         self.assertEqual(entity_uuid({'UUID':words}),str(key))

@@ -1,11 +1,11 @@
 {
   "format": 1,
   "name": "A World for Two",
-  "version": "0.1.0-candidate.43",
+  "version": "0.1.0-candidate.46",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
-  "generated": "2026-10-27T23:04:37.686841+00:00",
+  "generated": "2026-10-28T04:30:28.734338+00:00",
   "release_status": "candidate",
   "validation": "Explicitly reviewed helper/mapping changes and optional exact zipline cable addition only; native restart and integration checks pending",
   "mods": [
@@ -277,15 +277,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.29",
-      "version": "0.6.29",
+      "version_id": "0.6.32",
+      "version": "0.6.32",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.29.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.29.jar",
-      "size": 446341,
+      "filename": "awft-control-bridge-0.6.32.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.32.jar",
+      "size": 558236,
       "hashes": {
-        "sha256": "77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b"
+        "sha256": "5a40c5a968645d10a94efde647c197f73f1f3381a972f29fd04fe24a200eb6ce"
       },
       "side": "both",
       "kind": "mod",
@@ -310,15 +310,15 @@
       "project_id": "awft:client-presentation",
       "slug": "awft-client-presentation",
       "name": "A World for Two Presentation",
-      "version_id": "0.2.2",
-      "version": "0.2.2",
+      "version_id": "0.2.3",
+      "version": "0.2.3",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-client-presentation-0.2.2.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-client-presentation-0.2.2.jar",
-      "size": 10034,
+      "filename": "awft-client-presentation-0.2.3.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-client-presentation-0.2.3.jar",
+      "size": 15725,
       "hashes": {
-        "sha256": "754555b0fc47e923ff6aaeccb8d162b72d4a0056b4a04e85c06c3d5d4f06c765"
+        "sha256": "abac3a99a94aec9c02141dfde3a9b82a7f5d3cf4f9b4ab44c3cea9ba17ea80a6"
       },
       "side": "client",
       "kind": "mod",
@@ -331,7 +331,7 @@
         "id": "MIT"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
-      "selection_reason": "Owned native menu toolbar, cinematic arbitration, bounded client measurements and Small Ships remote-config lifecycle correction. No world renderer or player movement.",
+      "selection_reason": "Owned native menu toolbar, cinematic arbitration, bounded client measurements, Small Ships remote-config lifecycle correction and real loaded-chain handoff provider. Native ZiplineLogic retains rider movement and collision.",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",

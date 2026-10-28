@@ -1,0 +1,818 @@
+{
+  "format": "awft-life-extension-species:1",
+  "catalog_version_observed": "0.1.0-candidate.43",
+  "source_only": true,
+  "seed_authorized": false,
+  "native_behavior_acceptance": false,
+  "whole_candidate_population_cap": 64,
+  "existing_unspawned_R1_57_is_not_additional": true,
+  "artifacts": [
+    {
+      "key": "naturalist",
+      "kind": "selected_mod",
+      "filename": "naturalist-2.0.7-neoforge-1.21.1.jar",
+      "version": "2.0.7+1.21.1-neoforge",
+      "bytes": 11347884,
+      "sha256": "2740593710eba0a917f862e535f3e2ef06c39ccdd6441986da02f9dd4394f03a",
+      "sha512": "5d56ec2d1e5f994c9b63cf7578e9ed1be2cd4f58a055503e32bdd90c80d9802af04d3f6e1eec08394180e196ce32b2c2e71df8ba19d918e77df1694c9007e7e1",
+      "author_project": "https://modrinth.com/mod/naturalist"
+    },
+    {
+      "key": "critters-and-companions",
+      "kind": "selected_mod",
+      "filename": "crittersandcompanions-neoforge-1.21.1-2.7.0.jar",
+      "version": "2.7.0",
+      "bytes": 2098079,
+      "sha256": "bc09d4e9996fae2c17092b3f58e2cc6ffe49d176e7cdf06495eeb4ac9a85b5dd",
+      "sha512": "f93bb48b07122d1c93cd931169752814c46f2ed964da987ab5ce654e8f70242c57265c3853bbb357f5fd95c412e775bf7b9a2abeb2a2a0858eae95c8d8ba451d",
+      "author_project": "https://modrinth.com/mod/critters-and-companions"
+    },
+    {
+      "key": "fish-of-thieves",
+      "kind": "selected_mod",
+      "filename": "fish_of_thieves-mc1.21.1-v21.1.3.0-neoforge.jar",
+      "version": "21.1.3.0-neoforge",
+      "bytes": 1902440,
+      "sha256": "d70f9c27b7eba24a58a04824faa0e64ac7c49eabf916c3bc2ebeab2d40dc85a8",
+      "sha512": "c6d65cebdb86b37c9e83c780c3e18b1de51842e14d4ac87a5636083b77fbc3f69359d1e27a5537452bc41f9243f3be3d8ce10d06eb249a0b7479d927ee738787",
+      "author_project": "https://modrinth.com/mod/fish-of-thieves"
+    },
+    {
+      "key": "cozys-improved-cats",
+      "kind": "selected_mod",
+      "filename": "cozys-improved-cats-2.1.0-neoforge-1.21.1.jar",
+      "version": "2.1.0-Neoforge-1.21.1",
+      "bytes": 2154897,
+      "sha256": "a459cf81b1a0f9f33e1e9d0c141b162c99c9c71cacc774cb04f139ed92df54c1",
+      "sha512": "73e532fc4e4af9e985e20d797cd38b61bffe1974bef598100d4379846e6eff88589e89fa547efe81e180ab6e58b11de4ea85917d48e3ae1020159170003419df",
+      "author_project": "https://modrinth.com/mod/cozys-improved-cats"
+    },
+    {
+      "key": "doggy-talents-next",
+      "kind": "selected_mod",
+      "filename": "DoggyTalentsNext-1.21.1-1.19.1.jar",
+      "version": "1.19.1",
+      "bytes": 11275139,
+      "sha256": "38c8f223ecaca30297677ff828013ea27350b85517020c6bab2d16d71eb26ac0",
+      "sha512": "17d1f743011579b820ddc31b782e4ce292972cfdc415994641228c4a9d81e11d00d2825b3d36f93079e3231cd60b35a7f577214d9ce52db1b1e6169336419bdb",
+      "author_project": "https://modrinth.com/mod/doggy-talents-next"
+    },
+    {
+      "key": "ribbits",
+      "kind": "selected_mod",
+      "filename": "Ribbits-1.21.1-NeoForge-4.1.6.jar",
+      "version": "4.1.6",
+      "bytes": 2215572,
+      "sha256": "794223f5a91b8b80a962754b5180ec3e2472db6941e9b6c1cdd49324df628389",
+      "sha512": "5e78b0d63757d5904b96e0c4565d56832ca42b1cbba939b98101f848f618cfcda94d5aeadeacb0faff85bdd05fb071f2df551a42c3e7d0e3a2564adbec227931",
+      "author_project": "https://modrinth.com/mod/ribbits"
+    },
+    {
+      "key": "fairy-tales",
+      "kind": "selected_mod",
+      "filename": "fairytales-neoforge-1211-1.0.0.jar",
+      "version": "1.0.0",
+      "bytes": 182486,
+      "sha256": "dfafe8b18d488e7b0e72a28e07aef2a6f0986d4ec7fdfcd8642e4f614d86e6ac",
+      "sha512": "5d84263987c7513842c3583fcc87ffb63c3f3f01dbf2aede4366cf4447c5dbe234a0b35ae342ca743e53c434e2341255f97d14958f8f7b00f5e0a150f4775476",
+      "author_project": "https://modrinth.com/mod/fairy-tales"
+    },
+    {
+      "key": "minecraft-1.21.1",
+      "kind": "named_vanilla_api",
+      "filename": "server-1.21.1-20240808.144430-srg.jar",
+      "version": "1.21.1",
+      "bytes": 14246609,
+      "sha256": "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
+      "limitation": "Actual transformed runtime class/behavior remains a native gate; this is installed named API source evidence."
+    }
+  ],
+  "species": [
+    {
+      "entity": "naturalist:deer",
+      "artifact": "naturalist",
+      "native_class": "com.crispytwig.naturalist.world.entity.animal.deer.Deer",
+      "native_category": "creature",
+      "source_class_sha256": "8e66970c359ac099b01b7dd303ec38ab10330fddaa6e32ec3b98fb15f310310a",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "dry_woodland_glade"
+      ],
+      "candidate_population_cap": 6,
+      "max_group": 3,
+      "pinned_methods_reviewed": [
+        "registerGoals",
+        "NaturalistEntityTypes registration (earlier sealed review)"
+      ],
+      "pinned_behavior_summary": "Native panic, avoidance and grazing; no arbitrary age/sex/variant selection.",
+      "risks": [
+        "Grazing changes grass; leave ornamental lawns and growing plots separate."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "actual tagged natural footing, open grass forage and traversable glade",
+        "keep away from steep drops/navigation and machinery; free roaming is not artificially constrained"
+      ],
+      "current_43_policy_admits": true,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "naturalist:bird",
+      "artifact": "naturalist",
+      "native_class": "com.crispytwig.naturalist.world.entity.animal.bird.Bird",
+      "native_category": "creature",
+      "source_class_sha256": "b0246fddc99b0e8b4e41c93bf79e359e787ee8a3dea3602279c34408d5865be8",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "seed_meadow_and_shrub_edge"
+      ],
+      "candidate_population_cap": 6,
+      "max_group": 3,
+      "pinned_methods_reviewed": [
+        "registerGoals",
+        "variant initialization (earlier sealed review)"
+      ],
+      "pinned_behavior_summary": "Native seed/forage, flocking and avoidance; retains ordinary variant initialization.",
+      "risks": [
+        "Do not crowd roofs/low ceilings; cats and predator interactions need separation."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "native perches plus full actual flight/body envelope; seed/grass habitat rather than bare paving"
+      ],
+      "current_43_policy_admits": true,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "naturalist:butterfly",
+      "artifact": "naturalist",
+      "native_class": "com.crispytwig.naturalist.world.entity.animal.butterfly.Butterfly",
+      "native_category": "ambient",
+      "source_class_sha256": "ee7ee230ad1f2f9af10bcc69e8303ce5c5375e28f12cd15465b8f32d9a683c3b",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "flower_glade"
+      ],
+      "candidate_population_cap": 8,
+      "max_group": 4,
+      "pinned_methods_reviewed": [
+        "registerGoals/pollination (earlier sealed review)"
+      ],
+      "pinned_behavior_summary": "Native flower seeking/pollination; real AI rather than decorative motion.",
+      "risks": [
+        "Pollination can affect crop growth; separate authored ornamental/sapling displays."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "actual flowering understory and unobstructed daylight flight space"
+      ],
+      "current_43_policy_admits": true,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "naturalist:firefly",
+      "artifact": "naturalist",
+      "native_class": "com.crispytwig.naturalist.world.entity.animal.firefly.Firefly",
+      "native_category": "ambient",
+      "source_class_sha256": "7bbaa15467bc649bb2bf3945406133a6b9e5e05631e73fbd85f665fc60a2208f",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "damp_grass_night_margin"
+      ],
+      "candidate_population_cap": 10,
+      "max_group": 5,
+      "pinned_methods_reviewed": [
+        "registerGoals/grass hiding (earlier sealed review)"
+      ],
+      "pinned_behavior_summary": "Native flight and grass hiding; visual glow/night behavior still needs an actual client view.",
+      "risks": [
+        "No guessed daytime disappearance or night glow proof from category alone."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "actual grass/reeds and dry landing pockets; no placing in fountain plumbing or lantern geometry"
+      ],
+      "current_43_policy_admits": true,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "naturalist:duck",
+      "artifact": "naturalist",
+      "native_class": "com.crispytwig.naturalist.world.entity.animal.duck.Duck",
+      "native_category": "creature",
+      "source_class_sha256": "8d2a6f37521fbf4079cec857cbb48c32db86e938dadd94239914fb5c2c9d211a",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "gentle_reed_shore"
+      ],
+      "candidate_population_cap": 3,
+      "max_group": 3,
+      "pinned_methods_reviewed": [
+        "checkDuckSpawnRules",
+        "registerGoals",
+        "finalizeSpawn"
+      ],
+      "pinned_behavior_summary": "TamableAnimal with float/panic/follow/breed behavior; native spawn predicate accepts dirt or water below with sufficient brightness.",
+      "risks": [
+        "No forged tame owner; small pets can wander; wet shore requires an actual exit."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory untamed and owner UUID absent, without setting either",
+        "connected source-water margin plus a genuinely walkable dry shore exit",
+        "native brightness/footing predicate must pass, no spawning on guessed ocean-floor height"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "naturalist:dragonfly",
+      "artifact": "naturalist",
+      "native_class": "com.crispytwig.naturalist.world.entity.animal.dragonfly.Dragonfly",
+      "native_category": "ambient",
+      "source_class_sha256": "668d6a9afd985471df3b08a6cf876c015ed8806a80f139dffdb4653f1f834a21",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "remote_reed_flight_alternate"
+      ],
+      "candidate_population_cap": 2,
+      "max_group": 2,
+      "pinned_methods_reviewed": [
+        "checkDragonflySpawnRules",
+        "customServerAiStep",
+        "mobInteract"
+      ],
+      "pinned_behavior_summary": "Passive hovering/flight, but player feeding chorus fruit creates a radius0.5/200-tick cloud carrying HARM.",
+      "risks": [
+        "Explicit player interaction can harm nearby residents; alternate only, not part of the initial64 or cozy homestead."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "actual dragonflies_spawnable_on footing tag and brightness >8",
+        "explicit review of chorus-fruit interaction risk; no unrequested disabling patch"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "crittersandcompanions:shima_enaga",
+      "artifact": "critters-and-companions",
+      "native_class": "io.github.bonsaistudi0s.crittersandcompanions.common.entity.ShimaEnagaEntity",
+      "native_category": "creature",
+      "source_class_sha256": "0f029b77f05cb73a8c201ede4c340cd4541e3788ed0d5f0d3022d38dac0cfa89",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "leafy_birch_perches"
+      ],
+      "candidate_population_cap": 4,
+      "max_group": 2,
+      "pinned_methods_reviewed": [
+        "registerGoals"
+      ],
+      "pinned_behavior_summary": "Tamable flying animal with panic, ordinary breeding/temptation, follow and random-flight goals.",
+      "risks": [
+        "Do not tame to keep it in place; native biome/spawn and perch suitability still require proof."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory untamed/owner absent; no equipment",
+        "full native flight envelope and actual leaf/branch perches; no cramped atrium"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "crittersandcompanions:ladybug",
+      "artifact": "critters-and-companions",
+      "native_class": "io.github.bonsaistudi0s.crittersandcompanions.common.entity.LadybugEntity",
+      "native_category": "ambient",
+      "source_class_sha256": "1368336196ff8ea7f67f74c014404826f2d4e755d0fe45b9294507319e92eb46",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "flower_and_leaf_understory"
+      ],
+      "candidate_population_cap": 6,
+      "max_group": 3,
+      "pinned_methods_reviewed": [
+        "registerBehaviours",
+        "registerGoals",
+        "LadybugHealingAuraBehaviour.serverTick"
+      ],
+      "pinned_behavior_summary": "Tamable flying insect; healing-aura behavior returns immediately while untamed, with later player taming retaining normal gameplay.",
+      "risks": [
+        "Taming can enable beneficial aura; no fabricated tame level or health."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory untamed/owner absent",
+        "real foliage/flower understory with native collision and tagged spawn conditions"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "crittersandcompanions:dragonfly",
+      "artifact": "critters-and-companions",
+      "native_class": "io.github.bonsaistudi0s.crittersandcompanions.common.entity.DragonflyEntity",
+      "native_category": "ambient",
+      "source_class_sha256": "f4bf7d29556a2866061d30cbf1b7d553ddcd72627b7e43cd6cb2f6bbe5f702c5",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "open_reed_airspace"
+      ],
+      "candidate_population_cap": 2,
+      "max_group": 2,
+      "pinned_methods_reviewed": [
+        "registerGoals"
+      ],
+      "pinned_behavior_summary": "Native floating, panic/random flight and owner-follow AI; melee/OwnerHurtByTarget goals exist for an owned combat companion.",
+      "risks": [
+        "Ambient category does not mean no combat code. Preserve untamed ownerless default; future owner changes remain gameplay."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory untamed/owner absent, actual target absent",
+        "use actual entity dimensions/flight envelope; do not infer tiny size from insect name",
+        "no owned jumping-spider or predator habitat overlap"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "crittersandcompanions:koi_fish",
+      "artifact": "critters-and-companions",
+      "native_class": "io.github.bonsaistudi0s.crittersandcompanions.common.entity.KoiFishEntity",
+      "native_category": "water_ambient",
+      "source_class_sha256": "9757592f004a2dfd82c67ce0136ca9c3ca2f95372956857f064cdd1484fbcc13",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "quiet_connected_freshwater"
+      ],
+      "candidate_population_cap": 4,
+      "max_group": 4,
+      "pinned_methods_reviewed": [
+        "registerGoals"
+      ],
+      "pinned_behavior_summary": "Native schooling fish; adds explicit avoidance of Critters otters at radius8.",
+      "risks": [
+        "Do not put prey and otters in the same basin/river reach. Native water survival and spawn conditions are mandatory."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "complete actual source-water swimming volume >=2 deep with connected lateral refuge, not the dry45-cell witness",
+        "no flowing turbine/intake or fountain basin/plumbing/navigation conflict",
+        "native water/biome/sea-level spawn placement predicate passes without bypass"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "fishofthieves:pondie",
+      "artifact": "fish-of-thieves",
+      "native_class": "com.stevekung.fishofthieves.entity.animal.Pondie",
+      "native_category": "water_ambient",
+      "source_class_sha256": "c3cd2d2c8fda603179f688881be1acb589315a14e322e7e025f461c9edb7f500",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "quiet_connected_freshwater"
+      ],
+      "candidate_population_cap": 4,
+      "max_group": 4,
+      "pinned_methods_reviewed": [
+        "Pondie brainProvider/customServerAiStep",
+        "AbstractSchoolingThievesFish.finalizeSpawn"
+      ],
+      "pinned_behavior_summary": "Native schooling/flocking brain and ordinary fish variant initialization; no manually chosen rare variant.",
+      "risks": [
+        "Freshwater-themed name is not authority to bypass biome, depth or dimension rules."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "complete source-water swimming volume >=2 deep and oxygen/refuge witness; no enclosed dry block",
+        "exact pinned registered spawn placement + native environment/biome rules pass",
+        "no predator, pump, working tube, ship or bridge clearance overlap"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "cozys-improved-cats:improved_cat",
+      "artifact": "cozys-improved-cats",
+      "native_class": "net.cozy.cozysimprovedcats.entity.custom.ImprovedCatEntity",
+      "native_category": "creature",
+      "source_class_sha256": "033793508e250b9f2f972679d17031b7f1de8b0aaa3ec51d7bf30e4abd4058ac",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "inhabited_courtyard_cat"
+      ],
+      "candidate_population_cap": 2,
+      "max_group": 1,
+      "pinned_methods_reviewed": [
+        "registerGoals",
+        "finalizeSpawn",
+        "CatGoalController.refresh",
+        "CatBowlSeeking"
+      ],
+      "pinned_behavior_summary": "Inherits vanilla Cat AI and finalizeSpawn; bowl-seeking code requires an already-tamed cat. Vanilla targets include rabbits and baby turtles.",
+      "risks": [
+        "A creature category is not a prey-safety guarantee; keep cats out of small-animal breeding/nursery habitats."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory untamed/owner absent; no forced collar, name, origin, progression or sitting",
+        "actual courtyard shelter/perches, safe enclosure/separation from prey and active machinery",
+        "existing player-owned cat is observed and preserved even after real taming/behavior changes"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "doggytalents:dog",
+      "artifact": "doggy-talents-next",
+      "native_class": "doggytalents.common.entity.Dog",
+      "native_category": "creature",
+      "source_class_sha256": "9655bae174d72900ccedba990427c0026b1e9ea49b2e0e6ed0a45d30e08b0005",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "unadopted_town_dog_shelter"
+      ],
+      "candidate_population_cap": 1,
+      "max_group": 1,
+      "pinned_methods_reviewed": [
+        "constructor",
+        "defineSynchedData",
+        "DogMode constructors/shouldAttack",
+        "finalizeSpawn",
+        "DogAiManager.init"
+      ],
+      "pinned_behavior_summary": "Native constructor sets tame false and owner null; default DOCILE has shouldAttack false and canWander false. Own AI includes hunger, fire avoidance, rest and mode-gated combat.",
+      "risks": [
+        "An unadopted docile dog may be quiet; do not fake activity with NoAI changes or force WANDERING/ownership. Later player adoption/mode changes are preserved."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory untamed/owner absent, actual default DOCILE and shouldAttack false; never set those values",
+        "native hunger/food/rest/shelter requirements reviewed; no automatic stock/inventory loading",
+        "native AI progress needs actual player observation; no locomotion claim from constructor inspection"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "minecraft:villager",
+      "artifact": "minecraft-1.21.1",
+      "native_class": "net.minecraft.world.entity.npc.Villager",
+      "native_category": "misc",
+      "source_class_sha256": "e9f377dd09c67af5f25ad4e9e9eac74c6114e38e4e5e71ad368a8af318c1d70f",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "inhabited_home_and_job"
+      ],
+      "candidate_population_cap": 4,
+      "max_group": 2,
+      "pinned_methods_reviewed": [
+        "constructor",
+        "finalizeSpawn"
+      ],
+      "pinned_behavior_summary": "Native villager constructor starts profession NONE; normal brain/POI acquisition must choose reachable beds/jobs. MISC is an exact-ID exception, not a blanket category allow-list.",
+      "risks": [
+        "Claiming workstations and farming can change crops; no invented profession, level, trades, wealth or ownership."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "actual native HOME bed and unoccupied compatible job POI, real traversable route and two-block headroom",
+        "exact living Villager class, not projectile/MISC proxy; no Enemy",
+        "native normal profession/brain/POI state only; night safety and collision verified",
+        "existing villager POI/role/trades preserved; never repopulate a wandering missing UUID"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "ribbits:ribbit",
+      "artifact": "ribbits",
+      "native_class": "com.yungnickyoung.minecraft.ribbits.entity.RibbitEntity",
+      "native_category": "creature",
+      "source_class_sha256": "c3c0f8b7a61460f3d3586148ec55b85ae459cc71ad2077c2e6037a4d9eacadae",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "reed_music_home"
+      ],
+      "candidate_population_cap": 3,
+      "max_group": 3,
+      "pinned_methods_reviewed": [
+        "constructor",
+        "registerGoals",
+        "reassessGoals",
+        "finalizeSpawn",
+        "RibbitWaterCropsGoal.tryGrowCropAtPos",
+        "RibbitApplyBuffGoal"
+      ],
+      "pinned_behavior_summary": "Actual AgeableMob/Merchant; default NITWIT gets music goal. finalizeSpawn sets native home to its real current block. Other professions can fish, bonemeal CROPS or buff players.",
+      "risks": [
+        "Do not fabricate sorcerer/gardener/merchant profession. Gardening is real bonemeal, not cosmetic; any later native role change needs normal gameplay."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory default role left unchanged; native finalizeSpawn establishes current home and normal goals",
+        "dry reachable home/shelter adjoining a safe reed margin, not an underwater NPC placement",
+        "safe water exit, open music clearing and normal doors; no path across machines",
+        "future non-default role remains subject to its own crop/item/effect review"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    },
+    {
+      "entity": "minecraft:allay",
+      "artifact": "minecraft-1.21.1",
+      "native_class": "net.minecraft.world.entity.animal.allay.Allay",
+      "native_category": "creature",
+      "source_class_sha256": "9b018632ca6f13207854815384ae400c104cba3305821d698bbb845b6745da24",
+      "selection": "candidate_after_native_review",
+      "habitats": [
+        "quiet_fey_like_glade"
+      ],
+      "candidate_population_cap": 1,
+      "max_group": 1,
+      "pinned_methods_reviewed": [
+        "canPickUpLoot",
+        "wantsToPickUp"
+      ],
+      "pinned_behavior_summary": "Vanilla fairy-like option, not a Fairy Tales mob. Empty-handed native allay cannot pick up loot; later matching-item collection follows ordinary game rules/player interaction.",
+      "risks": [
+        "Do not give items, bond to a player, set liked note-block memory or fake a fairy entity. Music/player feeding may change ordinary behavior."
+      ],
+      "required_native_gates": [
+        "actual registered id + native class + MobCategory match exact profile",
+        "actual Mob and not Enemy; isNoAi false",
+        "ordinary SpawnPlacements + NeoForge spawn/finalize hooks and cancellation respected",
+        "actual native bounding-box obstruction/collision pass",
+        "new immutable UUID intent + complete stopped saved UUID census; existing resident never replaced",
+        "final verified habitat field/current post-construction checkpoint; no forced chunks remaining",
+        "new factory empty hand/inventory and no copied liked-player/note-block memories",
+        "full real flight clearance away from dropped cargo, rails and rotating machinery",
+        "actual native idle/flight/return and client appearance remain unverified"
+      ],
+      "current_43_policy_admits": false,
+      "native_behavior_acceptance": false
+    }
+  ],
+  "candidate_groups": [
+    {
+      "slot": "western_deer_glade",
+      "entity": "naturalist:deer",
+      "habitat": "dry_woodland_glade",
+      "count": 3
+    },
+    {
+      "slot": "cliff_foot_deer_glade",
+      "entity": "naturalist:deer",
+      "habitat": "dry_woodland_glade",
+      "count": 3
+    },
+    {
+      "slot": "meadow_seed_birds",
+      "entity": "naturalist:bird",
+      "habitat": "seed_meadow_and_shrub_edge",
+      "count": 3
+    },
+    {
+      "slot": "river_shrub_birds",
+      "entity": "naturalist:bird",
+      "habitat": "seed_meadow_and_shrub_edge",
+      "count": 3
+    },
+    {
+      "slot": "birch_perch_pair_west",
+      "entity": "crittersandcompanions:shima_enaga",
+      "habitat": "leafy_birch_perches",
+      "count": 2
+    },
+    {
+      "slot": "birch_perch_pair_inland",
+      "entity": "crittersandcompanions:shima_enaga",
+      "habitat": "leafy_birch_perches",
+      "count": 2
+    },
+    {
+      "slot": "flower_butterflies_west",
+      "entity": "naturalist:butterfly",
+      "habitat": "flower_glade",
+      "count": 4
+    },
+    {
+      "slot": "flower_butterflies_inland",
+      "entity": "naturalist:butterfly",
+      "habitat": "flower_glade",
+      "count": 4
+    },
+    {
+      "slot": "night_margin_fireflies_west",
+      "entity": "naturalist:firefly",
+      "habitat": "damp_grass_night_margin",
+      "count": 5
+    },
+    {
+      "slot": "night_margin_fireflies_inland",
+      "entity": "naturalist:firefly",
+      "habitat": "damp_grass_night_margin",
+      "count": 5
+    },
+    {
+      "slot": "flower_ladybugs_west",
+      "entity": "crittersandcompanions:ladybug",
+      "habitat": "flower_and_leaf_understory",
+      "count": 3
+    },
+    {
+      "slot": "flower_ladybugs_inland",
+      "entity": "crittersandcompanions:ladybug",
+      "habitat": "flower_and_leaf_understory",
+      "count": 3
+    },
+    {
+      "slot": "reed_shore_ducks",
+      "entity": "naturalist:duck",
+      "habitat": "gentle_reed_shore",
+      "count": 3
+    },
+    {
+      "slot": "reed_air_dragonflies",
+      "entity": "crittersandcompanions:dragonfly",
+      "habitat": "open_reed_airspace",
+      "count": 2
+    },
+    {
+      "slot": "quiet_river_koi",
+      "entity": "crittersandcompanions:koi_fish",
+      "habitat": "quiet_connected_freshwater",
+      "count": 4
+    },
+    {
+      "slot": "quiet_freshwater_pondies",
+      "entity": "fishofthieves:pondie",
+      "habitat": "quiet_connected_freshwater",
+      "count": 4
+    },
+    {
+      "slot": "courtyard_cat_west",
+      "entity": "cozys-improved-cats:improved_cat",
+      "habitat": "inhabited_courtyard_cat",
+      "count": 1
+    },
+    {
+      "slot": "courtyard_cat_east",
+      "entity": "cozys-improved-cats:improved_cat",
+      "habitat": "inhabited_courtyard_cat",
+      "count": 1
+    },
+    {
+      "slot": "unadopted_shelter_dog",
+      "entity": "doggytalents:dog",
+      "habitat": "unadopted_town_dog_shelter",
+      "count": 1
+    },
+    {
+      "slot": "town_homes_west",
+      "entity": "minecraft:villager",
+      "habitat": "inhabited_home_and_job",
+      "count": 2
+    },
+    {
+      "slot": "town_homes_east",
+      "entity": "minecraft:villager",
+      "habitat": "inhabited_home_and_job",
+      "count": 2
+    },
+    {
+      "slot": "reed_music_ribbits",
+      "entity": "ribbits:ribbit",
+      "habitat": "reed_music_home",
+      "count": 3
+    },
+    {
+      "slot": "quiet_allay_glade",
+      "entity": "minecraft:allay",
+      "habitat": "quiet_fey_like_glade",
+      "count": 1
+    }
+  ],
+  "excluded_or_not_entities": [
+    {
+      "entity": "fairytales:fairy",
+      "reason": "Not registered in the pinned selected mod; Fairy Tales provides unseen bonds/abilities rather than roaming fairy mobs."
+    },
+    {
+      "entity": "xercamusic:music_spirit",
+      "reason": "Not reviewed as an ordinary autonomous resident; no visual/helper/projectile identity substitution."
+    },
+    {
+      "entity": "crittersandcompanions:otter",
+      "reason": "Explicit predator/prey conflict with koi; do not seed into the same small settlement water reach."
+    },
+    {
+      "entity": "crittersandcompanions:jumping_spider",
+      "reason": "Predator interaction with dragonflies; keep outside this cozy mixed habitat recipe."
+    },
+    {
+      "entity": "whaleborne:*",
+      "reason": "Large marine/naval habitat and collision envelope not proved in the river or bridge corridor."
+    },
+    {
+      "entity": "hybrid_aquatic:predators",
+      "reason": "Sharks/piranhas and custom categories do not become peaceful from a category name."
+    },
+    {
+      "entity": "doggytalents:*_projectile or minions",
+      "reason": "No blanket mod/creature/MISC inclusion; only exact normal living identities are candidates."
+    }
+  ],
+  "pending_world_binding": [
+    "Grand actual continuous shore-to-cliff FULL terrain and refuges",
+    "final R5 reservation c3914908a029ce58ee55124016933f8aa8a850b300da6c269076253b30a9ff3b +5m",
+    "new post-construction checkpoint and native habitat verification",
+    "actual native new-factory preview/hook/collision/dimension/POI/ownership observations",
+    "final stable UUID census/ledger and player-observed behavior"
+  ],
+  "source_evidence": {
+    "first_13_class_study_sha256": "fa81ff02445dafcd701c931659bb6deaca54417aab67de17261f62d3efc651a7",
+    "additional_15_class_study_sha256": "f1759acbf02ed383dce5c08396f8368a9ae24a0a27403b545a7a1699c68c93e8",
+    "original_four_species_policy_sha256": "04e22b04665f7ad636335b7d276ed636300f74e1048aae9bb05903d0c2c47f56",
+    "limitation": "Private javap/class inspection is not transformed native acceptance; no upstream class/asset copied into source."
+  }
+}

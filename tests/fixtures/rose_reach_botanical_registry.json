@@ -1,0 +1,261 @@
+{
+  "blocks": {
+    "chipped:carved_stripped_cherry_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:flowering_cherry_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:flowering_dark_oak_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "chipped:flowery_vine": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "up": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "chipped:ivy_vine": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "up": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "chipped:vined_dark_oak_trapdoor": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "fishofthieves:potted_pink_plumeria": {},
+    "fishofthieves:potted_tropical_monstera": {},
+    "handcrafted:berry_jam_jar": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "jars": [
+        "1",
+        "2",
+        "3"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:cave_vines": {
+      "age": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25"
+      ],
+      "berries": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:cave_vines_plant": {
+      "berries": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:cherry_leaves": {
+      "distance": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "persistent": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:chiseled_stone_bricks": {},
+    "minecraft:cobblestone": {},
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:mossy_cobblestone": {},
+    "minecraft:polished_andesite": {},
+    "minecraft:stripped_cherry_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "mythrais:small_curved_corbel_dark_oak": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "regions_unexplored:aster": {},
+    "regions_unexplored:bleeding_heart": {},
+    "regions_unexplored:felicia_daisy": {},
+    "regions_unexplored:flowering_leaves": {
+      "distance": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "persistent": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "regions_unexplored:pink_lupine": {},
+    "regions_unexplored:potted_aster": {},
+    "regions_unexplored:potted_bleeding_heart": {},
+    "regions_unexplored:potted_felicia_daisy": {},
+    "supplementaries:lunch_basket": {
+      "dyed": [
+        "true",
+        "false"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "hanging": [
+        "true",
+        "false"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    }
+  },
+  "contains_world_identity": false,
+  "meaning": "Native property schemas only, no MCA or current-world array"
+}

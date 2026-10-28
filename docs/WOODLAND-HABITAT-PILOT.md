@@ -1,0 +1,11 @@
+# Woodland habitat batch for the shared LIFE cohort
+
+The woodland source supplies eleven individually located candidates for the selected deer, bird, butterfly, firefly, duck, shima enaga, ladybug, Critters and Companions dragonfly, koi, pondie and allay. Four separately authored town sites supply cat, dog, villager and Ribbit. The combined target is fifteen selected species under one retained population namespace and controller, with stable individual names; it does not add another historical cohort.
+
+Each woodland site includes a complete literal saved FULL habitat volume. The bird and insects have real air/grass fields; butterfly flowers and enaga/ladybug leaves are already present in their fields. Future unplanted trees cannot serve as a claimed perch. Fish have separate five-by-five, two-deep contiguous source-water witnesses. Their freshwater-biome, predator and ordinary native spawn checks remain unknown until qualified. The duck has a genuine three-step dry shore exit beside three-by-three, two-deep source water. Its field currently has no reeds; native shore behavior and the later lush planting remain separate gates.
+
+The source keeps the exact pinned class/category profiles and existing v3 authority. Naturalist's separate dragonfly stays disabled and is not a name alias. It creates no entity, request, copied profile, owner, NoAI flag, profession, POI memory or forced variant. The genuine native spawn path is `MobSpawnType.STRUCTURE` with normal placements, rules, hooks and finalization; source geometry does not bypass those checks.
+
+The initial fifteen-member capacity reserves six additional slots for possible native tree bees, leaving the planned total at twenty-one beneath the shared sixty-four cap. Actual birch/larch pilot outcomes reported no new nests or bees. Reserved slots are not spawn counts. The actual tree, hive and resident census must be reconciled before seeding.
+
+The town villager still needs an actual vanilla HOME bed and native available bed/job proof; decorative Handcrafted beds do not establish that POI. Wildlife and pets are never reset or teleported to make a site pass. Current stopped-field rebinding after the plant layer, native habitat inspection, complete UUID custody, behavior, restart and real visual review remain required. No wildlife or residents have been seeded by this source producer.

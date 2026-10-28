@@ -95,7 +95,7 @@ def root(value):
     return b'\x0a\0\0'+nbt(10,value)
 
 
-def saved_fixture(home):
+def saved_fixture(home, *, omit_tail_padding=False, truncate_payload=False):
     home=Path(home);backup=home/'backups';backup.mkdir()
     level=zlib.compress(root({'Data':(10,{'DataVersion':(3,3955),
         'WorldGenSettings':(10,{'seed':(4,42)})})}),wbits=31)
@@ -107,6 +107,10 @@ def saved_fixture(home):
     compressed=zlib.compress(chunk);content=struct.pack('>I',len(compressed)+1)+b'\x02'+compressed
     region=bytearray(12288);slot=(((-63)&31)*32+(80&31))*4
     region[slot:slot+4]=(2*256+1).to_bytes(4,'big');region[8192:8192+len(content)]=content
+    if omit_tail_padding:
+        region=region[:8192+len(content)]
+    if truncate_payload:
+        region=region[:8192+len(content)-1]
     rows={'world/AWorldForTwo/level.dat':level,'world/AWorldForTwo/region/r.2.-2.mca':bytes(region)}
     name='20261027T034106Z-ecd64f';file=backup/(name+'.zip')
     with zipfile.ZipFile(file,'x') as archive:
@@ -119,6 +123,20 @@ def saved_fixture(home):
 
 
 class SavedPreimageTests(unittest.TestCase):
+    def test_complete_unpadded_tail_is_readable_but_truncated_payload_is_not(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            receipt,registry=saved_fixture(tmp,omit_tail_padding=True)
+            world=BackupWorld(tmp,receipt,registry)
+            try:self.assertEqual(world.state((1292,67,-1000)),'minecraft:stone')
+            finally:world.close()
+        with tempfile.TemporaryDirectory() as tmp:
+            receipt,registry=saved_fixture(tmp,truncate_payload=True)
+            world=BackupWorld(tmp,receipt,registry)
+            try:
+                with self.assertRaisesRegex(UserError,'Invalid saved chunk length'):
+                    world.state((1292,67,-1000))
+            finally:world.close()
+
     def test_modern_five_bit_palette_values_do_not_cross_long_padding(self):
         palette=[{'Name':'test:block_'+str(n)} for n in range(17)]
         values=[0]*math.ceil(4096/12)

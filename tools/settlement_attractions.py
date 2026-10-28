@@ -207,11 +207,16 @@ class BackupWorld:
         header = ((cz&31)*32+(cx&31))*4
         location = int.from_bytes(raw[header:header+4],'big')
         sector, count = location>>8, location&255
-        if sector < 2 or not count or (sector+count)*4096 > len(raw):
+        # RegionFile.write writes the complete compressed record, not the
+        # unused tail of its last allocated sector. A crash preservation may
+        # therefore lack padding while still containing an intact FULL chunk.
+        # Admit only that final partial sector, never missing record bytes.
+        rounded_end = ((len(raw)+4095)//4096)*4096
+        if sector < 2 or not count or (sector+count)*4096 > rounded_end or sector*4096+5 > len(raw):
             raise UserError('The retained backup has no generated chunk '+str(key))
         offset = sector*4096
         length = int.from_bytes(raw[offset:offset+4],'big')
-        if not 1 < length <= count*4096-4:
+        if not 1 < length <= count*4096-4 or offset+4+length > len(raw):
             raise UserError('Invalid saved chunk length')
         compression, packed = raw[offset+4], raw[offset+5:offset+4+length]
         if compression not in (1,2,3):
@@ -221,7 +226,7 @@ class BackupWorld:
         else:
             decompressor = zlib.decompressobj(31 if compression == 1 else 15)
             decoded = decompressor.decompress(packed,MAX_CHUNK+1)
-            if len(decoded) > MAX_CHUNK or decompressor.unconsumed_tail or not decompressor.eof:
+            if len(decoded) > MAX_CHUNK or decompressor.unconsumed_tail or decompressor.unused_data or not decompressor.eof:
                 raise UserError('Compressed chunk exceeds its allocation or is truncated')
         document = NBTReader(decoded).read()
         if (document.get('xPos'),document.get('zPos')) != key or document.get('Status') not in ('minecraft:full','full'):

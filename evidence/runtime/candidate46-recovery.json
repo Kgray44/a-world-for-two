@@ -1,0 +1,258 @@
+{
+  "format": "awft-private-candidate46-recovery:1",
+  "curated_at_utc": "2026-10-28T05:22:34.264172+00:00",
+  "candidate": "0.1.0-candidate.46",
+  "publication": {
+    "private_build": true,
+    "final_release_published": false,
+    "public_prerelease_unchanged": "0.1.0-candidate.31",
+    "fresh_public_Prism_import_qualified": false
+  },
+  "build": {
+    "bridge_version": "0.6.32",
+    "bridge_bytes": 558236,
+    "bridge_sha256": "5a40c5a968645d10a94efde647c197f73f1f3381a972f29fd04fe24a200eb6ce",
+    "pack_sha256": "0daa15709f5300f42c64f4e794418ffb06c38b270c4e612c34ef67c18aeae370",
+    "enabled_mods": 198,
+    "client_mods": 192,
+    "server_mods": 165,
+    "source_hashes": {
+      "compat/control-bridge/src/worldfortwo/bridge/TreeGrowthScope.java": "eeacf850d6cb4eb43732b83c847143819df6953b1ba89ad2aaf842034dc69ed1",
+      "compat/control-bridge/probes/TreeGrowthScopeGridProbe.java": "4501c9bdab99aacc3b5220613c295b49fb4b695947ac1bdba3cee5d6f9b96873",
+      "compat/control-bridge/src/worldfortwo/bridge/NativeChainRouteSupport.java": "f4b9bed3711a951dd13340d67b728cd501cf7d79d8716460df4ad48d61b4a934",
+      "compat/control-bridge/src/worldfortwo/bridge/RetainedBridgeGlueInspection.java": "f8d7582bb2c17233987de73cd6744e74d29bcc2bbeb7273fc7a07211f83231a1"
+    }
+  },
+  "native_recovery": {
+    "first_JVM": {
+      "pid": 7864,
+      "readiness_observed_utc_minute": "2026-10-28T04:35Z",
+      "state": "ONLINE",
+      "startup_errors_observed": 0
+    },
+    "warmup_sample": {
+      "sample_intervals": 1,
+      "tps": 20,
+      "mspt": 2.12,
+      "scope": "One startup-warmup interval, not a benchmark, travel test or multiplayer result"
+    },
+    "normal_stop_and_checkpoint": {
+      "verified": true,
+      "id": "20261028T043630Z-e55a8c",
+      "sha256": "4384206f639659b09b2d332d2eb058241ca6dc15298f3808745025ed85992fac",
+      "archive_bytes": 225852113,
+      "source_bytes": 313695186,
+      "source_files": 637
+    },
+    "preview_restart_snapshot": {
+      "pid": 31336,
+      "game_port": 25575,
+      "last_observed_state": "ONLINE",
+      "authenticated_current_client_join_confirmed": true,
+      "scope": "Actual licensed owner client authenticated and joined the private candidate46 server; one player only, not two-player or public-release acceptance"
+    }
+  },
+  "crash_durability_audit": {
+    "scope": "Read-only comparison of persisted block states after the preceding candidate45 watchdog; no reconstruction, world writes or automatic replay",
+    "architecture_private_audit_sha256": "ff58452f6aec3072dd820e713f8bdafb00f477daefe1e6f50c84679c381fd3b3",
+    "east_houses": 37,
+    "west_buildings": 10,
+    "geometry_groups": {
+      "east-rose7": {
+        "compared_cells": 21163,
+        "differences": 2,
+        "unavailable_chunks": 0
+      },
+      "east-compass8": {
+        "compared_cells": 23262,
+        "differences": 0,
+        "unavailable_chunks": 0
+      },
+      "east-infill22": {
+        "compared_cells": 63198,
+        "differences": 0,
+        "unavailable_chunks": 0
+      },
+      "west-ten": {
+        "compared_cells": 16526,
+        "differences": 0,
+        "unavailable_chunks": 0
+      },
+      "rose-exterior": {
+        "compared_cells": 3429,
+        "differences": 0,
+        "unavailable_chunks": 0
+      },
+      "west-streets": {
+        "compared_cells": 5213,
+        "differences": 0,
+        "unavailable_chunks": 0
+      }
+    },
+    "authorized_difference": "Only two already authorized native bed cells differ within the east-house group; no other differences in the listed architecture groups",
+    "rose_exterior_added_targets_durable": 118,
+    "trees_private_audit_sha256": "11eac032c3ba6becfd9a0555548acff6d2b844c7379a2e2d90bc43d2f65c3206",
+    "recorded_native_growth_outcomes": 8,
+    "durable_outcomes": 7,
+    "lost_outcomes": 1,
+    "lost_outcome_owned_cells": 36,
+    "lost_outcome_log_cells": 7,
+    "lost_outcome_leaf_cells": 29,
+    "automatic_replay": false,
+    "curated_LIFE_cohort_spawns": 0,
+    "boundary": "Saved block-state persistence is not complete inventory, entity behavior, ecological, native riding or artistic acceptance"
+  },
+  "source_validation": {
+    "python_unittest": {
+      "passed": 754,
+      "elapsed_seconds": 69.998
+    },
+    "packwiz_manifest": {
+      "passed": true,
+      "file_records": 208
+    },
+    "control_room_JS_syntax_passed": true,
+    "regular_grid_probe": {
+      "receipt_sha256": "9f2c342081f038ade23ad33085e40a76b1c4f2295c550b8640b17035916769c5",
+      "passed": true,
+      "large_grid": 131072,
+      "production_copy_and_membership_ms": 158.38,
+      "max_heap_bytes": 268435456,
+      "processors": 2,
+      "native_world_actions": false,
+      "scope": "Synthetic collection-only production-scope snapshot/API probe; no Level, server or world created"
+    },
+    "subsequent_full_python_unittest": {
+      "passed": 788,
+      "elapsed_seconds": 45.285,
+      "scope": "Full frozen source suite including the separate intake-neighbor proposal; not runtime acceptance"
+    }
+  },
+  "remaining_native_and_artistic_gates": [
+    "Matching current two-player multiplayer",
+    "Continuous zipline creation, loading, riding and restart",
+    "New moving bridge ornament admission and cycles",
+    "R5 centerpiece complete pump/STOP/drain/reopen/restart test and art review",
+    "Expanded native woodland and botanical coverage",
+    "Separate curated living LIFE admission and persistence",
+    "Complete 3D architecture and dense north-bank village review",
+    "Mill and transport commissioning",
+    "Strict current SeedGen parity and current graphics/travel benchmarks",
+    "Clean public Prism import and final release qualification"
+  ],
+  "historical_records": [
+    "evidence/runtime/artistic-release-candidate.31.json",
+    "docs/CREATE-STARTUP-RECOVERY.md",
+    "docs/NATIVE-CANDIDATE43.md"
+  ],
+  "privacy": {
+    "exported_private_paths": false,
+    "exported_seed": false,
+    "exported_world_or_player_data": false,
+    "exported_tokens_or_raw_logs": false
+  },
+  "native_owner_session": {
+    "observed_join_utc": "2026-10-28T04:56:04.778Z",
+    "authenticated_players_observed": 1,
+    "private_login_event_snapshot_sha256": "faa6935e32c1ac8858cec88e50ded5e187e88ed8b974cd17b397b708d07bdfe1",
+    "client_bridge_sha256": "5a40c5a968645d10a94efde647c197f73f1f3381a972f29fd04fe24a200eb6ce",
+    "current_client_started": true,
+    "connection_target_corrected": "Private instance menu changed from old localhost25565 to active preview25575; canonical public Packwiz unchanged",
+    "pose_gamemode_and_lighting_changed_by_connect_action": false,
+    "two_player_acceptance": false,
+    "fresh_import_acceptance": false
+  },
+  "native_tree_resume46": {
+    "events": [
+      {
+        "plot": "copse-40",
+        "terminal_sha256": "05c7a2ed0676a363129f87b4ba7fe3d3c46a2eb9c951d74cfb13ae9f066b0c38",
+        "status": "native sapling grown through ordinary APIs; silhouette/visual and ecological acceptance pending",
+        "operation_elapsed_seconds": 6.617743,
+        "changed_log_blocks": 7,
+        "changed_leaf_blocks": 30,
+        "cleanup_passed": true,
+        "world_recovery_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "plot": "copse-92",
+        "terminal_sha256": "771df61d6195a8c797ba72fac9092e6406893b564149d51c99229e3ea053485e",
+        "status": "native tree attempt refused/failed; original receipts retained, no retry or manual tree substitute",
+        "operation_elapsed_seconds": 3.090138,
+        "changed_log_blocks": null,
+        "changed_leaf_blocks": null,
+        "cleanup_passed": true,
+        "world_recovery_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      }
+    ],
+    "failed_attempt_not_retried": true,
+    "remaining_unperformed_plots": 4,
+    "new_success_checkpoint_persistence_not_yet_verified": true,
+    "no_curated_LIFE_spawns": true,
+    "whole_forest_or_artistic_acceptance": false
+  },
+  "control_room_preview_alias": {
+    "deployed": true,
+    "old_port": 8765,
+    "active_preview_port": 8766,
+    "actual_GET_status": 307,
+    "actual_POST_status": 405,
+    "API_proxying": false,
+    "token_or_Origin_rewrite": false,
+    "active_game_restarted": false,
+    "official_world_changed": false,
+    "six_real_HTTP_source_tests_passed": true
+  },
+  "stationary_connected_observation": {
+    "duration_seconds": 125.625,
+    "fresh_samples": 25,
+    "sampled_player_movement_blocks": 0.0,
+    "private_summary_sha256": "ce761a1d59cd88c50371eb016ed19589e420b8ed044a25a386e9be2b204372d6",
+    "private_sample_journal_sha256": "ddc10affbe07ee390882c5904b0984802c3050a323c9d91c3d3c08056e2da29e",
+    "scope": "Stationary one-owner connected observation while development continues; foreground/render load unknown. Not a travel/worldgen, active shader or two-player benchmark",
+    "tps": {
+      "minimum": 19.977937236442052,
+      "median": 19.997191194524817,
+      "maximum": 20.02613509769532
+    },
+    "mspt": {
+      "minimum": 4.641275247524752,
+      "median": 5.057934653465347,
+      "maximum": 6.64089900990099
+    },
+    "server_working_set_bytes": {
+      "minimum": 4988510208,
+      "median": 4990832640,
+      "maximum": 4994019328
+    },
+    "client_working_set_bytes": {
+      "minimum": 8411459584,
+      "median": 8416600064,
+      "maximum": 9330663424
+    },
+    "server_heap_used_bytes": {
+      "minimum": 1850336512,
+      "median": 3036774936,
+      "maximum": 4069788880
+    },
+    "host_cpu_percent": {
+      "minimum": 18.3,
+      "median": 24.9,
+      "maximum": 53.6
+    },
+    "host_available_bytes": {
+      "minimum": 1318420480,
+      "median": 2486841344,
+      "maximum": 2669408256
+    },
+    "loaded_chunk_holders": {
+      "minimum": 1521,
+      "median": 1521,
+      "maximum": 1521
+    }
+  }
+}

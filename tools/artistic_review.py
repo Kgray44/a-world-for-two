@@ -132,6 +132,36 @@ def request(home, path, data=None):
         return json.load(response)
 
 
+def construction_bounds(plan):
+    """Match the real SettlementSupport footprint header before sending stdin.
+
+    Admission exceptions occur before that helper starts its terminal journal.
+    Catch malformed/oversize source headers here instead of waiting for a
+    terminal that the server could not create. Engineering has its own schema.
+    """
+    bounds=plan.get('bounds')
+    if (not isinstance(bounds,list) or len(bounds)!=4
+            or any(type(value) is not int for value in bounds)
+            or bounds[0]>bounds[2] or bounds[1]>bounds[3]
+            or bounds[2]-bounds[0]>512 or bounds[3]-bounds[1]>512):
+        raise UserError('Native construction requires four ordered integer bounds, at most512 blocks per span; split a larger source batch')
+    return bounds
+
+
+def construction_header(plan):
+    construction_bounds(plan)
+    tags=plan.get('block_entities')
+    commands=plan.get('commands')
+    if (not isinstance(tags,list) or len(tags)>4096 or not isinstance(commands,list)
+            or any(not isinstance(command,str) for command in commands)):
+        raise UserError('Native construction requires bounded block-entity rows and literal command strings')
+    for row in tags:
+        if (not isinstance(row,dict) or not isinstance(row.get('pos'),list)
+                or len(row['pos'])!=3 or any(type(n) is not int for n in row['pos'])
+                or not isinstance(row.get('nbt'),str) or len(row['nbt'])>16384):
+            raise UserError('Native block-entity tags must be bounded literal SNBT strings, not JSON objects')
+
+
 def native(home, command, *, plan_path=None, timeout=300):
     """One serialized native staging action, retaining its real terminal receipt."""
     from .settlement_live import native_read
@@ -156,7 +186,9 @@ def native(home, command, *, plan_path=None, timeout=300):
         allowed=('awftengine setup '+expected,'awftengine commission '+expected,'awftengine close '+expected) if engineering else ('awftbuild place '+expected,'awftbuild verify '+expected,'awftbuild map '+expected,'awftbuild settle '+expected)
         if command not in allowed:
             raise UserError('Native command must bind the exact source plan')
-        plan=json.loads(raw);world=Path(plan['world_path']).resolve()
+        plan=json.loads(raw)
+        if not engineering:construction_header(plan)
+        world=Path(plan['world_path']).resolve()
         if not world.is_relative_to(layout.world) or world.name!='RosewaterArtistic':
             raise UserError('The official world and historical staging copy are never admitted here')
         if plan['backup_sha256']!=read_json(folder/'backup-receipt.json')['sha256']:

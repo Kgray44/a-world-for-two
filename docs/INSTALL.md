@@ -1,10 +1,11 @@
 # Install A World for Two
 
-**Final server status:** the fresh world is saved, but the server is currently offline. A subsequent startup failed in Create 6.0.10 while accessing unbound `create:chocolate_bucket`. The earlier online measurements are historical. Recovery start was rejected by automatic approval review with only the reason "blocked by policy"; it was not retried through another route.
-
-**Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
-
-Candidate.31 is published; the official fresh world is installed but the server is offline.
+The public download is the immutable **candidate.31 prerelease**. Its ZIP and
+checksum were verified; a clean native Prism import remains unqualified.
+**Private candidate.46 has reached native startup and restarted for a preview**,
+with further client, multiplayer and feature validation still pending. The public
+candidate.31 ZIP does not contain that private work. See [current status](STATUS.md)
+and [the candidate.46 recovery record](NATIVE-CANDIDATE46.md).
 
 ## Client
 
@@ -14,46 +15,50 @@ Candidate.31 is published; the official fresh world is installed but the server 
 3. Choose **Add Instance → Import from ZIP** and select the file. Import as a new
    instance so an older installation cannot supply stale mods or configuration.
 4. Select **Java 21**. Set maximum memory to **6 GiB for KG** or the conservative
-   **4 GiB for Sera**. Sera's hardware has no complete measured graphics profile.
-5. Launch. The Packwiz pre-launch step downloads exact client files from pinned
-   author sources. Keep it enabled for future published updates.
-6. Choose a shader in **Video Settings → Shader Packs** after baseline startup.
-   A fresh portable export starts with shaders off; existing owner clients keep their choice.
-7. Choose **Join Our World → Public**. The current address is **`malls-cup.tun.ply.gg`**.
-   Authentication and the whitelist stay enabled; the host must keep the server and
-   Playit running. The KG-local entry is only for Minecraft on the host's own computer.
+   **4 GiB for Sera**. Sera's complete measured graphics profile remains open.
+5. Launch with the Packwiz pre-launch step enabled. It retrieves exact client
+   files from pinned author sources. Start with shaders off, then choose one in
+   **Video Settings → Shader Packs** after baseline startup.
+6. Join only when the host confirms that the matching server and tunnel are
+   available and your licensed Java username is whitelisted. The public starter's
+   configured address is **`malls-cup.tun.ply.gg`**; this is not a live availability
+   check. Its KG-local entry is for a client on the host computer.
 
-No account credentials, worlds or host-specific Java path belongs in the ZIP.
-The starter includes exactly one unchanged Let's Forge Pirates JAR under the
-[author's modpack grant](PIRATE-MODPACK-PERMISSION.md), avoiding its manual API
-download requirement. Other mods come from their pinned sources. Leave the
-optional Essential fallback off unless it is deliberately needed.
+Private previews require the separately supplied matching instance and preview
+entry. Candidate.31 and candidate.46 are different packs; do not use the public
+starter as proof of compatibility with the private preview. A current authenticated
+candidate.46 client join has not yet been recorded.
 
-The Packwiz update includes the same cinematic datapack for both clients and the
-server, loaded through Paxi. Keep this supplied data intact. Candidate.31 also
-corrects Tectonic's terrain-pack ordering, but its actual native client/server
-comparison still failed. Strict SeedGen client generation stays off, with DH
-server-download fallback; no relaxed fingerprint setting is selected. See
-[the runtime gap and repair scope](SEEDGEN-RUNTIME-GAP.md).
+Accounts, worlds, backups and host-specific Java paths stay out of the ZIP. The
+starter includes one unchanged Let's Forge Pirates JAR under the
+[author's modpack grant](PIRATE-MODPACK-PERMISSION.md); other mods come from their
+pinned sources. Leave optional Essential off for the normal dedicated-server setup.
 
 ## Updates and troubleshooting
 
 The pre-launch command invokes **packwiz-installer-bootstrap** and supplies the
-pinned full installer with `--bootstrap-main-jar`. Running the full installer directly
-causes the "must be run through packwiz-installer-bootstrap" error.
+pinned full installer with `--bootstrap-main-jar`. Running the full installer
+directly causes the “must be run through packwiz-installer-bootstrap” error.
+Keep the supplied Paxi cinematic data intact and relaunch the matching gameplay
+pack after server content changes. Local shader choices can differ.
 
-Both players relaunch the matching gameplay pack after server content changes.
-Local shader differences do not change server gameplay content. Fresh public
-download, Packwiz installation and native Prism import are separate checks for
-each released starter. Candidate.31's public ZIP/checksum passed, but two fresh
-headless installations failed DNS and native fresh Prism import remains unqualified. Use the
-[published checksum](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.31)
-to verify your download.
+Verify the [published checksum](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.31)
+for the public starter. Fresh download, Packwiz installation and native Prism
+import are separate checks. Two historical headless candidate.31 installations
+left six downloads missing after DNS errors; the unchanged
+[release record](../evidence/runtime/artistic-release-candidate.31.json) preserves
+those failures. They do not establish the cause of a new installation problem.
 
-If the server reports incompatible mods, check that both the imported instance
-and server use candidate.31. The public tunnel can connect only while the host is
-running the intended server. The authorized fresh-world handoff is complete;
-the server is offline as described at the top of this guide.
+If a server reports incompatible mods, first verify that its candidate matches
+the imported instance. Public tunneling also requires the intended game server
+and Playit service to be running. Candidate.31's older Create registration failure
+and rejected unchanged recovery attempt remain in the
+[startup history](CREATE-STARTUP-RECOVERY.md); candidate.46 has its own successful
+private startup record.
+
+Strict SeedGen client/server parity remains unresolved. DH server LOD downloads
+remain the fallback; no relaxed fingerprint setting is selected. See the
+[recorded gap](SEEDGEN-RUNTIME-GAP.md).
 
 ## Host
 
@@ -64,9 +69,7 @@ python -m pip install -e .
 python -m control_room run --home "D:\A World for Two"
 ```
 
-Open `http://127.0.0.1:8765`, complete setup, explicitly accept the Minecraft EULA
-for your own server and enter the licensed Java usernames. Qualify and back up a
-candidate before creating the permanent world.
-
-The owner's disposable test uses dashboard 8766 / Minecraft 25575. The normal host
-uses Minecraft 25565. Public tunnels must target only the intended game port.
+Open `http://127.0.0.1:8765`, complete setup, accept Minecraft's EULA for your own
+server and enter the licensed Java usernames. Qualify and back up a candidate
+before creating a permanent world. The normal host game port is 25565; the owned
+private preview uses 25575. Public tunnels must target only the intended game port.

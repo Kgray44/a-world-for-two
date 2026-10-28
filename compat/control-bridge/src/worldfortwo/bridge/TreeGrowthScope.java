@@ -34,15 +34,29 @@ public final class TreeGrowthScope implements AutoCloseable {
     final AABB writeBounds;
     final Set<Long> protectedColumns;
     final int soilY;
+    final boolean allowNativeNest;
     final LinkedHashSet<BlockPos> attempted=new LinkedHashSet<>();
     final Map<BlockPos,BlockState> lastExpected=new HashMap<>();
     int reads,writes;
     boolean probe,writeProbeObserved,rollback;
     String violation;
     private boolean closed;
-    public TreeGrowthScope(ServerLevel level,Map<BlockPos,BlockState> before,AABB writeBounds,Set<Long> protectedColumns,int soilY){
+    /* Coordinate grids collide heavily in the JDK's linear-probed immutable
+       SetN/MapN tables. Keep detached, null-rejecting snapshots, but retain the
+       collision handling of HashSet/HashMap rather than using copyOf here. */
+    static <E> Set<E> snapshotSet(Set<? extends E> input){
+        Set<E> copy=new HashSet<>();
+        for(E value:Objects.requireNonNull(input))copy.add(Objects.requireNonNull(value));
+        return Collections.unmodifiableSet(copy);
+    }
+    static <K,V> Map<K,V> snapshotMap(Map<? extends K,? extends V> input){
+        Map<K,V> copy=new HashMap<>();
+        Objects.requireNonNull(input).forEach((key,value)->copy.put(Objects.requireNonNull(key),Objects.requireNonNull(value)));
+        return Collections.unmodifiableMap(copy);
+    }
+    public TreeGrowthScope(ServerLevel level,Map<BlockPos,BlockState> before,AABB writeBounds,Set<Long> protectedColumns,int soilY,boolean allowNativeNest){
         if(ACTIVE.get()!=null||!level.getServer().isSameThread())throw new IllegalStateException("Nested/off-thread native growth scope refused");
-        this.level=level;this.before=Map.copyOf(before);this.writeBounds=writeBounds;this.protectedColumns=Set.copyOf(protectedColumns);this.soilY=soilY;
+        this.level=level;this.before=snapshotMap(before);this.writeBounds=writeBounds;this.protectedColumns=snapshotSet(protectedColumns);this.soilY=soilY;this.allowNativeNest=allowNativeNest;
         synchronized(TreeGrowthScope.class){if(armed)throw new IllegalStateException("Another native growth scope is armed");ACTIVE.set(this);armed=true;}
     }
     public static long column(int x,int z){return ((long)x<<32)|(z&0xffffffffL);}
@@ -70,6 +84,11 @@ public final class TreeGrowthScope implements AutoCloseable {
             ||original.getBlock() instanceof LeavesBlock||original.is(BlockTags.LOGS)
             ||!(original.isAir()||SOFT.contains(id)||(position.getY()<=scope.soilY&&original.is(BlockTags.DIRT))))
             throw denied(scope,"Preserve existing tree, fluid, structure or furnishing: "+position);
+        try{TreeBeeAudit.desired(original,desired,scope.allowNativeNest);}
+        catch(Throwable beeRefusal){
+            IllegalStateException refused=denied(scope,"Native bee-nest admission refused");
+            refused.addSuppressed(beeRefusal);throw refused;
+        }
         scope.attempted.add(position.immutable());scope.lastExpected.put(position.immutable(),desired);scope.writes++;
         if(scope.attempted.size()>65536||scope.writes>262144)throw denied(scope,"Finite native tree write budget exceeded");
     }

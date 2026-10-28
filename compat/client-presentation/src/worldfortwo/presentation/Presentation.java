@@ -7,6 +7,7 @@ import net.minecraft.client.gui.screens.TitleScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
@@ -39,9 +40,22 @@ public final class Presentation {
     private boolean initialized;
 
     public Presentation() {
+        registerZiplineGraph();
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, this::tick);
         NeoForge.EVENT_BUS.addListener(this::frame);
         NeoForge.EVENT_BUS.addListener(this::key);
+    }
+    private static void registerZiplineGraph() {
+        if(!ModList.get().isLoaded("zipline")||!ModList.get().isLoaded("connectiblechains"))return;
+        // FML4.0.45 waits on dependency constructor futures. The optional BEFORE
+        // metadata makes this run before Zipline.init registers its stock curve.
+        // Keep optional API classes out of this entrypoint's eager linkage.
+        try {
+            Class.forName("worldfortwo.presentation.LoadedChainGraphProvider",true,Presentation.class.getClassLoader())
+                .getMethod("registerOnce").invoke(null);
+        } catch(ReflectiveOperationException|LinkageError error) {
+            throw new IllegalStateException("Pinned native chain handoff registration failed",error);
+        }
     }
     public static void layoutControl(AbstractWidget control) {
         if (!(Minecraft.getInstance().screen instanceof TitleScreen title)) return;

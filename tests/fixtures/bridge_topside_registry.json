@@ -1,0 +1,324 @@
+{
+  "source": "Only property schemas from the actual native registry, not saved world geometry",
+  "native_canonical_bridge_sha256": "5500bf6e11c36d4b0dca9bcdeac555b3bf9b600db8763c80d091c1e0194317b0",
+  "blocks": {
+    "chipped:nailed_dark_oak_planks": {},
+    "chipped:small_stone_bricks": {},
+    "chipped:stacked_dark_oak_planks": {},
+    "create:metal_girder": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "bottom": [
+        "true",
+        "false"
+      ],
+      "top": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "x": [
+        "true",
+        "false"
+      ],
+      "z": [
+        "true",
+        "false"
+      ]
+    },
+    "createdeco:industrial_iron_sheet_metal": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "createdeco:industrial_iron_support": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:dark_oak_support_beam": {
+      "axis": [
+        "x",
+        "z"
+      ],
+      "pillar_connection": [
+        "nothing",
+        "4_pixels",
+        "6_pixels",
+        "8_pixels",
+        "10_pixels"
+      ],
+      "subaxis": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:limestone_bricks_edge": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:limestone_gargoyle": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "humidity": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "persistent": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwlights:covered_wall_lantern": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:chiseled_stone_bricks": {},
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:gold_block": {},
+    "minecraft:iron_bars": {
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:lantern": {
+      "hanging": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:spruce_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_brick_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:stone_bricks": {},
+    "mythrais:corbel_scroll_centre_stone": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "mythrais:decorated_column_lower_small_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "mirrored": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:decorated_column_middle_small_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mythrais:decorated_column_upper_small_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "mirrored": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:wrought_iron_railing_01": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1"
+      ]
+    }
+  }
+}

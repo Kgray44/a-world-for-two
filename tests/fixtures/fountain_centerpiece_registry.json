@@ -775,6 +775,7 @@
         "true",
         "false"
       ]
-    }
+    },
+    "minecraft:sea_lantern": {}
   }
 }

@@ -1,0 +1,173 @@
+--- a/compat/control-bridge/src/worldfortwo/bridge/NativeFountainSupport.java
++++ b/compat/control-bridge/src/worldfortwo/bridge/NativeFountainSupport.java
+@@ -35,7 +35,7 @@
+  * Create pump normally deadheads at a full header; gravity drives the cascades.
+  */
+ public final class NativeFountainSupport {
+-    private enum Phase { IDLE, LOAD, GEOMETRY, DRY, FILL, STOP, RESTART, CLEANUP }
++    private enum Phase { IDLE, LOAD, GEOMETRY, DRY, FILL, STOP, RESTART, RESET_WHEEL, RESET_DRAIN, RESET_CONTROLS, CLEANUP }
+     private record Target(BlockPos pos,BlockState state){}
+     private static final Gson JSON=new Gson();
+     private static final BlockPos WHEEL=new BlockPos(1145,66,-1130),PUMP=new BlockPos(1140,66,-1129),
+@@ -52,6 +52,9 @@
+     private final Set<ChunkPos> chunks=new LinkedHashSet<>(),tickets=new LinkedHashSet<>();
+     private final List<CompletableFuture<?>> pending=new ArrayList<>();
+     private final List<Target> targets=new ArrayList<>();
++    private final List<List<Target>> resetBefore=new ArrayList<>();
++    private static final String RESET_MANIFEST_SHA="f1bc94aa5397f3f7dd97eb086a8b7cd3c35f996a73e16a14407f9cb7c8fcf3ac",
++        RESET_BACKUP_SHA="b8495b677653c31077036faad10f553b432dcb173cd8964c8bb48e4674bd35f7";
+     private final Map<String,Object> report=new LinkedHashMap<>();
+     private final List<Map<String,Object>> observations=new ArrayList<>();
+     private ServerLevel level;private JsonObject request;private BlockState nativePlug;
+@@ -61,7 +64,7 @@
+     public boolean busy(){return phase!=Phase.IDLE;}
+     public void commands(RegisterCommandsEvent event){
+         var root=Commands.literal("awftfountain").requires(s->s.getEntity()==null&&s.hasPermission(4));
+-        for(String action:List.of("inspect","commission"))root.then(Commands.literal(action)
++        for(String action:List.of("inspect","commission","reset"))root.then(Commands.literal(action)
+             .then(Commands.argument("bundle",StringArgumentType.word()).then(Commands.argument("sha256",StringArgumentType.word()).executes(c->{
+                 if(busy())return 0;
+                 try{begin(c.getSource().getServer(),action,StringArgumentType.getString(c,"bundle"),StringArgumentType.getString(c,"sha256"));return 1;}
+@@ -89,7 +92,7 @@
+     }
+     private void begin(MinecraftServer server,String action,String bundle,String expected)throws Exception{
+         if(busy()||lease!=null||!tickets.isEmpty()||!pending.isEmpty()||!server.isSameThread())throw new IllegalStateException("Busy or off-thread");
+-        operation=action;report.clear();observations.clear();targets.clear();chunks.clear();ticks=phaseTicks=index=stable=wakeTicks=0;seeded=failed=terminalPublished=false;outcome=null;
++        operation=action;report.clear();observations.clear();targets.clear();resetBefore.clear();chunks.clear();ticks=phaseTicks=index=stable=wakeTicks=0;seeded=failed=terminalPublished=false;outcome=null;
+         report.put("operation",action);report.put("started",Instant.now().toString());
+         if(!bundle.matches("fountain-[a-f0-9]{16}")||!expected.matches("[a-f0-9]{64}")||!bundle.endsWith(expected.substring(0,16)))throw new IllegalStateException("Immutable fountain binding required");
+         Path stages=Path.of("D:\\A World for Two\\staging\\world-tests").toRealPath();
+@@ -128,12 +131,104 @@
+                 targets.add(new Target(p,parse(palette.get(row.get(3).getAsInt()).getAsString())));
+             }
+         }
++        if(action.equals("reset"))admitReset();
+         for(int x=1119>>4;x<=1149>>4;x++)for(int z=-1136>>4;z<=-1120>>4;z++)chunks.add(new ChunkPos(x,z));
+         for(Target target:targets)chunks.add(new ChunkPos(target.pos));if(chunks.size()>16)throw new IllegalStateException("Finite fountain chunk envelope exceeded");
+         lease=interlock.acquire("fountain:"+expected,true);if(lease==null||!lease.valid())throw new IllegalStateException("Exclusive native lease required");
+         report.put("request_sha256",expected);report.put("candidate",candidate);report.put("bridge",bridge);report.put("header_water_seeded",0);report.put("inventory_or_kinetic_NBT_writes",0);report.put("failures",0);phase=Phase.LOAD;
+         for(ChunkPos chunk:chunks){tickets.add(chunk);ticket(chunk,true);pending.add(((worldfortwo.bridge.mixin.ChunkCacheAccess)(Object)level.getChunkSource()).awftQueueChunk(chunk.x,chunk.z,ChunkStatus.FULL,false));}
+     }
++
++    /** Four owned normal block-state changes, never a general fluid-clearing API. */
++    private JsonObject resetReference(JsonObject ref,int maximum)throws Exception{
++        byte[] raw=bounded(owned(ref.get("path").getAsString()),maximum);
++        if(raw.length!=ref.get("bytes").getAsInt()||!sha(raw).equals(ref.get("sha256").getAsString()))throw new IllegalStateException("Exact reset evidence bytes differ");
++        return JsonParser.parseString(new String(raw,StandardCharsets.UTF_8)).getAsJsonObject();
++    }
++    private void admitReset()throws Exception{
++        if(!request.get("backup_sha256").getAsString().equals(RESET_BACKUP_SHA)
++            ||!request.getAsJsonObject("reset_manifest").get("sha256").getAsString().equals(RESET_MANIFEST_SHA))throw new IllegalStateException("Exact preserved wet reset source/checkpoint required");
++        JsonObject manifest=resetReference(request.getAsJsonObject("reset_manifest"),2*1024*1024);
++        if(!manifest.get("checkpoint_sha256").getAsString().equals(RESET_BACKUP_SHA)||manifest.get("actual_dry_checkpoint").getAsBoolean())throw new IllegalStateException("Wet reset source differs");
++        JsonArray refs=request.getAsJsonArray("reset_before"),proofs=request.getAsJsonArray("reset_native_verify");
++        if(refs.size()!=3||proofs.size()!=3)throw new IllegalStateException("Exactly three actual reset before proofs required");
++        List<String> names=List.of("reset-1-wheel-off-BEFORE.json","reset-2-owned-header-off-BEFORE.json","reset-3-normal-controls-BEFORE.json");
++        List<Map<BlockPos,BlockState>> canonical=List.of(Map.of(WHEEL_SOURCE,Blocks.WATER.defaultBlockState()),Map.of(HEADER,Blocks.WATER.defaultBlockState()),
++            Map.of(LEVER,parse("minecraft:lever[face=wall,facing=east,powered=true]"),new BlockPos(1138,73,-1125),parse("minecraft:repeater[delay=1,facing=north,locked=false,powered=false]")));
++        for(int i=0;i<3;i++){
++            JsonObject ref=refs.get(i).getAsJsonObject(),proofRef=proofs.get(i).getAsJsonObject(),spec=manifest.getAsJsonObject("files").getAsJsonObject(names.get(i));
++            if(!ref.get("sha256").equals(spec.get("sha256"))||!ref.get("bytes").equals(spec.get("bytes")))throw new IllegalStateException("Reset plan differs from frozen original source");
++            JsonObject plan=resetReference(ref,65536),proof=resetReference(proofRef,65536);
++            Path proofPath=owned(proofRef.get("path").getAsString());
++            if(!proofPath.getParent().equals(journal)||!proofPath.getFileName().toString().matches("settlement-result-[a-f0-9-]{36}\\.json")
++                ||!new String(bounded(proofPath.resolveSibling(proofPath.getFileName()+".complete"),128),StandardCharsets.US_ASCII).trim().equals(proofRef.get("sha256").getAsString()))throw new IllegalStateException("Owned native reset proof and completion marker required");
++            if(!proof.get("operation").getAsString().equals("verify")||!proof.get("status").getAsString().equals("verified actual block identities, orientation, block entities and supplied inventories")
++                ||!proof.get("plan_sha256").equals(ref.get("sha256"))||proof.get("blocks").getAsInt()!=canonical.get(i).size()
++                ||proof.has("error")||proof.get("failures").getAsInt()!=0||proof.get("cleanup_required").getAsBoolean()
++                ||proof.get("temporary_tickets_remaining").getAsInt()!=0||proof.get("pending_shared_chunk_futures").getAsInt()!=0
++                ||proof.has("cleanup_failures")&&proof.get("cleanup_failures").getAsInt()!=0)throw new IllegalStateException("Actual complete zero-failure reset before verification required");
++            Instant start=Instant.parse(proof.get("started").getAsString()),finish=Instant.parse(proof.get("finished").getAsString()),now=Instant.now();
++            if(start.isAfter(finish)||finish.isAfter(now)||finish.isBefore(now.minusSeconds(1800)))throw new IllegalStateException("Fresh actual reset proof required");
++            if(!plan.get("format").getAsString().equals("awft-native-settlement:1")||!plan.get("backup_sha256").equals(request.get("backup_sha256"))
++                ||!plan.get("seed").equals(request.get("seed"))||!plan.get("world_path").equals(request.get("world_path"))
++                ||plan.getAsJsonArray("commands").size()!=0||plan.getAsJsonArray("block_entities").size()!=0
++                ||!plan.get("verification_only").getAsBoolean()||!plan.get("construction_forbidden").getAsBoolean())throw new IllegalStateException("Only exact owned verification-only reset preimages admitted");
++            JsonArray palette=plan.getAsJsonArray("palette"),rows=plan.getAsJsonArray("blocks");
++            if(rows.size()!=canonical.get(i).size()||palette.size()>2)throw new IllegalStateException("Finite canonical reset target count differs");
++            List<Target> phaseTargets=new ArrayList<>();Set<BlockPos> unique=new HashSet<>();
++            for(JsonElement entry:rows){JsonArray row=entry.getAsJsonArray();if(row.size()!=4)throw new IllegalStateException("Exact reset row required");
++                BlockPos pos=new BlockPos(row.get(0).getAsInt(),row.get(1).getAsInt(),row.get(2).getAsInt());BlockState state=parse(palette.get(row.get(3).getAsInt()).getAsString());
++                if(!unique.add(pos)||!canonical.get(i).containsKey(pos)||!canonical.get(i).get(pos).equals(state))throw new IllegalStateException("Foreign reset target/state refused");
++                phaseTargets.add(new Target(pos,state));targets.add(new Target(pos,state));}
++            resetBefore.add(List.copyOf(phaseTargets));
++        }
++        report.put("fresh_native_reset_before_proofs",proofs.deepCopy());report.put("frozen_wet_reset_manifest",RESET_MANIFEST_SHA);
++        report.put("reset_maximum_native_ticks",1800);report.put("piston_plug_or_kinetic_NBT_writes",0);
++    }
++    private void checkResetBefore(int phaseIndex){
++        for(Target t:resetBefore.get(phaseIndex))if(!level.getBlockState(t.pos).equals(t.state)||level.getBlockEntity(t.pos)!=null
++            ||!level.getEntities((Entity)null,new AABB(t.pos)).isEmpty())throw new IllegalStateException("Fresh actual phase reset before differs at "+t.pos);
++    }
++    private void removeOwnedSource(BlockPos pos){
++        if(!level.getBlockState(pos).equals(Blocks.WATER.defaultBlockState())||level.getBlockEntity(pos)!=null)throw new IllegalStateException("Only the exact owned world source may be removed");
++        if(!level.setBlock(pos,Blocks.AIR.defaultBlockState(),3))throw new IllegalStateException("Normal owned source update refused");
++        level.updateNeighborsAt(pos,Blocks.WATER);
++    }
++    private boolean zeroDrive(){return kinetic(WHEEL,"create:water_wheel").getSpeed()==0&&kinetic(PUMP,"create:mechanical_pump").getSpeed()==0;}
++    private boolean dryResetFlow(){return level.getBlockState(WHEEL_SOURCE).isAir()&&level.getBlockState(HEADER).isAir()
++        &&level.getBlockState(PORT).isAir()&&JETS.stream().allMatch(p->level.getBlockState(p).isAir());}
++    private void startReset(){
++        checkResetBefore(0);checkResetBefore(1);checkResetBefore(2);
++        BlockState piston=level.getBlockState(PISTON);nativePlug=level.getBlockState(OPEN_PLUG);
++        if(!piston.is(Blocks.STICKY_PISTON)||piston.getValue(BlockStateProperties.FACING)!=net.minecraft.core.Direction.NORTH||piston.getValue(BlockStateProperties.EXTENDED)
++            ||!nativePlug.is(Blocks.CHISELED_QUARTZ_BLOCK)||nativePlug.hasBlockEntity()||!nativePlug.getFluidState().isEmpty()||!source(INTAKE))throw new IllegalStateException("Preserved wet fountain gate/intake geometry differs");
++        sample("reset_actual_wet_before");removeOwnedSource(WHEEL_SOURCE);report.put("owned_wheel_source_removed_normally",true);next(Phase.RESET_WHEEL);
++    }
++    private void tickReset(){
++        if(phase==Phase.RESET_WHEEL){
++            if(level.getBlockState(WHEEL_SOURCE).isAir()&&zeroDrive())stable++;else stable=0;
++            if(stable>=40){sample("reset_actual_wheel_and_pump_zero");checkResetBefore(1);removeOwnedSource(HEADER);report.put("owned_pumped_header_removed_after_zeroRPM",true);next(Phase.RESET_DRAIN);}
++            else if(phaseTicks>600)throw new IllegalStateException("Actual zeroRPM after normal wheel-source removal did not complete");
++        }else if(phase==Phase.RESET_DRAIN){
++            if(dryResetFlow()&&zeroDrive())stable++;else stable=0;
++            if(stable>=40){sample("reset_actual_normal_downstream_drain");checkResetBefore(2);stopLever(false);
++                BlockPos diode=new BlockPos(1138,73,-1125);BlockState old=level.getBlockState(diode);
++                if(!old.is(Blocks.REPEATER)||old.getValue(BlockStateProperties.HORIZONTAL_FACING)!=net.minecraft.core.Direction.NORTH)throw new IllegalStateException("Exact preserved diode differs");
++                if(!level.setBlock(diode,old.setValue(BlockStateProperties.HORIZONTAL_FACING,net.minecraft.core.Direction.SOUTH),3))throw new IllegalStateException("Normal diode orientation update refused");
++                level.updateNeighborsAt(diode,old.getBlock());report.put("ordinary_lever_and_diode_updated",true);next(Phase.RESET_CONTROLS);}
++            else if(phaseTicks>600)throw new IllegalStateException("Normal downstream drainage did not complete; no fluid graph was cleared");
++        }else if(phase==Phase.RESET_CONTROLS){
++            BlockState piston=level.getBlockState(PISTON),diode=level.getBlockState(new BlockPos(1138,73,-1125));
++            boolean returned=piston.is(Blocks.STICKY_PISTON)&&piston.getValue(BlockStateProperties.FACING)==net.minecraft.core.Direction.NORTH&&!piston.getValue(BlockStateProperties.EXTENDED)
++                &&level.getBlockState(OPEN_PLUG).equals(nativePlug)&&diode.is(Blocks.REPEATER)&&diode.getValue(BlockStateProperties.HORIZONTAL_FACING)==net.minecraft.core.Direction.SOUTH&&!diode.getValue(BlockStateProperties.POWERED)
++                &&!level.getBlockState(LEVER).getValue(BlockStateProperties.POWERED)&&source(INTAKE);
++            if(dryResetFlow()&&zeroDrive()&&returned)stable++;else stable=0;
++            if(stable>=40){sample("reset_actual_dry_controls_and_returned_plug");report.put("actual_owned_fountain_reset",true);report.put("fresh_stopped_dry_checkpoint_required",true);report.put("normal_owned_source_removals",2);
++                finish("actual owned normal fountain reset passed; fresh stopped dry checkpoint required before any R5 art placement",false);}
++            else if(phaseTicks>400)throw new IllegalStateException("Actual normal gate retraction/dry controls did not complete");
++        }else throw new IllegalStateException("Unexpected reset phase");
++    }
++
+     @SuppressWarnings({"rawtypes","unchecked"})private static BlockState parse(String text){
+         String[] parts=text.split("\\[",2);ResourceLocation id=ResourceLocation.parse(parts[0]);if(!BuiltInRegistries.BLOCK.containsKey(id))throw new IllegalStateException("Unregistered fountain block");BlockState state=BuiltInRegistries.BLOCK.get(id).defaultBlockState();
+         if(parts.length==2)for(String token:parts[1].substring(0,parts[1].length()-1).split(",")){String[] pair=token.split("=",2);Property prop=state.getBlock().getStateDefinition().getProperty(pair[0]);if(prop==null)throw new IllegalStateException("Unknown fountain property");state=state.setValue(prop,(Comparable)prop.getValue(pair[1]).orElseThrow());}return state;
+@@ -151,13 +246,14 @@
+     public void tick(MinecraftServer server){
+         if(phase==Phase.IDLE)return;if(phase==Phase.CLEANUP){cleanup();return;}long began=System.nanoTime();
+         try{
+-            if(++ticks>2400||!server.isSameThread()||lease==null||!lease.valid()||!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Native fountain lease/empty-server/thread/deadline refused");
+-            phaseTicks++;if(operation.equals("commission")){level.resetEmptyTime();report.put("bounded_native_empty_timer_resets",++wakeTicks);}
++            if(++ticks>(operation.equals("reset")?1800:2400)||!server.isSameThread()||lease==null||!lease.valid()||!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Native fountain lease/empty-server/thread/deadline refused");
++            phaseTicks++;if(operation.equals("commission")||operation.equals("reset")){level.resetEmptyTime();report.put("bounded_native_empty_timer_resets",++wakeTicks);}
+             if(phase==Phase.LOAD){if(pending.stream().anyMatch(f->!f.isDone()))return;for(var f:pending)f.join();pending.clear();if(!ready())return;next(Phase.GEOMETRY);}
+             if(!ready())throw new IllegalStateException("Actual ticking fountain chunks unavailable");checkpoint();
+-            if(phase==Phase.GEOMETRY){while(index<targets.size()&&System.nanoTime()-began<4_000_000L){Target t=targets.get(index++);BlockState actual=level.getBlockState(t.pos);if(actual.getBlock()!=t.state.getBlock())throw new IllegalStateException("Fountain geometry changed at "+t.pos);for(Property<?> p:t.state.getProperties())if(Set.of("facing","axis","half","type","part","hinge").contains(p.getName())&&!actual.getValue(p).equals(t.state.getValue(p)))throw new IllegalStateException("Fountain orientation changed at "+t.pos);}
+-                if(index==targets.size()){if(operation.equals("inspect")){sample("read_only_inspection");finish("actual fountain snapshot; no mutation or commissioning acceptance",false);}else next(Phase.DRY);}return;}
+-            if(phase==Phase.DRY){
++            if(phase==Phase.GEOMETRY){while(index<targets.size()&&System.nanoTime()-began<4_000_000L){Target t=targets.get(index++);BlockState actual=level.getBlockState(t.pos);if(operation.equals("reset")&&!actual.equals(t.state))throw new IllegalStateException("Exact wet reset before changed at "+t.pos);if(actual.getBlock()!=t.state.getBlock())throw new IllegalStateException("Fountain geometry changed at "+t.pos);for(Property<?> p:t.state.getProperties())if(Set.of("facing","axis","half","type","part","hinge").contains(p.getName())&&!actual.getValue(p).equals(t.state.getValue(p)))throw new IllegalStateException("Fountain orientation changed at "+t.pos);}
++                if(index==targets.size()){if(operation.equals("reset")){startReset();return;}if(operation.equals("inspect")){sample("read_only_inspection");finish("actual fountain snapshot; no mutation or commissioning acceptance",false);}else next(Phase.DRY);}return;}
++            if(operation.equals("reset")){tickReset();}
++            else if(phase==Phase.DRY){
+                 if(!level.getBlockState(WHEEL_SOURCE).isAir()||level.getBlockEntity(WHEEL_SOURCE)!=null||!level.getEntities((Entity)null,new AABB(WHEEL_SOURCE)).isEmpty()||water(HEADER)||!jets(false))throw new IllegalStateException("Actual wheel-source/header/jet dry baseline is absent; do not replay commissioning");
+                 if(kinetic(WHEEL,"create:water_wheel").getSpeed()!=0||kinetic(PUMP,"create:mechanical_pump").getSpeed()!=0||!source(INTAKE))throw new IllegalStateException("Unexpected pre-powered fountain or missing real basin intake");
+                 if(!level.getBlockState(PISTON).is(Blocks.STICKY_PISTON)||level.getBlockState(PISTON).getValue(BlockStateProperties.FACING)!=net.minecraft.core.Direction.NORTH)throw new IllegalStateException("Actual gate piston differs");
+@@ -181,7 +277,7 @@
+             }
+             report.put("phase",phase.name());report.put("ticks",ticks);report.put("phase_ticks",phaseTicks);
+             if(phase!=Phase.IDLE&&phase!=Phase.CLEANUP){
+-                if(ticks%100==0&&Set.of(Phase.FILL,Phase.STOP,Phase.RESTART).contains(phase))sample("periodic_"+phase.name());
++                if(ticks%100==0&&Set.of(Phase.FILL,Phase.STOP,Phase.RESTART,Phase.RESET_WHEEL,Phase.RESET_DRAIN,Phase.RESET_CONTROLS).contains(phase))sample("periodic_"+phase.name());
+                 if(ticks%40==0)NativeJournal.progress(journal,"fountain-status.json",report);
+             }
+         }catch(Exception|LinkageError error){report.put("error",error.toString());report.put("failures",1);finish("native fountain stopped; actual partial hydraulic state and receipts retained",true);}

@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-27T23:04:37.686841+00:00",
+  "generated": "2026-10-28T04:30:28.734338+00:00",
   "generation_basis": "Source lock timestamp; unchanged inputs produce identical reports",
-  "pack_version": "0.1.0-candidate.43",
+  "pack_version": "0.1.0-candidate.46",
   "requests": [
     {
       "id": "farmers-delight",
@@ -6246,9 +6246,9 @@
   ],
   "source_lock": {
     "path": "catalog/lock.json",
-    "sha256": "6b861a23d286dea4b443196009135d99bcf2e3a255ed3a98333c1babf086aa2a",
+    "sha256": "f377ecba9826b6ae3ef007fe4d8b090fdfe99972c7f0294bbc86f2f6cf4325a9",
     "pack_path": "packwiz/pack.toml",
-    "pack_sha256": "0c6b818ac880da9f45e764ab5adb9eeae963ed2bc215c679c11e1b704cabea8e",
+    "pack_sha256": "0daa15709f5300f42c64f4e794418ffb06c38b270c4e612c34ef67c18aeae370",
     "minecraft": "1.21.1",
     "neoforge": "21.1.262",
     "java": 21,
@@ -6411,15 +6411,15 @@
       "name": "A World for Two Control Bridge",
       "request": null,
       "kind": "mod",
-      "version": "0.6.29",
-      "version_id": "0.6.29",
-      "filename": "awft-control-bridge-0.6.29.jar",
-      "size": 446341,
+      "version": "0.6.32",
+      "version_id": "0.6.32",
+      "filename": "awft-control-bridge-0.6.32.jar",
+      "size": 558236,
       "side": "both",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b"
+        "sha256": "5a40c5a968645d10a94efde647c197f73f1f3381a972f29fd04fe24a200eb6ce"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
       "status": "Integrated but awaiting runtime validation",
@@ -6435,15 +6435,15 @@
       "name": "A World for Two Presentation",
       "request": null,
       "kind": "mod",
-      "version": "0.2.2",
-      "version_id": "0.2.2",
-      "filename": "awft-client-presentation-0.2.2.jar",
-      "size": 10034,
+      "version": "0.2.3",
+      "version_id": "0.2.3",
+      "filename": "awft-client-presentation-0.2.3.jar",
+      "size": 15725,
       "side": "client",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "754555b0fc47e923ff6aaeccb8d162b72d4a0056b4a04e85c06c3d5d4f06c765"
+        "sha256": "abac3a99a94aec9c02141dfde3a9b82a7f5d3cf4f9b4ab44c3cea9ba17ea80a6"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
       "status": "Integrated but awaiting runtime validation",
@@ -11465,7 +11465,7 @@
       "Experimental native map validation pending": 1
     }
   },
-  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.43, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
+  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.46, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
   "runtime_evidence": [
     {
       "source": "evidence/runtime/client-startup-initial.json",

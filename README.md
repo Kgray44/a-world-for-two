@@ -1,109 +1,90 @@
 # A World for Two
 
-**Final server status:** the fresh world is saved, but the server is currently offline. A subsequent startup failed in Create 6.0.10 while accessing unbound `create:chocolate_bucket`. The earlier online measurements are historical. Recovery start was rejected by automatic approval review with only the reason "blocked by policy"; it was not retried through another route.
-
-**Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
-
-Private candidate **43** starts the dedicated server with Reconnectible Chains
-2.4.4 loaded. It contains **198 enabled mods: 192 client and 165 server**. The
-KG has authenticated and joined this private preview on25575. The long zipline
-ride, complete client validation and release import still need native checks.
-The redesigned drawbridge
-completed real 55° cycles across a restart; the pirate spit, both requested
-original builds and new architectural depth have native results and game captures.
-The tavern now has lower warm lighting and intimate furnishings. The new fountain
-has real pumped cascades. Native testing also proved normal wheel shutdown and
-water drainage; the gate's returned plug and centerpiece composition still need
-correction. All nine selected sapling types now have actual native grower/feature
-descriptions; none has been planted by this pass. The expanded south-bank forest,
-wildlife, cliff-to-town zipline, mill
-commissioning and strict SeedGen parity remain in progress.
-See the [latest native review](docs/NATIVE-CANDIDATE43.md).
-
 **Our little corner of an endless world.**
 
 ![A quiet sunset beside the village lake](assets/menu/a-world-for-two-background.jpg)
 
-A cozy Minecraft home for KG and Sera: cottage gardens and kitchens, a winding
-pirate waterfront, Rosewater Castle, sailing adventures and Create machinery.
+A cozy Minecraft home for KG and Sera: cottage gardens and kitchens, a busy pirate
+waterfront, Rosewater Castle, sailing adventures and Create machinery.
 
 **Minecraft 1.21.1 · NeoForge 21.1.262 · Java 21 · Prism Launcher · Packwiz**
 
-Published prerelease **0.1.0-candidate.31** retains **197 enabled mods**: **191 on the client** and
-**164 on the server**, with shared mods counted on each side. Eight shader choices
-and one resource pack are included. Essential is optional and disabled; enabling
-it brings the total mod selection to 198.
+## Build status
 
-**Current checkpoint:** candidate.31 is published and the authorized fresh-world
-handoff is complete; the server is offline as described above. The rebuilt settlement has actual in-game screenshot
-reviews; owner artistic acceptance remains pending. See [current status](docs/STATUS.md).
+| Build | Availability | Enabled mods |
+| --- | --- | --- |
+| **Public candidate.31** | Published, immutable prerelease; fresh Prism import remains unqualified | **197 total · 191 client · 164 server** |
+| **Private candidate.46** | Private preview observed online; validation in progress; unreleased | **198 total · 192 client · 165 server** |
 
-## Install and join
+Shared mods count on both sides. Essential is optional and disabled. Eight shader
+choices and one resource pack are pinned. The public starter retains its own
+candidate.31 snapshot; it does not contain the private candidate.46 work.
 
-1. Download the [candidate.31 Prism ZIP](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.31/A-World-for-Two-0.1.0-candidate.31-Prism.zip)
-   from the published candidate.31 release.
+The full build is still in progress: a continuous, dense north-bank pirate town;
+a complete 3D architecture pass; flowers, climbers and native-grown woodland;
+and a separate living LIFE pass for animals and residents. Seven native-grown
+trees are confirmed in saved data; no curated LIFE population has been spawned.
+The refined fountain sculpture is placed, with its full powered-function test
+still pending. Candidate.46 completed native startup, a normal save/stop and a
+private preview restart. The licensed owner client has now joined; full
+multiplayer, public-import and full-world acceptance remain open. See [current status](docs/STATUS.md) and [the recovery record](docs/NATIVE-CANDIDATE46.md).
+
+## Install the public prerelease
+
+1. Download the [candidate.31 Prism ZIP](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.31/A-World-for-Two-0.1.0-candidate.31-Prism.zip).
 2. In [Prism Launcher](https://prismlauncher.org/), choose **Add Instance → Import
-   from ZIP**. Sign into your licensed Minecraft Java account and use **Java 21**.
-3. Set maximum memory to **6 GiB for KG** or the conservative **4 GiB for Sera**.
-   Launch with the included Packwiz pre-launch step enabled; it installs the pinned
-   client files. Start with shaders off, then choose a preset after joining.
-4. Choose **Join Our World**, then the **public server** entry. The KG-local entry
-   is for a client running on the server's own computer.
+   from ZIP**, sign into your licensed Minecraft Java account, and select **Java 21**.
+3. Use **6 GiB maximum memory for KG** or the conservative **4 GiB for Sera**.
+   Keep the included Packwiz pre-launch step enabled so it retrieves the pinned
+   client files. Start with shaders off.
+4. Join when the host confirms that the matching server and tunnel are running
+   and your Java username is whitelisted. Keep optional Essential off for the
+   normal dedicated-server setup.
 
-Public address: **`malls-cup.tun.ply.gg`**. The host must keep the server and Playit
-running and add each licensed Java username to the whitelist. Leave optional
-Essential off for the normal dedicated-server setup.
-
-The starter includes one unchanged pirate mod under its author's
-[modpack permission](docs/PIRATE-MODPACK-PERMISSION.md); the updater retrieves the
-remaining files from pinned sources. Accounts, worlds, backups and LOD databases
-stay out of the client ZIP. See [installation and troubleshooting](docs/INSTALL.md).
+The ZIP and published checksum were verified. A clean fresh import still needs
+qualification; the [candidate.31 installation record](evidence/runtime/artistic-release-candidate.31.json)
+preserves the earlier download failures. Accounts, worlds, backups and LOD
+history stay outside the client ZIP. One unchanged pirate mod is included under
+its author's [modpack permission](docs/PIRATE-MODPACK-PERMISSION.md).
 
 ## From the actual game
 
-![Bramble Lane's lanterns, shopfronts and planted windows](docs/images/artistic-recovery/bramble-lane.png)
+![Bramble Lane's lanterns and shopfronts](docs/images/artistic-recovery/bramble-lane.png)
 
 ![Books, seating and the Rose & Lantern cottage hearth](docs/images/artistic-recovery/rose-lantern-hearth.png)
 
-Unchanged Minecraft captures from the artistic staging world, using Complementary
-Reimagined. These show the current work; owner visual acceptance remains pending.
-[Capture provenance](evidence/runtime/artistic-recovery-detail-20261027.json).
+These are unchanged, historical Minecraft captures from the private artistic
+world using Complementary Reimagined. [Capture provenance](evidence/runtime/artistic-recovery-detail-20261027.json).
+The small pirate-town area is the owner's accepted visual reference; full-world
+artistic acceptance remains open.
 
 ## Explore together
 
 | At home | Out exploring |
 | --- | --- |
-| Furnished cottages, gardens, pets, kitchens and music | Mountains, oceans, ruins and archaeology |
+| Furnished cottages, gardens, kitchens and music | Mountains, oceans, ruins and archaeology |
 | Rosewater Castle and intimate craft lanes | Pirate waterfronts, sailing ships and belowdecks |
-| Stocked shops, courts and warm evening lighting | Fishing, treasure, weather and ocean wildlife |
+| Shops, courts and warm evening lighting | Fishing, treasure, weather and ocean wildlife |
 | Custom menu and animated workstation interactions | Xaero's maps, parties/claims, Waystones and browser Atlas |
 | Create workshops and a powered river drawbridge | Trains, Small Ships, Aeronautics/Sable and Hypertubes |
 
-The new town was built and reviewed in a fresh staging world and installed as
-the official save, with authored
-streets, dry-bank homes, layered interiors, harbor approaches and original river
-crossings. [Artistic recovery](docs/ARTISTIC-RECOVERY.md) records the visual work.
-
-The rebuilt bascule completed native powered opening/closing cycles after a
-restart. Other Create attractions still require installation or commissioning;
-the full addendum scope and artistic acceptance are **not complete**.
+Feature selection, construction and working gameplay have separate checks.
+Earlier native builds completed real 55° drawbridge cycles across a restart;
+new moving ornaments, the continuous zipline and other Create demonstrations
+still have their own admission and commissioning work.
 
 **Distant Horizons + SeedGen** remains the distant-terrain architecture. Voxy and
-Roxy are excluded. Kappa, Bliss and six other shaders are pinned; Chocapic remains
-deferred. The [compatibility inventory](docs/COMPATIBILITY.md) retains every
-requested candidate and unresolved integration; [the lock](catalog/lock.json)
-records exact versions, file hashes and client/server sides.
-
-Candidate.31 delivers the same cinematic datapack through Packwiz/Paxi and corrects
-the client-side ordering of Tectonic's built-in terrain pack. Actual native testing
-still failed strict fingerprint agreement: SeedGen client generation stays off,
-with DH server-download fallback. [The remaining gap is documented](docs/SEEDGEN-RUNTIME-GAP.md).
+Roxy are excluded. Strict client/server parity is still unresolved; DH server
+LOD downloads remain the fallback. Kappa, Bliss and six other shaders are pinned;
+Chocapic remains deferred. The [compatibility inventory](docs/COMPATIBILITY.md)
+retains every requested candidate, while [the development lock](catalog/lock.json)
+records exact versions, sides and hashes.
 
 ## Control Room
 
-The local dashboard manages server controls, whitelist, operator levels, player
-coordinates, Atlas waypoints, live storage, backups, mod proposals, menu artwork,
-graphics choices and the installed Playit.gg tunnel service.
+The local dashboard provides server controls, whitelist and operator editing,
+player coordinates, Atlas waypoints, live storage, backups, mod proposals, menu
+artwork, graphics choices and Playit.gg service controls.
 
 ```powershell
 python -m pip install -e .
@@ -111,21 +92,15 @@ python -m control_room run --home "D:\A World for Two"
 ```
 
 Open **http://127.0.0.1:8765**. Changes require the local origin and current session
-token. Worlds, downloads, credentials and backups stay outside this repository;
-public game tunnels carry the Minecraft port. See [the dashboard guide](docs/CONTROL-ROOM.md).
+token. See [the dashboard guide](docs/CONTROL-ROOM.md).
 
-## Guides
+## Guides and development
 
-- [Installation](docs/INSTALL.md), [current status](docs/STATUS.md) and [shader choices](docs/SHADERS.md)
-- [Artistic recovery](docs/ARTISTIC-RECOVERY.md) and [landmark prototypes](docs/ARTISTIC-LANDMARK-PROTOTYPES.md)
-- [Waterfront street](docs/ARTISTIC-STREET-PROTOTYPE.md), [cottage court](docs/ARTISTIC-COTTAGE-COURT.md),
-  [craft lane](docs/ARTISTIC-CRAFT-LANE.md) and [connecting grounds](docs/ARTISTIC-CONNECTING-GROUNDS.md)
-- [Harbor craft](docs/ARTISTIC-HARBOR-CRAFT.md) and [cinematics](docs/SETTLEMENT-CINEMATIC.md)
-- [Create attractions](docs/SETTLEMENT-ATTRACTIONS.md), [maritime attractions](docs/MARITIME-ATTRACTIONS.md)
-  and [showcase coverage](docs/SHOWCASE-COVERAGE.md)
+- [Current status](docs/STATUS.md), [installation notes](docs/INSTALL.md) and [shader choices](docs/SHADERS.md)
+- [Artistic recovery](docs/ARTISTIC-RECOVERY.md), [north-bank shops](docs/ARTISTIC-NORTH-BANK-WEST.md) and [streets and tavern depth](docs/ARTISTIC-WEST-STREETS-AND-ROSE-EXTERIOR.md)
+- [Fountain](docs/FOUNTAIN-CENTERPIECE-RECOVERY.md), [forest](docs/WHOLE-SOUTH-BANK-FOREST.md), [botanical art](docs/ARTISTIC-BOTANICAL-PASS.md) and [living LIFE](docs/SETTLEMENT-LIFE.md)
+- [Create attractions](docs/SETTLEMENT-ATTRACTIONS.md), [zipline](docs/ARTISTIC-ZIPLINE-WEST.md), [cinematics](docs/SETTLEMENT-CINEMATIC.md) and [remaining showcase work](docs/SHOWCASE-COVERAGE.md)
 - [Release process](docs/RELEASING.md) and [third-party notices](docs/THIRD-PARTY.md)
-
-## Develop and verify
 
 ```powershell
 python -m unittest discover -s tests -v
@@ -134,9 +109,8 @@ node --check control_room/static/app.js
 node --test tests/session.test.mjs
 ```
 
-This repository contains source, configuration, original presentation artwork and
-sanitized evidence. Runtime saves, credentials, downloaded third-party JARs, logs
-and caches remain private. The predecessor repository is inspected read-only.
-Local work reserves **30 GiB free separately on C: and D:**; monitoring does not
-constrain unrelated applications. Cleanup follows acceptance and preserves useful
+This repository contains source, configuration, original artwork and sanitized
+evidence. Saves, credentials, downloaded third-party JARs, logs and caches remain
+private. Local writers reserve **30 GiB free separately on C: and D:**; this
+monitoring rule does not constrain other applications. Cleanup preserves useful
 recovery snapshots and failed receipts.

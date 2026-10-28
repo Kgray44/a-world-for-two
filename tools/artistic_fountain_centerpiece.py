@@ -27,6 +27,17 @@ BASE_SHA = '6ae428127da4bd98223fad546e6b00588f547c456b080198ff1b42dca2945d4a'
 ROUTES_REL = 'artistic-spawn-plaza-r2-20261027T2002Z/manifest.json'
 MARS = 'dawnoftimebuilder:marble_statue_mars'
 INTAKE = (1139, 65, -1129)
+ACTUAL_INTAKE = 'create:fluid_pipe[down=true,east=false,north=false,south=false,up=true,waterlogged=true,west=false]'
+BASIN_LIGHTS = ((1134,64,-1128),(1142,64,-1128),(1137,64,-1123),
+                (1140,64,-1123),(1139,64,-1130))
+# These two exact saved changes predate the new sculpture. Their historical
+# cause is unknown; do not describe water replacing sandstone as natural flow.
+# The owner has commissioned reconstruction of this same fountain footing and
+# removal of the old pipe neck. No foreign cells or BE/inventory edits follow.
+OWNED_PREVIEW_VARIANTS = {
+    (1139,64,-1129): ('minecraft:smooth_sandstone','minecraft:water[level=14]'),
+    (1138,74,-1129): ('create:fluid_pipe[down=true,east=true,north=false,south=false,up=false,waterlogged=false,west=false]','minecraft:air'),
+}
 INTAKE_PIPE = (1139, 66, -1129)
 OUTPUT_PATH = ((1141,66,-1129),(1141,67,-1129),(1141,68,-1129),(1140,68,-1129),
                (1139,68,-1129),(1139,68,-1130),(1139,69,-1130),(1139,70,-1130),
@@ -282,6 +293,9 @@ def validate(p):
 def compose(registry,base,routes):
     p=Sculpture(registry,base,routes);p.clear_old();palette_and_lower_basin(p)
     carved_pedestal(p);backed_bowl(p);crown_and_statue(p);internal_feed(p);open_service_niche(p)
+    # Ordinary submerged lighting keeps the reflecting pool bright through the
+    # night without changing the biome, weather, water-wheel or redstone system.
+    for pos in BASIN_LIGHTS:p.put(pos,'minecraft:sea_lantern')
     validate(p);return p
 
 
@@ -313,12 +327,27 @@ def has_items(value):
     return False
 
 
+def normal_owned_copper_aging(previous,actual):
+    """Only forward native aging of the original unwaxed full cut-copper block.
+
+    Waxing, scraping, a different shape, or a different block is not weathering
+    authority. Retained aged blocks are observed for verification, never reset.
+    """
+    stages=('minecraft:cut_copper','minecraft:exposed_cut_copper',
+            'minecraft:weathered_cut_copper','minecraft:oxidized_cut_copper')
+    return previous in stages and actual in stages and stages.index(actual)>=stages.index(previous)
+
+
 def post_reset_precondition(pos,actual,base):
     """Classify a saved observation without claiming a dry state was observed."""
     previous=base.get(pos,AIR)
     if pos not in base and key(actual) not in SOFT:
         raise UserError('A new sculptural target is not saved air/soft vegetation: '+str((pos,actual)))
-    if pos in base and key(actual)!=key(previous) and not (key(actual)=='minecraft:water' and previous==AIR):
+    if (pos in base and key(actual)!=key(previous)
+            and not (key(actual)=='minecraft:water' and previous==AIR)
+            and not normal_owned_copper_aging(previous,actual)
+            and not (previous=='minecraft:water[level=0]' and actual=='minecraft:ice')
+            and OWNED_PREVIEW_VARIANTS.get(pos)!=(previous,actual)):
         raise UserError('An owned predecessor changed outside normal fountain flow: '+str((pos,actual,previous)))
     return AIR if key(actual)=='minecraft:water' and previous==AIR else actual
 
@@ -345,13 +374,40 @@ def prepare(home,registry_path,backup_id,backup_sha,output,*,dry_checkpoint=Fals
     path=home/'staging'/BASE_REL
     if digest(path)!=BASE_SHA:raise UserError('Frozen corrected R4 source differs')
     baseline=read_json(path);base=decode(baseline);route_doc=read_json(home/'staging'/ROUTES_REL)
+    snapshot=BackupWorld(home,receipt,registry)
+    # Retain the real waterlogged intake installed during native commissioning,
+    # rather than reverting it to the older drawing's plain water placeholder.
+    try:
+        actual_intake=snapshot.state(INTAKE)
+        if actual_intake!=ACTUAL_INTAKE:raise UserError('Preserve a changed native fountain intake')
+    except BaseException:
+        snapshot.close();raise
+    base[INTAKE]=actual_intake
     routes={(x,z):y for x,y,z in route_doc['routes']};p=compose(registry,base,routes)
     changed={pos:s for pos,s in p.blocks.items() if s!=base.get(pos,AIR)}
-    snapshot=BackupWorld(home,receipt,registry);wet={};expected={};ledger=[]
+    wet={};expected={};ledger=[]
     try:
+        # The original unwaxed trim naturally ages while the real world ticks.
+        # Keep its actual saved appearance in the complete verification field;
+        # it is deliberately absent from the already computed sculpture delta.
+        for pos,desired in list(p.blocks.items()):
+            if desired==base.get(pos) and normal_owned_copper_aging(desired,desired):
+                actual=snapshot.state(pos)
+                if actual!=desired and normal_owned_copper_aging(desired,actual):
+                    p.blocks[pos]=actual
+                    ledger.append({'pos':list(pos),'retained_native_weathering':actual,
+                                   'original_owned_state':desired,'world_write':False})
+            if desired=='minecraft:water[level=0]' and snapshot.state(pos)=='minecraft:ice':
+                changed[pos]=desired
+                ledger.append({'pos':list(pos),'actual_frozen_pool':'minecraft:ice',
+                               'desired_original_pool':desired,'authority':'Normal deicing of this owned reflecting pool; underwater lights added, no biome/weather change'})
         for pos,desired in changed.items():
             actual=snapshot.state(pos);wet[pos]=actual
             expected[pos]=post_reset_precondition(pos,actual,base)
+            if OWNED_PREVIEW_VARIANTS.get(pos)==(base.get(pos,AIR),actual):
+                ledger.append({'pos':list(pos),'original_owned_state':base[pos],
+                               'actual_saved_preview_state':actual,'historical_cause':'not established',
+                               'authority':'Exact owned footing/retired pipe-neck reconstruction in the commissioned R5 sculpture'})
             if expected[pos]!=actual:
                 ledger.append({'pos':list(pos),'observed':actual,'expected_after_normal_owned_reset':AIR,'status':'EXPECTED, not observed; native zero-difference comparison mandatory'})
         reset_observed={pos:snapshot.state(pos) for pos in
@@ -425,6 +481,8 @@ def prepare(home,registry_path,backup_id,backup_sha,output,*,dry_checkpoint=Fals
         'routes_preserved':len(routes),'pipe_path':[list(pos) for pos in OUTPUT_PATH],
         'new_header_feed_face':'east side, endpoint1139,73,-1129 openwest; actual HEADER unchanged',
         'actual_dry_checkpoint':dry_checkpoint,
+        'retained_actual_intake':{'pos':list(INTAKE),'state':actual_intake,'BE_and_inventory_replayed':False},
+        'ordinary_underwater_lights':[list(pos) for pos in BASIN_LIGHTS],
         'reset_first':'Normal owned wheel source AIR→0RPM; pumped header AIR→upperdrain; normalleverfalse+repeaterS; no direct piston/plug or fluid graph edits. A FRESH stopped dry checkpoint is required before executable art output.',
         'BE_policy':'No tags/inventories are replayed. Only listed owned empty transport/default decorative BEs may be replaced; all others are excluded.',
         'cameras':copy.deepcopy(route_doc.get('cameras',[])),'reserve_guard':reserve,'native_actions':0,'world_writes':0,'artistic_acceptance':False,

@@ -47,22 +47,39 @@ def entity_rows(row,depth=0):
     for child in row.get('Passengers',[]):yield from entity_rows(child,depth+1)
 
 
-def decode_entity_chunks(raw):
+def decode_entity_chunks(raw,expected_region=None):
     if not raw:return  # Authenticated zero-byte region contains no serialized entities.
     if not 8192<=len(raw)<=32*MIB:raise UserError('Unbounded saved entity region')
     for ordinal in range(1024):
         location=int.from_bytes(raw[ordinal*4:ordinal*4+4],'big');sector,count=location>>8,location&255
         if not sector and not count:continue
-        if sector<2 or not count or (sector+count)*4096>len(raw):raise UserError('Invalid saved entity region sectors')
+        # RegionFile writes the real record buffer, not necessarily the unused
+        # end of its final allocated sector. Missing record bytes remain fatal.
+        rounded_end=((len(raw)+4095)//4096)*4096
+        if sector<2 or not count or (sector+count)*4096>rounded_end or sector*4096+5>len(raw):raise UserError('Invalid saved entity region sectors')
         offset=sector*4096;length=int.from_bytes(raw[offset:offset+4],'big')
-        if not 1<length<=count*4096-4:raise UserError('Invalid saved entity region payload')
+        if not 1<length<=count*4096-4 or offset+4+length>len(raw):raise UserError('Invalid saved entity region payload')
         mode=raw[offset+4];packed=raw[offset+5:offset+4+length]
         if mode not in (1,2,3):raise UserError('External/unknown entity compression is not a complete census')
         if mode==3:decoded=packed
         else:
-            decoder=zlib.decompressobj(31 if mode==1 else 15);decoded=decoder.decompress(packed,MAX_CHUNK+1)
-            if decoder.unconsumed_tail or not decoder.eof:raise UserError('Saved entity chunk exceeds allocation or is truncated')
-        yield NBTReader(decoded).read()
+            decoder=zlib.decompressobj(31 if mode==1 else 15)
+            try:decoded=decoder.decompress(packed,MAX_CHUNK+1)
+            except zlib.error as failure:raise UserError('Invalid saved entity compression') from failure
+            if decoder.unconsumed_tail or decoder.unused_data or not decoder.eof:raise UserError('Saved entity chunk exceeds allocation, is truncated or has trailing compressed data')
+        if len(decoded)>MAX_CHUNK:raise UserError('Saved entity chunk exceeds finite decoded allocation')
+        document=NBTReader(decoded).read();position=document.get('Position');version=document.get('DataVersion')
+        if (not isinstance(position,list) or len(position)!=2 or any(type(v) is not int for v in position)
+                or ((position[1]&31)*32+(position[0]&31))!=ordinal):
+            raise UserError('Saved entity chunk Position differs from its region header')
+        if expected_region is not None and (position[0]//32,position[1]//32)!=tuple(expected_region):
+            raise UserError('Saved entity chunk Position belongs to a different region')
+        if type(version) is not int or not 0<version<=3955:
+            raise UserError('Unknown/future saved entity DataVersion for pinned Minecraft1.21.1')
+        roots=document.get('Entities')
+        if not isinstance(roots,list) or len(roots)>1024 or any(not isinstance(row,dict) for row in roots):
+            raise UserError('Missing/malformed saved entity list is not an empty census')
+        yield document
 
 
 def census(snapshot,members,checkpoint_sha,recipe_sha):
@@ -81,7 +98,9 @@ def census(snapshot,members,checkpoint_sha,recipe_sha):
         if hashlib.sha256(raw).hexdigest()!=record['sha256']:raise UserError('Saved entity region digest differs')
         relative=name[len(prefix):];dimension=('minecraft:the_nether' if relative.startswith('DIM-1/') else
             'minecraft:the_end' if relative.startswith('DIM1/') else 'minecraft:overworld' if relative.startswith('entities/') else 'other_saved_dimension')
-        for document in decode_entity_chunks(raw):
+        region_match=re.fullmatch(r'r\.(-?\d+)\.(-?\d+)\.mca',Path(name).name)
+        if region_match is None:raise UserError('Exact saved entity region filename required')
+        for document in decode_entity_chunks(raw,tuple(map(int,region_match.groups()))):
             roots=document.get('Entities',[])
             if not isinstance(roots,list) or len(roots)>1024:raise UserError('Unbounded saved entity list')
             for root in roots:

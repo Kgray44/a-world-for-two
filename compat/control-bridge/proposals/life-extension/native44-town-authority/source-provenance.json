@@ -1,0 +1,19 @@
+{
+  "actual_room_sites_created": 0,
+  "compile_backend_bridge": "0.6.29",
+  "controller_count": 1,
+  "enabled_species": 15,
+  "format": "awft-native44-town-source-recipe:1",
+  "frozen_base_seal_sha256": "079ef86958757605efde6c1b3a98c31f248e81e55948698379dab74495df3d80",
+  "frozen_base_source_pins": {
+    "HabitatLifePolicy.java": "a1a026a14d1b772d40fd62eca08f6280bc37d71247921fe6785ac1dd36ff1d40",
+    "NativeHabitatLifeSupport.java": "177debd09313941d947e57f98a37ec289cafdcddc396c540891947aa0b11620b",
+    "prepare.py": "88a80a1211119357a04141a650dac2234b2d719ce8c49c156d875acb0383c6f6"
+  },
+  "minecraft": "1.21.1",
+  "native_source_verification_gap": "Retained selected base files did not have exact matching successful VERIFY receipts in the bounded230-file settlement-result scan. Placement receipts/overlay passes cannot be substituted. Current correct full geometry/native proof and individually reviewed sites remain required.",
+  "native_spawn_or_world_actions": false,
+  "neoforge": "21.1.262",
+  "source_custody_study_sha256": "c9bc63747e29b4bb0d78bf4510e17e9364ff8ea8a87a03a344ef02637d376f96",
+  "species_curation_sha256": "be41097fb361a62fb5b60cc93d33958a8a896048dbacdca72e6c87de8abe74d9"
+}

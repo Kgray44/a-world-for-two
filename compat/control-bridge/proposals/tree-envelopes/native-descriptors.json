@@ -1,0 +1,1224 @@
+{
+  "native_describe_terminal_sha256": "8c767ba8505846eeb4e305d4691e853cd48461d3d7ff5591f9dbfa45c44a3cc5",
+  "native_descriptor_sha256s": {
+    "minecraft:birch_sapling": "8757bc08e22d30e7cc7829b79c1cb1d73082a8d81d2204155ae214e11b8851cc",
+    "regions_unexplored:golden_larch_sapling": "f10d2fed79498d22e49b79df682e4a693dcba99321e3d264ad32d2b5db4a8e22",
+    "regions_unexplored:larch_sapling": "00134758f69b9b363f5ef4cc10f6819d616b1a225af24f9757562bf24d27e5f0",
+    "regions_unexplored:magnolia_sapling": "7a5bb7238018b2aba691e68bb423fad7ec6d6293899fd536e66c797b2eaf13ef",
+    "regions_unexplored:maple_sapling": "0860035dbee696a61356cea82e7f52e11f6442deb3493f338b77b495f8827c3a",
+    "regions_unexplored:pine_sapling": "c685212d9a2f99928f8e2119ef8f04b9accb1d1df8b77a47563c24d6d8f89ea5",
+    "regions_unexplored:pink_magnolia_sapling": "db900c9f8d2b44b85e0c94a0d46bb1979f31994da8ab99fb89aa448fd1c115a3",
+    "regions_unexplored:silver_birch_sapling": "cfa79a7048199d301d73b8d0248a64b05e922e08f086b5710ec6e1c6dcbd2629",
+    "regions_unexplored:white_magnolia_sapling": "24ba4ef35b9f349cb3a6a3186d857bb165f81ce87328c009fe8556ca60b6fa49"
+  },
+  "native_descriptors": {
+    "minecraft:birch_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "minecraft:birch": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "branch_block": "regions_unexplored:birch_branch",
+                  "log_block": "minecraft:birch_log",
+                  "probability": 0.1,
+                  "required_empty_blocks": 4,
+                  "type": "regions_unexplored:random_branch"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "type": "regions_unexplored:aspen"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "minecraft:birch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 1,
+                "lower_size": 0,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 1
+              },
+              "trunk_placer": {
+                "bend_chance": 0.0,
+                "height": {
+                  "max_inclusive": 8,
+                  "min_inclusive": 6,
+                  "type": "minecraft:uniform"
+                },
+                "type": "regions_unexplored:aspen"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "minecraft:birch_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "965ee3f19d2d5b1612872a2cdf37c5d04acee5556e90c4b948e589297278122f",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "minecraft:birch_bees_005": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "probability": 0.05,
+                  "type": "minecraft:beehive"
+                },
+                {
+                  "branch_block": "regions_unexplored:birch_branch",
+                  "log_block": "minecraft:birch_log",
+                  "probability": 0.1,
+                  "required_empty_blocks": 4,
+                  "type": "regions_unexplored:random_branch"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "type": "regions_unexplored:aspen"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "minecraft:birch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 1,
+                "lower_size": 0,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 1
+              },
+              "trunk_placer": {
+                "bend_chance": 0.0,
+                "height": {
+                  "max_inclusive": 8,
+                  "min_inclusive": 6,
+                  "type": "minecraft:uniform"
+                },
+                "type": "regions_unexplored:aspen"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "minecraft:birch_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "03e7b4d2a3a4ca7d6d440095295edbc9bd55b24353baf5ba98572d111c940be7",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        }
+      },
+      "grower_name": "birch",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "flowers": "minecraft:birch_bees_005",
+        "tree": "minecraft:birch"
+      },
+      "sapling": "minecraft:birch_sapling",
+      "secondary_chance": 0.0
+    },
+    "regions_unexplored:golden_larch_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/larch_golden": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "branch_block": "regions_unexplored:larch_branch",
+                  "leaves_provider": {
+                    "state": {
+                      "Name": "regions_unexplored:golden_larch_leaves",
+                      "Properties": {
+                        "distance": "7",
+                        "persistent": "false",
+                        "waterlogged": "false"
+                      }
+                    },
+                    "type": "minecraft:simple_state_provider"
+                  },
+                  "log_block": "regions_unexplored:larch_log",
+                  "probability": 0.1,
+                  "required_empty_blocks": 3,
+                  "type": "regions_unexplored:random_branch"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "offset": {
+                  "max_inclusive": 2,
+                  "min_inclusive": 1,
+                  "type": "minecraft:uniform"
+                },
+                "radius": {
+                  "max_inclusive": 3,
+                  "min_inclusive": 2,
+                  "type": "minecraft:uniform"
+                },
+                "trunk_height": {
+                  "max_inclusive": 2,
+                  "min_inclusive": 1,
+                  "type": "minecraft:uniform"
+                },
+                "type": "minecraft:spruce_foliage_placer"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:golden_larch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 2,
+                "lower_size": 0,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 2
+              },
+              "trunk_placer": {
+                "base_height": 6,
+                "height_rand_a": 3,
+                "height_rand_b": 3,
+                "type": "minecraft:straight_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "c63894e1a89ea55cc01556e6a8644d226955f40296407d4aedfedb05f4898579",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "regions_unexplored:tree/larch_golden_large": {
+          "actual_codec": {
+            "config": {
+              "branch_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_branch",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:golden_larch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "minimum_size": 18,
+              "size_variation": 5,
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "regions_unexplored:larch_tree"
+          },
+          "codec_sha256": "3c8e246a62f19a2f439a808b00e0b146113af198c10748ab162efeb79b1ec444",
+          "native_feature_class": "net.regions_unexplored.world.level.feature.tree.LarchTreeFeature"
+        }
+      },
+      "grower_name": "golden_larch",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/larch_golden_large",
+        "tree": "regions_unexplored:tree/larch_golden"
+      },
+      "sapling": "regions_unexplored:golden_larch_sapling",
+      "secondary_chance": 0.25
+    },
+    "regions_unexplored:larch_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/larch": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "branch_block": "regions_unexplored:larch_branch",
+                  "leaves_provider": {
+                    "state": {
+                      "Name": "regions_unexplored:larch_leaves",
+                      "Properties": {
+                        "distance": "7",
+                        "persistent": "false",
+                        "waterlogged": "false"
+                      }
+                    },
+                    "type": "minecraft:simple_state_provider"
+                  },
+                  "log_block": "regions_unexplored:larch_log",
+                  "probability": 0.1,
+                  "required_empty_blocks": 3,
+                  "type": "regions_unexplored:random_branch"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "offset": {
+                  "max_inclusive": 2,
+                  "min_inclusive": 1,
+                  "type": "minecraft:uniform"
+                },
+                "radius": {
+                  "max_inclusive": 3,
+                  "min_inclusive": 2,
+                  "type": "minecraft:uniform"
+                },
+                "trunk_height": {
+                  "max_inclusive": 2,
+                  "min_inclusive": 1,
+                  "type": "minecraft:uniform"
+                },
+                "type": "minecraft:spruce_foliage_placer"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 2,
+                "lower_size": 0,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 2
+              },
+              "trunk_placer": {
+                "base_height": 6,
+                "height_rand_a": 3,
+                "height_rand_b": 3,
+                "type": "minecraft:straight_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "2af0751f868c005391babc3c0282d2b8f801c4fdfaffebc083d1140c42697c95",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "regions_unexplored:tree/larch_large": {
+          "actual_codec": {
+            "config": {
+              "branch_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_branch",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "minimum_size": 18,
+              "size_variation": 5,
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:larch_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "regions_unexplored:larch_tree"
+          },
+          "codec_sha256": "fc303d8820cb5af53a7817d250d96fd7870e13d73073fe99e759def476535ee9",
+          "native_feature_class": "net.regions_unexplored.world.level.feature.tree.LarchTreeFeature"
+        }
+      },
+      "grower_name": "larch",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/larch_large",
+        "tree": "regions_unexplored:tree/larch"
+      },
+      "sapling": "regions_unexplored:larch_sapling",
+      "secondary_chance": 0.25
+    },
+    "regions_unexplored:magnolia_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/big_magnolia": {
+          "actual_codec": {
+            "config": {
+              "decorators": [],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "flower_decoration_chance": 0.25,
+                "height": 5,
+                "offset": 0,
+                "radius": 4,
+                "type": "regions_unexplored:sakura"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 0,
+                "lower_size": 0,
+                "min_clipped_height": 4,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 0
+              },
+              "trunk_placer": {
+                "base_height": 8,
+                "height_rand_a": 11,
+                "height_rand_b": 0,
+                "type": "minecraft:fancy_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "39c7077e8003666a89b39317c6e6d3527524d159bc9eb19b6213f414da9af23b",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "regions_unexplored:tree/magnolia": {
+          "actual_codec": {
+            "config": {
+              "branch_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_branch",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "minimum_size": 1,
+              "size_variation": 4,
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "regions_unexplored:sakura_tree"
+          },
+          "codec_sha256": "25167648518242a9fe514a92a34f2f6e17c9c8d4773008d1e56d86e3293c7eda",
+          "native_feature_class": "net.regions_unexplored.world.level.feature.tree.SakuraTreeFeature"
+        }
+      },
+      "grower_name": "magnolia",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/big_magnolia",
+        "tree": "regions_unexplored:tree/magnolia"
+      },
+      "sapling": "regions_unexplored:magnolia_sapling",
+      "secondary_chance": 0.1
+    },
+    "regions_unexplored:maple_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/big_maple": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "block_state_provider": {
+                    "block": "regions_unexplored:maple_leaf_litter",
+                    "type": "regions_unexplored:randomized_ground_cover"
+                  },
+                  "height": 1,
+                  "radius": 3,
+                  "tries": 64,
+                  "type": "regions_unexplored:place_on_ground"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "height": 4,
+                "offset": 4,
+                "radius": 2,
+                "type": "minecraft:fancy_foliage_placer"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:maple_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 0,
+                "lower_size": 0,
+                "min_clipped_height": 4,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 0
+              },
+              "trunk_placer": {
+                "base_height": 8,
+                "height_rand_a": 11,
+                "height_rand_b": 0,
+                "type": "minecraft:fancy_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:maple_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "a557398dd923d3729f73fd24b0cb5a04eb5fe1c158eefe36a5f03b8c51d61c71",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "regions_unexplored:tree/maple": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "branch_block": "regions_unexplored:maple_branch",
+                  "log_block": "regions_unexplored:maple_log",
+                  "probability": 1.0,
+                  "top_offset": 3,
+                  "type": "regions_unexplored:group_branch"
+                },
+                {
+                  "block_state_provider": {
+                    "block": "regions_unexplored:maple_leaf_litter",
+                    "type": "regions_unexplored:randomized_ground_cover"
+                  },
+                  "height": 1,
+                  "radius": 3,
+                  "tries": 48,
+                  "type": "regions_unexplored:place_on_ground"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "type": "regions_unexplored:maple"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:maple_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": false,
+              "minimum_size": {
+                "limit": 1,
+                "lower_size": 0,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 1
+              },
+              "trunk_placer": {
+                "base_height": 7,
+                "height_rand_a": 2,
+                "height_rand_b": 2,
+                "type": "minecraft:straight_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:maple_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "5cdd80aa6c2a4b683466746a88ffbecfaf41ca56575cbb25fbc5ffd0d5922a67",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        }
+      },
+      "grower_name": "maple",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/big_maple",
+        "tree": "regions_unexplored:tree/maple"
+      },
+      "sapling": "regions_unexplored:maple_sapling",
+      "secondary_chance": 0.1
+    },
+    "regions_unexplored:pine_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/pine": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "branch_block": "regions_unexplored:pine_branch",
+                  "leaves_provider": {
+                    "state": {
+                      "Name": "regions_unexplored:pine_leaves",
+                      "Properties": {
+                        "distance": "7",
+                        "persistent": "false",
+                        "waterlogged": "false"
+                      }
+                    },
+                    "type": "minecraft:simple_state_provider"
+                  },
+                  "log_block": "regions_unexplored:pine_log",
+                  "probability": 0.1,
+                  "required_empty_blocks": 3,
+                  "type": "regions_unexplored:random_branch"
+                },
+                {
+                  "probability": 0.001,
+                  "type": "minecraft:beehive"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "offset": {
+                  "max_inclusive": 1,
+                  "min_inclusive": 0,
+                  "type": "minecraft:uniform"
+                },
+                "type": "regions_unexplored:fancy_pine"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:pine_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": false,
+              "minimum_size": {
+                "limit": 3,
+                "lower_size": 0,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 1
+              },
+              "trunk_placer": {
+                "base_height": 10,
+                "height_rand_a": 4,
+                "height_rand_b": 0,
+                "type": "minecraft:straight_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:pine_log",
+                  "Properties": {
+                    "axis": "y",
+                    "is_stripped": "false",
+                    "transition_block": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "fdb7b65bc32f6146301cbfaf2211190d41d6afb27d6df76195f7f2afbc963a9f",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "regions_unexplored:tree/pine_tall": {
+          "actual_codec": {
+            "config": {
+              "decorators": [
+                {
+                  "branch_block": "regions_unexplored:pine_branch",
+                  "leaves_provider": {
+                    "state": {
+                      "Name": "regions_unexplored:pine_leaves",
+                      "Properties": {
+                        "distance": "7",
+                        "persistent": "false",
+                        "waterlogged": "false"
+                      }
+                    },
+                    "type": "minecraft:simple_state_provider"
+                  },
+                  "log_block": "regions_unexplored:pine_log",
+                  "probability": 0.1,
+                  "required_empty_blocks": 3,
+                  "type": "regions_unexplored:random_branch"
+                },
+                {
+                  "probability": 0.001,
+                  "type": "minecraft:beehive"
+                }
+              ],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "offset": {
+                  "max_inclusive": 1,
+                  "min_inclusive": 0,
+                  "type": "minecraft:uniform"
+                },
+                "type": "regions_unexplored:fancy_pine"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:pine_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": false,
+              "minimum_size": {
+                "limit": 3,
+                "lower_size": 0,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 1
+              },
+              "trunk_placer": {
+                "base_height": 14,
+                "height_rand_a": 5,
+                "height_rand_b": 0,
+                "type": "minecraft:straight_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:pine_log",
+                  "Properties": {
+                    "axis": "y",
+                    "is_stripped": "false",
+                    "transition_block": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "4a73e83527a073f35266dec0b00758f74d5114f23e87623ff7acbc2835e61726",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        }
+      },
+      "grower_name": "pine",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/pine_tall",
+        "tree": "regions_unexplored:tree/pine"
+      },
+      "sapling": "regions_unexplored:pine_sapling",
+      "secondary_chance": 0.1
+    },
+    "regions_unexplored:pink_magnolia_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/big_pink_magnolia": {
+          "actual_codec": {
+            "config": {
+              "decorators": [],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "flower_decoration_chance": 0.25,
+                "height": 5,
+                "offset": 0,
+                "radius": 4,
+                "type": "regions_unexplored:sakura"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:pink_magnolia_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 0,
+                "lower_size": 0,
+                "min_clipped_height": 4,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 0
+              },
+              "trunk_placer": {
+                "base_height": 8,
+                "height_rand_a": 11,
+                "height_rand_b": 0,
+                "type": "minecraft:fancy_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "9f80732bb2eb957605d4feabc80c8d7d177968377b38b8727702732b8b82bc1b",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "regions_unexplored:tree/pink_magnolia": {
+          "actual_codec": {
+            "config": {
+              "branch_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_branch",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:pink_magnolia_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "minimum_size": 1,
+              "size_variation": 4,
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "regions_unexplored:sakura_tree"
+          },
+          "codec_sha256": "e1e1a5c44f293758adfdd321a82716cf3026d9ac58ef499125748f234b18ae84",
+          "native_feature_class": "net.regions_unexplored.world.level.feature.tree.SakuraTreeFeature"
+        }
+      },
+      "grower_name": "pink_magnolia",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/big_pink_magnolia",
+        "tree": "regions_unexplored:tree/pink_magnolia"
+      },
+      "sapling": "regions_unexplored:pink_magnolia_sapling",
+      "secondary_chance": 0.1
+    },
+    "regions_unexplored:silver_birch_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/silver_birch": {
+          "actual_codec": {
+            "config": {
+              "branch_provider": {
+                "state": {
+                  "Name": "regions_unexplored:silver_birch_branch",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "decorators": [
+                {
+                  "block_state_provider": {
+                    "block": "regions_unexplored:silver_birch_leaf_litter",
+                    "type": "regions_unexplored:randomized_ground_cover"
+                  },
+                  "height": 1,
+                  "radius": 3,
+                  "tries": 48,
+                  "type": "regions_unexplored:place_on_ground"
+                }
+              ],
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:silver_birch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "minimum_size": 4,
+              "size_variation": 4,
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:silver_birch_log",
+                  "Properties": {
+                    "axis": "y",
+                    "is_base": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "regions_unexplored:aspen_tree"
+          },
+          "codec_sha256": "c3755df9ca9024f18ff169a118012357809be8b764734f64080df0f9e641e28a",
+          "native_feature_class": "net.regions_unexplored.world.level.feature.tree.AspenTreeFeature"
+        },
+        "regions_unexplored:tree/silver_birch_tall": {
+          "actual_codec": {
+            "config": {
+              "branch_provider": {
+                "state": {
+                  "Name": "regions_unexplored:silver_birch_branch",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "decorators": [
+                {
+                  "block_state_provider": {
+                    "block": "regions_unexplored:silver_birch_leaf_litter",
+                    "type": "regions_unexplored:randomized_ground_cover"
+                  },
+                  "height": 1,
+                  "radius": 3,
+                  "tries": 48,
+                  "type": "regions_unexplored:place_on_ground"
+                }
+              ],
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:silver_birch_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "minimum_size": 5,
+              "size_variation": 5,
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:silver_birch_log",
+                  "Properties": {
+                    "axis": "y",
+                    "is_base": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "regions_unexplored:aspen_tree"
+          },
+          "codec_sha256": "c505b9871f30e57947f71a290c701edc829a430930f4d5331d946863dea0f785",
+          "native_feature_class": "net.regions_unexplored.world.level.feature.tree.AspenTreeFeature"
+        }
+      },
+      "grower_name": "silver_birch",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/silver_birch_tall",
+        "tree": "regions_unexplored:tree/silver_birch"
+      },
+      "sapling": "regions_unexplored:silver_birch_sapling",
+      "secondary_chance": 0.25
+    },
+    "regions_unexplored:white_magnolia_sapling": {
+      "actual_block_class": "net.minecraft.world.level.block.SaplingBlock",
+      "features": {
+        "regions_unexplored:tree/big_white_magnolia": {
+          "actual_codec": {
+            "config": {
+              "decorators": [],
+              "dirt_provider": {
+                "state": {
+                  "Name": "minecraft:dirt"
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_placer": {
+                "flower_decoration_chance": 0.25,
+                "height": 5,
+                "offset": 0,
+                "radius": 4,
+                "type": "regions_unexplored:sakura"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:white_magnolia_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "force_dirt": false,
+              "ignore_vines": true,
+              "minimum_size": {
+                "limit": 0,
+                "lower_size": 0,
+                "min_clipped_height": 4,
+                "type": "minecraft:two_layers_feature_size",
+                "upper_size": 0
+              },
+              "trunk_placer": {
+                "base_height": 8,
+                "height_rand_a": 11,
+                "height_rand_b": 0,
+                "type": "minecraft:fancy_trunk_placer"
+              },
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "minecraft:tree"
+          },
+          "codec_sha256": "5aa41a8f9b34d99ee8b64cc330471c0ec44ffec418666d7e15aaf482253ee8ea",
+          "native_feature_class": "net.minecraft.world.level.levelgen.feature.TreeFeature"
+        },
+        "regions_unexplored:tree/white_magnolia": {
+          "actual_codec": {
+            "config": {
+              "branch_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_branch",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "foliage_provider": {
+                "state": {
+                  "Name": "regions_unexplored:white_magnolia_leaves",
+                  "Properties": {
+                    "distance": "7",
+                    "persistent": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              },
+              "minimum_size": 1,
+              "size_variation": 5,
+              "trunk_provider": {
+                "state": {
+                  "Name": "regions_unexplored:magnolia_log",
+                  "Properties": {
+                    "axis": "y"
+                  }
+                },
+                "type": "minecraft:simple_state_provider"
+              }
+            },
+            "type": "regions_unexplored:sakura_tree"
+          },
+          "codec_sha256": "df32bf86145cf96a43f2f9157a9445d51ad8851db64c3983319f3b5b8a459160",
+          "native_feature_class": "net.regions_unexplored.world.level.feature.tree.SakuraTreeFeature"
+        }
+      },
+      "grower_name": "white_magnolia",
+      "native_ru_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "roles": {
+        "secondaryTree": "regions_unexplored:tree/big_white_magnolia",
+        "tree": "regions_unexplored:tree/white_magnolia"
+      },
+      "sapling": "regions_unexplored:white_magnolia_sapling",
+      "secondary_chance": 0.1
+    }
+  }
+}

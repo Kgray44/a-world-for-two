@@ -164,15 +164,15 @@ public final class NativeTreeGrowthSupport {
         Map<BlockPos,BlockState> actualAfter,restored;
         Map<BlockPos,String> beAfter,beRestored;
     }
-    private void recoverGrowth(TreeGrowthScope scope,Throwable failure,Map<BlockPos,String> beBefore){
+    private void recoverGrowth(TreeGrowthScope scope,Throwable failure,Map<BlockPos,String> beBefore,TreeBeeAudit beeAudit){
         // Latch before capture/allocation. Broken failure evidence can NEVER bypass restoration.
         worldResidual=true;FailedFields evidence=new FailedFields();
         var recovery=TreeGrowthScope.captureThenRestore(
             ()->{evidence.actualAfter=snapshot();evidence.beAfter=nativeBEs();},
-            ()->{int restored=scope.restoreFailedAttempt();evidence.restored=snapshot();evidence.beRestored=nativeBEs();
+            ()->{beeAudit.beforeRollback(scope.attempted);int restored=scope.restoreFailedAttempt();evidence.restored=snapshot();evidence.beRestored=nativeBEs();
                 for(var row:before.entrySet())if(!row.getValue().equals(evidence.restored.get(row.getKey())))throw new IllegalStateException("Untracked native residual requires review");
                 if(!beBefore.equals(evidence.beRestored))throw new IllegalStateException("Native BE restoration requires review; no replay of inventories");
-                report.put("restored_owned_cells",restored);
+                beeAudit.restored();report.put("restored_owned_cells",restored);
             });
         report.put("growth_error",failure.toString());
         if(recovery.captureFailure()!=null)report.put("failed_state_capture_error",recovery.captureFailure().toString());
@@ -187,7 +187,16 @@ public final class NativeTreeGrowthSupport {
         if(!actual.equals(qualification.get("native_descriptor_sha256").getAsString()))throw new IllegalStateException("Actual runtime grower/features differ from reviewed full descriptor");
         if(!sapling.canSurvive(level,root))throw new IllegalStateException("Native sapling cannot survive on the actual soil");
         if(!level.getEntities(null,writeBounds.inflate(1)).isEmpty())throw new IllegalStateException("Preserve actual residents, passengers and objects near native growth; choose an unoccupied plot");
-        Map<BlockPos,String> beBefore=nativeBEs();TreeGrowthScope scope=new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1);
+        Map<BlockPos,String> beBefore=nativeBEs();
+        TreeBeeAudit beeAudit;
+        try{beeAudit=new TreeBeeAudit(level,before,writeBounds,TreeBeeAudit.mayCreateNest(descriptor));}
+        catch(Throwable auditInitializationFailure){
+            report.put("native_bee_audit_initialization_error",auditInitializationFailure.toString());
+            report.put("this_growth_owned_setter_invoked",false);
+            if(mutated||worldResidual)quarantine(auditInitializationFailure);
+            throw new IllegalStateException("Native bee audit initialization failed before this growth's owned setter",auditInitializationFailure);
+        }
+        TreeGrowthScope scope=new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor));
         try{
             scope.hookWitness(root);
             // Set before invocation: a native setter may throw after a partial physical write.
@@ -208,10 +217,10 @@ public final class NativeTreeGrowthSupport {
             }
             if(!level.getBlockState(root).is(BlockTags.LOGS)||logs<3||leaves<8)throw new IllegalStateException("No complete native trunk/canopy observed within bounded attempts");
             Map<BlockPos,String> beAfter=nativeBEs();for(var row:beBefore.entrySet())if(!Objects.equals(row.getValue(),beAfter.get(row.getKey())))throw new IllegalStateException("A preexisting native BE changed during growth; no inventory rewrite is permitted");
-            report.put("native_changed_log_blocks",logs);report.put("native_changed_leaf_blocks",leaves);report.put("guarded_write_calls",scope.writes);report.put("guard_read_calls",scope.reads);
+            report.put("native_bee_audit",beeAudit.success(scope.attempted));report.put("native_changed_log_blocks",logs);report.put("native_changed_leaf_blocks",leaves);report.put("guarded_write_calls",scope.writes);report.put("guard_read_calls",scope.reads);
             archive(after,"NATIVE_GROWN_OUTCOME_NOT_VISUAL_ACCEPTANCE",null,beBefore,beAfter,null);
         }catch(Throwable failure){
-            if(mutated){worldResidual=true;try{recoverGrowth(scope,failure,beBefore);}catch(Throwable recoveryFailure){quarantine(recoveryFailure);}}
+            if(mutated){worldResidual=true;try{recoverGrowth(scope,failure,beBefore,beeAudit);}catch(Throwable recoveryFailure){quarantine(recoveryFailure);}}
             throw new IllegalStateException("Native growth failed; exact restoration or quarantine recorded",failure);
         }finally{
             try{scope.close();}catch(Throwable closeFailure){quarantine(closeFailure);throw new IllegalStateException("Native growth scope did not close cleanly; further planting blocked",closeFailure);}

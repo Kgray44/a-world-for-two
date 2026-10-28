@@ -1,0 +1,368 @@
+{
+  "format": "native-property-schemas-only:no-world-data",
+  "blocks": {
+    "chipped:detailed_dark_oak_planks": {},
+    "dawnoftimebuilder:limestone_bricks_edge": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_bench": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_table": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "shape": [
+        "single",
+        "center",
+        "north_center",
+        "east_center",
+        "south_center",
+        "west_center",
+        "north_south_center",
+        "east_west_center",
+        "north_east_corner",
+        "north_west_corner",
+        "south_east_corner",
+        "south_west_corner",
+        "north_side",
+        "east_side",
+        "south_side",
+        "west_side"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:oak_table": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "shape": [
+        "single",
+        "center",
+        "north_center",
+        "east_center",
+        "south_center",
+        "west_center",
+        "north_south_center",
+        "east_west_center",
+        "north_east_corner",
+        "north_west_corner",
+        "south_east_corner",
+        "south_west_corner",
+        "north_side",
+        "east_side",
+        "south_side",
+        "west_side"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:terracotta_bowl": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "pieces": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwwindows:blackstone_brick_gothic": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "open": [
+        "true",
+        "false"
+      ],
+      "part": [
+        "base",
+        "top",
+        "middle",
+        "bottom"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:anvil": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "minecraft:barrel": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "open": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:cartography_table": {},
+    "minecraft:dark_oak_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:grindstone": {
+      "face": [
+        "floor",
+        "wall",
+        "ceiling"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "minecraft:lantern": {
+      "hanging": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_andesite": {},
+    "minecraft:stripped_dark_oak_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:stripped_oak_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:waxed_oxidized_cut_copper_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:curved_corbel_dark_oak": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "mythrais:decorated_column_lower_small_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "mirrored": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:decorated_column_middle_small_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mythrais:decorated_column_upper_small_dark_oak": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "mirrored": [
+        "true",
+        "false"
+      ]
+    },
+    "supplementaries:planter": {
+      "extended": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    }
+  }
+}

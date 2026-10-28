@@ -9,7 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.29'
+BRIDGE_VERSION = '0.6.32'
 
 def build(home, destination, storage):
     storage.reserve(16 * 1024 * 1024, destination)
@@ -49,6 +49,8 @@ def build(home, destination, storage):
         if not api.is_file() or digest(api) != expected:
             raise UserError('A pinned native engineering compile API differs: ' + filename)
         jars.append(api)
+    from .build_presentation import zipline_apis
+    jars.extend(zipline_apis(home))
     nested_hashes = {
         'flywheel-neoforge-1.21.1-1.0.6.jar': '31dda15c205eb596d3b3449ef03f6af7363a6cd35b3da4bfe916b304f9e5337e',
         'ponder-neoforge-1.0.82+mc1.21.1.jar': '0cf4611ad853042b689ac386184c5bbe02950efcffddb49e5f604e82baddb0dc',
@@ -87,8 +89,8 @@ def build(home, destination, storage):
     compiler = Path(r"C:\Program Files\Java\jdk-21.0.10\bin\javac.exe")
     if not compiler.is_file():
         raise UserError("The tested Java 21.0.10 JDK compiler is required")
-    result = subprocess.run([str(compiler), "-J-Xmx256m", "@" + str(args)], capture_output=True, text=True, timeout=60,
-                            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
+    result = subprocess.run([str(compiler), "-J-Xmx256m", "-J-XX:ActiveProcessorCount=2", "@" + str(args)], capture_output=True, text=True, timeout=60,
+                            creationflags=(subprocess.CREATE_NO_WINDOW | subprocess.BELOW_NORMAL_PRIORITY_CLASS) if os.name == "nt" else 0)
     (work / "javac.log").write_text(result.stdout + result.stderr, encoding="utf-8")
     if result.returncode:
         raise UserError("Bridge compilation failed: " + result.stderr[:3000])

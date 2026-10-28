@@ -10,3 +10,5 @@
 *.cmd text eol=crlf
 packwiz/** text=auto eol=lf
 compat/control-bridge/** text=auto eol=lf
+# Unified diff context markers on otherwise empty lines are significant bytes.
+compat/proposals/**/*.patch whitespace=-blank-at-eol

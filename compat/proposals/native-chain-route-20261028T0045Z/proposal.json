@@ -1,0 +1,41 @@
+{
+  "format": "awft-isolated-native-chain-proposal:1",
+  "source_only": true,
+  "active_sources_modified": false,
+  "compiled_against_actual_API": false,
+  "compile_gate": "Deferred while KG plays: last live available RAM117324KiB; no Java process launched",
+  "native_actions": 0,
+  "world_mutations": 0,
+  "request_prepared": false,
+  "integration_target": "future candidate44 or later, common helper loaded only when both pinned mods are present",
+  "files": {
+    "NativeChainRouteSupport.java": "ffb62bd01a73fda6c5befd26275440bf10ce1af97dc0802fa9a973fb0b4533cf",
+    "README.md": "f865b979ea7cbae73bfe7ef94c048cb3c76c0038848fed639c5dc52e8c7b36c4"
+  },
+  "pinned_API": {
+    "connectiblechains_version": "2.4.4+1.21.1",
+    "connectiblechains_jar_sha256": "70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0",
+    "connectiblechains_source_jar_sha256": "56c0c23493571ad43d7e9fc5266cffde1eb15521d9ac7fd2124d97acf32a7eaa",
+    "zipline_version": "1.5.3+1.21.1",
+    "genuine_native_generated_UUIDs_before_add": 15,
+    "directed_links": 14,
+    "normal_item_cost_per_link": 1,
+    "separate_knot_cost": 0,
+    "hanging_offset_proposal": 3.5,
+    "per_link_slack": 16,
+    "engine_span_cap_metres": 80,
+    "conservative_normal_restart_preference_metres": 48
+  },
+  "remaining_gates": [
+    "Actual API compilation and source review after RAM recovers",
+    "Final complete3.5 saved terrain plus actual physical frame sweep",
+    "Real native before/full geometry receipts with complete markers and zero failure/cleanup/future/ticket counts",
+    "Actually placed new construction barrel with exactly14 ordinary chains in slot0",
+    "Fresh complete stopped-backup chain-knot census with exact source archive custody",
+    "Exact candidate/bridge/class/mod/config/checkpoint request from those actual artifacts",
+    "Normal native creation and cleanup",
+    "Actual restarted JVM identity/link inspection",
+    "Real normal endpoint streaming and bidirectional ride, survival boarding/braking/handoffs/multiplayer",
+    "Native visual/performance review"
+  ]
+}

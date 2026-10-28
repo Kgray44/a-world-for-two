@@ -323,7 +323,10 @@ class ConfigurationTests(Fixture):
         server = Server(self.layout, self.storage)
         commands = [('awfttrees', 'grow', 'describe', 'trees-'),
                     ('awftlife', 'seed', 'inspect', 'life-'),
-                    ('awftfountain', 'reset', 'inspect', 'fountain-')]
+                    ('awftfountain', 'reset', 'inspect', 'fountain-'),
+                    ('awftfountain', 'recover-gate', 'inspect', 'fountain-'),
+                    ('awftfountain', 'park-gate', 'inspect', 'fountain-'),
+                    ('awftmill', 'resume', 'inspect', 'mill-commission-')]
         for family, mutation, observation, prefix in commands:
             command = family + ' ' + mutation + ' ' + prefix + 'e' * 16 + ' ' + 'e' * 64
             with self.subTest(family=family), patch.object(server, '_write') as write:

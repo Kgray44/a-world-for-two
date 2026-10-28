@@ -1,0 +1,24 @@
+{
+  "format": "awft-historical-producer-source:1",
+  "runtime": "0.1.0-candidate.45 / bridge0.6.31",
+  "executable_authority": false,
+  "prior_private_receipts_unchanged": true,
+  "files": {
+    "tools/artistic_native_tree_pilot.py": {
+      "bytes": 23922,
+      "sha256": "f3a479d4cbf10a55b0f866c0b447476a0b85f2f605d5f7312c7ff2d5973a5d68"
+    },
+    "tools/artistic_dense_canopies.py": {
+      "bytes": 19104,
+      "sha256": "3c79b47a36ce323db7d6f16045d2c2ef2ab35e05d8e4a0531e60f7bffc026662"
+    },
+    "tests/test_artistic_native_tree_pilot.py": {
+      "bytes": 10077,
+      "sha256": "42db918ef3462888b4bb38ffed67119990185e6f6325173774e93ac03495b786"
+    },
+    "tests/test_artistic_dense_canopies.py": {
+      "bytes": 2784,
+      "sha256": "72f60ec038d17ded21e46816c071c1204df2e9d9005de4d91bae0f0010836557"
+    }
+  }
+}

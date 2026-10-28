@@ -14,7 +14,7 @@ from .build_presentation import build as build_presentation, PRESENTATION_VERSIO
 from .weather_patch import build as build_weather, PATCH_VERSION
 from .seedgen_policy import apply as seedgen_policy
 
-VERSION = '0.1.0-candidate.43'
+VERSION = '0.1.0-candidate.46'
 
 
 def prepare_owned(home):
@@ -56,7 +56,7 @@ def prepare_owned(home):
     return result
 
 
-def prepare_bridge(home, mapping_artifact=None, chain_research=None):
+def prepare_bridge(home, mapping_artifact=None, chain_research=None, zipline_configs=None, include_presentation=False):
     """Build the owned bridge and optional exact mapping repair, retaining other pins."""
     layout=Layout(home);storage=Storage(layout)
     storage.reserve(32*1024**2)
@@ -64,6 +64,18 @@ def prepare_bridge(home, mapping_artifact=None, chain_research=None):
     previous=read_json(REPO/'catalog/lock.json')
     if previous['version']==VERSION or validate_pack(REPO/'packwiz',previous):
         raise ValueError('A valid previous immutable candidate is required')
+    config_inputs=[]
+    if zipline_configs is not None:
+        root=Path(zipline_configs).resolve()
+        if root!=(REPO/'compat/proposals/zipline-config44').resolve() or root.is_symlink():
+            raise ValueError('Only the reviewed bounded44 zipline configuration source is admitted')
+        for name,pin in [('connectiblechains.json','99176d18c26709e34457f840f92a024d70e65f34e6a7b6bd9320d4efe7e3f003'),
+                         ('zipline.json','fabf9030eb8e93c5d5d4b038940b44ae602e11e54fcdd4e275387d1b26f07e12')]:
+            source=root/name;target=REPO/'packwiz/config'/name
+            if (not source.is_file() or source.is_symlink() or not 0<source.stat().st_size<=16384
+                    or digest(source)!=pin or target.exists() or target.is_symlink()):
+                raise ValueError('Preserve existing configuration; exact new reviewed44 source is required: '+name)
+            config_inputs.append((source,target,pin))
     chain=None
     if chain_research is not None:
         from control_room.pack import validate_graph, validate_jars
@@ -93,6 +105,17 @@ def prepare_bridge(home, mapping_artifact=None, chain_research=None):
     if cached.exists() and digest(cached)!=bridge['hashes']['sha256']:
         raise ValueError('An immutable bridge filename already contains different bytes')
     if not cached.exists():shutil.copy2(directory/bridge['filename'],cached)
+    presentation=None
+    if include_presentation:
+        prior=next(m for m in previous['mods'] if m['slug']=='awft-client-presentation')
+        if prior['version']==PRESENTATION_VERSION:
+            raise ValueError('A new immutable presentation version is required')
+        path=directory/('awft-client-presentation-'+PRESENTATION_VERSION+'.jar')
+        presentation=build_presentation(layout.home,path,storage)
+        target=layout.caches/'mods'/presentation['filename']
+        if target.exists() and digest(target)!=presentation['hashes']['sha256']:
+            raise ValueError('Immutable presentation filename contains different bytes')
+        if not target.exists():shutil.copy2(path,target)
     # Git publishes LF text. The installed Tectonic config already has these
     # exact LF bytes; preserve all settings while making the source hash portable.
     tectonic=REPO/'packwiz/config/tectonic.json'
@@ -109,6 +132,7 @@ def prepare_bridge(home, mapping_artifact=None, chain_research=None):
         normalizations.append({'file':'config/tectonic.json','before_sha256':digest(original),
             'after_sha256':digest(tectonic),'change':'CRLF to LF only; all non-line-ending bytes identical'})
     replacements={'awft-control-bridge':bridge}
+    if presentation is not None:replacements['awft-client-presentation']=presentation
     if mapping_artifact is not None:
         mapping_artifact=Path(mapping_artifact).resolve()
         expected='cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4'
@@ -141,6 +165,10 @@ def prepare_bridge(home, mapping_artifact=None, chain_research=None):
         raise ValueError('Exactly one owned bridge must already exist')
     lock=previous|{'version':VERSION,'generated':utcnow(),'mods':items,
         'validation':'Explicitly reviewed helper/mapping changes and optional exact zipline cable addition only; native restart and integration checks pending'}
+    for source,target,pin in config_inputs:
+        raw=source.read_bytes()
+        if digest(source)!=pin:raise ValueError('Reviewed configuration source changed during build')
+        with target.open('xb') as output:output.write(raw)
     history=REPO/'evidence/history'/('lock-'+str(time.time_ns())+'.json')
     write_json(history,previous)
     write_json(REPO/'catalog/selection.json',selection)
@@ -150,11 +178,15 @@ def prepare_bridge(home, mapping_artifact=None, chain_research=None):
         'pack_sha256':generate_pack(REPO/'packwiz',lock),'build_directory':str(directory),
         'previous_lock_sha256':digest(history),
         'owned_bridge':bridge,'preserved_gameplay_pins':mapping_artifact is None and chain is None,
+        'owned_presentation':replacements.get('awft-client-presentation'),
         'reviewed_zipline_backend_addition':chain,
+        'reviewed_zipline_config_additions':[{'file':target.relative_to(REPO).as_posix(),'sha256':pin} for source,target,pin in config_inputs],
         'reviewed_mapping_change':replacements.get('maphorizons'),'preserved_other_gameplay_pins':True,
         'byte_only_config_normalizations':normalizations,
         'source_hashes':{p.relative_to(REPO).as_posix():digest(p) for group in ('src','resources')
             for p in (REPO/'compat/control-bridge'/group).rglob('*') if p.is_file()},
+        'presentation_source_hashes':{p.relative_to(REPO).as_posix():digest(p) for group in ('src','resources')
+            for p in (REPO/'compat/client-presentation'/group).rglob('*') if p.is_file()},
         'noncompiled_proposals_excluded':True}
     write_json(directory/'build.json',result)
     print(result)
@@ -237,10 +269,16 @@ if __name__ == '__main__':
     parser.add_argument('--owned-only',action='store_true')
     parser.add_argument('--mapping-jar',type=Path)
     parser.add_argument('--chain-research',type=Path)
+    parser.add_argument('--zipline-configs',type=Path)
+    parser.add_argument('--include-presentation',action='store_true')
     args=parser.parse_args()
     if args.mapping_jar and (not args.bridge_only or args.owned_only):
         parser.error('--mapping-jar requires the bridge-only, explicitly reviewed candidate path')
     if args.chain_research and (not args.bridge_only or args.owned_only):
         parser.error('--chain-research requires the bridge-only, explicitly reviewed candidate path')
-    if args.bridge_only:prepare_bridge(args.home,args.mapping_jar,args.chain_research)
+    if args.zipline_configs and (not args.bridge_only or args.owned_only):
+        parser.error('--zipline-configs requires the bridge-only, explicitly reviewed candidate path')
+    if args.include_presentation and (not args.bridge_only or args.owned_only):
+        parser.error('--include-presentation requires the explicitly reviewed bridge candidate path')
+    if args.bridge_only:prepare_bridge(args.home,args.mapping_jar,args.chain_research,args.zipline_configs,args.include_presentation)
     else:(prepare_owned if args.owned_only else prepare)(args.home)

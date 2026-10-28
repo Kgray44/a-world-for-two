@@ -1,0 +1,26 @@
+{
+  "format": "awft-life-native44-source-provenance:1",
+  "base_source": "compat/control-bridge/src/worldfortwo/bridge/NativeHabitatLifeSupport.java",
+  "base_sha256": "71a31b852ec619b04602aba983ae53f1ce2a17c62d9fbba5157a68dedc2d5e00",
+  "curation_sha256": "be41097fb361a62fb5b60cc93d33958a8a896048dbacdca72e6c87de8abe74d9",
+  "native_actions": false,
+  "active43_modified": false,
+  "scope": "NEW proposal only; no code or artifact installed",
+  "exact43_bridge_sha256": "77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b",
+  "actual_private_installed43_same_bytes": true,
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.262",
+  "java": 21,
+  "uses_existing_source_primitives": [
+    {
+      "file": "tools/habitat_life.py",
+      "sha256": "758aa819fedd92aebc8d9b0e45730d66c9230d8ad89e4d6585a0074ce0f76f12"
+    },
+    {
+      "file": "tools/settlement_attractions.py",
+      "sha256": "458e7e731aa38354cf6c2e55e40758a2f3c0d2fd021ca39c96bc7e5cd1f3a6c8"
+    }
+  ],
+  "metadata_loader_id_note": "cozys_improved_cats differs from its cozys-improved-cats entity namespace",
+  "v1_requests_cannot_upgrade": true
+}

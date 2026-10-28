@@ -1,0 +1,32 @@
+{
+  "format": "awft-mill-resume-source-provenance:1",
+  "status": "SOURCE PROPOSAL ONLY - no Java compile, native request or runtime mutation",
+  "original_active_source_sha256": "4eba4ddfcb56d12b67ba4a6610447a5f4d4061e43a264762a1920571a9ba7d16",
+  "original_wait_mode_terminal_sha256": "e4f627a9baa367a267537504d017893f64537841a0d608eef5b1b8b4925bc239",
+  "original_terminal_scope": "candidate38: WAIT_MODE before feed/train; six retained real links/42 fillers; zero owned tickets/clean release; historical failure preserved",
+  "canonical_sources": [
+    {"role": "R3 corrected mill base", "sha256": "89fa2079962dedb7888aaf62ae2f18d094c373421a80ce0f91bda23ddb415af1", "cells": 7710},
+    {"role": "joined R3 detail verification only", "sha256": "747f4b1175fb6f525ecbfd5a51a7586119279f852264a383afafc88273d2973d", "cells": 516},
+    {"role": "later mill architectural depth", "sha256": "bae3e86205a4cd64f509ec2beba1ef3f3fc905a280fdc0c73bbdf1fa114c304b", "cells": 94}
+  ],
+  "canonical_composite": {"cells": 7941, "geometry_signature_sha256": "ceeeabfc3ed1aee751074134edccc6de9ed3b0cf4308001203a9027e952a71af", "algorithm": "sorted XYZ coordinates, comma-separated XYZ, TAB, original source state string, LF; merge sources in recorded order", "placement": "NEVER"},
+  "systems_manifest_sha256": "f4f9bd4cd1d3bc4ff100cfe9ba417b591e7e8ede23bb1b4e3c03deb7f600d2f5",
+  "actual_pinned_api_artifact": {"file": "create_hypertube-0.6.0-NEOFORGE.jar", "bytes": 546142, "sha256": "7bdb8979c7ff7d3b29f7a23771b6ae4870a6dcb7ce2e4a3214fdd6059aacace8", "inspection": "bounded read-only class descriptors and registry constants; no Java launch"},
+  "native_api": [
+    "ActionTubeBlock.canPlaceAttachment(BlockState,BlockGetter,BlockPos,Direction):boolean",
+    "ActionTubeBlockEntity.addTubeAttachment(Direction,ITubeAttachment):void",
+    "ActionTubeBlockEntity.getTubeAttachment(Direction):ITubeAttachment",
+    "ActionTubeBlockEntity.getAttachmentDirectionsNoEmit():List",
+    "TubeAttachmentItem.getTubeAttachment():ITubeAttachment",
+    "RedstoneDetectorAttachment; native attachment id redstone_input; actual item create_hypertube:redstone_detector_tube_attachment",
+    "Native registry filler id create_hypertube:tube_path"
+  ],
+  "author_reference": {"repository": "https://github.com/PedroRok/CreateHypertubes", "commit": "c3b74f52437520b05868b5eb965dc54a45d27602", "tree": "77aa9efd35558a88bce364f4ca2b014765ec6430", "license": "Apache-2.0; reference-only, no upstream source copied", "qualification": "reference source informs behavior; full bytecode/source equivalence is not claimed", "files": [
+    {"path": "src/main/java/com/pedrorok/hypertube/blocks/ActionTubeBlock.java", "blob": "77959aa11b1e6974f085ba1e600e5e3d655dbd1a"},
+    {"path": "src/main/java/com/pedrorok/hypertube/blocks/blockentities/parent/ActionTubeBlockEntity.java", "blob": "928fdc855bca91a0e43bfbdbbda3a751719ca0cb"},
+    {"path": "src/main/java/com/pedrorok/hypertube/core/smarttube/RedstoneDetectorAttachment.java", "blob": "0f915543d9162e7342dcd2b27dee4a301e2f10ea"},
+    {"path": "src/main/java/com/pedrorok/hypertube/items/TubeAttachmentItem.java", "blob": "a0dc1dcad95d3a9c3e72f202564a5a3d401e681d"}
+  ]},
+  "future_runtime_gates": ["parent-reviewed candidate integration and actual-class compile", "new stopped current world checkpoint", "full current R3+94 composite saved preimage/native verify", "fresh current native inventory inspection after verify", "two legitimate real stocked detector attachments", "exclusive shared lease, no players, actual private port/world ancestry", "actual native attachment/input/kinetic/output/train readback", "native restart and real passenger acceptance remain separate"],
+  "privacy": "No world seed, native curve UUIDs, raw world arrays, inventory NBT or downloaded JARs committed"
+}

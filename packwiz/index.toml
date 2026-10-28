@@ -31,6 +31,11 @@ hash = "4f3358c6638d81f45773290bae26708515bcf8c426722a1d39c85229fd569975"
 metafile = false
 
 [[files]]
+file = "config/connectiblechains.json"
+hash = "99176d18c26709e34457f840f92a024d70e65f34e6a7b6bd9320d4efe7e3f003"
+metafile = false
+
+[[files]]
 file = "config/fancymenu/assets/awft-background.png"
 hash = "007ff334d43dad12b441e572f7b7ab466df557ea20fa793222398008a116232a"
 metafile = false
@@ -401,6 +406,11 @@ hash = "4f9a269a1016e775238588008cc985f84b88d62f9acae7f9db8b29ecb216b8be"
 metafile = false
 
 [[files]]
+file = "config/zipline.json"
+hash = "fabf9030eb8e93c5d5d4b038940b44ae602e11e54fcdd4e275387d1b26f07e12"
+metafile = false
+
+[[files]]
 file = "mods/3dskinlayers.pw.toml"
 hash = "7e40a4d1d2e83d905a8e5ce6638df0c432e0d171398b1cee5ca6797583cd8d81"
 metafile = true
@@ -467,12 +477,12 @@ metafile = true
 
 [[files]]
 file = "mods/awft-client-presentation.pw.toml"
-hash = "d02f41c7d4173a6e0feb27cd1da2487a47ade7c400fa899fe91dba7264acbeba"
+hash = "11b6f247a51632200233cbeb0d7376331556e19986d36066a9281efe89ca2216"
 metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "52686ef0344c344f92e6d0c3b359333307ed5a3eafefbc92e3ed30af9d40e216"
+hash = "2e7d0dfe4beabe45bf36325705e0964824d273541dcdc5c25b9806a479b02b56"
 metafile = true
 
 [[files]]

@@ -1,0 +1,19 @@
+{
+  "format": "awft-retained-bridge-readonly-r2:1",
+  "public_predecessor": "compat/proposals/bridge-topside-readonly-r1/RetainedBridgeGlueInspection.java",
+  "public_predecessor_sha256": "043581e94976791cb7b8c93089b54c47f96a530c1dbf76d717e1a80824a52c5d",
+  "source_sha256": "f8d7582bb2c17233987de73cd6744e74d29bcc2bbeb7273fc7a07211f83231a1",
+  "reserve": {
+    "utc": "2026-10-28T04:26:46.2605920Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 120970743808,
+    "dFreeBytes": 286468927488,
+    "estimatedCBytes": 8388608,
+    "estimatedDBytes": 16777216,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "native_world_JAR_or_version_changes": 0,
+  "scope": "Automatic no-wake resource cleanup retry and terminal-first bounded publication; custody/geometry/controls unchanged",
+  "probe_sha256": "f685aacbe2b706765181d3c105565bb03d1a571c77e7076734b98083f577a1e6"
+}

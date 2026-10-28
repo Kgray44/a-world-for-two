@@ -1,0 +1,15 @@
+{
+  "format": "awft-fountain-gate-recovery-proposal:1",
+  "created": "2026-10-28T00:03:31.398949+00:00",
+  "source_base_sha256": "aabeee216128e74e1bba9fe0e4bb7e6aa47881d61fcb71199c577cc95d1454e2",
+  "active_source_unchanged": true,
+  "files": {
+    "NativeFountainSupport.java": "f5297e167e6e24b193faf4f54c985b1e2170f537c5fb2a9273f6b91891849637",
+    "NativeFountainSupport.patch": "138192101fb56805b2f8f638a0b399a51d24b696917e2828682b9aca854d22eb",
+    "README.md": "1c75f4f0cc8e9279f321c3d6cb60864cf4755cc2892a823e5170335c38a201cc"
+  },
+  "private_compile_receipt_sha256": "3aac185d65497da077d15aad1de3848973abf8ad4f7a21e02a7313858b28d7ee",
+  "native_actions": 0,
+  "world_writes": 0,
+  "recovery_acceptance": false
+}

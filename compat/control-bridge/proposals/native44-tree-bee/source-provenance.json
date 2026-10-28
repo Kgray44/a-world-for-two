@@ -1,0 +1,46 @@
+{
+  "actual_classes": [
+    {
+      "bytes": 9437,
+      "class": "net.minecraft.world.level.block.entity.BeehiveBlockEntity$Occupant",
+      "sha256": "57ab26140449c9468466f2ad84654bf389e118e383aea2f5f921837b2fd5bf1b"
+    },
+    {
+      "bytes": 1608,
+      "class": "net.minecraft.world.level.block.entity.BeehiveBlockEntity$BeeData",
+      "sha256": "740d1c8a29c12ca7bb553d2403a65a794056a67a157f585b80f7c76d0366fb3d"
+    },
+    {
+      "bytes": 30424,
+      "class": "net.minecraft.world.level.block.state.BlockBehaviour",
+      "sha256": "9d4b517d48afdaa2183e345ec25ae97efe0f0346b9f4add1de1dbb2f46d863b0"
+    },
+    {
+      "bytes": 3715,
+      "class": "net.minecraft.world.level.block.BaseEntityBlock",
+      "sha256": "94825efc82ec63c95930ab4cda9218a630cca4f2e1dd77aef14473ee9d4ec072"
+    },
+    {
+      "bytes": 25195,
+      "class": "net.minecraft.world.level.block.BeehiveBlock",
+      "sha256": "b2a511db000ff13ce4eaaf409d8b4157ea01af6c2df7da4e31f6e73002e89f48"
+    },
+    {
+      "bytes": 21438,
+      "class": "net.minecraft.world.level.block.entity.BeehiveBlockEntity",
+      "sha256": "153db1fec0f4f93b70bf11e544c07c57a592b3e0b6d6f2733f2dd7f264017faf"
+    }
+  ],
+  "actual_removal_chain": "No BeehiveBlock/BaseEntityBlock onRemove override; pinned BlockBehaviour.onRemove calls only removeBlockEntity for changed BE block. No playerDestroy, drop or release invoked by exact restoration.",
+  "feature_scope": "Actual native43 descriptors, with unchanged pinned RU0.6.3 tree methods; internal Sakura branch or native BeehiveDecorator only",
+  "format": "awft-native-tree-bee-provenance:1",
+  "implemented_runtime_writes": "None by this audit. Existing scoped restoration remains the only rollback writer.",
+  "minecraft": "1.21.1",
+  "native_growth_or_hive_executed": false,
+  "neoforge": "21.1.262",
+  "normal_release_risks": [
+    "fire in BeehiveBlock.updateShape",
+    "fire in BeehiveBlockEntity.setChanged",
+    "ordinary later serverTick"
+  ]
+}

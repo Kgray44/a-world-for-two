@@ -1,0 +1,250 @@
+{
+  "author_files": [
+    {
+      "bytes": 46699,
+      "git_blob_sha1": "91ca755904051256c8de1a4338b3e17a66442b5c",
+      "match": true,
+      "name": "SakuraTreeFeature.java",
+      "sha256": "6a5a73294cf329dffb39779bd9fe4fd9a7c99db234d4fc55262924a9ef80c846"
+    },
+    {
+      "bytes": 19804,
+      "git_blob_sha1": "e1fda535fc070f9e901ec8115801f034bcf49ed4",
+      "match": true,
+      "name": "AspenTreeFeature.java",
+      "sha256": "4ddd37f1af353549dddcad68e51f5f561317c9e535f510c42add85de6556371b"
+    },
+    {
+      "bytes": 37402,
+      "git_blob_sha1": "575a193d9f7c1c783ddd47c603b952c1ec489d1e",
+      "match": true,
+      "name": "LarchTreeFeature.java",
+      "sha256": "fca7b475d5b66a571f33d1ebebe1e8914b3d3be4af61d8c17affcb168b6ac0a1"
+    },
+    {
+      "bytes": 1063,
+      "git_blob_sha1": "94b213287239a0f6af4bed14df909760a9171370",
+      "match": true,
+      "name": "LICENSE",
+      "sha256": "2695dd4f7f3ef1ef7c13c84a46562c75959c56f3aa48eec2ed77da8a8644376f"
+    },
+    {
+      "bytes": 1852,
+      "git_blob_sha1": "bba97c04623b5ef604c6b0dd6f63a8df636ae53a",
+      "match": true,
+      "name": "AspenFoliagePlacer.java",
+      "sha256": "8c5d1a85dee1cb11f2222af39a268a18af2e6347dc0073ac21e52fa95bf37a7a"
+    },
+    {
+      "bytes": 3157,
+      "git_blob_sha1": "f37d428e13ca94d7e73597846c4f3ee2cf651052",
+      "match": true,
+      "name": "FancyPineFoliagePlacer.java",
+      "sha256": "30b41d06f22af9b27964303eb0936fc2523a318f3b9f54b19d86b77c335db1bc"
+    },
+    {
+      "bytes": 2020,
+      "git_blob_sha1": "bb7294cdfbe88bb187cc85ff74843ec10f8207aa",
+      "match": true,
+      "name": "MapleFoliagePlacer.java",
+      "sha256": "518ef58b37a7852b0a6dc5788eb7603dd826b74907b2ae3b08c7f24f3d35db19"
+    },
+    {
+      "bytes": 7819,
+      "git_blob_sha1": "485ea1b9f6c2c64538a271bf8b289e8775f69dd6",
+      "match": true,
+      "name": "SakuraFoliagePlacer.java",
+      "sha256": "dcf8c9b3be0d3ea746d5b0a69f40d5de46e57b2fdf43b95b8523948bc403f49d"
+    },
+    {
+      "bytes": 5582,
+      "git_blob_sha1": "52546a0406f428d5881f9835644de95da0aa3cef",
+      "match": true,
+      "name": "GroupBranchDecorator.java",
+      "sha256": "a7452858fa3c9121e6ab4bee0d99cdf14ba02bdb572aeeb0bde1fca5f8c24847"
+    },
+    {
+      "bytes": 5282,
+      "git_blob_sha1": "8155f20fd67c1288ca2be65ae7563cfb18574c05",
+      "match": true,
+      "name": "PlaceOnGroundDecorator.java",
+      "sha256": "b7203995b2225190851b36bc138dd1c1c01f48636d51d06acaacb4df49c24530"
+    },
+    {
+      "bytes": 6258,
+      "git_blob_sha1": "a5ca643f756654da78b7affcf3ca65b6c4fdd951",
+      "match": true,
+      "name": "RandomBranchDecorator.java",
+      "sha256": "500e1bd2fa8e51a2efb341d7cc633fc957750f196d93218b2ff2cb722da42250"
+    },
+    {
+      "bytes": 2667,
+      "git_blob_sha1": "3bd3e2932963d765f85f8b1961f7ab0a93e1fad3",
+      "match": true,
+      "name": "AspenTrunkPlacer.java",
+      "sha256": "09319b563b826fecab72ee7a7e36b195f707771cd5cf2ebbce9c44bcae1f3d4c"
+    },
+    {
+      "bytes": 3549,
+      "git_blob_sha1": "dabfd1f762ca78e754dcdc99b865b495940f9ef7",
+      "match": true,
+      "name": "RUFoliagePlacerUtils.java",
+      "sha256": "40a059be28011bf391bbed98cc50cf6e1ff14e27f7328b495e0846c7f433a466"
+    },
+    {
+      "bytes": 2552,
+      "git_blob_sha1": "5742fc2781038c5747405fa44b17ee91cc66579a",
+      "match": true,
+      "name": "RUTrunkPlacer.java",
+      "sha256": "3689bff52073b313c27bf45d8689d06ef90683afde445acbaac597eba817eb6d"
+    }
+  ],
+  "author_repository": "https://github.com/Apollounknowndev/RegionsUnexplored",
+  "author_tree": "ea78a0feb58434a2c7b8601f01037327cf2e3f54",
+  "descriptor_terminal_sha256": "8c767ba8505846eeb4e305d4691e853cd48461d3d7ff5591f9dbfa45c44a3cc5",
+  "format": "awft-native-tree-envelope-provenance:1",
+  "license": "MIT",
+  "minecraft": "1.21.1",
+  "native_growth_execution": false,
+  "neoforge": "21.1.262",
+  "pinned_native_classes": [
+    {
+      "bytes": 21154,
+      "class": "net.minecraft.world.level.levelgen.feature.TreeFeature",
+      "sha256": "ab6996c0a1790c6cc46aeea574ed7236a56dd5f60002c758b39c7e75a3b3596c"
+    },
+    {
+      "bytes": 12340,
+      "class": "net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer",
+      "sha256": "36dc36a941ceb88db96c9e6e69e01ce1fc31c249a650bc419d9b436aaf538926"
+    },
+    {
+      "bytes": 5281,
+      "class": "net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer",
+      "sha256": "cf6cb2f43c895032180688dba71260c39acf0734b87e5db6f6e2577c0aa919d4"
+    },
+    {
+      "bytes": 13052,
+      "class": "net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer",
+      "sha256": "599f98607a228d226395a92a9611751447d7dae1e111fc72f29c41cf8f1383b2"
+    },
+    {
+      "bytes": 13582,
+      "class": "net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer",
+      "sha256": "adfc97ecad9168c0b03a5d1e1400929feed7ff9049093ed3166536e1b125aba6"
+    },
+    {
+      "bytes": 5532,
+      "class": "net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer",
+      "sha256": "77ffcac7d0c2762844d336e8c469161167d0a820f62275c70a4b508a044c2ad8"
+    },
+    {
+      "bytes": 7031,
+      "class": "net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer",
+      "sha256": "c7b391a7076a9bc372314556c7b05b3c8cfd380448840c30fbd1d37a3b74d426"
+    },
+    {
+      "bytes": 8948,
+      "class": "net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator",
+      "sha256": "a3ff5f372b0c4b52a307c0baaa688fe04038f985a0433e954ee9863fb4d312ef"
+    },
+    {
+      "bytes": 25195,
+      "class": "net.minecraft.world.level.block.BeehiveBlock",
+      "sha256": "b2a511db000ff13ce4eaaf409d8b4157ea01af6c2df7da4e31f6e73002e89f48"
+    },
+    {
+      "bytes": 21438,
+      "class": "net.minecraft.world.level.block.entity.BeehiveBlockEntity",
+      "sha256": "153db1fec0f4f93b70bf11e544c07c57a592b3e0b6d6f2733f2dd7f264017faf"
+    },
+    {
+      "bytes": 1188,
+      "class": "net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer$FoliageCoords",
+      "sha256": "832579854099d4dc5a6442862e1f9cf5a06f4bddd8bd6e19a0c17895783c8d1f"
+    },
+    {
+      "bytes": 43398,
+      "class": "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate",
+      "sha256": "2717fbf1862b883bac6c31a673efd87b793155ee495149414fa82e879a4f1f7a"
+    }
+  ],
+  "pinned_ru_classes": [
+    {
+      "bytes": 22798,
+      "class": "net.regions_unexplored.world.level.feature.tree.SakuraTreeFeature",
+      "sha256": "7f9bc880a547af36b35c2dd56382eedaddb9201f7a793a7e4e10014df15f3aca"
+    },
+    {
+      "bytes": 17250,
+      "class": "net.regions_unexplored.world.level.feature.tree.AspenTreeFeature",
+      "sha256": "6b102a8ac9a86c978f9707aec817f348bcd88e94328f7d9e7d8e713c7a239cc4"
+    },
+    {
+      "bytes": 19206,
+      "class": "net.regions_unexplored.world.level.feature.tree.LarchTreeFeature",
+      "sha256": "dc49e64099252fb406c5c020cfc94c46965208166a2ee9daab450b8e2de42c1b"
+    },
+    {
+      "bytes": 5379,
+      "class": "net.regions_unexplored.worldgen.foliageplacer.AspenFoliagePlacer",
+      "sha256": "6044610bd05a7f2d2d87dd0fe7f97da9af3624566fa101e282f45f74465d338f"
+    },
+    {
+      "bytes": 6294,
+      "class": "net.regions_unexplored.worldgen.foliageplacer.FancyPineFoliagePlacer",
+      "sha256": "c133d2385c1e0f93ced96d931f6767e83c231fb11a0eb75b83571ed6a1a79f26"
+    },
+    {
+      "bytes": 5530,
+      "class": "net.regions_unexplored.worldgen.foliageplacer.MapleFoliagePlacer",
+      "sha256": "ff8686e48956c4d3182444ea9e19529fcca67ba4643ec502daec507878f00ffc"
+    },
+    {
+      "bytes": 11351,
+      "class": "net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer",
+      "sha256": "0232c9b2a486ca23bf3ddf7ec1e0d96660c3a28815462a882821008e11e001e4"
+    },
+    {
+      "bytes": 6418,
+      "class": "net.regions_unexplored.worldgen.foliageplacer.RUFoliagePlacerUtils",
+      "sha256": "0ece95081ae924428136522b3a536b7f2d36a2e3102b73a334c6d1c2b560e2a6"
+    },
+    {
+      "bytes": 7657,
+      "class": "net.regions_unexplored.worldgen.trunkplacer.AspenTrunkPlacer",
+      "sha256": "3b4dec7a38dcf989ed961db6f4b9fa08a4c2aad3896d337006c05fe1178e26c8"
+    },
+    {
+      "bytes": 6846,
+      "class": "net.regions_unexplored.worldgen.trunkplacer.RUTrunkPlacer",
+      "sha256": "ce9e93dfedff7dacccaa343aa6371552b80684db93bb511431cffb915e8cb1d9"
+    },
+    {
+      "bytes": 13662,
+      "class": "net.regions_unexplored.worldgen.treedecorator.RandomBranchDecorator",
+      "sha256": "2db3fe7f8ac4dee919a8c7eba9bcccdca2f9a9f17e9b3440ec61e3a864ddbca7"
+    },
+    {
+      "bytes": 12630,
+      "class": "net.regions_unexplored.worldgen.treedecorator.GroupBranchDecorator",
+      "sha256": "79ffbf6854b02b594275bd3b019782ac7ea4ed92adefb7704954c66e7ec863ce"
+    },
+    {
+      "bytes": 10781,
+      "class": "net.regions_unexplored.worldgen.treedecorator.PlaceOnGroundDecorator",
+      "sha256": "4a789b42b4e41c62c554158d22cb098292910a79772f7ea6ac10bfb4932014d0"
+    }
+  ],
+  "reference_method_comparison": {
+    "classes": 13,
+    "comparison_scope": "All growth/decorator instructions including branch predicates, coordinates, loops and accessors; constant-pool index numbers ignored. Original author files kept exact privately. Compile-only copy relocated one import, removed two unused imports and replaced inaccessible static type registration initializers with null; those registration initializers were excluded, never run or packaged.",
+    "matched": true,
+    "methods": 134,
+    "preserved_prior_unadapted_compile_failure": true
+  },
+  "ru_jar_bytes": 6641783,
+  "ru_jar_sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+  "ru_version": "0.6.3",
+  "upstream_implementation_copied_into_repository": false
+}

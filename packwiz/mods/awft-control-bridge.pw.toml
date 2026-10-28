@@ -1,8 +1,8 @@
 name = "A World for Two Control Bridge"
-filename = "awft-control-bridge-0.6.29.jar"
+filename = "awft-control-bridge-0.6.32.jar"
 side = "both"
 
 [download]
-url = "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.29.jar"
+url = "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.32.jar"
 hash-format = "sha256"
-hash = "77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b"
+hash = "5a40c5a968645d10a94efde647c197f73f1f3381a972f29fd04fe24a200eb6ce"

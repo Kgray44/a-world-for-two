@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="awft_client_presentation"
-version="0.2.2"
+version="0.2.3"
 displayName="A World for Two: Presentation"
 authors="A World for Two"
 description="Preserves native menu controls, coordinates cinematic cameras, records bounded client measurements, and retains applied Small Ships remote configs without reopening a nonexistent file."
@@ -17,6 +17,20 @@ config="awft-presentation.mixins.json"
 modId="neoforge"
 type="required"
 versionRange="[21.1.262,)"
+side="CLIENT"
+
+[[dependencies.awft_client_presentation]]
+modId="zipline"
+type="optional"
+versionRange="[1.5.3,1.5.4)"
+ordering="BEFORE"
+side="CLIENT"
+
+[[dependencies.awft_client_presentation]]
+modId="connectiblechains"
+type="optional"
+versionRange="[2.4.4,2.4.5)"
+ordering="AFTER"
 side="CLIENT"
 
 [[dependencies.awft_client_presentation]]
