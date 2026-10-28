@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import json
 import math
 import re
@@ -338,7 +339,7 @@ class Atlas:
 
     def _measure_cache(self, epoch):
         started = time.monotonic()
-        total = tiles = latest = 0
+        total = tiles = latest = fingerprint = 0
         try:
             for slug in DIMENSIONS.values():
                 for level in range(6):
@@ -356,6 +357,8 @@ class Atlas:
                             raise UserError('Unexpected linked or invalid map tile')
                         try:
                             stat = path.stat(); total += stat.st_size; tiles += 1; latest = max(latest, stat.st_mtime_ns)
+                            metadata = f'{slug}/{level}/{path.name}:{stat.st_size}:{stat.st_mtime_ns}:{stat.st_ctime_ns}:{stat.st_ino}'.encode()
+                            fingerprint ^= int.from_bytes(hashlib.blake2s(metadata).digest(), 'big')
                         except FileNotFoundError:
                             pass
                         if tiles > 100_000:
@@ -364,7 +367,7 @@ class Atlas:
                 if epoch == self._inventory_epoch and not self._stop.is_set():
                     self._cache = {'bytes': total, 'tiles': tiles, 'last_update': latest / 1e9 if latest else None,
                                    'measured_at': utcnow(), 'scan_ms': round((time.monotonic() - started) * 1000, 2),
-                                   'revision': f'{tiles}-{total}-{latest}'}
+                                   'revision': f'{tiles}-{total}-{fingerprint:064x}'}
                     self._scan_at = time.monotonic()
                     self._inventory_error = None
         except (OSError, UserError) as exc:
@@ -400,7 +403,7 @@ class Atlas:
         measurements = self.metrics.latest()
         roster = self.players.snapshot()
         returns = read_json(self.layout.state / 'atlas-returns.json', {})
-        history = read_json(self.layout.state / 'atlas-return-history.json', [])
+        history = self.return_history()
         return {'backend': 'squaremap 1.3.2', 'worlds': worlds, 'waypoints': self.waypoints(), 'revision': self.revision(),
                 'freshness': measurements.get('freshness', {}),
                 'return_locations': returns, 'return_history': history[-100:][::-1],
@@ -489,6 +492,7 @@ class Atlas:
             destination['landing'] = mode
         with self.layout.mutation:
             self.storage.reserve(64 * 1024 * 1024)
+            history = self.return_history()  # Refuse damaged audit state before any native action.
             ident = uuid.uuid4().hex
             request = {'id': ident, 'at': utcnow(), 'uuid': who['uuid'], 'name': who['name'], 'destination': destination}
             path = self.layout.state / 'atlas-requests' / (ident + '.json')
@@ -499,14 +503,34 @@ class Atlas:
             while time.monotonic() < deadline:
                 if result_path.exists():
                     result = read_json(result_path)
-                    write_json(self.layout.logs / ('teleport-' + ident + '.json'), dict(request, result=result))
+                    receipt_error = None
+                    try:
+                        write_json(self.layout.logs / ('teleport-' + ident + '.json'), dict(request, result=result))
+                    except OSError:
+                        receipt_error = 'The local teleport receipt could not be saved.'
                     if result.get('status') != 'complete':
                         raise UserError(result.get('error', 'Destination safety check refused teleportation'))
                     history_path = self.layout.state / 'atlas-return-history.json'
-                    history = read_json(history_path, [])
                     history.append({'id': ident, 'at': result.get('at', utcnow()), 'name': who['name'], 'uuid': who['uuid'],
                                     'previous': result.get('previous'), 'destination': result.get('destination')})
-                    write_json(history_path, history[-100:])
+                    try:
+                        write_json(history_path, history[-100:])
+                    except OSError:
+                        receipt_error = 'The local return-history audit could not be saved.'
+                    if receipt_error:
+                        result = dict(result, history_warning='Native teleport completed. ' + receipt_error + ' Inspect server state before retrying; do not repeat the move to repair history.')
                     return result
                 time.sleep(.1)
             raise UserError('Teleport result is pending. Inspect task history and the console before retrying.')
+
+    def return_history(self):
+        path = self.layout.state / 'atlas-return-history.json'
+        try:
+            if path.exists() and path.stat().st_size > 512 * 1024:
+                raise ValueError('Return history is too large')
+            rows = read_json(path, [])
+            if not isinstance(rows, list) or len(rows) > 100 or not all(isinstance(row, dict) for row in rows):
+                raise ValueError('Invalid return history')
+            return rows
+        except (ValueError, TypeError) as exc:
+            raise UserError('Return history needs local inspection. Existing records were preserved; no native command was sent by this request.') from exc

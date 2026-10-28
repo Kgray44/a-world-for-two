@@ -31,12 +31,13 @@ def public_result(value):
 
 
 class Jobs:
-    def __init__(self, path=None, storage=None):
+    def __init__(self, path=None, storage=None, report_error=None):
         self.pool = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="awft-job")
         self._items = {}
         self._lock = threading.RLock()
         self._journal_lock = threading.Lock()
         self.path, self.storage = path, storage
+        self.report_error = report_error
         self._closed = False
         if path is not None:
             if storage:
@@ -108,8 +109,9 @@ class Jobs:
                 with self._lock:
                     item.update(status="complete", result=result, finished=utcnow())
             except Exception as exc:
+                reference = self.report_error(exc) if self.report_error and not isinstance(exc, UserError) else None
                 with self._lock:
-                    message = safe_message(exc) if isinstance(exc, UserError) else f'The task failed ({type(exc).__name__}). Inspect server state, console and preserved files before retrying.'
+                    message = safe_message(exc) if isinstance(exc, UserError) else f'The task failed ({type(exc).__name__}). Inspect server state and preserved files before retrying.' + (f' Error reference {reference} in logs/dashboard-errors.log.' if reference else '')
                     item.update(status="failed", error=message, finished=utcnow())
             finally:
                 try:

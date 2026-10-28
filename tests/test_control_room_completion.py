@@ -1,5 +1,6 @@
 """Synthetic concurrency, restart and evidence-boundary regressions; no Minecraft JVM."""
 import json
+import os
 import threading
 import time
 from unittest.mock import Mock, patch
@@ -8,7 +9,8 @@ from control_room.atlas import Atlas
 from control_room.common import UserError, read_json, utcnow, write_json
 from control_room.jobs import HISTORY_BYTES, Jobs
 from control_room.metrics import Metrics
-from control_room.web import Application
+from control_room.players import Players
+from control_room.web import Application, report_error
 from test_safety import Fixture
 
 
@@ -73,6 +75,20 @@ class AtlasInventoryTests(Fixture):
         self.atlas.monitor({})
         self.assertTrue(read_json(self.layout.state / 'atlas-control.json')['paused'])
 
+    def test_tile_metadata_revision_catches_a_change_below_another_tiles_latest_mtime(self):
+        folder = self.atlas.root / 'minecraft_overworld/3'
+        folder.mkdir(parents=True)
+        newer, older = folder / '0_0.png', folder / '1_0.png'
+        newer.write_bytes(b'same size')
+        older.write_bytes(b'old bytes')
+        os.utime(newer, (time.time()+3600, time.time()+3600))
+        before = self.completed()
+        older.write_bytes(b'new bytes')
+        after = self.completed(force=True)
+        self.assertEqual(before['last_update'], after['last_update'])
+        self.assertEqual(before['bytes'], after['bytes'])
+        self.assertNotEqual(before['revision'], after['revision'])
+
     def test_close_prevents_worker_publication_and_new_scans(self):
         self.completed()
         before = dict(self.atlas._cache)
@@ -90,6 +106,18 @@ class AtlasInventoryTests(Fixture):
         app.get('/api/storage', {'refresh': ['1']})
         app.storage.snapshot.assert_called_once_with(live=True, refresh=True)
         app.storage.breakdown.assert_not_called()
+
+    def test_player_reads_remain_available_while_a_world_job_owns_the_mutation_lock(self):
+        players = Players(self.layout, self.storage, self.server, self.settings)
+        answers = []
+        with self.layout.mutation:
+            reader = threading.Thread(target=lambda: answers.append(players.snapshot()))
+            reader.start()
+            reader.join(.5)
+            responsive = not reader.is_alive()
+        reader.join(2)
+        self.assertTrue(responsive, 'Player/Atlas reads waited on a backup or another world job')
+        self.assertEqual(answers[0]['members'], [])
 
     def test_old_claim_cache_expires_independently_of_a_fresh_bridge(self):
         metrics = Metrics(self.layout, self.storage, Mock())
@@ -129,6 +157,36 @@ class AtlasInventoryTests(Fixture):
         with self.assertRaisesRegex(UserError, 'unsafe destination'):
             self.atlas.teleport('TestPlayer', point, confirmed=True)
         self.assertEqual(read_json(self.layout.state / 'atlas-return-history.json'), history)
+
+    def test_history_write_failure_cannot_turn_a_completed_native_teleport_into_failure(self):
+        self.players.details.return_value = dict(name='TestPlayer', uuid='1'*32, online=True, capabilities=['safe_teleport'])
+        point = dict(dimension='minecraft:overworld', x=12, y=70, z=34, landing='near-y')
+        console = Mock()
+        console._write.side_effect = lambda command: write_json(
+            self.layout.state / f'atlas-requests/{command.split()[-1]}.result.json',
+            dict(status='complete', previous=point, destination=point, at=utcnow()))
+        self.atlas.server = console
+        def guarded_write(path, value):
+            if path.name == 'atlas-return-history.json':
+                raise OSError('Synthetic disk failure after native success')
+            write_json(path, value)
+        notify = Mock(side_effect=UserError('A failed journal notification must not change the native outcome'))
+        with patch('control_room.atlas.write_json', side_effect=guarded_write):
+            result = self.atlas.teleport('TestPlayer', point, confirmed=True, notify=notify)
+        self.assertEqual(result['status'], 'complete')
+        self.assertIn('Native teleport completed', result['history_warning'])
+        notify.assert_not_called()
+
+    def test_damaged_return_history_refuses_before_the_native_command(self):
+        self.players.details.return_value = dict(name='TestPlayer', online=True, capabilities=['safe_teleport'])
+        console = Mock()
+        self.atlas.server = console
+        path = self.layout.state / 'atlas-return-history.json'
+        path.write_bytes(b'{preserve corrupt fixture')
+        with self.assertRaisesRegex(UserError, 'no native command was sent'):
+            self.atlas.teleport('TestPlayer', {'return': True}, confirmed=True)
+        console._write.assert_not_called()
+        self.assertEqual(path.read_bytes(), b'{preserve corrupt fixture')
 
 
 class DurableJobsTests(Fixture):
@@ -176,6 +234,15 @@ class DurableJobsTests(Fixture):
         self.assertNotIn('private-value', encoded)
         self.assertIn('RuntimeError', encoded)
         self.assertIn('[redacted]', encoded)
+
+    def test_unexpected_errors_get_a_private_redacted_diagnostic_reference(self):
+        app = Mock()
+        ident = report_error(app, RuntimeError('password=private-value'))
+        self.assertRegex(ident, r'^[a-f0-9]{12}$')
+        logged = str(app.error_logger.error.call_args)
+        self.assertNotIn('private-value', logged)
+        self.assertIn('RuntimeError', logged)
+        self.assertIn(ident, logged)
 
     def test_closed_queue_refuses_new_work_and_journal_remains_bounded(self):
         jobs = self.jobs()

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {VisiblePoller} from '../control_room/static/polling.js';
-import {atlasView,currentMeasurement} from '../control_room/static/atlas-state.js';
+import {atlasView,currentMeasurement,playerView} from '../control_room/static/atlas-state.js';
 
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
 function harness(work){
@@ -42,4 +42,25 @@ test('invalid, future and unsupported measurement times cannot enable a live mar
   const now=1800000000000;
   for(const stamp of [null,'bad timestamp',new Date(now+3000).toISOString(),Infinity])
     assert.equal(currentMeasurement({measured_at:stamp,current:true,max_age_seconds:15},now),false);
+});
+
+test('cache, independently stopped presence and integration labels expire after backend loss',()=>{
+  const now=1800000000000,stamp=new Date(now).toISOString();
+  const live={measured_at:stamp,current:true,max_age_seconds:15};
+  const data={freshness:{bridge:live,players:live,atlas_claims:{...live,max_age_seconds:45}},
+    players_state:'offline',players_measured_at:stamp,players:[{online:false}],
+    cache:{measured_at:stamp,current:true},integrations:[{name:'Players, structures and named entities',status:'current'},{name:'Open Parties and Claims',status:'current'}],claims:{available:true,items:[]}};
+  const current=atlasView(data,now);
+  assert.equal(current.players[0].online,false);assert.equal(current.cache.current,true);
+  const stale=atlasView(data,now+61000);
+  assert.equal(stale.players[0].online,null);assert.equal(stale.cache.current,false);
+  assert.ok(stale.integrations.every(row=>row.status==='unavailable'));
+});
+
+test('an open player card expires without becoming an offline report or retaining live capabilities',()=>{
+  const now=1800000000000,value={received_at:now,online:true,location_state:'live',location:{at:new Date(now).toISOString(),x:1},capabilities:['safe_teleport']};
+  assert.equal(playerView(value,now).online,true);
+  const stale=playerView(value,now+16000);
+  assert.equal(stale.online,null);assert.equal(stale.location_state,'last seen');assert.deepEqual(stale.capabilities,[]);
+  assert.equal(value.online,true);
 });

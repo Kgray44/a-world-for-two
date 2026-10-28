@@ -73,13 +73,70 @@ backup/restore recovery, safe teleport, moving objects, party APIs, remote mappi
 Playit controls, multiplayer and official-world integration are **pending** an
 exclusive master window. No additional Minecraft copy or JVM was launched.
 
-Shared dependency reported to master: `Server.start` holds the status lock during
-long preflight; `Players.snapshot` waits on the world mutation lock. These can
-block HTTP reads during jobs. Narrow lifecycle/read-path fixes require serialized
-file ownership and remain pending delegation.
+The master subsequently delegated the narrow startup and player snapshot lock
+regions. `Server.start` now retains its full world mutation lease while releasing
+the status lock during slow preflight, then rechecks ownership before creating
+the child. `Players.snapshot` serializes only its small dashboard bookkeeping;
+world jobs cannot block its reads. Existing command allowlists remain untouched.
 
 Both C: and D: reserves were checked before writers and periodically. Most recent
 pre-check at 18:25:57Z: C **118,559,727,616** free bytes; D **284,446,781,440**;
 bounded C allocation **268,435,456**, D allocation **0**. Monitoring covers owned
 writers only; external applications and pre-existing unrelated writers are
 outside its enforcement.
+
+## Checkpoint 2: review corrections and browser verification
+
+Additional source-only files: `control_room/players.py`, only `Server.start` in
+`control_room/server.py`, `tests/test_server_start_responsiveness.py`, and the
+single CI test-list line in `.github/workflows/validate.yml`.
+
+Review corrections preserve responsiveness through journal reserve checks,
+fingerprint tile **metadata** rather than file contents, expire detailed cache
+and adapter labels, preserve edit revisions while a dialog remains open, and
+record bounded private diagnostic references for unexpected errors. A confirmed
+native teleport stays complete if its optional local audit write fails; its
+returned history warning never invites an automatic second move. Delayed page
+responses cannot overwrite a newly selected page. Open player cards and overview
+readings expire independently of network success.
+
+Targeted verification after these changes: **138 Python tests passed**, no skips
+or failures, across Control Room completion, startup responsiveness, lifecycle,
+freshness, Atlas/cinematics, safety, sync cache, preview redirect and Playit/graphics.
+**10 Node tests passed** across polling/freshness and session recovery. Both
+JavaScript entry-point syntax checks and `git diff --check` passed. Pack validation
+passed with 208 inventory records; the pack files were not changed.
+
+Actual isolated browser checks on `127.0.0.1:18765`:
+
+- Manual fixture waypoint create/search, dimension switching, persistent settings
+  save/reload, and mobile navigation dismissal at **390 x 844** passed.
+- Start refused the deliberately unaccepted EULA and showed a failed task with
+  the actual reason. No JVM or child process was launched.
+- Stopping/restarting only the owned Python backend preserved the failed job and
+  waypoints. The old browser tab recovered: exact response sequence **POST 403,
+  bootstrap GET 200, POST 200**, with one saved waypoint and no ambiguous replay.
+- An artificially delayed Settings request returned 200 after navigation to
+  Atlas; the active heading stayed **World Atlas**, with no JavaScript exception.
+- Browser verification found and corrected a timer receiver error missed by the
+  initial Node run. Earlier test-fixture errors were also corrected; current
+  targeted checks pass.
+- The in-app browser kept both tabs' `document.visibilityState` visible during
+  the inactive-tab probe, so that probe does **not** establish hidden-tab behavior.
+  Hidden/visible scheduling and non-overlap are verified by controlled Node tests.
+
+Read-only existing-runtime observation at **2026-10-28 18:45:20Z** (not deployment
+of this PR): server PID **51360**, online; fresh bridge sample **19.9689 TPS**, mean
+**2.21795 ms**. One GET each measured overview **113.67 ms**, metrics **3.74 ms**,
+Atlas **92.29 ms**. These are single observations, not benchmarks or overhead proof.
+Atlas exposed **26 existing tiles / 525,957 bytes**, **519 recorded locations**,
+**0 current loaded objects**, and an available claims snapshot with zero claims.
+Its two player-access entries do not establish two online players. Real terrain
+tiles were viewed in a browser. Latest tile change was **2026-10-28 17:47:35Z**;
+the current construction edits' rendering is therefore **unqualified**. Do not
+substitute inventory measurement time for tile render time.
+
+An earlier probe during the master's startup window returned connection errors;
+that failed receipt was preserved. No native POST, teleport, tunnel, world,
+client, runtime configuration or pack write was performed by this workstream.
+Native control/recovery and final-world acceptance remain master-window work.
