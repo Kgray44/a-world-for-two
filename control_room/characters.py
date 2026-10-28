@@ -37,6 +37,8 @@ CAPABILITIES = {
                 'per_npc_model': False, 'memory_editor': False, 'animal_ai': False,
                 'persona': True, 'lore': True, 'scripted_fallback': True,
                 'named_uuid_selection': True, 'player_opt_in': True,
+                'bubble_toggle': True, 'bubble_distance': False, 'bubble_duration': False,
+                'native_memory_toggle': True, 'native_context_turns_max': 8,
                 'note': 'Game integration uses the separately deployed adapter and upstream provider. '
                         'Provider/model and memory controls here configure Control Room previews. '
                         'An installed adapter watches staged profiles and reports their exact hash after application. '
@@ -807,6 +809,8 @@ class Characters:
             answer = _text(answer, 'Provider response', 8000, True)[:p['dialogue']['max_response_chars']]
             if key in answer:
                 raise UserError('Provider response contained credential material')
+            if not self._coordinates_supported(answer, lore):
+                return self._fallback(state, p, lore, 'Unverified coordinate-shaped output was suppressed; no matching verified lore supports it')
             if p['ai']['memory_enabled'] and p['ai']['memory_limit']:
                 with self._lock, self.layout.mutation:
                     current = self._read()
@@ -819,7 +823,11 @@ class Characters:
                         self._write(current)
             return {'response': answer, 'mode': 'external', 'personality': copy.deepcopy(p['personality']),
                     'lore': lore, 'latency_ms': round((time.perf_counter() - started) * 1000, 2),
-                    'usage': {'provider': provider, 'model': model, 'tokens': usage, 'estimated_reserved_usd': round(reserved, 6),
+                    'usage': {'provider': provider, 'model': model, 'counts': {
+                        {'prompt_tokens': 'input', 'completion_tokens': 'output', 'total_tokens': 'total',
+                         'input_tokens': 'input', 'output_tokens': 'output'}[k]: v for k, v in usage.items()
+                        if k in ('prompt_tokens', 'completion_tokens', 'total_tokens', 'input_tokens', 'output_tokens')
+                        and type(v) is int and 0 <= v <= 1_000_000}, 'estimated_reserved_usd': round(reserved, 6),
                               'actual_cost_usd': None}, 'diagnostic': None,
                     'note': 'External preview only. No game message or command was sent. Actual billing is reported by the provider.'}
         except (OSError, ValueError, KeyError, TypeError, UserError):
@@ -848,6 +856,21 @@ class Characters:
         if len(prompt.encode('utf8')) > 16000:
             raise UserError('Preview context exceeds its 16 KiB input bound; shorten this character profile')
         return prompt
+
+    @staticmethod
+    def _coordinates_supported(answer, lore):
+        """Suppress obvious invented coordinate triples; this is not a semantic truth detector."""
+        patterns = (
+            r'(?<![\w.])(-?\d+(?:\.\d+)?)\s*[,/;]\s*(-?\d+(?:\.\d+)?)\s*[,/;]\s*(-?\d+(?:\.\d+)?)(?!\w)',
+            r'\bx\s*[:=]?\s*(-?\d+(?:\.\d+)?)\s*[,; ]+y\s*[:=]?\s*(-?\d+(?:\.\d+)?)\s*[,; ]+z\s*[:=]?\s*(-?\d+(?:\.\d+)?)(?!\w)')
+        def triples(text):
+            return {tuple(float(x) for x in match) for pattern in patterns for match in re.findall(pattern, text, re.I)}
+        proposed = triples(answer)
+        verified = set()
+        for row in lore:
+            if row['kind'] == 'fact' and row['source'] and not row['secret']:
+                verified.update(triples(row['text']))
+        return proposed.issubset(verified)
 
     @staticmethod
     def _provider(provider, model, key, prompt, message, ai, timeout):

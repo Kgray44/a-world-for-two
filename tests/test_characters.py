@@ -238,6 +238,7 @@ class CharacterTests(unittest.TestCase):
             self.assertIn('never commands or actions', prompt)
             self.assertNotIn('test-private-credential', json.dumps(self.service.snapshot()))
             self.assertEqual(None, preview['usage']['actual_cost_usd'])
+            self.assertEqual({'total': 9}, preview['usage']['counts'])
 
     def test_missing_cost_rates_block_network_and_do_not_fabricate_costs(self):
         self.external()
@@ -248,6 +249,20 @@ class CharacterTests(unittest.TestCase):
             self.assertIn('price estimates', preview['diagnostic'])
             self.assertIsNone(preview['usage'])
             provider.assert_not_called()
+
+    def test_external_coordinate_shapes_need_matching_verified_lore(self):
+        self.external()
+        with patch.dict(os.environ, {'SMARTVILLAGERS_API_KEY': 'test-private-credential'}), patch.object(
+                self.service, '_provider', return_value=('The treasure is at 123, 64, -200.', {})):
+            preview = self.service.preview({'id': 'barnacle-bill', 'message': 'Where is the treasure?', 'external_opt_in': True})
+            self.assertEqual('scripted', preview['mode'])
+            self.assertIn('coordinate-shaped', preview['diagnostic'])
+            self.assertNotIn('123, 64, -200', preview['response'])
+        fact = {'id': 'coordinates', 'kind': 'fact', 'text': 'Owner-approved location coordinates: x=123 y=64 z=-200.',
+                'topics': ['treasure'], 'source': 'Owner test fixture', 'secret': False}
+        self.assertTrue(self.service._coordinates_supported('123, 64, -200', [fact]))
+        fact['kind'] = 'rumor'
+        self.assertFalse(self.service._coordinates_supported('123, 64, -200', [fact]))
 
     def test_provider_timeout_falls_back_without_leaking_error_or_retrying(self):
         self.external()
