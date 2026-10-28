@@ -323,6 +323,7 @@ class ConfigurationTests(Fixture):
         server = Server(self.layout, self.storage)
         commands = [('awfttrees', 'grow', 'describe', 'trees-'),
                     ('awfttreepatch', 'grow', 'inspect', 'treepatch-'),
+                    ('awftrelocate', 'move', 'inspect', 'relocation-'),
                     ('awftlife', 'seed', 'inspect', 'life-'),
                     ('awftfountain', 'reset', 'inspect', 'fountain-'),
                     ('awftfountain', 'recover-gate', 'inspect', 'fountain-'),
