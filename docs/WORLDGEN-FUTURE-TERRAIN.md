@@ -137,7 +137,8 @@ Verification at this checkpoint:
 
 - Python 3.12.10: 967 tests, 965 passed and two Windows junction/symlink fixture
   skips; 133.930 seconds inside unittest. No test failed.
-- Fourteen targeted worldgen tests passed, including drift rejection, tag cycles,
+- Fifteen targeted worldgen tests passed, including exact frozen receipt/payload
+  seals, drift rejection, tag cycles,
   negative grids, changed seeds/workloads, unexpected native registry edits and
   restart differences. Their invented input fixtures are source tests only and
   are never written as runtime evidence.

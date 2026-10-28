@@ -1,2 +1,2 @@
 # Frozen master's receipts and patch retain their exact original bytes.
-* -text
+* -text whitespace=cr-at-eol

@@ -19,7 +19,7 @@ settings, height, seed and every requested compatibility record remain intact.
 The earlier broader experiment is held outside the integration commit.
 
 Tests: 967 total source tests, 965 passed and two Windows link-fixture skips;
-fourteen targeted worldgen tests passed; 208-entry pack validation, JS syntax,
+fifteen targeted worldgen tests passed; 208-entry pack validation, JS syntax,
 four session tests, exact master-proposal verification and actual Java21 API
 compilation passed. No source test failed. No Minecraft test has run in this lane.
 

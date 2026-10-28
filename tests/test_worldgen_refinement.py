@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import unittest
 
@@ -55,6 +56,18 @@ class WorldgenRefinementTests(unittest.TestCase):
         for key in ('../world:seed', 'a:../../world', 'A:invalid'):
             with self.assertRaises(UserError):
                 resource_path(key, 'structure')
+
+    def test_frozen_master_and_generated_payload_bytes_keep_their_seals(self):
+        base = REPO / 'proposals/future-structure-frequency'
+        for name, ref in json.loads((base / 'seal.json').read_bytes())['files'].items():
+            raw = (base / name).read_bytes()
+            self.assertEqual(len(raw), ref['bytes'], name)
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), ref['sha256'], name)
+        base = REPO / 'proposals/worldgen-four-set-v1'
+        for name, ref in json.loads((base / 'manifest.json').read_bytes())['files'].items():
+            raw = (base / 'datapack' / name).read_bytes()
+            self.assertEqual(len(raw), ref['size'], name)
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), ref['sha256'], name)
 
 
 if __name__ == '__main__':
