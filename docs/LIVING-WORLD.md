@@ -7,7 +7,7 @@ were changed. Coordination starts in [issue #10](https://github.com/Kgray44/a-wo
 
 ## Use the Studio
 
-Open Control Room → **Characters**, search for Barnacle Bill, and open his card.
+Open Control Room Ã¢â€ â€™ **Characters**, search for Barnacle Bill, and open his card.
 The editor has Overview, Personality, Knowledge, Dialogue, AI & Memory, Voice,
 Location and History sections. All portraits are locally rendered character icons.
 
@@ -107,7 +107,7 @@ entity observations. Native pricing/admission reservations live in `native-budge
 No API key is exported. `native.json` is telemetry, not proof of player acceptance.
 
 All HTTP routes retain Control Room's loopback/origin/session protections. GET routes
-are `/api/characters`, `/detail?id=…`, `/export?id=…`. POST operations under
+are `/api/characters`, `/detail?id=Ã¢â‚¬Â¦`, `/export?id=Ã¢â‚¬Â¦`. POST operations under
 `/api/characters/` are `save`, `remove`, `duplicate`, `import`, `restore`, `defaults`,
 `district`, `settings`, `memory`, `preview`, `ambient` and `apply`. Mutations use
 the supplied `expected` revision. Conversation previews run as existing background Jobs.
@@ -142,10 +142,13 @@ the supplied `expected` revision. Conversation previews run as existing backgrou
 ## Current evidence and remaining acceptance
 
 The focused registry, HTTP, backup, frontend, upstream-schema and JVM checks pass.
-The full inherited suite ran 1,136 tests with three import errors and one skip: the
-starting commit references the absent `tools/artistic_tortuga_coast_batches.py` through
-three unchanged artistic tests. The missing file was already absent at base `3d337e4`;
+The full inherited suite ran 1,137 tests with three import errors and one skip: the
+starting commit references absent `tools/artistic_tortuga_coast_batches.py` and
+`tools/artistic_tortuga_west_approved_blocks.py` through three unchanged artistic tests.
+Both modules were already absent at base `3d337e4`;
 this lane does not copy the main owner's uncommitted construction work to hide the gap.
+
+[The sanitized qualification receipt](../evidence/living-world/qualification.json) records the exact build and checks.
 
 A real NeoForge loader probe discovered all three mods, retained `eula=false`, exited
 at the EULA refusal and created no world. No target classes were exported by Mixin
@@ -156,7 +159,7 @@ under `proposals/living-world/mods/probes/loader_probe.py`.
 Actual isolated browser checks saved Barnacle Bill's speaking style and a custom joke,
 ran a scripted conversation and reproduced the saved joke through ambient preview.
 An early warm development preview measured 24 loopback summary/detail requests: median
-15.144 ms, p95 27.106 ms, RSS 39,424,000 → 39,624,704 bytes and 0.0469 CPU seconds over
+15.144 ms, p95 27.106 ms, RSS 39,424,000 Ã¢â€ â€™ 39,624,704 bytes and 0.0469 CPU seconds over
 0.3585 seconds. Its source was still changing; this is a scoped dashboard observation,
 not final-head feature overhead, a sustained benchmark, or Minecraft performance.
 
@@ -165,3 +168,17 @@ responses and server performance remain **NOT RUN**. They require the coordinate
 window and provider configuration/consent. Source completion and a draft PR do not satisfy
 those acceptance criteria. Full upstream/dependency findings are in
 [the compatibility record](LIVING-WORLD-COMPATIBILITY.md).
+
+![Actual Character Studio and a saved custom joke, captured in the isolated development preview](images/living-world/character-studio.png)
+
+Actual browser capture; this does not establish in-game or final-head browser acceptance.
+
+The owner selected the **main development lane** to coordinate and execute the remaining
+in-game tests. Exact-head [CI run 40776960802](https://github.com/Kgray44/a-world-for-two/actions/runs/40776960802)
+confirmed the same three inherited import errors (1,137 tests, three platform/input skips).
+No source check was bypassed. A subsequent current-source browser check reloaded the saved
+joke after a dashboard restart, reproduced it in ambient preview, checked visibly disabled
+unsupported bubble controls and checked the 390 × 844 mobile breakpoint without document
+overflow. The temporary viewport was restored.
+
+![Current-source Character Studio desktop check](images/living-world/character-studio-desktop.png)
