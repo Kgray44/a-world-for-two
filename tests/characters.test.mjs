@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {getValue,setValue,linesFromText,characterMatches,characterIsNearby,locationLabel,atlasCharacterLink,newCharacter,mountCharacters,modelPolicy,effectiveReasoning,samplingSupported,providerIsVerified,takeCredential} from '../control_room/static/characters.js';
+import {getValue,setValue,linesFromText,characterMatches,characterIsNearby,locationLabel,atlasCharacterLink,newCharacter,mountCharacters,modelPolicy,effectiveReasoning,samplingSupported,providerIsVerified,takeCredential,measuredCount,estimatedUSD} from '../control_room/static/characters.js';
 
 test('character search covers identity and district without changing profiles',()=>{
   const bill={name:'Barnacle Bill',profession:'Tavern keeper',district:'tortuga',kind:'villager'};
@@ -103,6 +103,15 @@ test('one-time credential input clears synchronously before returning its value'
   assert.equal(takeCredential(input),'local-test-placeholder');
   assert.equal(input.value,'');assert.equal(takeCredential(input),'');
 });
+test('unknown request counts and estimated cost never become measured zero',async()=>{
+  assert.equal(measuredCount(null),'Unavailable');assert.equal(measuredCount(undefined),'Unavailable');
+  assert.equal(measuredCount(0),'0');assert.equal(estimatedUSD(null),'Unavailable');
+  assert.equal(estimatedUSD(0),'$0.0000');
+  const root=new StudioRoot(),snapshot={revision:'r1',characters:[],districts:[],templates:[],provider_status:{usage:{available:false,requests_today:null,requests_last_minute:null,requests_last_hour:null,reserved_cost_today_usd:null,measured_counts:null,estimated_token_cost_usd:null}}};
+  const cleanup=await mountCharacters({root,api:async()=>snapshot});
+  assert.match(root.innerHTML,/Requests today: Unavailable/);assert.match(root.innerHTML,/Reserved estimate: Unavailable/);
+  assert.match(root.innerHTML,/missing measurements are not zero/);cleanup();
+});
 
 const providerSnapshot=()=>({revision:'r1',characters:[],districts:[],templates:[],settings:{provider:'openai',model:'gpt-6-luna',endpoint:'https://api.openai.com/v1/chat/completions',reasoning_effort:'none',credential_configured:true,credential_source:'windows_user_store',external_enabled:false,response_tokens:120,timeout_seconds:15,max_concurrent:2,requests_per_minute:6,requests_per_hour:24,requests_per_day:100,daily_budget_usd:.5,input_usd_per_million:.1,output_usd_per_million:.5}});
 class ProviderRoot extends StudioRoot {
@@ -161,4 +170,29 @@ test('a selected character model can be tested without changing the global defau
   assert.deepEqual(tested,{expected:'r1',external_opt_in:true,model:'gpt-6.1-sol'});
   assert.equal(character.ai.model,'');
   cleanup();
+});
+test('recognized global and character model IDs remain editable without credentials or adapter',async()=>{
+  const root=new StudioRoot(),character={...newCharacter(),id:'bill',name:'Barnacle Bill'};
+  character.ai.model='gpt-6.1-sol';
+  const snapshot=providerSnapshot();snapshot.settings.model='gpt-6-luna';snapshot.settings.credential_configured=false;
+  const api=async path=>path.includes('/detail')?{revision:'r1',character,history:[],memories:[],capabilities:{runtime:{per_npc_model:false}}}:snapshot;
+  const cleanup=await mountCharacters({root,api});
+  const globalInput=root.innerHTML.match(/<input[^>]*data-setting="model"[^>]*>/)?.[0];
+  assert.ok(globalInput);assert.doesNotMatch(globalInput,/\breadonly\b|\bdisabled\b/);
+  await root.click('open',{id:'bill'});await root.click('tab',{tab:'ai'});
+  const characterInput=root.innerHTML.match(/<input[^>]*data-field="ai.model"[^>]*>/)?.[0];
+  assert.ok(characterInput);assert.doesNotMatch(characterInput,/\breadonly\b|\bdisabled\b/);
+  assert.match(root.innerHTML,/Character AI model/);assert.match(root.innerHTML,/Use global default \(gpt-6-luna\)/);
+  assert.match(root.innerHTML,/Luna · gpt-6-luna/);assert.match(root.innerHTML,/Sol · gpt-6.1-sol/);
+  cleanup();
+});
+test('typing and leaving a character model field preserves the editor DOM and subsequent save',async()=>{
+  const root=new StudioRoot(),character={...newCharacter(),id:'bill',name:'Barnacle Bill'};
+  let submitted;
+  const api=async(path,body)=>{if(path.endsWith('/save')){submitted=body.profile;return {revision:'r2',character:body.profile};}return path.includes('/detail')?{revision:'r1',character,history:[],memories:[]}:providerSnapshot();};
+  const cleanup=await mountCharacters({root,api});await root.click('open',{id:'bill'});await root.click('tab',{tab:'ai'});
+  const html=root.innerHTML,input={dataset:{field:'ai.model'},type:'text',value:'custom-model',hasAttribute:()=>false};root.inputs=[input];
+  root.listeners.input({target:input});assert.equal(root.innerHTML,html);
+  await root.listeners.change({target:input});assert.equal(root.innerHTML,html);
+  await root.click('save');assert.equal(submitted.ai.model,'custom-model');cleanup();
 });
