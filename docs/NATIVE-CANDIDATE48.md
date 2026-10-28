@@ -133,9 +133,9 @@ several thousand normal living creatures. The small current LIFE cohort and
 sparse current tree outcomes do not satisfy that expanded scope. New dense-tree
 and population-scale proposals remain separately qualified before deployment.
 
-![Actual installed Hypertube line beside the mill railway](images/native 48/hypertube-line.png)
+![Actual installed Hypertube line beside the mill railway](images/native48/hypertube-line.png)
 
-![Actual furnishing phase inside the imported fisherman shop](images/native 48/fisherman-counter.png)
+![Actual furnishing phase inside the imported fisherman shop](images/native48/fisherman-counter.png)
 
 These two images are unchanged native 48 captures with the release-excluded
 QA 0.1.8 helper. Native client chunks around the actor/target were present; the
