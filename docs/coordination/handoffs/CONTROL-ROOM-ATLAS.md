@@ -536,3 +536,64 @@ There is now no remaining independently authorized implementation correction
 identified by this audit. Resume qualification when the master supplies the next
 controller window or real participant evidence; do not replace these gates with
 additional synthetic checks or broaden the frozen feature scope.
+
+## Candidate.53: real controller replacement and deployed follow-ups
+
+The master supplied a new read-only observation window. Actual stop job
+**dda61adce0184f1680cb430d1b010281** completed **20:04:56.548175Z**. Old Python7068
+and its8766 listener were observed gone while the game was offline. Replacement
+Python **27636**, created **20:06:55.673224Z**, ran `python -B -m control_room` from
+the master checkout with homeH/port8766. The three integrated files remained clean
+at master **979313075cb56827b331f71685ea006591742b56**. Actual `/api/backups` now
+returned **creation_integrity**, independently confirming the new list model was
+running rather than only present on disk.
+
+The existing browser visibly changed from **Connection lost / live data stale**
+to **Connected locally** without reloading. All four prior native start/stop
+records survived the real controller replacement. New start
+**73da759b3ccf4ca9bcfb7385a3fa6918**, Java **45036**, stayed running/starting until
+readiness and completed **20:10:20.488229Z**. The UI then showed candidate.53
+online/zero players. This closes the previously pending controller-deployment
+and real inactive-job-history recovery gates; it does not exercise a native
+permission edit, verification mutation, restore, teleport or remote session.
+
+Actual browser Performance recovered **20TPS / 3.4MSPT**, 841 holders/30entities,
+3.34GiB RSS and1.33GiB heap-used. Atlas recovered current bridge/renderer/queue0,
+real26-tile cache and dated historical records. Recorded CDP events contained
+**zero non-GET requests and zero JavaScript exceptions**; console warnings/errors
+were empty. At20:12Z, a separate GET sample reported **20.0147TPS / 3.1341MSPT**,
+RSS3,647,414,272bytes and heap-used1,558,183,936bytes. These remain individual
+observations, not finished-world load or attributed dashboard-overhead acceptance.
+
+Private receipts: `native53-new-controller.json`, `native53-final-get.json`,
+`native53-browser-recovery.json` and `native53-atlas-recovered.png`. The read-only
+observer closed. No lifecycle/control/player/tunnel/world write was performed by
+CONTROL; native operations were the master's. Public/permanent-world promotion
+has not been established.
+
+### Initial-history notification correction
+
+Fresh native tabs also exposed a small alert defect: initial history loading
+announced old completed tasks as though they had just finished. Source-only
+**e77ff88c5b4f0db82dc142197a03c315676a8394** changes `app.js` (+2/-1) to seed seen
+terminal jobs silently on the first successful load. Later task transitions keep
+the existing alerts and event-driven backup refresh. No polling or backend change
+was added; deployment needs only master integration and browser reload.
+
+Browser repro saw **Start world finished** from historical data on fresh load.
+A temporary source-asset interception attempt was unsupported by this browser;
+no response body was substituted, all interception patterns were cleared and that
+tab closed. The existing READ-ONLY QUALIFICATION harness then served the frozen
+new frontend against actual native GET data. Corrected first load had an **empty
+toast**, while all **five real history records** remained accessible. No console
+warning/error occurred. Syntax/diff checks passed. This qualifies the frontend
+behavior, not a new native control action.
+
+Private receipts: `notification-history-quiet.json`, `notification-history-quiet.png`
+and `notification-qa-retirement.json`. The reader used about37.6MB RSS, no game
+child/lifecycle, and rejected control requests by construction. Python52060 was
+retired, port18765 released, and the observer tab closed. Its bounded32MiB C
+forecast passed at20:15:24Z with C122,011,160,576 and D283,501,723,648 free bytes.
+Monitoring covers owned writers and does not constrain unrelated/pre-existing
+writers. Remaining native/player/remote/API-limit/final-release gates above stay
+open; the actual .53 controller replacement does not prove them.
