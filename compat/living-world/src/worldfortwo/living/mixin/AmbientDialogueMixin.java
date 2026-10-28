@@ -12,6 +12,11 @@ import worldfortwo.living.WorldCharacters;
 /** Read the acknowledged current registry at speech selection; no file polling. */
 @Mixin(value=DialogueManager.class,remap=false)
 public abstract class AmbientDialogueMixin {
+    /** The native scheduler checks this count before calling pickConversation. */
+    @Inject(method="getConversationCount",at=@At("RETURN"),cancellable=true,remap=false)
+    private void awft$configuredExchanges(CallbackInfoReturnable<Integer> info){
+        if(info.getReturnValue()==0&&WorldCharacters.current.hasAmbientExchanges())info.setReturnValue(1);
+    }
     private static DialogueManager.SoloLine awft$line(VillagerContext context,String excluded,boolean reaction){
         List<WorldCharacters.AmbientLine> lines=WorldCharacters.current.ambientLines(context.states,context.weather,context.timeOfDay,reaction)
             .stream().filter(line->!line.id().equals(excluded)).toList();
