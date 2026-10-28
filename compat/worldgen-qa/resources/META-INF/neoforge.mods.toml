@@ -1,0 +1,22 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="awft_worldgen_qa"
+version="0.1.0"
+displayName="AWFT Worldgen QA (disposable tests only)"
+displayTest="IGNORE_ALL_VERSION"
+description="Bounded registry, structure-start, chunk and restart observations. Excluded from release packs."
+
+[[dependencies.awft_worldgen_qa]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.262]"
+side="SERVER"
+
+[[dependencies.awft_worldgen_qa]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+side="SERVER"

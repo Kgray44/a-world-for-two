@@ -1,0 +1,54 @@
+{
+  "format": "awft-future-structures-source-seal:1",
+  "at": "2026-10-28T17:44:59.367261+00:00",
+  "files": {
+    "integration.diff": {
+      "bytes": 2730,
+      "sha256": "0b89184306724161a7cd27fd2870f7d8333acd5d173facb9381324d680ae99da"
+    },
+    "proposal.json": {
+      "bytes": 15549,
+      "sha256": "fbe7cdf75dc8f07aad88db51b6a5b6f8d2a6605d69982f199a4876224ef634e8"
+    },
+    "README.md": {
+      "bytes": 5590,
+      "sha256": "19d33e1ad2e26b53a54e38267afcb5042097fd83ed7f150ac1b3f9564370ab77"
+    },
+    "source-audit.json": {
+      "bytes": 36610,
+      "sha256": "1283ebce10dc3c88289ec0f24faa658acb11b159442f408a1e1722dd43a7f5b2"
+    },
+    "verify_proposal.py": {
+      "bytes": 6459,
+      "sha256": "d9a338d0e5439c0e5a5168ab28641ae2c2c9fab1c5ede9c4405e0cc5ba838509"
+    }
+  },
+  "checks": {
+    "exact_proposed_spacing_changes": 4,
+    "canonical_structure_set_hashes": 45,
+    "actual_patch_files": 5,
+    "actual_proposed_generator_cases_passed": 9,
+    "exact_installed_mod_JAR_pins_passed": 2,
+    "static_selected_templates_examined": 62
+  },
+  "runtime_generation_checks": 0,
+  "installed": false,
+  "native_actions": 0,
+  "worlds_opened": 0,
+  "active_packwiz_or_generator_files_changed": 0,
+  "reserve_guard": {
+    "utc": "2026-10-28T17:44:59.1176348Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 119612088320,
+    "dFreeBytes": 284750094336,
+    "estimatedCBytes": 1048576,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "pending": [
+    "Native registry resource selection and strict client/server SeedGen agreement",
+    "Bounded new-chunk A/B terrain-fit/overlap/entity/generation-cost checks in disposable copy",
+    "Existing FULL chunks, frontier pieces and player data preservation before any rollout"
+  ]
+}

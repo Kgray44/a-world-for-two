@@ -1,0 +1,263 @@
+{
+  "format": "awft-moderate-future-structures:1",
+  "created": "2026-10-28T17:42:28.616527+00:00",
+  "baseline_candidate": "0.1.0-candidate.49",
+  "baseline_lock_sha256": "8ea60a0db1b44a84e64c23dc302c09b3389858c9df08f6cc1c18a3bd8fd4e920",
+  "installed": false,
+  "native_actions": 0,
+  "worlds_opened": 0,
+  "changes": [
+    {
+      "structure_set": "castleshift:castle",
+      "slug": "castle-shift",
+      "relative": "packwiz/config/paxi/datapacks/awft-integration/data/castleshift/worldgen/structure_set/castle.json",
+      "before_sha256": "a955f68fc5a2537c8898de25659558556fbe37eebedc01bfb54f95e6336a5660",
+      "before_spacing_chunks": 96,
+      "after_spacing_chunks": 92,
+      "separation_chunks_unchanged": 32,
+      "frequency_unchanged": 1,
+      "candidate_opportunity_increase_fraction": 0.08884688090737236,
+      "before": {
+        "structures": [
+          {
+            "structure": "castleshift:castle",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 96,
+          "separation": 32,
+          "salt": 194572831,
+          "exclusion_zone": {
+            "other_set": "minecraft:villages",
+            "chunk_count": 10
+          }
+        }
+      },
+      "after": {
+        "structures": [
+          {
+            "structure": "castleshift:castle",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 92,
+          "separation": 32,
+          "salt": 194572831,
+          "exclusion_zone": {
+            "other_set": "minecraft:villages",
+            "chunk_count": 10
+          }
+        }
+      }
+    },
+    {
+      "structure_set": "archaeology_ruins:adoberuins",
+      "slug": "archaeology-ruins",
+      "relative": "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/adoberuins.json",
+      "before_sha256": "a7813556d5371ac2d0c471236c5497b05c64bcba05fae1200a988e386f9880ce",
+      "before_spacing_chunks": 80,
+      "after_spacing_chunks": 76,
+      "separation_chunks_unchanged": 40,
+      "frequency_unchanged": 1,
+      "candidate_opportunity_increase_fraction": 0.10803324099722977,
+      "before": {
+        "structures": [
+          {
+            "structure": "archaeology_ruins:adoberuins",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 1108054183
+        }
+      },
+      "after": {
+        "structures": [
+          {
+            "structure": "archaeology_ruins:adoberuins",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 76,
+          "separation": 40,
+          "salt": 1108054183
+        }
+      }
+    },
+    {
+      "structure_set": "archaeology_ruins:mudpotterruin",
+      "slug": "archaeology-ruins",
+      "relative": "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json",
+      "before_sha256": "bfee5a92a48f9664a60ae38897d0779e8587d4b323be5ffed725640c2acffedf",
+      "before_spacing_chunks": 80,
+      "after_spacing_chunks": 76,
+      "separation_chunks_unchanged": 40,
+      "frequency_unchanged": 1,
+      "candidate_opportunity_increase_fraction": 0.10803324099722977,
+      "before": {
+        "structures": [
+          {
+            "structure": "archaeology_ruins:mudpotterruin",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 1027327534
+        }
+      },
+      "after": {
+        "structures": [
+          {
+            "structure": "archaeology_ruins:mudpotterruin",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 76,
+          "separation": 40,
+          "salt": 1027327534
+        }
+      }
+    },
+    {
+      "structure_set": "archaeology_ruins:mudschoolruin",
+      "slug": "archaeology-ruins",
+      "relative": "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json",
+      "before_sha256": "25a3f7d813d0d4c2a5f27d9bc1b53a4482aba0f97b9c681d8ff56c0286f18d6f",
+      "before_spacing_chunks": 80,
+      "after_spacing_chunks": 76,
+      "separation_chunks_unchanged": 40,
+      "frequency_unchanged": 1,
+      "candidate_opportunity_increase_fraction": 0.10803324099722977,
+      "before": {
+        "structures": [
+          {
+            "structure": "archaeology_ruins:mudschoolruin",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 1067233915
+        }
+      },
+      "after": {
+        "structures": [
+          {
+            "structure": "archaeology_ruins:mudschoolruin",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 76,
+          "separation": 40,
+          "salt": 1067233915
+        }
+      }
+    }
+  ],
+  "canonical_structure_set_inputs": {
+    "packwiz/config/paxi/datapacks/awft-integration/data/ancientstructures/worldgen/structure_set/german_buildings.json": "758c68879de0a5e17c1be411f1caff62e7ab3bd6fd7e23ec57e5c9c076025506",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ancientstructures/worldgen/structure_set/japanese_buildings.json": "fc4b8b23cc2745eec44ab4ea32893bc657ab051ecb970d50e3f59df45e5dcbe8",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ancientstructures/worldgen/structure_set/mayan_buildings.json": "befc3372367e8b12268bbb8093e5e931cb41edc49999d32ff838d34ff986ee04",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ancientstructures/worldgen/structure_set/roman_buildings.json": "e575bc2f5bcbb7b36727bf7c0f10d69c10563f2b0fdc28b214deb6501cff0c9f",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/adoberuins.json": "a7813556d5371ac2d0c471236c5497b05c64bcba05fae1200a988e386f9880ce",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudblacksmithruin.json": "96ab32ee2d4489921ec9d2e064ece185add3643aae3612044eeb358df0c82727",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json": "bfee5a92a48f9664a60ae38897d0779e8587d4b323be5ffed725640c2acffedf",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json": "25a3f7d813d0d4c2a5f27d9bc1b53a4482aba0f97b9c681d8ff56c0286f18d6f",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/ocean_ruin.json": "4201dd61f67b832ba76a97ad778efbfa60273a15989ed28e7139724aa661e53e",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/ruined_desert_pyramid.json": "45149690bb4870d1bfcd6128a5d0a981f4f1ea6a2cc5900ad5437e0208f23262",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/ruined_ocean_monument.json": "d283f5b94636d529445d3062b1c5e0b914cd6577e255fc52abf1db0295671fce",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/ruinedjungletemple.json": "31d8d8443c3e34294671f69985898d043a0ae86c6f80b2c5c3ba2bbc0d29f00d",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/small_ocean_ruin.json": "14743b45e103e4fbb9de586ffd8086146ae1535b2147273c9fbd3b08c1931f1b",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/smallmudruin.json": "a06c310871da43b5e0f38ea84d77ef9bd4470c59ff1b5151253422ec3f83fda0",
+    "packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/warm_ocean_ruin.json": "a35911441565b9f8c84c1c97af0ac82ce5e681bebb7f2dd0edd0d447c26d1963",
+    "packwiz/config/paxi/datapacks/awft-integration/data/betterdeserttemples/worldgen/structure_set/desert_temples.json": "5180a5feb8214f9e03696cafb810e1b4e9ab6b767689a5627bfe6ca6b8104afb",
+    "packwiz/config/paxi/datapacks/awft-integration/data/betterjungletemples/worldgen/structure_set/jungle_temples.json": "4ed08133df8f346da300a45481a03142c367a97bcb83e6bd172e1fe08a5664aa",
+    "packwiz/config/paxi/datapacks/awft-integration/data/castleshift/worldgen/structure_set/castle.json": "a955f68fc5a2537c8898de25659558556fbe37eebedc01bfb54f95e6336a5660",
+    "packwiz/config/paxi/datapacks/awft-integration/data/dungeons_arise/worldgen/structure_set/major_structures.json": "696b2bc3c660b380e17799074facc5d0808ef475ce684591daa0aef07eafe94d",
+    "packwiz/config/paxi/datapacks/awft-integration/data/dungeons_arise/worldgen/structure_set/minor_structures.json": "b499409802c5712d3a1ed7f0ac074ccc6b01f9fd558aaaae5e381ab6dfe419d2",
+    "packwiz/config/paxi/datapacks/awft-integration/data/epic/worldgen/structure_set/epic_temple.json": "e9fa7c0a3d761f635364e54e2201e44a37196e43ef8ec22927b02c3c7c6d5ea4",
+    "packwiz/config/paxi/datapacks/awft-integration/data/epic/worldgen/structure_set/epic_temple_ruin.json": "e6f2892fdf0c5396967ce3a14385c84fd54a4a93147b60ab754e2914897b84ce",
+    "packwiz/config/paxi/datapacks/awft-integration/data/mtr/worldgen/structure_set/badlands_temple.json": "4888df52dce2271ffae0a58056355beb5e295cdc9e2a18129b40cbe1b6c607f6",
+    "packwiz/config/paxi/datapacks/awft-integration/data/mtr/worldgen/structure_set/desert_temple.json": "906ca05a423754c42b56df3ea0bb560d000c8338bbcb38c5f3c1e3a705758ae5",
+    "packwiz/config/paxi/datapacks/awft-integration/data/mtr/worldgen/structure_set/jungle_temple.json": "c22f80fd913a9a646abdfe4a47581e8dd0794c56548368aaa5ea38b6665eba21",
+    "packwiz/config/paxi/datapacks/awft-integration/data/mtr/worldgen/structure_set/ocean_temple.json": "a48acc78a4224b32ac4dbb97e18abde251d5125a893c82f0600e51c6b040b685",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/ancient_crypt.json": "08f57866fa772f60af0fd2d53e3cfe4db03941d6c4c2aa8ebc22a0ad67725cbf",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/ancient_dungeon.json": "2ded42016be8a2999a3525d01e0b7385e1b5eff6c4abdfdc74e51489932c5643",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/ancient_ruins.json": "b1f63d7731bc831021036b92aeac7e254c87069f6cac54a558cbcbb4661d90be",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/ancient_towers.json": "3a80559081add591826bd7c09e851d3f9640dec79b424a59dae60a4210e47dfb",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/field_stone_ruins.json": "460a74f0a30ba5b156f239a448df036f49963ca4175f52f3cb86a1b28ecea86f",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/field_stone_ruins_rocks.json": "10ae1cead7b791a2227f2371f91d98acc84d44bb0acbeddff1dfca0f63320ec9",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/level_one_ruins.json": "2aa03a24027620f648853192e1336368b193dae450658cfc2d3a5284311df3f6",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/level_three_ruins.json": "55924895bb79b3d1c6452e9e249225a971e0db5586948fe35a8eb1c916145f02",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/level_two_ruins.json": "4d58d2e94e00e2d930ccf7958b064a93c2261ce27895b6dee7308351e53c4770",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/lost_soul_city.json": "6a4c8747be47f5691bed17b1d1076e79b7569128732b7c8ef693269fd18d63ef",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/ocean_fortress_main.json": "f33e26a338edb2557a370adddef5f636b0bccacbea08c3ace49985d334214f53",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/ocean_ruins.json": "c81f3e24f3aef2ed140967cc948f0330a01282d0ffe7271f321fbac86e69b138",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/pumpkin_ruins.json": "99d98e7301ae6be60648f2662c04c57c58d5147d94c3bffc2adb10ea004345ba",
+    "packwiz/config/paxi/datapacks/awft-integration/data/philipsruins/worldgen/structure_set/underground_structures.json": "e9b8645768feb1a822f3c6e09e9371a82a787de55d3f53324b8fb028dc5f4da4",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ruinarium/worldgen/structure_set/aztec_jungle_ruins_1.json": "cd67d2de73edb697dbc8dd25aebb5caf357256df586c66380d59ae05a517a860",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ruinarium/worldgen/structure_set/aztec_jungle_ruins_2.json": "8de6d35ca5e60a67c859fccdeab819b1d38e8792c3c0ca9f9fba7a0cb6d43d1e",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ruinarium/worldgen/structure_set/aztec_savanna_ruins_1.json": "cfdbbff82d0d6e4fa347876f8d8adebedf3b18f2bd293c31a61c16b7acf8832a",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ruinarium/worldgen/structure_set/aztec_savanna_ruins_2.json": "aaf76bf81867a98b015f3d437306eea6fdf455da3ae5a307a690f32c30f4296a",
+    "packwiz/config/paxi/datapacks/awft-integration/data/ruinarium/worldgen/structure_set/aztecjungletemple.json": "f0493768baecc244c932749170572402ca8bd163bf26d0ded97b6e74e83e5c4b"
+  },
+  "generator_before_sha256": "3e366906f55e5451ce6d429b67951e1ebc919f446f4dd1ecb1024d1c18d1c1c4",
+  "mods": {
+    "castle-shift": {
+      "filename": "castleshift-0.3.0+1.21.1-neoforge.jar",
+      "version": "0.3.0",
+      "size": 167775,
+      "hashes": {
+        "sha1": "7a97b48d555095c07b848e39163f7c4b59aa5008",
+        "sha512": "263c27726d007fd905e9672e24c8c036ca7e05dc269b7922be0dc8f9be349238b273ca1fcdc9f7e690ddb037278169f9ba1fc67040bf204f26eece93dfd89ba3"
+      }
+    },
+    "archaeology-ruins": {
+      "filename": "archaeology_ruins-1.0.0-neoforge-1.21.1.jar",
+      "version": "1.0.0",
+      "size": 154587,
+      "hashes": {
+        "sha512": "e240e939684ea73d21f2ea04319583491269c529ce1b730ad34d81609824d1c5ad7608dd964e9861ea5e1efe6bdb4591c36a4eb62b149dc57478bf14c180ef9c",
+        "sha1": "2d77453d9a5e3b164ed31c6e659a3d6cce50a53a"
+      }
+    }
+  },
+  "excluded_from_increase": [
+    "all other structure sets",
+    "pirate spawn modifiers",
+    "giant dungeons",
+    "temples and ocean fortresses",
+    "hostile ruins",
+    "mixed unchecked Ancient Structures groups"
+  ],
+  "deployment_gate": "Identical Packwiz/Paxi bytes on client+server plus actual strict SeedGen/native loaded registry equality and disposable fresh-chunk tests; no explored-terrain replay",
+  "source_only": true,
+  "reserve_guard": {
+    "utc": "2026-10-28T17:42:27.8081998Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 119612751872,
+    "dFreeBytes": 284755898368,
+    "estimatedCBytes": 8388608,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  }
+}

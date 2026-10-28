@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-28T18:31:25.485575+00:00",
+  "command": "python -m unittest discover -s tests -v",
+  "returncode": 0,
+  "elapsed_seconds": 141.562,
+  "private_log": "D:\\A World for Two\\staging\\worldgen-source-verification\\1793212143906514000\\unittest.log",
+  "storage_checks": [
+    {
+      "at": "2026-10-28T18:29:03.922039+00:00",
+      "reserve": {
+        "utc": "2026-10-28T18:29:04.8362075Z",
+        "allowed": true,
+        "floorBytesEach": 32212254720,
+        "cFreeBytes": 118242017280,
+        "dFreeBytes": 284446371840,
+        "estimatedCBytes": 33554432,
+        "estimatedDBytes": 536870912,
+        "reason": "Both drives remain above reserve after estimated writes"
+      },
+      "owned_bytes": 0
+    },
+    {
+      "at": "2026-10-28T18:29:50.070093+00:00",
+      "reserve": {
+        "utc": "2026-10-28T18:29:52.5791050Z",
+        "allowed": true,
+        "floorBytesEach": 32212254720,
+        "cFreeBytes": 118245109760,
+        "dFreeBytes": 284439252992,
+        "estimatedCBytes": 33554432,
+        "estimatedDBytes": 536870912,
+        "reason": "Both drives remain above reserve after estimated writes"
+      },
+      "owned_bytes": 58313
+    },
+    {
+      "at": "2026-10-28T18:30:37.939118+00:00",
+      "reserve": {
+        "utc": "2026-10-28T18:30:38.7283077Z",
+        "allowed": true,
+        "floorBytesEach": 32212254720,
+        "cFreeBytes": 118244421632,
+        "dFreeBytes": 284439179264,
+        "estimatedCBytes": 33554432,
+        "estimatedDBytes": 536870912,
+        "reason": "Both drives remain above reserve after estimated writes"
+      },
+      "owned_bytes": 123231
+    },
+    {
+      "at": "2026-10-28T18:31:23.971528+00:00",
+      "reserve": {
+        "utc": "2026-10-28T18:31:24.9158790Z",
+        "allowed": true,
+        "floorBytesEach": 32212254720,
+        "cFreeBytes": 118242623488,
+        "dFreeBytes": 284439052288,
+        "estimatedCBytes": 33554432,
+        "estimatedDBytes": 536870912,
+        "reason": "Both drives remain above reserve after estimated writes"
+      },
+      "owned_bytes": 176433
+    }
+  ],
+  "tier": "source tests only, not Minecraft runtime or visual acceptance"
+}
