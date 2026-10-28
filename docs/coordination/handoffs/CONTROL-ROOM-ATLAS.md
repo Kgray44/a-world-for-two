@@ -411,3 +411,47 @@ a master-scheduled controller restart; do not stop the controller while it owns
 a live Minecraft process. The native7068 controller still ran the prior integrated
 8ef3ece implementation during this follow-up. No live backup revalidation or
 native restore was dispatched by CONTROL.
+
+## Actual integrated native51 stop / native52 start
+
+The master granted a GET/UI-only observation window for its own stop, retained
+recovery checkpoint, Java upgrade and start. The native controller stayed Python
+**7068**, serving the integrated8ef3ece implementation. CONTROL issued no lifecycle
+POST, command, configuration change, client input or extra JVM.
+
+- **Stop world** job `51af474fc0324516bf6a1763e7428e27` completed
+  **19:43:21.246934Z**. At19:43:44Z, actual overview state was offline, PIDnull.
+  Performance cleared current tick/process/heap/chunk values and retained history;
+  Atlas retained dated last-known locations and marked live observations unavailable.
+- The same controller's **Start world** job
+  `b15e21807d9147c5bba21907bb1cede3` was created **19:45:19.559019Z** and actually
+  running at19:46:04Z and19:46:50Z. Its owned Java PID was **49072**. The browser
+  stayed responsive and showed starting, with a readiness message and unavailable
+  current telemetry. No new HTTP timing measurement was established in this phase.
+- By the **19:48Z browser observation**, that exact start was complete; its result
+  said online/PID49072, with a snapshot evaluated19:47:40.939526Z. Overview showed
+  candidate.52 online and zero online players. Performance recovered current
+  **20 TPS / 3.5 MSPT**, **3.77GiB RSS / 1.22GiB heap-used**, 841 holders and30
+  entities. These are rounded single UI readings, not load/overhead acceptance.
+  Startup briefly showed24.1MSPT before the later3.5MSPT observation.
+- Atlas recovered current bridge observations and renderer availability/queue0;
+  its existing26-tile cache and historical positions remained visible. Browser
+  console inspection had no warnings/errors. The active observer tab was closed.
+
+This proves a real integrated **stop -> upgrade -> start** cycle and display
+recovery. The dedicated Restart button/endpoint was not invoked. Installed-game
+restore, live-player teleport/return/access edits, remote tunnel joins, finished
+world load and final official promotion remain unqualified. The separate test
+backend's restart/session/restore proof above uses synthetic file payloads.
+
+Private receipts: `native51-52-cycle-offline.json`,
+`native51-52-cycle-starting.json`, `native51-52-cycle-browser-online.json`,
+`native51-52-cycle-online.png`, `native51-52-performance-offline.png`,
+`native52-performance-online.json`, and `native52-atlas-online.txt`.
+At19:47:02Z the bounded16MiB C writer forecast passed, with C122,091,675,648 and
+D283,824,701,440 free bytes. Owned-writer monitoring is not an OS quota and does
+not constrain unrelated applications or pre-existing writers.
+
+Automatic approval review rejected an optional read-only startup timing script,
+returning only **blocked by policy**. It was not executed or substituted with a
+timing claim. The permitted browser state/readiness observations above completed.
