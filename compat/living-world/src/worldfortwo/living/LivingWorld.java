@@ -1,7 +1,6 @@
 package worldfortwo.living;
 
 import com.google.gson.*;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
@@ -20,6 +19,8 @@ import java.security.MessageDigest;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BooleanSupplier;
 import tn.naizo.smartvillagers.ai.*;
 
 /** Own mod: no bridge edits, no world generation, no entity spawning, no command execution. */
@@ -35,6 +36,7 @@ public final class LivingWorld {
     private static volatile WatchService watcher;
     private static volatile Thread watchThread;
     private static volatile long lifecycle;
+    private static final AtomicInteger activeRequests=new AtomicInteger();
     private long ticks;
     public LivingWorld(){
         NeoForge.EVENT_BUS.addListener(this::commands);
@@ -88,7 +90,9 @@ public final class LivingWorld {
                 Path source=Files.exists(STATE.resolve("runtime.json"))?STATE.resolve("runtime.json"):CONFIG;
                 safePath(source);
                 if(Files.isSymbolicLink(source)||Files.size(source)>1024*1024)throw new IllegalArgumentException("Configuration missing or exceeds 1 MiB");
-                byte[] raw=Files.readAllBytes(source);JsonObject document=JsonParser.parseString(new String(raw,StandardCharsets.UTF_8)).getAsJsonObject();
+                byte[] raw;try(var stream=Files.newInputStream(source)){raw=stream.readNBytes(1024*1024+1);}
+                if(raw.length>1024*1024)throw new IllegalArgumentException("Configuration exceeds 1 MiB");
+                JsonObject document=JsonParser.parseString(new String(raw,StandardCharsets.UTF_8)).getAsJsonObject();
                 if(!WorldCharacters.text(document,"format").equals("awft-living-world:1"))throw new IllegalArgumentException("Unknown configuration format");
                 WorldCharacters next=new WorldCharacters(document);
                 String digest=HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(raw));
@@ -145,9 +149,14 @@ public final class LivingWorld {
         catch(RejectedExecutionException ignored){writing=false;}
     }
     /** Persist a conservative maximum charge before reusing upstream's asynchronous transport. */
-    public static CompletableFuture<AiResponse> request(AiProvider provider,AiRequest request){
+    public static CompletableFuture<AiResponse> request(AiProvider provider,AiRequest request,MinecraftServer server,String character,BooleanSupplier stillAllowed){
         ExecutorService owned=io;if(owned==null)return CompletableFuture.completedFuture(AiResponse.failure("Character service unavailable"));
+        int cap=Math.max(1,Math.min(2,WorldCharacters.integer(WorldCharacters.current.settings(),"max_concurrent",2)));
+        int active;
+        do{active=activeRequests.get();if(active>=cap)return CompletableFuture.completedFuture(AiResponse.failure("Character concurrency limit; scripted fallback"));}while(!activeRequests.compareAndSet(active,active+1));
         CompletableFuture<AiResponse> result=new CompletableFuture<>();
+        result.whenComplete((answer,failure)->activeRequests.decrementAndGet());
+        long epoch=lifecycle;
         try{owned.execute(()->{
             try{
                 JsonObject settings=WorldCharacters.current.settings();
@@ -168,9 +177,24 @@ public final class LivingWorld {
                 if(outputBound<1||outputBound>512)throw new IllegalStateException();
                 double cost=(inputBound*input+outputBound*output)/1000000.0;
                 if(!Double.isFinite(charged)||charged<0||charged+cost>budget)throw new IllegalStateException();
-                usage.addProperty("day",day);usage.addProperty("reserved_usd",charged+cost);atomic(ledger,GSON.toJson(usage));
-                provider.complete(request).orTimeout(30,TimeUnit.SECONDS).whenComplete((answer,failure)->{
-                    if(failure!=null)result.complete(AiResponse.failure("Provider unavailable; scripted fallback"));else result.complete(answer);
+                JsonArray recent=new JsonArray();long now=System.currentTimeMillis(),latest=0;int individual=0;
+                for(JsonElement item:WorldCharacters.array(usage,"requests")){
+                    JsonObject row=item.getAsJsonObject();long at=row.get("at").getAsLong();
+                    if(now-at>=3600000L)continue;if(at>now+2000L)throw new IllegalStateException();
+                    recent.add(row);if(character.equals(WorldCharacters.text(row,"character"))){individual++;latest=Math.max(latest,at);}
+                }
+                JsonObject profile=WorldCharacters.current.profileById(character),ai=WorldCharacters.object(profile,"ai");
+                if(recent.size()>=Math.max(1,Math.min(60,WorldCharacters.integer(settings,"requests_per_hour",24)))||individual>=Math.max(1,Math.min(60,WorldCharacters.integer(ai,"requests_per_hour",12)))||latest>0&&now-latest<Math.max(5,WorldCharacters.integer(ai,"cooldown_seconds",20))*1000L)throw new IllegalStateException();
+                JsonObject attempt=new JsonObject();attempt.addProperty("character",character);attempt.addProperty("at",now);recent.add(attempt);
+                usage.add("requests",recent);usage.addProperty("day",day);usage.addProperty("reserved_usd",charged+cost);atomic(ledger,GSON.toJson(usage));
+                // Recheck loaded entities, consent and the exact configuration on the server executor
+                // after disk admission, immediately before upstream's nonblocking sendAsync call.
+                server.execute(()->{
+                    try{
+                    if(io!=owned||lifecycle!=epoch||!stillAllowed.getAsBoolean()){result.complete(AiResponse.failure("Conversation no longer active; scripted fallback"));return;}
+                    provider.complete(request).orTimeout(30,TimeUnit.SECONDS).whenComplete((answer,failure)->{
+                        if(failure!=null)result.complete(AiResponse.failure("Provider unavailable; scripted fallback"));else result.complete(answer);
+                    });}catch(Exception ignored){result.complete(AiResponse.failure("Provider unavailable; scripted fallback"));}
                 });
             }catch(Exception ignored){result.complete(AiResponse.failure("AI budget, pricing or storage gate unavailable; scripted fallback"));}
         });}catch(RejectedExecutionException ignored){result.complete(AiResponse.failure("Character worker busy; scripted fallback"));}

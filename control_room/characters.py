@@ -38,9 +38,12 @@ CAPABILITIES = {
                 'persona': True, 'lore': True, 'scripted_fallback': True,
                 'named_uuid_selection': True, 'player_opt_in': True,
                 'bubble_toggle': True, 'bubble_distance': False, 'bubble_duration': False,
+                'global_provider': 'openai', 'global_model': True, 'anthropic': False,
                 'native_memory_toggle': True, 'native_context_turns_max': 8,
                 'note': 'Game integration uses the separately deployed adapter and upstream provider. '
-                        'Provider/model and memory controls here configure Control Room previews. '
+                        'Global OpenAI provider/model policy applies to the game after Save and Apply; '
+                        'native credentials use SMARTVILLAGERS_API_KEY. Anthropic and per-character '
+                        'provider/model overrides configure previews only. Memory retention and correction are preview controls. '
                         'An installed adapter watches staged profiles and reports their exact hash after application. '
                         'Without that acknowledgement, game application remains pending.'}}
 

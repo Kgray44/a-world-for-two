@@ -11,7 +11,8 @@
     "ConversationMixin",
     "MemoryMixin",
     "AmbientDialogueMixin",
-    "BubbleMixin"
+    "BubbleMixin",
+    "ProviderConfigMixin"
   ],
   "injectors": {
     "defaultRequire": 1
