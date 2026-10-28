@@ -4,6 +4,17 @@
 `01a183b8-3be2-7f93-8f23-f2e914745038`. Master: **Build It!**, chat
 `01a17947-1d00-7fd1-aa5e-d1fb514f8671`.
 
+**Actual deployment update, 2026-10-28 22:21 UTC:** Resolute Wren, Tern Pilot
+Cutter and Salt Marigold Ketch now exist in the authoritative construction
+world. Under a new exclusive master lease, each passed fresh native BEFORE and
+support checks, one placement, normal settling, full unchanged AFTER checks and
+map queuing. All18 genuine terminal markers were independently authenticated;
+cleanup/tickets/futures/failures were zero. The lease was explicitly released
+early. See [actual deployment evidence](FLEET-NATIVE-DEPLOYMENT55.md).
+Earlier source-only/no-placement statements below describe the earlier
+checkpoints. Client views, walking, sailing, two-player use, restart and
+permanent-save promotion remain unqualified.
+
 The governing primary-checkout `docs/coordination/WORKSTREAMS.md` and
 `docs/coordination/handoffs/FLEET.md` reserve every save/runtime/client action
 for the master. The first bounded fleet lease produced one genuine four-cell
