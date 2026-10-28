@@ -235,6 +235,7 @@ async function backupsPage() {
   const view=state.renderGeneration;
   const d=await api('/api/backups');
   if(!viewCurrent('backups',view))return;
+  state.backupsDirty=false;
   $('#main').innerHTML=header('Keep the memories safe.','Verified snapshots, clear history and careful restores.',button('backup','＋ Create backup','primary'))+
     notice('Backups use a controlled stop so Minecraft can flush the world, then resume after verification. Restore requires the server to be offline and preserves the current world in a separate safety directory.')+
     card('Your world, through time',d.length?`<div class="table-wrap"><table><thead><tr><th>CREATED</th><th>ARCHIVE SIZE</th><th>WORLD & CONFIG FILES</th><th>INTEGRITY</th><th></th></tr></thead><tbody>${d.map(b=>`<tr><td class="name">${when(b.created)}<small class="mono">${esc(b.id)}</small></td><td>${bytes(b.bytes)}</td><td>${number(b.files,0)} files · ${bytes(b.source_bytes)}</td><td>${pill(b.integrity,b.integrity==='verified'?'good':'warn')}</td><td><div class="button-row">${button('backup-verify','Verify','small',`data-id="${b.id}"`)}${button('backup-restore','Restore','danger small',`data-id="${b.id}"`)}</div></td></tr>`).join('')}</tbody></table></div>`:empty('Your first backup will appear after Minecraft has created and saved a world.'));
@@ -309,8 +310,9 @@ async function refresh() {
     state.connected=true;$('#connection').className='connection';$('#connection').innerHTML='<i></i> Connected locally';
     $('#last-update').textContent=measurementLabel(state.overview.metrics?.freshness?.snapshot);
     if(['overview','performance'].includes(state.page)&&(!state.historyAt || Date.now()-state.historyAt>60000)){state.history=await api('/api/history?hours=1');state.historyAt=Date.now();}
-    for(const j of state.jobs){if(['failed','complete','interrupted'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);toast(j.status!=='complete'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status!=='complete');}}
+    for(const j of state.jobs){if(['failed','complete','interrupted'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);state.backupsDirty=true;toast(j.status!=='complete'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status!=='complete');}}
     if(['overview','performance'].includes(state.page))await render();else if(state.page==='storage')storagePage(await api('/api/storage'));else if(state.page==='console')await refreshConsole();else if(state.page==='connectivity'&&!$('#modal').open&&!document.activeElement?.closest('form'))await connectivityPage();
+    else if(state.page==='backups'&&state.backupsDirty&&!$('#modal').open)await backupsPage();
     showJobs();
     if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');if(state.page==='players'&&$('#whitelist-list'))$('#whitelist-list').innerHTML=whitelistHtml(d);}
     await refreshPlayerDetails();
