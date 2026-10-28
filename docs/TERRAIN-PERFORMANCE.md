@@ -1,7 +1,7 @@
 # Distant terrain and performance qualification
 
-Status at 2026-10-28 18:45 UTC: source tooling is implemented and one current
-passive server-only slice has completed. Current strict
+Status at 2026-10-28 19:22 UTC: two authorized passive slices completed. Fresh
+candidate.50 refuses an uninitialized Moonlight data provider. Current strict
 SeedGen parity, map fidelity and complete gameplay performance are **unqualified**.
 The master owns runtime installation, both saves and the next test session. This
 lane has not launched Minecraft, modified either save or changed installed settings.
@@ -39,13 +39,28 @@ and unsupported-operation exceptions. There is no paired current client effectiv
 witness. Identical UNKNOWNs cannot establish parity. Private witnesses include
 native seed state and must remain outside Git and public reports.
 
-The latest retained client lifecycle is candidate.48/bridge 0.6.34 on October 28:
+The historical candidate.48/bridge 0.6.34 client lifecycle on October 28:
 resource custody refused Moonlight's exact `CachePathPackResources` provider for
 `supplementaries:generated_pack`; fallback registry loading also failed, and the
 original strict SeedGen gate stood down. The exact-provider repair is already
 installed in candidate.49/bridge 0.6.35. No fresh candidate.49 client result exists.
-Candidate.50/bridge 0.6.36 is master-owned integration work. Earlier log failures
-must not be relabelled as its result.
+Candidate.50/bridge0.6.36 then reached a fresh natural login. Its modded private
+registry load recognized the exact Moonlight provider but refused:
+`Moonlight server-data cache is not initialized; never infer empty`.
+Subsequent `damage_type` errors belong to the fallback load, not that primary
+modded-load cause. SeedGen explicitly stood down and retained DH downloads.
+The first50launch had replayed a retained QA quit request and is excluded from
+this parity result; the master launched the fresh client after correcting that
+intent. No source in this lane issued a native quit/connect or any other command.
+
+During the authorized inspection, the existing client dynamic-data cache contained
+73files/53,033bytes, including the missing Supplementaries biome tags. This is
+evidence of physical files at inspection, not proof that the native provider was
+initialized or that these bytes were available to the failed load. A separate
+source-only fix must run the genuine Moonlight early resource lifecycle before
+registry loading. Calling a cache empty, directly faking its delegate, or ignoring
+the regeneration/error path is prohibited. Raw current failure logs remain private
+and hash-bound in the [current50 evidence](../evidence/performance/candidate50-client-city-qa-20261028.json).
 
 The pinned SeedGen configuration still has prediction enabled/AUTO, ordinary
 structures/trees/water features enabled, extended distance disabled and server
@@ -123,11 +138,14 @@ both match the current 121,569-byte pin, SHA-256
 between retained awft.1 and awft.2 artifacts; the refresh changed the selected DH
 source/region classes instead.
 
-The actual retained candidate.48 log at 11:27:54 UTC records attachment and a
-7,872-source refresh. At 11:28:09 it reports 28,056 Xaero region queries, 3,408
+The actual retained candidate.48 log at raw header11:27:54 records attachment and a
+7,872-source refresh. At raw header11:28:09 it reports28,056 Xaero region queries,3,408
 color calls and three computed regions, with painting running. That proves scoped
 native callback/index activity. It is not a pixel/terrain or exploration-bit
 comparison. The current candidate still needs those checks.
+The historical raw-header timezone was not authenticated by this review; those
+labels must not be presented as UTC instants. New native JSON/OS timestamps are
+explicitly recorded in UTC.
 
 The source establishes the intended
 separation; before/after native map views, real-discovery precedence, unchanged
@@ -171,6 +189,37 @@ but no causal A/B improvement or final gameplay acceptance is claimed. Native
 snapshots summarize preceding roughly5second windows; the first one precedes the
 first host poll. Both drives stayed above30GiB during the recorder's owned writes;
 that monitoring did not constrain master game writes or external applications.
+
+The later300second [combined CITY-QA recording](../evidence/performance/candidate50-client-city-qa-20261028.json)
+received59fresh server and49client snapshots with zero capture errors. Client
+states were loading, connection, receiving-level and pause screens; there were
+**zero focused game-screen snapshots**. Its36,757ms worst retained frame is a
+real loading/menu observation, not foreground gameplay acceptance.
+
+| Observed context, same candidate50 | Server-only mixed readiness | Combined startup/CITY-QA |
+| --- | ---: | ---: |
+|Sampled mean-MSPT median / maximum|2.379 /3.295ms|6.812 /35.738ms|
+|Lowest sampled TPS estimator|19.947|9.679|
+|Minimum available physical RAM|2,695,761,920bytes|58,716,160bytes (~56MiB)|
+|Minimum Windows commit headroom|10,244,313,088bytes|381,718,528bytes (~364MiB)|
+|Client JVM heap used|Client closed|3.561–6.007GB,6GiB maximum|
+|Client RSS|Client closed|6.384–7.882GB|
+|Host page-ins per second, maximum sampled|3,109.76|86,076.16|
+
+This is a comparison of observed mixed contexts, **not a controlled preset A/B**.
+Other work and world activity varied. The combined run demonstrates severe physical
+and commit pressure; registry loading, menu/focus state and paging overlapped, so
+no single-cause attribution is made for its long frame. The master was notified
+immediately. A working-set trim changes residency, not committed memory. Raising
+JVM heaps is not supported by these observations.
+
+Exact file watches between18:57:46 and19:02:20UTC recorded a646,840byte server
+Overworld WAL increase; the existing watched client DB increased16,384bytes and
+its WAL increased4,148,872bytes. These are logical DB/WAL sizes, not physical
+allocation, generated area, exploration or proof of SeedGen output. SeedGen had
+refused; real server/DH updates remained available. Individual tick spikes,
+chunk-generation/load spans and current foreground/two-player workloads remain
+unqualified. Configuration hashes were unchanged within the combined recording.
 
 There is no completed current-candidate configuration comparison yet. Historical
 candidate.23's five-minute real two-player observation is useful evidence of a

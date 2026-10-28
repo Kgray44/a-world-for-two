@@ -88,3 +88,25 @@ for a future authorized slice; it does not invent first50slice LOD growth.
 The19focused performance/parity tests pass, including unrelated-file exclusion,
 WAL appearance and unreadable-metadata refusal. No repeat full suite or new game
 run was performed for this small change.
+
+Frozen performance follow-up: `candidate50-client-city-qa-20261028.json` records
+the authorized300second mixed client startup/menus/CITY-QA slice,59fresh server /
+49client snapshots and no focused game-screen samples. Minimum physical available
+was56MiB and commit headroom364MiB; a36.757second retained frame was observed.
+This is a resource-admission problem and not gameplay acceptance. Private result
+SHA `289e9cfe1aecef0c38c60a5ae3400c6ee74ee5a78125ebf28f2c5df5ddd09ee7`.
+Exact DB/WAL sizes are now measured with explicit observational limits.
+
+Fresh50 strict SeedGen result: provider recognized but native cache uninitialized;
+original strict refusal and DH download fallback remain intact. Private native
+failure receipt SHA `dad4d1053c9016aae0688dcb0e8838d03985da878c47e5909fa7852fc289a576`.
+Master requested a separate small source-only genuine early-lifecycle proposal;
+active compatibility sources, builds/install and all native controls stay master-owned.
+
+Master-requested read-only focused review of CONTROL PR1 at frozen
+`8ef3ecece908a21fc8a90ca3642d3edf49c78623` found no new blocking issue in the
+requested Server.start/Players.snapshot/403retry scope. Review inspected source
+and existing test cases; no edits or full suite were run for that review.
+No qualified automatic Xaero/MapHorizons-to-Control-Room export/sync contract is
+established by this lane. Private native QA view state is not such an API; retain
+the UI's unverified synchronization wording.
