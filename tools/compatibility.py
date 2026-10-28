@@ -114,7 +114,10 @@ def build_inventory(root=REPO):
     lock_bytes = lock_path.read_bytes()
     lock = json.loads(lock_bytes)
     lock_sha256 = hashlib.sha256(lock_bytes).hexdigest()
-    installed = {m["request"]: m for m in lock["mods"] if m.get("request")}
+    # A separately requested mod may already serve an older alternative request.
+    # Retain that association and also resolve the exact canonical project slug.
+    installed = {m["slug"]: m for m in lock["mods"]}
+    installed.update({m["request"]: m for m in lock["mods"] if m.get("request")})
     values = []
     for key, name, group in requests:
         mod = installed.get(key)
