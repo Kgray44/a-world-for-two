@@ -79,7 +79,8 @@ class Backups:
             partial = target.with_suffix(".zip.partial")
             roots = [self.layout.world, self.layout.server / "config", self.layout.server / "defaultconfigs"]
             single = [self.layout.server / "server.properties", self.layout.server / "whitelist.json",
-                      self.layout.server / "ops.json", self.layout.server / "installed.json", self.layout.home / "packwiz/active.json"]
+                      self.layout.server / "ops.json", self.layout.server / "installed.json", self.layout.home / "packwiz/active.json",
+                      self.layout.state / "characters/registry.json", self.layout.state / "characters/runtime.json"]
             files = [f for root in roots if root.exists() for f in root.rglob("*") if f.is_file()]
             files += [f for f in single if f.is_file()]
             if not any(f.name == "level.dat" for f in files):
@@ -146,7 +147,8 @@ class Backups:
                     raise UserError("Unsafe backup path")
                 if not (relative.startswith("world/") or relative.startswith("server/config/")
                         or relative.startswith("server/defaultconfigs/") or relative in
-                        {"server/server.properties", "server/whitelist.json", "server/ops.json", "server/installed.json", "packwiz/active.json"}):
+                        {"server/server.properties", "server/whitelist.json", "server/ops.json", "server/installed.json", "packwiz/active.json",
+                         "dashboard/characters/registry.json", "dashboard/characters/runtime.json"}):
                     raise UserError("Backup contains an unmanaged path")
                 if relative in expected:
                     raise UserError("Duplicate backup entry")
@@ -251,6 +253,14 @@ class Backups:
                     if target.exists():
                         os.replace(target, safety / group)
                     os.replace(source, target)
+            character_source = stage / 'dashboard/characters'
+            if character_source.exists():
+                character_target = self.layout.state / 'characters'
+                # Preserve current profiles/history and telemetry before restoring saved profiles.
+                if character_target.exists():
+                    os.replace(character_target, safety / 'characters')
+                character_target.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(character_source, character_target)
             write_json(safety / "receipt.json", {"restored_from": ident, "at": utcnow(),
                        "note": "Pre-restore world and configs preserved. Original properties and release metadata are retained in the staged snapshot for explicit reconciliation."})
             notify("World restored; prior world preserved at " + str(safety))
