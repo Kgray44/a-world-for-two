@@ -1,4 +1,4 @@
-"""One exact saved306 Wren berth/batch for master integration, no world actions."""
+"""One exact saved6ad3a8 Wren berth/batch for master integration, no world actions."""
 from __future__ import annotations
 
 import argparse
@@ -14,21 +14,32 @@ from tools.playtest import guard
 from tools.settlement_attractions import BackupWorld
 
 
-CHECKPOINT = '20261028T180051Z-30624d'
-CHECKPOINT_SHA = '3cb269d28ae1ccbac882a44d35277d82c83582274abad2f1cf3b41566d3e9b24'
+CHECKPOINT = '20261028T191243Z-6ad3a8'
+CHECKPOINT_SHA = '0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2'
 FLEET_COMMIT = 'cec9f378f17f8a7a58c265cafe124a7dbceae623'
 HOME = Path(r'D:\A World for Two\staging\world-tests\20261027T053650Z-artistic')
+REGISTRY_SOURCE = 'staging/fleet-registry-provenance-8cfa5ae7/registry-original.json'
+REGISTRY_SHA = '8cfa5ae77e20b8b5c1730b2928c55156557ebecb7e84480142088bda04ef92c4'
 ORIGIN, ROTATION, KEY = (1000, 63, -1366), 1, 'resolute-wren'
 MAX_OUTPUT, MAX_SOURCE_BYTES = 32*1024**2, 64*1024**2
 WATER = 'minecraft:water[level=0]'
 AIR_STATES = {AIR, 'minecraft:cave_air', 'minecraft:void_air'}
+ADDITIONAL_CITY_PROTECTIONS = (
+    ('Bent Ropewalk', 'staging/tortuga-fill-bent-ropewalk-coast-1793211126478817700/complete-after-VERIFY-ONLY.json', '75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e'),
+    ('Leaning Galley', 'staging/tortuga-fill-leaning-galley-hook-1793211150053264700/complete-after-VERIFY-ONLY.json', '21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80'),
+    ('Tide Stove', 'staging/tortuga-fill-tide-stove-west-quay-1793211157736738700/complete-after-VERIFY-ONLY.json', '87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b'),
+    ('Cork and Needle / Mended Wake', 'staging/tortuga-fill-net-needle-crook-1793212893524565700/complete-after-VERIFY-ONLY.json', '8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817'),
+    ('Moonwatch / Gull Last Hook', 'staging/tortuga-fill-moon-tackle-returns-1793212899675804500/complete-after-VERIFY-ONLY.json', '9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a'),
+    ('Small Meridian', 'staging/tortuga-fill-chart-window-loft-1793212905634658900/complete-after-VERIFY-ONLY.json', '72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025'),
+)
+PIPPIN_COVER_POINTS = ((1236, 64, -1194), (1224, 64, -1194))
 
 
 def checked_checkpoint(receipt, checkpoint_id=CHECKPOINT, checkpoint_sha=CHECKPOINT_SHA):
     if (checkpoint_id != CHECKPOINT or checkpoint_sha != CHECKPOINT_SHA or
             receipt.get('verified') is not True or receipt.get('id') != CHECKPOINT or
             receipt.get('sha256') != CHECKPOINT_SHA):
-        raise UserError('Exact current verified306 checkpoint required; no stale binding')
+        raise UserError('Exact current verified6ad3a8 checkpoint required; no stale binding')
 
 
 def rotate_point(point, origin, rotation):
@@ -146,6 +157,7 @@ def protections(home, registry):
               ('Western zipline full flight/station mask',
                home/'staging/zipline-west-v2-source-1793152099836099800/all-v2-RESERVATION-ONLY.json',
                '92ea594836795a61e00f5cc32290d49d1d47b9fd6eb55aeefc99d527acf8854d')]
+    paths += [(name, home/relative, pin) for name, relative, pin in ADDITIONAL_CITY_PROTECTIONS]
     protected, records, allocated = set(), [], 0
     for name, path, pin in paths:
         if not path.is_file() or not 0 < path.stat().st_size <= 16*1024**2 or digest(path) != pin:
@@ -162,6 +174,11 @@ def protections(home, registry):
         protected.update(positions)
         records.append({'name': name, 'path': str(path), 'sha256': pin, 'positions': len(positions),
                         'bounds': bounds(positions), 'AIR_and_BE_masks_retained': True})
+    protected.update(PIPPIN_COVER_POINTS)
+    records.append({'name': 'Pippin separately cleared ordinary cover cells',
+                    'positions': len(PIPPIN_COVER_POINTS), 'exact_positions': [list(p) for p in PIPPIN_COVER_POINTS],
+                    'source': 'Master6ad3a8 checkpoint and native_relocation_request.SOURCE/COVER',
+                    'AIR_and_BE_masks_retained': True})
     return protected, records
 
 
@@ -236,8 +253,10 @@ def prepare(home=HOME, output=None, *, expected_fleet_sha256=None):
         raise UserError('Exact final parent-approved fleet source SHA256 required')
     receipt = read_json(home/'dashboard/settlement/backup-receipt.json', {})
     checked_checkpoint(receipt)
-    registry_path = home/'dashboard/settlement/registry.json'
+    registry_path = home/REGISTRY_SOURCE
     registry_sha = digest(registry_path)
+    if registry_sha != REGISTRY_SHA:
+        raise UserError('Preserved historical native registry bytes changed')
     registry = read_json(registry_path)
     if Path(registry['world_path']).resolve() != home/'world/RosewaterArtistic':
         raise UserError('Current construction save identity differs')
@@ -248,14 +267,20 @@ def prepare(home=HOME, output=None, *, expected_fleet_sha256=None):
         field, tags, before, probe, detail = inspect_candidate(doc, registry, snapshot, ORIGIN, ROTATION, protected)
         landing = next(f for f in doc['design']['fittings'] if f['kind'] == 'boarding interface')['local_floor']
         quay = nearby_quay(snapshot, rotate_point(landing, ORIGIN, ROTATION), protected)
-        sources = snapshot.sources[:]
+        cover_cells = [{'position': list(pos), 'saved_state': snapshot.state(pos)} for pos in PIPPIN_COVER_POINTS]
+        if any(row['saved_state'] != AIR for row in cover_cells):
+            raise UserError('The new checkpoint does not retain the two separately cleared Pippin cover cells')
+        sources = [dict(row) for row in snapshot.sources]
+        for row in sources:
+            if row['file'] == 'level.dat':
+                row['role'] = 'Saved seed/DataVersion matches pinned historical native export; no current palette acceptance'
     finally:
         snapshot.close()
     if digest(source) != expected_fleet_sha256 or digest(registry_path) != registry_sha:
         raise UserError('Fleet source changed during binding; preserve inputs and requalify')
     checked_checkpoint(read_json(home/'dashboard/settlement/backup-receipt.json', {}))
     placing = native_plan(registry, field, 'Resolute Wren one-hull placement', tags=tags, verify=False)
-    old = native_plan(registry, before, 'Resolute Wren exact306 current-before VERIFY ONLY')
+    old = native_plan(registry, before, 'Resolute Wren exact6ad3a8 current-before VERIFY ONLY')
     support = native_plan(registry, probe, 'Resolute Wren under-keel/load/boarding VERIFY ONLY')
     after = native_plan(registry, {**before, **field}, 'Resolute Wren complete after VERIFY ONLY', tags=tags)
     views = camera_batch(doc)
@@ -274,8 +299,12 @@ def prepare(home=HOME, output=None, *, expected_fleet_sha256=None):
                 'strict_native_helpers_sha256': {'artistic_ship.py': digest(Path(__file__).with_name('artistic_ship.py')),
                                                  'settlement.py': digest(Path(__file__).with_name('settlement.py'))},
                 'template_sha256': hashlib.sha256(canonical(doc)).hexdigest(), 'registry_sha256': registry_sha,
+                'registry_provenance': {'historical': True, 'native_export_at': registry.get('at'),
+                                        'bridge_version': next(row['version'] for row in registry['mods'] if row['id'] == 'awft_control_bridge'),
+                                        'source': REGISTRY_SOURCE, 'current_native_palette_acceptance': 'UNVERIFIED'},
                 'checkpoint_id': CHECKPOINT, 'checkpoint_sha256': CHECKPOINT_SHA,
                 'saved_admission': detail, 'nearby_quay': quay, 'protected_sources': protected_sources,
+                'separately_cleared_cover_cells_reread': cover_cells,
                 'saved_region_sources': sources,
                 'preserved_historical_reference_conflict': {'origin': [1000, 63, -1350], 'rotation': 1,
                                                           'pos': [1012, 62, -1343], 'state': 'minecraft:ice',

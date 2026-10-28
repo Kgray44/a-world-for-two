@@ -114,8 +114,8 @@ node --check control_room/static/app.js
 ```
 
 Pack validation passed with208 manifest records and no errors; JavaScript syntax
-passed. The latest sprint directive requests targeted checks, so the full suite
-was not repeated. After the waterline, fitting-support and locker corrections,
+passed. Focused checks were used during implementation. After the waterline,
+fitting-support and locker corrections,
 **35 focused fleet/smallcraft/berth tests passed in14.488seconds**. The berth's
 10 tests also passed independently in1.140seconds before the final locker update.
 Normal tests use sanitized native property-enum

@@ -12,15 +12,15 @@ a separately approved dock interface, not an already docked ship.
 
 ## Frozen inputs and immutable files
 
-Private directory: `H/staging/fleet-berth-wren-9d0b486aae22282e`, where H is the
+Private directory: `H/staging/fleet-berth-wren-169d2faf9ba9224f`, where H is the
 existing construction home defined by WORKSTREAMS.
 Manifest SHA-256:
-`308a2a1cdf8dc4821639a3ba56af4608b3c08e26570b2bb76347673a1e276eb0`.
+`35a1f45207d4b1bef6581b48fb7eb832ed462bc772d9ca893fe755f82e8a69b7`.
 
 Geometry commit`cec9f378f17f8a7a58c265cafe124a7dbceae623`;
 fleet source`fe4251af7c032257e15f90a428defb5c523bb51fea8bd09a37db43066958119a`.
-Checkpoint`20261028T180051Z-30624d`, SHA-256
-`3cb269d28ae1ccbac882a44d35277d82c83582274abad2f1cf3b41566d3e9b24`.
+Checkpoint`20261028T191243Z-6ad3a8`, SHA-256
+`0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2`.
 The manifest also pins actual registry, native helpers, protected sources and
 read-only saved region members. It grants no write authority.
 
@@ -35,10 +35,10 @@ source checks alone do not do so.
 
 | File | Master operation | Exact SHA-256 |
 | --- | --- | --- |
-| `current-before-VERIFY-ONLY.json` | Fresh native VERIFY immediately before placement | `2c932d70570dd6ec4cd7af53af16c3239946961bd8292a964281d01100216976` |
-| `under-keel-load-VERIFY-ONLY.json` | Fresh native VERIFY of depth/load/boarding | `66cc6a29175c7891a89a8a3e5ed48a20e96cd3edf8ed67cc95ff11854b1df5ce` |
-| `placement.json` | PLACE only after current admissions pass | `4115e860fc9fd685ec468cf7b2ab5b81837dfdefda22364703c817d64c44b6c3` |
-| `complete-after-VERIFY-ONLY.json` | VERIFY after normal native settling | `c38c2d024e93fb2165901cdb6abc03754352364626e7466ec15b7a8b5b511b4c` |
+| `current-before-VERIFY-ONLY.json` | Fresh native VERIFY immediately before placement | `71012b8da7fef9dbf5696207182d47030ac51ca99548f0caae247ca60b038323` |
+| `under-keel-load-VERIFY-ONLY.json` | Fresh native VERIFY of depth/load/boarding | `681e8d6b37eb82b78ec6396e50c01a704dc3a6cc96bdb89a4f27201be3637b6f` |
+| `placement.json` | PLACE only after current admissions pass | `d8aa64a72891a5f0ab48976b7c2944c005545fb8388bccd3d77cde94e69935cf` |
+| `complete-after-VERIFY-ONLY.json` | VERIFY after normal native settling | `2064645686e03e530d04ba66be8c3074e2617769155bdae5b0dcaca0917d3229` |
 | `camera-recipe.json` |21 actual Minecraft poses | `f515a3b99403c5fae7cd37b9645ba4e40198f3efff5b2cd6520e1e9b5a0a1e4d` |
 
 The source-only binder is `tools/grand_harbor_berth.py`. It refuses another home,
@@ -52,11 +52,16 @@ python -B -m tools.grand_harbor_berth --fleet-source-sha256 fe4251af7c032257e15f
 
 ## Saved admission and dock boundary
 
-Saved306 admission examined17,358 exact cells:6,534 source-water and10,824 AIR.
+Saved6ad3a8 admission genuinely reread17,358 exact cells:6,534 source-water and10,824 AIR.
 There are zero block entities or other target blocks. All15,148 authored cells
 are covered, including7,431 intentional AIR cells. The full two-block under-keel
-margin contains2,048 water cells. There is zero overlap with460,570 protected
-authored/AIR/BE positions from33 pinned town, quay, hull, bridge and zipline sources.
+margin contains2,048 water cells. There is zero overlap with40 ownership records
+covering town, quay, hull, bridge and zipline masks, including all six new city
+batches/eight buildings and both Pippin cover points. Those cover points were
+independently reread as AIR. Both saved regions were reread from the new archive:
+`r.1.-3.mca` SHA`9f824140d3f371a6a4997dfe9dce2e545f82b1403e9bd48596718385021d4cf1`;
+`r.2.-3.mca` SHA`f0d6251bd0e7e4ea4518ce849605e8712e298d3c663724865fa1b328b15d1d60`.
+The older306 artifacts remain preserved and were not relabelled.
 
 Inclusive world hull/rig/landing bounds:
 `[968,57,-1380,1056,114,-1349]`.

@@ -90,8 +90,12 @@ class FleetBerthTests(unittest.TestCase):
         good = {'id': CHECKPOINT, 'sha256': CHECKPOINT_SHA, 'verified': True}
         checked_checkpoint(good)
         for key, value in (('id', '20261028T161905Z-06e1e7'), ('sha256', '0'*64), ('verified', False)):
-            with self.subTest(key=key), self.assertRaisesRegex(UserError, 'verified306'):
+            with self.subTest(key=key), self.assertRaisesRegex(UserError, 'verified6ad3a8'):
                 checked_checkpoint(good | {key: value})
+        with self.assertRaisesRegex(UserError, 'verified6ad3a8'):
+            checked_checkpoint({'id': '20261028T180051Z-30624d',
+                                'sha256': '3cb269d28ae1ccbac882a44d35277d82c83582274abad2f1cf3b41566d3e9b24',
+                                'verified': True})
 
     def test_wrong_template_or_non_integer_origin_is_refused(self):
         wrong = deepcopy(self.document)
