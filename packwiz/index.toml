@@ -37,7 +37,7 @@ metafile = false
 
 [[files]]
 file = "config/create-server.toml"
-hash = "240471ba821bd0f5208ea11960d79aacdfeb25a40c6a689a2d6518d689d890ac"
+hash = "d4afff7e14cf736b3fda66527a2caa117b65acc332f99f94535fd0dd4fa1c82d"
 metafile = false
 
 [[files]]
