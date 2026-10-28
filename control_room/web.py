@@ -195,6 +195,7 @@ class Application:
             "/api/characters": lambda: self.characters.snapshot(first('q'), first('district'), first('kind')),
             "/api/characters/detail": lambda: self.characters.detail(first('id')),
             "/api/characters/export": lambda: self.characters.export(first('id')),
+            "/api/characters/provider-status": lambda: self.characters.provider_status(),
         }
         if path in routes:
             return routes[path]()
@@ -358,11 +359,15 @@ class Application:
             '/api/characters/defaults': lambda: service.defaults(ident),
             '/api/characters/ambient': lambda: service.ambient(body),
             '/api/characters/settings': lambda: service.settings(body),
+            '/api/characters/credential': lambda: service.credential(body),
             '/api/characters/district': lambda: service.district(body),
             '/api/characters/memory': lambda: service.memory(body),
             '/api/characters/apply': lambda: service.apply(expected),
             '/api/characters/preview': lambda: self.jobs.submit('Preview character conversation',
                 lambda notify: service.preview(body)),
+            '/api/characters/connection-test': lambda: self.jobs.submit('Test character AI connection',
+                lambda notify: service.test_connection({key: body[key] for key in
+                    ('expected', 'external_opt_in', 'model') if key in body})),
         }
         if path not in routes:
             raise UserError('Unknown character operation')

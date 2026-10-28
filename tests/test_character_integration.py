@@ -107,6 +107,43 @@ class CharacterHTTPTests(unittest.TestCase):
         atlas=self.request('/api/atlas')
         self.assertEqual(atlas['characters'],[])
 
+    def test_credential_entry_keeps_secret_out_of_jobs_and_responses(self):
+        secret = 'synthetic-key-for-route-privacy-test'
+        body = {'api_key': secret, 'expected': self.service.snapshot()['revision']}
+        with patch.object(self.service, 'credential', return_value={'configured': True}) as save:
+            with self.assertRaises(urllib.error.HTTPError) as error:
+                self.request('/api/characters/credential', body, csrf=False)
+            self.assertEqual(error.exception.code, 403)
+            save.assert_not_called()
+            with patch.object(self.app.jobs, 'submit', side_effect=AssertionError('Credentials must never be queued')):
+                result = self.request('/api/characters/credential', body)
+            save.assert_called_once_with(body)
+        self.assertTrue(result['configured'])
+        self.assertNotIn(secret, json.dumps(result))
+        self.assertNotIn(secret, json.dumps(self.request('/api/jobs')))
+        self.assertNotIn(secret, (self.layout.state / 'jobs.json').read_text() if (self.layout.state / 'jobs.json').exists() else '')
+
+    def test_provider_status_is_read_only_and_connection_job_strips_unknown_secret_fields(self):
+        secret = 'synthetic-key-must-not-reach-connection-job'
+        expected = self.service.snapshot()['revision']
+        request = {'expected': expected, 'external_opt_in': True, 'model': 'gpt-6-luna'}
+        with patch.object(self.service, 'provider_status', return_value={'configured': False}) as status:
+            with patch.object(self.service, 'test_connection', return_value={'verified': True}) as probe:
+                self.assertFalse(self.request('/api/characters/provider-status')['configured'])
+                status.assert_called_once_with()
+                probe.assert_not_called()
+                ticket = self.request('/api/characters/connection-test', request | {'api_key': secret})
+                deadline = time.monotonic() + 3
+                while time.monotonic() < deadline:
+                    job = next(x for x in self.request('/api/jobs') if x['id'] == ticket['job'])
+                    if job['status'] in ('complete', 'failed'):
+                        break
+                    time.sleep(.01)
+                self.assertEqual(job['status'], 'complete', job)
+                probe.assert_called_once_with(request)
+        self.assertNotIn(secret, json.dumps(job))
+        self.assertNotIn(secret, (self.layout.state / 'jobs.json').read_text())
+
 
 class CharacterBackupTests(unittest.TestCase):
     def test_profile_backup_restore_preserves_the_replaced_registry(self):
