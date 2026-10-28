@@ -29,9 +29,15 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.entity.HopperBlockEntity;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.fml.ModList;
@@ -74,6 +80,10 @@ public final class TransportObservationSupport {
     }
     private static List<Integer> xyz(BlockPos p){return List.of(p.getX(),p.getY(),p.getZ());}
     private static boolean loaded(ServerLevel world,BlockPos p){return world.getChunkSource().getChunkNow(p.getX()>>4,p.getZ()>>4)!=null;}
+    private static BlockEntity existing(ServerLevel world,BlockPos p) {
+        var chunk=world.getChunkSource().getChunkNow(p.getX()>>4,p.getZ()>>4);
+        return chunk==null?null:chunk.getBlockEntities().get(p);
+    }
     private static Map<String,Object> stack(ItemStack value,int slot) {
         String components=value.getComponentsPatch().toString();
         if(components.length()>4096)throw new IllegalStateException("Stack components exceed finite observation bound");
@@ -89,7 +99,14 @@ public final class TransportObservationSupport {
         return rows;
     }
     private static Map<String,Object> container(ServerLevel world,String role,BlockPos p) {
-        if(!loaded(world,p)||!(world.getBlockEntity(p) instanceof Container inventory)||inventory.getContainerSize()!=27&&inventory.getContainerSize()!=5)
+        BlockEntity entity=existing(world,p);
+        boolean hopper=role.equals("hopper");
+        if(entity==null||entity.getClass()!=(hopper?HopperBlockEntity.class:ChestBlockEntity.class)
+            ||!(entity instanceof RandomizableContainerBlockEntity inventory)||inventory.getLootTable()!=null)
+            return Map.of("role",role,"position",xyz(p),"available",false);
+        var state=world.getBlockState(p);
+        if(hopper?!state.is(Blocks.HOPPER)||inventory.getContainerSize()!=5:
+            !state.is(Blocks.CHEST)||state.getValue(ChestBlock.TYPE)!=ChestType.SINGLE||inventory.getContainerSize()!=27)
             return Map.of("role",role,"position",xyz(p),"available",false);
         List<Map<String,Object>> rows=new ArrayList<>();
         for(int n=0;n<inventory.getContainerSize();n++)if(!inventory.getItem(n).isEmpty())rows.add(stack(inventory.getItem(n),n));
@@ -102,14 +119,14 @@ public final class TransportObservationSupport {
         stores.add(container(world,"hopper",new BlockPos(1315,73,-1000)));
         stores.add(container(world,"dispatch",new BlockPos(1311,68,-1008)));
         BlockPos mill=new BlockPos(1315,71,-1000),chute=new BlockPos(1315,72,-1000),depot=new BlockPos(1320,68,-1000);
-        if(loaded(world,mill)&&world.getBlockEntity(mill) instanceof MillstoneBlockEntity be){
+        if(existing(world,mill) instanceof MillstoneBlockEntity be){
             stores.add(Map.of("role","mill_input","position",xyz(mill),"available",true,"items",items(be.inputInv)));
             stores.add(Map.of("role","mill_output","position",xyz(mill),"available",true,"items",items(be.outputInv)));
         }else for(String role:List.of("mill_input","mill_output"))stores.add(Map.of("role",role,"position",xyz(mill),"available",false));
-        if(loaded(world,chute)&&world.getBlockEntity(chute) instanceof ChuteBlockEntity be)
+        if(existing(world,chute) instanceof ChuteBlockEntity be)
             stores.add(Map.of("role","chute","position",xyz(chute),"available",true,"items",be.getItem().isEmpty()?List.of():List.of(stack(be.getItem(),0))));
         else stores.add(Map.of("role","chute","position",xyz(chute),"available",false));
-        if(loaded(world,depot)&&world.getBlockEntity(depot) instanceof DepotBlockEntity be)
+        if(existing(world,depot) instanceof DepotBlockEntity be)
             stores.add(Map.of("role","depot","position",xyz(depot),"available",true,"items",be.getHeldItem().isEmpty()?List.of():List.of(stack(be.getHeldItem(),0))));
         else stores.add(Map.of("role","depot","position",xyz(depot),"available",false));
         List<BlockPos> tubes=new ArrayList<>(List.of(new BlockPos(1312,71,-1000)));
@@ -118,7 +135,7 @@ public final class TransportObservationSupport {
         Set<MovingTubeItem> moving=Collections.newSetFromMap(new IdentityHashMap<>());boolean aliased=false;
         for(BlockPos p:tubes){
             String role="tube:"+p.getX()+","+p.getY()+","+p.getZ();
-            if(!loaded(world,p)||!(world.getBlockEntity(p) instanceof PneumaticTubeBlockEntity be)){
+            if(!(existing(world,p) instanceof PneumaticTubeBlockEntity be)){
                 stores.add(Map.of("role",role,"position",xyz(p),"available",false));continue;
             }
             MovingTubeItem value=be.getMovingItem();List<Map<String,Object>> rows=new ArrayList<>();
@@ -138,14 +155,14 @@ public final class TransportObservationSupport {
             dropped.add(Map.of("entity_uuid",entity.getUUID().toString(),"items",List.of(stack(entity.getItem(),0))));
         }
         BlockPos extractor=new BlockPos(1314,71,-1000);Map<String,Object> filter;
-        if(loaded(world,extractor)&&world.getBlockEntity(extractor) instanceof PneumaticConnectionBlockEntity be)
+        if(existing(world,extractor) instanceof PneumaticConnectionBlockEntity be)
             filter=Map.of("available",true,"item",be.getFilter().isEmpty()?"minecraft:air":BuiltInRegistries.ITEM.getKey(be.getFilter().getItem()).toString(),"counted_as_goods",false);
         else filter=Map.of("available",false,"counted_as_goods",false);
         return Map.of("scope","copper_wren_fixed_v1","complete",entityScope&&!aliased&&stores.stream().allMatch(s->Boolean.TRUE.equals(s.get("available"))),
             "stores",stores,"dropped",dropped,"dropped_query_complete",entityScope,"aliased_transit_objects",aliased,"extractor_filter",filter);
     }
     private static Map<String,Object> station(ServerLevel world,BlockPos p) {
-        if(!loaded(world,p)||!(world.getBlockEntity(p) instanceof StationBlockEntity be))return Map.of("position",xyz(p),"available",false);
+        if(!(existing(world,p) instanceof StationBlockEntity be))return Map.of("position",xyz(p),"available",false);
         var point=be.getStation();TrackGraph network=stationGraph(point);
         Map<String,Object> row=new LinkedHashMap<>();row.put("position",xyz(p));row.put("available",true);
         row.put("target",xyz(be.edgePoint.getGlobalPosition()));row.put("direction",be.edgePoint.getTargetDirection().name());
@@ -161,7 +178,7 @@ public final class TransportObservationSupport {
         return null;
     }
     private static Map<String,Object> graph(ServerLevel world) {
-        if(!loaded(world,MILL)||!loaded(world,HALT)||!(world.getBlockEntity(MILL) instanceof StationBlockEntity a)||!(world.getBlockEntity(HALT) instanceof StationBlockEntity b))return Map.of("status","unavailable");
+        if(!(existing(world,MILL) instanceof StationBlockEntity a)||!(existing(world,HALT) instanceof StationBlockEntity b))return Map.of("status","unavailable");
         GlobalStation first=a.getStation(),last=b.getStation();TrackGraph network=stationGraph(first);
         if(network==null||network!=stationGraph(last)||first.edgeLocation==null||last.edgeLocation==null)return Map.of("status","stations_have_no_shared_graph");
         // Traverse only existing graph memory. Native determineGraphLocation()
@@ -182,7 +199,7 @@ public final class TransportObservationSupport {
         List<Map<String,Object>> links=new ArrayList<>();
         for(int n=0;n<6;n++){
             BlockPos a=new BlockPos(1331,71,-991+8*n),b=a.south(8);
-            if(!loaded(world,a)||!loaded(world,b)||!(world.getBlockEntity(a) instanceof ITubeConnectionEntity from)||!(world.getBlockEntity(b) instanceof ITubeConnectionEntity to)){
+            if(!(existing(world,a) instanceof ITubeConnectionEntity from)||!(existing(world,b) instanceof ITubeConnectionEntity to)){
                 links.add(Map.of("from",xyz(a),"to",xyz(b),"available",false));continue;
             }
             var front=from.getConnectionInDirection(Direction.SOUTH);var back=to.getConnectionInDirection(Direction.NORTH);
@@ -239,7 +256,7 @@ public final class TransportObservationSupport {
         }report.put("trains",trains);report.put("train_position_unavailable_count",unknownPositions);
         report.put("stations",List.of(station(world,MILL),station(world,HALT)));report.put("track_graph",graph(world));report.put("tube_links",tubes(world));
         List<Map<String,Object>> drives=new ArrayList<>();for(BlockPos p:List.of(new BlockPos(1315,71,-1000),new BlockPos(1320,70,-1000),new BlockPos(1313,71,-1000),new BlockPos(1331,71,-991),new BlockPos(1331,71,-943))){
-            if(loaded(world,p)&&world.getBlockEntity(p) instanceof KineticBlockEntity be)drives.add(Map.of("position",xyz(p),"available",true,"rpm",be.getSpeed(),"overstressed",be.isOverStressed(),"needs_update",be.needsSpeedUpdate(),"block_state",world.getBlockState(p).toString()));
+            if(existing(world,p) instanceof KineticBlockEntity be)drives.add(Map.of("position",xyz(p),"available",true,"rpm",be.getSpeed(),"overstressed",be.isOverStressed(),"needs_update",be.needsSpeedUpdate(),"block_state",world.getBlockState(p).toString()));
             else drives.add(Map.of("position",xyz(p),"available",false));
         }report.put("drives",drives);report.put("cargo",cargo(world));
         report.put("limits","Point observations only. No zipline client tracking/braking, ride continuity, safety, native filler shape, performance delta or owner acceptance is inferred.");

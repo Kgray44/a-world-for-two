@@ -48,6 +48,8 @@ file agree. No cancel, retry, refund, replacement or other native command was se
 Clean release was observed at19:41:36UTC and reported to master before expiry.
 The successful terminal publisher returns the deployed controller to IDLE after
 releasing its maintenance lease; no extra status command was authorized.
+Master independently confirmed the actual controller IDLE and zero resources
+before resuming the sole native writer.
 
 Request `332c58c26c2c29e4f8275d117e513d049c2ef44162302545fdcf01b76282cdbb`
 and route `c8262d70347b2b93ee05aaf0114704b4ad11fd9b98cfc6ab4cf838fadda5a84f`
@@ -326,6 +328,14 @@ GlobalStation names/IDs. Source manifest names do not establish that this happen
 do not substitute serialized NBT edits. This is required before the schedule.
 
 ## Native observation and passenger schedule proposals
+
+The source proposal now guards an inventory-read side effect found during review:
+vanilla randomizable containers may unpack loot during `getItem`. It requires
+exact native chest/hopper types, expected state/size and no loot table before
+reading slots, and uses only block entities already present in loaded chunk maps.
+The hardening compiles against Java21 dedicated-server APIs with zero diagnostics;
+it still requires a new master-deployed artifact and genuine capture before use.
+Earlier installed observer baseline identity does not authenticate this revision.
 
 `TransportObservationSupport.java` is outside active source. Parent integration
 may register its console-only `awfttransport snapshot <label>` command through an

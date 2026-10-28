@@ -8,6 +8,8 @@ the master source registers its lifecycle and console allowlist hooks. Revalidat
 that identity at the read window; a class in a JAR is not a successful capture.
 This artifact check was made19:37UTC; the master's subsequent candidate52
 transition does not automatically qualify captures from the replacement artifact.
+The later container-safety revision in this proposal is **not included in that
+installed baseline** until the master deploys its newly authenticated class/JAR.
 `compat/control-bridge/proposals/transport-commission-r1/TransportObservationSupport.java`
 defines this contract. There is no transport HTTP endpoint or continuously updated position feed.
 Do not turn missing receipts into an empty train list or successful diagnostics.
@@ -17,6 +19,13 @@ matches `[a-z0-9_-]{1,32}`. Only master may enable/trigger the coordinated read
 window. The observer runs on the server thread, registers no tick listener,
 requests no chunks/tickets, discovers no graph through world reads, moves no
 player/item and performs no setup or world mutation.
+The revised proposal reads only entries already present in the loaded chunk's
+block-entity map; it does not materialize a pending block entity through
+`Level.getBlockEntity`. Chest/hopper cargo requires exact vanilla native classes,
+the expected chest SINGLE/hopper state and size, and `getLootTable()==null`
+before `getItem` is called. A loot-bearing or unfamiliar container is unavailable,
+never silently unpacked or represented as empty. This source guard compiled on
+Java21; its runtime deployment/capture remains pending.
 
 ## Receipt custody
 
