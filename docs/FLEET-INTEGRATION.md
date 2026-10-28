@@ -20,11 +20,17 @@ Branch: `codex/historic-harbor-fleet`; base
 | `2c280de9a869b6e4a2f9da66f013b4f2ac0b8732` | Four major original structure templates, complete belowdecks and immutable NBT/JSON/view exports |
 | `8994b749b18875a4b2026daee39676ebfe543e2f` | Three distinct small vessels; connected manual cargo derricks, guarded operator access, backed-ladder graph and explicit load sweep |
 | `20d8870dfa4bc539c2bfca7f97b8aae9b8ef3ed3` | Correct sea-level waterlogging, detailed commissioning report and separately proposed custody diagnostics |
+| `c267f850a01cbdd009772b4407a47f3b2334f6b1` | Supported wheel handles and cabin models; retained Lark support issue identified |
+| `cec9f378f17f8a7a58c265cafe124a7dbceae623` | Keep the brig's mess ration locker beside its bulkhead; regression verifies it survives construction |
 
 The subsequent waterline correction keeps fittings at localY0 dry: the existing
 native harbor survey defines water as worldY<63, and the proposed waterline
 origin isY63. Older immutable exports remain preserved; use the latest batch
 and exact source hashes rather than rebinding an older manifest.
+
+The [first exact Wren deployment batch](FLEET-WREN-BATCH.md) supplies the selected
+saved-world berth, exact before/support/place/after hashes and21 actual-camera
+recipes. Its construction-world/native deployment remains master-only.
 
 Scoped active files are `tools/grand_harbor_fleet.py`,
 `tools/grand_harbor_smallcraft.py`, their two test files, this report and
@@ -109,8 +115,10 @@ node --check control_room/static/app.js
 
 Pack validation passed with208 manifest records and no errors; JavaScript syntax
 passed. The latest sprint directive requests targeted checks, so the full suite
-was not repeated. After the waterline and fitting-support corrections,
-**24 affected tests passed in8.743seconds**. Normal tests use sanitized native property-enum
+was not repeated. After the waterline, fitting-support and locker corrections,
+**35 focused fleet/smallcraft/berth tests passed in14.488seconds**. The berth's
+10 tests also passed independently in1.140seconds before the final locker update.
+Normal tests use sanitized native property-enum
 fixtures; all seven designs were also built against the actual exported native
 registry read-only.
 
