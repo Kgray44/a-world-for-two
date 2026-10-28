@@ -327,3 +327,48 @@ return, any approved access/configuration edits, and remote Playit/client joins.
 Reuse the existing single runtime and preserve both named saves. Unsupported or
 unverified sync/party/vehicle/population adapters remain explicit limitations;
 they must not be replaced by invented positions or broadened sprint features.
+
+## Recovery browser follow-up: event-driven backup feedback
+
+Follow-up source commit **ebe9cb6d7f912ddc6b48f6503b21a90a2e98bd7c**, branch
+`codex/control-room-recovery-feedback`, changes only `static/app.js` (+3/-1).
+Actual browser creation completed, but the Backups page retained its empty list.
+The correction refreshes the list once after a newly observed terminal task,
+deferring while a dialog is open. It adds no recurring backup inventory polling.
+The second archive appeared automatically in the browser without reloading.
+Syntax and diff checks passed; the frozen PR#1 remains unchanged.
+
+The isolated home is `runtime/recovery-browser-home` in this owned worktree.
+Its files explicitly contain **synthetic fixture payloads**, not a Minecraft
+save. No Minecraft JVM, server installation or EULA acceptance was involved.
+Actual browser/HTTP/job/ZIP/filesystem operations established:
+
+- Backup `20261028T193247Z-cbe85c` completed as job
+  `36686a7dc5dc4ae8bdc511423602e799`, four files/9,244 source bytes/1,942 ZIP bytes.
+- Wrong restore confirmation failed job `fb5aa1af111c4709bf8c1454dab818b2`
+  without changing any fixture byte or creating a replacement directory.
+- Correct restore completed job `ec7e4a10440e4698bee3f85ff5d814f5` at19:34:16Z.
+  Exact original level/config bytes were restored; exact newer bytes survived in
+  `pre-restore-20261028T193416Z-67f8f4`. EULA remained false.
+- After completed tasks and child/process ownership checks, only the isolated
+  backend was restarted: Python6412 -> Python50280. The same browser reconnected
+  and retained all four prior task outcomes. Its old-token Verify request received
+  **403 -> bootstrap200 -> POST200**, creating exactly one verification job.
+- Deliberately corrupting the second test archive made Verify fail accurately:
+  job `533fba071cf44d77948cd99224c09d68`, **Backup archive hash mismatch**.
+  The original second ZIP bytes were preserved separately. The valid first
+  archive and restored files were untouched.
+
+The last check also exposed an existing reporting gap: the failed archive's
+creation receipt and list badge still say **verified**. This does not bypass
+restore verification, but it is misleading after a known failed check. Narrow
+`Backups.verify/list` ownership was requested from the master at19:37Z for an
+explicit cached verification outcome/timestamp. Until corrected, inspect the
+failed verification task; do not infer current integrity from the creation badge.
+
+Receipts are `runtime/verification/recovery-browser-result.json`,
+`recovery-browser-reconnect.json` and `recovery-browser-restore.png`; raw failed
+navigation and startup logs remain private. The first browser open preceded
+listener readiness and was refused; the owned process stayed alive and was not
+restarted on that observation failure. All of this is browser/file-backed
+qualification with synthetic payloads, not native Minecraft recovery acceptance.
