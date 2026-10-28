@@ -1,0 +1,78 @@
+{
+  "format": "awft-kg-stability-profile:1",
+  "status": "Ready for master application; not installed or gameplay qualified",
+  "owner_directive": "Prioritize responsive gameplay with correct server-generated DH terrain; optional prediction may be deferred",
+  "client_game_directory": "D:\\A World for Two\\instances\\AWFT_Check_20261026_214756\\.minecraft",
+  "heaps": {
+    "client_maximum_mib": 6144,
+    "server_minimum_mib": 2048,
+    "server_maximum_mib": 8192,
+    "policy": "Retain existing caps for this first stability run. No heap increase or unmeasured claim that a smaller heap is sufficient. A maximum heap is not the same as committed/resident memory."
+  },
+  "client_settings": {
+    "options.txt": {
+      "renderDistance": 6,
+      "simulationDistance": 4,
+      "maxFps": 60,
+      "enableVsync": true,
+      "graphicsMode": 0,
+      "particles": 1,
+      "entityDistanceScaling": 0.75,
+      "mipmapLevels": 4
+    },
+    "config/iris.properties": {
+      "enableShaders": false
+    },
+    "config/DistantHorizons.toml": {
+      "client.advanced.graphics.quality.lodChunkRenderDistanceRadius": 64,
+      "common.multiThreading.numberOfThreads": 1,
+      "common.multiThreading.threadRunTimeRatio": "0.25"
+    },
+    "config/seedgen.json": {
+      "enabled": false,
+      "serverGeneration": false
+    }
+  },
+  "prediction": {
+    "status": "Deferred for this conservative fallback profile",
+    "reason": "Latest qualified client attempt refused an uninitialized Moonlight cache. No safe native integration window yet; closed-client physical headroom is below the observed previous client RSS plus margin.",
+    "native_switch_proof": "Pinned SeedGen0.9.1 SeedSharing.tellServerWhatWeHave reads client serverGeneration and returns at bytecode9 when false, before ClientWorldgen.get at35. Native onWorld has the same early return before WorldBasis.fromSeed. The separate enabled=false selects the native master-off behavior. Client-only switches; no fingerprint comparison or provider data is altered.",
+    "seedgen_jar_sha256": "58469f92f7cf13ff3c2928659ce1a57d7d05314b30e0779cb187b6fbfdb43b4e",
+    "one_moonlight_attempt": "Master may use frozen PR7 for one separate private attempt only when its genuine prerequisites/resources/window are satisfied. A refusal returns to this deferred profile; no new diagnostic framework or repeated attempt loop."
+  },
+  "server_fallback": {
+    "apply_server_changes": false,
+    "retain_generator_plan": "SURFACE_THEN_CHUNKS",
+    "retain_chunk_generator_mode": "SURFACE",
+    "retain_limit_if_server_unhealthy": true,
+    "retain_generation_request_rate": 4,
+    "policy": "Keep server DH generation/downloads and authoritative FULL-chunk updates. Do not copy the client seedgen.json onto the server. SURFACE LODs may omit decoration until real full chunks update them. Keep all strict compatibility code and requested mods."
+  },
+  "memory_admission": {
+    "physical_available_before_client_bytes": 10737418240,
+    "commit_headroom_before_client_bytes": 8589934592,
+    "basis": "Practical starting targets derived from the observed7.88GB client RSS plus host margin, not a guarantee. Latest closed-client observation had4.77GB physical available and14.73GB commit headroom. Shader/prediction reductions may lower actual demand, but that improvement has not been measured.",
+    "owner_action": "Master/owner checkpoints and closes unnecessary competing workloads until admission is met. Do not kill unrelated processes or use working-set trimming as proof of freed commit. If admission cannot be met, defer the native client attempt and report the resource blocker."
+  },
+  "application_and_rollback": [
+    "Master owns application. Confirm the existing client is stopped and no competing native window is active.",
+    "Run ReserveGuard with finite actual backup/write forecasts and preserve30GiB separately on C and D. Four current config files total less than64KiB; a1MiB private rollback/config-write allowance is conservative for this edit, separate from any client/cache/game allocation.",
+    "Retain exact original bytes/hashes of options.txt, iris.properties, DistantHorizons.toml, seedgen.json and existing launcher heap settings in a new owned private rollback folder. Preserve cache contents.",
+    "Edit only the listed keys and preserve unrelated settings, key bindings and shader-pack selection. Record the new hashes. Do not alter permanent-world data, explored terrain, server worldgen configuration, catalog or release pins for this profile.",
+    "Launch only in the master-authorized resource-admitted window. Verify SeedGen stays opted out, server DH data remains available and ordinary gameplay/chunk updates work.",
+    "Restore the original exact config bytes only with the client stopped if rollback is required. No automatic cache deletion, world reset, fake parity or account authentication."
+  ],
+  "focused_gameplay_check": [
+    "One current-candidate join and120-180seconds of focused game-screen walking/look-around through the actual current settlement, including a real DH horizon. Master controls input; this worker may passively record under an explicit window.",
+    "Use existing native tick windows/client frame telemetry and Windows physical/commit sensors. Label route, population, shader-off state, resolution and actual candidate/process generations. Do not relabel mixed menus as gameplay or infer responsiveness from60FPS/20TPS alone.",
+    "Report frame/tick maxima and available percentiles, stall/timeout observations, physical/commit minima and cache/terrain behavior. Export-time focus flags do not identify every transition inside a frame window.",
+    "If physical availability falls below1GiB or commit headroom below2GiB, notify the master to bring the owned client to a safe checkpoint; the passive recorder does not kill games. These are intervention thresholds, not proof that values above them guarantee smoothness.",
+    "No current two-player result is claimed. Sera hardware/client performance remains unverified."
+  ],
+  "observed_config_baseline_sha256": {
+    "options.txt": "6ecd61509f712dc5796c6a73b4dc8c05576dad7d8381d660b24b034eb39737ad",
+    "config/iris.properties": "9be3b7c666d6cad767c342c786744e38c554afff4f97faec1664c1706bdb72cf",
+    "config/DistantHorizons.toml": "88c9b469364814ab3b1e7debb3d17f5bd641b99fc486e234abbf6583056ba834",
+    "config/seedgen.json": "727f74d977d68e1b44b62532b9b713ce31fe5a1b032468c1adfc8ebe1f41e7ac"
+  }
+}
