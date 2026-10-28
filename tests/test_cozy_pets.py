@@ -6,7 +6,7 @@ import tomllib
 import unittest
 from pathlib import Path
 
-from control_room.common import REPO, UserError, read_json, write_json
+from control_room.common import REPO, UserError, digest, read_json, write_json
 from control_room.pack import generate_pack, validate_pack
 from tools.compatibility import build_inventory
 from tools.cozy_pets import PROPOSAL, apply_source, plan, proposal_data, stage
@@ -136,6 +136,13 @@ class CozyPetsTests(unittest.TestCase):
         self.assertTrue(config["enableRespawnInBed"])
         self.assertTrue(config["freeBedRespawns"])
         self.assertTrue(config["allowSleepInBed"])
+
+    def test_sealed_review_file_bytes_match(self):
+        seal = read_json(PROPOSAL / "SEAL.json")
+        self.assertTrue(seal["files"])
+        for relative, expected in seal["files"].items():
+            with self.subTest(file=relative):
+                self.assertEqual(digest(REPO / relative), expected)
 
     def test_stage_cannot_target_world_or_existing_directory(self):
         with self.assertRaisesRegex(UserError, "new directory"):

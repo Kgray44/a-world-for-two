@@ -128,5 +128,17 @@ def build_habitats():
             "habitats": habitats}
 
 
+def render_json(value, depth=0):
+    """One coordinate/block per line keeps the frozen schematic reviewable."""
+    pad = "  " * depth
+    inner = "  " * (depth + 1)
+    if isinstance(value, dict):
+        return "{\n" + ",\n".join(inner + json.dumps(k) + ": " + render_json(v, depth + 1)
+                                  for k, v in value.items()) + "\n" + pad + "}"
+    if isinstance(value, list) and any(isinstance(v, (dict, list)) for v in value):
+        return "[\n" + ",\n".join(inner + render_json(v, depth + 1) for v in value) + "\n" + pad + "]"
+    return json.dumps(value)
+
+
 if __name__ == "__main__":
-    print(json.dumps(build_habitats(), indent=2))
+    print(render_json(build_habitats()))

@@ -5,7 +5,7 @@
   "python": "3.12.10",
   "java": "21.0.10",
   "focused_tests": {
-    "count": 11,
+    "count": 12,
     "result": "PASS"
   },
   "full_unittest": {
@@ -24,7 +24,7 @@
       "test_artistic_tortuga_west15_shells",
       "test_artistic_tortuga_western_spit"
     ],
-    "boundary": "Both missing city modules are absent from committed source base and were present as unrelated untracked work in the master checkout. No unrelated source was copied or tests weakened."
+    "boundary": "Both missing city modules are absent from committed source base and were present as unrelated untracked work in the master checkout. No unrelated source was copied or tests weakened. The later source-byte seal test is covered by the final focused run; the broad run is not repeated or relabeled."
   },
   "base_pack_validate": {
     "entries": 208,

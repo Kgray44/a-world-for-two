@@ -1,22 +1,23 @@
 {
   "format": 1,
-  "tier": "source proposal only",
+  "tier": "source proposal only; package uses LF bytes across Windows/Git",
   "baseline_commit": "3d337e4305006d4745ba6ba85c458accf54ef1f1",
   "files": {
-    "docs/COZY-PETS.md": "b2b80924eedb48e4040b281f841a8324eead91fc0303296c60fb35d3c99193c8",
-    "proposals/cozy-pets/life-habitats.json": "1ffd9e1bcb07f69a6728ee46d096901e33ed7a2aff061b4772baaa9fbda911e8",
-    "proposals/cozy-pets/life-species-review.json": "9883fe4efc3948157b829fa24560330f5adf02575a7bcf39b63dbea3e6b55e0c",
-    "proposals/cozy-pets/manifest.json": "f247f8b301e510c14bc5a6f7e797e356778668ef7392b24d65ebf8bb563c91fc",
+    "docs/COZY-PETS.md": "55b3aa09bd24aabac8b618ca013f4195af31855dbe0667b0e11c47c5c247bc84",
+    "proposals/cozy-pets/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "proposals/cozy-pets/life-habitats.json": "65289f6fab4f0ad67d39322d08268461b54e4e26b53ac9ed14fafd3b7dcba7b1",
+    "proposals/cozy-pets/life-species-review.json": "5a883641a8a8702002337190617f5c9545d85bda61376c4192e99c0b269770ce",
+    "proposals/cozy-pets/manifest.json": "28d850a646a4e6d53e59b8d5a13aa4371c9cc74c02d161958c97ffb26082071d",
     "proposals/cozy-pets/packwiz/config/adorablehamsterpets/main.toml": "75f41680625bed6cb0e987e2d66674ce377abedbfde6bb95885b7534bc9651d9",
     "proposals/cozy-pets/packwiz/config/adorablehamsterpets/worldgen.toml": "c747fe473265e2c5a43d67d610d4d89e16151ceb79bb0945233d07e614081007",
     "proposals/cozy-pets/packwiz/config/paxi/datapacks/awft-cozy-pets/data/animalgarden_sugarglider/neoforge/biome_modifier/spawn_sugarglider.json": "cad35ad2b9a47c63319b335fb3b5852c8faf8e1b8842b1c2297eed5a1d046528",
     "proposals/cozy-pets/packwiz/config/paxi/datapacks/awft-cozy-pets/pack.mcmeta": "5a82aa814458dceafc116f66ba021e6e07c28d47716833efefa2cd20dd1ea4ba",
     "proposals/cozy-pets/qualification.json": "631ba2cd6583d238266c40154b0a90ce589323ac742069f0726b47435c186fba",
-    "proposals/cozy-pets/static-audit.json": "40477d88cdf9a3c2827d4ed9ddd5157783f49921b90d51c448ce1d93c4b80731",
-    "proposals/cozy-pets/verification.json": "ad98c8e7ddfebb9aba5ccb984053eb0de10d8b3d92be71e5aac5d37c6d5ca3d6",
-    "tests/test_cozy_pets.py": "d61e696afc034b8255a79cc6ee04ac007d97b85e668ea785ee1a8edadafa5594",
+    "proposals/cozy-pets/static-audit.json": "1bda44bb79fa76a9311522a82cf0d5ff6afbe781990938ae114c1cc6b36dd06b",
+    "proposals/cozy-pets/verification.json": "13eba81c54869043259432675e87c62334aa1eaecd6dfeb211faf54577004905",
+    "tests/test_cozy_pets.py": "07081c9d64e213cd565176499c24c1ed97bdf4fca94e1cbba83206016b6067d7",
     "tools/compatibility.py": "78d99ec2d78d45f0282635856ade6fc7a2a33d596d457d45ee280b8855fe2294",
-    "tools/cozy_pet_habitats.py": "1fa286b12eca03c5ee9084ac7b6fc12d7bdace2ff66df0d43aedaa3adc5e617e",
+    "tools/cozy_pet_habitats.py": "0728aa016390fc60d9ef2a672787d767bb6cfda60994361b90134c1ef378b6bb",
     "tools/cozy_pets.py": "10501c209b685410a9e94ddbd349dab4ed38c3fd965f286c42351cb64a9d79e7"
   }
 }

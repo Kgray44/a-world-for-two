@@ -146,7 +146,7 @@ It does not install JARs, launch Minecraft, manipulate a world or publish anythi
 The master also incorporates the three new license records into release notices.
 
 Recorded source verification is in
-[`verification.json`](../proposals/cozy-pets/verification.json): eleven focused pet
+[`verification.json`](../proposals/cozy-pets/verification.json): twelve focused pet
 tests pass, Packwiz baseline208 and preview211 validate, and JavaScript syntax
 passes. The required full suite ran1,105 tests in73.289seconds, with three import
 errors and one skip. The errors are existing city tests importing
