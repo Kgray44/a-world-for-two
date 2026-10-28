@@ -141,13 +141,27 @@ def _inventory(observation):
     return totals, variants, by_role, len(dropped)
 
 
-def reconcile_logistics(before, after):
+def reconcile_logistics(before, after, *, equipment_witness=None):
     """Check the pinned recipes and every declared item count, never fixed RNG yield."""
     _context(before, after)
     initial, initial_variants, _, dropped_before = _inventory(before)
     final, final_variants, by_role, dropped_after = _inventory(after)
     delta = Counter({key: final[key]-initial[key] for key in initial.keys() | final.keys()})
     failures = []
+    equipment = {}
+    if equipment_witness is not None:
+        from tools.transport_material_audit import ITEM, document_sha
+        witness = equipment_witness
+        if (witness.get('format') != 'awft-derived-equipment-debits:1'
+            or witness.get('equipment_debits') != {ITEM: 2}
+            or witness.get('before_document_sha256') != document_sha(before)
+            or witness.get('after_document_sha256') != document_sha(after)
+            or any(witness.get(key) != before[key] for key in ('world', 'candidate', 'bridge'))
+            or witness.get('process_identity') != {key: before[key] for key in ('pid', 'process_started', 'boot_id')}
+            or witness.get('native_actions') != 0 or witness.get('world_writes') != 0
+            or witness.get('input_observations_modified') is not False):
+            raise UserError('Qualified equipment witness must bind these exact native observations')
+        equipment[(ITEM, '{}', True)] = 2
     wheat, flour, seeds = -delta['minecraft:wheat'], delta['create:wheat_flour'], delta['minecraft:wheat_seeds']
     iron, sheets = -delta['minecraft:iron_ingot'], delta['create:iron_sheet']
     if wheat != 16 or iron != 1 or sheets != 1:
@@ -157,8 +171,10 @@ def reconcile_logistics(before, after):
     if not wheat <= flour <= 3*wheat or (flour-wheat) % 2 or not 0 <= seeds <= wheat:
         failures.append('Actual flour/seeds fall outside the pinned stochastic recipe')
     for key in initial_variants.keys() | final_variants.keys():
-        if key[0] not in RECIPES and initial_variants[key] != final_variants[key]:
+        if key[0] not in RECIPES and initial_variants[key] - final_variants[key] != equipment.get(key, 0):
             failures.append('Unrelated item/components changed: '+key[0])
+    if any(initial_variants[key] - final_variants[key] != amount for key, amount in equipment.items()):
+        failures.append('Actual two-item detector installation debit differs from its qualified native custody')
     if any(by_role[role] for role in TRANSIT) or any(row.get('in_transit') is True for row in after['cargo']['stores']):
         failures.append('Actual processing input/transit remains occupied')
     dispatch_delta = by_role['dispatch']['create:wheat_flour'] - _inventory(before)[2]['dispatch']['create:wheat_flour']
@@ -172,6 +188,7 @@ def reconcile_logistics(before, after):
         failures.append('Native flour filter readback is missing or changed')
     return {'format': 'awft-logistics-arithmetic-audit:1', 'passed': not failures,
             'failures': failures, 'actual_item_deltas': dict(sorted(delta.items())),
+            'equipment_installation_debits': equipment_witness,
             'actual_dispatch_flour_delta': dispatch_delta,
             'evidence_scope': 'Arithmetic only. Master must authenticate native capture/artifacts and exclude external item transfers; no transport, multiplayer, performance or owner acceptance.'}
 
@@ -270,6 +287,9 @@ def main():
     parser.add_argument('operation', choices=('plan', 'logistics', 'restart'))
     parser.add_argument('--before', type=Path)
     parser.add_argument('--after', type=Path)
+    parser.add_argument('--home', type=Path, help='Owned native home for an optional genuine mill-resume equipment audit')
+    parser.add_argument('--native-resume', type=Path, help='Actual successful native mill-resume terminal; never a proposed witness')
+    parser.add_argument('--bridge-jar-sha256', help='Master-authenticated deployed bridge digest for the equipment audit')
     args = parser.parse_args()
     if args.operation == 'plan':
         result = construction_contract()
@@ -278,7 +298,18 @@ def main():
             parser.error('Both actual native observation paths are required')
         before, before_sha = read_observation(args.before)
         after, after_sha = read_observation(args.after)
-        result = (reconcile_logistics if args.operation == 'logistics' else reconcile_restart)(before, after)
+        extra = (args.home, args.native_resume, args.bridge_jar_sha256)
+        if any(extra) and (args.operation != 'logistics' or not all(extra)):
+            parser.error('Equipment audit requires logistics plus --home, --native-resume and --bridge-jar-sha256 together')
+        witness = None
+        if all(extra):
+            from tools.transport_material_audit import derive_equipment_debits
+            witness = derive_equipment_debits(args.home, args.before, args.after, args.native_resume,
+                                             expected_bridge_sha256=args.bridge_jar_sha256)
+            if witness['before_sha256'] != before_sha or witness['after_sha256'] != after_sha:
+                raise UserError('Native observation bytes changed during equipment qualification')
+        result = (reconcile_logistics(before, after, equipment_witness=witness)
+                  if args.operation == 'logistics' else reconcile_restart(before, after))
         result.update(before_sha256=before_sha, after_sha256=after_sha)
     print(json.dumps(result, indent=2))
     return 0 if result.get('passed', True) else 1

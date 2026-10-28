@@ -10,6 +10,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+import re
 import zipfile
 
 from control_room.common import UserError, digest, utcnow
@@ -32,6 +33,7 @@ CONTROLS = ((1336,72,-993), (1336,72,-985))
 BURNERS = ((1336,72,-992), (1336,72,-986))
 SEATS = tuple((1336,72,z) for z in (-991,-989,-987))
 BOGEYS = ((1336,70,-992), (1336,70,-986))
+GEOMETRY_SHA = 'ceeeabfc3ed1aee751074134edccc6de9ed3b0cf4308001203a9027e952a71af'
 
 
 def verify_api(path):
@@ -136,23 +138,36 @@ def qualify_materials(snapshot):
             'requirements': 'Master authenticates the supplied native observation, rechecks all27 slots and exact selected stacks immediately before ordinary placement, and proves only these two real debits afterward.'}
 
 
-def prepare(home, inputs, output=None):
-    home, inputs = Path(home).resolve(), Path(inputs).resolve()
-    if home.parent != Path(r'D:\A World for Two\staging\world-tests') or inputs.parent != home/'staging':
-        raise UserError('Owned immutable construction-source input only')
+def load_source(inputs, expected_inputs_sha):
+    inputs = Path(inputs)
+    if not re.fullmatch('[a-f0-9]{64}', expected_inputs_sha):
+        raise UserError('An explicit exact source manifest digest is required')
     manifest = bounded(inputs/'manifest.json')
-    if digest(inputs/'manifest.json') != INPUT_SHA:
-        raise UserError('Exact authenticated306 retained-inputs-r2 manifest required')
+    if digest(inputs/'manifest.json') != expected_inputs_sha or manifest.get('format') != 'awft-transport-saved-inputs:1':
+        raise UserError('Exact authenticated retained-inputs manifest required; never relabel a checkpoint')
+    witness = manifest.get('mill_preimage', {})
+    if witness.get('targets') != 7941 or witness.get('retained_filler_cells') != 42 or witness.get('source_geometry_sha256') != GEOMETRY_SHA:
+        raise UserError('Exact retained mill source geometry and42 filler custody required')
     path = inputs/'mill-current7941-VERIFY-ONLY.json'
     ref = manifest['files']['mill-current7941-VERIFY-ONLY.json']
-    if ref['sha256'] != MILL_SHA or path.stat().st_size != ref['bytes'] or digest(path) != MILL_SHA:
+    if not re.fullmatch('[a-f0-9]{64}', ref.get('sha256', '')) or path.stat().st_size != ref['bytes'] or digest(path) != ref['sha256']:
         raise UserError('Exact retained7941 source bytes required')
+    if expected_inputs_sha == INPUT_SHA and ref['sha256'] != MILL_SHA:
+        raise UserError('Historical306 source identity changed')
     plan = bounded(path)
     if plan['backup_sha256'] != manifest['checkpoint_sha256']:
         raise UserError('Immutable source checkpoint bindings differ')
+    return plan, manifest, ref['sha256']
+
+
+def prepare(home, inputs, output=None, *, expected_inputs_sha=INPUT_SHA):
+    home, inputs = Path(home).resolve(), Path(inputs).resolve()
+    if home.parent != Path(r'D:\A World for Two\staging\world-tests') or inputs.parent != home/'staging':
+        raise UserError('Owned immutable construction-source input only')
+    plan, manifest, plan_sha = load_source(inputs, expected_inputs_sha)
     api = verify_api(home/'server/mods/create-1.21.1-6.0.10.jar')
     proposal = proposal_from_plan(plan, api)
-    proposal['source_inputs'] = {'manifest_sha256':INPUT_SHA, 'mill_plan_sha256':MILL_SHA,
+    proposal['source_inputs'] = {'manifest_sha256':expected_inputs_sha, 'mill_plan_sha256':plan_sha,
                                  'checkpoint_id':manifest['checkpoint_id'], 'current_native_preimage':False}
     if len(json.dumps(proposal, separators=(',',':')).encode()) > 128*1024:
         raise UserError('Finite conductor source proposal exceeds128KiB')
@@ -172,6 +187,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--home', type=Path, required=True)
     parser.add_argument('--inputs', type=Path, required=True)
+    parser.add_argument('--inputs-sha', default=INPUT_SHA)
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
-    print(json.dumps(prepare(args.home, args.inputs, args.output), indent=2))
+    print(json.dumps(prepare(args.home, args.inputs, args.output, expected_inputs_sha=args.inputs_sha), indent=2))

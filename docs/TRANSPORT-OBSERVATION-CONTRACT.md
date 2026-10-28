@@ -1,21 +1,35 @@
 # Transport observation contract for Control Room and Atlas
 
-**Availability: proposed source, not installed in candidate.50.**
+**Availability: installed source in private candidate.51 / bridge0.6.37;
+native capture has not yet been demonstrated.** The actual deployed JAR SHA is
+`cb634e9c848b11d6f2cb90533de8f91779dc56b8420a37857ae9b2bf75bce2a6`.
+The installed artifact contains the observer and passenger-schedule classes, and
+the master source registers its lifecycle and console allowlist hooks. Revalidate
+that identity at the read window; a class in a JAR is not a successful capture.
+This artifact check was made19:37UTC; the master's subsequent candidate52
+transition does not automatically qualify captures from the replacement artifact.
+The later container-safety revision in this proposal is **not included in that
+installed baseline** until the master deploys its newly authenticated class/JAR.
 `compat/control-bridge/proposals/transport-commission-r1/TransportObservationSupport.java`
-defines this contract. The master must integrate its lifecycle/allowlist hook and
-deploy a newly identified bridge before any capability is advertised as present.
-There is currently no transport HTTP endpoint or continuously updated position feed.
+defines this contract. There is no transport HTTP endpoint or continuously updated position feed.
 Do not turn missing receipts into an empty train list or successful diagnostics.
 
-The future console-only operation is `awfttransport snapshot <label>`, where label
+The console-only operation is `awfttransport snapshot <label>`, where label
 matches `[a-z0-9_-]{1,32}`. Only master may enable/trigger the coordinated read
 window. The observer runs on the server thread, registers no tick listener,
 requests no chunks/tickets, discovers no graph through world reads, moves no
 player/item and performs no setup or world mutation.
+The revised proposal reads only entries already present in the loaded chunk's
+block-entity map; it does not materialize a pending block entity through
+`Level.getBlockEntity`. Chest/hopper cargo requires exact vanilla native classes,
+the expected chest SINGLE/hopper state and size, and `getLootTable()==null`
+before `getItem` is called. A loot-bearing or unfamiliar container is unavailable,
+never silently unpacked or represented as empty. This source guard compiled on
+Java21; its runtime deployment/capture remains pending.
 
 ## Receipt custody
 
-The result family will be
+The result family is
 `H/dashboard/settlement/transport-observation-result-<UUID>.json` with adjacent
 `.json.complete` containing the exact64-character SHA-256 of the closed JSON.
 `H` is the construction runtime identified in WORKSTREAMS. Terminal publication
@@ -108,3 +122,43 @@ percentiles. No transport timing profile has been collected by this workstream.
 Fleet and airship position integration belongs to the corresponding owners and
 master. Static authored ship coordinates, proposed routes, block counts and
 unavailable native carriages must never be presented as live vessel positions.
+
+## Passenger observation audit
+
+`tools.transport_passenger_audit` reads genuine canonical observer results and
+their exact completion markers. It sends no commands and simulates no passenger.
+Master supplies the actual authenticated KG and Sera UUIDs; the full connected
+roster must contain both identities throughout the observed sequence. Captures
+use one actual world/candidate/bridge/PID/start/boot, advancing native ticks,
+at most three minutes between stages and fifteen minutes overall.
+
+For `train`, pass seven files in this order: mill platform, both boarded at the
+mill, outbound motion, actual orchard stop attachment, inbound motion, actual
+mill stop attachment, both off-train on the mill platform after finite completion.
+The native train/graph/station identities stay fixed, both real conductor
+directions and passenger counts are observed, and the exact three-entry native
+schedule contains20second dwell plus two-player conditions, then zero-player
+unloading. Create6.0.10 resets `currentEntry` to0 when finite completion pauses;
+the observed sequence is0/0/1/1/2/2/0. Only its known serialized `Progress` field
+may vary within0..2; changed instructions, conditions or unknown progress refuse.
+
+For `hypertube`, pass eight files: ground at mill, two native in-tube observations
+in different Z chunks, ground at orchard; then the same four stages in reverse.
+Both real players must have the native tube flag and move in the proper direction;
+all six unique stored reciprocal eight-metre links remain unchanged. X-only
+chunk changes cannot establish crossing the straight tube's Z boundary.
+
+```powershell
+python -B -m tools.transport_passenger_audit train --home H `
+  --kg-uuid ACTUAL_KG_UUID --sera-uuid ACTUAL_SERA_UUID FILE0 FILE1 FILE2 FILE3 FILE4 FILE5 FILE6
+python -B -m tools.transport_passenger_audit hypertube --home H `
+  --kg-uuid ACTUAL_KG_UUID --sera-uuid ACTUAL_SERA_UUID FILE0 FILE1 FILE2 FILE3 FILE4 FILE5 FILE6 FILE7
+```
+
+Eleven focused synthetic tests pass. No genuine passenger session was captured.
+A successful audit proves only its observed states after provenance review.
+Point captures cannot exclude movement/disconnections between captures;
+`train_uuid=null` also does not prove dismounting from every other vehicle.
+Continuous riding, walking/boarding ergonomics, filler collision safety, zipline
+braking and safe arrival, wider intended railway route, restart and KG/Sera's
+acceptance remain separate runtime requirements.
