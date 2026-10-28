@@ -43,6 +43,33 @@ class PerformanceCaptureTests(unittest.TestCase):
         self.assertEqual(result['all_client_states_worst_retained_frame_ms'], 44000)
         self.assertIsInstance(result['sampled_client_frame_windows']['global_frame_percentiles'], str)
 
+    def test_empty_timing_windows_and_missing_counters_do_not_claim_zero_latency(self):
+        rows = [{'server': {'tick_window': {'format': 'awft-tick-window:1', 'work_ms': {'observations': 0, 'max': None},
+                                            'start_gap_ms': {'observations': 0, 'max': None}}},
+                 'client': {'focused': True, 'in_world': True, 'screen': 'game', 'frame_interval_ms': {}},
+                 'host': {'memory_available_bytes': 100}}]
+        result = summarize(rows)
+        for field in ('max_work_ms', 'max_start_gap_ms', 'over_50ms', 'over_100ms', 'over_250ms'):
+            self.assertIsNone(result['tick_spike_observations'][field])
+        self.assertIsNone(result['sampled_client_frame_windows']['worst_retained_frame_ms'])
+        self.assertIsNone(result['sampled_client_frame_windows']['worst_window_p95_ms'])
+        self.assertIsNone(result['all_client_states_worst_retained_frame_ms'])
+
+    def test_real_zero_and_spikes_remain_observed_but_incomplete_totals_are_withheld(self):
+        rows = []
+        for maximum in (0, 600):
+            rows.append({'server': {'tick_window': {'format': 'awft-tick-window:1', 'work_ms': {'observations': 100, 'max': maximum},
+                         'start_gap_ms': {'observations': 100, 'max': maximum}, 'work_over_50ms': int(maximum > 50),
+                         'work_over_100ms': int(maximum > 100), 'work_over_250ms': int(maximum > 250),
+                         'start_gaps_over_100ms': int(maximum > 100)}}, 'host': {'memory_available_bytes': 100}})
+        self.assertEqual(summarize(rows[:1])['tick_spike_observations']['max_work_ms'], 0)
+        result = summarize(rows)['tick_spike_observations']
+        self.assertEqual(result['max_work_ms'], 600)
+        self.assertEqual(result['over_250ms'], 1)
+        self.assertEqual(result['start_gaps_over_100ms'], 1)
+        del rows[1]['server']['tick_window']['work_over_50ms']
+        self.assertIsNone(summarize(rows)['tick_spike_observations']['over_50ms'])
+
     def test_window_expires_and_cannot_substitute_another_save(self):
         window = dict(format='awft-passive-performance-window:1', coordinator_chat=MASTER,
                       operation='passive-telemetry', workload='idle', configuration='shaders-off',
