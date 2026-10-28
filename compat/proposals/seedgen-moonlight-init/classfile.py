@@ -110,5 +110,3 @@ class ClassFile:
                 raise ValueError('Invalid instruction boundary')
             pc += size
         assert pc == len(code)
-
-
