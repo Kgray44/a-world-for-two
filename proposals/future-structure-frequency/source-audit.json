@@ -1,0 +1,1044 @@
+{
+  "tier": "Exact pinned static source only; not Native generation, collision, AI, client/server parity or performance acceptance",
+  "mods": {
+    "castle-shift": {
+      "filename": "castleshift-0.3.0+1.21.1-neoforge.jar",
+      "version": "0.3.0",
+      "bytes": 167775,
+      "jar_sha256": "382416b0cfcaf086a2ad3e76d7ad453cf5e0ae7078c5db85053d660ea62aefc4",
+      "pin_sha512_matches": true,
+      "templates_examined": 52,
+      "decoded_NBT_bytes": 1394593,
+      "embedded_entities": {},
+      "block_entity_types": {
+        "minecraft:jigsaw": 104,
+        "minecraft:barrel": 15,
+        "minecraft:campfire": 1,
+        "minecraft:furnace": 1,
+        "minecraft:blast_furnace": 1,
+        "minecraft:bed": 4
+      },
+      "listed_potential_hazard_template_counts": {},
+      "templates": [
+        {
+          "resource": "data/castleshift/structure/castle/floor1/center/center1.nbt",
+          "sha256": "4e027d20de263882fbe8deaa747aeffccdf7673f8df5caebc8b017b748645de5",
+          "template_size": [
+            13,
+            7,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 5,
+            "minecraft:barrel": 1,
+            "minecraft:campfire": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/center/center2.nbt",
+          "sha256": "ae3b0bff5f72f067593614183d32ae62884dd407538e046af3295eccd2501fcb",
+          "template_size": [
+            13,
+            7,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 5,
+            "minecraft:barrel": 1,
+            "minecraft:furnace": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/center/center3.nbt",
+          "sha256": "0350a3400bdb131e1afaa6f0452860732cb4beb28a9808e051b31cc7dc8c7c4e",
+          "template_size": [
+            13,
+            7,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 5,
+            "minecraft:barrel": 2,
+            "minecraft:blast_furnace": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/corner_ne/corner_ne1.nbt",
+          "sha256": "8d43a5f9ab92ec47176d4002020bc79cf5c29b902258a0d356aa62155e83add5",
+          "template_size": [
+            7,
+            7,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/corner_nw/corner_nw1.nbt",
+          "sha256": "e459ed4cbaee6531c957cb414ea224c41cf864752ac7c7223c73f2e55e231189",
+          "template_size": [
+            7,
+            7,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/corner_se/corner_se1.nbt",
+          "sha256": "8460b01820c4a0ad99b57ab7a4a74af9350845e733818209e0779b6a468f4bfd",
+          "template_size": [
+            5,
+            7,
+            5
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/corner_sw/corner_sw1.nbt",
+          "sha256": "2b0d48ca918403bcdc0e05a721ad400a2f68061c54202d06cbc0fc21fb3356f1",
+          "template_size": [
+            5,
+            7,
+            5
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_e/wall_e1.nbt",
+          "sha256": "c7228bc97eb8cf2ffa7a5407af9ed57a1a6e52b3b1588928debd4adef2d4fd28",
+          "template_size": [
+            5,
+            7,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_e/wall_e2.nbt",
+          "sha256": "e7c4cc5bdff5abcd7398562058d5a9f8e3cf39aa42ba77167e2bb79fa0f03a11",
+          "template_size": [
+            10,
+            7,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2,
+            "minecraft:barrel": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_n/wall_n1.nbt",
+          "sha256": "d7aaeae65d9c6453469d3b135016cfc0917b92ea15c0d567d205ceef55e9df2a",
+          "template_size": [
+            13,
+            7,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 4
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_n/wall_n2.nbt",
+          "sha256": "ddb4293941871be8df3f2dfdf00f1bf9ec6534d3478fc8d00cc888fcc35b6296",
+          "template_size": [
+            13,
+            7,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 5
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_n2/corridor1.nbt",
+          "sha256": "eae1a9046877132fb5514d88946637930d6db0dbde06f6742a3e707c316326b3",
+          "template_size": [
+            3,
+            6,
+            3
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_n2/corridor2.nbt",
+          "sha256": "a99e16365c0ce55dd4e27c31ec69b57a1e82bd1d29e98e39791e717436fd1dc3",
+          "template_size": [
+            3,
+            6,
+            3
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_n3/tower.nbt",
+          "sha256": "ee0f9a455f827de4114ad4a234afb64dc885165cc641766b5078f85593277fb8",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_n3_fb/room.nbt",
+          "sha256": "bc494e76f9fa60b8f7e509dbfc331b85d231de74ec7e80f54a66f52072f8f78d",
+          "template_size": [
+            13,
+            11,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:barrel": 1,
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_s/wall_s1.nbt",
+          "sha256": "c9256ce343828b77023a7ad84206717d88f289c64c0a57574d8fea50d4457113",
+          "template_size": [
+            13,
+            7,
+            5
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 4
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_s/wall_s2.nbt",
+          "sha256": "7b8cc12110c9cd27b0f78e42273bf775caae71397604e396a94b83a93ce82ab1",
+          "template_size": [
+            13,
+            7,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 4
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_w/wall_w1.nbt",
+          "sha256": "83035611889800362ad7df68326d0e82a74c379319a734339bfaffac82f71a51",
+          "template_size": [
+            5,
+            7,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor1/wall_w/wall_w2.nbt",
+          "sha256": "d74970e71154e4c990d08ea01c4aa10aac14960e40d1b367736e52b5f66a81a8",
+          "template_size": [
+            10,
+            7,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2,
+            "minecraft:barrel": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/center/center1.nbt",
+          "sha256": "dc0562a73098c1e9a1b712dfc849d3af14ce7fee97477c59e490c64f5bce815b",
+          "template_size": [
+            13,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/corner_ne/corner_ne1.nbt",
+          "sha256": "00df826151526aa7a72d82270120f4622f099558bc23de574a7f9972ecf8e948",
+          "template_size": [
+            7,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/corner_nw/corner_nw1.nbt",
+          "sha256": "61b705bba5ec5cf8de8981a471ef5e2a1c660b8fda03e1643e96b61a52f16d70",
+          "template_size": [
+            7,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/corner_se/corner_se1.nbt",
+          "sha256": "eb58086b9293ec7c61ffdf30b90bb0c1029e36ef6c0c26b742ae197577b59b0c",
+          "template_size": [
+            5,
+            12,
+            5
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/corner_se/corner_se2.nbt",
+          "sha256": "55dd06ffd8a96c9b1f09c915885ed1474f007bb38d4e810d5d1f2329a39646d2",
+          "template_size": [
+            7,
+            8,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/corner_sw/corner_sw1.nbt",
+          "sha256": "56778f85c97f720a1dca25f56767b7b8e5730e89adfbed59c4d7eab74bd97ec6",
+          "template_size": [
+            5,
+            12,
+            5
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/corner_sw/corner_sw2.nbt",
+          "sha256": "f9a8dc49cf36498f3c3edb6ad9514096f7fa126341bd84abd34e3ceb1d8ea01f",
+          "template_size": [
+            7,
+            8,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_e1/wall_e1.nbt",
+          "sha256": "144904e4c978fd139cb822054a9be3536e1aab09f0cb6e4adb751e21de10a043",
+          "template_size": [
+            5,
+            6,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_e2/wall_e2.nbt",
+          "sha256": "e6bf946aa031e958bae98c7390201003000c613973876a78f98bc0265b0e8792",
+          "template_size": [
+            10,
+            6,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_n/wall_n1.nbt",
+          "sha256": "ba0f8e8c0d4a21c1d546ec646c6a1236af8f6115d4e50e72d6622b9068857e02",
+          "template_size": [
+            13,
+            6,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_n/wall_n2.nbt",
+          "sha256": "70066aabda2be890d648e0a6948836bdb0b7d8121030658f2720ff8fac07c4ec",
+          "template_size": [
+            13,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_n2/tower.nbt",
+          "sha256": "ac0f2df83bce2c991fe6883689b9c601525188a76a94ad84f249aea967aedda3",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_n3/tower.nbt",
+          "sha256": "f2935c631e452268f7239185be00330a00b0c3e9a35e88e9a84103dade77fa55",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2,
+            "minecraft:barrel": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_n3_fb/tower.nbt",
+          "sha256": "4b63aea6f385e69fc4ff205121edfb1798b02f6ccec7e0a0c60e72447fa6453e",
+          "template_size": [
+            13,
+            15,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1,
+            "minecraft:barrel": 1,
+            "minecraft:bed": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_s/wall_s1.nbt",
+          "sha256": "6facb47e3a0465bb7cf525108362e8ff455c668ef0c6708d5e334552315e573e",
+          "template_size": [
+            13,
+            7,
+            5
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_w1/wall_w1.nbt",
+          "sha256": "520577cb4f622d017421c717cbfcb3ffab7726e1f0ea8c6817435b5dc27b7cf7",
+          "template_size": [
+            5,
+            6,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor2/wall_w2/wall_w2.nbt",
+          "sha256": "c417ca339bdd597815ce705e889a65afb8d70a83da8f999e3afcc440ebe7c6a3",
+          "template_size": [
+            10,
+            6,
+            15
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/center/center1.nbt",
+          "sha256": "785c4f2141eb47ddbb543ae39d306e920f98d7b2203f79c2b911fa9c8b5d0c54",
+          "template_size": [
+            15,
+            6,
+            8
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1,
+            "minecraft:barrel": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/center/center2.nbt",
+          "sha256": "e2e131c388856635c564c4bf0e9be5178761a41c15d0eeeb6005aff557f519ae",
+          "template_size": [
+            11,
+            6,
+            8
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1,
+            "minecraft:bed": 2,
+            "minecraft:barrel": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/corner_ne/corner_ne1.nbt",
+          "sha256": "fc10a2f910fa25176b71c7f21408646ed2aa35ca3c505ea18085b9dfa96e939e",
+          "template_size": [
+            7,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/corner_ne/corner_ne2.nbt",
+          "sha256": "52ed5cf0330d7e5cc05eed1c451288d089bb27d4e77fb9e154ecdf917a5da2dd",
+          "template_size": [
+            7,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2,
+            "minecraft:barrel": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/corner_nw/corner_nw1.nbt",
+          "sha256": "5eaaee3555d232cd83dd337f8c76e431a5a057565cc5f16d1fc12850c9f6ab0c",
+          "template_size": [
+            7,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/corner_nw/corner_nw2.nbt",
+          "sha256": "c55fdfbe78851120eeedf50948004bbf8bb37e6878a737ec2cfed410fbbcb242",
+          "template_size": [
+            7,
+            6,
+            7
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2,
+            "minecraft:barrel": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/wall_n/wall_n1.nbt",
+          "sha256": "dab50290ff7aae27d7a4f8c7da88a3224c48001d4ecef7e56138a0ae2e9b8557",
+          "template_size": [
+            13,
+            6,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/wall_n2/tower1.nbt",
+          "sha256": "fd49cf05efa3fac92ef47008cce9e5ee4f805f4566dd98ba28f7b28278b37950",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/wall_n2/tower2.nbt",
+          "sha256": "a0f061b191b99891e0b5eb2171d87277127f90194e47087b8cce855b13b2fc80",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/wall_n3/tower1.nbt",
+          "sha256": "47eadcf25f8430a7bfc879bcf3beb6167af4cb7f576b6c094b2743394d821e7c",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/wall_n3/tower2.nbt",
+          "sha256": "29dd8498bc915120179e9adfb55a85fd8df89f43ce8bb5cd7f838f61c810d885",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor3/wall_n3/tower3.nbt",
+          "sha256": "e8c6cd0004cf028513b6383795bd44aad67e35a34b0b1ccf13179b602a0fa284",
+          "template_size": [
+            13,
+            7,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor4/corner_ne/corner_ne1.nbt",
+          "sha256": "1675764e034b07ed3cb39e171bb72a35661c18da8ce7b0a2b98f0fe8e6450897",
+          "template_size": [
+            9,
+            8,
+            9
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor4/corner_nw/corner_nw1.nbt",
+          "sha256": "1675764e034b07ed3cb39e171bb72a35661c18da8ce7b0a2b98f0fe8e6450897",
+          "template_size": [
+            9,
+            8,
+            9
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor4/wall_n2/tower.nbt",
+          "sha256": "891b441f30eaeaf87751cf078a0d5528ffac15269e71fa9a852607559ad91765",
+          "template_size": [
+            13,
+            9,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/castleshift/structure/castle/floor4/wall_n3/tower.nbt",
+          "sha256": "cf70f86be1c409145be1380ff2e909e82e4a5c9b8a9176ec93e782633ed6af94",
+          "template_size": [
+            13,
+            9,
+            11
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        }
+      ]
+    },
+    "archaeology-ruins": {
+      "filename": "archaeology_ruins-1.0.0-neoforge-1.21.1.jar",
+      "version": "1.0.0",
+      "bytes": 154587,
+      "jar_sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "pin_sha512_matches": true,
+      "templates_examined": 10,
+      "decoded_NBT_bytes": 38945,
+      "embedded_entities": {},
+      "block_entity_types": {
+        "minecraft:brushable_block": 9,
+        "minecraft:jigsaw": 14,
+        "minecraft:decorated_pot": 2,
+        "minecraft:bell": 1
+      },
+      "listed_potential_hazard_template_counts": {},
+      "templates": [
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_building_1.nbt",
+          "sha256": "6e01e12d6642f4f6081e47b4c0bf237aa5688d4890c1e842d184e8f283cb0c32",
+          "template_size": [
+            5,
+            6,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:brushable_block": 2,
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_building_2.nbt",
+          "sha256": "9840c63d3942ac44c2f6c59f281be120b596367db182bf64b5036bc760e4855c",
+          "template_size": [
+            9,
+            6,
+            9
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:brushable_block": 4,
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_building_3.nbt",
+          "sha256": "5bc9de4af4686af12287be1b93ca884ef4c13c8d16f23fd32f0b38ea4e45a77f",
+          "template_size": [
+            5,
+            4,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_building_4.nbt",
+          "sha256": "6029fb4c4856310f29de12aefcfa4f64ac22d2edd65a7c76d195630c52cb98d5",
+          "template_size": [
+            6,
+            5,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:brushable_block": 1,
+            "minecraft:jigsaw": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_building_5.nbt",
+          "sha256": "d9d1a576ff36a75d457075e3d4ff12c063ba04cb0bb7bd5f83ab90c267f94212",
+          "template_size": [
+            6,
+            8,
+            12
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 1,
+            "minecraft:brushable_block": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_road_1.nbt",
+          "sha256": "a813579c9e9fa60788aef1017164720a9994a6504abdffe05ebe5d851ac8173f",
+          "template_size": [
+            3,
+            1,
+            10
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_road_2.nbt",
+          "sha256": "cae6e0d8a75fa03ff3f193be0f505d3ab298e1607beaf38db10bfdddc0033ba2",
+          "template_size": [
+            6,
+            1,
+            10
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 3
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/adobe_town_well.nbt",
+          "sha256": "0287b93750c9b4c47ead4b0f0408eff8981a6ba4a5a3b28960a38b569c157830",
+          "template_size": [
+            3,
+            4,
+            3
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:jigsaw": 4
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/mud_potter_ruin.nbt",
+          "sha256": "6794e0ca560c23d104f37bdfeb5595155f1e67783cb42a787cccfddbb7f89287",
+          "template_size": [
+            10,
+            5,
+            6
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:decorated_pot": 2
+          },
+          "listed_potential_hazard_palette_ids": []
+        },
+        {
+          "resource": "data/archaeology_ruins/structure/mud_school_ruin.nbt",
+          "sha256": "7e137500cd292077c701220085a7ced8246004d040d4bb92874fb06f226c5343",
+          "template_size": [
+            8,
+            8,
+            13
+          ],
+          "embedded_entity_types": {},
+          "block_entity_types": {
+            "minecraft:bell": 1
+          },
+          "listed_potential_hazard_palette_ids": []
+        }
+      ]
+    }
+  },
+  "selected_structure_definitions": [
+    {
+      "structure_set": "castleshift:castle",
+      "jar_structure_set_resource": "data/castleshift/worldgen/structure_set/castle.json",
+      "jar_structure_set_sha256": "755fd62b9a37a981846ae30fbec706c51e9663a11e840389437f81004331cd51",
+      "structure_resource": "data/castleshift/worldgen/structure/castle.json",
+      "structure_resource_sha256": "3dd45ad4d55ea23c8700b93c68e45f19610caed66628ddb3ec38ef0501c810e2",
+      "biome_filter_unchanged": [
+        "minecraft:plains",
+        "minecraft:sunflower_plains",
+        "minecraft:forest",
+        "minecraft:flower_forest",
+        "minecraft:birch_forest",
+        "minecraft:old_growth_birch_forest",
+        "minecraft:dark_forest",
+        "minecraft:taiga",
+        "minecraft:old_growth_pine_taiga",
+        "minecraft:old_growth_spruce_taiga",
+        "minecraft:snowy_plains",
+        "minecraft:snowy_taiga",
+        "minecraft:meadow",
+        "minecraft:savanna",
+        "minecraft:savanna_plateau",
+        "minecraft:windswept_hills",
+        "minecraft:windswept_gravelly_hills",
+        "minecraft:windswept_forest",
+        "minecraft:windswept_savanna",
+        "minecraft:jungle",
+        "minecraft:sparse_jungle",
+        "minecraft:bamboo_jungle",
+        "minecraft:stony_peaks",
+        "minecraft:cherry_grove"
+      ],
+      "spawn_overrides_unchanged": {},
+      "jigsaw_size_unchanged": 7,
+      "maximum_distance_from_center_unchanged": 100,
+      "start_pool_unchanged": "castleshift:castle/floor1/center",
+      "custom_processor_execution": "not tested; unchanged original mod-native processors"
+    },
+    {
+      "structure_set": "archaeology_ruins:adoberuins",
+      "jar_structure_set_resource": "data/archaeology_ruins/worldgen/structure_set/adoberuins.json",
+      "jar_structure_set_sha256": "9c10b5fa121d974f7259f621e99c4705a1a20fa80b651d75fcc612c38a5bae22",
+      "structure_resource": "data/archaeology_ruins/worldgen/structure/adoberuins.json",
+      "structure_resource_sha256": "14d105816408bb837608fe8a74c45f8a9b5128456f2df5f091603cb9e15124f8",
+      "biome_filter_unchanged": [
+        "badlands",
+        "eroded_badlands",
+        "wooded_badlands"
+      ],
+      "spawn_overrides_unchanged": {},
+      "jigsaw_size_unchanged": 4,
+      "maximum_distance_from_center_unchanged": 64,
+      "start_pool_unchanged": "archaeology_ruins:adoberuins",
+      "custom_processor_execution": "not tested; unchanged original mod-native processors"
+    },
+    {
+      "structure_set": "archaeology_ruins:mudpotterruin",
+      "jar_structure_set_resource": "data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json",
+      "jar_structure_set_sha256": "6b66cd7f8d06259d40894eff08e2e9146a1e93ab3a3c6d26d6725806da9f6692",
+      "structure_resource": "data/archaeology_ruins/worldgen/structure/mudpotterruin.json",
+      "structure_resource_sha256": "2ebbb476f635144d3505ecf41e7c6bda54e93f5f0128877af7c9c675e8339991",
+      "biome_filter_unchanged": [
+        "mangrove_swamp",
+        "swamp"
+      ],
+      "spawn_overrides_unchanged": {},
+      "jigsaw_size_unchanged": 1,
+      "maximum_distance_from_center_unchanged": 64,
+      "start_pool_unchanged": "archaeology_ruins:mudpotterruin",
+      "custom_processor_execution": "not tested; unchanged original mod-native processors"
+    },
+    {
+      "structure_set": "archaeology_ruins:mudschoolruin",
+      "jar_structure_set_resource": "data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json",
+      "jar_structure_set_sha256": "fe40dbbca6d232cc3d1532e9a9786e6010a50477c53d5a0df63e0669c4a9d9fe",
+      "structure_resource": "data/archaeology_ruins/worldgen/structure/mudschoolruin.json",
+      "structure_resource_sha256": "c53e159995072f45e32ccbc0e9f2b49ec796db538710f630f6641c5c086a484e",
+      "biome_filter_unchanged": [
+        "mangrove_swamp",
+        "swamp"
+      ],
+      "spawn_overrides_unchanged": {},
+      "jigsaw_size_unchanged": 1,
+      "maximum_distance_from_center_unchanged": 64,
+      "start_pool_unchanged": "archaeology_ruins:mudschoolruin",
+      "custom_processor_execution": "not tested; unchanged original mod-native processors"
+    }
+  ],
+  "rejected_families": [
+    {
+      "mod": "ancient-structures",
+      "jar_sha256": "84e8ecdaf722af08e5cc3d10d2197face227fe485c8d364585adfe8679484f61",
+      "reason": "Japanese pagoda/temple embedded hostile mobs observed; whole mixed German set held after strict source inspection failure",
+      "strict_decode_failures": [
+        {
+          "resource": "data/ancientstructures/structure/lone_priest.nbt",
+          "sha256": "33c5ebb3779b4498c0dd8f552dca350c3a63ab1fb34d14e3407cb3b1e9d9949b",
+          "strict_python_gzip_error": "CRC check failed",
+          "Native_runtime_failure_proved": false
+        }
+      ]
+    },
+    {
+      "mod": "philips-ruins",
+      "reason": "Ancient/tower/field-stone monster spawn overrides; decorative rock processor can turn stone bricks into infested stone bricks; no frequency increase proposed",
+      "processor_resource": "data/philipsruins/worldgen/processor_list/ruins_processor.json",
+      "processor_sha256": "cfed5a0ae7039992fadd10bf6b6bec8866040d62a11c94b379119fe54ce0e1b2"
+    }
+  ]
+}

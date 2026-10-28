@@ -1,0 +1,15 @@
+{
+  "format": "awft-worldgen-archived-reader-failure:1",
+  "operation": "First execution of the reusable historical archive observer",
+  "source_checkpoint": "20261028T180051Z-30624d",
+  "source_checkpoint_sha256": "3cb269d28ae1ccbac882a44d35277d82c83582274abad2f1cf3b41566d3e9b24",
+  "source_tests_before_archive_read": "18 passed",
+  "result": "FAILED_PRESERVED",
+  "error": "UserError: Invalid region header or chunk slot",
+  "diagnosis": "The archive contains zero-length region members. The first reusable observer attempted to parse those as MCA headers. They must be explicitly inventoried as containing no records while preserving their hash and unqualified native file state.",
+  "correction": "Only zero-length archive members receive an explicit no-record observation. Nonempty malformed headers, truncated records, decompression failures and external chunk formats still fail closed.",
+  "native_runtime_failure_proved": false,
+  "minecraft_processes_started": 0,
+  "live_worlds_opened": 0,
+  "world_bytes_changed": 0
+}
