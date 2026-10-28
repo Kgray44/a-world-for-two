@@ -4,8 +4,10 @@ Source checkpoint, 2026-10-28. The master owns all world placement, runtime/conf
 changes and the single graphical client. Read the authoritative
 `docs/coordination/WORKSTREAMS.md` and `handoffs/FLEET.md` in the master checkout
 immediately before integration; the construction save and configured permanent
-save remain separate. No live lease or Minecraft operation was performed for this
-handoff. Coordinate tests through the master and run only one heavy live test.
+save remain separate. The original source handoff performed no native operation.
+The [first later bounded lease](FLEET-NATIVE-ACCESS53.md) completed one four-cell
+BEFORE check, then expired without placement after a loaded-only inspection
+refusal. Coordinate subsequent tests through the master and run one live test.
 
 ## Implemented source and current evidence
 

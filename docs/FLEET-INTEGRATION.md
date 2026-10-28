@@ -6,7 +6,10 @@
 
 The governing primary-checkout `docs/coordination/WORKSTREAMS.md` and
 `docs/coordination/handoffs/FLEET.md` reserve every save/runtime/client action
-for the master. No fleet live lease has been granted or exercised. The hard
+for the master. The first bounded fleet lease produced one genuine four-cell
+native BEFORE check and no placement; it expired during preflight and was
+explicitly released. See [the preserved attempt](FLEET-NATIVE-ACCESS53.md).
+Any new operation needs fresh authority. The hard
 sprint handover is **2026-10-29 00:26:08 UTC / October28 20:26:08 EDT**.
 
 ## Delivered source checkpoints
