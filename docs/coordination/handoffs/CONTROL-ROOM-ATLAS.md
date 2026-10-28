@@ -5,6 +5,11 @@ Owner: **Complete Control Room and WorldAtlas**, chat
 Branch: `codex/control-room-world-atlas`, based on
 `3333bc60646cc594093063ed514a3e51246e35b0`.
 
+Frozen implementation: PR #1, head
+`8ef3ecece908a21fc8a90ca3642d3edf49c78623`; GitHub Actions run **40748848545**
+passed. Subsequent read-only qualification notes are on
+`codex/control-room-runtime-receipts`; they do not change that frozen source head.
+
 The master **Build It!** owns integration, all native/runtime windows and both
 world saves. Its authoritative `docs/coordination/WORKSTREAMS.md` was read from
 the primary checkout on 2026-10-28. This handoff never grants a runtime lease.
@@ -140,3 +145,59 @@ An earlier probe during the master's startup window returned connection errors;
 that failed receipt was preserved. No native POST, teleport, tunnel, world,
 client, runtime configuration or pack write was performed by this workstream.
 Native control/recovery and final-world acceptance remain master-window work.
+
+## Read-only follow-up: actual native map updates
+
+The master supplied six genuine `awftbuild map` results from **18:47-18:48Z** in
+`H/staging/tortuga-eight-native50-1793213258700916100/actual-results.json`.
+The earlier **18:45Z** observation of 17:47 tiles preceded those calls. It was
+not evidence of a render failure after the calls.
+
+At **19:04:43Z**, all six source plan SHA-256 values matched their actual map
+receipts. Unique source chunk counts **2, 2, 2, 5, 4, 3** matched the reported
+queued counts. Their source coordinates map to precisely two native zoom-3 tiles:
+
+| Tile | Actual last write UTC | SHA-256 | HTTP bytes |
+| --- | --- | --- | --- |
+| `minecraft_overworld/3/1_-3.png` | 18:48:21.286982Z | `a227ffbc803acb9ad1b435a85af85a7698e10ff6e8d7ad7611660dc17aa6cd92` | Exact match, stable file |
+| `minecraft_overworld/3/2_-3.png` | 18:59:51.162428Z | `522eebc8cce9e36111ed9a770c69991066e73ee184546358aaba449f17bdbd4e` | Exact match, stable file |
+
+At that observation the Atlas reported **26 tiles / 526,213 bytes**, latest tile
+write **18:59:51Z**, and renderer queue **0**, paused **false**, overloaded **false**.
+This establishes updated target files and correct serving for the six named
+source batches. It does not prove every rendered pixel, every later world edit,
+or the new dashboard source's deployment. A latest-write time does not reveal
+all intervening writes or establish an exact render latency.
+
+The private exact reconciliation receipt is
+`runtime/verification/native50-map-reconciliation.json` in this owned worktree.
+Only the six bounded source plans and two explicitly selected tile files were
+hashed for this qualification; dashboard polling never performs these checks.
+No native command, configuration, provider, bridge or world change was made.
+
+Pinned API inspection found no disabled-background or output-path fault. Existing
+`SettlementSupport` map handling already deduplicates plan chunk coordinates and
+calls the pinned internal `MapWorldInternal.chunkModified(ChunkCoordinate)` path.
+The actual configuration enables 32 chunks per 30 seconds on one render thread.
+Image writes occur asynchronously after snapshot futures complete. No additional
+flush timer, player-presence gate or unchanged-pixel save shortcut was found.
+There is no basis here for another bridge feature or an idle-simulation bypass.
+
+Squaremap 1.3.2 pin: JAR SHA-256
+`e22ecd8c18a7a345c462e0988a3c6f41e366eed9a14ac276279e6edfed23813d`,
+upstream commit `7157ae6`. Public `api.MapWorld` has no refresh method. Rendering
+may read the surrounding eight chunk snapshots. The vanilla provider skips
+missing/non-FULL stored terrain but can load previously generated neighbors;
+Moonrise uses a different path. No runtime ModList/provider identity or strictly
+loaded-only/no-generation acceptance is asserted from filename inspection.
+
+## Transport API dependency
+
+The [proposed transport observation contract in PR #5](https://github.com/Kgray44/a-world-for-two/pull/5)
+is `docs/TRANSPORT-OBSERVATION-CONTRACT.md`. It is **not installed in candidate.50**.
+No transport HTTP endpoint or continuous position feed exists in that candidate.
+The native contract is on-demand, master-window controlled and scoped to the
+Copper Wren region. It explicitly reports ship and airship positions unavailable.
+Missing observations must remain unavailable, rather than an empty train list.
+This workstream links the dependency only; it does not install, invoke or broaden
+that observer, expose proposed coordinates as live, or change its authority.
