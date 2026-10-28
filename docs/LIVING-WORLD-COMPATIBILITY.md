@@ -163,6 +163,10 @@ claiming those entities have a working native adapter.
    candidate and its configuration/registry revision under the same master
    deployment workflow. Exporter writes no world data and deletes nothing.
 
-Focused Python exporter tests and the exact-JAR JSON probe passed. Native
+Seven focused Python exporter tests, both exact-JAR configuration/schema probes,
+and the actual JVM pure-core harness passed. The latter checks UUID and dimension
+isolation, district boundaries, relevant/secret/unverified lore, scripted fallback,
+cooldowns, hourly budgets, memory defaults and fail-closed animal bindings. It
+does not load a Minecraft server or apply Mixins. Native
 coexistence, multiplayer, external-provider, Voice Chat, animal support and
 game performance remain **not run**, requiring the coordinated runtime window.
