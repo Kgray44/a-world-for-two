@@ -36,19 +36,19 @@ public class ControlBridge {
     private final EngineeringSupport engineeringSupport = new EngineeringSupport();
     private String operationOwner;
     private long operationGeneration;
-    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final RefinementGlueAdmission refinementGlueAdmission=new RefinementGlueAdmission("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final NativeImportJoins nativeImportJoins=new NativeImportJoins("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final NativeFountainSupport nativeFountainSupport=new NativeFountainSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final NativeRelocationSupport nativeRelocationSupport=new NativeRelocationSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final NativeTreePatchSupport nativeTreePatchSupport=new NativeTreePatchSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final NativeTreeGrowthSupport nativeTreeGrowthSupport=new NativeTreeGrowthSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final NativeHabitatLifeSupport nativeHabitatLifeSupport=new NativeHabitatLifeSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final NativeChainRouteSupport nativeChainRouteSupport=new NativeChainRouteSupport("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final RetainedBridgeGlueInspection retainedBridgeGlueInspection=new RetainedBridgeGlueInspection("0.1.0-candidate.53","0.6.39",this::acquire);
-    private final TransportObservationSupport transportObservation=new TransportObservationSupport("0.1.0-candidate.53","0.6.39",()->operationOwner==null&&!settlementSupport.busy()&&!engineeringSupport.busy());
+    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final RefinementGlueAdmission refinementGlueAdmission=new RefinementGlueAdmission("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final NativeImportJoins nativeImportJoins=new NativeImportJoins("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final NativeFountainSupport nativeFountainSupport=new NativeFountainSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final NativeRelocationSupport nativeRelocationSupport=new NativeRelocationSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final NativeTreePatchSupport nativeTreePatchSupport=new NativeTreePatchSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final NativeTreeGrowthSupport nativeTreeGrowthSupport=new NativeTreeGrowthSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final NativeHabitatLifeSupport nativeHabitatLifeSupport=new NativeHabitatLifeSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final NativeChainRouteSupport nativeChainRouteSupport=new NativeChainRouteSupport("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final RetainedBridgeGlueInspection retainedBridgeGlueInspection=new RetainedBridgeGlueInspection("0.1.0-candidate.60","0.6.46",this::acquire);
+    private final TransportObservationSupport transportObservation=new TransportObservationSupport("0.1.0-candidate.60","0.6.46",()->operationOwner==null&&!settlementSupport.busy()&&!engineeringSupport.busy());
     private final DragonTextureMirror dragonTextureMirror=new DragonTextureMirror();
 
     private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease,ArtisticEngineeringSupport.Lease {

@@ -174,10 +174,27 @@ def native(home, command, *, plan_path=None, timeout=300):
     folder=layout.state/'settlement'
     metrics=request(home,'metrics')
     status=request(home,'overview')['server']
-    if (status['state']!='online' or metrics.get('players')!={}
-            or metrics.get('bridge_age_seconds',999)>15
-            or status.get('status',{}).get('players',{}).get('online')!=0):
-        raise UserError('Artistic construction needs a currently measured empty staging server')
+    live_requested=False
+    if plan_path is not None and not engineering:
+        original=Path(plan_path)
+        path=original.resolve()
+        if original.is_symlink() or not path.is_file() or not path.is_relative_to(layout.home.parents[2]):
+            raise UserError('Owned regular staging plan required')
+        # A live opt-in may not perform an unbounded preflight read while a
+        # person is online. Existing offline inputs retain the normal32MiB gate.
+        if metrics.get('players')!={} and path.stat().st_size>65536:
+            raise UserError('Live source JSON exceeds64KiB')
+        if path.stat().st_size>32*1024**2:
+            raise UserError('Staging plan exceeds its existing bound')
+        candidate=json.loads(path.read_bytes())
+        policy=candidate.get('live_policy_sha256')
+        live_requested=(candidate.get('live_ordinary') is True and candidate.get('commands')==[]
+            and candidate.get('block_entities')==[] and 0<len(candidate.get('blocks',[]))<=256
+            and isinstance(policy,str) and len(policy)==64 and all(c in '0123456789abcdef' for c in policy))
+    if (status['state']!='online' or metrics.get('bridge_age_seconds',999)>15
+            or (not live_requested and (metrics.get('players')!={}
+                or status.get('status',{}).get('players',{}).get('online')!=0))):
+        raise UserError('Fresh private server state required; online work needs the explicit narrow native live policy')
     if plan_path is not None:
         path=Path(plan_path).resolve()
         if not path.is_relative_to(layout.home.parents[2]) or path.stat().st_size>32*1024**2:

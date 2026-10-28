@@ -30,6 +30,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -50,7 +51,11 @@ public final class NativeRelocationSupport {
     private String capsuleId;
     private String intentName="intent.json";
     private JsonObject catalogRow,catalog;
-    private static final String CATALOG_SHA="db5e0fa730575ad9b0fd166dd4d52273a5105832d66636d1ca3098693199adf7";
+    private static final String NULL_BED_CLASS="earth.terrarium.handcrafted.common.blocks.FancyBedBlock";
+    private static final String NULL_BED_CLASS_SHA="c71866ac1ea5e6ae7f664002ad1625d97b2da13b063eb256d4e3d73b4719b515";
+    private static final String NULL_BED_JAR_SHA="6f2a776fb28ed07d370899814e5e711fbeebe31396097d78a3b550439b364948";
+    private boolean nullBedJarPinned;
+    private static final String CATALOG_SHA="879c7a3894df08e541c083b4a0a8bfb75bc7fd6b3017e8898befe4c7ceefaf14";
     private static final TicketType<ChunkPos> TICKET=TicketType.create("awft_relocation",Comparator.comparingLong(ChunkPos::toLong));
     private final Set<ChunkPos> chunks=new LinkedHashSet<>(),tickets=new LinkedHashSet<>(),centers=new LinkedHashSet<>();
     private final List<CompletableFuture<?>> pending=new ArrayList<>();
@@ -67,7 +72,7 @@ public final class NativeRelocationSupport {
         "net.minecraft.world.level.block.entity.SmokerBlockEntity","net.minecraft.world.level.block.entity.SignBlockEntity",
         "net.minecraft.world.level.block.entity.BarrelBlockEntity","net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity",
         "net.minecraft.world.level.block.entity.LecternBlockEntity","net.minecraft.world.level.block.entity.BedBlockEntity",
-        "net.mehvahdjukaar.supplementaries.common.block.tiles.BookPileBlockTile");
+        "net.mehvahdjukaar.supplementaries.common.block.tiles.BookPileBlockTile","com.simibubi.create.content.equipment.toolbox.ToolboxBlockEntity");
     private final String candidate,bridge;
     private final ArtisticEngineeringSupport.Interlock interlock;
     private ArtisticEngineeringSupport.Lease lease;
@@ -76,6 +81,7 @@ public final class NativeRelocationSupport {
     private final Map<BlockPos,BlockState> source=new LinkedHashMap<>(),destination=new LinkedHashMap<>(),supports=new LinkedHashMap<>();
     private final Map<BlockPos,CompoundTag> expectedTags=new LinkedHashMap<>();
     private final Map<BlockPos,JsonObject> classPins=new LinkedHashMap<>();
+    private JsonObject toolboxAudit;
     private JsonObject request;private String requestSha,action;private ServerLevel level;private Path ledger;
     private boolean running,admitted,terminalPending,intentAttempted,intentWritten,cloneInvoked,quarantined;private long started;
     private int cleanupAttempts,cleanupDelay;private String finalStatus;private boolean finalFailure;
@@ -87,7 +93,7 @@ public final class NativeRelocationSupport {
     public boolean busy(){return running&&admitted||lease!=null||terminalPending;}
     public void commands(RegisterCommandsEvent event){
         var root=Commands.literal("awftrelocate").requires(s->s.getEntity()==null&&s.hasPermission(4));
-        for(String op:List.of("inspect","move","inspect-moved"))root.then(Commands.literal(op)
+        for(String op:List.of("inspect","move","inspect-moved","inspect-quarantined","record-conserved"))root.then(Commands.literal(op)
             .then(Commands.argument("bundle",StringArgumentType.word()).then(Commands.argument("sha256",StringArgumentType.word()).executes(c->{
                 if(busy())return 0;
                 try{begin(c.getSource().getServer(),op,StringArgumentType.getString(c,"bundle"),StringArgumentType.getString(c,"sha256"));return 1;}
@@ -190,9 +196,9 @@ public final class NativeRelocationSupport {
             ||!ModList.get().getModContainerById("awft_control_bridge").orElseThrow().getModInfo().getVersion().toString().equals(bridge)
             ||!active.get("version").getAsString().equals(candidate)||!installed.get("pack_version").getAsString().equals(candidate)
             ||!active.get("pack_sha256").equals(installed.get("pack_sha256"))||!active.get("pack_sha256").equals(request.get("pack_sha256")))throw new IllegalStateException("Actual candidate/bridge/pack differs");
-        if(!classHash(NativeRelocationSupport.class).equals(request.get("native_class_sha256").getAsString())||!classHash(Ledger.class).equals(request.get("ledger_class_sha256").getAsString())||!classHash(Capsules.class).equals(request.get("catalog_class_sha256").getAsString())||!classHash(RuntimeTags.class).equals(request.get("runtime_tags_class_sha256").getAsString())||!classHash(CloneBinding.class).equals(request.get("clone_binding_class_sha256").getAsString())||!classHash(Uninvoked.class).equals(request.get("uninvoked_class_sha256").getAsString())||!classHash(net.minecraft.world.level.chunk.LevelChunk.class).equals(request.get("level_chunk_class_sha256").getAsString())||!classHash(CloneCommands.class).equals(request.get("vanilla_clone_class_sha256").getAsString()))throw new IllegalStateException("Exact native helper/game API bytes differ");
+        if(!classHash(NativeRelocationSupport.class).equals(request.get("native_class_sha256").getAsString())||!classHash(Ledger.class).equals(request.get("ledger_class_sha256").getAsString())||!classHash(Capsules.class).equals(request.get("catalog_class_sha256").getAsString())||!classHash(RuntimeTags.class).equals(request.get("runtime_tags_class_sha256").getAsString())||!classHash(CloneBinding.class).equals(request.get("clone_binding_class_sha256").getAsString())||!classHash(Uninvoked.class).equals(request.get("uninvoked_class_sha256").getAsString())||!classHash(Quarantined.class).equals(request.get("quarantined_evidence_class_sha256").getAsString())||!classHash(NativeToolboxCustody.class).equals(request.get("toolbox_custody_class_sha256").getAsString())||!classHash(NativeWindowStateWitness.class).equals(request.get("native_window_witness_class_sha256").getAsString())||!classHash(net.minecraft.world.level.chunk.LevelChunk.class).equals(request.get("level_chunk_class_sha256").getAsString())||!classHash(CloneCommands.class).equals(request.get("vanilla_clone_class_sha256").getAsString()))throw new IllegalStateException("Exact native helper/game API bytes differ");
         level=server.overworld();if(!request.get("seed").getAsString().equals(Long.toString(level.getSeed()))||!Path.of(request.get("world_path").getAsString()).toRealPath().equals(server.getWorldPath(LevelResource.ROOT).toRealPath()))throw new IllegalStateException("Actual world identity differs");
-        checkpoint();source.clear();destination.clear();supports.clear();expectedTags.clear();classPins.clear();
+        checkpoint();source.clear();destination.clear();supports.clear();expectedTags.clear();classPins.clear();nullBedJarPinned=false;
         JsonObject review=ref("owner_city_plan_review",65536);
         if(!review.get("format").getAsString().equals("awft-owner-city-plan-review:1")||!review.get("approved").getAsBoolean()
             ||!request.get("eastern_layout_sha256").getAsString().equals(EASTERN_LAYOUT)
@@ -220,11 +226,20 @@ public final class NativeRelocationSupport {
         for(JsonElement e:request.getAsJsonArray("BE_class_pins")){JsonObject r=e.getAsJsonObject();BlockPos p=pos(r.get("source_position"));if(!expectedTags.containsKey(p)||!CLASSES.contains(r.get("class").getAsString())||classPins.put(p,r)!=null)throw new IllegalStateException("Unexpected/missing native BE class pin");}
         if(classPins.size()!=objectCount)throw new IllegalStateException("Complete native class custody required");
         for(BlockPos p:supports.keySet())if(p.getY()!=b[1]-1||p.getX()<b[0]||p.getX()>b[3]||p.getZ()<b[2]||p.getZ()>b[5])throw new IllegalStateException("Foreign support plane");
-        if(!action.equals("inspect-moved")){proof("source_native_verify","source_geometry",sourceCount);proof("destination_native_verify","destination_geometry",sourceCount);proof("supports_native_verify","destination_supports",supportCount);}
+        if(!action.equals("inspect-moved")&&!action.equals("inspect-quarantined")&&!action.equals("record-conserved")){proof("source_native_verify","source_geometry",sourceCount);proof("destination_native_verify","destination_geometry",sourceCount);proof("supports_native_verify","destination_supports",supportCount);}
         String stable=sha((home.toRealPath()+"|"+BASELINE+"|"+Capsules.salt(capsuleId,dx,dy,dz)).getBytes(StandardCharsets.UTF_8));
         if(!stable.equals(request.get("transaction_id").getAsString()))throw new IllegalStateException("Stable once-only transaction identity differs");
         ledger=server.getWorldPath(LevelResource.ROOT).toRealPath().resolve("data/awft-relocations/"+stable);
         for(Path p=ledger;p!=null&&!p.equals(server.getWorldPath(LevelResource.ROOT).toRealPath());p=p.getParent())if(Files.exists(p,LinkOption.NOFOLLOW_LINKS)&&(Files.isSymbolicLink(p)||!p.toRealPath().equals(p)))throw new IllegalStateException("Redirected relocation ledger");
+        if(catalogRow.has("prior_translation_xyz")){
+            JsonArray previous=catalogRow.getAsJsonArray("prior_translation_xyz");String old=sha((home.toRealPath()+"|"+BASELINE+"|"+Capsules.salt(capsuleId,Capsules.integer(previous.get(0)),Capsules.integer(previous.get(1)),Capsules.integer(previous.get(2)))).getBytes(StandardCharsets.UTF_8));
+            if(!old.equals(stable)&&Files.exists(server.getWorldPath(LevelResource.ROOT).toRealPath().resolve("data/awft-relocations/"+old),LinkOption.NOFOLLOW_LINKS))
+                throw new IllegalStateException("Reallocation cannot bypass any old transaction ledger; explicit reconciliation required");
+        }
+        toolboxAudit=null;
+        if(catalogRow.has("requires_toolbox_native_handler_and_saved_profile_custody")&&catalogRow.get("requires_toolbox_native_handler_and_saved_profile_custody").getAsBoolean()){
+            NativeToolboxCustody.pins(request.getAsJsonObject("toolbox_api_class_sha256"));toolboxAudit=ref("toolbox_saved_player_custody",65536);toolboxProfiles();
+        }else if(request.has("toolbox_saved_player_custody"))throw new IllegalStateException("Foreign toolbox authority on unrelated room");
         lease=interlock.acquire("relocation:"+stable,true);if(lease==null||!lease.valid())throw new IllegalStateException("Exclusive native operation lease unavailable");
         admitted=true;
         report.put("capsule_id",capsuleId);report.put("transaction_id",stable);report.put("request_sha256",requestSha);report.put("candidate",candidate);report.put("bridge",bridge);
@@ -232,6 +247,34 @@ public final class NativeRelocationSupport {
         report.put("source_geometry_sha256",request.getAsJsonObject("source_geometry").get("sha256").getAsString());report.put("destination_geometry_sha256",request.getAsJsonObject("destination_geometry").get("sha256").getAsString());
     }
     private static String classHash(Class<?> c)throws Exception{String path="/"+c.getName().replace('.','/')+".class";try(InputStream in=c.getResourceAsStream(path)){if(in==null)throw new IllegalStateException("Class resource unavailable");byte[] raw=in.readNBytes(262145);if(raw.length==0||raw.length>262144)throw new IllegalStateException("Bounded class bytes required");return sha(raw);}}
+    /** Handcrafted4.0.3 deliberately inherits EntityBlock through BedBlock,
+     * while this exact override returns null. No synthetic default tag/BE is
+     * accepted: an expected tag, actual BE, different class or factory result
+     * keeps the ordinary strict custody path/refusal.
+     */
+    private boolean decorativeNullFactory(BlockPos p,BlockState state,boolean tagged)throws Exception{
+        if(tagged||!state.hasBlockEntity()||!state.getBlock().getClass().getName().equals(NULL_BED_CLASS))return false;
+        if(level.getBlockEntity(p)!=null)throw new IllegalStateException("Decorative null-factory bed unexpectedly has actual native data");
+        if(!classHash(state.getBlock().getClass()).equals(NULL_BED_CLASS_SHA))throw new IllegalStateException("Exact Handcrafted FancyBedBlock bytes differ");
+        if(!nullBedJarPinned){
+            Path jar=owned("server/mods/handcrafted-neoforge-1.21.1-4.0.3.jar");
+            if(Files.size(jar)!=7132842L||!sha(bytes(jar,8*1024*1024)).equals(NULL_BED_JAR_SHA))throw new IllegalStateException("Exact Handcrafted4.0.3 JAR differs");
+            nullBedJarPinned=true;
+        }
+        if(!(state.getBlock() instanceof EntityBlock factory)||factory.newBlockEntity(p,state)!=null)
+            throw new IllegalStateException("Pinned decorative bed native factory is not null");
+        return true;
+    }
+    private void decorativeNullDestinations()throws Exception{
+        List<List<Integer>> points=new ArrayList<>();
+        for(var entry:source.entrySet())if(!expectedTags.containsKey(entry.getKey())&&entry.getValue().getBlock().getClass().getName().equals(NULL_BED_CLASS)){
+            BlockPos p=translated(entry.getKey());BlockState actual=level.getBlockState(p);
+            if(!actual.equals(entry.getValue())||!decorativeNullFactory(p,actual,false))
+                throw new IllegalStateException("Moved decorative null-factory bed state/data changed");
+            points.add(xyz(p));
+        }
+        report.put("decorative_null_factory_destination_positions",points);
+    }
     private void ready(MinecraftServer server)throws Exception{
         if(!server.isSameThread()||lease==null||!lease.valid()||!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Current exclusive empty-server/thread custody lost");checkpoint();
         if(!loaded())throw new IllegalStateException("Actual retained FULL/entity-loaded capsule neighbors required");
@@ -241,8 +284,7 @@ public final class NativeRelocationSupport {
         for(JsonElement e:catalogRow.getAsJsonArray("dependencies")){
             String id=e.getAsString();JsonObject dep=Capsules.select(catalog,id);int[] a=Capsules.box(dep.get("source_bounds_xyz")),b=Capsules.box(dep.get("destination_bounds_xyz"));
             String key=sha((home.toRealPath()+"|"+BASELINE+"|"+Capsules.salt(id,b[0]-a[0],b[1]-a[1],b[2]-a[2])).getBytes(StandardCharsets.UTF_8));Path path=level.getServer().getWorldPath(LevelResource.ROOT).toRealPath().resolve("data/awft-relocations/"+key);
-            byte[] raw=bytes(path.resolve("completed.json"),1048576);if(!new String(bytes(path.resolve("completed.json.sha256"),128),StandardCharsets.UTF_8).trim().equals(sha(raw)))throw new IllegalStateException("Durable dependency completion missing/changed");
-            JsonObject done=JsonParser.parseString(new String(raw,StandardCharsets.UTF_8)).getAsJsonObject();if(!done.get("transaction_id").getAsString().equals(key)||!done.get("intent_sha256").getAsString().equals(sha(bytes(path.resolve(activeIntent(done)),1048576))))throw new IllegalStateException("Foreign dependency completion");
+            completedCustody(path,key);
         }
     }
     private void states(Map<BlockPos,BlockState> expected)throws Exception{for(var e:expected.entrySet())if(!level.getBlockState(e.getKey()).equals(e.getValue()))throw new IllegalStateException("Actual complete state changed at "+e.getKey());}
@@ -250,7 +292,7 @@ public final class NativeRelocationSupport {
         AABB a=new AABB(LOW.getX(),LOW.getY(),LOW.getZ(),HIGH.getX()+1,HIGH.getY()+1,HIGH.getZ()+1),b=a.move(dx,dy,dz);
         if(!level.getEntities((Entity)null,a.inflate(.25)).isEmpty()||!level.getEntities((Entity)null,b.inflate(.25)).isEmpty())throw new IllegalStateException("Preserve actual entity occupying source/destination/model envelope");
         for(var e:source.entrySet()){
-            BlockPos p=e.getKey();BlockState s=e.getValue();if(!s.getFluidState().isEmpty())throw new IllegalStateException("No fluid-bearing source cell");
+            BlockPos p=e.getKey();BlockState s=e.getValue();windowContext(p,s);if(!s.getFluidState().isEmpty())throw new IllegalStateException("No fluid-bearing source cell");
             if(!s.canSurvive(level,p))throw new IllegalStateException("A retained source fixture has no real native survival/support state");
             String blockId=BuiltInRegistries.BLOCK.getKey(s.getBlock()).toString();
             if(blockId.endsWith("_door")&&!blockId.endsWith("_trapdoor")){
@@ -265,8 +307,10 @@ public final class NativeRelocationSupport {
             }
             for(var shape:List.of(s.getShape(level,p),s.getCollisionShape(level,p))){if(shape.isEmpty())continue;AABB box=shape.bounds().move(p);
                 if(box.minX<a.minX||box.minY<a.minY||box.minZ<a.minZ||box.maxX>a.maxX||box.maxY>a.maxY||box.maxZ>a.maxZ)throw new IllegalStateException("Native source model/collision shape escapes capsule; expand and review instead of truncating");}
-            if(s.hasBlockEntity()!=expectedTags.containsKey(p))throw new IllegalStateException("Foreign/missing native BE in complete capsule");
-            BlockEntity be=level.getBlockEntity(p);if(s.hasBlockEntity()&&(be==null||be.isRemoved()))throw new IllegalStateException("Actual native BE unavailable");
+            BlockEntity be=level.getBlockEntity(p);
+            boolean decorativeNull=decorativeNullFactory(p,s,expectedTags.containsKey(p));
+            if(s.hasBlockEntity()!=expectedTags.containsKey(p)&&!decorativeNull)throw new IllegalStateException("Foreign/missing native BE in complete capsule");
+            if(s.hasBlockEntity()&&!decorativeNull&&(be==null||be.isRemoved()))throw new IllegalStateException("Actual native BE unavailable");
         }
         for(BlockPos p:destination.keySet())if(level.getBlockEntity(p)!=null)throw new IllegalStateException("Destination BE is never overwritten");
         for(BlockPos p:supports.keySet())if(!level.getBlockState(p).isFaceSturdy(level,p,Direction.UP)||!level.getBlockState(p).getFluidState().isEmpty()||level.getBlockEntity(p)!=null)throw new IllegalStateException("Real retained destination full-face support required");
@@ -306,12 +350,21 @@ public final class NativeRelocationSupport {
             return expected;
         }
     }
+    private void toolboxProfiles()throws Exception{
+        if(toolboxAudit==null)return;
+        BlockPos found=null;for(var e:expectedTags.entrySet())if(e.getValue().getString("id").equals("create:toolbox")){if(found!=null)throw new IllegalStateException("One exact toolbox role per capsule");found=e.getKey();}
+        if(found==null)throw new IllegalStateException("Missing actual toolbox source");
+        NativeToolboxCustody.profiles(level.getServer().getWorldPath(LevelResource.ROOT).toRealPath(),toolboxAudit,request.get("backup_sha256").getAsString(),found,translated(found));
+    }
     private JsonArray snapshots(boolean moved)throws Exception{
-        JsonArray out=new JsonArray();int bytes=0;
+        toolboxProfiles();JsonArray out=new JsonArray();int bytes=0;
         for(var e:expectedTags.entrySet()){
             BlockPos sourcePos=e.getKey(),p=moved?translated(sourcePos):sourcePos;BlockEntity be=level.getBlockEntity(p);JsonObject pin=classPins.get(sourcePos);
             if(be==null||be.isRemoved()||!be.getClass().getName().equals(pin.get("class").getAsString())||!classHash(be.getClass()).equals(pin.get("class_sha256").getAsString())
                 ||!BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey(be.getType()).toString().equals(pin.get("BE_id").getAsString()))throw new IllegalStateException("Actual pinned BE class/type identity differs");
+            JsonObject toolbox=null;
+            if(be instanceof com.simibubi.create.content.equipment.toolbox.ToolboxBlockEntity actual){if(!pin.has("IItemHandler")||!pin.get("IItemHandler").getAsBoolean())throw new IllegalStateException("Explicit native toolbox handler role required");toolbox=NativeToolboxCustody.capture(actual,this::stack);}
+            else if(pin.has("IItemHandler")&&pin.get("IItemHandler").getAsBoolean())throw new IllegalStateException("Unexpected native handler role");
             CompoundTag full=be.saveWithFullMetadata(level.registryAccess());if(be instanceof RandomizableContainerBlockEntity loot&&loot.getLootTable()!=null)throw new IllegalStateException("Never resolve or inspect unresolved loot by getItem");
             if(!moved){CompoundTag raw=expectedTags.get(sourcePos);CompoundTag expected;
                 try{expected=RuntimeTags.expected(raw,full);}catch(IllegalStateException storage){tagMismatch(p,raw,null,full);throw storage;}
@@ -321,8 +374,10 @@ public final class NativeRelocationSupport {
             r.addProperty("full_native_NBT",full.toString());boolean container=be instanceof Container;r.addProperty("is_Container",container);
             if(container!=pin.get("Container").getAsBoolean())throw new IllegalStateException("Pinned native inventory role differs; never infer empty from a missing Items field");
             if(container){Container inv=(Container)be;int n=inv.getContainerSize();if(n<0||n>128)throw new IllegalStateException("Bounded actual slot census required");r.addProperty("native_slots",n);JsonArray slots=new JsonArray();for(int i=0;i<n;i++)slots.add(stack(inv.getItem(i)));r.add("all_slots",slots);}
+            else if(toolbox!=null){r.add("native_toolbox_handler",toolbox);}
             else if(be instanceof LecternBlockEntity lectern){JsonArray books=new JsonArray();books.add(stack(lectern.getBook()));r.add("additional_native_stacks",books);}
             else if(!Set.of("net.minecraft.world.level.block.entity.SignBlockEntity","net.mehvahdjukaar.supplementaries.common.block.tiles.GlobeBlockTile","net.minecraft.world.level.block.entity.BedBlockEntity").contains(be.getClass().getName()))throw new IllegalStateException("Non-Container role is not reviewed");
+            if(action.equals("inspect-quarantined"))report.put("current_partial_native_snapshots",out);
             bytes+=JSON.toJson(r).getBytes(StandardCharsets.UTF_8).length;if(bytes>262144)throw new IllegalStateException("Complete native snapshot exceeds finite256KiB UTF8");out.add(r);
         }return out;
     }
@@ -335,6 +390,7 @@ public final class NativeRelocationSupport {
             CompoundTag expected=tag(a.get("full_native_NBT").getAsString());if(moved){BlockPos p=translated(pos(a.get("source_position")));expected.putInt("x",p.getX());expected.putInt("y",p.getY());expected.putInt("z",p.getZ());}
             if(!expected.equals(tag(b.get("full_native_NBT").getAsString())))throw new IllegalStateException("Full typed native custom data differs beyond the explicit native XYZ relocation");
             if(a.has("additional_native_stacks")!=b.has("additional_native_stacks")||a.has("additional_native_stacks")&&!a.get("additional_native_stacks").equals(b.get("additional_native_stacks")))throw new IllegalStateException("Native non-Container book stack/components changed");
+            if(a.has("native_toolbox_handler")!=b.has("native_toolbox_handler")||a.has("native_toolbox_handler")&&!a.get("native_toolbox_handler").equals(b.get("native_toolbox_handler")))throw new IllegalStateException("Actual native toolbox32 slots/8 filters/UUID/connection state changed");
             if(a.get("is_Container").getAsBoolean()){
                 if(!a.get("native_slots").equals(b.get("native_slots")))throw new IllegalStateException("Actual native slot size changed");JsonArray x=a.getAsJsonArray("all_slots"),y=b.getAsJsonArray("all_slots");if(x.size()!=y.size())throw new IllegalStateException("Incomplete slot census");
                 for(int n=0;n<x.size();n++){JsonObject u=x.get(n).getAsJsonObject(),v=y.get(n).getAsJsonObject();if(!u.equals(v))throw new IllegalStateException("Actual ItemStack count or any encoded native component changed");}
@@ -347,11 +403,12 @@ public final class NativeRelocationSupport {
             for(int i=0;i<3;i++)if(b[i]>b[i+3]||b[i+3]-b[i]>31)throw new IllegalStateException("Finite closed bounds");return b;}
         static String salt(String id,int x,int y,int z){return id.equals("eastern22/pippins-net:room:0")?"PIPPIN320|-13,0,0":id+"|"+x+","+y+","+z;}
         static JsonObject select(JsonObject catalog,String id){
-            if(!catalog.get("format").getAsString().equals("awft-approved-eastern-relocation-catalog:2")||!catalog.get("eastern_layout_sha256").getAsString().equals("6f24640d9efefae3340be80d34bcd0e4788f2ded695aefe03d1d6815761a12a4")||catalog.getAsJsonArray("capsules").size()!=93)throw new IllegalStateException("Exact approved finite catalogue");
+            if(!catalog.get("format").getAsString().equals("awft-approved-eastern-relocation-catalog:5")||!catalog.get("eastern_layout_sha256").getAsString().equals("6f24640d9efefae3340be80d34bcd0e4788f2ded695aefe03d1d6815761a12a4")||catalog.getAsJsonArray("capsules").size()!=98||!catalog.get("inherited_original_catalog_sha256").getAsString().equals("db5e0fa730575ad9b0fd166dd4d52273a5105832d66636d1ca3098693199adf7")||!catalog.get("allocation_addendum_sha256").getAsString().equals("ad2d190159c0913c84b1585494067060da1b76a32c0da862ba44bfd8b0f4b87b"))throw new IllegalStateException("Exact approved finite catalogue");
             JsonObject found=null;for(JsonElement e:catalog.getAsJsonArray("capsules")){JsonObject r=e.getAsJsonObject();if(r.get("id").getAsString().equals(id)){if(found!=null)throw new IllegalStateException("Duplicate capsule");found=r;}}
             if(found==null||!found.get("supported").getAsBoolean())throw new IllegalStateException("Unknown/held capsule, no authority inferred");
             int[] a=box(found.get("source_bounds_xyz")),b=box(found.get("destination_bounds_xyz"));JsonArray d=found.getAsJsonArray("translation_xyz");if(d.size()!=3)throw new IllegalStateException("Exact translation");boolean same=true;
             for(int i=0;i<3;i++){int delta=integer(d.get(i));same&=delta==0;if(b[i]-a[i]!=delta||b[i+3]-a[i+3]!=delta)throw new IllegalStateException("Cardinal unchanged box required");}
+            boolean overlaps=true;for(int i=0;i<3;i++)overlaps&=a[i]<=b[i+3]&&b[i]<=a[i+3];if(overlaps)throw new IllegalStateException("Source/destination self-overlap cannot satisfy sourceAIR and destination preservation; genuinely disjoint allocation required");
             int count=Math.multiplyExact(Math.multiplyExact(a[3]-a[0]+1,a[4]-a[1]+1),a[5]-a[2]+1),objects=integer(found.get("objects"));
             if(same||a[4]-a[1]!=3||count<1||count>512||count!=integer(found.get("cells"))||objects<1||objects>32||integer(found.get("support_cells"))!=(b[3]-b[0]+1)*(b[5]-b[2]+1))throw new IllegalStateException("Identity/resized/oversized/incomplete capsule refused");return found;
         }
@@ -470,13 +527,144 @@ public final class NativeRelocationSupport {
         if(!name.equals("intent.json")&&!name.equals("intent-after-uninvoked-resolution.json"))throw new IllegalStateException("Unknown durable intent filename");return name;
     }
 
+
+    private JsonObject auditQuarantined(MinecraftServer server,boolean finishAfter)throws Exception{
+        quarantined=true;JsonObject prior=ref("quarantined_move_terminal",1048576);Quarantined.validate(prior,report.get("transaction_id").toString(),capsuleId);JsonObject terminalRef=request.getAsJsonObject("quarantined_move_terminal");
+        Path terminal=owned(terminalRef.get("path").getAsString());
+        if(!new String(bytes(terminal.resolveSibling(terminal.getFileName()+".complete"),128),StandardCharsets.UTF_8).trim().equals(terminalRef.get("sha256").getAsString())
+            ||!prior.get("transaction_id").equals(JSON.toJsonTree(report.get("transaction_id")))||!prior.get("capsule_id").getAsString().equals(capsuleId)
+            ||!prior.get("operation").getAsString().equals("move")||!prior.get("clone_invoked").getAsBoolean()||!prior.get("intent_written").getAsBoolean()
+            ||!prior.get("failed").getAsBoolean()||!prior.get("quarantine").getAsBoolean()||!prior.get("cleanup_passed").getAsBoolean()
+            ||prior.get("owned_chunk_tickets").getAsInt()!=0||prior.get("pending_owned_futures").getAsInt()!=0||prior.get("pending_shared_chunk_futures").getAsInt()!=0
+            ||prior.has("ticket_cleanup_error")||prior.has("lease_cleanup_error")||Files.exists(ledger.resolve("completed.json"),LinkOption.NOFOLLOW_LINKS))
+            throw new IllegalStateException("Exact marked actually invoked quarantined move with clean resources required; no completion/retry");
+        JsonObject selected=null;String chosen=null;int matches=0;
+        for(String name:List.of("intent.json","intent-after-uninvoked-resolution.json")){
+            Path p=ledger.resolve(name);if(!Files.exists(p,LinkOption.NOFOLLOW_LINKS))continue;JsonObject candidate=read(p,1048576);
+            if(candidate.get("request_sha256").equals(prior.get("request_sha256"))&&candidate.get("transaction_id").equals(prior.get("transaction_id"))){selected=candidate;chosen=name;matches++;}
+        }
+        if(matches!=1)throw new IllegalStateException("One exact actual failed native intent required");
+        String quarantineName=chosen.equals("intent.json")?"quarantine.json":"quarantine-after-uninvoked-resolution.json";JsonObject q=read(ledger.resolve(quarantineName),1048576);
+        if(!q.get("request_sha256").equals(prior.get("request_sha256"))||!q.get("clone_invoked").getAsBoolean())throw new IllegalStateException("Actual invoked quarantine evidence differs");
+        if(chosen.equals("intent-after-uninvoked-resolution.json")){
+            byte[] resolution=bytes(ledger.resolve("uninvoked-resolution.json"),1048576);
+            if(!selected.get("uninvoked_resolution_sha256").getAsString().equals(sha(resolution))||!sha(bytes(ledger.resolve("intent.json"),1048576)).equals(Uninvoked.INTENT)
+                ||!sha(bytes(ledger.resolve("quarantine.json"),1048576)).equals(Uninvoked.QUARANTINE))throw new IllegalStateException("Original append-only uninvoked history changed");
+        }
+        report.put("original_failed_move_terminal_sha256",terminalRef.get("sha256").getAsString());report.put("original_clone_invoked",true);
+        report.put("original_intent_sha256",sha(bytes(ledger.resolve(chosen),1048576)));report.put("original_quarantine_sha256",sha(bytes(ledger.resolve(quarantineName),1048576)));
+        JsonArray sourceDifferences=new JsonArray(),destinationDifferences=new JsonArray(),survivalFailures=new JsonArray(),actual=new JsonArray();
+        for(var e:source.entrySet()){
+            BlockPos p=e.getKey(),d=translated(p);BlockState src=level.getBlockState(p),dst=level.getBlockState(d);
+            if(!src.isAir()||level.getBlockEntity(p)!=null){JsonObject v=new JsonObject();v.add("position",JSON.toJsonTree(xyz(p)));v.addProperty("actual",src.toString());sourceDifferences.add(v);}
+            JsonObject row=new JsonObject();row.add("position",JSON.toJsonTree(xyz(d)));row.addProperty("actual",dst.toString());row.addProperty("expected",e.getValue().toString());row.addProperty("canSurvive",dst.canSurvive(level,d));actual.add(row);
+            if(NativeWindowStateWitness.applies(e.getValue())){
+                try{var nativeExpected=NativeWindowStateWitness.validate(e.getValue(),dst,level,d);row.add("exact_native_MCW_context_witness",nativeExpected.witness());}
+                catch(Exception|LinkageError mismatch){row.addProperty("native_expectation_error",mismatch.getClass().getName()+": "+String.valueOf(mismatch.getMessage()));destinationDifferences.add(row.deepCopy());}
+            }else if(!dst.equals(e.getValue()))destinationDifferences.add(row.deepCopy());
+            if(!dst.canSurvive(level,d))survivalFailures.add(row.deepCopy());
+        }
+        report.put("source_not_AIR",sourceDifferences);report.put("source_AIR_passed",sourceDifferences.isEmpty());report.put("destination_current_full_states",actual);
+        report.put("destination_state_differences",destinationDifferences);report.put("destination_survival_failures",survivalFailures);
+        report.put("source_entity_count",level.getEntities((Entity)null,new AABB(LOW.getX(),LOW.getY(),LOW.getZ(),HIGH.getX()+1,HIGH.getY()+1,HIGH.getZ()+1).inflate(.25)).size());
+        report.put("destination_entity_count",level.getEntities((Entity)null,new AABB(LOW.getX(),LOW.getY(),LOW.getZ(),HIGH.getX()+1,HIGH.getY()+1,HIGH.getZ()+1).move(dx,dy,dz).inflate(.25)).size());
+        report.put("native_content_conservation_passed",false);
+        try{JsonArray now=snapshots(true);report.put("current_native_snapshots",now);compare(selected.getAsJsonArray("before_native_snapshots"),now,true);report.put("native_content_conservation_passed",true);}
+        catch(Exception|LinkageError failure){report.put("native_content_conservation_error",failure.getClass().getName()+": "+String.valueOf(failure.getMessage()));}
+        ready(server);report.put("read_only_audit",true);report.put("completion_or_resolution_written",false);report.put("original_intent_and_quarantine_retained",true);
+        if(finishAfter)finish("read-only actual quarantined-room audit; original failure retained; no clone/retry/completion",false);return selected;
+    }
+    private void windowContext(BlockPos p,BlockState state)throws Exception{
+        String id=BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString();if(!id.startsWith("mcwwindows:"))return;
+        if(NativeWindowStateWitness.applies(state)){
+            NativeWindowStateWitness.pin(state);
+            if(!report.containsKey("native_MCW_read_only_counterfactuals"))report.put("native_MCW_read_only_counterfactuals",NativeWindowStateWitness.counterfactuals(state,level.getBlockState(p),level,p));
+            return;
+        }
+        Property<?> facing=state.getBlock().getStateDefinition().getProperty("facing");
+        for(Direction direction:Direction.values()){
+            BlockPos outside=p.relative(direction);if(source.containsKey(outside))continue;BlockState neighbor=level.getBlockState(outside);
+            if(neighbor.getBlock()!=state.getBlock())continue;
+            if(facing!=null&&!neighbor.getValue(facing).equals(state.getValue(facing)))continue;
+            BlockPos target=translated(outside);BlockState destinationNeighbor=level.getBlockState(target);
+            if(level.getBlockEntity(outside)!=null||level.getBlockEntity(target)!=null||destinationNeighbor.getBlock()!=neighbor.getBlock()
+                ||facing!=null&&!destinationNeighbor.getValue(facing).equals(neighbor.getValue(facing))||!destinationNeighbor.getFluidState().isEmpty()){
+                JsonObject blocked=new JsonObject();blocked.add("source_context",JSON.toJsonTree(xyz(outside)));blocked.addProperty("source_state",neighbor.toString());
+                blocked.add("destination_context",JSON.toJsonTree(xyz(target)));blocked.addProperty("actual_destination_state",destinationNeighbor.toString());report.put("missing_native_window_context",blocked);
+                throw new IllegalStateException("Connected MCW window escapes capsule; separately admit/verify genuine matching non-BE destination partners before intent");
+            }
+        }
+    }
+
+    static final class Quarantined {
+        static void validate(JsonObject p,String tx,String capsule){
+            if(!p.get("transaction_id").getAsString().equals(tx)||!p.get("capsule_id").getAsString().equals(capsule)||!p.get("operation").getAsString().equals("move")
+                ||!p.get("clone_invoked").getAsBoolean()||!p.get("intent_written").getAsBoolean()||!p.get("failed").getAsBoolean()||!p.get("quarantine").getAsBoolean()
+                ||!p.get("cleanup_passed").getAsBoolean()||p.get("owned_chunk_tickets").getAsInt()!=0||p.get("pending_owned_futures").getAsInt()!=0||p.get("pending_shared_chunk_futures").getAsInt()!=0
+                ||p.has("ticket_cleanup_error")||p.has("lease_cleanup_error"))throw new IllegalStateException("Exact genuinely invoked failed clean native move required");
+        }
+    }
+    private void marked(JsonObject reference)throws Exception{
+        Path p=owned(reference.get("path").getAsString());
+        if(!new String(bytes(p.resolveSibling(p.getFileName()+".complete"),128),StandardCharsets.UTF_8).trim().equals(reference.get("sha256").getAsString()))throw new IllegalStateException("Exact immutable native terminal marker required");
+    }
+    private void recordConserved(MinecraftServer server)throws Exception{
+        JsonObject intent=auditQuarantined(server,false),audit=ref("native_custody_audit",1048576),review=ref("custody_resolution_review",65536);marked(request.getAsJsonObject("native_custody_audit"));
+        if(!audit.get("operation").getAsString().equals("inspect-quarantined")||!audit.get("transaction_id").equals(JSON.toJsonTree(report.get("transaction_id")))
+            ||!audit.get("native_runtime_id").getAsString().equals(runtimeId)||!audit.get("pack_sha256").equals(request.get("pack_sha256"))||!audit.get("current_backup_sha256").equals(request.get("backup_sha256"))
+            ||!audit.get("cleanup_passed").getAsBoolean()||!audit.get("source_AIR_passed").getAsBoolean()||!audit.get("native_content_conservation_passed").getAsBoolean()
+            ||!audit.getAsJsonArray("destination_state_differences").isEmpty()||!audit.getAsJsonArray("destination_survival_failures").isEmpty()
+            ||audit.get("owned_chunk_tickets").getAsInt()!=0||audit.get("pending_owned_futures").getAsInt()!=0||audit.get("pending_shared_chunk_futures").getAsInt()!=0
+            ||audit.has("ticket_cleanup_error")||audit.has("lease_cleanup_error"))throw new IllegalStateException("Actual fresh independent native custody audit must pass; failed move is never relabelled");
+        Instant at=Instant.parse(audit.get("finished").getAsString()),created=Instant.parse(review.get("created").getAsString());
+        if(at.isAfter(Instant.now())||at.isBefore(Instant.now().minusSeconds(120))||created.isAfter(Instant.now())||created.isBefore(at))throw new IllegalStateException("Fresh actual audit and later explicit review required");
+        if(!review.get("format").getAsString().equals("awft-explicit-independent-custody-review:1")||!review.get("approved").getAsBoolean()||!review.get("allow_record_current_custody_only").getAsBoolean()
+            ||!review.get("transaction_id").equals(audit.get("transaction_id"))||!review.get("failed_move_terminal_sha256").equals(request.getAsJsonObject("quarantined_move_terminal").get("sha256"))
+            ||!review.get("native_audit_sha256").equals(request.getAsJsonObject("native_custody_audit").get("sha256")))throw new IllegalStateException("Separate explicit Root-reviewed custody authority required");
+        if(!Boolean.TRUE.equals(report.get("source_AIR_passed"))||!Boolean.TRUE.equals(report.get("native_content_conservation_passed"))
+            ||!((JsonArray)report.get("destination_state_differences")).isEmpty()||!((JsonArray)report.get("destination_survival_failures")).isEmpty()
+            ||!audit.getAsJsonArray("current_native_snapshots").equals(report.get("current_native_snapshots")))throw new IllegalStateException("Current exact native custody changed after real audit");
+        ready(server);JsonObject record=new JsonObject();record.addProperty("format","awft-native-independent-custody-resolution:1");record.addProperty("transaction_id",report.get("transaction_id").toString());
+        record.addProperty("capsule_id",capsuleId);record.addProperty("created",Instant.now().toString());record.addProperty("active_intent_file",activeIntent(intent));record.addProperty("intent_sha256",report.get("original_intent_sha256").toString());
+        record.addProperty("original_quarantine_sha256",report.get("original_quarantine_sha256").toString());record.add("failed_native_move",request.get("quarantined_move_terminal").deepCopy());
+        record.add("native_custody_audit",request.get("native_custody_audit").deepCopy());record.add("explicit_review",request.get("custody_resolution_review").deepCopy());
+        record.add("before_native_snapshots",intent.get("before_native_snapshots").deepCopy());record.add("current_native_snapshots",((JsonArray)report.get("current_native_snapshots")).deepCopy());
+        record.addProperty("native_process_pid",ProcessHandle.current().pid());record.addProperty("native_process_started_at",ProcessHandle.current().info().startInstant().orElseThrow().toString());
+        record.addProperty("source_AIR_passed",true);record.addProperty("current_destination_full_states_and_survival_passed",true);record.addProperty("native_content_conservation_passed",true);
+        record.addProperty("original_move_passed",false);record.addProperty("clone_or_retry_invoked",false);Path path=ledger.resolve("conserved-after-independent-repair.json");durable(path,record);
+        Ledger.create(path.resolveSibling(path.getFileName()+".sha256"),(sha(bytes(path,1048576))+"\n").getBytes(StandardCharsets.UTF_8));
+        report.put("independent_custody_resolution_written",true);report.put("original_move_passed",false);finish("recorded independently proven current custody; original failed move/quarantine retained; no retry",false);
+    }
+    private JsonObject completedCustody(Path directory,String key)throws Exception{
+        Path file=Files.exists(directory.resolve("completed.json"),LinkOption.NOFOLLOW_LINKS)?directory.resolve("completed.json"):directory.resolve("conserved-after-independent-repair.json");
+        byte[] raw=bytes(file,1048576);if(!new String(bytes(file.resolveSibling(file.getFileName()+".sha256"),128),StandardCharsets.UTF_8).trim().equals(sha(raw)))throw new IllegalStateException("Durable native custody marker differs");
+        JsonObject done=JsonParser.parseString(new String(raw,StandardCharsets.UTF_8)).getAsJsonObject();
+        if(!done.get("transaction_id").getAsString().equals(key)||!done.get("intent_sha256").getAsString().equals(sha(bytes(directory.resolve(activeIntent(done)),1048576))))throw new IllegalStateException("Foreign actual custody/intent");
+        if(file.getFileName().toString().startsWith("conserved-")){
+            if(!done.get("format").getAsString().equals("awft-native-independent-custody-resolution:1")||done.get("original_move_passed").getAsBoolean()||done.get("clone_or_retry_invoked").getAsBoolean()
+                ||!done.get("source_AIR_passed").getAsBoolean()||!done.get("current_destination_full_states_and_survival_passed").getAsBoolean()||!done.get("native_content_conservation_passed").getAsBoolean())throw new IllegalStateException("Independent custody is not a replay/completion substitute");
+            JsonObject audit=exactRef(done.getAsJsonObject("native_custody_audit"),1048576);marked(done.getAsJsonObject("native_custody_audit"));
+            JsonObject failed=exactRef(done.getAsJsonObject("failed_native_move"),1048576);marked(done.getAsJsonObject("failed_native_move"));Quarantined.validate(failed,key,done.get("capsule_id").getAsString());
+            JsonObject review=exactRef(done.getAsJsonObject("explicit_review"),65536);
+            if(!review.get("approved").getAsBoolean()||!review.get("allow_record_current_custody_only").getAsBoolean()||!audit.get("native_content_conservation_passed").getAsBoolean()
+                ||!audit.get("source_AIR_passed").getAsBoolean()||!audit.get("cleanup_passed").getAsBoolean())throw new IllegalStateException("Historical independent custody provenance differs");
+            String quarantine=activeIntent(done).equals("intent.json")?"quarantine.json":"quarantine-after-uninvoked-resolution.json";
+            if(!sha(bytes(directory.resolve(quarantine),1048576)).equals(done.get("original_quarantine_sha256").getAsString()))throw new IllegalStateException("Original invoked quarantine changed");
+        }return done;
+    }
+
     private void atomic(MinecraftServer server)throws Exception{
+            if(action.equals("inspect-quarantined")){auditQuarantined(server,true);return;}
+            if(action.equals("record-conserved")){recordConserved(server);return;}
             if(action.equals("inspect-moved")){
-                byte[] doneBytes=bytes(ledger.resolve("completed.json"),1048576);
-                if(!new String(bytes(ledger.resolve("completed.json.sha256"),128),StandardCharsets.UTF_8).trim().equals(sha(doneBytes)))throw new IllegalStateException("Durable completion marker differs");
-                JsonObject done=JsonParser.parseString(new String(doneBytes,StandardCharsets.UTF_8)).getAsJsonObject();if(!done.get("transaction_id").equals(JSON.toJsonTree(report.get("transaction_id")))||!done.get("intent_sha256").getAsString().equals(sha(bytes(ledger.resolve(activeIntent(done)),1048576))))throw new IllegalStateException("Foreign/mismatched durable completion and original intent");
+                JsonObject done=completedCustody(ledger,report.get("transaction_id").toString());
                 for(BlockPos p:source.keySet())if(!level.getBlockState(p).isAir()||level.getBlockEntity(p)!=null)throw new IllegalStateException("Source is no longer the saved completed AIR state; preserve current changes");
-                for(var e:source.entrySet())if(!level.getBlockState(translated(e.getKey())).equals(e.getValue()))throw new IllegalStateException("Moved geometry changed after completion");
+                for(var e:source.entrySet()){
+                    BlockPos q=translated(e.getKey());BlockState actual=level.getBlockState(q);
+                    if(NativeWindowStateWitness.applies(e.getValue()))NativeWindowStateWitness.validate(e.getValue(),actual,level,q);
+                    else if(!actual.equals(e.getValue()))throw new IllegalStateException("Moved geometry changed after completion");
+                }
+                decorativeNullDestinations();
                 JsonArray current=snapshots(true);compare(done.getAsJsonArray("before_native_snapshots"),current,true);report.put("moved_native_snapshots",current);
                 boolean differentProcess=done.get("native_process_pid").getAsLong()!=ProcessHandle.current().pid()||!done.get("native_process_started_at").getAsString().equals(ProcessHandle.current().info().startInstant().orElseThrow().toString());
                 report.put("native_restart_persistence_checked",differentProcess);finish("inspected actual conserved moved room; no replay",false);return;
@@ -502,7 +690,17 @@ public final class NativeRelocationSupport {
             cloneInvoked=true;int result=server.getCommands().getDispatcher().execute(parsed);report.put("native_clone_return",result);
             if(result<=0||result>sourceCount)throw new IllegalStateException("Native clone did not report a finite real operation");
             for(BlockPos p:source.keySet())if(!level.getBlockState(p).isAir()||level.getBlockEntity(p)!=null)throw new IllegalStateException("Native move source not completely AIR");
-            for(var e:source.entrySet()){BlockPos q=translated(e.getKey());if(!level.getBlockState(q).equals(e.getValue())||!level.getBlockState(q).canSurvive(level,q))throw new IllegalStateException("Native move destination full state/survival differs; retain evidence without fitting expected states");}
+            JsonArray windowWitnesses=new JsonArray();int windowsChecked=0;
+            for(var e:source.entrySet()){
+                BlockPos q=translated(e.getKey());BlockState original=e.getValue(),actual=level.getBlockState(q);
+                if(NativeWindowStateWitness.applies(original)){
+                    var derived=NativeWindowStateWitness.validate(original,actual,level,q);windowsChecked++;
+                    if(!derived.expected().equals(original)){JsonObject w=derived.witness();w.add("position",JSON.toJsonTree(xyz(q)));windowWitnesses.add(w);}
+                }else if(!actual.equals(original))throw new IllegalStateException("Native move destination full state differs; no unknown normalization");
+                if(!actual.canSurvive(level,q))throw new IllegalStateException("Native move destination survival failed; never relaxed");
+            }
+            report.put("native_MCW_windows_checked",windowsChecked);report.put("native_MCW_part_derivations",windowWitnesses);
+            decorativeNullDestinations();
             if(!level.getEntities((Entity)null,new AABB(LOW.getX(),LOW.getY(),LOW.getZ(),HIGH.getX()+1,HIGH.getY()+1,HIGH.getZ()+1).inflate(.25)).isEmpty()||!level.getEntities((Entity)null,new AABB(LOW.getX(),LOW.getY(),LOW.getZ(),HIGH.getX()+1,HIGH.getY()+1,HIGH.getZ()+1).move(dx,dy,dz).inflate(.25)).isEmpty())throw new IllegalStateException("Unexpected actual entity after clone; quarantine without deleting it");JsonArray after=snapshots(true);compare(before,after,true);ready(server);report.put("after_native_snapshots",after);
             JsonObject done=intent.deepCopy();done.addProperty("completed",Instant.now().toString());done.addProperty("native_clone_return",result);done.add("after_native_snapshots",after);
             done.addProperty("intent_sha256",sha(bytes(ledger.resolve(intentName),1048576)));

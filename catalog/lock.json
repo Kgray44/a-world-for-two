@@ -1,11 +1,11 @@
 {
   "format": 1,
   "name": "A World for Two",
-  "version": "0.1.0-candidate.53",
+  "version": "0.1.0-candidate.60",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
-  "generated": "2026-10-28T20:04:51.942744+00:00",
+  "generated": "2026-10-28T23:31:54.158023+00:00",
   "release_status": "candidate",
   "validation": "Explicitly reviewed helper/mapping changes and optional exact zipline cable addition only; native restart and integration checks pending",
   "mods": [
@@ -277,15 +277,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.39",
-      "version": "0.6.39",
+      "version_id": "0.6.46",
+      "version": "0.6.46",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.39.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.39.jar",
-      "size": 690954,
+      "filename": "awft-control-bridge-0.6.46.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.46.jar",
+      "size": 721981,
       "hashes": {
-        "sha256": "496a22cf30d517dbc2bcae2806f6412c17a0656c081d0cb8fb76d0c2c8d9c1d4"
+        "sha256": "698aa68f0b6fff2dba3371c8569c76347fdb0be72e9a09a7312db6417ba41153"
       },
       "side": "both",
       "kind": "mod",
