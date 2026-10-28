@@ -163,12 +163,19 @@ the supplied `expected` revision. Conversation previews run as existing backgrou
 
 ## Current evidence and remaining acceptance
 
-The latest source correction and test results are recorded in
-[the correction receipt](../evidence/living-world/correction-qualification.json).
+The latest integrated source results are recorded in
+[the integration receipt](../evidence/living-world/integration-qualification.json).
+This branch includes main-lane commit `26f1cfb`, which restores its frozen construction
+dependencies. The full local suite now passes: **1,173 tests, zero errors, one platform
+skip**. The identical source tree passed PR-merge CI with three platform/input skips.
+The Living World implementation and corrected addon inputs did not change in that merge.
+
+[The correction receipt](../evidence/living-world/correction-qualification.json) preserves
+the prior source checks and missing-module failures before the committed main repair.
 The original receipt and binary below are historical and **held**: subsequent review
 found missing ambient scheduler activation, bubbles-only rate admission, stale history,
 delayed-reply and shutdown ownership defects. Use only the corrected source candidate
-identified by the new receipt for the main lane's private runtime qualification.
+identified by these receipts for the main lane's private runtime qualification.
 
 At the previous source checkpoint, focused registry, HTTP, backup, frontend,
 upstream-schema and JVM checks passed. That full suite ran 1,137 tests with three import errors and one skip: the
