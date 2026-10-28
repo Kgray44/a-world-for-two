@@ -37,6 +37,7 @@ Salt Marigold batches and the exact unresolved Petrel, Mercy and Reed Fin blocke
 Scoped active files are `tools/grand_harbor_fleet.py`,
 `tools/grand_harbor_smallcraft.py`, `tools/grand_harbor_berth.py`,
 `tools/grand_harbor_remaining_berths.py`, `tools/grand_harbor_smallcraft_berths.py`,
+`tools/grand_harbor_access_repairs.py`,
 their scoped test files, this report and
 `docs/FLEET-MARITIME-COMMISSIONING.md`. The custody patch under
 `proposals/fleet-craft-custody-diagnostics/` is a proposed shared-bridge change;
@@ -157,12 +158,13 @@ existing original UUIDs and records the missing bounded before/after differences
 Java21 compilation and a focused reflection probe passed; no modified bridge was
 installed. See [commissioning and custody details](FLEET-MARITIME-COMMISSIONING.md).
 
-The retained Lark source also has an unsupported south-facing wheel at local
-`(0,17,25)`: required north backing`(0,17,24)` is AIR. The actual current-world
-wheel state is UNKNOWN. The master should inspect it and, only with exact current
-preimages, consider connected backing at`(0,16,24)` and`(0,17,24)`. No current
-Lark geometry or contents were overwritten. All six new templates passed the
-subsequent read-only support audit for controls, lanterns, beds and doors.
+The retained Lark source has an unsupported south-facing wheel at local
+`(0,17,25)`. Genuine6ad3a8 reads confirmed that saved wheel and its existing BE,
+the two missing northern support cells and the actual deck below. The
+[two-block support proposal and dependent Wren return ladder](FLEET-ACCESS-REPAIRS.md)
+preserve existing BEs/inventories. Current native state and behavior remain
+unverified. No current Lark geometry or contents were overwritten. All six new
+templates passed the read-only support audit for controls, lanterns, beds and doors.
 
 ## Integration and remaining acceptance
 
