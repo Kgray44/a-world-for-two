@@ -1,0 +1,89 @@
+{
+  "format": "awft-retained-jfr-synthetic-verification:1",
+  "native_gameplay_qualified": false,
+  "strict_parity_proved": false,
+  "receipt_directory": "D:\\A World for Two\\staging\\world-tests\\20261027T053650Z-artistic\\staging\\retained-jfr-1793217490908850400",
+  "receipt_sha256": "eb6ed9c91019a427e546bedf6e2b81c677b944ffa6d2f472f0bf06fb145cf007",
+  "receipt": {
+    "format": "awft-retained-jfr-reader:1",
+    "at": "2026-10-28T19:58:10.910876+00:00",
+    "passed": true,
+    "synthetic_only": true,
+    "minecraft_or_attach_actions": false,
+    "strict_parity_proved": false,
+    "reserve": {
+      "utc": "2026-10-28T19:58:10.6887577Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 122081157120,
+      "dFreeBytes": 283802243072,
+      "estimatedCBytes": 4194304,
+      "estimatedDBytes": 67108864,
+      "reason": "Both drives remain above reserve after estimated writes"
+    },
+    "memory": {
+      "available": true,
+      "commit_bytes": 55236567040,
+      "commit_limit_bytes": 67773517824,
+      "commit_peak_since_boot_bytes": 68908589056,
+      "physical_available_bytes": 5540855808,
+      "physical_total_bytes": 33413779456,
+      "commit_headroom_bytes": 12536950784
+    },
+    "source_sha256": {
+      "JfrSummary.java": "1cedb070aa682a2aeed354e36987b9db2e23c8ad963ccd09ebf20501d42fe660",
+      "JfrSummaryProbe.java": "24527d02a8e7f3674732d1437450bdb875ce30167775f5e12f22dc460943e7fa"
+    },
+    "reader_heap_MiB": 96,
+    "compiler_heap_MiB": 128,
+    "processors": 2,
+    "compile_exit": 0,
+    "fixture_exit": 0
+  },
+  "fixture_stdout": "PASS: synthetic status/read events, exact embedded JVM identity, missing metrics, overflow, no private coordinates",
+  "native_api_inspection": {
+    "at": "2026-10-28T20:00:46.801165+00:00",
+    "native_execution": false,
+    "classes": {
+      "net/minecraft/util/profiling/jfr/event/ChunkGenerationEvent$Fields.class": {
+        "bytes": 794,
+        "sha256": "6c88676fd7c569b2df1e86cdabb49b98cdd914df25dccf4460197b02e98e18ab",
+        "event_fields": {
+          "WORLD_POS_X": "worldPosX",
+          "WORLD_POS_Z": "worldPosZ",
+          "CHUNK_POS_X": "chunkPosX",
+          "CHUNK_POS_Z": "chunkPosZ",
+          "STATUS": "status",
+          "LEVEL": "level"
+        }
+      },
+      "net/minecraft/util/profiling/jfr/event/ChunkRegionIoEvent$Fields.class": {
+        "bytes": 1001,
+        "sha256": "357edcc7214df3b9e448588c5e8d5fe0de3885dc18aab2b543b6b6081278de59",
+        "event_fields": {
+          "REGION_POS_X": "regionPosX",
+          "REGION_POS_Z": "regionPosZ",
+          "LOCAL_POS_X": "localPosX",
+          "LOCAL_POS_Z": "localPosZ",
+          "CHUNK_POS_X": "chunkPosX",
+          "CHUNK_POS_Z": "chunkPosZ",
+          "LEVEL": "level",
+          "DIMENSION": "dimension",
+          "TYPE": "type",
+          "COMPRESSION": "compression",
+          "BYTES": "bytes"
+        }
+      },
+      "net/minecraft/util/profiling/jfr/JfrProfiler.class": {
+        "bytes": 14355,
+        "sha256": "6bcc3a5bcb7fe9073ef03e6e99409fee16be89a6a56b16c11519c21f4565fd03",
+        "onRegionFileRead_calls": [
+          "jdk/jfr/EventType.isEnabled()Z",
+          "net/minecraft/util/profiling/jfr/event/ChunkRegionReadEvent.<init>(Lnet/minecraft/world/level/chunk/storage/RegionStorageInfo;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;I)V",
+          "net/minecraft/util/profiling/jfr/event/ChunkRegionReadEvent.commit()V"
+        ],
+        "native_region_read_is_duration_scope": false
+      }
+    }
+  }
+}
