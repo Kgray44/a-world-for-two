@@ -31,6 +31,8 @@ MAX_SHIP_CELLS = 180_000
 MAX_EXPORT_BYTES = 32 * 1024**2
 RESERVE_GUARD = Path(r'C:\Users\kkids\AppData\Local\AeroStorageWatch\ReserveGuard.ps1')
 FLEET_ORDER = ('rosewater-lark', 'golden-petrel', 'resolute-wren', 'mercy-of-the-tide')
+SMALLCRAFT_KEYS = ('tern-pilot-cutter', 'salt-marigold-ketch', 'reed-fin-river-lighter')
+ALL_VESSELS = FLEET_ORDER + SMALLCRAFT_KEYS
 TIMBERS = ('chipped:detailed_dark_oak_planks', 'chipped:nailed_dark_oak_planks',
            'chipped:stacked_dark_oak_planks', 'chipped:vertical_dark_oak_planks',
            'chipped:detailed_spruce_planks')
@@ -536,17 +538,38 @@ def working_deck(p):
     for z in (13, 17):
         p.box(-1, f+2, z, 1, f+2, z, 'minecraft:spruce_slab', type='bottom', waterlogged=False)
     # A bounded, stopped shipboard cargo derrick; no quay footprint is authored.
-    x = -p.width(-5, f)-1
-    p.spar((x, f, -5), (x, f+12, -5))
-    p.spar((x, f+12, -5), (x-7, f+10, -5))
-    p.put(x-7, f+9, -5, 'minecraft:dark_oak_log', axis='x')
-    p.rope((x, f+11, -5), (x-6, f+10, -5))
-    p.rope((x-7, f+8, -5), (x-7, f+3, -5))
-    p.put(x, f+1, -4, 'create:hand_crank', facing='west', waterlogged=False)
-    p.put(x-1, f+1, -4, 'create:shaft', axis='x', waterlogged=False)
-    p.put(x-2, f+1, -4, 'create:rope_pulley', axis='x')
-    p.fittings.append({'kind': 'stopped cargo derrick', 'local_control': [x, f+1, -4],
-                       'status': 'Uncommissioned; isolated load and boat retention are separate tests'})
+    hz = -13
+    x = -p.width(hz, f)+1
+    p.spar((x, f, hz), (x, f+12, hz))
+    p.spar((x, f+12, hz), (x-7, f+10, hz))
+    p.rope((x, f+11, hz), (x-6, f+10, hz))
+    # One real drive axis reaches the actual lifting tip. The pinned crank's
+    # shaft is opposite FACING: this crank is east of its supporting shaft.
+    p.box(x-6, f+9, hz, x, f+9, hz, 'create:shaft', axis='x', waterlogged=False)
+    p.put(x-7, f+9, hz, 'create:rope_pulley', axis='x')
+    p.put(x+1, f+9, hz, 'create:hand_crank', facing='east', waterlogged=False)
+    # Reach the manual control from an attached ladder and guarded service
+    # platform. The catwalk is offset from the native descending rope/load.
+    p.box(x-7, f+7, hz+3, x+1, f+7, hz+6, 'minecraft:spruce_planks')
+    p.put(x, f+7, hz+2, 'minecraft:spruce_planks')
+    p.box(x, f+6, hz, x, f+6, hz+2, 'minecraft:stripped_dark_oak_log', axis='z')
+    for zz in (hz+3, hz+6):
+        p.box(x-7, f+6, zz, x+1, f+6, zz, 'minecraft:stripped_dark_oak_log', axis='x')
+    for xx in range(x-7, x+2):
+        p.put(xx, f+8, hz+6, 'minecraft:birch_fence')
+        if xx != x:
+            p.put(xx, f+8, hz+3, 'minecraft:birch_fence')
+    for zz in (hz+4, hz+5):
+        p.put(x-7, f+8, zz, 'minecraft:dark_oak_fence')
+        p.put(x+1, f+8, zz, 'minecraft:dark_oak_fence')
+    for y in range(f+1, f+9):
+        p.put(x, y, hz+1, 'minecraft:ladder', facing='south', waterlogged=False)
+    p.room('Cargo derrick operator platform', 'derrick', (x, f+7, hz+4),
+           'Backed ladder and guarded service catwalk reach the correctly aligned manual drive')
+    p.fittings.append({'kind': 'stopped cargo derrick', 'local_control': [x+1, f+9, hz],
+                       'pulley': [x-7, f+9, hz], 'drive_axis': 'x',
+                       'load_sweep_bounds': [x-8, f+1, hz-1, x-6, f+8, hz+1],
+                       'status': 'Unassembled/uncommissioned; master must verify native empty-load movement, stops and restart. Vanilla-boat retention is not established.'})
     # Attached two-wide boarding stair, with a low landing above the waterline.
     w = p.width(0, f)
     for z in (0, 1):
@@ -636,6 +659,18 @@ def circulation(p):
     passable = {AIR, 'minecraft:oak_door', 'minecraft:ladder'}
     cells = {pos for pos, state in p.blocks.items() if identifier(state) in support
              and all(identifier(p.local_state(pos[0], pos[1]+n, pos[2])) in passable for n in (1, 2))}
+    ladders = set()
+    backing = {'north': (0, 0, 1), 'south': (0, 0, -1), 'east': (-1, 0, 0), 'west': (1, 0, 0)}
+    for (x, y, z), state in p.blocks.items():
+        if identifier(state) != 'minecraft:ladder':
+            continue
+        facing = dict(part.split('=') for part in state.split('[', 1)[1][:-1].split(','))['facing']
+        dx, dy, dz = backing[facing]
+        if identifier(p.local_state(x+dx, y+dy, z+dz)) not in SEAL_BLOCKS:
+            raise UserError('A ship ladder lacks full-block backing: '+str((x, y, z)))
+        if identifier(p.local_state(x, y+1, z)) in passable:
+            ladders.add((x, y-1, z))
+    cells.update(ladders)
     if p.entry not in cells:
         raise UserError('Weather-deck entry is not clear')
     reached = {p.entry}
@@ -648,11 +683,16 @@ def circulation(p):
                 if nxt in cells and nxt not in reached:
                     reached.add(nxt)
                     queue.append(nxt)
+        for dy in (-1, 1):
+            nxt = x, y+dy, z
+            if nxt in cells and nxt not in reached and ((x, y, z) in ladders or nxt in ladders):
+                reached.add(nxt)
+                queue.append(nxt)
     missing = [r['name'] for r in p.rooms if tuple(r['local_anchor']) not in reached]
     if missing:
         raise UserError('Rooms disconnected in conservative source walk graph: '+', '.join(missing))
     return {'rooms_reached': [r['name'] for r in p.rooms], 'reachable_support_cells': len(reached),
-            'method': 'Two-high structural block grid, max one-block step; doors interactable',
+            'method': 'Two-high structural block grid, max one-block step; doors interactable; vertical movement only on verified backed ladders',
             'native_collision_walking_and_multiplayer': 'UNVERIFIED'}
 
 
@@ -678,6 +718,26 @@ def hull_seal(p):
             'native_water_updates': 'UNVERIFIED', 'shell_cells': len(sealed)}
 
 
+def derrick_source_check(p):
+    fitting = next(row for row in p.fittings if row['kind'] == 'stopped cargo derrick')
+    cx, cy, cz = fitting['local_control']
+    px, py, pz = fitting['pulley']
+    if p.local_state(cx, cy, cz) != p.state('create:hand_crank', facing='east', waterlogged=False):
+        raise UserError('The derrick crank must face away from its supporting shaft')
+    if (cy, cz) != (py, pz) or identifier(p.local_state(px, py, pz)) != 'create:rope_pulley':
+        raise UserError('The actual lifting tip must share the manual drive axis')
+    for x in range(px+1, cx):
+        if p.local_state(x, cy, cz) != p.state('create:shaft', axis='x', waterlogged=False):
+            raise UserError('A shaft is missing between the control and lifting tip')
+    x1, y1, z1, x2, y2, z2 = fitting['load_sweep_bounds']
+    if any(p.local_state(x, y, z) != AIR for x in range(x1, x2+1)
+           for y in range(y1, y2+1) for z in range(z1, z2+1)):
+        raise UserError('Source construction intersects the reserved derrick load sweep')
+    return {'aligned_manual_shaft_axis': 'x', 'crank_shaft_face': 'west',
+            'reserved_load_sweep': fitting['load_sweep_bounds'], 'source_sweep_clear': True,
+            'native_assembly_movement_load_retention_and_restart': 'UNVERIFIED'}
+
+
 def template(p, key, design, checks):
     palette = sorted(set(p.blocks.values()))
     indices = {state: i for i, state in enumerate(palette)}
@@ -694,6 +754,9 @@ def template(p, key, design, checks):
 
 
 def build(registry, key):
+    if key in SMALLCRAFT_KEYS:
+        from tools.grand_harbor_smallcraft import build as build_smallcraft
+        return build_smallcraft(registry, key)
     if key == 'rosewater-lark':
         p, checks = build_lark(registry)
         # Preserve the existing authored frigate, normalize its local waterline.
@@ -707,7 +770,7 @@ def build(registry, key):
         for operation in (hull, raised_decks, magazine_and_stores, berthing, galley_and_guns,
                           captain, working_deck, companionways, rig):
             operation(p)
-        checks = {'circulation': circulation(p), 'lower_hull_seal': hull_seal(p),
+        checks = {'circulation': circulation(p), 'lower_hull_seal': hull_seal(p), 'cargo_derrick': derrick_source_check(p),
                   'rope_attachments': p.rope_proof, 'materials': require_material_rule(p.blocks, p.spec.name)}
         design = asdict(p.spec)
         design['fittings'] = p.fittings
@@ -775,14 +838,14 @@ def structure_nbt(document):
     return gzip.compress(raw, mtime=0)
 
 
-def export(registry_path, output, keys=FLEET_ORDER):
+def export(registry_path, output, keys=ALL_VESSELS):
     registry_path, output = Path(registry_path), Path(output)
     if not registry_path.is_file() or registry_path.stat().st_size > 8*1024**2:
         raise UserError('Use the finite actual native registry export')
     registry = json.loads(registry_path.read_bytes())
     if output.exists():
         raise UserError('Choose a new immutable export directory')
-    if len(set(keys)) != len(keys) or not keys or any(k not in FLEET_ORDER for k in keys):
+    if len(set(keys)) != len(keys) or not keys or any(k not in ALL_VESSELS for k in keys):
         raise UserError('Choose distinct known fleet vessels')
     files = {}
     for key in keys:
@@ -792,8 +855,8 @@ def export(registry_path, output, keys=FLEET_ORDER):
         files[key+'.nbt'] = structure_nbt(doc)
     manifest = {'format': 'awft-grand-harbor-fleet:1', 'ships': list(keys),
                 'source_sha256': sha(Path(__file__).read_bytes()),
-                'dependencies': {'artistic_ship.py': sha(Path(__file__).with_name('artistic_ship.py').read_bytes()),
-                                 'artistic_materials.py': sha(Path(__file__).with_name('artistic_materials.py').read_bytes())},
+                'dependencies': {name: sha(Path(__file__).with_name(name).read_bytes()) for name in
+                                 ('artistic_ship.py', 'artistic_materials.py', 'grand_harbor_smallcraft.py', 'settlement.py')},
                 'native_registry_sha256': sha(registry_path.read_bytes()),
                 'files': {name: {'sha256': sha(raw), 'bytes': len(raw)} for name, raw in files.items()},
                 'references': REFERENCES, 'world_writes': 0,
@@ -832,7 +895,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--registry', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--ships', nargs='+', choices=FLEET_ORDER, default=list(FLEET_ORDER))
+    parser.add_argument('--ships', nargs='+', choices=ALL_VESSELS, default=list(ALL_VESSELS))
     args = parser.parse_args()
     print(json.dumps(export(args.registry, args.output, args.ships)))
 

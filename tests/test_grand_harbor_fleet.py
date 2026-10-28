@@ -146,6 +146,32 @@ class FleetGeometryTests(unittest.TestCase):
         with self.assertRaisesRegex(UserError, 'entry is not clear'):
             fleet.circulation(p)
 
+    def test_wrong_crank_face_and_load_obstruction_refuse_derrick(self):
+        doc = self.documents['resolute-wren']
+        for defect in ('crank', 'load'):
+            with self.subTest(defect=defect):
+                p = fleet.FleetShip(self.registry, fleet.SPECS['resolute-wren'])
+                p.blocks = block_map(doc)
+                p.fittings = deepcopy(doc['design']['fittings'])
+                fitting = next(row for row in p.fittings if row['kind'] == 'stopped cargo derrick')
+                if defect == 'crank':
+                    p.put(*fitting['local_control'], 'create:hand_crank', facing='west', waterlogged=False)
+                else:
+                    x, y, z = fitting['load_sweep_bounds'][:3]
+                    p.put(x, y, z, 'minecraft:stone_bricks')
+                with self.assertRaises(UserError):
+                    fleet.derrick_source_check(p)
+
+    def test_a_ladder_without_its_backing_is_refused(self):
+        doc = self.documents['resolute-wren']
+        p = fleet.FleetShip(self.registry, fleet.SPECS['resolute-wren'])
+        p.blocks = block_map(doc)
+        p.rooms = doc['rooms']
+        x, y, z = doc['design']['emergency_ladder'][2]
+        p.put(x+1, y, z, fleet.AIR)
+        with self.assertRaisesRegex(UserError, 'ladder lacks full-block backing'):
+            fleet.circulation(p)
+
     def test_missing_native_block_refuses_design(self):
         r = deepcopy(self.registry)
         del r['blocks']['farm_and_charm:rope']
