@@ -201,3 +201,33 @@ Copper Wren region. It explicitly reports ship and airship positions unavailable
 Missing observations must remain unavailable, rather than an empty train list.
 This workstream links the dependency only; it does not install, invoke or broaden
 that observer, expose proposed coordinates as live, or change its authority.
+
+## Frozen display against actual native GET data
+
+A temporary loopback reader on 18765 served the unchanged **8ef3ece frontend and
+Atlas GET model** against actual 8766 GET responses and existing tile metadata.
+Its visible banner said **READ-ONLY QUALIFICATION**. It never initialized the
+Application lifecycle, scheduler or backups, never issued an in-game command,
+discarded the native administrator's CSRF value, and rejected every POST with
+405 before forwarding. A bounded `/api/qa-read-only-probe` confirmed that refusal.
+This qualifies the named display/model paths, not deployment of the complete
+Application or a native administration write path.
+
+The new UI rendered actual tiles, observation times and available zero-claim
+data without JavaScript exceptions. During the master's genuine shutdown,
+`Stop world` job **7e48108aac884a348110e8a8f745cfec** completed at
+**19:11:29.369654Z**. Read-only observations of both ports then reported **offline,
+PID null, bridge unavailable**. The new Atlas kept KG's **19:04:39** coordinates
+labelled **last seen**; claim/live-object availability expired. Performance showed
+unavailable current TPS, MSPT, heap and chunk counts while retaining measured
+history. The earlier genuine master `Start world` job
+**4c6344d5999840b686eceac955ad0814** finished at **18:37:28.557014Z**. These were
+master-owned operations observed passively, not actions by this workstream or
+proof of the new startup-lock implementation running in the native controller.
+
+Private receipts: `runtime/verification/frozen-ui-native-readonly.json`,
+`frozen-atlas-native-readonly.png`, `frozen-performance-native-readonly.png`, and
+the retained 4 KiB QA harness. The reader used approximately **37 MB RSS**, had
+**zero child processes**, and was retired at **19:19:48Z** after its browser tab
+closed. Port 18765 was verified released. No installed code, native/world/config
+file, account, tunnel, player or Minecraft process was changed by that reader.
