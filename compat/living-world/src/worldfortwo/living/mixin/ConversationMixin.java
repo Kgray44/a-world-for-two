@@ -4,6 +4,7 @@ import java.util.concurrent.CompletableFuture;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.npc.Villager;
 import tn.naizo.smartvillagers.SmartVillagers;
@@ -11,9 +12,31 @@ import tn.naizo.smartvillagers.ai.*;
 import tn.naizo.smartvillagers.chat.*;
 import tn.naizo.smartvillagers.villager.*;
 import tn.naizo.smartvillagers.village.RequestEvent;
+import tn.naizo.smartvillagers.schedule.PendingResponseQueue;
+import java.util.UUID;
 import worldfortwo.living.*;
 @Mixin(value=ConversationService.class,remap=false)
 public abstract class ConversationMixin {
+    @Redirect(method="scheduleReply",at=@At(value="NEW",target="tn/naizo/smartvillagers/schedule/PendingResponseQueue$PendingResponse",remap=false),remap=false)
+    private PendingResponseQueue.PendingResponse awft$bindQueued(UUID playerId,UUID villagerId,String playerMessage,String reply,int delay,Runnable after,
+            ServerPlayer player,Villager villager,String originalMessage,String originalReply,int originalDelay,Runnable originalAfter){
+        var pending=new PendingResponseQueue.PendingResponse(playerId,villagerId,playerMessage,reply,delay,after);
+        // A no-consent scripted fallback remains usable. Conversations that had
+        // consent at enqueue must still have it when the delayed line is delivered.
+        var binding=ReplyBinding.capture(player,villager,SmartVillagers.conversations().privacy().hasConsent(player));
+        ((ReplyBindingAccess)(Object)pending).awft$bind(binding);
+        return pending;
+    }
+    @Inject(method="deliverNow",at=@At("HEAD"),cancellable=true,remap=false)
+    private void awft$currentImmediate(ServerPlayer player,Villager villager,String message,String reply,String note,CallbackInfo info){
+        // Exact pinned upstream note distinguishes the successful operator AI test
+        // from its local no-provider/no-consent fallback; no raw reply is inspected.
+        boolean requireConsent="AI provider replied.".equals(note);
+        if(!ReplyBinding.capture(player,villager,requireConsent).current(player.getServer())){
+            SmartVillagers.conversations().locks().unlock(villager.getUUID(),player.getUUID());
+            info.cancel();
+        }
+    }
     @Inject(method="localReply",at=@At("HEAD"),cancellable=true,remap=false)
     private void awft$script(ServerPlayer player,Villager villager,VillagerPersona persona,MessageSignals signals,RequestEvent event,CallbackInfoReturnable<String> info){
         var p=WorldCharacters.current.profile(villager.getUUID());if(!WorldCharacters.current.enabled(p))return;
