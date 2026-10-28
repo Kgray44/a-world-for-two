@@ -143,6 +143,15 @@ The intended wider route/loop is still unfinished. A52-block shuttle round trip
 does not establish completion of that route. Coordinate any extension footprint
 with castle/forest and fleet owners; never clear new territory from this proposal.
 
+Authenticated306 `data/create_tracks.dat` (member SHA
+`6fd706b924de26bae53ab30dd4346cd3f274db47373b40227af609ba6df7e47a`)
+contains one rail graph and two stations still named **Track Station**. The active
+resume does not call `updateName`. Master must use the ordinary native station UI
+or pinned `StationBlockEntity.updateName` to set **Copper Wren Mill** at the first
+station and **Rosewater Orchard Halt** at the second, then read back actual
+GlobalStation names/IDs. Source manifest names do not establish that this happened;
+do not substitute serialized NBT edits. This is required before the schedule.
+
 ## Native observation and passenger schedule proposals
 
 `TransportObservationSupport.java` is outside active source. Parent integration
