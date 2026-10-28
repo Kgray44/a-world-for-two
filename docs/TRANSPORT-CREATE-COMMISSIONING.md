@@ -59,6 +59,56 @@ needs a separately bounded master operation, followed by a verified checkpoint,
 fresh readiness/geometry and a new exact lease. Never weaken the FULL/light gate.
 Cable travel, braking, safe arrival and restart remain **unverified**.
 
+### Full halo diagnosis and ordinary-completion proposal
+
+`tools.transport_chain_halo` now diagnoses the exact2,002 saved columns against
+an explicit immutable archive. It pins the native controller/survey source,
+genuine zero-mutation refusal metadata and named-server ticket/loading API
+classes. It preserves NBT tag types and independently checks3955, coordinates,
+FULL status, compound sections, no retrogen and lighting. Reader limits are
+128MiB authenticated region bytes,256MiB observed RSS and120seconds; it creates
+no native request, ticket or world data. The native4MiB `sizeInBytes` gate remains
+separate and is not represented as passed by this source audit.
+
+Both canonical6ad and supplemental `20261028T194420Z-51f6bf` (archive SHA
+`a956db3575658e1cb976b413c1706b05788107bbd5a8a54cc0a6e383c85501ff`)
+produce exactly1,706 flag-qualified columns and296 non-FULL/unlit columns.
+Statuses are full1706, biomes63, carvers77, initialize_light84,
+structure_starts67, features1 and noise4. No column is absent or fails version,
+coordinates, sections or retrogen checks. Supplemental scan took9.453seconds
+with56,569,856bytes observed RSS. Private diagnosis in this worktree:
+`.local/zipline-supplemental-51f6bf-radius14-r1.json`,668,919bytes, SHA
+`bdc82f023e4ae2a37331b15635871eb93be99cec8c0c3af7e352928469fb0f84`.
+The canonical backup receipt remains byte-for-byte6ad; this is a supplemental
+diagnosis, not source rebinding or a fresh live native readiness result.
+
+The source-only grouping proposes22 small ordinary native surveys. It distinguishes
+429 unique requested FULL columns,3,373 generation-pyramid dependency columns
+and the separate conservative3,977-column ticket/light envelope,2,370 of which
+are outside the original readiness halo. First group center is block X936/Z−728,
+radius16/step16: nine sample/ticket centers,25 FULL requests,729 generation
+dependency columns and961 conservative ticket/light columns. Named-server
+distance1 tickets use level32; radius14 is retained as a conservative envelope.
+The whole proposed envelope is chunks[38,−106] through[100,−21].
+
+**These column counts do not bound generation's disk allocation.** The tool
+explicitly leaves that forecast UNKNOWN and emits no executable request or lease.
+Master must bound the allocation of a small ordinary-generation batch and check
+ReserveGuard before admitting it. Source-only proposal fields identify every
+sample/FULL/envelope coordinate for review. After actual completion, save normally,
+retain a supplemental archive, rerun the complete halo audit, and obtain fresh
+native geometry/body proofs plus a new cable lease. Do not fill guessed NBT flags
+or weaken the native no-generation gate. Ten focused halo tests pass.
+
+```powershell
+python -B -m tools.transport_chain_halo --home H `
+  --checkpoint-id 20261028T194420Z-51f6bf `
+  --checkpoint-sha a956db3575658e1cb976b413c1706b05788107bbd5a8a54cc0a6e383c85501ff
+```
+
+Exit2 means the complete saved scan found unqualified columns; it is a retained
+negative result, not permission to generate or retry.
+
 Master stopped candidate50 normally and produced checkpoint
 `20261028T191243Z-6ad3a8`, SHA
 `0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2`.
@@ -151,7 +201,10 @@ exists yet, and source tests do not establish actual item delivery.
    Never replay placement, water, graph propagation, tube setters or original
    starter inventory. Actual loaded/block/entity readiness remains mandatory;
    saved FULL status does not supply it. A new feed/assembly intent stops replay.
-5. After the current native zipline FULL proof exists, use existing
+5. **Held after the actual Native51 halo refusal above.** Only after separately
+   authorized ordinary terrain completion, a new saved halo audit and fresh
+   native proofs may the master consider another exact operation/lease. Do not
+   replay request332c58c26c2c29e4. For a newly admitted attempt, use existing
    `tools.artistic_chain_route_request_r4.py prepare --operation prepare-create`
    with the genuine historical BEFORE/current FULL pair, fresh saved readiness,
    and the requalified e55 physical source. Master must authenticate original
@@ -162,8 +215,8 @@ exists yet, and source tests do not establish actual item delivery.
 
 The source-only `tools.transport_chain_bind` now assembles those exact paired
 references after both genuine native results exist. Invoke it with `--home H`,
-`--inputs H/staging/transport-306-retained-inputs-r2`, its manifest SHA above,
-`--study H/staging/transport-306-chain-readiness-r1`, its manifest SHA above,
+`--inputs H/staging/transport-6ad3-retained-inputs-r1`, its manifest SHA above,
+`--study H/staging/transport-6ad3-chain-readiness-r1`, its manifest SHA above,
 `--native-full <actual canonical1163 terminal>`,
 `--native-body <actual canonical5607 terminal>` and a new immediate
 `--output H/staging/<owned-name>`. The hash arguments are `--inputs-sha` and
@@ -172,7 +225,7 @@ target sets, altered historical BEFORE or checkpoint advancement. Its output
 contains `geometry-sets.json` and unexecuted exact argv for the existing R4
 producer. It never writes a request into the dashboard or invokes the command.
 
-## Exact source outputs
+## Historical306 source outputs
 
 Source checkpoint: `20261028T180051Z-30624d`, archive SHA
 `3cb269d28ae1ccbac882a44d35277d82c83582274abad2f1cf3b41566d3e9b24`.
@@ -305,6 +358,39 @@ These are bounded comparisons of supplied observations; master must authenticate
 their native provenance and clean stop/start. Synthetic input can never become
 gameplay acceptance merely because its arithmetic passes.
 
+## Zipline control and arrival test card
+
+Actual installed patched zipline JAR SHA is
+`ead0cf64e45a87a55ed78300f5fcf1b47a0dceff8b31657ddd985b851e8487fa`;
+`ZiplineLogic.class` SHA
+`4c410b2a87a6c4b8c35b5b06b6c0d64b7b8f4a1f48115361b934076660bf1325`,
+`ChainCable.class` SHA
+`13882279d7b6da88eb45f16f411c4f52780edc543d32bfecbc0563191d4a036c`.
+Pinned bytecode and the actual config establish these controls; none has yet
+been demonstrated by a real player on this route:
+
+- With `realisticPhysics=false` and `speedMultiplier=1`, looking along or against
+  the cable steers signed speed toward+1.6 or−1.6 using native interpolation0.05.
+  Looking back therefore decelerates and then reverses; it is not a latched stop.
+- Jump invokes release after the native attachment grace period. With
+  `jumpRequiredToDismount=true`, no jump is added merely by ending right-click.
+- Sneak suppresses exit momentum in both native release and interruption, and
+  suppresses jump launch. It is not a separate continuous on-cable brake input.
+
+Test actual look-back deceleration on the final span from1064,86,−1248 to
+1100,72,−1256, then a
+controlled sneak-release onto the town stairs at1100,67,−1256 and1100,68,−1255,
+followed by walking through the ground exit. Record starting/ending health,
+actual position, item durability, obstruction or dropped/disconnected travel,
+and both directions. The retained physical source includes the stair/ladder
+arrival; a clear cable body does not establish a safe dismount.
+
+The native ChainCable direction is its fixed endpoint chord. All13 authored
+junction chord dots exceed the actual0.707 switching threshold; minimum0.715941
+at node12 (44.280degrees). That source calculation does not prove a streamed
+native link switch, client holder availability or player look selection. Test
+every real junction, including after a coordinated restart, once creation exists.
+
 ## Qualification remaining
 
 Run actual boarding, named stops, manual/automatic return, unloading, tube travel
@@ -329,13 +415,16 @@ metrics are not attributable transport evidence. Inventory/schedule/link identit
 comparisons do not replace a successful post-restart ride.
 
 Source checks: full969-test suite passed with one skip before the final targeted
-hardening; current transport34 tests pass. Two revised existing safety fixtures
+hardening; the current material/passenger/commission/conductor/performance set of
+60 targeted tests passes. Two revised existing safety fixtures
 also pass against the proposed console implementation. Pack manifest validation and JavaScript
 syntax passed. Both new Java proposals compile against the exact installed named
 Java21 server/mod APIs without a client API. One diff export initially used CRLF
 and failed `git apply --check`; UTF8/LF byte output corrected it and the check now
-passes. No Minecraft functional, multiplayer, restart, visual, current TPS/MSPT,
-official integration or owner acceptance result is claimed.
+passes. Native51 geometry and body verification passed, and its one cable creation
+attempt refused before mutation as recorded above. No successful passenger,
+multiplayer, restart, visual, current TPS/MSPT, official integration or owner
+acceptance result is claimed.
 
 Storage forecasts and ReserveGuard passed for source preparation/compilation;
 both drives remained above32,212,254,720bytes. These checks monitor owned work,
