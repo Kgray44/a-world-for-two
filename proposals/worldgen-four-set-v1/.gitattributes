@@ -1,0 +1,2 @@
+# The manifest binds the exact generated payload bytes, including pack.mcmeta.
+* -text
