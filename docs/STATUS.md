@@ -6,7 +6,19 @@
 
 **2026-10-27 UTC: candidate.31 published; fresh world installed; official server offline.**
 
-Private candidate 42 starts the dedicated server and authenticated client normally.
+Private candidate 43 starts the dedicated server with the actual Reconnectible
+Chains2.4.4 mod loaded. KG authenticated and joined private43 on25575 after the
+client's refused25565 target was corrected. This one owner connection does not
+qualify two-player play, all graphics or the continuous cliff-to-town zipline.
+All nine selected native saplings exported their real grower and feature
+descriptions in43 with zero world changes. No tree or LIFE seeding has occurred.
+The actual43 fountain reset stopped wheel/pump and drained the header and all
+four jets normally; its final returned-plug test failed. The stopped snapshot
+initially showed a retracted piston and detached plug at the port. The later
+ordinary ON recovery stopped at a moving-piston verification failure after the
+empty-server block-entity pause; OFF was not sent. Its separate checkpoint is
+retained. A fresh actual state is required after the owner's visit before the
+final gate recovery and sculpture installation.
 The redesigned moving bridge completed two real 55° cycles in candidate 39 and two
 more after a candidate 40 restart without repeating setup. Candidate 41 adds
 projecting tower bays and steep copper roofs, native reconciliation of the exact
@@ -21,7 +33,7 @@ attachments, with the drive stopped and no goods or train added.
 Candidate36 also displayed the actual Xaero map with MapHorizons awft.2;
 coarse-only SeedGen coverage remains unproved. These private results do not
 change the official server or qualify a release.
-See [the latest native review](NATIVE-CANDIDATE42.md), [39–41 history](NATIVE-CANDIDATE39-41.md),
+See [the latest native review](NATIVE-CANDIDATE43.md), [42 history](NATIVE-CANDIDATE42.md), [39–41 history](NATIVE-CANDIDATE39-41.md),
 [native 38 results](NATIVE-CANDIDATE38.md) and [36/37 history](NATIVE-CANDIDATE36-37.md).
 
 The owner has requested the pirate town cover the entire dry spit between river
@@ -42,19 +54,21 @@ remaining strict SeedGen mismatch are open.
 | Component | Current selection |
 | --- | --- |
 | Minecraft / loader / Java | 1.21.1 / NeoForge 21.1.262 / Java 21 |
-| Enabled mods | 197 total; 191 client, 164 server, with shared mods on both sides |
-| Optional fallback | Essential disabled; 198 mod records including it |
+| Enabled mods | Private43:198 total;192 client,165 server, with shared mods on both sides |
+| Optional fallback | Essential disabled;199 mod records including it |
 | Graphics | Eight shaders and one resource pack |
 | Client heap | KG: 6 GiB; Sera: conservative 4 GiB |
-| Owned helpers | Released bridge 0.6.17; private bridge 0.6.28; client Presentation 0.2.2 |
-| Catalog | 207 file records; all 223 requested candidates retained |
+| Owned helpers | Released bridge0.6.17;private bridge0.6.29;client Presentation0.2.2 |
+| Catalog | 208 file records;all224 requested candidates retained |
 | Distant terrain | Distant Horizons + SeedGen; Voxy/Roxy excluded |
 
 Exact versions, sides and hashes are in [the current lock](../catalog/lock.json).
-The immutable candidate.31 lock is authoritative for released artifacts. The candidate 42
-source and architectural work passed **513 Python tests in 46.988 seconds**,
-207-entry Packwiz validation and JavaScript syntax checking. Later source additions
-have separate focused checks until the next complete run. Candidate.31 source CI
+The immutable candidate.31 lock is authoritative for released artifacts. The candidate43
+source passed **544 Python tests in40.111 seconds**,208-entry Packwiz validation
+and JavaScript syntax checking. A stale count expectation from197 enabled mods
+failed in the first run and was updated to198 with an exact chain pin assertion;
+that failure was retained. Later source additions have separate focused checks.
+Candidate.31 source CI
 at `8dd64b1` passed the earlier 319 tests; runtime
 acceptance remains separate.
 Source checks are separate from native gameplay and release acceptance.

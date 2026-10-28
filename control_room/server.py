@@ -328,7 +328,7 @@ class Server:
                      r"awftmill (inspect|commission) mill-commission-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftattractions (status|cancel)",
                      r"awftattractions (inspect|admit) [a-z0-9-]{1,80} [a-f0-9]{64}"]
-        if command.startswith(('awftbridgeglue ', 'awftimport ', 'awftfountain ')):
+        if command.startswith(('awftbridgeglue ', 'awftimport ', 'awftfountain ', 'awfttrees ', 'awftlife ')):
             owner = read_json(self.layout.state / 'artistic-owner.json', {})
             settings = self.layout.settings()
             if (owner.get('format') != 'awft-artistic-stage:1'
@@ -341,10 +341,14 @@ class Server:
                          r"awftimport (status|cancel)",
                          r"awftimport settle import-joins-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awftfountain (status|cancel)",
-                         r"awftfountain (inspect|commission) fountain-[a-f0-9]{16} [a-f0-9]{64}"]
+                         r"awftfountain (inspect|commission|reset) fountain-[a-f0-9]{16} [a-f0-9]{64}",
+                         r"awfttrees (status|cancel)",
+                         r"awfttrees (describe|grow) trees-[a-f0-9]{16} [a-f0-9]{64}",
+                         r"awftlife (status|cancel)",
+                         r"awftlife (inspect|seed) life-[a-f0-9]{16} [a-f0-9]{64}"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
-        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|settle|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftmill (commission|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel)|awftimport (settle|cancel)|awftfountain (commission|cancel))", command)
+        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|settle|cancel)|awftengine (setup|commission|close|cancel)|awftharborcraft (create|cancel)|awftmill (commission|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel)|awftimport (settle|cancel)|awftfountain (commission|reset|cancel)|awfttrees (grow|cancel)|awftlife (seed|cancel))", command)
         if dangerous and not confirmed:
             raise UserError("Confirm this player or world setting change first")
         self._write(command)

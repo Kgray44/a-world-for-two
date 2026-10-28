@@ -865,7 +865,7 @@
     ],
     [
       "the-explorers-friend",
-      "The Explorer’s Friend",
+      "The Explorer\u00e2\u20ac\u2122s Friend",
       "atlas"
     ],
     [
@@ -925,7 +925,7 @@
     ],
     [
       "countereds-smooth-f5",
-      "Countered’s Smooth F5",
+      "Countered\u00e2\u20ac\u2122s Smooth F5",
       "cinematics"
     ],
     [
@@ -1117,6 +1117,11 @@
       "pastel-shaders",
       "Pastel Shaders (research candidate)",
       "shaders"
+    ],
+    [
+      "reconnectible-chains",
+      "Reconnectible Chains",
+      "navigation"
     ]
   ]
 }

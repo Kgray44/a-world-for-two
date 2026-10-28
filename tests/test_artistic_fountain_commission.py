@@ -7,7 +7,7 @@ import unittest
 from control_room.common import UserError
 from tools.artistic_fountain_commission import (
     BACKUP_ID, BACKUP_SHA, BLOCKS, CANDIDATE, PACK_SHA, PLAN_SHA, STATUS,
-    check_context, check_proof, evidence, owned, sha,
+    check_context, check_proof, evidence, owned, require_dry_manifest, sha,
 )
 
 
@@ -39,6 +39,13 @@ def context(home):
 class FountainCommissionTests(unittest.TestCase):
     def test_exact_complete_zero_failure_receipt_passes_the_pure_validator(self):
         check_proof(proof(), NOW)
+
+    def test_wet_or_prospective_geometry_cannot_commission(self):
+        for manifest in ({},{'actual_dry_checkpoint':False},
+                         {'actual_dry_checkpoint':True,'files':{}}):
+            with self.assertRaisesRegex(UserError,'fresh actual stopped dry'):
+                require_dry_manifest(manifest)
+        require_dry_manifest({'actual_dry_checkpoint':True,'files':{'actual-dry-native-BEFORE.json':{}}})
 
     def test_wrong_operation_plan_or_partial_count_is_refused(self):
         for field, value in [('operation', 'place'), ('plan_sha256', '0'*64),

@@ -1,4 +1,4 @@
-"""Bind one real, fresh native R4 verification to a private fountain request.
+"""Bind one real, fresh native R5 verification to a private fountain request.
 
 This producer writes only an immutable request and its ownership receipt. It
 never invokes a command, reads region files, seeds water, or operates the server.
@@ -25,13 +25,13 @@ BRIDGE = '0.6.28'
 PACK_SHA = '194c6d673cbf6481afc15797583cc9e074ba9c685dd0e3062b26f74e01af3eee'
 BRIDGE_SHA = '551ed63b6b593e0e7456d632396b93593c330a9a3977933ec4e70d3f1d38da2d'
 CLASS_SHA = '71df50be157c1f59884710d4af0eaa476de588b65e391420daf5f3de21c6eeea'
-BACKUP_ID = '20261027T191930Z-f306da'
-BACKUP_SHA = '8efabed7d75aa02015ed2165ebb249c36da6e301dfd3ef8c971f0e20c9de4f5c'
-PLAN_SHA = '6ae428127da4bd98223fad546e6b00588f547c456b080198ff1b42dca2945d4a'
-MANIFEST_SHA = '889fa4e959bffb9e77c422a1da0539e56235830ccd1b128bbd7da608620269bb'
-BUNDLE = 'staging/artistic-spawn-plaza-r4-repeater-20261027T2037Z'
+BACKUP_ID = '20261027T204224Z-012e63'
+BACKUP_SHA = 'ac863a5f04dd91ca88494c59ed27f138b0b87fdaefea45707b3c55e688365c05'
+PLAN_SHA = '56df548d3cbc4c16900334a3e38af56c33f2fb5c294e70d8107cb62552600a82'
+MANIFEST_SHA = '473320785b01b58110f24fe5869598a051ffbd4d2cae5db48c2758c8811afe4a'
+BUNDLE = 'staging/artistic-fountain-centerpiece-r5-20261027T2109Z'
 STATUS = 'verified actual block identities, orientation, block entities and supplied inventories'
-BLOCKS = 2530
+BLOCKS = 2532
 
 
 def sha(raw):
@@ -97,7 +97,7 @@ def check_proof(proof, now):
             or proof.get('plan_sha256') != PLAN_SHA or proof.get('blocks') != BLOCKS
             or type(proof.get('blocks')) is not int or 'error' in proof
             or proof.get('cleanup_required') is not False):
-        raise UserError('A successful complete actual R4 native verification is required')
+        raise UserError('A successful complete actual R5 native verification is required')
     for field in ('failures', 'temporary_tickets_remaining', 'pending_shared_chunk_futures'):
         if type(proof.get(field)) is not int or proof[field] != 0:
             raise UserError('Native verification has unresolved failure/cleanup/ticket custody')
@@ -126,6 +126,11 @@ def check_context(home, owner, active, installed, settings, registry, checkpoint
         raise UserError('Exact retained checkpoint and owner binding required')
 
 
+def require_dry_manifest(manifest):
+    if manifest.get('actual_dry_checkpoint') is not True or 'actual-dry-native-BEFORE.json' not in manifest.get('files',{}):
+        raise UserError('A fresh actual stopped dry R5 bundle is required; a wet/prospective reset bundle cannot commission')
+
+
 def prepare(home, native_verify):
     home = Path(home).absolute()
     if home != HOME:
@@ -151,12 +156,13 @@ def prepare(home, native_verify):
     owned(home, home/'world/RosewaterArtistic', regular=False)
     geometry, geometry_ref = document(home, BUNDLE+'/plaza.json', 4*1024**2, PLAN_SHA)
     manifest, manifest_ref = document(home, BUNDLE+'/manifest.json', 2*1024**2, MANIFEST_SHA)
+    require_dry_manifest(manifest)
     if (len(geometry.get('blocks', [])) != BLOCKS or geometry.get('commands') != []
             or geometry.get('block_entities') != [] or geometry.get('backup_sha256') != BACKUP_SHA
             or geometry.get('world_path') != registry['world_path'] or geometry.get('seed') != registry['seed']
             or manifest.get('checkpoint_sha256') != BACKUP_SHA
             or manifest.get('files', {}).get('plaza.json') != {'sha256': PLAN_SHA, 'bytes': geometry_ref['bytes']}):
-        raise UserError('Reviewed complete R4 geometry and manifest differ')
+        raise UserError('Reviewed complete actual dry R5 geometry and manifest differ')
     jar_name = 'awft-control-bridge-'+BRIDGE+'.jar'
     if installed.get('files', {}).get(jar_name) != BRIDGE_SHA:
         raise UserError('Installed bridge journal differs')

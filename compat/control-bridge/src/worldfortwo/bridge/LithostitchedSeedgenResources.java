@@ -21,10 +21,12 @@ import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.zip.ZipFile;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.FileUtil;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
@@ -43,14 +45,17 @@ public final class LithostitchedSeedgenResources {
         public Attestation {orderedPacks=List.copyOf(orderedPacks);}
     }
     private LithostitchedSeedgenResources(){}
+    record Inventory(TreeSet<ResourceLocation> ids,Map<ResourceLocation,Boolean> readable){
+        Inventory {ids=new TreeSet<>(ids);readable=Map.copyOf(readable);}
+    }
     public static Attestation capture(List<PackResources> opened,ResourceManager resources)throws IOException {
         if(opened.isEmpty()||opened.size()>MAX_PACKS)throw new IOException("Bounded opened server-data packs required");
         Accumulator out=new Accumulator();var identities=new ArrayList<String>();var allIds=new TreeSet<ResourceLocation>();
-        out.text("awft-native-server-data:2");out.number(opened.size());
+        out.text("awft-native-server-data:3");out.number(opened.size());
         for(int index=0;index<opened.size();index++) {
             PackResources pack=opened.get(index);String identity=pack.packId();
             identities.add(identity);out.number(index);out.text(identity);out.text(pack.getClass().getName());
-            var ids=inventory(pack,out,0);allIds.addAll(ids);
+            var inventory=inventory(pack,out,0);allIds.addAll(inventory.ids());
             if(allIds.size()>MAX_ENTRIES)throw new IOException("Bounded whole server-data resource inventory exceeded");
         }
         // Bind the actual effective manager, including stack order/filter results,
@@ -78,9 +83,10 @@ public final class LithostitchedSeedgenResources {
      * The independent walk throws on those failures; final selected bytes still
      * come through the real PackResources.getResource. No pack is closed here. */
     @SuppressWarnings("unchecked")
-    private static TreeSet<ResourceLocation> inventory(PackResources pack,Accumulator out,int depth)throws IOException {
+    private static Inventory inventory(PackResources pack,Accumulator out,int depth)throws IOException {
         if(depth>16||++out.packs>MAX_PACKS)throw new IOException("Bounded complete pack structure exceeded");
-        var ids=new TreeSet<ResourceLocation>();int[] visits={0};
+        var ids=new TreeSet<ResourceLocation>();var rawNames=new TreeSet<String>();
+        var readable=new TreeMap<ResourceLocation,Boolean>();var childInventories=new ArrayList<Inventory>();int[] visits={0};
         PackResources.ResourceOutput collect=(id,supplier)->{
             if(++visits[0]>MAX_ENTRIES||System.nanoTime()-out.deadline>=0)
                 throw new IllegalStateException("Bounded native root inventory exceeded");
@@ -91,7 +97,7 @@ public final class LithostitchedSeedgenResources {
             // An unknown subclass could override any listed/read resource method.
             if(type!=PathPackResources.class&&type!=VanillaPackResources.class&&type!=CompositePackResources.class
                     &&type!=FilePackResources.class&&type!=EmptyPackResources.class)
-                throw new IOException("Unsupported actual PackResources implementation: "+type.getName());
+                throw new IOException("Unsupported actual PackResources implementation: "+type.getName()+" pack="+pack.packId());
             // Check that a file-backed native pack is actually open, rather than
             // allowing its logged failed-open path to masquerade as an empty pack.
             ZipFile zip=null;
@@ -109,13 +115,16 @@ public final class LithostitchedSeedgenResources {
                 requireDirectory(root);
                 Path data=root.resolve("data");
                 if(!namespaces.equals(pathNamespaces(data,out)))throw new IOException("Native path namespace inventory is incomplete");
-                for(String namespace:namespaces)ids.addAll(pathIds(namespace,data.resolve(namespace),out));
+                for(String namespace:namespaces)ids.addAll(pathIds(namespace,data.resolve(namespace),out,rawNames));
             }else if(type==VanillaPackResources.class) {
                 var paths=(Map<PackType,List<Path>>)Roots.VANILLA.invoke(pack);
                 List<Path> selected=paths.getOrDefault(PackType.SERVER_DATA,List.of());
                 if(selected.size()>64)throw new IOException("Bounded vanilla server-data roots exceeded");
                 out.number(selected.size());
-                for(String namespace:namespaces)for(Path root:selected)ids.addAll(pathIds(namespace,root.resolve(namespace),out));
+                for(String namespace:namespaces)for(int rootIndex=0;rootIndex<selected.size();rootIndex++) {
+                    out.text("vanilla-native-root");out.number(rootIndex);
+                    ids.addAll(pathIds(namespace,selected.get(rootIndex).resolve(namespace),out,rawNames));
+                }
             }else if(type==CompositePackResources.class) {
                 PackResources primary=(PackResources)Roots.PRIMARY.invoke(pack);
                 var children=(List<PackResources>)Roots.STACK.invoke(pack);
@@ -124,7 +133,7 @@ public final class LithostitchedSeedgenResources {
                 if(children.isEmpty()||children.size()>MAX_PACKS||children.getLast()!=primary)
                     throw new IOException("Pinned composite primary/overlay topology changed");
                 out.number(children.size());
-                for(var child:children)ids.addAll(inventory(child,out,depth+1));
+                for(var child:children){Inventory childInventory=inventory(child,out,depth+1);childInventories.add(childInventory);ids.addAll(childInventory.ids());}
                 // Empty namespace directories are legal, so check the full
                 // native child namespace union, not only namespaces with files.
                 var childNamespaces=new TreeSet<String>();
@@ -132,7 +141,7 @@ public final class LithostitchedSeedgenResources {
                 if(!namespaces.equals(childNamespaces))throw new IOException("Composite namespace inventory changed during capture");
             }else if(type==FilePackResources.class) {
                 String prefix=(String)Roots.ZIP_PREFIX.invoke(pack);
-                var expected=fileIds(zip,prefix,out);
+                var expected=fileIds(zip,prefix,out,rawNames);
                 var expectedNamespaces=fileNamespaces(zip,prefix,out);
                 if(!namespaces.equals(expectedNamespaces))throw new IOException("Native file namespace inventory is incomplete");
                 // FilePackResources also appends '/' to its query, so the empty
@@ -166,15 +175,41 @@ public final class LithostitchedSeedgenResources {
             // masked child-byte change must still refuse the fresh seed load.
             out.text("selected-native-resources");out.number(ids.size());
             for(var id:ids) {
-                var source=pack.getResource(PackType.SERVER_DATA,id);
-                if(source==null)throw new IOException("Enumerated native pack resource is unavailable");
+                var source=selected(pack,id,rawNames,childInventories);
+                boolean parserRejected=FileUtil.decomposePath(id.getPath()).error().isPresent();
+                readable.put(id,source!=null);
+                out.text("native-selected-readability");out.text(id.toString());out.number(parserRejected?1:0);out.number(source==null?0:1);
                 out.resource(id.toString(),source);
             }
-            return ids;
+            return new Inventory(ids,Map.copyOf(readable));
         }catch(IOException failure){throw failure;}
         catch(UncheckedIOException failure){throw failure.getCause();}
         catch(VirtualMachineError|ThreadDeath failure){throw failure;}
         catch(Throwable failure){throw new IOException("Exact native pack root inventory failed",failure);}
+    }
+    /** A null native lookup is data, not permission to hide a missing resource.
+     * Only an exact authenticated raw member rejected by the native path grammar
+     * may be unavailable. A Composite must prove ALL its selected children
+     * unavailable; a readable child or absent child proof refuses its null. */
+    static boolean attestedNativeAbsence(Class<?> type,ResourceLocation id,Set<String> rawNames,List<Inventory> children) {
+        if(FileUtil.decomposePath(id.getPath()).error().isEmpty())return false;
+        if(type==CompositePackResources.class) {
+            boolean member=false;
+            for(var child:children)if(child.ids().contains(id)) {
+                Boolean state=child.readable().get(id);
+                if(state==null||state)return false;
+                member=true;
+            }
+            return member;
+        }
+        return (type==PathPackResources.class||type==VanillaPackResources.class||type==FilePackResources.class)
+            &&rawNames.contains(id.getNamespace()+"/"+id.getPath());
+    }
+    static IoSupplier<InputStream> selected(PackResources pack,ResourceLocation id,Set<String> rawNames,List<Inventory> children)throws IOException {
+        var source=pack.getResource(PackType.SERVER_DATA,id);
+        if(source==null&&!attestedNativeAbsence(pack.getClass(),id,rawNames,children))
+            throw new IOException("Enumerated native pack resource is unavailable: pack="+pack.packId()+" class="+pack.getClass().getName()+" id="+id);
+        return source;
     }
     private static BasicFileAttributes attributes(Path path)throws IOException {
         try{return Files.readAttributes(path,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);}
@@ -197,8 +232,8 @@ public final class LithostitchedSeedgenResources {
         }
         return names;
     }
-    private static TreeSet<ResourceLocation> pathIds(String namespace,Path root,Accumulator out)throws IOException {
-        var expected=new TreeSet<ResourceLocation>();var value=attributes(root);
+    private static TreeSet<ResourceLocation> pathIds(String namespace,Path root,Accumulator out,TreeSet<String> rawNames)throws IOException {
+        var expected=new TreeSet<ResourceLocation>();var rawFiles=new TreeMap<String,Path>();var value=attributes(root);
         if(value==null)return expected; // Vanilla legitimately has sparse roots.
         if(!value.isDirectory()||value.isSymbolicLink())throw new IOException("Native namespace root is not a regular directory");
         Files.walkFileTree(root,java.util.Set.of(),128,new SimpleFileVisitor<Path>() {
@@ -211,6 +246,8 @@ public final class LithostitchedSeedgenResources {
                 if(attrs.isDirectory())throw new IOException("Native server-data tree exceeds finite depth");
                 if(attrs.isRegularFile()) {
                     String name=String.join("/",java.util.stream.StreamSupport.stream(root.relativize(file).spliterator(),false).map(Path::toString).toList());
+                    if(rawFiles.put(name,file)!=null||rawFiles.size()>MAX_ENTRIES)
+                        throw new IOException("Bounded exact native raw-file inventory exceeded");
                     var id=ResourceLocation.tryBuild(namespace,name);
                     if(id!=null)expected.add(id);
                     if(expected.size()>MAX_ENTRIES)throw new IOException("Bounded native path resource count exceeded");
@@ -229,6 +266,13 @@ public final class LithostitchedSeedgenResources {
             nativeIds.add(id);
         });
         if(!expected.equals(nativeIds))throw new IOException("Native path resource enumeration was partial or changed during capture");
+        // Directory iteration order is not a native overlay order. Sort exact
+        // relative spellings within EACH ordered root; never change the names.
+        out.text("ordered-raw-path-members");out.number(rawFiles.size());
+        for(var entry:rawFiles.entrySet()) {
+            String name=entry.getKey();rawNames.add(namespace+"/"+name);
+            raw(out,namespace+"/"+name,name,()->Files.newInputStream(entry.getValue()));
+        }
         return expected;
     }
     private static String filePrefix(String prefix)throws IOException {
@@ -237,12 +281,14 @@ public final class LithostitchedSeedgenResources {
             throw new IOException("Native file pack prefix exceeds exact custody");
         return prefix.isEmpty()?"data/":prefix+"/data/";
     }
-    private static TreeSet<ResourceLocation> fileIds(ZipFile zip,String prefix,Accumulator out)throws IOException {
+    private static TreeSet<ResourceLocation> fileIds(ZipFile zip,String prefix,Accumulator out,TreeSet<String> rawNames)throws IOException {
         String start=filePrefix(prefix);var result=new TreeSet<ResourceLocation>();var entries=zip.entries();
         while(entries.hasMoreElements()) {
             out.visit();var entry=entries.nextElement();String name=entry.getName();
             if(!entry.isDirectory()&&name.startsWith(start)) {
                 String relative=name.substring(start.length());int split=relative.indexOf('/');
+                if(!rawNames.add(relative))throw new IOException("Ambiguous duplicate raw ZIP member requires separate custody");
+                raw(out,relative,split>=0?relative.substring(split+1):relative,()->zip.getInputStream(entry));
                 if(split>=0) {
                     var id=ResourceLocation.tryBuild(relative.substring(0,split),relative.substring(split+1));
                     if(id!=null)result.add(id);
@@ -251,6 +297,16 @@ public final class LithostitchedSeedgenResources {
             }
         }
         return result;
+    }
+    /** Exact bytes from an already admitted root/ZIP member, including metadata
+     * whose original spelling the native resource path grammar cannot serve.
+     * No lowercasing, filtering, fallback lookup or JSON normalization occurs. */
+    private static void raw(Accumulator out,String exactName,String resourcePath,IoSupplier<InputStream> source)throws IOException {
+        out.text("raw-server-data-file");out.text(exactName);
+        var grammar=FileUtil.decomposePath(resourcePath);
+        out.number(grammar.error().isPresent()?1:0);
+        if(grammar.error().isPresent())out.text(grammar.error().get().message());
+        out.resource("raw/"+exactName,source);
     }
     private static TreeSet<String> fileNamespaces(ZipFile zip,String prefix,Accumulator out)throws IOException {
         String start=filePrefix(prefix);var result=new TreeSet<String>();var entries=zip.entries();

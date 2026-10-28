@@ -14,7 +14,7 @@ from .playtest import guard
 from .artistic_capture import CLIENT
 
 
-def upgrade(home, *, include_mapping=False):
+def upgrade(home, *, include_mapping=False, include_chains=False):
     layout=Layout(home)
     owner=read_json(layout.state/'artistic-owner.json',{})
     if (owner.get('format')!='awft-artistic-stage:1'
@@ -34,6 +34,14 @@ def upgrade(home, *, include_mapping=False):
     old={m['slug']:m for m in previous['mods']};new={m['slug']:m for m in lock['mods']}
     changes={slug for slug in set(old)|set(new) if old.get(slug)!=new.get(slug)}
     permitted={'awft-control-bridge','awft-client-presentation'}
+    if include_chains:
+        m=new.get('reconnectible-chains',{})
+        if ('reconnectible-chains' in old or m.get('project_id')!='5pzBXDS3'
+                or m.get('version_id')!='e4yVoAvP' or m.get('side')!='both'
+                or m.get('filename')!='connectiblechains-2.4.4+1.21.1-neoforge.jar'
+                or m.get('hashes',{}).get('sha256')!='70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0'):
+            raise UserError('Only the exact reviewed new zipline chain backend is admitted')
+        permitted.add('reconnectible-chains')
     if include_mapping:
         m=new.get('maphorizons',{});before=old.get('maphorizons',{})
         if (m.get('filename')!='maphorizons-1.1.0-awft.2.jar'
@@ -104,5 +112,6 @@ if __name__=='__main__':
     import argparse
     p=argparse.ArgumentParser();p.add_argument('--home',required=True,type=Path)
     p.add_argument('--include-mapping',action='store_true')
+    p.add_argument('--include-chains',action='store_true')
     args=p.parse_args()
-    print(json.dumps(upgrade(args.home,include_mapping=args.include_mapping)))
+    print(json.dumps(upgrade(args.home,include_mapping=args.include_mapping,include_chains=args.include_chains)))

@@ -4,14 +4,21 @@
 
 **Fresh-install blocker:** two independent public installer attempts failed DNS lookups, including official redirect hosts. Each verified 195/201 CLI artifacts and all 80 configuration files, but six required downloads remain missing. A clean one-import installation is not yet qualified.
 
-Private candidate **42** starts and joins normally. The redesigned drawbridge
+Private candidate **43** starts the dedicated server with Reconnectible Chains
+2.4.4 loaded. It contains **198 enabled mods: 192 client and 165 server**. The
+KG has authenticated and joined this private preview on25575. The long zipline
+ride, complete client validation and release import still need native checks.
+The redesigned drawbridge
 completed real 55° cycles across a restart; the pirate spit, both requested
 original builds and new architectural depth have native results and game captures.
 The tavern now has lower warm lighting and intimate furnishings. The new fountain
-has real pumped cascades; its shutoff and centerpiece composition still need
-correction. The expanded south-bank forest, native sapling growth, wildlife, mill
+has real pumped cascades. Native testing also proved normal wheel shutdown and
+water drainage; the gate's returned plug and centerpiece composition still need
+correction. All nine selected sapling types now have actual native grower/feature
+descriptions; none has been planted by this pass. The expanded south-bank forest,
+wildlife, cliff-to-town zipline, mill
 commissioning and strict SeedGen parity remain in progress.
-See the [latest native review](docs/NATIVE-CANDIDATE42.md).
+See the [latest native review](docs/NATIVE-CANDIDATE43.md).
 
 **Our little corner of an endless world.**
 

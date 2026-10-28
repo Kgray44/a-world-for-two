@@ -35,12 +35,14 @@ public class ControlBridge {
     private final EngineeringSupport engineeringSupport = new EngineeringSupport();
     private String operationOwner;
     private long operationGeneration;
-    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.42","0.6.28",this::acquire);
-    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.42","0.6.28",this::acquire);
-    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.42","0.6.28",this::acquire);
-    private final RefinementGlueAdmission refinementGlueAdmission=new RefinementGlueAdmission("0.1.0-candidate.42","0.6.28",this::acquire);
-    private final NativeImportJoins nativeImportJoins=new NativeImportJoins("0.1.0-candidate.42","0.6.28",this::acquire);
-    private final NativeFountainSupport nativeFountainSupport=new NativeFountainSupport("0.1.0-candidate.42","0.6.28",this::acquire);
+    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.43","0.6.29",this::acquire);
+    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.43","0.6.29",this::acquire);
+    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.43","0.6.29",this::acquire);
+    private final RefinementGlueAdmission refinementGlueAdmission=new RefinementGlueAdmission("0.1.0-candidate.43","0.6.29",this::acquire);
+    private final NativeImportJoins nativeImportJoins=new NativeImportJoins("0.1.0-candidate.43","0.6.29",this::acquire);
+    private final NativeFountainSupport nativeFountainSupport=new NativeFountainSupport("0.1.0-candidate.43","0.6.29",this::acquire);
+    private final NativeTreeGrowthSupport nativeTreeGrowthSupport=new NativeTreeGrowthSupport("0.1.0-candidate.43","0.6.29",this::acquire);
+    private final NativeHabitatLifeSupport nativeHabitatLifeSupport=new NativeHabitatLifeSupport("0.1.0-candidate.43","0.6.29",this::acquire);
     private final DragonTextureMirror dragonTextureMirror=new DragonTextureMirror();
 
     private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease,ArtisticEngineeringSupport.Lease {
@@ -50,14 +52,14 @@ public class ControlBridge {
         public void close(){if(closed)return;if(valid())operationOwner=null;closed=true;}
     }
     private WorldLease acquire(String owner,boolean temporarySimulation){
-        if(operationOwner!=null || settlementSupport.busy() || engineeringSupport.busy() || refinementGlueAdmission.busy() || nativeImportJoins.busy() || nativeFountainSupport.busy())
+        if(operationOwner!=null || settlementSupport.busy() || engineeringSupport.busy() || refinementGlueAdmission.busy() || nativeImportJoins.busy() || nativeFountainSupport.busy() || nativeTreeGrowthSupport.busy() || nativeHabitatLifeSupport.busy())
             throw new IllegalStateException("Another native world operation or pending cleanup owns the world");
         operationOwner=owner;return new WorldLease(owner,++operationGeneration);
     }
 
     public ControlBridge(IEventBus modBus) {
-        settlementSupport.admissionGate(()->operationOwner==null && !engineeringSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy());
-        engineeringSupport.admissionGate(()->operationOwner==null && !settlementSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy());
+        settlementSupport.admissionGate(()->operationOwner==null && !engineeringSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy() && !nativeTreeGrowthSupport.busy() && !nativeHabitatLifeSupport.busy());
+        engineeringSupport.admissionGate(()->operationOwner==null && !settlementSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy() && !nativeTreeGrowthSupport.busy() && !nativeHabitatLifeSupport.busy());
         modBus.addListener(dragonTextureMirror::payloads);
         NeoForge.EVENT_BUS.addListener(dragonTextureMirror::sync);
         NeoForge.EVENT_BUS.addListener(this::started);
@@ -74,6 +76,8 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(refinementGlueAdmission::commands);
         NeoForge.EVENT_BUS.addListener(nativeImportJoins::commands);
         NeoForge.EVENT_BUS.addListener(nativeFountainSupport::commands);
+        NeoForge.EVENT_BUS.addListener(nativeTreeGrowthSupport::commands);
+        NeoForge.EVENT_BUS.addListener(nativeHabitatLifeSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::commands);
         NeoForge.EVENT_BUS.addListener(atlasSupport::chunk);
         NeoForge.EVENT_BUS.addListener(atlasSupport::joined);
@@ -85,7 +89,7 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(cinematicSupport::left);
     }
     private void stopping(ServerStoppingEvent event){
-        attractionSupport.stopped();harborCraftSupport.stopped();artisticEngineeringSupport.stop();refinementGlueAdmission.stop();nativeImportJoins.stopped();nativeFountainSupport.stopped();
+        attractionSupport.stopped();harborCraftSupport.stopped();artisticEngineeringSupport.stop();refinementGlueAdmission.stop();nativeImportJoins.stopped();nativeFountainSupport.stopped();nativeTreeGrowthSupport.stopped();nativeHabitatLifeSupport.stopped();
         engineeringSupport.stopped();settlementSupport.stopped();dragonTextureMirror.stopped();
     }
     private void started(ServerStartedEvent event) {
@@ -116,6 +120,8 @@ public class ControlBridge {
             refinementGlueAdmission.tick(event.getServer());
             nativeImportJoins.tick(event.getServer());
             nativeFountainSupport.tick(event.getServer());
+            nativeTreeGrowthSupport.tick(event.getServer());
+            nativeHabitatLifeSupport.tick(event.getServer());
         }
         now = System.nanoTime();
         tickNanos += now - beforeTick;

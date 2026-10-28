@@ -14,7 +14,7 @@ from .build_presentation import build as build_presentation, PRESENTATION_VERSIO
 from .weather_patch import build as build_weather, PATCH_VERSION
 from .seedgen_policy import apply as seedgen_policy
 
-VERSION = '0.1.0-candidate.42'
+VERSION = '0.1.0-candidate.43'
 
 
 def prepare_owned(home):
@@ -56,7 +56,7 @@ def prepare_owned(home):
     return result
 
 
-def prepare_bridge(home, mapping_artifact=None):
+def prepare_bridge(home, mapping_artifact=None, chain_research=None):
     """Build the owned bridge and optional exact mapping repair, retaining other pins."""
     layout=Layout(home);storage=Storage(layout)
     storage.reserve(32*1024**2)
@@ -64,6 +64,29 @@ def prepare_bridge(home, mapping_artifact=None):
     previous=read_json(REPO/'catalog/lock.json')
     if previous['version']==VERSION or validate_pack(REPO/'packwiz',previous):
         raise ValueError('A valid previous immutable candidate is required')
+    chain=None
+    if chain_research is not None:
+        from control_room.pack import validate_graph, validate_jars
+        research=Path(chain_research).resolve()
+        source=research/'connectiblechains-2.4.4+1.21.1-neoforge.jar'
+        chain=read_json(research/'PROPOSED-artifact-not-installed.json')
+        if (not research.is_relative_to(layout.staging) or research.is_symlink()
+                or chain.get('project_id')!='5pzBXDS3' or chain.get('slug')!='reconnectible-chains'
+                or chain.get('version_id')!='e4yVoAvP' or chain.get('version')!='2.4.4+1.21.1-neoforge'
+                or chain.get('side')!='both' or chain.get('kind')!='mod' or chain.get('optional') is not False
+                or chain.get('filename')!=source.name or chain.get('size')!=293575
+                or source.stat().st_size!=293575 or source.is_symlink()
+                or digest(source)!='70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0'
+                or chain.get('hashes',{}).get('sha512')!='c09a3a354a26ce0dc511c2364332975222fae8515101f524de5e724f3a191eb75ffb4f381b8c78907f885d7a7e86f1ce7b883d56921fb5f31709466446efe00a'
+                or any(m['slug']=='reconnectible-chains' for m in previous['mods'])):
+            raise ValueError('Only the exact reviewed new NeoForge Reconnectible Chains backend is admitted')
+        chain['hashes']['sha256']=digest(source)
+        target=layout.caches/'mods'/source.name
+        if target.exists() and digest(target)!=digest(source):raise ValueError('Immutable chain cache filename differs')
+        if not target.exists():shutil.copy2(source,target)
+        prospective=previous|{'mods':previous['mods']+[chain]}
+        errors=validate_graph(prospective['mods'])+validate_jars(prospective,layout.caches/'mods')['errors']
+        if errors:raise ValueError('Native chain dependency/JAR validation failed: '+str(errors))
     directory=layout.staging/('candidate-bridge-build-'+str(time.time_ns()));directory.mkdir()
     bridge=build_bridge(layout.home,directory/('awft-control-bridge-'+BRIDGE_VERSION+'.jar'),storage)
     cached=layout.caches/'mods'/bridge['filename']
@@ -109,10 +132,15 @@ def prepare_bridge(home, mapping_artifact=None):
     selection=read_json(REPO/'catalog/selection.json')
     selection.update(version=VERSION,artifacts=[replacements.get(m['slug'],m) for m in selection['artifacts']])
     items=[replacements.get(m['slug'],m) for m in previous['mods']]
+    if chain is not None:
+        items.append(chain)
+        selection['mods'].append({'request':'reconnectible-chains','project':'reconnectible-chains',
+            'version':'e4yVoAvP','side':'both','world_sensitive':True,
+            'reason':chain['selection_reason']})
     if sum(m['slug']=='awft-control-bridge' for m in items)!=1:
         raise ValueError('Exactly one owned bridge must already exist')
     lock=previous|{'version':VERSION,'generated':utcnow(),'mods':items,
-        'validation':'Only explicitly reviewed bridge/mapping artifacts changed; native restart and integration checks pending'}
+        'validation':'Explicitly reviewed helper/mapping changes and optional exact zipline cable addition only; native restart and integration checks pending'}
     history=REPO/'evidence/history'/('lock-'+str(time.time_ns())+'.json')
     write_json(history,previous)
     write_json(REPO/'catalog/selection.json',selection)
@@ -121,7 +149,8 @@ def prepare_bridge(home, mapping_artifact=None):
         'enabled_mods':sum(m['kind']=='mod' and not(m.get('optional') and not m.get('default',True)) for m in items),
         'pack_sha256':generate_pack(REPO/'packwiz',lock),'build_directory':str(directory),
         'previous_lock_sha256':digest(history),
-        'owned_bridge':bridge,'preserved_gameplay_pins':mapping_artifact is None,
+        'owned_bridge':bridge,'preserved_gameplay_pins':mapping_artifact is None and chain is None,
+        'reviewed_zipline_backend_addition':chain,
         'reviewed_mapping_change':replacements.get('maphorizons'),'preserved_other_gameplay_pins':True,
         'byte_only_config_normalizations':normalizations,
         'source_hashes':{p.relative_to(REPO).as_posix():digest(p) for group in ('src','resources')
@@ -207,8 +236,11 @@ if __name__ == '__main__':
     parser.add_argument('--bridge-only',action='store_true')
     parser.add_argument('--owned-only',action='store_true')
     parser.add_argument('--mapping-jar',type=Path)
+    parser.add_argument('--chain-research',type=Path)
     args=parser.parse_args()
     if args.mapping_jar and (not args.bridge_only or args.owned_only):
         parser.error('--mapping-jar requires the bridge-only, explicitly reviewed candidate path')
-    if args.bridge_only:prepare_bridge(args.home,args.mapping_jar)
+    if args.chain_research and (not args.bridge_only or args.owned_only):
+        parser.error('--chain-research requires the bridge-only, explicitly reviewed candidate path')
+    if args.bridge_only:prepare_bridge(args.home,args.mapping_jar,args.chain_research)
     else:(prepare_owned if args.owned_only else prepare)(args.home)

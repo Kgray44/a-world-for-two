@@ -9,7 +9,8 @@
     "SmallShipsConfigLifecycleMixin",
     "ChunkMapAccess",
     "DistanceManagerAccess",
-    "ChunkCacheAccess"
+    "ChunkCacheAccess",
+    "NativeTreeGrowthGuardMixin"
   ],
   "mixins": [
     "BlueLibVariantReloadMixin",

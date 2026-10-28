@@ -319,6 +319,37 @@ class ConfigurationTests(Fixture):
                 server.command(command, confirmed=True)
 
 
+    def test_native_growth_and_life_commands_keep_private_scope_and_mutation_confirmation(self):
+        server = Server(self.layout, self.storage)
+        commands = [('awfttrees', 'grow', 'describe', 'trees-'),
+                    ('awftlife', 'seed', 'inspect', 'life-'),
+                    ('awftfountain', 'reset', 'inspect', 'fountain-')]
+        for family, mutation, observation, prefix in commands:
+            command = family + ' ' + mutation + ' ' + prefix + 'e' * 16 + ' ' + 'e' * 64
+            with self.subTest(family=family), patch.object(server, '_write') as write:
+                self.layout.save_settings(self.layout.settings() | {'permanent_world': True, 'port': 25565})
+                with self.assertRaises(UserError):
+                    server.command(command, confirmed=True)
+                write_json(self.layout.state / 'artistic-owner.json',
+                           {'format': 'awft-artistic-stage:1', 'home': str(self.layout.home)})
+                self.layout.save_settings(self.layout.settings() | {'permanent_world': False, 'port': 25575})
+                with self.assertRaises(UserError):
+                    server.command(command)
+                server.command(command, confirmed=True)
+                server.command(command.replace(' ' + mutation + ' ', ' ' + observation + ' '))
+                self.assertEqual(write.call_count, 2)
+                for bad in (command + ' extra', command.replace(prefix, '../'),
+                            command.replace('e' * 64, 'invalid'), command + '\nstop'):
+                    with self.assertRaises(UserError):
+                        server.command(bad, confirmed=True)
+                self.layout.save_settings(self.layout.settings() | {'port': 25565})
+                with self.assertRaises(UserError):
+                    server.command(command, confirmed=True)
+                self.layout.save_settings(self.layout.settings() | {'port': 25575, 'permanent_world': True})
+                with self.assertRaises(UserError):
+                    server.command(command, confirmed=True)
+
+
 class PlayerTests(Fixture):
     def setUp(self):
         super().setUp()

@@ -1,0 +1,289 @@
+{
+  "bridge": {
+    "hashes": {
+      "sha256": "77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b"
+    },
+    "size": 446341,
+    "version": "0.6.29"
+  },
+  "connection": {
+    "at": "2026-10-28T00:23:34.640868+00:00",
+    "authenticated_owner_join_observed": true,
+    "online": 1,
+    "previous_refused_target": "127.0.0.1:25565",
+    "server_pid": 411192,
+    "target": "127.0.0.1:25575",
+    "two_player_acceptance": false
+  },
+  "counts": {
+    "client": 192,
+    "enabled_mods": 198,
+    "files": 208,
+    "requested_candidates": 224,
+    "server": 165
+  },
+  "exact_active_source_files": 59,
+  "format": "awft-private-candidate43:1",
+  "gate_recovery": {
+    "block_entity_progress_proved": false,
+    "checkpoint": {
+      "bytes": 216420489,
+      "id": "20261027T232720Z-8d0bc0",
+      "sha256": "9bc10263e655b70468d9aad2a4b6787c7d50068f68b7292ef91e60757d627de8"
+    },
+    "held_seconds": 5.001,
+    "held_server_ticks": 100,
+    "result": "Ordinary ON update left a moving piston after empty-server block-entity ticking paused; OFF was not sent",
+    "state_is_historical": "The owner has since joined; do not assume the frozen moving piston is still current"
+  },
+  "not_claimed": [
+    "Successful final fountain gate reset",
+    "Final R5 fountain placement or art acceptance",
+    "Native sapling growth or bee acceptance",
+    "Animal seeding",
+    "Rideable continuous zipline",
+    "Final SeedGen parity",
+    "Clean public Prism import",
+    "Final official-world handoff"
+  ],
+  "pack_sha256": "0c6b818ac880da9f45e764ab5adb9eeae963ed2bc215c679c11e1b704cabea8e",
+  "receipts": [
+    {
+      "cleanup_errors": [],
+      "cleanup_required": false,
+      "error": "java.lang.IllegalStateException: Actual normal gate retraction/dry controls did not complete",
+      "failures": 1,
+      "file": "fountain-result-0aca4ff9-cdeb-4510-96ff-aeebf776ca62.json",
+      "finished": "2026-10-27T23:12:29.301298900Z",
+      "observations": [
+        {
+          "at": "2026-10-27T23:11:58.818433Z",
+          "header_is_source": true,
+          "jet_water": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "manual_stop": true,
+          "phase": "reset_actual_wet_before",
+          "port_block": "minecraft:water",
+          "pump_overstressed": false,
+          "pump_rpm": 8.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": -8.0
+        },
+        {
+          "at": "2026-10-27T23:12:01.552185200Z",
+          "header_is_source": true,
+          "jet_water": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "manual_stop": true,
+          "phase": "reset_actual_wheel_and_pump_zero",
+          "port_block": "minecraft:water",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        },
+        {
+          "at": "2026-10-27T23:12:03.750967600Z",
+          "header_is_source": false,
+          "jet_water": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "manual_stop": true,
+          "phase": "periodic_RESET_DRAIN",
+          "port_block": "minecraft:air",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        },
+        {
+          "at": "2026-10-27T23:12:08.751406700Z",
+          "header_is_source": false,
+          "jet_water": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "manual_stop": true,
+          "phase": "periodic_RESET_DRAIN",
+          "port_block": "minecraft:air",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        },
+        {
+          "at": "2026-10-27T23:12:09.250124900Z",
+          "header_is_source": false,
+          "jet_water": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "manual_stop": true,
+          "phase": "reset_actual_normal_downstream_drain",
+          "port_block": "minecraft:air",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        },
+        {
+          "at": "2026-10-27T23:12:13.751597700Z",
+          "header_is_source": false,
+          "jet_water": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "manual_stop": false,
+          "phase": "periodic_RESET_CONTROLS",
+          "port_block": "minecraft:chiseled_quartz_block",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        },
+        {
+          "at": "2026-10-27T23:12:18.750733700Z",
+          "header_is_source": false,
+          "jet_water": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "manual_stop": false,
+          "phase": "periodic_RESET_CONTROLS",
+          "port_block": "minecraft:chiseled_quartz_block",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        },
+        {
+          "at": "2026-10-27T23:12:23.752587200Z",
+          "header_is_source": false,
+          "jet_water": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "manual_stop": false,
+          "phase": "periodic_RESET_CONTROLS",
+          "port_block": "minecraft:chiseled_quartz_block",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        },
+        {
+          "at": "2026-10-27T23:12:28.752544200Z",
+          "header_is_source": false,
+          "jet_water": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "manual_stop": false,
+          "phase": "periodic_RESET_CONTROLS",
+          "port_block": "minecraft:chiseled_quartz_block",
+          "pump_overstressed": false,
+          "pump_rpm": 0.0,
+          "wheel_overstressed": false,
+          "wheel_rpm": 0.0
+        }
+      ],
+      "operation": "reset",
+      "pending_shared_chunk_futures": 0,
+      "phase": "RESET_CONTROLS",
+      "sha256": "63b392aad3d1f6681b435fd5da5ea7e0a866862665fb0a82a57e1554d6c38533",
+      "started": "2026-10-27T23:11:58.798435500Z",
+      "status": "native fountain stopped; actual partial hydraulic state and receipts retained",
+      "temporary_tickets_remaining": 0
+    },
+    {
+      "cleanup_required": false,
+      "failures": 1,
+      "file": "settlement-result-04e71f55-7a09-44ce-8e45-09fbaa6a46dd.json",
+      "finished": "2026-10-27T23:23:49.334055600Z",
+      "operation": "verify",
+      "pending_shared_chunk_futures": 0,
+      "sha256": "2e1df4408954469696bea6ad668b57ff4329cdb3201ef19d632efb9fb49a82c7",
+      "started": "2026-10-27T23:23:49.333057400Z",
+      "status": "verification failed; inspect differences",
+      "temporary_tickets_remaining": 0
+    },
+    {
+      "cleanup_errors": [],
+      "cleanup_passed": true,
+      "cleanup_resources_passed": true,
+      "failures": 0,
+      "file": "tree-growth-result-08258b13-86b9-401a-aaf3-b33725c1ed00.json",
+      "finished": "2026-10-27T23:17:35.536170600Z",
+      "global_wakes": 0,
+      "native_bonemeal_trials": 0,
+      "native_success_rolls": 0,
+      "operation": "describe",
+      "pending_shared_futures": 0,
+      "perform_bonemeal_calls": 0,
+      "sha256": "8c767ba8505846eeb4e305d4691e853cd48461d3d7ff5591f9dbfa45c44a3cc5",
+      "started": "2026-10-27T23:17:35.084255200Z",
+      "status": "actual native sapling/grower/feature descriptors captured; no world changes",
+      "temporary_tickets_remaining": 0
+    }
+  ],
+  "recorded_at": "2026-10-28T00:23:34.639741+00:00",
+  "release_status": "Private development only; public candidate31 and official world unchanged",
+  "source_checks": {
+    "first_failed_stale_count_run_retained": true,
+    "javascript_syntax": "pass",
+    "later_proposals_have_separate_focused_checks": true,
+    "log_sha256": "0bd2b1cd76dafc1da90c8e0795cc2e07db4b3ad60360435e19be03eed06fcef9",
+    "packwiz_records": 208,
+    "python_tests": 544,
+    "seconds": 40.111
+  },
+  "uncontrolled_live_observation": {
+    "at": 1793147007.586095,
+    "client": {
+      "at": "2026-10-28T00:23:31.032867500Z",
+      "focused": true,
+      "fps": 60,
+      "heap_max": 6442450944,
+      "heap_used": 5083620376,
+      "in_world": true,
+      "pid": 298748,
+      "screen": "game"
+    },
+    "note": "One live owner-preview sample; not a controlled performance benchmark",
+    "server": {
+      "bridge_age_seconds": 11.096,
+      "heap_max": 8589934592,
+      "heap_used": 1636854360,
+      "loaded_chunks": 1550,
+      "mspt": 3.8670525445544555,
+      "players_online": 1,
+      "server_cpu": 5.53125,
+      "server_rss": 3549765632,
+      "tps": 19.994337841079897
+    }
+  },
+  "version": "0.1.0-candidate.43"
+}

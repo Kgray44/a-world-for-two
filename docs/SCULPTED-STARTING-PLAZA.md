@@ -153,7 +153,7 @@ details, while later habitat/LIFE seeding remains a separate final pass.
 
 `tools.artistic_fountain_commission` admits only the exact candidate42,
 bridge0.6.28 installed JAR/class, private25575 artistic home, retained checkpoint
-and frozen complete2530-cell R4 geometry. Its required input is the **actual**
+and frozen complete2532-cell R5 geometry. Its required input is the **actual**
 successful server verification receipt and matching `.complete` hash marker.
 Placement receipts, partial counts, any failures, outstanding tickets/futures,
 cleanup requirements, foreign/reparse paths, stale/future times and mismatched
@@ -197,3 +197,10 @@ repeater faced its input toward the piston. R4 changes only that state property
 to SOUTH, so it reads the southern dust and outputs north. No architecture,
 material or position changes with that correction. The complete native gate
 cycle still requires a fresh dry R4 verification and actual test.
+
+The actual42 visual review subsequently required a separate sculptural recovery.
+See [Guardian fountain recovery](FOUNTAIN-CENTERPIECE-RECOVERY.md) for the R5
+statue, backed one-wide bowls, concealed side feed, explicit wet/dry evidence
+boundary and current native/visual gates. The coordinates in the earlier table
+describe the retained R2–R4 prototype; R5 removes its tall overhead inspection
+riser and instead enters the unchanged header from the east.

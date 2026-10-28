@@ -211,3 +211,4 @@ Each dependency retains its own license. Exact author downloads are recorded in 
 | YUNG's Better Jungle Temples | 1.21.1-NeoForge-3.1.2 | LGPL-3.0-only | [Author](https://modrinth.com/mod/yungs-better-jungle-temples) |
 | YUNG's Better Ocean Monuments | 1.21.1-NeoForge-4.1.2 | LGPL-3.0-only | [Author](https://modrinth.com/mod/yungs-better-ocean-monuments) |
 | Ziplines: Rezipped! | 1.5.3+1.21.1-neoforge | MIT | [Author](https://modrinth.com/mod/ziplines-rezipped) |
+| Reconnectible Chains | 2.4.4+1.21.1-neoforge | LGPL-3.0-or-later | [Author](https://modrinth.com/mod/reconnectible-chains) · [Source](https://github.com/evanbones/Reconnectible-Chains) |

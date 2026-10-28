@@ -472,7 +472,7 @@ metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "6302e742a9757048d13fa1056132e10a11353072fe6ef22e067a7af6aea50bd5"
+hash = "52686ef0344c344f92e6d0c3b359333307ed5a3eafefbc92e3ed30af9d40e216"
 metafile = true
 
 [[files]]
@@ -1123,6 +1123,11 @@ metafile = true
 [[files]]
 file = "mods/rechiseled.pw.toml"
 hash = "02416a13191185631e7534a8ef1300b4c22bc722d716f6586851a34265cb8a16"
+metafile = true
+
+[[files]]
+file = "mods/reconnectible-chains.pw.toml"
+hash = "665b7f8350e06aee2ac3d6db3a85c916ee02b78ebe852b3b29fac86a7a2f417d"
 metafile = true
 
 [[files]]

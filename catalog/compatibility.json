@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-27T03:00:45.893723+00:00",
+  "generated": "2026-10-27T23:04:37.686841+00:00",
   "generation_basis": "Source lock timestamp; unchanged inputs produce identical reports",
-  "pack_version": "0.1.0-candidate.23",
+  "pack_version": "0.1.0-candidate.43",
   "requests": [
     {
       "id": "farmers-delight",
@@ -4370,29 +4370,29 @@
       "id": "maphorizons",
       "name": "MapHorizons",
       "group": "mapping",
-      "status": "Integrated but awaiting runtime validation",
+      "status": "Experimental native map validation pending",
       "version": "1.1.0",
       "side": "both",
       "project_id": "github:VolcanicMG/MapHorizons",
-      "reason": "High-priority experimental DH3.3.x-to-Xaero adapter, built from exact author source with selfCheck pass. SeedGen visual verification remains required; no automatic map population claimed.",
+      "reason": "Original MIT interoperability repair for native DH coarse LOD lookup, read-only shaded SQLite and refresh races. Actual Xaero appearance, authority and SeedGen data provenance remain native test gates.",
       "source": "https://github.com/VolcanicMG/MapHorizons/tree/6c80ad5be5fff2c373388dfd6ff433667edd7217",
       "runtime": "not run",
       "selected_by_default": true,
       "optional": false,
       "file_pin": {
         "project_id": "github:VolcanicMG/MapHorizons",
-        "version_id": "1.1.0+6c80ad5+awft.1",
-        "filename": "maphorizons-1.1.0-awft.1.jar",
+        "version_id": "1.1.0+6c80ad5+awft.2",
+        "filename": "maphorizons-1.1.0-awft.2.jar",
         "hashes": {
-          "sha256": "da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93"
+          "sha256": "cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4"
         },
-        "size": 110502,
+        "size": 121569,
         "side": "both",
         "kind": "mod"
       },
       "lock_validation": {
         "metadata": "pass",
-        "jar": "pending",
+        "jar": "pinned API compilation and 76 helper checks pass",
         "runtime": "not run"
       },
       "runtime_observation": {
@@ -4403,8 +4403,8 @@
         "observed_file_hash": {
           "sha256": "da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93"
         },
-        "current_file_matches_observed_pin": true,
-        "evidence_scope": "Limited prior-candidate observation; no lock runtime gate is promoted"
+        "current_file_matches_observed_pin": false,
+        "evidence_scope": "Historical observation only: current artifact pin differs and has no acceptance from this receipt"
       }
     },
     {
@@ -4918,7 +4918,7 @@
     },
     {
       "id": "the-explorers-friend",
-      "name": "The Explorer’s Friend",
+      "name": "The Explorerâ€™s Friend",
       "group": "atlas",
       "status": "Unresolved, with investigation details",
       "version": null,
@@ -5210,7 +5210,7 @@
     },
     {
       "id": "countereds-smooth-f5",
-      "name": "Countered’s Smooth F5",
+      "name": "Counteredâ€™s Smooth F5",
       "group": "cinematics",
       "status": "Unresolved, with investigation details",
       "version": null,
@@ -6210,13 +6210,45 @@
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
+    },
+    {
+      "id": "reconnectible-chains",
+      "name": "Reconnectible Chains",
+      "group": "navigation",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "2.4.4+1.21.1-neoforge",
+      "side": "both",
+      "project_id": "5pzBXDS3",
+      "reason": "Actual supported cable backend for the already pinned Ziplines Rezipped1.5.3 cliff-to-pirate-town ride; native compatibility, ride clearance and persistence remain unverified.",
+      "source": "https://modrinth.com/mod/reconnectible-chains",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "5pzBXDS3",
+        "version_id": "e4yVoAvP",
+        "filename": "connectiblechains-2.4.4+1.21.1-neoforge.jar",
+        "hashes": {
+          "sha1": "1a47d26e63bceb28b488058a7d80738212d83d8c",
+          "sha512": "c09a3a354a26ce0dc511c2364332975222fae8515101f524de5e724f3a191eb75ffb4f381b8c78907f885d7a7e86f1ce7b883d56921fb5f31709466446efe00a",
+          "sha256": "70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0"
+        },
+        "size": 293575,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
     }
   ],
   "source_lock": {
     "path": "catalog/lock.json",
-    "sha256": "2dd23419a665d8c7bcbda523719dccd2f741f90dc27fc6a49895a189138bc131",
+    "sha256": "6b861a23d286dea4b443196009135d99bcf2e3a255ed3a98333c1babf086aa2a",
     "pack_path": "packwiz/pack.toml",
-    "pack_sha256": "9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11",
+    "pack_sha256": "0c6b818ac880da9f45e764ab5adb9eeae963ed2bc215c679c11e1b704cabea8e",
     "minecraft": "1.21.1",
     "neoforge": "21.1.262",
     "java": 21,
@@ -6379,15 +6411,15 @@
       "name": "A World for Two Control Bridge",
       "request": null,
       "kind": "mod",
-      "version": "0.6.9",
-      "version_id": "0.6.9",
-      "filename": "awft-control-bridge-0.6.9.jar",
-      "size": 95867,
-      "side": "server",
+      "version": "0.6.29",
+      "version_id": "0.6.29",
+      "filename": "awft-control-bridge-0.6.29.jar",
+      "size": 446341,
+      "side": "both",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "79420b1a8d645ad8a041aecc7155eaca6a4fd60993e783cf4287e543b1e42b97"
+        "sha256": "77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
       "status": "Integrated but awaiting runtime validation",
@@ -6403,15 +6435,15 @@
       "name": "A World for Two Presentation",
       "request": null,
       "kind": "mod",
-      "version": "0.2.1",
-      "version_id": "0.2.1",
-      "filename": "awft-client-presentation-0.2.1.jar",
-      "size": 7762,
+      "version": "0.2.2",
+      "version_id": "0.2.2",
+      "filename": "awft-client-presentation-0.2.2.jar",
+      "size": 10034,
       "side": "client",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "2614892ec05d63d8e2c51a4bf0b0424470cc1195815b6c0695130642ba51c42c"
+        "sha256": "754555b0fc47e923ff6aaeccb8d162b72d4a0056b4a04e85c06c3d5d4f06c765"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
       "status": "Integrated but awaiting runtime validation",
@@ -9401,20 +9433,20 @@
       "request": "maphorizons",
       "kind": "mod",
       "version": "1.1.0",
-      "version_id": "1.1.0+6c80ad5+awft.1",
-      "filename": "maphorizons-1.1.0-awft.1.jar",
-      "size": 110502,
+      "version_id": "1.1.0+6c80ad5+awft.2",
+      "filename": "maphorizons-1.1.0-awft.2.jar",
+      "size": 121569,
       "side": "both",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93"
+        "sha256": "cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4"
       },
       "source": "https://github.com/VolcanicMG/MapHorizons/tree/6c80ad5be5fff2c373388dfd6ff433667edd7217",
-      "status": "Integrated but awaiting runtime validation",
+      "status": "Experimental native map validation pending",
       "validation": {
         "metadata": "pass",
-        "jar": "pending",
+        "jar": "pinned API compilation and 76 helper checks pass",
         "runtime": "not run"
       }
     },
@@ -11390,23 +11422,50 @@
         "jar": "pending",
         "runtime": "not run"
       }
+    },
+    {
+      "project_id": "5pzBXDS3",
+      "slug": "reconnectible-chains",
+      "name": "Reconnectible Chains",
+      "request": "reconnectible-chains",
+      "kind": "mod",
+      "version": "2.4.4+1.21.1-neoforge",
+      "version_id": "e4yVoAvP",
+      "filename": "connectiblechains-2.4.4+1.21.1-neoforge.jar",
+      "size": 293575,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha1": "1a47d26e63bceb28b488058a7d80738212d83d8c",
+        "sha512": "c09a3a354a26ce0dc511c2364332975222fae8515101f524de5e724f3a191eb75ffb4f381b8c78907f885d7a7e86f1ce7b883d56921fb5f31709466446efe00a",
+        "sha256": "70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0"
+      },
+      "source": "https://modrinth.com/mod/reconnectible-chains",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
     }
   ],
   "counts": {
-    "requested_candidates": 223,
-    "resolved_files": 207,
-    "mod_entries_including_optional": 198,
-    "enabled_mod_entries": 197,
+    "requested_candidates": 224,
+    "resolved_files": 208,
+    "mod_entries_including_optional": 199,
+    "enabled_mod_entries": 198,
     "shader_packs": 8,
     "resource_packs": 1,
     "decision_statuses": {
       "Integrated but awaiting runtime validation": 158,
       "Alternative selected": 21,
       "Unresolved, with investigation details": 41,
-      "Incompatible, with evidence": 3
+      "Incompatible, with evidence": 3,
+      "Experimental native map validation pending": 1
     }
   },
-  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.23, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
+  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.43, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
   "runtime_evidence": [
     {
       "source": "evidence/runtime/client-startup-initial.json",

@@ -1,0 +1,780 @@
+{
+  "provenance": "Selected actual pinned native42 registry block schemas, not world geometry",
+  "registry_sha256": "63a429046bcfe54af8a5e734c5aa497be0418ee3f2e6fa14ea1b570b434f9b77",
+  "create_jar_sha256": "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a",
+  "mechanical_pump_range": 16,
+  "blocks": {
+    "chipped:inlayed_calcite": {},
+    "create:andesite_encased_shaft": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "create:clutch": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "create:cogwheel": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "create:encased_fluid_pipe": {
+      "down": [
+        "true",
+        "false"
+      ],
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "up": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "create:fluid_pipe": {
+      "down": [
+        "true",
+        "false"
+      ],
+      "east": [
+        "true",
+        "false"
+      ],
+      "north": [
+        "true",
+        "false"
+      ],
+      "south": [
+        "true",
+        "false"
+      ],
+      "up": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ],
+      "west": [
+        "true",
+        "false"
+      ]
+    },
+    "create:glass_fluid_pipe": {
+      "alt": [
+        "true",
+        "false"
+      ],
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "create:mechanical_pump": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "create:shaft": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "create:water_wheel": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ]
+    },
+    "dawnoftimebuilder:iron_fancy_lantern": {
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:limestone_baluster": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:limestone_gargoyle": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "humidity": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "persistent": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:limestone_sided_column": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "vertical_connection": [
+        "none",
+        "under",
+        "above",
+        "both"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:marble": {},
+    "dawnoftimebuilder:marble_big_flower_pot": {
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:marble_coffer": {},
+    "dawnoftimebuilder:marble_coffer_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:marble_edge": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:marble_sided_column": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "vertical_connection": [
+        "none",
+        "under",
+        "above",
+        "both"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:marble_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:marble_statue_mars": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "multiblock": [
+        "0",
+        "1",
+        "2"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_bench": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:dark_oak_side_table": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "handcrafted:golden_wide_pot": {},
+    "handcrafted:wood_cup": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "pieces": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwlights:covered_garden_light": {
+      "lit": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwlights:golden_triple_candle_holder": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "lit": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwwindows:stone_four_window": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "windowstate": [
+        "closed",
+        "open_left",
+        "open_right",
+        "locked"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:chiseled_quartz_block": {},
+    "minecraft:chiseled_stone_bricks": {},
+    "minecraft:cut_copper": {},
+    "minecraft:flowering_azalea": {},
+    "minecraft:lever": {
+      "face": [
+        "floor",
+        "wall",
+        "ceiling"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:polished_andesite": {},
+    "minecraft:quartz_bricks": {},
+    "minecraft:quartz_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:redstone_torch": {
+      "lit": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:redstone_wall_torch": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "lit": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:redstone_wire": {
+      "east": [
+        "up",
+        "side",
+        "none"
+      ],
+      "north": [
+        "up",
+        "side",
+        "none"
+      ],
+      "power": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "south": [
+        "up",
+        "side",
+        "none"
+      ],
+      "west": [
+        "up",
+        "side",
+        "none"
+      ]
+    },
+    "minecraft:repeater": {
+      "delay": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "locked": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:smooth_quartz_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:smooth_sandstone": {},
+    "minecraft:sticky_piston": {
+      "extended": [
+        "true",
+        "false"
+      ],
+      "facing": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ]
+    },
+    "minecraft:water": {
+      "level": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    "minecraft:waxed_cut_copper": {},
+    "minecraft:waxed_cut_copper_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:waxed_cut_copper_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:waxed_weathered_cut_copper": {},
+    "minecraft:waxed_weathered_cut_copper_slab": {
+      "type": [
+        "top",
+        "bottom",
+        "double"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mythrais:cloverleaf_column_capital_stone": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mythrais:corbel_01_full_stone": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "mythrais:corbel_scroll_centre_stone": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "mythrais:single_lancet_arch_upper_stone": {
+      "colour": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "mirrored": [
+        "true",
+        "false"
+      ]
+    },
+    "rechiseled:quartz_block_bordered": {},
+    "rechiseled:quartz_block_bordered_stairs": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "rechiseled:quartz_block_chiseled_pillar": {},
+    "supplementaries:statue": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "lit": [
+        "true",
+        "false"
+      ],
+      "powered": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    }
+  }
+}

@@ -107,8 +107,12 @@ class CompatibilityGenerationTests(unittest.TestCase):
         for resolved, source in zip(data['resolved_files'], lock['mods']):
             for key in ('project_id', 'version_id', 'version', 'filename', 'hashes', 'side', 'optional', 'default'):
                 self.assertEqual(resolved.get(key), source.get(key), (source['slug'], key))
-        self.assertEqual(data['counts']['enabled_mod_entries'], 197)
-        self.assertEqual(len(data['requests']), 223)
+        self.assertEqual(data['counts']['enabled_mod_entries'], 198)
+        self.assertEqual(len(data['requests']), 224)
+        chains = next(v for v in data['resolved_files'] if v['slug'] == 'reconnectible-chains')
+        self.assertEqual(chains['version_id'], 'e4yVoAvP')
+        self.assertEqual(chains['side'], 'both')
+        self.assertEqual(chains['hashes']['sha256'], '70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0')
         self.assertEqual(len(data['isolated_candidates']), 3)
 
     def test_lock_drift_is_refused_before_a_mixed_snapshot_is_published(self):

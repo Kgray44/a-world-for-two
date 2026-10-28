@@ -1,12 +1,12 @@
 # Compatibility inventory
 
-Current lock: **0.1.0-candidate.23**, Minecraft 1.21.1, NeoForge 21.1.262, Java 21.
+Current lock: **0.1.0-candidate.43**, Minecraft 1.21.1, NeoForge 21.1.262, Java 21.
 
-223 requested candidates are retained. The lock contains 207 exact files: 198 mod entries (197 enabled by default), 8 client shader packs and 1 resource packs. Optional file defaults and sides are listed individually below.
+224 requested candidates are retained. The lock contains 208 exact files: 199 mod entries (198 enabled by default), 8 client shader packs and 1 resource packs. Optional file defaults and sides are listed individually below.
 
-Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.23, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.
+Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.43, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.
 
-Lock SHA-256: `2dd23419a665d8c7bcbda523719dccd2f741f90dc27fc6a49895a189138bc131`. Pack SHA-256: `9631a680f572fe7cae44cb2575f7c3ced3910611819ab948c02406e6e0700e11`.
+Lock SHA-256: `6b861a23d286dea4b443196009135d99bcf2e3a255ed3a98333c1babf086aa2a`. Pack SHA-256: `0c6b818ac880da9f45e764ab5adb9eeae963ed2bc215c679c11e1b704cabea8e`.
 
 ## Recorded runtime scope
 
@@ -175,7 +175,7 @@ Chocapic remains deferred at the owner's request. Distant Horizons + SeedGen is 
 | Xaero's Minimap | Integrated but awaiting runtime validation | neoforge-1.21.1-26.6.0 | Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required. [Source](https://modrinth.com/mod/xaeros-minimap) |
 | Xaero's World Map | Integrated but awaiting runtime validation | neoforge-1.21.1-1.47.0 | Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required. [Source](https://modrinth.com/mod/xaeros-world-map) |
 | Create - Xaero's Map | Integrated but awaiting runtime validation | 1.4.2 | Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required. [Source](https://modrinth.com/mod/create-xaeros-map) |
-| MapHorizons | Integrated but awaiting runtime validation | 1.1.0 | High-priority experimental DH3.3.x-to-Xaero adapter, built from exact author source with selfCheck pass. SeedGen visual verification remains required; no automatic map population claimed. A successful SeedGen server fingerprint does not prove that SeedGen LODs populate Xaero maps. That end-to-end check remains unverified. [Source](https://github.com/VolcanicMG/MapHorizons/tree/6c80ad5be5fff2c373388dfd6ff433667edd7217) |
+| MapHorizons | Experimental native map validation pending | 1.1.0 | Original MIT interoperability repair for native DH coarse LOD lookup, read-only shaded SQLite and refresh races. Actual Xaero appearance, authority and SeedGen data provenance remain native test gates. A successful SeedGen server fingerprint does not prove that SeedGen LODs populate Xaero maps. That end-to-end check remains unverified. Current artifact differs from the observed file; this receipt provides no current-pin acceptance. [Source](https://github.com/VolcanicMG/MapHorizons/tree/6c80ad5be5fff2c373388dfd6ff433667edd7217) |
 | Open Parties and Claims | Integrated but awaiting runtime validation | neoforge-1.21.1-0.33.0 | Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required. [Source](https://modrinth.com/mod/open-parties-and-claims) |
 | Waystones | Integrated but awaiting runtime validation | 21.1.46+neoforge-1.21.1 | Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required. [Source](https://modrinth.com/mod/waystones) |
 | Create: Hypertubes | Integrated but awaiting runtime validation | 0.6.0 | Exact native NeoForge 1.21.1 candidate for the current mapping and pirate build. Dependency, safety and feature tests remain required. [Source](https://modrinth.com/mod/hypertube) |
@@ -194,7 +194,7 @@ Chocapic remains deferred at the owner's request. Distant Horizons + SeedGen is 
 | Pirates 'n' Ships | Unresolved, with investigation details | — | The v0.3.0 beta artifact and Sable 2.0.6 dependencies were acquired for an isolated compatibility experiment. AI ships, physics, artillery overlap, restart and destruction protections remain untested. Existing Small Ships, Aeronautics and Big Cannons are preserved; the beta is not in the active candidate. Investigation pin: 0.3.0; see the separate candidate table. |
 | Black Powder: Age of Sail | Unresolved, with investigation details | — | The 2.3.0 artifact is retained for an isolated naval/artillery experiment. Overlap with Big Cannons and Pirate Guns and build protection remain untested; it is not installed alongside those systems by assumption. Investigation pin: 2.3.0; see the separate candidate table. |
 | squaremap | Integrated but awaiting runtime validation | 1.3.2 | Preferred established 2D atlas renderer. Test loaded/existing chunk behavior and native NeoForge mod block colors before permanent deployment. [Source](https://modrinth.com/mod/squaremap) |
-| The Explorer’s Friend | Unresolved, with investigation details | — | The exact native NeoForge 1.21.1 author release 0.5.2 is pinned for an isolated comparison with squaremap. Modded block colors, rendering bounds, claims and overhead remain unmeasured. squaremap remains the active backend; the alternative is not enabled concurrently. Investigation pin: 0.5.2; see the separate candidate table. [Source](https://github.com/CptGummiball/explorers-friend/releases/tag/v0.5.2) |
+| The Explorerâ€™s Friend | Unresolved, with investigation details | — | The exact native NeoForge 1.21.1 author release 0.5.2 is pinned for an isolated comparison with squaremap. Modded block colors, rendering bounds, claims and overhead remain unmeasured. squaremap remains the active backend; the alternative is not enabled concurrently. Investigation pin: 0.5.2; see the separate candidate table. [Source](https://github.com/CptGummiball/explorers-friend/releases/tag/v0.5.2) |
 | Giant Tree | Integrated but awaiting runtime validation | 1.0.1+neoforge-1.21.1 | Controlled player-grown giant trees, with measured limits and no second global forest replacement. [Source](https://modrinth.com/mod/giant-tree) |
 | Tree Giant | Unresolved, with investigation details | — | Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending. [Source](https://modrinth.com/project/8a1Ksvnk) |
 | L-Trees: Giant Trees | Unresolved, with investigation details | — | No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress. |
@@ -206,7 +206,7 @@ Chocapic remains deferred at the owner's request. Distant Horizons + SeedGen is 
 | Lumiera | Integrated but awaiting runtime validation | 1.0.0-alpha.1+neoforge-1.21.1 | Required cinematic primary system. Exact author alpha exception for NeoForge 1.21.1; runtime and safe camera restoration are required before promotion. Pinned native parser accepted the configured intro. Final-settlement camera path and client playback remain separate. [Source](https://modrinth.com/mod/lumiera) |
 | Cinematic Respawn | Integrated but awaiting runtime validation | 1.21.1-neoforge-1.4.3 | Required cinematic primary system. Native NeoForge 1.21.1 release; client-only presentation. [Source](https://modrinth.com/mod/cinematic-respawn) |
 | Ambient Camera | Integrated but awaiting runtime validation | Neoforge1.21.1-1.1.0 | Required cinematic primary system. Native NeoForge 1.21.1 release; client-only presentation. [Source](https://modrinth.com/mod/ambient-camera) |
-| Countered’s Smooth F5 | Unresolved, with investigation details | — | No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress. |
+| Counteredâ€™s Smooth F5 | Unresolved, with investigation details | — | No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress. |
 | Camera Utils (NeoForge Port) | Unresolved, with investigation details | — | No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress. |
 | Cinematic Zoom | Unresolved, with investigation details | — | No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress. |
 | Cinematic: Cutscenes | Unresolved, with investigation details | — | No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress. |
@@ -245,6 +245,7 @@ Chocapic remains deferred at the owner's request. Distant Horizons + SeedGen is 
 | MakeUp Ultra Fast | Integrated but awaiting runtime validation | 9.6 | Lighter configurable effects; optional shadows, depth of field and color schemes. No FPS claim before measurement. [Source](https://modrinth.com/shader/makeup-ultra-fast-shaders) |
 | Solas Shader | Integrated but awaiting runtime validation | 3.8 | Cozy fantasy option with colored lighting, auroras, fireflies and expressive skies; moderate-cost author target. [Source](https://modrinth.com/shader/solas-shader) |
 | Pastel Shaders (research candidate) | Unresolved, with investigation details | — | The author’s 1.200 release offers pastel color schemes and a cozy style, but its published version list stops at 1.21 and this exact build’s DH support is unverified. Retained for investigation; Bliss, BSL and Solas provide the initial cozy choices. [Source](https://modrinth.com/shader/pastel-shaders) |
+| Reconnectible Chains | Integrated but awaiting runtime validation | 2.4.4+1.21.1-neoforge | Actual supported cable backend for the already pinned Ziplines Rezipped1.5.3 cliff-to-pirate-town ride; native compatibility, ride clearance and persistence remain unverified. [Source](https://modrinth.com/mod/reconnectible-chains) |
 
 ## Exact resolved file inventory
 
@@ -258,8 +259,8 @@ These are top-level downloadable files; bundled nested loader libraries are not 
 | [Let's Do] Farm & Charm<br>`letsdo-farm_and_charm-neoforge-1.1.29.jar` | 1.1.29 | both | On | sha512: `b9ac57d7fd0056310603f926dcdf5dfe5821d6bd0a573ab7f626d57b32e273e5a24d30a789f028afe90674cee18107d7a99097871484f4d98f50bb54aa0e595c` |
 | [Let's Do] Vinery<br>`letsdo-vinery-neoforge-1.5.6.jar` | 1.5.6 | both | On | sha512: `51c31c756de0f54a91f28c4d072925e0793ae70aefde2d23ea7ca3c5b7050ce04cc1885531ea459d1ea6adefb05d7c37616e3c9102f0fea50234f04043f6b970` |
 | [UNOFFICIAL] TaCZ 1.21.1 NeoForge Port<br>`tacz-neoforge-1.21.1-1.1.8-hotfix-r7.jar` | 1.1.8-hotfix-r7 | both | On | sha512: `7700ed99a080729c3aa21f9619e018fbe9e2303cfbcaa463175ee5170553a000b692bc4cfa2e8ce0778747eed34dcc0197fb5e4344bb258cff1ba90adc842642` |
-| A World for Two Control Bridge<br>`awft-control-bridge-0.6.9.jar` | 0.6.9 | server | On | sha256: `79420b1a8d645ad8a041aecc7155eaca6a4fd60993e783cf4287e543b1e42b97` |
-| A World for Two Presentation<br>`awft-client-presentation-0.2.1.jar` | 0.2.1 | client | On | sha256: `2614892ec05d63d8e2c51a4bf0b0424470cc1195815b6c0695130642ba51c42c` |
+| A World for Two Control Bridge<br>`awft-control-bridge-0.6.29.jar` | 0.6.29 | both | On | sha256: `77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b` |
+| A World for Two Presentation<br>`awft-client-presentation-0.2.2.jar` | 0.2.2 | client | On | sha256: `754555b0fc47e923ff6aaeccb8d162b72d4a0056b4a04e85c06c3d5d4f06c765` |
 | Advanced Weather<br>`advancedweather-0.1.2+awft.3.jar` | 0.1.2+awft.3 | both | On | sha256: `40ffeb077e7c550de485d1d9c923874683811d52e6e9c7fafa614b0888e99f10` |
 | Almanac<br>`Almanac-1.21.1-2-neoforge-1.5.2.jar` | 1.5.2 | server | On | sha512: `b8c87ce784d1afee68cf8943dd64be899d9a25d111aeec1d72f1c80431cacaf71c1b4d6eb16bdaaaa36bdfd3cd4df653e8575cb567f5cdbecdefc581ad187177` |
 | Ambient Camera<br>`ambient_camera-1.21.1-1.1.0.jar` | Neoforge1.21.1-1.1.0 | client | On | sha512: `fe5ab1a12d4ed0156ebf5791f166148e17351e7c1609cde63036ac54f2f3b7602d060be2979b7cf5b6d7a52800acb5a4586d7a73e196d5cf880255715d9a9025` |
@@ -379,7 +380,7 @@ These are top-level downloadable files; bundled nested loader libraries are not 
 | Macaw's Trapdoors<br>`mcw-trapdoors-1.1.5-mc1.21.1neoforge.jar` | 1.1.5 | both | On | sha512: `70721b55802192d678b6fb66619c6e210a49d5e829fc1951c70c27d8ed940c446979e36dd06221c6a35e358e97fb57c22c41ed0b24cd6d03519926b81d58d4b4` |
 | Macaw's Windows<br>`mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar` | 2.4.2 | both | On | sha512: `7628aa390a689a211013e5856cca1c695729b1faa7e20da16fa1f8a3822d5b569631829e91222caa8f1b27c4a7d28ab49110502551551216de2fb471b6f2549f` |
 | MakeUp - Ultra Fast<br>`MakeUp-UltraFast-9.6.zip` | 9.6 | client | On | sha512: `fa7af14ac14bd77bc1c5d8abf5243e9f3dae08777272790de62b9f388db2f5383f8b00c61da358a356a43635afb7cab80ea7196ffd3a97e22d3184b76e9f3fd3` |
-| MapHorizons<br>`maphorizons-1.1.0-awft.1.jar` | 1.1.0 | both | On | sha256: `da36054b9d59083481bfe9c946d17a2f0f87705a6d883718b26351848d40ff93` |
+| MapHorizons<br>`maphorizons-1.1.0-awft.2.jar` | 1.1.0 | both | On | sha256: `cd5f5a0d41f02d1c720b0ce3f603f0cc3c3f92db02aa8226565b4e394fbc7ef4` |
 | Melody<br>`melody_neoforge_1.0.10_MC_1.21.jar` | 1.0.10-1.21-neoforge | client | On | sha512: `3bd96b851a65fa95d92d051851e6a7a415927f718fcb05f0dfb5983eb3ca54edfb842ea85f1497e1b3510b5884181b8f9c6080d2b15642ceadac695011c00ec1` |
 | ModernFix<br>`modernfix-neoforge-5.27.27+mc1.21.1.jar` | 5.27.27+mc1.21.1 | both | On | sha512: `af14a35e51f1c5d94139c6225ae641e8b0ded5a8c68eb4806cf28025d6c043455ac289902cd6b854a867320ab845ad619b186d02b8341822faf03f4476dec555` |
 | Moog's Structure Lib (moogs_structures)<br>`MoogsStructureLib-neoforge-1.21.1-3.4.2.jar` | 3.4.2-neoforge-1.21.1 | both | On | sha512: `378d5da579e65e8c37d81aee510302f99b3097f0c6a4245f3621478f741fac3b55a3715227d9408153a66c98624f8fcb5f93e98027212e0f0a82b768315d0651` |
@@ -459,6 +460,7 @@ These are top-level downloadable files; bundled nested loader libraries are not 
 | YUNG's Better Jungle Temples<br>`YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | 1.21.1-NeoForge-3.1.2 | both | On | sha512: `eca4233e874a55886c63d2111b8685d479771d3627bad2922582e65b78c51ba74733dc4624aabf91f2a2178a940a72d9209ae33eef74e34f84f07d62256709d9` |
 | YUNG's Better Ocean Monuments<br>`YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | 1.21.1-NeoForge-4.1.2 | both | On | sha512: `77c864da36f1d2173e6460dc335996893a804954b8a5c274173fc95dfdbf437e80d9dce32f6060306a662fc35322566eecf5dfe24e2d3fab79bf7e0ff9fa4db6` |
 | Ziplines: Rezipped!<br>`zipline-1.5.3+1.21.1-neoforge.jar` | 1.5.3+1.21.1-neoforge | both | On | sha512: `47db8340965b18aefc3d809af9fecc9e0e0a05a01da59e40bf66cca135c91ed182fbb46ee249682e56ffb46c22723491b48827a34ee75d01dd7a3c8045cee334` |
+| Reconnectible Chains<br>`connectiblechains-2.4.4+1.21.1-neoforge.jar` | 2.4.4+1.21.1-neoforge | both | On | sha512: `c09a3a354a26ce0dc511c2364332975222fae8515101f524de5e724f3a191eb75ffb4f381b8c78907f885d7a7e86f1ce7b883d56921fb5f31709466446efe00a` |
 
 ## Isolated candidate pins
 

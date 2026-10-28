@@ -1,13 +1,13 @@
 {
   "format": 1,
   "name": "A World for Two",
-  "version": "0.1.0-candidate.42",
+  "version": "0.1.0-candidate.43",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
-  "generated": "2026-10-27T19:55:31.623720+00:00",
+  "generated": "2026-10-27T23:04:37.686841+00:00",
   "release_status": "candidate",
-  "validation": "Only explicitly reviewed bridge/mapping artifacts changed; native restart and integration checks pending",
+  "validation": "Explicitly reviewed helper/mapping changes and optional exact zipline cable addition only; native restart and integration checks pending",
   "mods": [
     {
       "project_id": "zV5r3pPn",
@@ -277,15 +277,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.28",
-      "version": "0.6.28",
+      "version_id": "0.6.29",
+      "version": "0.6.29",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.28.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.28.jar",
-      "size": 381891,
+      "filename": "awft-control-bridge-0.6.29.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.29.jar",
+      "size": 446341,
       "hashes": {
-        "sha256": "551ed63b6b593e0e7456d632396b93593c330a9a3977933ec4e70d3f1d38da2d"
+        "sha256": "77e9c962670cb1974288e94e36dc0222416f8798056fd91205261d8ae2cc748b"
       },
       "side": "both",
       "kind": "mod",
@@ -9612,6 +9612,58 @@
       },
       "source": "https://modrinth.com/mod/ziplines-rezipped",
       "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "5pzBXDS3",
+      "slug": "reconnectible-chains",
+      "name": "Reconnectible Chains",
+      "version_id": "e4yVoAvP",
+      "version": "2.4.4+1.21.1-neoforge",
+      "release_type": "release",
+      "filename": "connectiblechains-2.4.4+1.21.1-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/5pzBXDS3/versions/e4yVoAvP/connectiblechains-2.4.4%2B1.21.1-neoforge.jar",
+      "hashes": {
+        "sha1": "1a47d26e63bceb28b488058a7d80738212d83d8c",
+        "sha512": "c09a3a354a26ce0dc511c2364332975222fae8515101f524de5e724f3a191eb75ffb4f381b8c78907f885d7a7e86f1ce7b883d56921fb5f31709466446efe00a",
+        "sha256": "70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0"
+      },
+      "size": 293575,
+      "side": "both",
+      "kind": "mod",
+      "request": "reconnectible-chains",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "1eAoo2KR",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "upstream_dependencies": [
+        {
+          "version_id": null,
+          "project_id": "1eAoo2KR",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LGPL-3.0-or-later",
+        "name": "GNU Lesser General Public License v3.0 or later",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/reconnectible-chains",
+      "selection_reason": "Actual supported cable backend for the already pinned Ziplines Rezipped1.5.3 cliff-to-pirate-town ride; native compatibility, ride clearance and persistence remain unverified.",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",

@@ -1,0 +1,5 @@
+{
+  "parent_review_only": true,
+  "instruction": "Merge this class into the existing dedicated-server mixin list; do not register a second configuration or listener automatically.",
+  "server": ["NativeTreeGrowthGuardMixin"]
+}
