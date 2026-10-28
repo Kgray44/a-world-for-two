@@ -325,6 +325,17 @@ The current client presentation snapshot does not expose client GC counters;
 client collections/pauses remain unmeasured. Server GC totals cannot substitute
 for them, and collector elapsed time is not a measured individual pause.
 
+[The retained JFR reader](../compat/performance/JFR.md) now provides a separate,
+bounded route for owner-recorded chunk-status durations and client/server GC
+pause scopes. It controls no game or recording. Native `JVMInformation` must match
+the independently supplied PID/birth, input hash/size/stability are checked, and
+missing/borrowed provenance refuses. Its actual JDK fixture is explicitly
+synthetic; no Minecraft recording or gameplay qualification was performed.
+The installed Minecraft1.21.1 `ChunkRegionRead` event has no begin/end interval:
+its apparent duration cannot establish load latency. File-read operations and
+generation statuses are separate observations; full chunk/packet arrival timing
+remains open. The master owns live recording control and bounded allocations.
+
 After the first50slice exposed the ambiguity of a shared data folder, optional
 `watch_files` metadata was added for up to12 exact files. Use separate names for
 the existing `DistantHorizons.sqlite`, `-wal` and `-shm` companions. It reads only

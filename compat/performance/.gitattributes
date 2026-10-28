@@ -1,0 +1,4 @@
+# Preserve literal source/settings bytes used by the retained-reader receipt.
+JfrSummary.java text eol=lf
+JfrSummaryProbe.java text eol=lf
+measurements.jfc text eol=lf
