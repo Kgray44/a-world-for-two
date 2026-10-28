@@ -36,8 +36,13 @@ public final class TreeBeeAudit {
     private final boolean allowNativeNest;
     private static final int MAX_ENTITIES=8192;
     public TreeBeeAudit(ServerLevel level,Map<BlockPos,BlockState> before,AABB write,boolean allowNativeNest)throws Exception{
+        this(level,before,write,allowNativeNest,false);
+    }
+    /** Dense patches may read/preserve existing BEs; scoped setters cannot touch
+     * them and the complete exact before/after BE census must remain equal. */
+    public TreeBeeAudit(ServerLevel level,Map<BlockPos,BlockState> before,AABB write,boolean allowNativeNest,boolean preserveExistingBEsInWrite)throws Exception{
         if(!level.getServer().isSameThread()||before.isEmpty()||before.size()>131072)throw new IllegalStateException("One exact synchronous known plot required");
-        this.level=level;this.before=Map.copyOf(before);this.write=write;this.allowNativeNest=allowNativeNest;
+        this.level=level;this.before=TreeGrowthScope.snapshotMap(before);this.write=write;this.allowNativeNest=allowNativeNest;
         pin(BeehiveBlock.class,"b2a511db000ff13ce4eaaf409d8b4157ea01af6c2df7da4e31f6e73002e89f48");
         pin(BeehiveBlockEntity.class,"153db1fec0f4f93b70bf11e544c07c57a592b3e0b6d6f2733f2dd7f264017faf");
         pin(BeehiveBlockEntity.Occupant.class,"57ab26140449c9468466f2ad84654bf389e118e383aea2f5f921837b2fd5bf1b");
@@ -45,7 +50,7 @@ public final class TreeBeeAudit {
         pin(BaseEntityBlock.class,"94825efc82ec63c95930ab4cda9218a630cca4f2e1dd77aef14473ee9d4ec072");
         pin(BlockBehaviour.class,"9d4b517d48afdaa2183e345ec25ae97efe0f0346b9f4add1de1dbb2f46d863b0");
         entitiesBefore=census();blockEntitiesBefore=blockEntities();
-        for(BlockPos p:blockEntitiesBefore.keySet())if(inside(p))throw new IllegalStateException("Preserve every old BE inside a growth field");
+        for(BlockPos p:blockEntitiesBefore.keySet())if(inside(p)&&!preserveExistingBEsInWrite)throw new IllegalStateException("Preserve every old BE inside a growth field");
     }
     private static String sha(byte[] bytes)throws Exception{return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));}
     private static void pin(Class<?> type,String expected)throws Exception{

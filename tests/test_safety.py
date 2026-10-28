@@ -322,6 +322,7 @@ class ConfigurationTests(Fixture):
     def test_native_growth_and_life_commands_keep_private_scope_and_mutation_confirmation(self):
         server = Server(self.layout, self.storage)
         commands = [('awfttrees', 'grow', 'describe', 'trees-'),
+                    ('awfttreepatch', 'grow', 'inspect', 'treepatch-'),
                     ('awftlife', 'seed', 'inspect', 'life-'),
                     ('awftfountain', 'reset', 'inspect', 'fountain-'),
                     ('awftfountain', 'recover-gate', 'inspect', 'fountain-'),

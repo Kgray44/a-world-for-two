@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="awft_control_bridge"
-version="0.6.34"
+version="0.6.35"
 displayName="A World for Two: Control Bridge"
 authors="A World for Two"
 description="Measured local tick/JVM/world telemetry, project sleeping defaults, and the exact DH/Chunky startup lifecycle correction."

@@ -28,11 +28,25 @@ class YungRuntimePackPins(unittest.TestCase):
         self.assertTrue(seal['offline_actual_api_probe_passed'])
         self.assertFalse(seal['native_full_loader_acceptance'])
         self.assertFalse(seal['strict_fingerprint_or_sharing_accepted'])
-        for name in ('YungLocatePackCustody.java','LithostitchedSeedgenResources.java'):
+        for name in ('YungLocatePackCustody.java',):
             with self.subTest(name=name):
                 actual=(ACTIVE/name).read_bytes()
                 self.assertEqual(hashlib.sha256(actual).hexdigest(),seal['files'][name]['sha256'])
                 self.assertEqual(actual,(PROPOSAL/name).read_bytes())
+
+        # The current resource adapter composes the retained YUNG provider with
+        # the separately reviewed Moonlight cache adapter. Both literal frozen
+        # inputs keep their own API-probe custody; LF is Git's active-source form.
+        moonlight=ROOT/'compat/proposals/resource-custody-moonlight49'
+        current=json.loads((moonlight/'final-integration-custody.json').read_text(encoding='utf-8'))
+        self.assertEqual(current['frozen_base_sha256'],seal['files']['LithostitchedSeedgenResources.java']['sha256'])
+        self.assertEqual(current['actual_api_receipt']['compile_exit'],0)
+        self.assertEqual(current['actual_api_receipt']['probe_exit'],0)
+        for name in ('LithostitchedSeedgenResources.java','MoonlightCachePackCustody.java'):
+            with self.subTest(composed=name):
+                raw=(moonlight/name).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(),current['final_sources'][name])
+                self.assertEqual((ACTIVE/name).read_bytes(),raw.replace(b'\r\n',b'\n'))
 
 
 if __name__=='__main__':
