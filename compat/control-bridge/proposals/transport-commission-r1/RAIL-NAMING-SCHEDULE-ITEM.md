@@ -1,5 +1,110 @@
 # Existing station naming and genuine schedule-item preparation
 
+## Train-only native GUI repair and assembly handoff
+
+Latest ownership: **KG owns the western zipline, existing Hypertubes, entrances,
+controls and mechanical components.** No AI client/input/world lease is active.
+The steps below are a future ordinary Create GUI procedure after human handover,
+fresh native preimage and the master's coordinated train window. No step has been
+executed by this source workstream. Do not replay the old7,941-cell mill/tube
+composite: KG's edits invalidate that recovery preimage.
+
+The source packet `.local/rail-only-1ee039-r1/` covers495 exact saved
+states:440cells X1334..1338/Y69..76/Z-994..-984, the62 straight tracks plus two
+non-track terminators atZ-998/-935 and both station blocks. Its eight pure tests
+passed;40 combined rail/conductor/commission source tests passed. Saved source is
+not fresh native qualification. The packet is28,310bytes, manifest SHA
+`7b0175cacc2e3a8f583f2f9a7960856ef12fdb4ab1e4356fd7bfb0c6441ae331`.
+It actually reads retained checkpoint`20261028T223049Z-1ee039`, SHA
+`50b3089608ebd2d64816a0fde356c0a0202edaee9088a27c8ced914a5782c79c`.
+Regenerate with the actual post-human stopped checkpoint before execution; do not
+relabel1ee as a newer save or confuse it with the canonical6ad custody pointer.
+`python -B -m tools.transport_rail_only --home H --checkpoint-id ID
+--checkpoint-sha SHA --create-jar PINNED_CREATE_JAR --output OWNED_REPO/.local/NEW`
+creates only a new local source package (at most1MiB); no H or world writes.
+Preserve the station target at1336,69,-994 and its actual station/graph UUIDs.
+The parent reports20non-AIR cells outside the carriage in this shell:11tracks,
+6dark-oak planks,2polished andesite and1polished deepslate. An all-AIR shell guard
+would falsely refuse the actual site; these source cells still need fresh native
+context qualification before any destructive action.
+
+**The old native resume contains two actual assembly defects.** In pinned
+Create6.0.10, `StationBlockEntity.isValidBogeyOffset(int)` tests a proposed bogey
+placement; it does not validate an existing bogey. Offset2 fails its initial
+less-than3/nonzero check, and existing bogeys also exclude nearby positions.
+Separately, `refreshAssemblyInfo()` scans SOUTH starting one block beyond the
+target. Existing bogeys atZ-992/-986 are distances2/8 but native locations1/7.
+`assemble(UUID)` requires its first native location to be0 and otherwise records
+`train_assembly.frontmost_bogey_at_station` and returns. Merely deleting the
+placement-predicate check cannot make that geometry assemble.
+
+Use this native GUI path only under the coordinated owner window:
+
+1. Record the actual native rail/carriage preimage, actual current train registry,
+   station targets/names/UUIDs and relevant inventories. Require zero existing
+   registered trains before entering assembly mode; entering can disassemble a
+   present train or restart navigation of trains targeting the station. If any
+   train exists, preserve it and review a phase-specific procedure.
+2. Use the ordinary station UI to name the two native stops **Copper Wren Mill**
+   and **Rosewater Orchard Halt**, preserving their target/graph identities. Use a
+   real player's normal UI to enter assembly mode. `tryEnterAssemblyMode()` only
+   tests eligibility; it does not set the real mode. Never fake a player, force the
+   ASSEMBLING property or call `assemble()` whilefalse to bypass StationEditPacket.
+3. Remove **both** original upright small bogeys at1336,70,-992 and1336,70,-986
+   through ordinary native interaction before placing either replacement.
+   Preserve actual bogey data/items and record real drops/pickups; source loot
+   expects one railway casing per old small bogey, but no pickup is assumed or
+   manufactured. Leaving an old nearby bogey can cause native placement to resize
+   it instead. Preserve all seats, cabin blocks and platform infrastructure.
+4. Verify genuine AIR at1336,70,-993 and1336,70,-987. In ordinary assembly mode,
+   use actual railway casings on the tracks at1336,69,-993 and1336,69,-987 while
+   looking down, producing upright bogeys atY70. Negative/upward look pitch can
+   produce upside-down bogeys atY68. Native placement destroys an occupied target
+   with drops, so AIR is mandatory. In noncreative play, verify the actual two
+   casing debits; creative authoring must remain explicitly labelled.
+   Reach the tracks through ordinary side access beneath the existing carriage
+   floor while looking down. Do not break the floor to reach a track.
+5. Obtain fresh native evidence of SOUTH direction and scanner locations**0/6**,
+   with exactly those two physical bogeys. Keep the three passenger seats at
+   1336,72,Z-991/-989/-987. Ordinary native interaction rotates the two controls at
+   Z-993/-985 to SOUTH/NORTH, and places two genuine FILLED burner items at
+   Z-992/-986 with the normal native SMOULDERING result. Record actual item class,
+   `hasCapturedBlaze()` and the two-item debit plus all27 stock slots before/after.
+   Do not synthesize burner heat through `setBlock`, forge blaze NBT, appropriate
+   animals or invoke item use with a null/fake player. Touch no tube atX1331 or
+   KG's processing machinery.
+6. Use ordinary superglue interaction only on the actual carriage envelope
+   X1335..1337/Y70..75/Z-993..-985. Check its real glue bounds/identity, all foreign
+   glue, sticky/chassis paths, nearby entities and support/callback context before
+   the actual station GUI's assemble action. Click assemble **once**. Preserve
+   any native exception, actual changed blocks/entities/items and intents; do not
+   retry under a new name, refund or reconstruct a train UUID.
+7. Read the actual new Create train UUID, real carriage entity, two bogeys, three
+   seats, both native conductor directions and actual parked station attachment.
+   A UUID alone may precede carriage-entity availability; label readiness pending
+   until the entity actually appears. Finish assembly mode through the ordinary
+   UI and prove it exited. Retrieve/configure a genuine schedule item and hand it
+   to the real conductor normally; do not set speed, position, passengers or a
+   runtime schedule to fabricate operation. Boarding, both named stops, unloading,
+   KG/Sera riding and restart remain separate runtime tests.
+
+The native path has no proved automatic scan fence. Assembly-info scanning reads
+trackY69 plus upright/downward bogey planesY70/Y68 until the terminating mismatch
+or configured length. Contraption gathering reads neighbors before its next loaded
+check, can expand through sticky/chassis/glue, and queries glue with a16block
+apron. Capturing buttons/pressure plates can schedule ticks; block-entity lookup
+can instantiate missing/pending BEs. Name and assembly-mode transitions also call
+graph discovery through world reads. A dry run is therefore not universally
+read-only. The495-cell source packet alone proves neither that whole callback/
+entity apron is loaded nor that a destructive gather stays inside the carriage.
+No new read-only inspector or uncertified destructive API wrapper is provided.
+
+Primary bytecode inspected locally: Create JAR
+`ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a`,
+`StationBlockEntity.class`
+`5dba7eecfc4e58e38d0e84483934e8742ef9f6ef81f58a15ed2754242bd0435f`.
+These are source/API findings, not a successful repair, assembly or ride.
+
 Source proposal only. The master must integrate an authenticated parent request,
 actual helper/JAR/version/checkpoint pins, exclusive lease, storage forecast and
 immutable native journal before invoking these methods. No command/tick hook or
