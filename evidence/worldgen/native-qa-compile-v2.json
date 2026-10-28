@@ -1,0 +1,26 @@
+{
+  "format": "awft-worldgen-qa-build:1",
+  "compile_exit_code": 0,
+  "reserve": {
+    "utc": "2026-10-28T18:45:29.7879839Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 118105780224,
+    "dFreeBytes": 284410322944,
+    "estimatedCBytes": 2097152,
+    "estimatedDBytes": 16777216,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "source_hashes": {
+    "compat/worldgen-qa/src/worldfortwo/worldgenqa/WorldgenSurvey.java": "4b713f5654468bc6509e1d5b3910929b98b9a8f90f74c6dadfd0195fb9d130a5"
+  },
+  "api_hashes": {
+    "minecraft-srg": "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
+    "neoforge-universal": "4070305f97a08409d9b4e714f619f0ec2d97d29c9939ef43a89d927259942f98"
+  },
+  "native_server_started": false,
+  "worlds_created": 0,
+  "tier": "exact installed API compilation only; not native execution",
+  "jar_sha256": "ad7244eadd603a8a029d1e659a42d07eb3bbf638cda9b045354dbb5ded299292",
+  "jar_bytes": 13262
+}

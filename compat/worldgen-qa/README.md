@@ -40,6 +40,9 @@ Player arrival, expired authority, timeout or an observation exception stops the
 test and preserves its failure. It never sends a forceload command. An observation
 completion is not normal-stop or process/port-cleanup proof. The orchestrator
 must perform a normal stop and verify real descendant/resource exit separately.
+Absent opt-in leaves the helper inactive. A misplaced helper cannot stop an
+unowned runtime: that authority is acquired only after the leased disposable
+save/root/port match. Startup failures cannot overwrite earlier receipt files.
 
 Use `tools.worldgen_results` only with genuine full/restart reports and the exact
 loaded helper artifact. It refuses changed seeds, height, chunk inventories,

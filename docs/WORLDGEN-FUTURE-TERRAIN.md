@@ -159,14 +159,19 @@ preserves the full/private versus summarized/public evidence boundary.
   overlap candidates, reports instrumentation overhead, and cannot mark partial
   observations as acceptance.
 
-Latest helper build: **13,026 bytes**, SHA-256
-`4218edc5abf198d0abfa7882a981b5c44ea32ef628b9a3540db9edfdb0c78fc0`.
+Latest helper build: **13,262 bytes**, SHA-256
+`ad7244eadd603a8a029d1e659a42d07eb3bbf638cda9b045354dbb5ded299292`.
 Java source SHA-256
-`1f2c58d5515e563fc138b8a596f9f8653820dab25b59b2993a5f1fcb3d62916b`.
+`4b713f5654468bc6509e1d5b3910929b98b9a8f90f74c6dadfd0195fb9d130a5`.
 It compiled against actual installed Minecraft 1.21.1 and NeoForge 21.1.262 APIs
 using Java 21.0.10. **Compilation is not native execution.** The private build
 receipt preserves API hashes, reserve checks and compiler results. No helper JAR
 enters Git, Packwiz or a release.
+
+The helper also refuses to stop an unowned server: absent opt-in or a save/root/
+port mismatch leaves it inactive. Shutdown authority is acquired only after the
+exact leased disposable runtime is identified. Startup failures preserve their
+own unique receipt and cannot overwrite an earlier observation.
 
 Verification at this checkpoint:
 

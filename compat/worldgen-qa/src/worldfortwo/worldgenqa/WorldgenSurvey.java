@@ -34,6 +34,8 @@ public final class WorldgenSurvey {
     private long deadline,tickStart;
     private int index=0,ticks=0,idleTicks=0;
     private boolean active=false,failed=false;
+    private boolean ownedRuntime=false;
+    private boolean receiptOwned=false;
     private final JsonArray tickSamples=new JsonArray(),chunks=new JsonArray(),scans=new JsonArray();
     private final List<Runnable> work=new ArrayList<>();
     private final Map<net.minecraft.world.level.block.state.BlockState,byte[]> stateBytes=new IdentityHashMap<>();
@@ -58,7 +60,10 @@ public final class WorldgenSurvey {
     private void started(ServerStartedEvent event){
         MinecraftServer server=event.getServer();
         try{
-            require(Boolean.getBoolean("awft.worldgen.qa"),"Test-only JVM opt-in is required");
+            if(!Boolean.getBoolean("awft.worldgen.qa")){
+                System.err.println("AWFT_WORLDGEN_QA_INACTIVE test-only JVM opt-in absent; no lifecycle action");
+                return;
+            }
             root=Path.of("").toRealPath();
             // A runtime copy must be outside both permanent and construction homes.
             Path allowed=Path.of("D:/A World for Two/staging/worldgen-audit").toRealPath();
@@ -80,6 +85,9 @@ public final class WorldgenSurvey {
             Path expected=root.resolve("test-worlds").resolve(arm).toRealPath();
             require(server.getWorldPath(LevelResource.ROOT).toRealPath().equals(expected),"Not the exact disposable save");
             require(server.getPort()==25585,"Only the leased loopback test port is admitted");
+            // Only this exact leased disposable process may be stopped by this
+            // helper. Misinstallation in an unrelated runtime must not stop it.
+            ownedRuntime=true;
             require(server.getPlayerList().getPlayerCount()==0,"A player is present");
             ServerLevel level=server.overworld();
             require(level.getMinBuildHeight()==-64&&level.getHeight()==384,"Dimension height changed");
@@ -89,6 +97,7 @@ public final class WorldgenSurvey {
             require(run.matches("[a-z0-9-]{1,64}"),"Invalid receipt identifier");
             output=root.resolve(run+".json");
             require(!Files.exists(output),"Never overwrite an observation or failed receipt");
+            receiptOwned=true;
             report=new JsonObject();report.addProperty("format","awft-native-worldgen-survey:1");
             report.addProperty("run_id",run);report.addProperty("arm",arm);report.addProperty("phase",phase);
             report.addProperty("tier","ACTUAL_NATIVE_OBSERVATIONS; scan feasibility is not block placement");
@@ -117,7 +126,15 @@ public final class WorldgenSurvey {
             }
             require(work.size()<=512,"Work plan exceeds its operation bound");
             deadline=System.nanoTime()+600_000_000_000L;active=true;flush();
-        }catch(Exception error){failed=true;System.err.println("AWFT_WORLDGEN_QA_REFUSED "+error);server.halt(false);}
+        }catch(Exception error){
+            failed=true;System.err.println("AWFT_WORLDGEN_QA_REFUSED "+error);
+            if(receiptOwned&&report!=null){
+                report.addProperty("status","FAILED_STARTUP_PRESERVE_WORLD_AND_RECEIPT");
+                report.addProperty("error",error.toString());
+                try{flush();}catch(Exception writeFailure){System.err.println("AWFT_WORLDGEN_QA_RECEIPT_UNAVAILABLE "+writeFailure);}
+            }
+            if(ownedRuntime)server.halt(false);
+        }
     }
 
     private JsonArray registry(MinecraftServer server){
