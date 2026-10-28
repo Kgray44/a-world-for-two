@@ -510,3 +510,29 @@ Source pickup queue is now **ebe9cb6**, **92ea1c8**, **e9ecbfd**, on
 separately. Native7068 still used the prior integrated8ef3ece Python code at this
 observation. The two Python follow-ups require the master's scheduled controller
 restart; Java-only upgrades do not deploy them.
+
+## Current integration boundary, 19:58Z
+
+The master has integrated the three follow-ups into `codex/master-integration`:
+**b6b6971** (backup list refresh), **9f7bbe8** (verification outcomes) and
+**9793130** (confirmed permission removal). Git blob identities for the three
+implementation files and both new test files exactly matched this worktree;
+those primary-checkout files had no uncommitted differences. This is source
+integration, not main/public release or deployment of new Python bytecode.
+
+The actual8766 listener was still Python7068, created19:21:07Z, predating both
+Python fixes. No owned test process or18765 listener remained. The next meaningful
+native step is the master's scheduled controller restart and read-only smoke of
+the deployed follow-ups. CONTROL has no current native-write lease and must not
+restart that controller/server to manufacture acceptance.
+
+Full goal completion remains unproved: dedicated Restart endpoint, native
+backup/restore recovery, live player movement/teleport/return/access enforcement,
+remote Playit joining, final-world overhead/official promotion, and acceptance of
+the explicit unverified sync/party/vehicle/population adapter limits remain open.
+The same native/participant acceptance dependencies persisted across the last
+three goal continuations while independent source/browser fixes were completed.
+There is now no remaining independently authorized implementation correction
+identified by this audit. Resume qualification when the master supplies the next
+controller window or real participant evidence; do not replace these gates with
+additional synthetic checks or broaden the frozen feature scope.
