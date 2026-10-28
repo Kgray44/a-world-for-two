@@ -73,6 +73,19 @@ Separation is an algorithm offset constraint, not a universal collision radius.
 No count above is a generated structure, biome-representative region survey,
 benchmark, measured collision rate or performance result.
 
+The sampler's arithmetic also matches **1,440 actual pinned Minecraft RNG/spread
+primitive vectors**, with zero mismatches: six baseline/proposed profiles, linear
+and triangular spread, five synthetic seeds including signed-long extremes,
+four salts and negative/world-border-scale coordinates. The offline process used
+one CPU and a192MiB heap; it loaded no mods, started no server and opened no save.
+`tools.worldgen_grid_probe` reproduces this check. This validates the arithmetic
+only. The original direct `RandomSpreadStructurePlacement` constructor attempt
+failed in its registry-dependent class initializer with `Not bootstrapped`.
+That original source, failed receipt and exact diagnosis are retained under
+`compat/worldgen-qa/probes/` and `evidence/worldgen/offline-engine-grid-v1*`.
+No Minecraft bootstrap was started to evade the runtime-window requirement;
+full placement remains a separate native check.
+
 Pinned static resource inspection covers 39 artifacts and 132 structure sets.
 It finds zero missing structure references, zero missing exclusion targets and
 no exclusion cycles. The proposed four-set registry membership and biome
@@ -146,6 +159,10 @@ preserves the full/private versus summarized/public evidence boundary.
 - `tools.worldgen_audit` performs hash-pinned archive/tag resolution and synthetic
   grid comparison. Custom placements and runtime-generated packs retain explicit
   evidence boundaries.
+- `tools.worldgen_grid_probe` cross-checks the Python sampler against the actual
+  pinned engine's RNG/spread primitives without bootstrapping Minecraft. Its
+  full-placement-constructor boundary remains explicit and failed evidence is
+  retained, separately from the passing primitive-only result.
 - `compat/worldgen-qa` is a release-excluded native observer. It requires a
   master lease identity/expiry, explicit JVM opt-in, an owned disposable root,
   exact save/seed binding, loopback port 25585, no players and unchanged height.

@@ -48,6 +48,13 @@ C<=32MiB/D<=3GiB forecast subject to fresh preparation bounds and reserves;
 no save copies or competing Minecraft JVM. The full run/stop conditions are in
 the report. A native helper exists privately but is not installed or released.
 
+Offline follow-up:1,440 actual pinned Minecraft RNG/spread primitive vectors
+match the Python candidate sampler, zero mismatches, one CPU/192MiB heap, no mods,
+bootstrap, server or save. The direct full-placement constructor requires native
+Minecraft Bootstrap and its failed attempt is preserved; no native-placement
+claim follows from the primitive check. `tools.worldgen_grid_probe` reproduces
+the passing arithmetic check. Current native A/B window remains ungranted.
+
 Unfinished: real representative-region counts, terrain/entrance/collision review,
 fresh-chunk/per-tick measurements, normal restart, explored-frontier preservation,
 native client/server parity, visuals, multiplayer and master deployment. These
