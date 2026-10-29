@@ -43,8 +43,9 @@ and existing tool stations. Furnace light/heat must come from legitimate native
 fuel and smelting. No decorative fire, forced `lit` state, invented heat value,
 fake animated bellows or replacement inventories are used. Source shape and
 material checks do not establish cinematic quality: actual room views and use
-remain required. Additional continuously powered workshop details are a later,
-separately admitted source increment; this first process can deploy immediately.
+remain required. The separate [contained Keel Store mill](TORTUGA-CREATE-CONTINUOUS-MILL.md)
+provides the next source increment for continuous native power. This first
+Forge process can be admitted independently.
 
 Commission in this order:
 
