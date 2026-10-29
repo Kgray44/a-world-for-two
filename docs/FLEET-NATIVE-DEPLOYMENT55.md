@@ -73,10 +73,20 @@ Full AFTER terminal SHA256 values:
 - Tern: `f190a388262acda35e3f6df4b1e9a536987367efbab55859217345e5b8b7b355`.
 - Salt: `1db7b0597959aa54af6175a76dc9ac538db48310c6215535ffeee22b8c79ed74`.
 
-Wren full AFTER checked17,358 states, Tern1,807, Salt2,583, including
-authored/probe states. Supplied source inventories were verified. The verifier
-does not compare every arbitrary configuration-NBT field; do not broaden that
-result into a complete generic block-entity NBT witness.
+Wren full AFTER checked17,358 target positions, Tern1,807, Salt2,583, including
+authored/probe positions. The native `samePlacement` comparator verifies block
+identity and the facing/axis/half/part/type/hinge properties. It does not compare
+all state properties, such as rope knots, table joins or waterlogging. Supplied
+source inventories were verified; arbitrary full configuration NBT was not.
+Do not broaden the native receipt into an all-property or full-NBT witness.
+
+A subsequent read of the verified normal backup `20261028T235833Z-c33037`
+(SHA256 `08b0814c700cbaf3f9be86a7a4fb8c44dc9c1f9209a6e3a2a8f76b38aced5262`)
+found all21,748 expected block identities retained and all13 source BE positions
+present. There were no block-identity differences, including the compartment
+AIR. Native-derived table shapes and rope knot/support flags had changed.
+This is later saved retention, not a current loaded inspection, inventory-content
+comparison, client walkthrough or complete restart/gameplay acceptance.
 
 The largest reported native work slice was Wren SETTLE18.3803ms; its placement
 slice maximum was4.1695ms. Tern placement maximum was1.8412ms; Salt2.2207ms.
