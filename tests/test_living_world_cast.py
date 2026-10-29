@@ -6,6 +6,7 @@ import uuid
 from control_room.common import UserError
 from living_world.defaults import configuration
 from tools.living_world_cast import prepare
+from tools.living_world_tortuga_sites import choose
 
 
 def recipe(key='barnacle-bill', offset=0):
@@ -75,6 +76,47 @@ class CastPreparationTests(unittest.TestCase):
             prepare(self.registry, [bad])
         with self.assertRaises(UserError):
             prepare(self.registry, [recipe(), recipe()])
+
+    def test_visiting_district_edits_are_explicit_and_preserve_story(self):
+        key = 'steward-pembroke'
+        original = next(p for p in self.registry['config']['characters'] if p['id'] == key)
+        member = recipe(key)['members'][0]
+        sites = {'format': 'awft-tortuga-cast-sites:1', 'sites': [{
+            'character_id': key, 'town_site': member['town_site'], 'feet': member['feet'],
+            'visiting_role': 'Royal Steward visiting Tortuga',
+            'profile_edits': {'district': {'before': original['district'], 'after': 'tortuga'},
+                              'home_location': {'before': original['home_location'], 'after': 'Crooked Customs guest room'}}}]}
+        drafts, report = prepare(self.registry, [recipe(key)], sites)
+        p = drafts[key]['character']
+        self.assertEqual(p['district'], 'tortuga')
+        self.assertEqual(p['home_location'], 'Crooked Customs guest room')
+        for field in ('name', 'role', 'personality', 'knowledge', 'ai'):
+            self.assertEqual(p[field], original[field])
+        self.assertEqual(next(r for r in report['configured_cast'] if r['id'] == key)['profile_edits'], sites['sites'][0]['profile_edits'])
+        sites['sites'][0]['profile_edits']['district']['before'] = 'homestead'
+        with self.assertRaises(UserError):
+            prepare(self.registry, [recipe(key)], sites)
+
+    def test_source_site_reuses_real_fixture_and_never_invents_unknown_air(self):
+        field = {(x, y, z): ('minecraft:spruce_planks' if y in (64, 68) or x in (0, 8) or z in (0, 8) else 'minecraft:air')
+                 for x in range(9) for y in range(64, 72) for z in range(9)}
+        field[3, 65, 3] = 'minecraft:blue_bed[facing=east,occupied=false,part=head]'
+        field[2, 65, 3] = 'minecraft:blue_bed[facing=east,occupied=false,part=foot]'
+        field[4, 65, 5] = 'minecraft:smithing_table'
+        before = deepcopy(field)
+        columns = {(x, z) for x in range(9) for z in range(9)}
+        chosen = choose(field, columns, 'minecraft:smithing_table')
+        self.assertEqual(chosen['delta'], {})
+        self.assertTrue(chosen['existing_bed'] and chosen['existing_job'])
+        self.assertEqual(field, before)
+        protected = {(3, 65, 3), (2, 65, 3)}
+        alternate = choose(field, columns, 'minecraft:smithing_table', protected)
+        self.assertFalse(alternate['existing_bed'])
+        self.assertFalse(set(alternate['delta']) & protected)
+        self.assertNotIn(tuple(alternate['habitat']['bed']), protected)
+        self.assertTrue(all(tuple(p) not in protected for p in alternate['habitat']['job_path']))
+        with self.assertRaises(UserError):
+            choose({p: s for p, s in field.items() if p[1] == 64}, columns, 'minecraft:smithing_table')
 
 
 if __name__ == '__main__':

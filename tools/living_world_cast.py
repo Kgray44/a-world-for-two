@@ -38,7 +38,7 @@ def point(value):
             all(type(x) in (int, float) and math.isfinite(x) and abs(x) <= 30000000 for x in value))
 
 
-def prepare(registry, recipes):
+def prepare(registry, recipes, placements=None):
     config = registry.get('config', {})
     if config.get('format') != 'awft-living-world:1':
         raise UserError('Use the current actual Control Room registry')
@@ -46,6 +46,9 @@ def prepare(registry, recipes):
     profiles = {p['id']: p for p in configured}
     if len(profiles) != len(configured) or not ROLES.keys() <= profiles.keys():
         raise UserError('All ten existing configured identities must be retained, without duplicate IDs')
+    if placements is not None and placements.get('format') != 'awft-tortuga-cast-sites:1':
+        raise UserError('Use the explicit source city cast-site proposal')
+    premises = {p['character_id']: p for p in (placements or {}).get('sites', [])}
     members, identities, beds, jobs, worlds = {}, set(), set(), set(), set()
     for recipe in recipes:
         if recipe.get('format') not in ('awft-habitat-life-recipe:3', 'awft-habitat-life-recipe:4') or recipe.get('copied_entity_NBT') is not False:
@@ -100,6 +103,16 @@ def prepare(registry, recipes):
             member = members[key]
             p = deepcopy(profiles[key])
             p['entity_uuid'] = str(uuid.UUID(member['uuid']))
+            if key in premises:
+                proposal = premises[key]
+                if proposal['town_site'] != member['town_site'] or proposal['feet'] != member['feet']:
+                    raise UserError('Source premise must match this exact native LIFE member')
+                changes = proposal['profile_edits']
+                for field in ('district', 'home_location'):
+                    if p[field] != changes[field]['before']:
+                        raise UserError('Owner changed the premise/district since staging; regenerate the site proposal')
+                    p[field] = changes[field]['after']
+                row.update(profile_edits=changes, visiting_role=proposal['visiting_role'])
             # Assigned source position is deliberately not current native telemetry.
             p['location'] = dict(zip(('x', 'y', 'z'), member['feet']), dimension='minecraft:overworld', measured_at=None)
             lines = p.setdefault('dialogue', {}).setdefault('lines', {})
@@ -127,6 +140,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--registry', type=Path, required=True)
     parser.add_argument('--recipe', type=Path, action='append', default=[])
+    parser.add_argument('--sites', type=Path, help='Explicit city premise/visiting-role edits, kept in the source report')
     parser.add_argument('--output', type=Path, required=True, help='New source-only output directory, never dashboard/config/world')
     args = parser.parse_args()
     out = args.output.absolute()
@@ -138,7 +152,10 @@ def main():
     recipes, refs = [], []
     for path in args.recipe:
         value, ref = read(path, 16 * 1024**2); recipes.append(value); refs.append(ref)
-    drafts, report = prepare(registry, recipes)
+    placements, placement_ref = read(args.sites, 1024**2) if args.sites else (None, None)
+    drafts, report = prepare(registry, recipes, placements)
+    if placement_ref:
+        report['premise_proposal_source'] = placement_ref
     report.update(registry_source=registry_ref, recipe_sources=refs)
     files = {key + '.json': encoded(value) for key, value in drafts.items()}
     files['deployment.json'] = encoded(report)

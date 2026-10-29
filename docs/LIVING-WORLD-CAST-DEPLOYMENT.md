@@ -72,7 +72,7 @@ silently bypass the legacy policy. This source supplies no scale authorization.
 
 ## Ordinary inhabitants and wildlife
 
-The small first target is **56 managed residents total**, including retained
+The small **first cohort** target is **56 managed residents total**, including retained
 intents and the ten named figures. `TARGETS` contains 16 villagers (ten named and
 at most six ordinary), deer, birds, shima enaga, butterflies, ladybugs, the already
 curated Critters dragonfly, koi, pondies, ducks, fireflies and improved cats. The
@@ -95,14 +95,48 @@ resource behavior deteriorates. Existing managed caps do not cap unrelated
 natural spawns or guarantee frame rate. No new permanent chunk tickets or large
 local model. Ordinary ambient speech stays scripted; external requests remain
 intentional, asynchronous and subject to the existing consent and allowance.
+This first cohort is not a replacement or final ceiling for the owner's broader
+Living LIFE population. Continue later measured cohorts through the existing
+authorized scale/ramp path, preserving the seven previously admitted actors.
+
+## Current city premises, source-only
+
+`tools.living_world_tortuga_sites` reads the coordinator-pinned completed25 seal
+and current14 full plan, resolves each actual native25 verification to its exact
+authored after-plan, and proposes ten separate premises. It reads no world. It
+only adds beds/job stations to explicitly known AIR with genuine source floor,
+headroom and roof cells and connected same-floor adult paths. Unknown cells are
+refused. This source screen is not native collision/POI or room acceptance.
+
+Bill uses Anchor & Dice; Finn uses Tidefish Hall; Blackthorn uses Tide
+Broker's House; Mara uses Sandbar Carpenter; Pembroke uses Crooked Customs; Elm
+uses The Worn Book; Thimble uses Shoal Warden's Quay; Poppy uses River Stone Rooms;
+Rivet uses Pelican Forge; Mercy uses Old Rum Warehouse. Existing room objects and
+inventories stay in place. Source reports list preserved chairs, desks, books,
+plants and lights around each proposed resident. Character names already appear
+through the configured persona/dialogue system; no additional sign operation
+delays the first conversation. The initially screened Lantern Harbor
+Inn ground bed was identified as a retained player anchor and withdrawn. All
+three private Inn room capsules, player anchor columns and unknown/private BE
+positions are excluded from assignments, new fixtures and routes. Old source
+candidate sets remain retained and superseded; use the final custody-corrected
+set supplied by the development lane.
+
+Five visitors retain their original role, backstory, knowledge, personality and
+model. Proposed `district` and `home_location` changes are explicit in each site
+record; no live profile is edited. After master prepares real LIFE recipes using
+these sites, pass `--sites cast-sites-SOURCE-ONLY.json` to `tools.living_world_cast`
+to include only those explicit premise edits in the staged Save drafts. Generate
+fresh drafts if an owner changes the district or home before deployment.
 
 ## Concrete prerequisites still missing
 
 The registry supplied names and text, **no entity UUIDs or assigned coordinates**.
-Ten actual reviewed room/HOME/job/route sites and their existing LIFE recipes
-are required before ten binding drafts can be generated. Missing rooms remain
-explicitly pending in `deployment.json`; they are never filled with guessed
-positions or claimed complete from authored plans. Master supplies current
+The current city source proposals now supply ten concrete room/HOME/job/route
+candidates and minimal AIR-only fit-outs. They still require fresh actual
+native inspection and the existing LIFE recipes before ten live binding drafts
+can be submitted. Pending acceptance is never filled with invented evidence or
+claimed complete from authored plans. Master supplies current
 native habitat/POI results and actual gameplay observations. No additional source
 capability is needed for scripted dialogue. Bespoke guard, shipwright, captain or
 Create-worker behavior would be separate work; this delivery uses normal native
