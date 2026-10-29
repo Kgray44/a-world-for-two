@@ -1,12 +1,12 @@
 # Compatibility inventory
 
-Current lock: **0.1.0-candidate.48**, Minecraft 1.21.1, NeoForge 21.1.262, Java 21.
+Current lock: **0.1.0-candidate.63**, Minecraft 1.21.1, NeoForge 21.1.262, Java 21.
 
-224 requested candidates are retained. The lock contains 208 exact files: 199 mod entries (198 enabled by default), 8 client shader packs and 1 resource packs. Optional file defaults and sides are listed individually below.
+229 requested candidates are retained. The lock contains 214 exact files: 205 mod entries (204 enabled by default), 8 client shader packs and 1 resource packs. Optional file defaults and sides are listed individually below.
 
-Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.48, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.
+Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.63, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.
 
-Lock SHA-256: `6e891cfbc5e2209cd9d7034324c002c9a1b35ca9f26301fadc290d4d18754eaa`. Pack SHA-256: `0e5775d8d22771e97b34b5b9f508af7baf001e6371d80588315ef08261eeed0b`.
+Lock SHA-256: `5dfa7a48207da82ff9e5d7ccddb3af2462c9f98e0ee1bb0763b776eda7a8ec91`. Pack SHA-256: `69fd33efdb77fe5f39e0a9a63b3a7f1e492a1cda0d9b7482d8c302b5e75997ad`.
 
 ## Recorded runtime scope
 
@@ -246,6 +246,11 @@ Chocapic remains deferred at the owner's request. Distant Horizons + SeedGen is 
 | Solas Shader | Integrated but awaiting runtime validation | 3.8 | Cozy fantasy option with colored lighting, auroras, fireflies and expressive skies; moderate-cost author target. [Source](https://modrinth.com/shader/solas-shader) |
 | Pastel Shaders (research candidate) | Unresolved, with investigation details | — | The author’s 1.200 release offers pastel color schemes and a cozy style, but its published version list stops at 1.21 and this exact build’s DH support is unverified. Retained for investigation; Bliss, BSL and Solas provide the initial cozy choices. [Source](https://modrinth.com/shader/pastel-shaders) |
 | Reconnectible Chains | Integrated but awaiting runtime validation | 2.4.4+1.21.1-neoforge | Actual supported cable backend for the already pinned Ziplines Rezipped1.5.3 cliff-to-pirate-town ride; native compatibility, ride clearance and persistence remain unverified. [Source](https://modrinth.com/mod/reconnectible-chains) |
+| Chatting Villagers | Integrated but awaiting runtime validation | 1.1.0 | Pinned exact private integration candidate; source and Java API checks passed; native startup and gameplay qualification pending. [Source](https://www.curseforge.com/minecraft/mc-mods/chatting-villagers/files/9064041) |
+| Smart Villagers AI | Integrated but awaiting runtime validation | 2.0.0+neoforge-1.21.1 | Pinned exact private integration candidate; source and Java API checks passed; native startup and gameplay qualification pending. [Source](https://github.com/MeherBenSalem/CivilizationAI) |
+| Adorable Hamster Pets | Integrated but awaiting runtime validation | 3.7.0-1.21.1+neoforge | Owner-requested pets; reviewed 3.7.0 beta exception, exact native dependencies and safe cozy defaults in proposals/cozy-pets. Runtime and multiplayer qualification pending. [Source](https://modrinth.com/mod/adorable-hamster-pets) |
+| Animal Garden: Sugar Glider | Integrated but awaiting runtime validation | 1.0.0-neoforge-1.21.1-21.1.214 | Sugar gliders are marsupials, not flying squirrels; this is an explicitly labeled gliding-pet alternative. [Source](https://modrinth.com/mod/animal-garden-sugar-glider) |
+| Aquarius Libs (required Sugar Glider dependency) | Integrated but awaiting runtime validation | 1.2.0-neoforge-1.21.1-21.1.217 | Explicit author-required dependency for Animal Garden Sugar Glider; absent from upstream version metadata. Exact hash and native API reviewed; runtime pending. [Source](https://modrinth.com/mod/aquarius-libs) |
 
 ## Exact resolved file inventory
 
@@ -259,7 +264,7 @@ These are top-level downloadable files; bundled nested loader libraries are not 
 | [Let's Do] Farm & Charm<br>`letsdo-farm_and_charm-neoforge-1.1.29.jar` | 1.1.29 | both | On | sha512: `b9ac57d7fd0056310603f926dcdf5dfe5821d6bd0a573ab7f626d57b32e273e5a24d30a789f028afe90674cee18107d7a99097871484f4d98f50bb54aa0e595c` |
 | [Let's Do] Vinery<br>`letsdo-vinery-neoforge-1.5.6.jar` | 1.5.6 | both | On | sha512: `51c31c756de0f54a91f28c4d072925e0793ae70aefde2d23ea7ca3c5b7050ce04cc1885531ea459d1ea6adefb05d7c37616e3c9102f0fea50234f04043f6b970` |
 | [UNOFFICIAL] TaCZ 1.21.1 NeoForge Port<br>`tacz-neoforge-1.21.1-1.1.8-hotfix-r7.jar` | 1.1.8-hotfix-r7 | both | On | sha512: `7700ed99a080729c3aa21f9619e018fbe9e2303cfbcaa463175ee5170553a000b692bc4cfa2e8ce0778747eed34dcc0197fb5e4344bb258cff1ba90adc842642` |
-| A World for Two Control Bridge<br>`awft-control-bridge-0.6.34.jar` | 0.6.34 | both | On | sha256: `071fe778b27c9450c6a9a7b602825ee2ff19bfcdba9f23ba3cb24302bd6b4b1d` |
+| A World for Two Control Bridge<br>`awft-control-bridge-0.6.49.jar` | 0.6.49 | both | On | sha256: `3087e224a5d62179c76d9304c8d76c5991d4fe0fae0f647c0e91bfc65f9514cf` |
 | A World for Two Presentation<br>`awft-client-presentation-0.2.3.jar` | 0.2.3 | client | On | sha256: `abac3a99a94aec9c02141dfde3a9b82a7f5d3cf4f9b4ab44c3cea9ba17ea80a6` |
 | Advanced Weather<br>`advancedweather-0.1.2+awft.3.jar` | 0.1.2+awft.3 | both | On | sha256: `40ffeb077e7c550de485d1d9c923874683811d52e6e9c7fafa614b0888e99f10` |
 | Almanac<br>`Almanac-1.21.1-2-neoforge-1.5.2.jar` | 1.5.2 | server | On | sha512: `b8c87ce784d1afee68cf8943dd64be899d9a25d111aeec1d72f1c80431cacaf71c1b4d6eb16bdaaaa36bdfd3cd4df653e8575cb567f5cdbecdefc581ad187177` |
@@ -461,6 +466,12 @@ These are top-level downloadable files; bundled nested loader libraries are not 
 | YUNG's Better Ocean Monuments<br>`YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | 1.21.1-NeoForge-4.1.2 | both | On | sha512: `77c864da36f1d2173e6460dc335996893a804954b8a5c274173fc95dfdbf437e80d9dce32f6060306a662fc35322566eecf5dfe24e2d3fab79bf7e0ff9fa4db6` |
 | Ziplines: Rezipped!<br>`zipline-1.5.3+1.21.1-neoforge.jar` | 1.5.3+1.21.1-neoforge | both | On | sha512: `47db8340965b18aefc3d809af9fecc9e0e0a05a01da59e40bf66cca135c91ed182fbb46ee249682e56ffb46c22723491b48827a34ee75d01dd7a3c8045cee334` |
 | Reconnectible Chains<br>`connectiblechains-2.4.4+1.21.1-neoforge.jar` | 2.4.4+1.21.1-neoforge | both | On | sha512: `c09a3a354a26ce0dc511c2364332975222fae8515101f524de5e724f3a191eb75ffb4f381b8c78907f885d7a7e86f1ce7b883d56921fb5f31709466446efe00a` |
+| A World for Two Living World<br>`awft-living-world-0.2.0.jar` | 0.2.0 | both | On | sha512: `0e69a253bb1b3c168852107c174d9d74f9a6b8bba824f952616d391975d73bd5b1fc0de574e807d024e11f368f81dc7dffdff821b409155c8e5cfae93bc869dd` |
+| Chatting Villagers<br>`chattingvillagers-neoforge-1.21.1-1.1.0.jar` | 1.1.0 | both | On | sha512: `79ec018d408c02f7e76aa19ec0d1623b39f7ea7ecbfeb86f2da8bb0ff51379b4d321daae0f3919e500e14b2c01807674ea4a1d21d231e2997be9e744c7d3d4c7` |
+| Smart Villagers AI<br>`smartvillagers-neoforge-1.21.1-2.0.0.jar` | 2.0.0+neoforge-1.21.1 | both | On | sha512: `196e5da485353e84d1f316bac60be9aded75eef3483d9d16e40daf9db4e4611ef6a08ac2bfc502b60e3874e3531cd90506dd14325ccd0c1309e526902af0710d` |
+| Adorable Hamster Pets<br>`adorablehamsterpets-3.7.0-1.21.1+neoforge.jar` | 3.7.0-1.21.1+neoforge | both | On | sha512: `0651244d2aaf4c127ee1818a24910bf6612a33bb3aa078217ee8c695abf2cbc8be118d29ed5e271f8f7ba316f146767b8882800a38713177993444db7df2041a` |
+| Aquarius Libs<br>`aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar` | 1.2.0-neoforge-1.21.1-21.1.217 | both | On | sha512: `4521e42504e1ecc73aab95895655425eb0914ddb964b242edea77f9bf38c406d63232187212b7cb3295821243599b6ba3d4b21805439aedd0df9f0ed4db9bb42` |
+| Patchouli<br>`Patchouli-1.21.1-93-NEOFORGE.jar` | 1.21.1-93-neoforge | both | On | sha512: `0b5c172db9a6eeecb5ca44b359a83548c3a60be7ff313959acdfc1e5b8039736c18e57e947d435b52d06da31159d2d02ea36e5742668dbc826308a4c99e4039f` |
 
 ## Isolated candidate pins
 

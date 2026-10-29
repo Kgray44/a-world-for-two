@@ -9,7 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.46'
+BRIDGE_VERSION = '0.6.49'
 
 
 def validate_runtime_identity(source, candidate, bridge):

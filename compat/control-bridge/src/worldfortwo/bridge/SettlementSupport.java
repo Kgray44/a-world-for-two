@@ -44,6 +44,7 @@ public final class SettlementSupport {
     private List<BlockState> palette;
     private String operation="idle";
     private LiveOrdinaryPolicy livePolicy;
+    private boolean exactNativeTags;
     private int cursor, phase, centerX, centerZ, radius, step, columns, failures;
     private int settlePass,settleChanges,neighborWait;
     private final List<Integer> settlePassChanges=new ArrayList<>();
@@ -198,6 +199,10 @@ public final class SettlementSupport {
         if(!sha(raw).equals(expected))throw new IllegalStateException("Exact plan hash differs");
         JsonObject candidate=JsonParser.parseString(new String(raw,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
         boolean wantsLive=candidate.has("live_ordinary") && candidate.get("live_ordinary").getAsBoolean();
+        JsonPrimitive exactFlag=candidate.has("exact_native_tags")?candidate.getAsJsonPrimitive("exact_native_tags"):null;
+        if(exactFlag!=null&&!exactFlag.isBoolean())throw new IllegalStateException("Exact native tags requires a literal boolean opt-in");
+        boolean exactTags=exactFlag!=null&&exactFlag.getAsBoolean();
+        if(exactTags&&!mode.equals("verify"))throw new IllegalStateException("Exact native full-tag mode is verification only");
         if(!server.getPlayerList().getPlayers().isEmpty() && !wantsLive)throw new IllegalStateException("Ordinary offline construction still requires empty server");
         if(mode.equals("place") && candidate.has("construction_forbidden") && candidate.get("construction_forbidden").getAsBoolean())
             throw new IllegalStateException("A native verification-only export cannot replay geometry or inventories");
@@ -226,6 +231,12 @@ public final class SettlementSupport {
             String nbt=row.get("nbt").getAsString();
             if(nbt.length()>16384)throw new IllegalStateException("Block entity data exceeds bound");
             TagParser.parseTag(nbt);
+            if(exactTags){
+                JsonElement type=row.get("native_class");
+                if(type==null||!type.isJsonPrimitive()||!type.getAsJsonPrimitive().isString())throw new IllegalStateException("Exact native class string required for every full-tag row");
+                String name=type.getAsString();
+                if(name.length()>256||!name.matches("[A-Za-z_$][A-Za-z0-9_$]*(?:\\.[A-Za-z_$][A-Za-z0-9_$]*)+"))throw new IllegalStateException("Bounded exact native class name required");
+            }
         }
         JsonArray commands=candidate.getAsJsonArray("commands");
         if(commands.size()>256)throw new IllegalStateException("Entity/action bound exceeded");
@@ -236,9 +247,9 @@ public final class SettlementSupport {
             if(!parsed.getExceptions().isEmpty() || parsed.getReader().canRead())throw new IllegalStateException("Native command did not parse: "+command);
         }
         LiveOrdinaryPolicy checkedLive=wantsLive?LiveOrdinaryPolicy.admit(server,directory,mode,candidate,states):null;
-        plan=candidate;palette=states;start(mode);livePolicy=checkedLive;report.put("live_ordinary",checkedLive!=null);report.put("plan_sha256",expected);report.put("blocks",blocks.size());
+        plan=candidate;palette=states;start(mode);livePolicy=checkedLive;exactNativeTags=exactTags;report.put("live_ordinary",checkedLive!=null);report.put("exact_native_tags",exactTags);report.put("exact_native_tag_rows",exactTags?tags.size():0);report.put("plan_sha256",expected);report.put("blocks",blocks.size());
     }
-    private void start(String mode){livePolicy=null;operation=mode;cursor=phase=failures=0;pending=null;ready=null;neighborWait=settlePass=settleChanges=0;settlePassChanges.clear();settleSkippedBlockEntities.clear();mapChunks.clear();mapWorld=null;samples.clear();report.clear();report.put("operation",mode);report.put("started",Instant.now().toString());report.put("status","running");}
+    private void start(String mode){livePolicy=null;exactNativeTags=false;operation=mode;cursor=phase=failures=0;pending=null;ready=null;neighborWait=settlePass=settleChanges=0;settlePassChanges.clear();settleSkippedBlockEntities.clear();mapChunks.clear();mapWorld=null;samples.clear();report.clear();report.put("operation",mode);report.put("started",Instant.now().toString());report.put("status","running");}
     private void finish(String status){
         try{releaseTicket();report.remove("ticket_cleanup_error");}
         catch(Exception error){report.put("ticket_cleanup_error",error.toString());}
@@ -402,7 +413,14 @@ public final class SettlementSupport {
                         var tag=TagParser.parseTag(row.get("nbt").getAsString());
                         if(operation.equals("verify")){
                             var saved=entity.saveWithFullMetadata(level.registryAccess());
-                            if(tag.contains("Items") && !net.minecraft.nbt.NbtUtils.compareNbt(tag.get("Items"),saved.get("Items"),true)){
+                            if(exactNativeTags){
+                                // One real loaded native batch: no separate inspection
+                                // after ticket release, no storage-envelope/default
+                                // normalization, filtering, setters or item getters.
+                                if(entity.isRemoved()||!entity.getClass().getName().equals(row.get("native_class").getAsString())||!saved.equals(tag)){
+                                    failures++;if(failures<=30)System.err.println("AWFT settlement exact native class/full typed tag differs at "+pos);
+                                }
+                            }else if(tag.contains("Items") && !net.minecraft.nbt.NbtUtils.compareNbt(tag.get("Items"),saved.get("Items"),true)){
                                 failures++;System.err.println("AWFT settlement inventory verification differs at "+pos);
                             }
                         }else{entity.loadWithComponents(tag,level.registryAccess());entity.setChanged();}

@@ -1,0 +1,46 @@
+# Living World proposal: private provider configuration stays server-side.
+[proximity]
+enabled = true
+hearingRadius = 8.0
+responseRadius = 16.0
+activationMode = "PREFIX"
+chatPrefix = "!"
+requirePrefix = true
+ignorePlayerToPlayerChat = true
+
+[display]
+mode = "CHAT"
+speechBubbles = true
+cancelGlobalChatWhenTalking = false
+
+[privacy]
+requirePlayerOptIn = true
+
+[ai]
+provider = "CUSTOM"
+apiBaseUrl = "https://api.openai.com/v1"
+endpointMode = "AUTO"
+model = ""
+apiKey = ""
+maxReplyChars = 180
+maxTokens = 128
+playerCooldownMs = 10000
+globalRequestsPerMinute = 12
+maxConcurrent = 2
+thinkingDelayMinTicks = 10
+thinkingDelayMaxTicks = 20
+
+[persona]
+allowPlayersEditPersona = false
+
+[voice]
+enabled = false
+volume = 0.6
+range = 16.0
+fallbackToText = true
+
+[requests]
+enabled = false
+maxActive = 1
+cooldownMinutes = 20
+reputationReward = 0

@@ -27,6 +27,7 @@ from . import __version__
 from .backups import Backups
 from .atlas import Atlas
 from .cinematics import Cinematics, MAX_IMAGE
+from .characters import Characters
 from .common import REPO, Layout, UserError, contained, digest, read_json, utcnow, write_json
 from .install import Installer
 from .graphics import Graphics
@@ -65,6 +66,7 @@ class Application:
         self.metrics.observers.append(self.atlas.monitor)
         self.cinematics = Cinematics(self.layout, self.storage, self.server, self.players, self.metrics.latest)
         self.graphics = Graphics(self.layout, self.storage)
+        self.characters = Characters(self.layout, self.storage)
         self.playit = Playit()
         self.token = secrets.token_urlsafe(32)
 
@@ -74,6 +76,8 @@ class Application:
         self.backups.start_schedule()
 
     def close(self):
+        if getattr(self, 'characters', None) is not None:
+            self.characters.close()
         self.mods.close()
         self.playit.close()
         self.backups.close()
@@ -178,7 +182,7 @@ class Application:
             "/api/metrics": self.metrics.latest, "/api/sync": self.mods.sync,
             '/api/diagnostics/chunks': lambda: self.metrics.latest().get('chunk_diagnostics', {'unavailable': 'Start the server with the updated Control Bridge to collect chunk diagnostics.'}),
             "/api/players": self.players.snapshot, "/api/backups": self.backups.list,
-            "/api/atlas": self.atlas.snapshot,
+            "/api/atlas": self.character_atlas,
             "/api/cinematics": self.cinematics.snapshot,
             "/api/atlas/export": lambda: self.atlas.export(first('collection', 'shared')),
             "/api/settings": self.settings.catalog, "/api/config/history": self.settings.history,
@@ -188,6 +192,10 @@ class Application:
             "/api/jobs": self.jobs.list, "/api/health": self.health,
             "/api/compatibility": lambda: read_json(REPO / "catalog/compatibility.json", {"requests": [], "status": "report being assembled"}),
             "/api/graphics": self.graphics.snapshot,
+            "/api/characters": lambda: self.characters.snapshot(first('q'), first('district'), first('kind')),
+            "/api/characters/detail": lambda: self.characters.detail(first('id')),
+            "/api/characters/export": lambda: self.characters.export(first('id')),
+            "/api/characters/provider-status": lambda: self.characters.provider_status(),
         }
         if path in routes:
             return routes[path]()
@@ -224,6 +232,8 @@ class Application:
 
     def post(self, path, body):
         job = lambda title, function, *args: self.jobs.submit(title, function, *args)
+        if path.startswith('/api/characters/'):
+            return self.character_action(path, body)
         if path == '/api/cinematics/settings':
             return self.cinematics.settings(body.get('changes'), body.get('expected'))
         if path == '/api/cinematics/trigger':
@@ -336,6 +346,37 @@ class Application:
             return self.connectivity()
         raise UserError("Unknown API endpoint")
 
+    def character_action(self, path, body):
+        """Profiles and previews never issue Minecraft commands or change an entity."""
+        service = self.characters
+        expected, ident = body.get('expected'), body.get('id')
+        routes = {
+            '/api/characters/save': lambda: service.save(body.get('character', body.get('profile')), expected),
+            '/api/characters/remove': lambda: service.remove(ident, expected, body.get('confirmed', False)),
+            '/api/characters/duplicate': lambda: service.duplicate(ident, expected),
+            '/api/characters/import': lambda: service.import_profile(body.get('character', body.get('profile', body.get('data'))), expected),
+            '/api/characters/restore': lambda: service.restore(ident, body.get('revision'), expected),
+            '/api/characters/defaults': lambda: service.defaults(ident),
+            '/api/characters/ambient': lambda: service.ambient(body),
+            '/api/characters/settings': lambda: service.settings(body),
+            '/api/characters/credential': lambda: service.credential(body),
+            '/api/characters/district': lambda: service.district(body),
+            '/api/characters/memory': lambda: service.memory(body),
+            '/api/characters/apply': lambda: service.apply(expected),
+            '/api/characters/preview': lambda: self.jobs.submit('Preview character conversation',
+                lambda notify: service.preview(body)),
+            '/api/characters/connection-test': lambda: self.jobs.submit('Test character AI connection',
+                lambda notify: service.test_connection({key: body[key] for key in
+                    ('expected', 'external_opt_in', 'model') if key in body})),
+        }
+        if path not in routes:
+            raise UserError('Unknown character operation')
+        return routes[path]()
+
+    def character_atlas(self):
+        from .character_atlas import markers
+        return dict(self.atlas.snapshot(), characters=markers(self.characters.snapshot()['characters']))
+
 
 def re_full_filename(name):
     import re
@@ -426,7 +467,7 @@ def make_handler(app):
                     relative = urllib.parse.unquote(path.removeprefix("/pack/"))
                     file = public_pack_file(release, relative)
                     return self.send(200, file.read_bytes(), mimetypes.guess_type(file)[0] or 'application/octet-stream')
-                files = {"/": "index.html", "/app.js": "app.js", '/session.js': 'session.js', '/polling.js': 'polling.js', '/atlas-state.js': 'atlas-state.js', "/style.css": "style.css", "/mark.svg": "mark.svg", '/atlas.js': 'atlas.js', '/cinematics.js': 'cinematics.js', '/vendor/leaflet.js': 'vendor/leaflet.js', '/vendor/leaflet.css': 'vendor/leaflet.css'}
+                files = {"/": "index.html", "/app.js": "app.js", '/session.js': 'session.js', '/polling.js': 'polling.js', '/atlas-state.js': 'atlas-state.js', "/style.css": "style.css", "/mark.svg": "mark.svg", '/atlas.js': 'atlas.js', '/cinematics.js': 'cinematics.js', '/characters.js': 'characters.js', '/characters.css': 'characters.css', '/vendor/leaflet.js': 'vendor/leaflet.js', '/vendor/leaflet.css': 'vendor/leaflet.css'}
                 if path not in files:
                     return self.send(404, {"error": "Page not found"})
                 file = REPO / "control_room/static" / files[path]

@@ -1,0 +1,12 @@
+name = "Chatting Villagers"
+filename = "chattingvillagers-neoforge-1.21.1-1.1.0.jar"
+side = "both"
+
+[download]
+mode = "metadata:curseforge"
+hash-format = "sha512"
+hash = "79ec018d408c02f7e76aa19ec0d1623b39f7ea7ecbfeb86f2da8bb0ff51379b4d321daae0f3919e500e14b2c01807674ea4a1d21d231e2997be9e744c7d3d4c7"
+
+[update.curseforge]
+file-id = 9064041
+project-id = 1638757

@@ -1,0 +1,368 @@
+[
+  {
+    "id": "awft_homestead_greetings_0",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Come sit a while. The kettle enjoys an audience."
+  },
+  {
+    "id": "awft_homestead_greetings_1",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Hello, lovely! Mind the flowers; they're rehearsing spring."
+  },
+  {
+    "id": "awft_homestead_greetings_2",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A visitor! I'll pretend the flour on my sleeve is deliberate."
+  },
+  {
+    "id": "awft_homestead_greetings_3",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Welcome home. There's room for one more story."
+  },
+  {
+    "id": "awft_homestead_jokes_0",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "My carrots have excellent manners. They always let the weeds go first."
+  },
+  {
+    "id": "awft_homestead_jokes_1",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The hens say breakfast is a team effort. Apparently I'm the team."
+  },
+  {
+    "id": "awft_homestead_jokes_2",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "I tried counting sheep. They requested a recount."
+  },
+  {
+    "id": "awft_homestead_jokes_3",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The sourdough has risen higher than my ambitions today."
+  },
+  {
+    "id": "awft_homestead_contextual_0",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A little garden work and a little sitting down: a perfectly balanced afternoon."
+  },
+  {
+    "id": "awft_homestead_contextual_1",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The cat has supervised six tasks without moving an inch."
+  },
+  {
+    "id": "awft_homestead_contextual_2",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Fresh bread makes even a rainy day seem well organized."
+  },
+  {
+    "id": "awft_homestead_contextual_3",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "If the flowers seem taller, they've been listening to encouragement."
+  },
+  {
+    "id": "awft_homestead_goodbyes_0",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Take a flower thought with you. They travel well."
+  },
+  {
+    "id": "awft_homestead_goodbyes_1",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Come back hungry. It's easier than cooking less."
+  },
+  {
+    "id": "awft_homestead_weather_0",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Rain for the garden, tea for the gardener."
+  },
+  {
+    "id": "awft_homestead_weather_1",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "That breeze is just the world airing its blankets."
+  },
+  {
+    "id": "awft_homestead_weather_2",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Thunder always sounds as though someone upstairs dropped the potatoes."
+  },
+  {
+    "id": "awft_homestead_nearby_player_0",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "You look like someone who could appreciate a biscuit."
+  },
+  {
+    "id": "awft_homestead_nearby_player_1",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Careful by the beds; the seedlings are terribly optimistic."
+  },
+  {
+    "id": "awft_homestead_nighttime_0",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Even the compost deserves a quiet evening."
+  },
+  {
+    "id": "awft_homestead_nighttime_1",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The lanterns are on. Time to let tomorrow do its own worrying."
+  },
+  {
+    "id": "awft_homestead_tavern_0",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Soup, bread, a friend at the table. There's a respectable sort of treasure."
+  },
+  {
+    "id": "awft_homestead_catchphrases_0",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "One small kindness, then the watering."
+  },
+  {
+    "id": "awft_homestead_catchphrases_1",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "It'll grow. Most things do."
+  },
+  {
+    "id": "awft_homestead_starters_0",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "What shall we grow next?"
+  },
+  {
+    "id": "awft_homestead_starters_1",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Would you like a garden story or a kitchen catastrophe?"
+  },
+  {
+    "id": "awft_homestead_animals_0",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The sheep looks pleased with itself. I admire the lack of supporting evidence."
+  },
+  {
+    "id": "awft_homestead_animals_1",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Our dog considers the household a ship. The doormat is apparently the quarterdeck."
+  },
+  {
+    "id": "awft_homestead_animals_2",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_homestead"
+      ]
+    },
+    "weight": 1.0,
+    "text": "That frog says he ordered the rain. I thanked him just in case."
+  }
+]

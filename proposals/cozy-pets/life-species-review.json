@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "status": "SOURCE_ONLY_NOT_AN_ALLOWLIST_PATCH",
+  "active_policy_modified": false,
+  "boundary": "Existing HabitatLifePolicy has no hamster/glider admission. Master must review and bind exact class/artifact/resource pins, habitat rules and per-species budget; never bypass the native gate. Glider library installation is not native gameplay admission.",
+  "species": [
+    {
+      "entity_type": "adorablehamsterpets:hamster",
+      "native_class": "net.dawson.adorablehamsterpets.entity.custom.HamsterEntity",
+      "native_class_sha256": "2468fcc8b487455e5bd16647edbff835fc8fbce92f86d959a0b6d286a31840ac",
+      "category": "creature",
+      "dimensions_width_height": [
+        0.425,
+        0.425
+      ],
+      "proposed_habitat_kind": "DRY",
+      "initial_count": 2,
+      "managed_admission_ceiling": 4,
+      "artifact": {
+        "filename": "adorablehamsterpets-3.7.0-1.21.1+neoforge.jar",
+        "size": 20292862,
+        "sha512": "0651244d2aaf4c127ee1818a24910bf6612a33bb3aa078217ee8c695abf2cbc8be118d29ed5e271f8f7ba316f146767b8882800a38713177993444db7df2041a",
+        "sha256": "ff4baffe9fb285048cad2155225012836bd9b70a9910921e611c08b38e64ba4c"
+      },
+      "status": "REQUIRES_MASTER_REVIEWED_ADDITIVE_NATIVE_ADMISSION",
+      "native_registry": "NOT_YET_VERIFIED_WITH_NEW_MODS_INSTALLED",
+      "bed": {
+        "block": "adorablehamsterpets:hamster_bed",
+        "blockstate_resource_sha256": "32c2cd1d9f3767552cdc3e931fba3ff9fb823a9735f8b89072043816470d6a81",
+        "block_entity_class": "net.dawson.adorablehamsterpets.block.entity.HamsterBedBlockEntity",
+        "block_entity_class_sha256": "22154e6fbc5ce870bd42a5e51c8023ba3b751045f352864cfb401798647d671c",
+        "boundary": "Not a vanilla villager HOME/bed/job POI. Actual native bed placement/link/UUID readback required; no invented block-entity NBT."
+      }
+    },
+    {
+      "entity_type": "animalgarden_sugarglider:sugarglider",
+      "native_class": "aquariusplayz.animalgarden.sugarglider.mob.ModMob",
+      "native_class_sha256": "7e33af21693640e6f1e62fd7d49b324267a7c1e811acd754d1c3abeacc3cf78d",
+      "category": "creature",
+      "dimensions_width_height": [
+        0.4,
+        0.3
+      ],
+      "proposed_habitat_kind": "AIR",
+      "initial_count": 2,
+      "managed_admission_ceiling": 4,
+      "artifact": {
+        "filename": "animalgarden-sugargilder-1.0.0-neoforge-1.21.1-21.1.214.jar",
+        "size": 317381,
+        "sha512": "e218e905fc931377819e8122a329320a10d5a4d13b38aea3867c4a6b3693cdc7bc2791a057322932296439c36fe7dc32dbc144e7ff303f06babefbf587e3f4bf",
+        "sha256": "02c6e69c86bdcc5afed238d5b87609e0e1827e9e38da6df14588eb33d8832760"
+      },
+      "status": "REQUIRES_MASTER_REVIEWED_ADDITIVE_NATIVE_ADMISSION",
+      "native_registry": "NOT_YET_VERIFIED_WITH_NEW_MODS_INSTALLED",
+      "spawning_resource_sha256": "cbbafc201429fa4ab2c6f1eb654069029280d722325bd3c8be7cad174a73bb76"
+    }
+  ]
+}

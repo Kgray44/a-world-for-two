@@ -1,0 +1,202 @@
+{
+  "format": 1,
+  "status": "SOURCE_PROPOSAL_NOT_INSTALLED",
+  "baseline_commit": "3d337e4305006d4745ba6ba85c458accf54ef1f1",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.262",
+  "java": 21,
+  "choices": [
+    {
+      "request": "adorable-hamster-pets",
+      "project": "adorable-hamster-pets",
+      "version": "LyCV3JSL",
+      "allow_prerelease": true,
+      "side": "both",
+      "reason": "Owner-requested pets; reviewed 3.7.0 beta exception, exact native dependencies and safe cozy defaults in proposals/cozy-pets. Runtime and multiplayer qualification pending."
+    },
+    {
+      "request": "aquarius-libs",
+      "project": "aquarius-libs",
+      "version": "sPrpmle3",
+      "side": "both",
+      "reason": "Explicit author-required dependency for Animal Garden Sugar Glider; absent from upstream version metadata. Exact hash and native API reviewed; runtime pending."
+    },
+    {
+      "project": "patchouli",
+      "version": "BIogJv2D",
+      "side": "both",
+      "reason": "Required by the exact Adorable Hamster Pets native NeoForge descriptor: Patchouli >= 1.21.1-93-NEOFORGE; upstream Modrinth dependency metadata is empty."
+    }
+  ],
+  "additions": [
+    {
+      "project_id": "LmrhZdK2",
+      "slug": "adorable-hamster-pets",
+      "name": "Adorable Hamster Pets",
+      "version_id": "LyCV3JSL",
+      "version": "3.7.0-1.21.1+neoforge",
+      "release_type": "beta",
+      "filename": "adorablehamsterpets-3.7.0-1.21.1+neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/LmrhZdK2/versions/LyCV3JSL/adorablehamsterpets-3.7.0-1.21.1%2Bneoforge.jar",
+      "hashes": {
+        "sha512": "0651244d2aaf4c127ee1818a24910bf6612a33bb3aa078217ee8c695abf2cbc8be118d29ed5e271f8f7ba316f146767b8882800a38713177993444db7df2041a",
+        "sha1": "3d1bc31982eff30195e3a58247774b5136459e8d"
+      },
+      "size": 20292862,
+      "side": "both",
+      "kind": "mod",
+      "request": "adorable-hamster-pets",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LicenseRef-Custom",
+        "name": "",
+        "url": "https://github.com/DawsonBodenhamer/AdorableHamsterPets-Source?tab=readme-ov-file#the-legal-stuff"
+      },
+      "source": "https://modrinth.com/mod/adorable-hamster-pets",
+      "selection_reason": "Owner-requested pets; reviewed 3.7.0 beta exception, exact native dependencies and safe cozy defaults in proposals/cozy-pets. Runtime and multiplayer qualification pending.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "KkHnyaL6",
+      "slug": "aquarius-libs",
+      "name": "Aquarius Libs",
+      "version_id": "sPrpmle3",
+      "version": "1.2.0-neoforge-1.21.1-21.1.217",
+      "release_type": "release",
+      "filename": "aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar",
+      "url": "https://cdn.modrinth.com/data/KkHnyaL6/versions/sPrpmle3/aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar",
+      "hashes": {
+        "sha512": "4521e42504e1ecc73aab95895655425eb0914ddb964b242edea77f9bf38c406d63232187212b7cb3295821243599b6ba3d4b21805439aedd0df9f0ed4db9bb42",
+        "sha1": "300b579495e253a48a1ce38a606b4a73386ad296"
+      },
+      "size": 234187,
+      "side": "both",
+      "kind": "mod",
+      "request": "aquarius-libs",
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LicenseRef-All-Rights-Reserved",
+        "name": "",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/aquarius-libs",
+      "selection_reason": "Explicit author-required dependency for Animal Garden Sugar Glider; absent from upstream version metadata. Exact hash and native API reviewed; runtime pending.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "nU0bVIaL",
+      "slug": "patchouli",
+      "name": "Patchouli",
+      "version_id": "BIogJv2D",
+      "version": "1.21.1-93-neoforge",
+      "release_type": "release",
+      "filename": "Patchouli-1.21.1-93-NEOFORGE.jar",
+      "url": "https://cdn.modrinth.com/data/nU0bVIaL/versions/BIogJv2D/Patchouli-1.21.1-93-NEOFORGE.jar",
+      "hashes": {
+        "sha512": "0b5c172db9a6eeecb5ca44b359a83548c3a60be7ff313959acdfc1e5b8039736c18e57e947d435b52d06da31159d2d02ea36e5742668dbc826308a4c99e4039f",
+        "sha1": "5413bb9b8fc35ebe46b06b48bf9afafbd8471140"
+      },
+      "size": 646777,
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "CC-BY-NC-SA-3.0",
+        "name": "Creative Commons Attribution Non Commercial Share Alike 3.0 Unported",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/patchouli",
+      "selection_reason": "Required by the exact Adorable Hamster Pets native NeoForge descriptor: Patchouli >= 1.21.1-93-NEOFORGE; upstream Modrinth dependency metadata is empty.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    }
+  ],
+  "existing_glider": {
+    "project_id": "WktWffF9",
+    "slug": "animal-garden-sugar-glider",
+    "version_id": "uHLwVY2K",
+    "filename": "animalgarden-sugargilder-1.0.0-neoforge-1.21.1-21.1.214.jar",
+    "hashes": {
+      "sha512": "e218e905fc931377819e8122a329320a10d5a4d13b38aea3867c4a6b3693cdc7bc2791a057322932296439c36fe7dc32dbc144e7ff303f06babefbf587e3f4bf",
+      "sha1": "38056787d20cfb87d3f9854aa73f507c7eeac733"
+    },
+    "size": 317381,
+    "side": "both"
+  },
+  "requests": [
+    [
+      "adorable-hamster-pets",
+      "Adorable Hamster Pets",
+      "pets"
+    ],
+    [
+      "animal-garden-sugar-glider",
+      "Animal Garden: Sugar Glider",
+      "pets"
+    ],
+    [
+      "aquarius-libs",
+      "Aquarius Libs (required Sugar Glider dependency)",
+      "dependency"
+    ]
+  ],
+  "required_native_mods": [
+    {
+      "slug": "architectury-api",
+      "mod_id": "architectury",
+      "range": "[13.0.8,)"
+    },
+    {
+      "slug": "geckolib",
+      "mod_id": "geckolib",
+      "range": "[4.8.3,)"
+    },
+    {
+      "slug": "fzzy-config",
+      "mod_id": "fzzy_config",
+      "range": "[0.7.6,)"
+    },
+    {
+      "slug": "patchouli",
+      "mod_id": "patchouli",
+      "range": "[1.21.1-93-NEOFORGE,)"
+    }
+  ],
+  "payloads": {
+    "config/adorablehamsterpets/main.toml": "75f41680625bed6cb0e987e2d66674ce377abedbfde6bb95885b7534bc9651d9",
+    "config/adorablehamsterpets/worldgen.toml": "c747fe473265e2c5a43d67d610d4d89e16151ceb79bb0945233d07e614081007",
+    "config/paxi/datapacks/awft-cozy-pets/data/animalgarden_sugarglider/neoforge/biome_modifier/spawn_sugarglider.json": "cad35ad2b9a47c63319b335fb3b5852c8faf8e1b8842b1c2297eed5a1d046528",
+    "config/paxi/datapacks/awft-cozy-pets/pack.mcmeta": "5a82aa814458dceafc116f66ba021e6e07c28d47716833efefa2cd20dd1ea4ba"
+  },
+  "evidence_boundary": "No runtime, animation, ownership, persistence, multiplayer, TPS/MSPT, visual, permanent-world or owner acceptance is inherited."
+}

@@ -1,0 +1,29 @@
+{
+  "masterEnabled": true,
+  "language": "en_us",
+  "builtInDialogue": false,
+  "disabledCategories": [
+    "popculture",
+    "insider",
+    "realworld"
+  ],
+  "radius": 16.0,
+  "speakIntervalTicks": 140,
+  "portalScanRadius": 0,
+  "frequencyPreset": "quiet",
+  "villagerCooldownSeconds": 90,
+  "speakChance": 0.15,
+  "maxMessagesPerPlayerPerMinute": 3,
+  "chanceFactorNight": 0.2,
+  "conversationsEnabled": true,
+  "conversationChance": 0.08,
+  "conversationRadius": 5.0,
+  "pairCooldownSeconds": 200,
+  "conversationLineDelayTicks": 60,
+  "bubblesEnabled": true,
+  "bubbleLifetimeTicks": 100,
+  "chatMessagesEnabled": false,
+  "reactionsEnabled": true,
+  "reactionCooldownTicks": 100,
+  "tradeReactionChance": 0.1
+}

@@ -327,6 +327,7 @@ class ConfigurationTests(Fixture):
         commands = [('awfttrees', 'grow', 'describe', 'trees-'),
                     ('awfttreepatch', 'grow', 'inspect', 'treepatch-'),
                     ('awftrelocate', 'move', 'inspect', 'relocation-'),
+                    ('awftrelocate', 'record-conserved', 'inspect-quarantined', 'relocation-'),
                     ('awftlife', 'seed', 'inspect', 'life-'),
                     ('awftfountain', 'reset', 'inspect', 'fountain-'),
                     ('awftfountain', 'recover-gate', 'inspect', 'fountain-'),
@@ -518,9 +519,12 @@ class MetricsHistoryTests(Fixture):
         metrics = Metrics(self.layout, self.storage, server)
         with metrics.connect() as connection:
             connection.execute("CREATE TABLE samples (at REAL PRIMARY KEY, data TEXT NOT NULL)")
-        with patch.object(metrics, "alerts", return_value=[]), patch.object(metrics.clients, "collect", return_value=[]):
+        with patch.object(metrics, "alerts", return_value=[]), patch.object(metrics.clients, "collect", return_value=[]), \
+                patch.object(self.storage, 'snapshot', create=True, return_value={'breakdown': {}}):
             first = metrics.collect()
             second = metrics.collect()
+            self.assertTrue(metrics._bookkeeping_idle.wait(3), 'The history writer did not finish its bounded test work')
+            metrics.close()
         reopened = Metrics(self.layout, self.storage, server).history()
         self.assertEqual(len(reopened), 1)
         self.assertEqual(reopened[0]["at"], second["at"])

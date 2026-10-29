@@ -1,0 +1,16 @@
+{
+  "format": "awft-native-context-window-source-freeze:1",
+  "source_files": {
+    "compat/control-bridge/proposals/native-relocation-window-r6b/NativeRelocationSupport.java": "cc63c079a42f502955ee9cba2a6a1d8af25669e93f36374c75e7a8f0beda5c02",
+    "compat/control-bridge/proposals/native-relocation-window-r6b/NativeWindowStateWitness.java": "72e9f2d94f2e5eb535af74100c368f9bbcd10a3a9e373cd11c329e0e20da360d",
+    "compat/control-bridge/proposals/native-relocation-window-r6b/derive.py": "caf28da4fec4565d6f4d2727136b54e3244b8744494b4247b7be026c2fe70a1c",
+    "compat/control-bridge/proposals/native-relocation-window-r6b/README.md": "ea5ec2cb404c530d60f5afab5c00d66bed92459097e968609ab81b3dd55db993",
+    "tools/native_eastern_relocation_r6.py": "98ae608db9bd8e636d2f2aba90e9b753774286737c130c4691d96041ef4b5a8d"
+  },
+  "compiled_receipt_sha256": "6a27fd5036dd66778d539d1e124a25b0372fe1ceb6f469f2709e4dc2cc5aced3",
+  "named_API_compile_pass": true,
+  "native_actions": 0,
+  "actual_native_INSPECT_counterfactuals": "pending",
+  "active55_unchanged": true,
+  "old_R6_retained": true
+}

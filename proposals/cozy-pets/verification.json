@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "at": "2026-10-28T22:12:00.768415+00:00",
+  "source_base": "3d337e4305006d4745ba6ba85c458accf54ef1f1",
+  "python": "3.12.10",
+  "java": "21.0.10",
+  "focused_tests": {
+    "count": 12,
+    "result": "PASS"
+  },
+  "full_unittest": {
+    "command": "python -m unittest discover -s tests -v",
+    "tests_run": 1105,
+    "seconds": 73.289,
+    "errors": 3,
+    "skipped": 1,
+    "result": "FAIL_PRESERVED_BASELINE_IMPORT_ERRORS",
+    "missing_baseline_modules": [
+      "tools/artistic_tortuga_coast_batches.py",
+      "tools/artistic_tortuga_west_approved_blocks.py"
+    ],
+    "failing_imports": [
+      "test_artistic_tortuga_inner_west_sprint",
+      "test_artistic_tortuga_west15_shells",
+      "test_artistic_tortuga_western_spit"
+    ],
+    "boundary": "Both missing city modules are absent from committed source base and were present as unrelated untracked work in the master checkout. No unrelated source was copied or tests weakened. The later source-byte seal test is covered by the final focused run; the broad run is not repeated or relabeled."
+  },
+  "base_pack_validate": {
+    "entries": 208,
+    "errors": []
+  },
+  "review_preview_pack_validate": {
+    "entries": 211,
+    "errors": [],
+    "runtime": "not run"
+  },
+  "node_syntax_check": "PASS",
+  "full_static_native_dependency_review": {
+    "enabled_mod_jars": 201,
+    "errors": [],
+    "warnings": []
+  },
+  "runtime": "NOT_RUN",
+  "visual": "NOT_RUN",
+  "multiplayer": "NOT_RUN",
+  "restart_persistence": "NOT_RUN",
+  "performance": "NOT_MEASURED",
+  "habitat_placement": "SOURCE_ONLY",
+  "permanent_world_integration": "NOT_DONE",
+  "owner_acceptance": "NOT_REQUESTED",
+  "storage": {
+    "floor_bytes_each": 32212254720,
+    "latest_writer_guard": {
+      "at": "2026-10-28T22:08:49Z",
+      "c_free_bytes": 120584790016,
+      "d_free_bytes": 282740174848,
+      "estimated_c_bytes": 536870912,
+      "estimated_d_bytes": 0,
+      "allowed": true
+    },
+    "coverage": "Observed/admitted owned source and test writers only; not an OS quota or control over external applications or pre-existing writers."
+  }
+}

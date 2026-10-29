@@ -1,0 +1,46 @@
+# Adorable Hamster Pets 3.7.0. Fzzy Config fields are top-level, not GUI tables.
+# Keep real AI, sleeping, grooming, petting and bed-linked wandering.
+enableHamsterThrowing = false
+yeetFriendlyFire = false
+hamsterThrowDamage = 0.0
+netheriteArmorThrowDamageBonus = 0.0
+enableRedstoneFever = false
+enableCropSnacking = false
+enableItemStealing = false
+enableIndependentDiamondSeeking = false
+enableHideAndSeek = false
+enableTagGame = false
+enableRavagerFlee = false
+enableSpiderFlee = false
+preventOwnerFriendlyFire = true
+acornRingPreventsDamageToOtherPets = true
+
+# Following pets travel with their owner; mounted pets survive owner death.
+enableTeleportRescue = true
+preventHamsterEndPortalTravel = true
+keepHamstersOnShoulderOnDeath = true
+maxShoulderHamsters = 2
+
+# A linked, intact Hamster Bed provides the mod's own recovery mechanism.
+enableWanderMode = true
+defaultWanderDistance = "NEAR"
+wanderDistanceNear = 4
+enableRespawnInBed = true
+freeBedRespawns = true
+allowSleepInBed = true
+sleepDuringDay = true
+enablePetting = true
+enableDynamicShoulderAnimations = true
+
+# Breeding remains available, with one baby and a 20-minute cooldown.
+# Offspring inherit ownership through the mod's normal breeding logic.
+enableBreeding = true
+babiesSpawnWild = false
+breedingCooldownSeconds = 1200
+litterSizeMin = 1
+litterSizeMax = 1
+maxLittersPerHamster = 8
+playerBreedingLimit = true
+playerBreedingLimitType = "DAILY"
+maxLittersPerPlayer = 2
+useIrlTimeForBreedingLimit = true

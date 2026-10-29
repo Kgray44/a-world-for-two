@@ -1,0 +1,83 @@
+{
+  "format": "awft-west-and-fast-metrics-source-freeze:1",
+  "files": [
+    {
+      "path": "tools/artistic_west_lush_streets.py",
+      "bytes": 29989,
+      "sha256": "2a1f775a7e996c72f70c6fc2ec4c71fd6d3631fc19df894e7e77d18237dfa45f"
+    },
+    {
+      "path": "tests/test_artistic_west_lush_streets.py",
+      "bytes": 3798,
+      "sha256": "1106d574510b9401deab7a9d1876bf3d7da3c82e676b4342155704a0a691000a"
+    },
+    {
+      "path": "docs/WEST-LUSH-STREETS.md",
+      "bytes": 3259,
+      "sha256": "914539f6b44395d223f8f1f7eec3615c0f4f639b7fb1c5c64a4a8d3f99b8733a"
+    },
+    {
+      "path": "tools/artistic_west_lush_progress_maps.py",
+      "bytes": 8481,
+      "sha256": "942503e873d595e4b021863e82c91998cfdfc7cb144fbf004fe0fb7f9381c6af"
+    },
+    {
+      "path": "control_room/metrics.py",
+      "bytes": 25086,
+      "sha256": "c8c3fe170f54914f14b333867ccf7ea59f5ad311643a424ec745a3e5ea1d72ca"
+    },
+    {
+      "path": "tests/test_metrics_bookkeeping.py",
+      "bytes": 4835,
+      "sha256": "1705bf3e2b5f40a44a9b7edaebb7560cea0770ee8e0faf0e2863d47e7275f6fb"
+    },
+    {
+      "path": "tests/test_safety.py",
+      "bytes": 32032,
+      "sha256": "06f773588498f5e46bd773cb8142ea6dbccc55b47985942c509699069ad0ffc6"
+    },
+    {
+      "path": "docs/plans/tortuga-west-ground-greenery-20261029/map-receipts.json",
+      "bytes": 21313,
+      "sha256": "f4304055be58cb861bceefb9b6e21321a25969038ba1aaa0cf97f587491dd798"
+    },
+    {
+      "path": "docs/plans/tortuga-west-ground-greenery-20261029/tortuga-west-pass-01-overhead.png",
+      "bytes": 108325,
+      "sha256": "95e81c0f5eeee4636ddfbc1789094f19354e9ba06d70d345f0159e4b328ea37d"
+    },
+    {
+      "path": "docs/plans/tortuga-west-ground-greenery-20261029/tortuga-west-pass-02-overhead.png",
+      "bytes": 110742,
+      "sha256": "bdd78fd43b6942685d8f544baf4137f057a019d386674c5f2aba0055d306a759"
+    },
+    {
+      "path": "docs/plans/tortuga-west-ground-greenery-20261029/tortuga-west-pass-03-overhead.png",
+      "bytes": 112082,
+      "sha256": "d941732904495ed12ecb8b4d32a3c879a46639249def989a2dfa86c647d2c1d5"
+    },
+    {
+      "path": "docs/plans/tortuga-west-ground-greenery-20261029/tortuga-west-pass-04-overhead.png",
+      "bytes": 112130,
+      "sha256": "6284f5a7908d8444584b397ea0c672317dc8483cf03e427379893daa4c004b34"
+    },
+    {
+      "path": "docs/plans/tortuga-west-ground-greenery-20261029/tortuga-west-pass-05-overhead.png",
+      "bytes": 116557,
+      "sha256": "02c6b8e6d1a9eb00fbca7c7e00944dd8b7fbbda716051a4bb70366f4451972e7"
+    },
+    {
+      "path": "docs/plans/tortuga-west-ground-greenery-20261029/tortuga-west-pass-06-overhead.png",
+      "bytes": 118440,
+      "sha256": "621cec7ee241593783b8b9dc6298d94d076b081c631d214d4d42eaedabd8ff92"
+    }
+  ],
+  "ownership": "Metrics production file, new focused tests and only the async MetricsHistoryTests hunk in test_safety; earlier independent command tests retained. West source/tests/doc and six map images/curated receipts. Root owns Git/runtime integration.",
+  "checks": {
+    "west_boundaries": "6PASS",
+    "metrics_freshness_history_and_blocked_bookkeeping": "24PASS in4.998seconds",
+    "maps": "6unique PNG hashes;30 exact marked native clean proofs rechecked; private path/seed/token fields absent from public receipts",
+    "actual_native_world": "Six batches completed under exact exclusive lease; clean release. No native/runtime action during this map task."
+  },
+  "evidence_limits": "Progress diagrams are not Minecraft screenshots. Metrics change is source-qualified; runtime latency after Root reload is separate."
+}

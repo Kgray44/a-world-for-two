@@ -5,7 +5,7 @@
 ![A quiet sunset beside the village lake](assets/menu/a-world-for-two-background.jpg)
 
 A cozy Minecraft home for KG and Sera: cottage gardens and kitchens, a busy pirate
-waterfront, Rosewater Castle, sailing adventures and Create machinery.
+waterfront named **Tortuga**, Rosewater Castle, sailing adventures and Create machinery.
 
 **Minecraft 1.21.1 · NeoForge 21.1.262 · Java 21 · Prism Launcher · Packwiz**
 
@@ -14,24 +14,27 @@ waterfront, Rosewater Castle, sailing adventures and Create machinery.
 | Build | Availability | Enabled mods |
 | --- | --- | --- |
 | **Public candidate.31** | Published, immutable prerelease; fresh Prism import remains unqualified | **197 total · 191 client · 164 server** |
-| **Private candidate.48** | Native preview running; construction and qualification in progress; unreleased | **198 total · 192 client · 165 server** |
+| **Private candidate.63** | Current construction runtime; corrected eastern buildings and western landscaping deployed; visual/gameplay qualification in progress | **204 total · 198 client · 171 server** |
 
 Shared mods count on both sides. Essential is optional and disabled. Eight shader
 choices and one resource pack are pinned. The public starter retains its own
-candidate.31 snapshot; it does not contain the private candidate.48 work.
+candidate.31 snapshot; it does not contain the private candidate.63 work.
 
-The full build is still in progress: a continuous, dense north-bank pirate town;
-a complete 3D architecture pass; flowers, climbers and native-grown woodland;
-and a separate living LIFE pass for animals and residents. Candidate.48 added
-14 successful native-grown tree outcomes, 3,284 undergrowth/vine states and the
-first seven curated animals and small creatures. New western shops and an
-eastern infill cluster are placed, with visual refinement continuing. The
-ornamented drawbridge completed two real 55° cycles; current restart and vessel
-clearance checks remain open. The fountain's revised body passed powered
-fill/flow/STOP/drain/reopen in candidate.47, followed by a small carved addition
-and wet-state preservation checks in candidate.48. These are scoped runtime
-results, not full-world acceptance. See [current status](docs/STATUS.md) and
-[the candidate.48 record](docs/NATIVE-CANDIDATE48.md).
+The full build is still in progress. All **39 eastern Tortuga compounds are
+constructed**, including the remaining 25 with corrected roofs, deeper façades
+and distinct furnished interiors. Old eastern-layout remnants still need
+removal, and whole-city visual and gameplay acceptance remain open. The western
+district has received six ground and layered greenery batches; treatment across
+the entire approved north-bank boundary is still underway. The
+[unfinished projects list](docs/coordination/UNFINISHED.md) and
+[workstream coordination](docs/coordination/WORKSTREAMS.md) separate actual
+construction from runtime, visual, multiplayer, restart and owner acceptance.
+
+Earlier native checks demonstrated two drawbridge cycles at 55° and the
+fountain's powered fill, flow, stop, drain and reopen sequence. Current restart,
+ship-clearance and full-world visual checks remain open. These are scoped
+runtime results, not whole-project acceptance. See [current status](docs/STATUS.md)
+and the [earlier candidate.48 record](docs/NATIVE-CANDIDATE48.md).
 
 ## Install the public prerelease
 
@@ -53,6 +56,11 @@ its author's [modpack permission](docs/PIRATE-MODPACK-PERMISSION.md).
 
 ## From the actual game
 
+![A furnished Tortuga bookshop with reading desks and layered ceiling lighting](docs/images/tortuga-20261029/bookshop-interior.png)
+
+This actual candidate.63 interior capture shows one corrected eastern bookshop.
+It is representative evidence for that room, not acceptance of every interior.
+
 ![Bramble Lane's lanterns and shopfronts](docs/images/artistic-recovery/bramble-lane.png)
 
 ![Books, seating and the Rose & Lantern cottage hearth](docs/images/artistic-recovery/rose-lantern-hearth.png)
@@ -73,9 +81,10 @@ artistic acceptance remains open.
 | Create workshops and a powered river drawbridge | Trains, Small Ships, Aeronautics/Sable and Hypertubes |
 
 Feature selection, construction and working gameplay have separate checks.
-Earlier native builds completed real 55° drawbridge cycles across a restart;
-new moving ornaments, the continuous zipline and other Create demonstrations
-still have their own admission and commissioning work.
+Earlier native builds completed real 55° drawbridge cycles across a restart.
+The owner's Hypertubes and zipline are complete and accepted, including an
+owner-demonstrated zipline ride. Train journeys, production cycles and other
+Create demonstrations retain their own gameplay checks.
 
 **Distant Horizons + SeedGen** remains the distant-terrain architecture. Voxy and
 Roxy are excluded. Strict client/server parity is still unresolved; DH server

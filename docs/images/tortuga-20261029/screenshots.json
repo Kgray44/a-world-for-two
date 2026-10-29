@@ -1,0 +1,24 @@
+{
+  "screenshots": [
+    {
+      "file": "eastern-roof-correction.png",
+      "sha256": "532f8edb893da18cdff0b971480cd3d1ad394d66ed5f3642986ca94f6e20a58d",
+      "evidence": "Actual Minecraft framebuffer from owned QA client on candidate63",
+      "scope": "Visible portion of actual corrected roofs; foreground masks the full Cooper roof"
+    },
+    {
+      "file": "bookshop-interior.png",
+      "sha256": "137b3e12069ac2bd7d645afb23991cf6d6633d005b54393b68935e8813bef4bc",
+      "evidence": "Actual Minecraft framebuffer from owned QA client on candidate63",
+      "scope": "Actual furnished Worn Book reading room; representative interior, not all-building acceptance"
+    },
+    {
+      "file": "western-alley-first-greenery.png",
+      "sha256": "cc8476ada59ffddd5b8dfe0295a406cedb5c0f3ea8e61de0eb0ce12b3cf0b7b2",
+      "evidence": "Actual Minecraft framebuffer from owned QA client on candidate63",
+      "scope": "Actual western paving/brick/moss and first layered planting; further photo-led refinement pending"
+    }
+  ],
+  "gameplay_or_owner_acceptance": false,
+  "shader_mode": "off; no alternate renderer or generated image"
+}

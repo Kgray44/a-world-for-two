@@ -1,9 +1,95 @@
 # A World for Two — authoritative workstream coordination
 
-Updated 2026-10-28 UTC by the master chat **Build It!**
+Updated 2026-10-29 UTC by the master chat **Build It!**
 (`01a17947-1d00-7fd1-aa5e-d1fb514f8671`). The owner's Master Coordination &
 Permanent-World Ownership instruction governs this document. Finish the existing
 vision; new workstreams do not authorize feature expansion.
+
+## Current coordinated milestone — Tortuga, 2026-10-29
+
+**Official city name: Tortuga.** The owner named the entire northern pirate city;
+Rosewater Castle, repository name and save-folder identities remain unchanged.
+This current section supersedes stale runtime/count/priority rows below.
+
+- West structures: owner considers construction complete. Preserve all current
+  buildings. Replace exposed gray paving and gravel with irregular worn paving,
+  warm brick patios, moss and planted grass/soil pockets, then layer dense shrubs,
+  flowers, supported vines, upper-window planters, leaf drapes and glowberries.
+- East: **39 of 39 compounds actually built; zero planned compounds remain**.
+  Current14 corrections and the final25 have actual bounded placement,
+  normal-neighbour settlement, full-field verification and map results. Corrected
+  roofs, deeper façades, protected doors and purposeful furnishings were applied
+  before final25 placement. This is construction completion, not whole-city art
+  or gameplay acceptance. New normal rooms retain the owner's three usable block
+  minimum, with five the comfortable target. Existing legitimate contents remain
+  protected; the owner permits discarding old generated AI rooms/default stock.
+- Combined milestone uses independently verified bounded construction batches;
+  successful placements are retained if another batch fails. No all-or-nothing
+  operation or new general-purpose construction framework is authorized.
+- Grand owns eastern roof/endwall source; South owns distinct furnishing source;
+  Castle owns western ground/greenery source. Root integrates and is sole writer
+  except the single explicit temporary lease recorded below.
+- Installed runtime is candidate.63 / bridge0.6.49, Java34544, Control Room8766.
+  Matching client normally joined; PR11 Living World, safe PETS additions,
+  explicit wrench riding tags and Create128 config are installed. Gameplay,
+  restart and owner acceptance remain separate for each feature.
+- Latest retained normal-stop recovery is **20261029T052317Z-89312d**, SHA
+  `ab64b9e7b4fa0e5dad2b77deb41a6ee8344ad46c6d522a4ef2048116d7e1017a`.
+  It retains East39, West36+15, six vessels/five furnishing upgrades and owner
+  mechanisms, plus the completed11,630-cell residual cleanup. Later outdoor,
+  dock, repair and Mercy furnishing operations require the next checkpoint.
+  Canonical source custody6ad remains unchanged. No permanent-runtime promotion.
+- Native Java34544 birth1793251757.857866, backend21776 and the sole QA client9004
+  belong to the existing construction runtime. The owner handed the client back
+  for inspection. A launched QA client does not imply a human session; admission
+  uses fresh native player telemetry. At13:02UTC the roster was empty.
+- Root's QA stone was restored to AIR. Real doors, current14 roof/furnishing
+  corrections and the bookshop47 detail are actually placed. The earlier29-state
+  verification failure is retained; later corrections passed, without replaying
+  the failed operation or hiding its evidence. Actual photos exposed a remaining
+  flat Cooper wall;24 clerestory/shutter/cornice cells were then placed and verified.
+- Western six batches are actually deployed: 3,285 exterior ground cells,
+  including 405 grass/soil pockets, and 2,967 layered greenery targets. All30
+  native before/place/normal-after/map operations completed with zero remaining
+  resources. Lease released cleanly. Per-pass maps are under
+  `docs/plans/tortuga-west-ground-greenery-20261029/`. Art review is still pending.
+- Current exclusive world writer: internal `grand_harbor_ships`, under the
+  master-issued `exclusive-three-lush-entry63-1793279268361266000` lease. Root
+  sends no client input, Native action or restart until clean release. Scope:
+  first1769 botanical layer,7 grass clips/716 clearer main-spine cells, additional
+ 799/242 botanical layers, independent West9 and Mercy read-only completion.
+  Definite clean BEFORE refusal holds its phase/dependencies; uncertain PLACE or
+  failed cleanup stops the lease. Ground3625, Dock320 and Mercy171 must not replay.
+- The residual old-layout cleanup is **actually complete**:11,630 measured cells
+  outside protected current39 cells were retired; actual full verification and
+  retained893 recovery preserve the result. Source/native failures remain held.
+- Additional actual work:355 western botanical details,320-target decorated north
+  western dock,3,625 ground targets across core/north/east/bridge approach,49
+  structural repairs and scoped unintended flood removal. Mercy171 furnishings
+  were placed/settled and complete36,756-cell AFTER passed. Final dry7430 and
+  original14 inventory-tag verification/map remain; no furniture replay.
+- The full blue-outlined northern land area remains the landscaping scope.
+  Preserve routes, doors, grades, machinery, current contents and open river.
+  The next1769 greenery,7/716 entry treatment and799/242 further layers remain
+  pending until actual terminal results; artwork requires Minecraft photographs.
+- ControlRoom21776 runs the focused metrics fix. Slow storage/index/history work
+  is separated from fast telemetry;15-second freshness and process checks remain.
+  Actual13-sample/60-second comparison matched API/raw bridge timestamps throughout,
+  including an18.515-second storage scan;0 read/freshness violations were observed.
+  This verifies telemetry publication, not Minecraft gameplay performance.
+- Final per-addition maps are in
+  `docs/plans/tortuga-east-progress-20261029-verified/`. Earlier native25 and
+  native25-chronological folders are superseded local material, excluded from
+  publication. Actual selected captures are in `docs/images/tortuga-20261029/`;
+  unready blue-sky frames are excluded. Whole-city visual review remains open.
+- [Current unfinished projects](UNFINISHED.md) records the remaining construction,
+  gameplay, integration and release work. Hypertubes and zipline are owner-accepted complete;
+  the six-feature delivery scoreboard is **Working2 / Integrated2 / Remaining4**
+  for owner-accepted Hypertubes and zipline; city, train, processing and fleet
+  still require their remaining actual acceptance.
+- Actual Minecraft street/interior/roof screenshots and visible refinement are
+  required after deployment. Source tests and placement counts do not confer art
+  acceptance. The original six-hour deadline passed with this work incomplete.
 
 ## Six-hour completion sprint
 
@@ -40,11 +126,11 @@ master-issued exclusive lease. A region reservation is not a write lease.
 | Active town construction save | `D:\A World for Two\staging\world-tests\20261027T053650Z-artistic\world\RosewaterArtistic`. This contains the town KG reviewed and the current construction. It is the authoritative construction candidate, not a disposable replacement to regenerate. |
 | Construction runtime home, abbreviated **H** | `D:\A World for Two\staging\world-tests\20261027T053650Z-artistic`; loopback game port **25575**, Control Room **8766**. Its existing settings still say `permanent_world=false` because the native construction tools deliberately admit this private runtime only. |
 | Configured permanent runtime | `D:\A World for Two`, world `world\AWorldForTwo`, game port **25565**, `permanent_world=true`, immutable public candidate.31. It has not received the new town work and must not be overwritten or silently relabelled. Controlled final promotion remains a master-owned integration task. |
-| Latest construction checkpoint | **20261028T230431Z-188cc4**, SHA-256 **bdeb3df7faa25756064421dc7622b3d55e45805c7f36c9209f27d991e52a9d77**. Verified retained normal-stop archive249,863,314bytes;337,021,166sourcebytes/676files. Contains actual36western additions/15refinements/3eastern compounds/bothgardens/3historicships and normal FULL terrain preparation. Canonical source custody6ad is retained separately, not rebound. |
-| Installed construction pack | candidate.59 / bridge **0.6.45**, installed23:05UTC. JAR SHA `5f83d8efb4815cf9229a51f9a90983e907dfb85afc8f749e0ea74de874ee7447`,720,942bytes; pack `465f4e05a989737dd050203c8957b87e7e9341daa6e7465e10ab1237295a8eeb`. Only owned helper changed; gameplay pins retained. Narrow ordinary-live code installed but disabled/unverified online; native city readiness scan now finite1GiB processed work with4pending/perTag4MiB unchanged. |
+| Latest construction checkpoint | **20261029T052317Z-89312d**, SHA-256 **ab64b9e7b4fa0e5dad2b77deb41a6ee8344ad46c6d522a4ef2048116d7e1017a**. Verified retained archive251,533,466bytes;339,134,598sourcebytes/703files. Includes11,630 residual retirement. Later dock/ground/greenery/repair/Mercy additions await the next retained checkpoint. Canonical6ad remains separate. |
+| Installed construction pack | candidate.63 / bridge **0.6.49**, JAR723,477bytes, SHA `3087e224a5d62179c76d9304c8d76c5991d4fe0fae0f647c0e91bfc65f9514cf`; pack SHA `69fd33efdb77fe5f39e0a9a63b3a7f1e492a1cda0d9b7482d8c302b5e75997ad`.204 enabled mod entries,198client/171server. Actual startup and matching licensed join; individual gameplay acceptance remains separate. |
 | Previous private runtime evidence | candidate.49 / bridge0.6.35, pack `750dc6e324246300f45649f4d94093c4384576cbb9cce9d247bd8dfaeff55c6c`, produced the32-tree and5-building results saved in306. |
-| Current live window | Construction server normal startup requested23:05UTC, PID29968 / creation1793228726.0301473; native qualification pending. Human session INACTIVE: actual client closed/empty native roster verified23:02UTC. Master serializes AI city placement; no external/client lease yet. Protected past KG zipline/tube edits remain authoritative. |
-| Client | One existing KG Prism instance: `D:\A World for Two\instances\AWFT_Check_20261026_214756`; KG heap6GiB. Master owns native camera/inspection input only while the owner's handoff remains active. Never authenticate accounts, use fake players, or replace current player data. |
+| Current live window | Java34544, creation1793251757.857866; same runtime cwd/birth. Native roster empty13:02UTC. Exclusive bounded construction lease above; no competing client or restart input. |
+| Client | Existing KG Prism instance: `D:\A World for Two\instances\AWFT_Check_20261026_214756`; KG heap6GiB. The owner handed input to the master for actual QA. Client stays at MainMenu while the exclusive construction lease runs; no competing inputs. |
 
 There is deliberately one active construction runtime and one client. Source
 worktrees are permitted; complete extra Minecraft installations/world copies are
@@ -239,3 +325,5 @@ No external world execution lease is active; Fleet released cleanly22:21 after a
 23:26UTC: Root sole AI writer; all city native leases cleanly released beforeKGplay. Three internal lanes remain productive in parallel: exact-descriptor Sable/FancyBed60 source corrections from genuine runtime findings; final39 city room/architecture execution packages with real approved outside-capsule decor backing; rich street/greenery/3D detail for actualfirst3 easterncompounds. No active actor/client/restart lease or newMinecraft copy. LivingWorld PR11 frozen3a03e389 waits untilcurrenthuman/citycycleends; no credential/liveNPC claim.
 
 23:39UTC owner requests Create chain-conveyor maxdistance32→128 while finishingzipline. Master patched ONLY kinetics.maxChainConveyorLength in actual H/server/config/create-server.toml, before36216a05…after240471ba…; exactoriginalretained. Matching fullcanonical config addedpackwiz/config/create-server.toml, prepared60packnow e6ad04e6e88d4013e482960fcf67b501c8006308c96f727c96d81b0a633b48f7; samebuiltbridge0.6.46JAR698aa68f…. PinnedFMLwatcher enabled; actualserveruseson-demandconfig, connectedclienthasindependentcache and needsordinaryreconnect (no serverrestartrequiredforthiskey). Actual128-chain gameplay notyetobserved. Owner explicitly asks WAIT beforeupdateuntilzipline-done signal; do not treat a transient reconnect as restartapproval.60buildready, allsource/manifest/JSchecks passed; runtime59continues, no live-placement success claim.
+
+00:01–00:15UTC ownerfinishedzipline+Hypertube; HypertubeOWNERACCEPTED complete (humanacceptance, independentmultiplayer/restartnotinvented). Immediate six-feature scoreboard working1/integrated1/remaining5. Normalstop/save retainedc33037, SHA08b0814c700cbaf3f9be86a7a4fb8c44dc9c1f9209a6e3a2a8f76b38aced5262,250568312bytes. OWNER OVERRIDE: discard/rebuild positivelyowned oldgeneratedeasternrooms when faster thanmoving;98roomcustodyqueue SUPERSEDED, originalfailedquarantinesremain. Preserve3actualEast/core/3northlandmarks/humanmechanisms/playerdata. Newmainroomtarget5clear/hard3 withintentionalnarrowfeatures; noexistingwidthretrofit. CombinedupdateaddsPR11LivingWorld+readyPETS, wrench tags+Create128 andfocusedhelperfixes. Futurestructurefrequencypacket remainsUNQUALIFIEDandheld (requirednativeA/Bnotdone), nottreatedascompletedwork. Sourceconstructioncounts remain3actualeasterncompounds,36notyetbuilt.

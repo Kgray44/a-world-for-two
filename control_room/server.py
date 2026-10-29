@@ -240,7 +240,9 @@ class Server:
                 if not self._logger.handlers:
                     handler = logging.handlers.RotatingFileHandler(self.layout.logs / "console.log", maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8")
                     self._logger.addHandler(handler)
+                from .character_secrets import server_environment
                 self.process = subprocess.Popen(command, cwd=self.layout.server, stdin=subprocess.PIPE,
+                    env=server_environment(self.layout),
                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
                     bufsize=1, creationflags=(subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW) if os.name == "nt" else 0)
                 proc = psutil.Process(self.process.pid)

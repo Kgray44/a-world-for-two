@@ -1,0 +1,129 @@
+{
+  "source_commit": "b59c8b3a9532a46ff3ad2dfa2754d6c11471512a",
+  "status": "SOURCE_READY_NATIVE_ACCEPTANCE_OPEN",
+  "focused_python": {
+    "registry": 29,
+    "http_backup_atlas": 5,
+    "upstream_export": 7,
+    "actual_jvm_core_policy": 2,
+    "result": "pass"
+  },
+  "javascript": {
+    "character_atlas_session_checks": 17,
+    "syntax": "pass"
+  },
+  "canonical_pack_validation": {
+    "errors": [],
+    "mods": 208,
+    "canonical_pack_changed": false
+  },
+  "full_python": {
+    "total": 1137,
+    "errors": 3,
+    "skipped": 1,
+    "status": "failed",
+    "seconds": 60.258,
+    "error_modules": [
+      "test_artistic_tortuga_inner_west_sprint",
+      "test_artistic_tortuga_west15_shells",
+      "test_artistic_tortuga_western_spit"
+    ],
+    "cause": "Inherited base imports absent tools/artistic_tortuga_coast_batches.py and tools/artistic_tortuga_west_approved_blocks.py; corresponding tests/dependency files unchanged from 3d337e4.",
+    "skip": "Host lacks symlink creation privilege for an existing fixture."
+  },
+  "loader_discovery": {
+    "tier": "real NeoForge loader only; not server/world/gameplay acceptance",
+    "returncode": 0,
+    "elapsed_seconds": 3.328,
+    "terminal": "exited",
+    "process_terminal": true,
+    "adapter_sha256": "4ceca0abca64b4d8468d3fc070d81c4ba95b24ce2ce73a1ff9b4723fffbd9b68",
+    "eula": "eula=false",
+    "world_created": false,
+    "mixin_exported_classes": [],
+    "eula_refusal_observed": true,
+    "inputs": {
+      "smartvillagers-neoforge-1.21.1-2.0.0.jar": "bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630",
+      "chattingvillagers-neoforge-1.21.1-1.1.0.jar": "a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a"
+    }
+  },
+  "browser": {
+    "saved_speaking_style": true,
+    "saved_custom_joke": true,
+    "scripted_conversation": true,
+    "ambient_used_saved_joke": true,
+    "game_acknowledgement_claimed": false,
+    "screenshot": "docs/images/living-world/character-studio.png",
+    "screenshot_sha256": "c7f4073ae136e979a7afb28abc5076428ed11b96975e1f84f0bc9afaa100a6e3",
+    "context": "Owned isolated development preview, not gameplay or final-head browser acceptance."
+  },
+  "early_dashboard_observation": {
+    "tier": "actual isolated loopback Control Room measurement; not Minecraft overhead or MSPT",
+    "requests": 24,
+    "profile_count": 10,
+    "elapsed_seconds": 0.3585,
+    "median_http_ms": 15.144,
+    "p95_http_ms": 27.106,
+    "max_http_ms": 27.292,
+    "response_bytes": 386760,
+    "dashboard_rss_before_bytes": 39424000,
+    "dashboard_rss_after_bytes": 39624704,
+    "dashboard_cpu_seconds_during_sample": 0.0469,
+    "game_started": false,
+    "external_ai_requests": 0,
+    "note": "Short warm-process sample includes baseline dashboard work; no isolated feature-overhead attribution."
+  },
+  "pending": [
+    "Real Mixin application and in-game end-to-end",
+    "Actual named entity bindings and measured district geometry",
+    "Normal server restart persistence",
+    "Two real players and bubble synchronization",
+    "Trading, jobs, movement, crowded-area performance",
+    "Disconnect and unloaded-entity/provider-failure runtime checks",
+    "Opted-in actual external provider response",
+    "Owner integration and publication decision"
+  ],
+  "invariants": {
+    "eula_accepted_by_agent": false,
+    "player_accounts_authenticated": false,
+    "official_server_changed_or_restarted": false,
+    "permanent_or_construction_save_modified": false,
+    "published_channel_changed": false,
+    "downloaded_jars_committed": false
+  },
+  "recorded_at_utc": "2026-10-28T22:05:12.948251+00:00",
+  "ci": {
+    "head_revision": "b59c8b3a9532a46ff3ad2dfa2754d6c11471512a",
+    "run_id": 40776960802,
+    "url": "https://github.com/Kgray44/a-world-for-two/actions/runs/40776960802",
+    "conclusion": "failure",
+    "total_tests": 1137,
+    "errors": 3,
+    "skips": 3,
+    "error_kind": "same inherited omitted construction modules; no check bypass"
+  },
+  "owner_test_assignment": "User chose the main development lane to coordinate and run in-game tests; no competing runtime authorized by this lane.",
+  "current_source_browser": {
+    "source_commit": "b59c8b3a9532a46ff3ad2dfa2754d6c11471512a",
+    "persisted_joke_reloaded_after_dashboard_restart": true,
+    "ambient_preview_reproduced_saved_joke": true,
+    "unavailable_native_bubble_controls_disabled": true,
+    "global_provider_scope_note_visible": true,
+    "responsive_mobile_viewport": {
+      "width": 390,
+      "height": 844,
+      "document_width": 375,
+      "sidebar_right": 0,
+      "horizontal_document_overflow": false
+    },
+    "viewport_restored": true,
+    "character-studio-desktop.png": {
+      "path": "docs/images/living-world/character-studio-desktop.png",
+      "sha256": "2216099627da2464b12e59ca215c830556d9228935a33452c8702ff74fba468d"
+    },
+    "character-studio-mobile.png": {
+      "path": "docs/images/living-world/character-studio-mobile.png",
+      "sha256": "46d7bd88606f211cd9d5791390d5449e5f008e7c496d9c0cef5f6b4373562007"
+    }
+  }
+}

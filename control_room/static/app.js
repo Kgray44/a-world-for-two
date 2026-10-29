@@ -7,7 +7,9 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const state = {csrf:'', page:'overview', overview:null, jobs:[], history:[], tab:'installed', raw:null, seenJobs:new Set(), busy:false, connected:false, renderGeneration:0};
 const localSession=new LocalSession(globalThis.fetch.bind(globalThis),token=>{state.csrf=token;});
-const labels = {overview:'Overview', performance:'Performance', storage:'Storage', mods:'Mod Manager', settings:'World settings', players:'Players & access', atlas:'World Atlas', cinematics:'Cinematics', console:'Console & logs', backups:'Backups', connectivity:'Connectivity', graphics:'Graphics & distance', compatibility:'Compatibility', setup:'Setup & repair'};
+const labels = {overview:'Overview', performance:'Performance', storage:'Storage', mods:'Mod Manager', settings:'World settings', players:'Players & access', atlas:'World Atlas', characters:'Characters', cinematics:'Cinematics', console:'Console & logs', backups:'Backups', connectivity:'Connectivity', graphics:'Graphics & distance', compatibility:'Compatibility', setup:'Setup & repair'};
+const routePage=()=>{const page=location.hash.slice(1).split(/[?\/]/)[0];return labels[page]?page:'overview';};
+let previousRoute=location.hash;
 const bytes = value => {if(value == null) return '—'; if(value === 0) return '0 B'; const i = Math.min(4,Math.floor(Math.log(value)/Math.log(1024))); return `${(value/1024**i).toLocaleString(undefined,{maximumFractionDigits:i>1?2:0})} ${['B','KiB','MiB','GiB','TiB'][i]}`;};
 const number = (value, digits=1) => value == null ? '—' : Number(value).toLocaleString(undefined,{maximumFractionDigits:digits});
 const when = value => value ? new Date(value).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : 'Not yet';
@@ -284,6 +286,7 @@ const viewCurrent=(page,generation)=>state.page===page&&state.renderGeneration==
 async function render() {
   const view=++state.renderGeneration,page=state.page;$('#page-label').textContent=labels[page];$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===page));
   if(page!=='atlas'&&state.atlas){state.atlas.unmount();state.atlas=null;}
+  if(state.charactersCleanup){state.charactersCleanup();state.charactersCleanup=null;}
   try {
     if(!['overview','performance'].includes(page))$('#main').innerHTML='<div class="loading"><span class="spinner"></span>Opening '+esc(labels[page])+'…</div>';
     if(page==='overview')overview();else if(page==='performance')performance();else if(page==='storage'){const response=await api('/api/storage');if(viewCurrent(page,view))storagePage(response);}
@@ -291,6 +294,7 @@ async function render() {
     else if(page==='console')await consolePage();else if(page==='backups')await backupsPage();else if(page==='connectivity')await connectivityPage();
     else if(page==='graphics')await graphicsPage();else if(page==='compatibility')await compatibilityPage();else if(page==='setup')await setupPage();
     else if(page==='atlas'){const module=await import('/atlas.js');if(!viewCurrent(page,view))return;state.atlas=module;await state.atlas.mount({api,esc,header,button,bytes,toast,modal,confirmAction});}
+    else if(page==='characters'){const module=await import('/characters.js');if(!viewCurrent(page,view))return;const cleanup=await module.mountCharacters({root:$('#main'),api,toast,navigate:hash=>{location.hash=hash;}});if(viewCurrent(page,view))state.charactersCleanup=cleanup;else cleanup?.();}
     else if(page==='cinematics'){const module=await import('/cinematics.js');if(!viewCurrent(page,view))return;await module.mount({api,esc,header,card,bytes,toast,modal,confirmAction,request:(path,options)=>localSession.request(path,options),csrf:()=>state.csrf});}
     showJobs();
     if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');if(state.page==='players'&&$('#whitelist-list'))$('#whitelist-list').innerHTML=whitelistHtml(d);}
@@ -396,7 +400,9 @@ document.addEventListener('submit',async event=>{
 document.addEventListener('input',event=>{const e=event.target;if(e.id==='inventory-filter')$$('[data-inventory-name]').forEach(r=>r.classList.toggle('hidden',!r.dataset.inventoryName.includes(e.value.toLowerCase())));if(e.id==='compat-filter')$$('[data-compat-text]').forEach(r=>r.classList.toggle('hidden',!r.dataset.compatText.includes(e.value.toLowerCase())));if(e.id==='log-query')refreshConsole().catch(e=>toast(e.message,true));});
 document.addEventListener('change',event=>{if(event.target.id==='log-level')refreshConsole().catch(e=>toast(e.message,true));});
 window.addEventListener('hashchange',()=>{
-  state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';
+  if(state.charactersCleanup?.canLeave&&!state.charactersCleanup.canLeave()){history.replaceState(null,'',previousRoute||'#characters');return;}
+  previousRoute=location.hash;
+  state.page=routePage();
   document.body.classList.remove('menu-open');
   // Begin a newly selected page at the top; polling preserves the reading position.
   window.scrollTo(0,0);
@@ -407,4 +413,4 @@ window.addEventListener('resize',()=>{if(state.page==='overview')chart('overview
 $('#modal-close').onclick=()=>$('#modal').close();$('#menu').onclick=()=>{const open=document.body.classList.toggle('menu-open');$('#menu').setAttribute('aria-expanded',String(open));};
 document.addEventListener('keydown',event=>{if(event.key==='Escape'){document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false');}});
 const poller=new VisiblePoller(async()=>{if(!await refresh())throw new Error('Dashboard unavailable');},{delay:()=>state.jobs.some(j=>['queued','running'].includes(j.status))?3000:['overview','performance','players','console','connectivity'].includes(state.page)?5000:15000});
-(async()=>{try{const bootstrap=await api('/api/bootstrap');localSession.bind(bootstrap);if(bootstrap.test_context){$('.local-tag').textContent='DISPOSABLE TEST';document.title='A World for Two · Disposable playtest';}state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';await refresh();await render();}catch(error){$('#main').innerHTML=header('Your world is taking a moment.','Open Control Room with the local launch script.')+notice(error.message,'error');}finally{poller.start();}})();
+(async()=>{try{const bootstrap=await api('/api/bootstrap');localSession.bind(bootstrap);if(bootstrap.test_context){$('.local-tag').textContent='DISPOSABLE TEST';document.title='A World for Two · Disposable playtest';}state.page=routePage();await refresh();await render();}catch(error){$('#main').innerHTML=header('Your world is taking a moment.','Open Control Room with the local launch script.')+notice(error.message,'error');}finally{poller.start();}})();
