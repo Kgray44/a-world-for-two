@@ -1,0 +1,58 @@
+{
+  "format": "awft-living-resident-evidence:1",
+  "date": "2026-10-29",
+  "runtime": "Private construction runtime, Minecraft1.21.1/NeoForge21.1.262, candidate65/control bridge0.6.51, LivingWorld0.2.0",
+  "resident": "Barnacle Bill",
+  "entity_uuid": "b3b8aae1-171f-5d53-b453-55decabca0c4",
+  "actually_spawned": 1,
+  "normal_native_AI": true,
+  "NoAI_or_ownership_changes": 0,
+  "native_seed_request_sha256": "af4d71ddbf7feca668d6dd3000045c9db172034c3e635cd1863a7043fa20b999",
+  "native_seed_failures": 0,
+  "native_seed_cleanup_passed": true,
+  "studio_runtime_config_ack_sha256": "e8a823e177769e26b8572aaac8d90dafd692792cdde695b784f4f7f9bfd8355d",
+  "normal_player_message": "!Hello, Bill.",
+  "actual_reply": "[Butcher] Barnacle Bill: Welcome to the Anchor & Dice in Tortuga. Mind the stew; it bites harder than the crew.",
+  "native_reply_time_UTC": "2026-10-29T15:26:09.755Z",
+  "native_HOME": [
+    1249,
+    65,
+    -1172
+  ],
+  "native_JOB_SITE": [
+    1249,
+    65,
+    -1173
+  ],
+  "native_last_worked_at_poi": 2699193,
+  "observed_night_behavior": "Named Bill actually lying in his assigned blue bed after normal time command13000; no entity sleep/brain override",
+  "morning_observation": "Normal time command6000; bed vacated, resident awake. Whole-day autonomous/endurance qualification remains separate.",
+  "external_AI_enabled": false,
+  "provider_request_made": false,
+  "consent_changed": false,
+  "restart_persistence_verified": false,
+  "two_player_verified": false,
+  "owner_acceptance": false,
+  "whole_Living_World_complete": false,
+  "creature_pass_status": "Prepared habitats; no creatures added in this milestone yet",
+  "images": {
+    "barnacle-bill-dialogue-home-job.png": {
+      "sha256": "d647120bcfbe0241e1a5f551335860bccf5d10ec65423264e9ad97bb38188a35",
+      "bytes": 467955,
+      "evidence": "Unedited actual Minecraft framebuffer; first screenshot captured with normal F2; remaining views from release-excluded authenticated QA camera."
+    },
+    "barnacle-bill-sleeping.png": {
+      "sha256": "26fdab3a133beb41462c40c4e06aacbc4ddc72e02bb98adbfa8b08e5b658b8e4",
+      "bytes": 604200,
+      "evidence": "Unedited actual Minecraft framebuffer; first screenshot captured with normal F2; remaining views from release-excluded authenticated QA camera."
+    },
+    "barnacle-bill-morning.png": {
+      "sha256": "a9b788d26f7a1fe666649507ed0ca94fa68cf38e3825a1ee74c37e7f5bbcb915",
+      "bytes": 610462,
+      "evidence": "Unedited actual Minecraft framebuffer; first screenshot captured with normal F2; remaining views from release-excluded authenticated QA camera."
+    }
+  },
+  "observation_window_UTC": "2026-10-29T15:22:10Z through15:47:17Z",
+  "historical_observation_not_current_census": true,
+  "remaining_named_residents_at_observation": 9
+}

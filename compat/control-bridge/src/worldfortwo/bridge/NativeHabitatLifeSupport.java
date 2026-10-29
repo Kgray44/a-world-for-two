@@ -148,10 +148,59 @@ public final class NativeHabitatLifeSupport {
         if(raw.length!=ref.get("bytes").getAsInt()||!sha(raw).equals(ref.get("sha256").getAsString()))throw new IllegalStateException("Exact LIFE evidence bytes/hash differ");
         return JsonParser.parseString(new String(raw,StandardCharsets.UTF_8)).getAsJsonObject();
     }
+    /** Small receipt policy only; no archive hashing or Minecraft state access. */
+    static final class CheckpointReceipt {
+        static final String CANONICAL="dashboard/settlement/backup-receipt.json",LIFE="dashboard/settlement/life-backup-receipt.json";
+        static boolean retained(String path){
+            if(CANONICAL.equals(path))return false;if(LIFE.equals(path))return true;
+            throw new IllegalStateException("Only canonical or explicit LIFE checkpoint receipt allowed");
+        }
+        static boolean habitatBackup(String selection,String actual,String current){
+            // checkpoint() already verifies the retained receipt and its exact
+            // canonical link. The construction verifier keeps that original
+            // custody header while freshly checking every current habitat cell.
+            return current.equals(actual)||(LIFE.equals(selection)
+                &&"0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2".equals(actual));
+        }
+        private static String string(JsonObject doc,String key){
+            JsonElement value=doc.get(key);return value!=null&&value.isJsonPrimitive()&&value.getAsJsonPrimitive().isString()?value.getAsString():"";
+        }
+        private static boolean verified(JsonObject doc){
+            JsonElement value=doc.get("verified");return value!=null&&value.isJsonPrimitive()&&value.getAsJsonPrimitive().isBoolean()&&value.getAsBoolean();
+        }
+        static JsonObject custody(JsonObject backup){
+            JsonObject ref=backup.getAsJsonObject("source_custody");
+            if(ref==null||!CANONICAL.equals(string(ref,"path"))||!string(ref,"sha256").matches("[a-f0-9]{64}"))throw new IllegalStateException("Pinned canonical custody receipt required");
+            JsonElement bytes=ref.get("bytes");
+            if(bytes==null||!bytes.isJsonPrimitive()||!bytes.getAsJsonPrimitive().isNumber())throw new IllegalStateException("Bounded custody receipt bytes required");
+            int count=bytes.getAsBigDecimal().intValueExact();if(count<1||count>4096)throw new IllegalStateException("Bounded custody receipt bytes required");
+            return ref;
+        }
+        static void validate(String path,String selection,JsonObject backup,String id,String sha,JsonObject canonical){
+            boolean life=retained(path);
+            if(!selection.isEmpty()&&!selection.equals(path))throw new IllegalStateException("Explicit checkpoint selection differs");
+            // Keep the legacy canonical contract unchanged.
+            if(!backup.get("verified").getAsBoolean()||!backup.get("sha256").getAsString().equals(sha))throw new IllegalStateException("Current LIFE checkpoint differs");
+            if(!life)return;
+            if(!LIFE.equals(selection)||!verified(backup)||!"awft-life-retained-checkpoint:1".equals(string(backup,"format"))
+                ||!string(backup,"id").matches("[0-9]{8}T[0-9]{6}Z-[a-f0-9]{6}")||!string(backup,"id").equals(id)
+                ||!string(backup,"sha256").matches("[a-f0-9]{64}"))throw new IllegalStateException("Verified retained LIFE checkpoint identity/selection differs");
+            custody(backup);
+            if(canonical==null||!verified(canonical)||!"20261028T191243Z-6ad3a8".equals(string(canonical,"id"))
+                ||!"0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2".equals(string(canonical,"sha256")))throw new IllegalStateException("Verified canonical6ad custody identity differs");
+        }
+    }
     private void checkpoint()throws Exception{
-        if(!owned(reference("current_backup").get("path").getAsString()).equals(journal.resolve("backup-receipt.json")))throw new IllegalStateException("Canonical current checkpoint required");
-        JsonObject backup=read(reference("current_backup"),4096);
-        if(!backup.get("verified").getAsBoolean()||!backup.get("sha256").getAsString().equals(request.get("checkpoint_sha256").getAsString()))throw new IllegalStateException("Current LIFE checkpoint differs");
+        String path=reference("current_backup").get("path").getAsString();boolean life=CheckpointReceipt.retained(path);
+        if(!owned(path).equals(journal.resolve(life?"life-backup-receipt.json":"backup-receipt.json")))throw new IllegalStateException("Owned checkpoint receipt required");
+        JsonObject backup=read(reference("current_backup"),4096),canonical=null;
+        if(life){
+            JsonObject custody=CheckpointReceipt.custody(backup);
+            if(!owned(custody.get("path").getAsString()).equals(journal.resolve("backup-receipt.json")))throw new IllegalStateException("Canonical source custody required");
+            canonical=read(custody,4096);
+        }
+        CheckpointReceipt.validate(path,request.has("checkpoint_receipt")?request.get("checkpoint_receipt").getAsString():"",backup,
+            request.has("checkpoint_id")?request.get("checkpoint_id").getAsString():"",request.get("checkpoint_sha256").getAsString(),canonical);
     }
     private static void nativeCode(Class<?> type,String expected)throws Exception{
         try(InputStream in=type.getResourceAsStream(type.getSimpleName()+".class")){
@@ -284,7 +333,7 @@ public final class NativeHabitatLifeSupport {
         if(censusMembers.size()!=residents.size()||chunks.size()>MAX_CHUNKS)throw new IllegalStateException("LIFE batch/census crosses its finite identity/chunk limits");
         if(habitatPlan!=null){
             if(!habitatPlan.get("format").getAsString().equals("awft-native-settlement:1")||!habitatPlan.get("seed").getAsString().equals(plan.get("seed").getAsString())
-                ||!habitatPlan.get("world_path").getAsString().equals(plan.get("world_path").getAsString())||!habitatPlan.get("backup_sha256").getAsString().equals(request.get("checkpoint_sha256").getAsString())
+                ||!habitatPlan.get("world_path").getAsString().equals(plan.get("world_path").getAsString())||!CheckpointReceipt.habitatBackup(request.has("checkpoint_receipt")?request.get("checkpoint_receipt").getAsString():"",habitatPlan.get("backup_sha256").getAsString(),request.get("checkpoint_sha256").getAsString())
                 ||!habitatPlan.getAsJsonArray("commands").isEmpty()||!habitatPlan.getAsJsonArray("block_entities").isEmpty())throw new IllegalStateException("Verified habitat plan identity/contents differ");
             Map<BlockPos,BlockState> verified=new HashMap<>();JsonArray palette=habitatPlan.getAsJsonArray("palette"),rows=habitatPlan.getAsJsonArray("blocks");
             if(rows.size()>blockLimit||rows.size()!=habitatVerify.get("blocks").getAsInt())throw new IllegalStateException("Exact verified habitat cell count differs");

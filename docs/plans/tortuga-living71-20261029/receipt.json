@@ -1,0 +1,991 @@
+{
+  "schema": "awft-public-receipt-overhead-update:1",
+  "created": "2026-10-29T19:37:15.266751+00:00",
+  "image": "tortuga-living71-verified-overhead.png",
+  "image_sha256": "6df6f942356748316eade3d0916ce2064508ad2afcbf210db66119e27fc3bf3f",
+  "baseline_public_image": "docs/plans/tortuga-living52-20261029/tortuga-living52-verified-overhead.png",
+  "baseline_image_sha256": "92cb7166cbcc35254a13e5d0c594cdf412d8d577f814172eeacb691e70b5643d",
+  "baseline_receipt_sha256": "b24b00d895a7a4e779349ec1365d1c54a51c5aa53cd0aa62dec82dc77dd30559",
+  "geometry_frame": {
+    "x0": 968,
+    "z0": -1376,
+    "left": 95,
+    "top": 190,
+    "pixels_per_block": 5
+  },
+  "actual_introduced_villagers": 71,
+  "unique_introduced_properties": 71,
+  "property_allocation": {
+    "East_compounds": 39,
+    "West36_new_additions": 14,
+    "West15_retained_refined": 7,
+    "earlier_West_baseline": 11
+  },
+  "West36_remaining_unpopulated": 22,
+  "managed_intents": 78,
+  "managed_villagers": 71,
+  "prior_managed_nonvillagers": 7,
+  "new_animals_spawned": 0,
+  "refused_animal_inspection_not_promoted_to_spawn": true,
+  "latest19_introduction_Native_proofs": [
+    {
+      "operation": "seed",
+      "terminal_sha256": "ecd196a0ca684e34fb742b58b7a096a3024d0a08ff4cc11023f5318f350f89ef",
+      "request_or_plan_sha256": "9653cff241d00d0546c05a885edd7bca624eb7521b185fe1444c7028ce3ec5e2",
+      "finished": "2026-10-29T19:29:43.468532Z",
+      "complete_marker_verified": true,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_futures": 0,
+      "spawned": 15
+    },
+    {
+      "operation": "seed",
+      "terminal_sha256": "502d17ecfc02f5e5a3aa458f4b7c9c50412f2929714e10dd9dab30d27517e256",
+      "request_or_plan_sha256": "d5d8b435ada08a9c07f961759ed4ca3cf355eab3157c71554bcaacd7d54b538a",
+      "finished": "2026-10-29T19:29:47.717684Z",
+      "complete_marker_verified": true,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_futures": 0,
+      "spawned": 4
+    }
+  ],
+  "new_property_markers": [
+    {
+      "number": "R1",
+      "property_id": "west-retained/western-ten/sailmaker",
+      "name": "The Lark’s Canvas",
+      "category": "west15_retained_refined",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "R2",
+      "property_id": "west-retained/western-ten/baker",
+      "name": "The Copper Crust",
+      "category": "west15_retained_refined",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "R3",
+      "property_id": "west-retained/western-ten/stargazer",
+      "name": "The Small Astrolabe",
+      "category": "west15_retained_refined",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "R4",
+      "property_id": "west-retained/western-ten/weaver",
+      "name": "Wren & Willow",
+      "category": "west15_retained_refined",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "R5",
+      "property_id": "west-retained/western-ten/soup-kitchen",
+      "name": "The Kindly Kettle",
+      "category": "west15_retained_refined",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "R6",
+      "property_id": "west-retained/western-ten/mariner",
+      "name": "The Two Tides",
+      "category": "west15_retained_refined",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "R7",
+      "property_id": "west-retained/western-ten/bookbinder",
+      "name": "The Bent Page",
+      "category": "west15_retained_refined",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "W14",
+      "property_id": "west-new/tortuga-fill-tide-stove-west-quay/1",
+      "name": "The Tide Stove",
+      "category": "west36_new",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B1",
+      "property_id": "west-baseline/tideglass",
+      "name": "Tideglass Bottle & Chart",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B2",
+      "property_id": "west-baseline/thimble-salt",
+      "name": "Thimble & Salt",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B3",
+      "property_id": "west-baseline/crooked-iron",
+      "name": "The Crooked Iron",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B4",
+      "property_id": "west-baseline/captains-rest",
+      "name": "Captain’s Rest",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B5",
+      "property_id": "west-baseline/sounding-line",
+      "name": "The Sounding Line",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B6",
+      "property_id": "west-baseline/the-bent-wick",
+      "name": "The Bent Wick",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B7",
+      "property_id": "west-baseline/widow-finch’s-cooperage",
+      "name": "Widow Finch’s Cooperage",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B8",
+      "property_id": "west-baseline/keel-quill",
+      "name": "Keel & Quill Bookbindery",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B9",
+      "property_id": "west-baseline/kettle-bend",
+      "name": "Kettle Bend Supper House",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B10",
+      "property_id": "west-baseline/mugs-mending",
+      "name": "Mugs & Mending",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    },
+    {
+      "number": "B11",
+      "property_id": "west-baseline/needlewake",
+      "name": "Needlewake Cloth & Home",
+      "category": "west_retained_baseline",
+      "marker_scope": "assigned property, never live actor position"
+    }
+  ],
+  "retained52_property_markers": {
+    "East": [
+      {
+        "number": 1,
+        "compound_id": "copper-kettle",
+        "name": "Copper Kettle Chandlery",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 2,
+        "compound_id": "lantern-harbor-inn",
+        "name": "Lantern Harbor Inn",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 3,
+        "compound_id": "bent-gull",
+        "name": "The Bent Gull Quayside",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 4,
+        "compound_id": "tin-whistle",
+        "name": "Tin Whistle House",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 5,
+        "compound_id": "tide-broker",
+        "name": "Tide Broker’s House",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 6,
+        "compound_id": "copper-bell",
+        "name": "Copper Bell Bindery",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 7,
+        "compound_id": "crooked-inn",
+        "name": "Crooked Lantern Rooms",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 8,
+        "compound_id": "bridge-customs",
+        "name": "The Crooked Customs",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 9,
+        "compound_id": "worn-book",
+        "name": "The Worn Book",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 10,
+        "compound_id": "ropes-pearl",
+        "name": "Ropes & Pearl",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 11,
+        "compound_id": "marrow-side",
+        "name": "Marrow Side Cloth House",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 12,
+        "compound_id": "keel-store",
+        "name": "Keel Store & Galley",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 13,
+        "compound_id": "shoal-warden",
+        "name": "Shoal Warden’s Quay",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 14,
+        "compound_id": "bridge-cooper",
+        "name": "Bridge Cooperage",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 15,
+        "compound_id": "net-mender",
+        "name": "Net Mender’s Hall",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 16,
+        "compound_id": "tide-fish",
+        "name": "Tidefish Hall",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 17,
+        "compound_id": "moon-branch",
+        "name": "Moon Branch Rooms",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 18,
+        "compound_id": "lampblack",
+        "name": "Lampblack Court",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 19,
+        "compound_id": "moth-candle",
+        "name": "Moth & Candle",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 20,
+        "compound_id": "nail-drift",
+        "name": "Nail & Drift",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 21,
+        "compound_id": "crooked-row",
+        "name": "Crooked Row Outfitters",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 22,
+        "compound_id": "old-rum",
+        "name": "Old Rum Warehouse",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 23,
+        "compound_id": "lantern-cod",
+        "name": "Lantern Cod Galley",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 24,
+        "compound_id": "sail-fool",
+        "name": "The Sailor’s Folly",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 25,
+        "compound_id": "anchor-dice",
+        "name": "Anchor & Dice",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 26,
+        "compound_id": "bay-kettle",
+        "name": "Bay Kettle Rooms",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 27,
+        "compound_id": "navy-blue",
+        "name": "Navy Blue Tailor",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 28,
+        "compound_id": "quarter-jack",
+        "name": "Quarter Jack’s Hall",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 29,
+        "compound_id": "sandbar",
+        "name": "Sandbar Carpenter",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 30,
+        "compound_id": "east-coal",
+        "name": "East Coal Chandlery",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 31,
+        "compound_id": "willow-door",
+        "name": "Willow Door House",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 32,
+        "compound_id": "foxtail",
+        "name": "Foxtail House",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 33,
+        "compound_id": "cook-snap",
+        "name": "Cook & Snap",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 34,
+        "compound_id": "white-clam",
+        "name": "White Clam Warehouse",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 35,
+        "compound_id": "river-stone",
+        "name": "River Stone Rooms",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 36,
+        "compound_id": "split-shell",
+        "name": "Split Shell House",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 37,
+        "compound_id": "harbor-chair",
+        "name": "Harbor Chair & Cup",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 38,
+        "compound_id": "pelican-forge",
+        "name": "Pelican Forge",
+        "marker_scope": "assigned compound, not live actor location"
+      },
+      {
+        "number": 39,
+        "compound_id": "thin-sail",
+        "name": "Thin Sail Lookout",
+        "marker_scope": "assigned compound, not live actor location"
+      }
+    ],
+    "West": [
+      {
+        "number": "W1",
+        "property_id": "west-new/tortuga-western-spit/7",
+        "name": "The Seated Needle",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W2",
+        "property_id": "west-new/tortuga-fill-net-needle-crook/2",
+        "name": "The Mended Wake",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W3",
+        "property_id": "west-new/tortuga-fill-moon-tackle-returns/1",
+        "name": "Moonwatch Fittings",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W4",
+        "property_id": "west-new/tortuga-western-spit/3",
+        "name": "The Red Thread",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W5",
+        "property_id": "west-new/tortuga-fill-half-tide-hook/1",
+        "name": "Soot & Scone",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W6",
+        "property_id": "west-new/tortuga-western-spit/2",
+        "name": "Saltwind Fittings",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W7",
+        "property_id": "west-new/tortuga-fill-net-needle-crook/1",
+        "name": "The Cork & Needle",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W8",
+        "property_id": "west-new/tortuga-fill-half-tide-hook/2",
+        "name": "The Half-Tide",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W9",
+        "property_id": "west-new/tortuga-fill-tenon-watch-hook/1",
+        "name": "The Crooked Tenon",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W10",
+        "property_id": "west-new/tortuga-fill-moon-tackle-returns/2",
+        "name": "The Gull’s Last Hook",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W11",
+        "property_id": "west-new/tortuga-fill-tenon-watch-hook/3",
+        "name": "Lantern at the Bend",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W12",
+        "property_id": "west-new/tortuga-fill-bent-ropewalk-coast/1",
+        "name": "The Bent Ropewalk",
+        "marker_scope": "assigned property, not live actor location"
+      },
+      {
+        "number": "W13",
+        "property_id": "west-new/tortuga-fill-inner-west-current-9/9",
+        "name": "The Copper Eel",
+        "marker_scope": "assigned property, not live actor location"
+      }
+    ]
+  },
+  "identity_mapping": "Exact SHA256(property_id)[:16] derived source-group bindings, matched to actual Native recipe membership; no position fitting.",
+  "markers_are_not_live_actor_positions": true,
+  "actual_new_HOME_fitouts": {
+    "sites": 19,
+    "new_public_AIR_workstations": 18,
+    "completion_sha256": "ef3f92bd86c654db84c30f943a25484f1cc2ae17aec3c15c77762fd1a3b46cf8",
+    "groups": [
+      {
+        "completion_sha256": "f2c8dda4e74177efc952957268c376b6e7b6ea97489b95c9159c710981e0e068",
+        "actual_HOME_sites": 4,
+        "actual_new_public_workstations": 4,
+        "Native_proofs": [
+          {
+            "operation": "verify",
+            "terminal_sha256": "69a80c2623efe39bcf9cbdecc37ad97539e97512019caa1de8f6f706057b9481",
+            "request_or_plan_sha256": "f10c952089963fa7b441c30b756f68a7c1e8d72a4d7b102d7130d4f43dbbb689",
+            "finished": "2026-10-29T19:21:04.862326100Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "7dd604f95cc44d162dc9e3b8a2d52704e06e561ea7fed60793bc07751dc8090a",
+            "request_or_plan_sha256": "6abc8be0c2515b83587e6c846dfb70edc26bf1a444f8cef306024da5e3599c1f",
+            "finished": "2026-10-29T19:21:05.411947Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "place",
+            "terminal_sha256": "208df38adf2b38de8a82c6156e760a48d97a941da1f2529f19d4081ad8c35a48",
+            "request_or_plan_sha256": "7a67f86533b9e61095c0dbe3f7b6d7dc77be3ca197016cfc2d2c12df1773128d",
+            "finished": "2026-10-29T19:21:05.913532800Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "settle",
+            "terminal_sha256": "ae9f08c9f77868d894476f2703272da1a3ba9e86be3e68b3438686dc0e4a6f18",
+            "request_or_plan_sha256": "7a67f86533b9e61095c0dbe3f7b6d7dc77be3ca197016cfc2d2c12df1773128d",
+            "finished": "2026-10-29T19:21:06.511512700Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "e8f5e85449024f1fa24ba264903d60bcdf1b0f1d3a16fe19eb841b99740d1da7",
+            "request_or_plan_sha256": "41287f8de0944fc66f5e391018a1082cffccd24926bc724875effe6e773dacce",
+            "finished": "2026-10-29T19:21:07.275404800Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          }
+        ]
+      },
+      {
+        "completion_sha256": "9ccaf604aea2fdbfc8c1f6b4551c53927be00049c050722fe5500d1276edc351",
+        "actual_HOME_sites": 3,
+        "actual_new_public_workstations": 3,
+        "Native_proofs": [
+          {
+            "operation": "verify",
+            "terminal_sha256": "a747cb189c3f54f190a559a0efc4960d1f134ea69a49f654d1c510091a8aa2e9",
+            "request_or_plan_sha256": "6ca4379b07fd52ba68ec4062cfd69ed2b254562e05799c6bb381aa337f2da012",
+            "finished": "2026-10-29T19:21:07.912683100Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "cf80d2d045f48c92baae549d185a555edbcce262e2a08b23e30b9d4abb12bb42",
+            "request_or_plan_sha256": "dd2f2379c068ef069a46a6a9eef7f82b23a0980a395a415406396d3d3d9470dc",
+            "finished": "2026-10-29T19:21:08.660657300Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "place",
+            "terminal_sha256": "258b2e93199ffb6b4f64bdc072e96f694de5cf3035fb031dbb14709f2f022386",
+            "request_or_plan_sha256": "c3627b65536afae155bf61efc54a07894b16052d0cd7753452dd2c5cf9d56a9d",
+            "finished": "2026-10-29T19:21:09.012095400Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "settle",
+            "terminal_sha256": "543bb162d56d553b6caf92ddc694b8c0e688f974c6b089fb5636ce9583838fb7",
+            "request_or_plan_sha256": "c3627b65536afae155bf61efc54a07894b16052d0cd7753452dd2c5cf9d56a9d",
+            "finished": "2026-10-29T19:21:09.660564400Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "b9534c4097dd05fc93f39104dbf17d3b8d787ea29a25a91ab3d0964c044c3785",
+            "request_or_plan_sha256": "9ffa3b89fb7ea459c54da8469b8df22a38ec119ef5c038973c7eb0bcf7e78e52",
+            "finished": "2026-10-29T19:21:10.363241600Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          }
+        ]
+      },
+      {
+        "completion_sha256": "19e66a12c9ab8dc6ced53b24a1ddf498d03cff4813be8c3710b244b30b62181e",
+        "actual_HOME_sites": 4,
+        "actual_new_public_workstations": 4,
+        "Native_proofs": [
+          {
+            "operation": "verify",
+            "terminal_sha256": "13bd5b35aa86b52135aada9c977491882900b766ac216efe6c3277d339a7e9b6",
+            "request_or_plan_sha256": "170176dd4f2666afd4014fe97990cfb128ef1df236c0e6e8ec1679da9276394d",
+            "finished": "2026-10-29T19:21:11.111848800Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "97f9c528d4337262018b80a7640422784877bc08160582e765317dc98cd94c0e",
+            "request_or_plan_sha256": "98555f5c6b2520deb19723d0ee6041d3eb5f0de2445cf95c8c2d6bb32610c506",
+            "finished": "2026-10-29T19:21:11.758223700Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "place",
+            "terminal_sha256": "aca8a6a57a8a43058cb5e3c2e6cf0cfe1b3a559367d92adbb7e2bdd80b3c916d",
+            "request_or_plan_sha256": "6659f32bbfa1f6ea34594a01a37ba1958a3770b80d927fb5462325c999c6be03",
+            "finished": "2026-10-29T19:21:12.162814400Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "settle",
+            "terminal_sha256": "5cc64b5aa987ac311e7045e5fd49bccf059fd6bee25a4f18be84718d63b31ee3",
+            "request_or_plan_sha256": "6659f32bbfa1f6ea34594a01a37ba1958a3770b80d927fb5462325c999c6be03",
+            "finished": "2026-10-29T19:21:12.810730900Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "fa056f98dfa918fd07c3def574b7dcb86f4d0f74c2aef8ede2c09dc85faf229c",
+            "request_or_plan_sha256": "18224abffe8401f3959e4e3b478cea5d636dd49cd790f7ac7fb488f61d4a0ffc",
+            "finished": "2026-10-29T19:21:13.658594900Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          }
+        ]
+      },
+      {
+        "completion_sha256": "12934382543f4a1e3af29b94a83bd111bef4146d02c3daf3e712ae307552a250",
+        "actual_HOME_sites": 4,
+        "actual_new_public_workstations": 4,
+        "Native_proofs": [
+          {
+            "operation": "verify",
+            "terminal_sha256": "237ae48803157551c2c1478fd437c572e5ef189552a672285a20cc5654612113",
+            "request_or_plan_sha256": "e1ed665cfdfd5a96a2c18f3adeef4446c219148b7c64ca8635579475cbfda33b",
+            "finished": "2026-10-29T19:21:14.262867200Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "c151c915b19811c48cba2642023094c10e7d6b73d37114b8da0817cba1cce66c",
+            "request_or_plan_sha256": "bb6cd7a830366e6779e62e2118dce6eb2c016001ae821a22163e03c2bf21281e",
+            "finished": "2026-10-29T19:21:15.157699400Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "place",
+            "terminal_sha256": "16f0888a1b61c81828c60afbbb65f003f01dcf06390a1d0ea992216a22c86ce6",
+            "request_or_plan_sha256": "0ccebc01ae4f6c89fdb017d396e6746e2dc4bbb95d8bf1e75b05f50c4cc69b3d",
+            "finished": "2026-10-29T19:21:15.462461100Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "settle",
+            "terminal_sha256": "7773fbb37d08f6267e5f41832841385371e609f1c9e36e78606812800dfab5de",
+            "request_or_plan_sha256": "0ccebc01ae4f6c89fdb017d396e6746e2dc4bbb95d8bf1e75b05f50c4cc69b3d",
+            "finished": "2026-10-29T19:21:16.111720200Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "2811fd44374472a7c5e2216c6255e5cdaa2f7d709f6f30ca90088ad10bbd607c",
+            "request_or_plan_sha256": "d8514385687f0543ef9ae91b8c9f868464502e1513f5dedbac208baa7a3443ad",
+            "finished": "2026-10-29T19:21:17.010231700Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          }
+        ]
+      },
+      {
+        "completion_sha256": "f06646d8ce2f5e0ea8bd086a56ebaec1a0697552104b844ab8e10ee293bdcf1f",
+        "actual_HOME_sites": 3,
+        "actual_new_public_workstations": 3,
+        "Native_proofs": [
+          {
+            "operation": "verify",
+            "terminal_sha256": "fb3ca871a002af458cbd1bd1b1f0d89b56be8451ff679fbdcb3d168cf9495b2c",
+            "request_or_plan_sha256": "cd8f40f07fe18a9cfe64d4a19b58507a097996a92c341ed6db20ab1633c0d3ee",
+            "finished": "2026-10-29T19:21:17.460343300Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "248659b745d1abcd89ec9fef22f67070271073be29f02ddd378d4b49a5ce11da",
+            "request_or_plan_sha256": "697b223c4960ac7f406ed79527c0e92c4d61c877b7f87ddec87015b05baa4e04",
+            "finished": "2026-10-29T19:21:18.261377500Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "place",
+            "terminal_sha256": "92546411587ad23526bb1dd262ba6bb210f9fb61a0143b3d90f4e7c80f16cb21",
+            "request_or_plan_sha256": "e54a6bf6fcc038947d207e623c7879bc52662a208538dfe68ac9a8d2c688bf2d",
+            "finished": "2026-10-29T19:21:18.711640300Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "settle",
+            "terminal_sha256": "3a7ac1e69881ccb592a795ea30fc6507e4925fccba51870f6940c8273216ef43",
+            "request_or_plan_sha256": "e54a6bf6fcc038947d207e623c7879bc52662a208538dfe68ac9a8d2c688bf2d",
+            "finished": "2026-10-29T19:21:19.362380500Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "bc36eec3c232443a1681880fe897a5cbbb8bcf0f4c3038bb33c812ad2e7203c3",
+            "request_or_plan_sha256": "38f7ac3e1f912fae0d3df70e31873b8b721e4ea8f79056c6013677e71f7a7064",
+            "finished": "2026-10-29T19:21:20.159296100Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          }
+        ]
+      },
+      {
+        "completion_sha256": "757d3eaf4b5b0908f91857cb81823c13933ae504fe93df5cad0e9b32538a6d3c",
+        "actual_HOME_sites": 1,
+        "actual_new_public_workstations": 0,
+        "Native_proofs": [
+          {
+            "operation": "verify",
+            "terminal_sha256": "9e55aac7791e482dd81078298824847d55615db69acfd6df20f74a6c57e4f664",
+            "request_or_plan_sha256": "f4c05cd980c6cd1c783f95598b09cf3201e9b12fe4827f3674bfc8ae74366283",
+            "finished": "2026-10-29T19:22:59.809429700Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          },
+          {
+            "operation": "verify",
+            "terminal_sha256": "f640a190b6f166f0829a6dcd86fbfda1df63ec6e3289524e101669138c96f166",
+            "request_or_plan_sha256": "33b47560244713cd3b2c19257220c35ae735f85468e2fea7f6451c9a9428b131",
+            "finished": "2026-10-29T19:23:00.407801600Z",
+            "complete_marker_verified": true,
+            "cleanup_required": false,
+            "temporary_tickets_remaining": 0,
+            "pending_shared_futures": 0
+          }
+        ]
+      }
+    ]
+  },
+  "actual_removed_bed_decor": {
+    "cells": 3,
+    "completion_sha256": "e42f7bac245f17c0f6b23a699d1b3d754759c9fbc747545badf09133deda8801",
+    "Native_proofs": [
+      {
+        "operation": "verify",
+        "terminal_sha256": "36de35872e31cfb9d99a7d9aa2cb046614d32823aab74dc1eb1e49d522e586fa",
+        "request_or_plan_sha256": "0fe8c83f2d7f19fb8caeac051bd1fe2444a2709bb8f1a096cd962f22d6d95b10",
+        "finished": "2026-10-29T19:21:00.413887400Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "ef8a83275a2dd67f5ccb73ad7e65fbf6b903b98016615c1ac85e7b8a0333406a",
+        "request_or_plan_sha256": "13cbefe07c6f2d5040b48f16b9625824a129dd980182b22f27cd1492ab85f409",
+        "finished": "2026-10-29T19:21:01.061864500Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "51f280b3e7e147b3220b0bccea8d3d89e39f64b038feb81957c5dc2b038a68dc",
+        "request_or_plan_sha256": "4e7a05b6d2ddf5f67da8595ff8df766a1f12af267854dffa33eac90011ce169a",
+        "finished": "2026-10-29T19:21:01.564298800Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "d232eed9e7a6a86f0eb325d41d3ded00ead499e4fba7dedbc118831435213494",
+        "request_or_plan_sha256": "4e7a05b6d2ddf5f67da8595ff8df766a1f12af267854dffa33eac90011ce169a",
+        "finished": "2026-10-29T19:21:02.166945900Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "58cbe20f918710942dd83dcda0bd291c96afe7e2a5adf7abda779fff278cb06f",
+        "request_or_plan_sha256": "ed4f0a493c0ec0abe81913d252f613d7116455c0fa23f4d61e89722fc91bd13d",
+        "finished": "2026-10-29T19:21:02.763518800Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "6a5657c647b0c676258bb45ae5bfcfcf92c0c0c60087bf0f612c5aa7b836e5f5",
+        "request_or_plan_sha256": "f8b37ccf7e8e6dfadc3ab23514107f8f4c2307bbc9b4575115529a39bf9aa54f",
+        "finished": "2026-10-29T19:21:03.511457100Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "6d86c6bead1bf901eb8cad3938a7c42b7698bb97d12172a07b998d9bf4d7d8e7",
+        "request_or_plan_sha256": "f8b37ccf7e8e6dfadc3ab23514107f8f4c2307bbc9b4575115529a39bf9aa54f",
+        "finished": "2026-10-29T19:21:04.008543600Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      }
+    ],
+    "sleep_behavior_acceptance": false
+  },
+  "actual_forest_infill": {
+    "targets": 474,
+    "projected_target_states_in_map_frame": 0,
+    "completion_sha256": "57971fa0b9fc9f7154fc86bb442516f5d3cc2bf38c5b5b2d3089e98d95cc9a8c",
+    "Native_proofs": [
+      {
+        "operation": "verify",
+        "terminal_sha256": "81b591eb677a324e42858118563dd233a5372e44931100fac2bb92d0e34a4e17",
+        "request_or_plan_sha256": "d3cf67b3172132b71b873368db308435d3383c8e2df8e569bb819d2eac205916",
+        "finished": "2026-10-29T19:23:04.958489500Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "750b6c1a1e2777749b1ef8549088298ac1f28378564772574214cb0e3844630f",
+        "request_or_plan_sha256": "4af125131c972169c6095408d359c333b78acabcfa22594d8da46e30c5a7bedb",
+        "finished": "2026-10-29T19:23:05.861737400Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "e4e8d51180fecd26b7baaa7d5d88cc4011b6cc9b65558f054f0153a32781b82a",
+        "request_or_plan_sha256": "1dd4039824a1eaae6356e8f214d5348793c4a0346ed8363c99cb19326c753fc4",
+        "finished": "2026-10-29T19:23:06.963989600Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "154c842a45977919ae117d6440263ebced786a057acfbe13d95d0ea0468aaac8",
+        "request_or_plan_sha256": "1dd4039824a1eaae6356e8f214d5348793c4a0346ed8363c99cb19326c753fc4",
+        "finished": "2026-10-29T19:23:08.414302900Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "6b82007fd19d5b51be3ca97654df1ffc5f4a18a9888f76f7e7fcbeb3c0539984",
+        "request_or_plan_sha256": "e41221a400c9bc769c88b01a337c3d63d4a384e071e5d47ee60435ddeca99dfc",
+        "finished": "2026-10-29T19:23:09.410081700Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "002b532df800e691ad8d6043322cdf63f5c3a9a44a830a12a712b7c2384f4448",
+        "request_or_plan_sha256": "e41221a400c9bc769c88b01a337c3d63d4a384e071e5d47ee60435ddeca99dfc",
+        "finished": "2026-10-29T19:23:10.108836500Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      }
+    ],
+    "whole_forest_complete": false,
+    "actual_visual_review": "pending"
+  },
+  "historical_saved_snapshot": {
+    "id": "20261029T190728Z-0d0f5a",
+    "villagers": 52,
+    "managed_entities": 59,
+    "latest19_not_included": true
+  },
+  "latest19_backed_up_or_behavior_cycle_verified": false,
+  "retained_baseline_greenery_and_lights": {
+    "source52_receipt_sha256": "b24b00d895a7a4e779349ec1365d1c54a51c5aa53cd0aa62dec82dc77dd30559",
+    "unchanged_static_land_and_district_geometry": true
+  },
+  "source_actor_counts_used_as_actual": false,
+  "raw_NBT_UUIDs_or_private_plans_exported": false,
+  "artistic_acceptance": false,
+  "restart_or_multiplayer_acceptance": false,
+  "native_actions": 0,
+  "world_writes": 0
+}

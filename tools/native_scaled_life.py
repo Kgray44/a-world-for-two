@@ -14,6 +14,40 @@ MIB=1024**2
 CLASSES={'native_class_sha256':'NativeHabitatLifeSupport','native_policy_sha256':'HabitatLifePolicy',
          'native_town_authority_sha256':'TownLifeAuthority','native_scale_policy_sha256':'ScaledLifeBudget'}
 MEMBERS=('recipe','woodland','r5_reservation','safety_index','uuid_census','habitat_census','population_budget','population_ramp')
+CANONICAL_CHECKPOINT='dashboard/settlement/backup-receipt.json'
+LIFE_CHECKPOINT='dashboard/settlement/life-backup-receipt.json'
+LIFE_CHECKPOINT_FORMAT='awft-life-retained-checkpoint:1'
+CANONICAL_CUSTODY_ID='20261028T191243Z-6ad3a8'
+CANONICAL_CUSTODY_SHA='0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2'
+
+
+def checkpoint_input(home,source):
+    """Select only the legacy receipt or one explicitly linked LIFE receipt."""
+    selected=source.get('checkpoint_receipt',CANONICAL_CHECKPOINT)
+    if selected not in (CANONICAL_CHECKPOINT,LIFE_CHECKPOINT):
+        raise UserError('Only the canonical or explicit LIFE checkpoint receipt is allowed')
+    home=Path(home).absolute()
+    path=owned_regular(home,home/selected,4096 if selected==LIFE_CHECKPOINT else 8192)
+    current=read_json(path)
+    if not isinstance(current,dict):raise UserError('An actual checkpoint receipt object is required')
+    if selected==LIFE_CHECKPOINT:
+        if(current.get('format')!=LIFE_CHECKPOINT_FORMAT or current.get('verified')is not True
+                or not isinstance(current.get('id'),str)or not re.fullmatch(r'[0-9]{8}T[0-9]{6}Z-[a-f0-9]{6}',current['id'])
+                or not isinstance(current.get('sha256'),str)or not re.fullmatch(r'[a-f0-9]{64}',current['sha256'])):
+            raise UserError('A verified actual retained LIFE checkpoint identity is required')
+        custody=current.get('source_custody',{})
+        if(not isinstance(custody,dict)or custody.get('path')!=CANONICAL_CHECKPOINT
+                or type(custody.get('bytes'))is not int or not 0<custody['bytes']<=4096
+                or not isinstance(custody.get('sha256'),str)or not re.fullmatch(r'[a-f0-9]{64}',custody['sha256'])):
+            raise UserError('LIFE checkpoint must pin the exact canonical custody receipt')
+        raw=owned_regular(home,home/CANONICAL_CHECKPOINT,4096).read_bytes()
+        if len(raw)!=custody['bytes']or hashlib.sha256(raw).hexdigest()!=custody['sha256']:
+            raise UserError('Canonical custody receipt bytes/hash changed')
+        canonical=json.loads(raw)
+        if(canonical.get('verified')is not True or canonical.get('id')!=CANONICAL_CUSTODY_ID
+                or canonical.get('sha256')!=CANONICAL_CUSTODY_SHA):
+            raise UserError('LIFE checkpoint must preserve the verified canonical6ad identity')
+    return path,current
 
 
 def census(snapshot,members,checkpoint_sha,recipe_sha):
@@ -76,7 +110,7 @@ def bind(home,source,source_sha,candidate,bridge,jar_sha,operation='inspect',nat
         raise UserError('Exact owned private stage and explicit LIFE operation required')
     source_ref=reference(home,source,2*MIB)
     if source_ref['sha256']!=source_sha:raise UserError('Exact reviewed cohort source differs')
-    doc=read_json(source);checkpoint_path=home/'dashboard/settlement/backup-receipt.json';current=read_json(owned_regular(home,checkpoint_path,8192))
+    doc=read_json(source);checkpoint_path,current=checkpoint_input(home,doc)
     owner=read_json(owned_regular(home,home/'dashboard/artistic-owner.json',65536))
     if (doc.get('format')!='awft-scaled-life-cohort-source:1'or current.get('verified')is not True
             or(doc.get('checkpoint_id'),doc.get('checkpoint_sha256'))!=(current.get('id'),current.get('sha256'))
@@ -129,6 +163,10 @@ def bind(home,source,source_sha,candidate,bridge,jar_sha,operation='inspect',nat
                 or any(inspected.get(k)!=v for k,v in pins.items())
                 or inspected.get('recipe',{}).get('sha256')!=refs['recipe']['sha256']):
             raise UserError('Native INSPECT did not run this actual current helper/recipe/checkpoint')
+        if doc.get('checkpoint_receipt')==LIFE_CHECKPOINT and(
+                inspected.get('checkpoint_receipt')!=LIFE_CHECKPOINT or inspected.get('checkpoint_id')!=current['id']
+                or inspected.get('current_backup')!=reference(home,checkpoint_path,4096)):
+            raise UserError('Native INSPECT used a different retained LIFE receipt identity')
         refs['native_inspect']=reference(home,proof_path,512*1024)
         from tools.artistic_quay_prototype import fresh_proof
         habitat=read_json(home/refs['habitat_plan']['path'])
@@ -136,6 +174,8 @@ def bind(home,source,source_sha,candidate,bridge,jar_sha,operation='inspect',nat
     request={'format':'awft-native-habitat-life:4','allowed_operation':operation,'candidate_version':candidate,'bridge_version':bridge,
              'pack_sha256':pack,'neoforge_version':'21.1.262','checkpoint_sha256':current['sha256'],'current_backup':reference(home,checkpoint_path,8192),
              'source_woodland_proposal_sha256':refs['woodland']['sha256'],**pins,**refs}
+    if doc.get('checkpoint_receipt')==LIFE_CHECKPOINT:
+        request.update(checkpoint_receipt=LIFE_CHECKPOINT,checkpoint_id=current['id'])
     if operation=='seed':request['habitat_plan_sha256']=refs['habitat_plan']['sha256']
     raw=(json.dumps(request,separators=(',',':'))+'\n').encode();sha=hashlib.sha256(raw).hexdigest();output=home/'dashboard/settlement'/('life-'+sha[:16])
     if output.exists():raise UserError('Preserve existing request/intents; no automatic replay')

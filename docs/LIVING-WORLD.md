@@ -1,13 +1,44 @@
 # Living World and Character Studio
 
-This lane adds district dialogue, ten authored villager profiles and the **Characters**
-page to Control Room. It is a source integration proposal, with native qualification
-still required. Neither the official server nor the permanent/construction saves
-were changed. Coordination starts in [issue #10](https://github.com/Kgray44/a-world-for-two/issues/10).
+**Current milestone—2026-10-29:71 villagers are actually introduced in71
+unique Tortuga properties** on candidate65/bridge0.6.51. This comprises39 East
+compounds,14 of36 new West properties,seven retained/refined West properties and
+11 earlier baseline properties. All ten named residents are introduced and all
+ten Character Studio profiles have native acknowledgments. Managed78 includes
+these71 villagers plusseven prior nonvillagers; it is not a total-world census.
+West36 still has22 unpopulated additions. The latest19 were introduced through
+clean15+4 cohorts with ordinary AI/no native owners; their individual claims,
+schedules, sleep and restart remain unqualified and they are not yet backed up.
+The0d0f5a saved52/59 census predates that cohort and remains historical.
+
+Bill’s custom dialogue, HOME/JOB, work and sleep/wake demonstration was genuinely
+observed at **2026-10-29 15:26UTC**, with external AI disabled. The later0d0f5a
+saved observation has no HOME/job_site memory, while retaining potential-job and
+prior work/sleep/wake memories. Current Bill claims and behavior need rechecking;
+the earlier demonstration does not establish current whole-population success.
+See [current coordination](coordination/WORKSTREAMS.md) for the scoped records.
+
+## Historical first Bill demonstration—2026-10-29
+
+Barnacle Bill’s first native spawn acquired a home and smoker, worked, slept and
+returned the authored greeting through normal player chat. The game acknowledged
+the applied profile hash. That dated result remains evidence for this one
+interaction/behavior sequence; current71-resident acceptance is separate.
+
+![Bill's actual dialogue and native home/job memories](images/living-world-20261029/barnacle-bill-dialogue-home-job.png)
+
+Stand within a few blocks of Bill, face him, and send `!Hello, Bill.` through
+ordinary Minecraft chat. His configured local dialogue works without an external
+provider. External AI remains disabled; no consent setting was changed. The normal
+AI-consent notice can appear while the local reply still works. A Studio preview
+alone does not prove that an in-world conversation worked.
+
+The [scoped evidence record](../evidence/living-bill-native-20261029.json) separates
+actual resident behaviour from source preparation and pending acceptance.
 
 ## Use the Studio
 
-Open Control Room Ã¢â€ â€™ **Characters**, search for Barnacle Bill, and open his card.
+Open Control Room and choose **Characters**, search for Barnacle Bill, and open his card.
 The editor has Overview, Personality, Knowledge, Dialogue, AI & Memory, Voice,
 Location and History sections. All portraits are locally rendered character icons.
 
@@ -119,7 +150,7 @@ or loading chunks. A bounded I/O worker and filesystem events handle configurati
 Owned writers use the AERO reserve guard and check both drives. This instruction does not
 constrain other applications or pre-existing writers and is not an OS quota.
 
-## Integration contract
+## Historical feature-branch integration contract
 
 The feature branch starts at `3d337e4305006d4745ba6ba85c458accf54ef1f1` from
 `codex/master-integration`. New feature code is in `control_room/characters.py`,
@@ -142,7 +173,7 @@ are `/api/characters`, `/detail?id=Ã¢â‚¬Â¦`, `/export?id=Ã¢â‚¬Â¦
 `district`, `settings`, `memory`, `preview`, `ambient` and `apply`. Mutations use
 the supplied `expected` revision. Conversation previews run as existing background Jobs.
 
-## Install and roll back through the main lane
+## Historical initial install and rollback handoff
 
 1. Master reviews this branch and serializes the shared hooks with current Control Room work.
    Review every exact pin and retained exclusion in the compatibility inventory.
@@ -169,7 +200,11 @@ the supplied `expected` revision. Conversation previews run as existing backgrou
    prior registry from History or a verified world backup; retain the newer registry and
    failed receipts. A profile removal is not entity deletion. Publish no unqualified pack.
 
-## Current evidence and remaining acceptance
+## Historical source qualifications and original acceptance backlog
+
+The records and pending-work language below describe their named historical
+source checkpoints. They are preserved rather than rewritten and do not
+supersede the current71-resident milestone above.
 
 The OpenAI extension and editable-model correction are recorded in
 [the 0.2.0 source receipt](../evidence/living-world/openai-qualification.json).

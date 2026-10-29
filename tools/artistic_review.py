@@ -191,7 +191,8 @@ def native(home, command, *, plan_path=None, timeout=300):
         live_requested=(candidate.get('live_ordinary') is True and candidate.get('commands')==[]
             and candidate.get('block_entities')==[] and 0<len(candidate.get('blocks',[]))<=256
             and isinstance(policy,str) and len(policy)==64 and all(c in '0123456789abcdef' for c in policy))
-    if (status['state']!='online' or metrics.get('bridge_age_seconds',999)>15
+    bridge_age=metrics.get('bridge_age_seconds')
+    if (status['state']!='online' or bridge_age is None or bridge_age>15
             or (not live_requested and (metrics.get('players')!={}
                 or status.get('status',{}).get('players',{}).get('online')!=0))):
         raise UserError('Fresh private server state required; online work needs the explicit narrow native live policy')

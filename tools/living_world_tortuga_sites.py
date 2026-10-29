@@ -68,8 +68,9 @@ def cells(plan):
     return field
 
 
-def choose(field, columns, station, forbidden=None):
+def choose(field, columns, station, forbidden=None, *, bed_heads=None):
     forbidden = set(forbidden or ())
+    bed_heads = None if bed_heads is None else set(bed_heads)
     free = {p for p, s in field.items() if (p[0], p[2]) in columns and s in AIR
             and p not in forbidden and (p[0], p[1] + 1, p[2]) not in forbidden
             and field.get((p[0], p[1] + 1, p[2])) in AIR and solid(field.get((p[0], p[1] - 1, p[2])))}
@@ -93,6 +94,8 @@ def choose(field, columns, station, forbidden=None):
                                                 foot: f'minecraft:blue_bed[facing={facing},occupied=false,part=foot]'}))
     existing_jobs = [p for p, s in sorted(field.items()) if base(s) == station and (p[0], p[2]) in columns and p not in forbidden]
     for head, foot, bed_delta in bed_options:
+        if bed_heads is not None and head not in bed_heads:
+            continue
         near = sorted((p for p in free if p[1] == head[1] and p not in (head, foot)
                        and sum(n in free for n in adjacent(p)) >= 2),
                       key=lambda p: (sum(abs(p[i] - head[i]) for i in (0, 2)), p))[:48]
@@ -100,6 +103,7 @@ def choose(field, columns, station, forbidden=None):
             delta = dict(bed_delta)
             if job not in existing_jobs:
                 props = {'minecraft:smoker': '[facing=south,lit=false]', 'minecraft:barrel': '[facing=up,open=false]',
+                         'minecraft:loom': '[facing=north]',
                          'minecraft:lectern': '[facing=south,has_book=false,powered=false]',
                          'minecraft:grindstone': '[face=floor,facing=south]', 'minecraft:composter': '[level=0]'}.get(station, '')
                 delta[job] = station + props
@@ -126,7 +130,8 @@ def choose(field, columns, station, forbidden=None):
                 roofs = [(start[0] + dx, start[1] + dy, start[2] + dz) for dy in range(3, 9)
                          for dx, dz in [(0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)]
                          if solid(field.get((start[0] + dx, start[1] + dy, start[2] + dz)))
-                         or base(field.get((start[0] + dx, start[1] + dy, start[2] + dz))).endswith(('_stairs', '_slab'))]
+                         or base(field.get((start[0] + dx, start[1] + dy, start[2] + dz))).endswith(('_stairs', '_slab'))
+                         or base(field.get((start[0] + dx, start[1] + dy, start[2] + dz))).startswith('mcwroofs:')]
                 for roof in roofs:
                     points = [head, foot, job, roof] + route
                     low = [min(p[i] for p in points) - 1 for i in range(3)]

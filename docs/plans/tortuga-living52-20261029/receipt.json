@@ -1,0 +1,442 @@
+{
+  "schema": "awft-public-receipt-overhead-update:1",
+  "created": "2026-10-29T18:28:49.304965+00:00",
+  "image": "tortuga-living52-verified-overhead.png",
+  "image_sha256": "92cb7166cbcc35254a13e5d0c594cdf412d8d577f814172eeacb691e70b5643d",
+  "baseline_public_image": "docs/plans/tortuga-living39-20261029/tortuga-living39-verified-overhead.png",
+  "baseline_image_sha256": "e4bec757f454e6471940f8ba2bbdab366ec9f18eb589de078627079805122422",
+  "baseline_receipt_sha256": "e26f1b12e8c51c66e6f04b7a31f8a65ac596f44ab3566db555fdf8282094ec14",
+  "geometry_frame": {
+    "x0": 968,
+    "z0": -1376,
+    "left": 95,
+    "top": 190,
+    "pixels_per_block": 5
+  },
+  "actual_introduced_villagers": 52,
+  "actual_East_introduced_properties": 39,
+  "actual_West36_introduced_properties": 13,
+  "West36_remaining_unpopulated": 23,
+  "other_retained_original_northern_population_pending": true,
+  "managed_intents": 59,
+  "managed_villagers": 52,
+  "prior_managed_nonvillager_entries": 7,
+  "managed_count_is_not_total_world_census": true,
+  "West_introduction_proof": {
+    "operation": "seed",
+    "terminal_sha256": "420e1e30958633a7a5e352ca2e5d9937383dc56fb9a8cea1c206e207ac87dd53",
+    "request_or_plan_sha256": "bfeb8e90821a4e3d20cf8820a3a9071a342272dc0bc7235b499f833e79627b80",
+    "finished": "2026-10-29T18:26:00.370171800Z",
+    "complete_marker_verified": true,
+    "cleanup_required": false,
+    "temporary_tickets_remaining": 0,
+    "pending_shared_futures": 0
+  },
+  "West_normal_AI_observations": 13,
+  "West_postspawn_HOME_job_sleep_behavior_verified": false,
+  "retained_East_night_snapshot": {
+    "HOME_memories": 38,
+    "JOB_memories": 39,
+    "sleeping": 36
+  },
+  "retained_East_snapshot_not_West_or_whole_population_acceptance": true,
+  "East_property_markers": [
+    {
+      "number": 1,
+      "compound_id": "copper-kettle",
+      "name": "Copper Kettle Chandlery",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 2,
+      "compound_id": "lantern-harbor-inn",
+      "name": "Lantern Harbor Inn",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 3,
+      "compound_id": "bent-gull",
+      "name": "The Bent Gull Quayside",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 4,
+      "compound_id": "tin-whistle",
+      "name": "Tin Whistle House",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 5,
+      "compound_id": "tide-broker",
+      "name": "Tide Broker’s House",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 6,
+      "compound_id": "copper-bell",
+      "name": "Copper Bell Bindery",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 7,
+      "compound_id": "crooked-inn",
+      "name": "Crooked Lantern Rooms",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 8,
+      "compound_id": "bridge-customs",
+      "name": "The Crooked Customs",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 9,
+      "compound_id": "worn-book",
+      "name": "The Worn Book",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 10,
+      "compound_id": "ropes-pearl",
+      "name": "Ropes & Pearl",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 11,
+      "compound_id": "marrow-side",
+      "name": "Marrow Side Cloth House",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 12,
+      "compound_id": "keel-store",
+      "name": "Keel Store & Galley",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 13,
+      "compound_id": "shoal-warden",
+      "name": "Shoal Warden’s Quay",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 14,
+      "compound_id": "bridge-cooper",
+      "name": "Bridge Cooperage",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 15,
+      "compound_id": "net-mender",
+      "name": "Net Mender’s Hall",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 16,
+      "compound_id": "tide-fish",
+      "name": "Tidefish Hall",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 17,
+      "compound_id": "moon-branch",
+      "name": "Moon Branch Rooms",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 18,
+      "compound_id": "lampblack",
+      "name": "Lampblack Court",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 19,
+      "compound_id": "moth-candle",
+      "name": "Moth & Candle",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 20,
+      "compound_id": "nail-drift",
+      "name": "Nail & Drift",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 21,
+      "compound_id": "crooked-row",
+      "name": "Crooked Row Outfitters",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 22,
+      "compound_id": "old-rum",
+      "name": "Old Rum Warehouse",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 23,
+      "compound_id": "lantern-cod",
+      "name": "Lantern Cod Galley",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 24,
+      "compound_id": "sail-fool",
+      "name": "The Sailor’s Folly",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 25,
+      "compound_id": "anchor-dice",
+      "name": "Anchor & Dice",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 26,
+      "compound_id": "bay-kettle",
+      "name": "Bay Kettle Rooms",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 27,
+      "compound_id": "navy-blue",
+      "name": "Navy Blue Tailor",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 28,
+      "compound_id": "quarter-jack",
+      "name": "Quarter Jack’s Hall",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 29,
+      "compound_id": "sandbar",
+      "name": "Sandbar Carpenter",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 30,
+      "compound_id": "east-coal",
+      "name": "East Coal Chandlery",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 31,
+      "compound_id": "willow-door",
+      "name": "Willow Door House",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 32,
+      "compound_id": "foxtail",
+      "name": "Foxtail House",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 33,
+      "compound_id": "cook-snap",
+      "name": "Cook & Snap",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 34,
+      "compound_id": "white-clam",
+      "name": "White Clam Warehouse",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 35,
+      "compound_id": "river-stone",
+      "name": "River Stone Rooms",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 36,
+      "compound_id": "split-shell",
+      "name": "Split Shell House",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 37,
+      "compound_id": "harbor-chair",
+      "name": "Harbor Chair & Cup",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 38,
+      "compound_id": "pelican-forge",
+      "name": "Pelican Forge",
+      "marker_scope": "assigned compound, not live actor location"
+    },
+    {
+      "number": 39,
+      "compound_id": "thin-sail",
+      "name": "Thin Sail Lookout",
+      "marker_scope": "assigned compound, not live actor location"
+    }
+  ],
+  "West_property_markers": [
+    {
+      "number": "W1",
+      "property_id": "west-new/tortuga-western-spit/7",
+      "name": "The Seated Needle",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W2",
+      "property_id": "west-new/tortuga-fill-net-needle-crook/2",
+      "name": "The Mended Wake",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W3",
+      "property_id": "west-new/tortuga-fill-moon-tackle-returns/1",
+      "name": "Moonwatch Fittings",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W4",
+      "property_id": "west-new/tortuga-western-spit/3",
+      "name": "The Red Thread",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W5",
+      "property_id": "west-new/tortuga-fill-half-tide-hook/1",
+      "name": "Soot & Scone",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W6",
+      "property_id": "west-new/tortuga-western-spit/2",
+      "name": "Saltwind Fittings",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W7",
+      "property_id": "west-new/tortuga-fill-net-needle-crook/1",
+      "name": "The Cork & Needle",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W8",
+      "property_id": "west-new/tortuga-fill-half-tide-hook/2",
+      "name": "The Half-Tide",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W9",
+      "property_id": "west-new/tortuga-fill-tenon-watch-hook/1",
+      "name": "The Crooked Tenon",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W10",
+      "property_id": "west-new/tortuga-fill-moon-tackle-returns/2",
+      "name": "The Gull’s Last Hook",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W11",
+      "property_id": "west-new/tortuga-fill-tenon-watch-hook/3",
+      "name": "Lantern at the Bend",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W12",
+      "property_id": "west-new/tortuga-fill-bent-ropewalk-coast/1",
+      "name": "The Bent Ropewalk",
+      "marker_scope": "assigned property, not live actor location"
+    },
+    {
+      "number": "W13",
+      "property_id": "west-new/tortuga-fill-inner-west-current-9/9",
+      "name": "The Copper Eel",
+      "marker_scope": "assigned property, not live actor location"
+    }
+  ],
+  "markers_are_not_live_actor_positions": true,
+  "new_corridor_lights": {
+    "actual_lights": 4,
+    "arms": 8,
+    "targets": 12,
+    "normal_full_map_passed": true,
+    "full_after_cells": 45,
+    "snow_weather_writes": 0,
+    "new_night_visual_review_pending": true,
+    "actual_native_proofs": [
+      {
+        "operation": "verify",
+        "terminal_sha256": "ee2f64b14c4bbddb861fdbf3a9b01cd005f9d1054c0a8f656636251dfb48a4a1",
+        "request_or_plan_sha256": "7c658e881af806ab5ee45eab82a0848b12bfe3bce69ebc4eb1f5428cb6eff291",
+        "finished": "2026-10-29T18:20:28.766929200Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "d0e7dc7404c90a6fcf8c6d31cedd6f480b8081f5f565006b35bedc44a6df8d77",
+        "request_or_plan_sha256": "3a0965ff2820acae703087de5d8c066dba092785c83eb6178583cd609a2de8f7",
+        "finished": "2026-10-29T18:20:29.365845300Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "a66155c020de0132fc448dfd7c85195b87fc201791c0b1ffbc00716eb87ddf70",
+        "request_or_plan_sha256": "c4a9d73e8354aa61a8554c80dd4e373a66db4028f19aa37a5490c9f285ba5845",
+        "finished": "2026-10-29T18:20:30.015445200Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "2707010fe4f14e772cae389d9c57ffc62818b443fcf9bf3fd2b1fb64c80e1e07",
+        "request_or_plan_sha256": "a28aa2ef7ccfe079ab91961aa5c06e938b940798231b03babc918e09b894dbf1",
+        "finished": "2026-10-29T18:20:30.666913800Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "771df731f057711059bcff66bdf662f199006004e44cb50267cc8e3a277cd57b",
+        "request_or_plan_sha256": "a2471a2a3e3d76f0e25fc702473ed93b8dc3e2a994666f58c669680486832310",
+        "finished": "2026-10-29T18:20:31.266367500Z",
+        "complete_marker_verified": true,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_futures": 0
+      }
+    ]
+  },
+  "retained_greenery_and_spine_layers": {
+    "main716spine": 716,
+    "rich799": 799,
+    "rich242": 242,
+    "photo216-north": 154,
+    "photo216-east": 62
+  },
+  "retained_verified_baseline_layers": {
+    "outdoor_ground_cells": 3625,
+    "west_greenery_detail_cells": 355,
+    "northern_fishing_dock_cells": 320,
+    "first_East_Core_North_greenery_cells": 1769,
+    "additional_West_character_cells": 9
+  },
+  "source_actor_counts_used_as_actual": false,
+  "source_plans_relabelled_as_current": false,
+  "raw_NBT_UUIDs_private_plans_copied": false,
+  "artistic_acceptance": false,
+  "restart_or_multiplayer_acceptance": false,
+  "native_actions": 0,
+  "world_writes": 0
+}

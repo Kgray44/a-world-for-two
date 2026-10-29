@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-29T00:16:12.871416+00:00",
+  "generated": "2026-10-29T15:05:46.151427+00:00",
   "generation_basis": "Source lock timestamp; unchanged inputs produce identical reports",
-  "pack_version": "0.1.0-candidate.63",
+  "pack_version": "0.1.0-candidate.65",
   "requests": [
     {
       "id": "farmers-delight",
@@ -6403,9 +6403,9 @@
   ],
   "source_lock": {
     "path": "catalog/lock.json",
-    "sha256": "5dfa7a48207da82ff9e5d7ccddb3af2462c9f98e0ee1bb0763b776eda7a8ec91",
+    "sha256": "699d6dee928c0bb2ebc83a97f0bd3f1e7f438ed59463d08c7e7a0113fa555a47",
     "pack_path": "packwiz/pack.toml",
-    "pack_sha256": "69fd33efdb77fe5f39e0a9a63b3a7f1e492a1cda0d9b7482d8c302b5e75997ad",
+    "pack_sha256": "671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28",
     "minecraft": "1.21.1",
     "neoforge": "21.1.262",
     "java": 21,
@@ -6568,15 +6568,15 @@
       "name": "A World for Two Control Bridge",
       "request": null,
       "kind": "mod",
-      "version": "0.6.49",
-      "version_id": "0.6.49",
-      "filename": "awft-control-bridge-0.6.49.jar",
-      "size": 723477,
+      "version": "0.6.51",
+      "version_id": "0.6.51",
+      "filename": "awft-control-bridge-0.6.51.jar",
+      "size": 725738,
       "side": "both",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "3087e224a5d62179c76d9304c8d76c5991d4fe0fae0f647c0e91bfc65f9514cf"
+        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
       "status": "Integrated but awaiting runtime validation",
@@ -11775,7 +11775,7 @@
       "Experimental native map validation pending": 1
     }
   },
-  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.63, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
+  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.65, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
   "runtime_evidence": [
     {
       "source": "evidence/runtime/client-startup-initial.json",
