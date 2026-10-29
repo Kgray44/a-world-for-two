@@ -121,7 +121,8 @@ class Server:
             if self.identity:
                 try:
                     process = psutil.Process(self.identity["pid"])
-                    return abs(process.create_time() - self.identity["created"]) < .1 and process.is_running()
+                    return (abs(process.create_time() - self.identity["created"]) < .1 and process.is_running()
+                            and (os.name == "nt" or process.status() != psutil.STATUS_ZOMBIE))
                 except psutil.Error:
                     return False
             return False
@@ -170,6 +171,9 @@ class Server:
                 self.record(line, process=process)
         finally:
             code = process.wait()
+            lease = getattr(process, "_awft_lease", None)
+            if lease:
+                lease.close()
             with self._lock:
                 self.record("Managed Java process exited with code " + str(code), process=process)
                 if self.process is process:
@@ -184,9 +188,35 @@ class Server:
                                                 "state": self.state, "warning": self.warning})
 
     def start(self, notify=lambda _: None):
+        with self.layout.mutation:
+            if self.running():
+                raise UserError("The server is already running")
+            lease = None
+            if os.name != "nt":
+                from .ownership import ProcessLease
+                lease = ProcessLease(self.layout.state / "world-writer.lock")
+            self._launch_lease = lease
+            try:
+                return self._start_owned(notify)
+            except BaseException:
+                if lease and (self.process is None or self.process.poll() is not None):
+                    lease.close()
+                raise
+
+    def _start_owned(self, notify=lambda _: None):
         # Keep the complete mutation lease, but do not hold the status lock
         # while integrity scans, reserve checks or the Java probe are running.
         with self.layout.mutation:
+            if (self.layout.home / "MIGRATION-INCOMPLETE.json").exists():
+                raise UserError("Migration staging is incomplete; Minecraft cannot start")
+            staged = read_json(self.layout.home / "MIGRATION-STAGED.json")
+            if staged:
+                approval = read_json(self.layout.home / "MIGRATION-ACTIVATED.json", {})
+                if not staged.get("manifest_sha256") or approval.get("manifest_sha256") != staged["manifest_sha256"]:
+                    raise UserError("This staged migration requires separate explicit activation approval")
+            for transaction in self.layout.home.glob("pre-restore-*/transaction.json"):
+                if read_json(transaction, {}).get("state") in ("applying", "recovery-required"):
+                    raise UserError("An interrupted restore requires recovery before Minecraft can start")
             with self._lock:
                 if self.running():
                     raise UserError("The server is already running")
@@ -244,7 +274,9 @@ class Server:
                 self.process = subprocess.Popen(command, cwd=self.layout.server, stdin=subprocess.PIPE,
                     env=server_environment(self.layout),
                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
-                    bufsize=1, creationflags=(subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW) if os.name == "nt" else 0)
+                    bufsize=1, creationflags=(subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW) if os.name == "nt" else 0,
+                    **({"pass_fds": (self._launch_lease.fd,)} if os.name != "nt" else {}))
+                self.process._awft_lease = self._launch_lease
                 proc = psutil.Process(self.process.pid)
                 self.identity = {"pid": proc.pid, "created": proc.create_time(), "command": command,
                                  "cwd": str(self.layout.server), "at": utcnow()}

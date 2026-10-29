@@ -7,7 +7,7 @@ import os
 import tempfile
 import threading
 from datetime import datetime, timezone
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 REPO = Path(__file__).resolve().parents[1]
 GiB = 1024 ** 3
@@ -56,7 +56,7 @@ def digest(path: Path, algorithm="sha256"):
 
 def contained(root: Path, relative: str) -> Path:
     relative_path = Path(relative)
-    if relative_path.is_absolute() or relative_path.drive or ".." in relative_path.parts:
+    if relative_path.is_absolute() or relative_path.drive or PureWindowsPath(relative).drive or ".." in relative_path.parts:
         raise UserError("Path must stay inside the selected project directory")
     lexical = root / relative_path
     # Inspect the original path before resolve() erases links and junctions.
@@ -106,6 +106,10 @@ class Layout:
                    "cache_budget_gib": 8, "world_budget_gib": 40,
                    "prism_path": "", "tunnel_address": "", "tunnel_provider": "playit",
                    "player_names": {"KG": "", "Sera": ""}, "sample_seconds": 5,
+                   "hosting_mode": "local-windows", "server_backend": "child",
+                   "storage_reserve_gib": 30, "service_autostart": False,
+                   "service_restart_limit": 3, "service_restart_window_seconds": 900,
+                   "service_restart_delay_seconds": 30,
                    "permanent_world": False, "world_created": False}
         return default | read_json(self.settings_path, {})
 

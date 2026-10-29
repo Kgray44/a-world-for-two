@@ -1,0 +1,15 @@
+{
+  "home": "/srv/awft/data",
+  "source": "/opt/awft/source",
+  "python": "/opt/awft/venv/bin/python",
+  "user": "awft",
+  "group": "awft",
+  "dashboard_port": 8765,
+  "storage_reserve_gib": 30,
+  "project_budget_gib": 100,
+  "cpu_weight": 50,
+  "io_weight": 50,
+  "memory_high_gib": 12,
+  "nice": 5,
+  "autostart": false
+}

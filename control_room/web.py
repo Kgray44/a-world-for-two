@@ -45,6 +45,8 @@ from .storage import Storage
 class Application:
     def __init__(self, home):
         self.layout = Layout(home)
+        if os.name == "posix" and hasattr(os, "geteuid") and os.geteuid() == 0:
+            raise UserError("Run Control Room as the dedicated nonroot account")
         self.storage = Storage(self.layout)
         self.storage.reserve(80 * 1024 * 1024)
         self.layout.create()
@@ -53,12 +55,22 @@ class Application:
         if not self.error_logger.handlers:
             self.error_logger.addHandler(logging.handlers.RotatingFileHandler(
                 self.layout.logs / 'dashboard-errors.log', maxBytes=512 * 1024, backupCount=2, encoding='utf-8'))
-        self.server = Server(self.layout, self.storage)
+        backend = self.layout.settings()["server_backend"]
+        if backend == "unix-service":
+            from .service import ServiceServer
+            self.server = ServiceServer(self.layout, self.storage)
+        elif backend == "child":
+            self.server = Server(self.layout, self.storage)
+        else:
+            raise UserError("Unknown explicitly configured Minecraft backend")
         self.settings = Settings(self.layout, self.storage, self.server)
         self.settings.initialize()
         self.jobs = Jobs(self.layout.state / 'jobs.json', self.storage, lambda exc: report_error(self, exc))
         self.metrics = Metrics(self.layout, self.storage, self.server)
         self.backups = Backups(self.layout, self.storage, self.server)
+        if getattr(self.server, "independent", False):
+            from .service import ServiceBackups
+            self.backups = ServiceBackups(self.backups, self.server)
         self.mods = ModManager(self.layout, self.storage, self.server, self.backups)
         self.installer = Installer(self.layout, self.storage, self.server, self.settings)
         self.players = Players(self.layout, self.storage, self.server, self.settings, self.metrics.latest)
@@ -73,7 +85,8 @@ class Application:
     def start(self):
         self.playit.start_monitor()
         self.metrics.start()
-        self.backups.start_schedule()
+        if not getattr(self.server, "independent", False):
+            self.backups.start_schedule()
 
     def close(self):
         if getattr(self, 'characters', None) is not None:
@@ -85,7 +98,7 @@ class Application:
         self.jobs.close()
         self.atlas.close()
         # Closing a dashboard never silently kills or abandons a writing world.
-        if self.server.running():
+        if not getattr(self.server, "independent", False) and self.server.running():
             self.server.stop()
 
     def health(self, notify=lambda _: None):
@@ -152,11 +165,18 @@ class Application:
 
     def connectivity(self):
         options = self.layout.settings()
-        return {"local_address": "127.0.0.1:" + str(options["port"]), "game_port": options["port"],
-                "dashboard": "127.0.0.1:8765 (local only)",
+        dedicated = options["hosting_mode"] == "dedicated-ubuntu"
+        instructions = ["Snow must separately approve and configure a game-only tunnel or private network to 127.0.0.1:" + str(options["port"]) + ".",
+                        "Open Control Room through authenticated SSH local forwarding, using identical local and remote dashboard ports.",
+                        "Keep online authentication and the whitelist enabled; verify a real remote join before sharing a reachability claim.",
+                        "Never forward dashboard, RCON or JMX through the game tunnel. Windows Playit service controls are unavailable here."] if dedicated else None
+        from .host import snapshot
+        return {"host": snapshot(self.layout, self.server),
+                "local_address": "127.0.0.1:" + str(options["port"]), "game_port": options["port"],
+                "dashboard": "127.0.0.1:" + str(getattr(self, "dashboard_port", 8765)) + " (local only)",
                 "playit": self.playit.snapshot() | {"address": options["tunnel_address"] or None},
                 "external_connection": "unverified until Sera joins from her own network",
-                "instructions": ["Sign in to Playit, create one Minecraft Java TCP tunnel to 127.0.0.1:" + str(options["port"]) + ".",
+                "instructions": instructions or ["Sign in to Playit, create one Minecraft Java TCP tunnel to 127.0.0.1:" + str(options["port"]) + ".",
                     "Share the Playit join address with Sera. Keep online authentication and the whitelist enabled.",
                     "Never tunnel port 8765, RCON, JMX or any dashboard endpoint.",
                     "Tailscale is an alternative. Use the opt-in network script with Sera's exact Tailscale IP and a narrow firewall rule.",
@@ -232,6 +252,9 @@ class Application:
 
     def post(self, path, body):
         job = lambda title, function, *args: self.jobs.submit(title, function, *args)
+        if (path in ("/api/graphics/select", "/api/cinematics/background/apply", "/api/cinematics/presentation")
+                or path == "/api/open" and body.get("target") == "prism") and self.layout.settings()["hosting_mode"] == "dedicated-ubuntu":
+            raise UserError("This host manages the dedicated server. Manage Prism and graphics on your Windows client.")
         if path.startswith('/api/characters/'):
             return self.character_action(path, body)
         if path == '/api/cinematics/settings':

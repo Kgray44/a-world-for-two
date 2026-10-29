@@ -33,7 +33,7 @@ def request_existing(port, home, action=None):
 def main():
     parser = argparse.ArgumentParser(description="A World for Two: Control Room")
     parser.add_argument("action", nargs="?", default="run", choices=["run", "open", "start", "stop", "backup", "diagnose", "install", "repair"])
-    parser.add_argument("--home", type=Path, default=Path(os.environ.get("AWFT_HOME", r"D:\A World for Two")))
+    parser.add_argument("--home", type=Path, default=Path(os.environ.get("AWFT_HOME", r"D:\A World for Two" if os.name == "nt" else "~/.local/share/a-world-for-two")).expanduser())
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--browser", action="store_true")
     args = parser.parse_args()
@@ -49,6 +49,7 @@ def main():
         raise UserError("Control Room is not running. Start it to recover the previous server's status; do not kill Java blindly.")
     from .web import Application, HTTPServer, make_handler
     app = Application(args.home)
+    app.dashboard_port = args.port
     try:
         http = HTTPServer(("127.0.0.1", args.port), make_handler(app))
     except OSError:
@@ -61,6 +62,9 @@ def main():
     if args.browser or args.action == "open":
         webbrowser.open("http://127.0.0.1:" + str(args.port))
     try:
+        if os.name != "nt":
+            import signal
+            signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
         http.serve_forever(poll_interval=.5)
     except KeyboardInterrupt:
         pass

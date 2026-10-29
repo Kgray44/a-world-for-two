@@ -13,6 +13,7 @@ from pathlib import Path, PurePosixPath
 
 from .common import UserError, atomic_write, contained, digest, read_json, utcnow, write_json
 from .storage import tree_size
+from .persistence import BACKUP_DASHBOARD, backup_allowed
 
 
 class Backups:
@@ -77,12 +78,26 @@ class Backups:
             ident = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime()) + "-" + os.urandom(3).hex()
             target = self.layout.backups / (ident + ".zip")
             partial = target.with_suffix(".zip.partial")
-            roots = [self.layout.world, self.layout.server / "config", self.layout.server / "defaultconfigs"]
+            roots = [self.layout.world, self.layout.server / "config", self.layout.server / "defaultconfigs",
+                     self.layout.server / "datapacks", self.layout.home / "configs", self.layout.state / "characters",
+                     self.layout.state / "menu-artwork"]
             single = [self.layout.server / "server.properties", self.layout.server / "whitelist.json",
                       self.layout.server / "ops.json", self.layout.server / "installed.json", self.layout.home / "packwiz/active.json",
                       self.layout.state / "characters/registry.json", self.layout.state / "characters/runtime.json"]
-            files = [f for root in roots if root.exists() for f in root.rglob("*") if f.is_file()]
+            single += [self.layout.state / name for name in BACKUP_DASHBOARD]
+            files = []
+            for root in roots:
+                if not root.exists():
+                    continue
+                if root.is_symlink() or root.is_junction():
+                    raise UserError("Linked directories cannot be included in a backup")
+                for file in root.rglob("*"):
+                    if file.is_symlink() or file.is_junction():
+                        raise UserError("Linked entries cannot be included in a backup")
+                    if file.is_file():
+                        files.append(file)
             files += [f for f in single if f.is_file()]
+            files = sorted({f for f in files if backup_allowed(f.relative_to(self.layout.home).as_posix())})
             if not any(f.name == "level.dat" for f in files):
                 raise UserError("There is no saved world to back up yet")
             for file in files:
@@ -145,10 +160,7 @@ class Backups:
                 pure = PurePosixPath(relative)
                 if pure.is_absolute() or any(p in ("..", ".", "") for p in pure.parts) or "\\" in relative or ":" in relative:
                     raise UserError("Unsafe backup path")
-                if not (relative.startswith("world/") or relative.startswith("server/config/")
-                        or relative.startswith("server/defaultconfigs/") or relative in
-                        {"server/server.properties", "server/whitelist.json", "server/ops.json", "server/installed.json", "packwiz/active.json",
-                         "dashboard/characters/registry.json", "dashboard/characters/runtime.json"}):
+                if not backup_allowed(relative):
                     raise UserError("Backup contains an unmanaged path")
                 if relative in expected:
                     raise UserError("Duplicate backup entry")
@@ -237,30 +249,42 @@ class Backups:
             # Preserve the current world in place by renaming it on the same volume.
             safety = self.layout.home / ("pre-restore-" + time.strftime("%Y%m%dT%H%M%SZ", time.gmtime()) + "-" + os.urandom(3).hex())
             safety.mkdir()
-            if self.layout.world.exists():
-                os.replace(self.layout.world, safety / "world")
+            # A rename journal rolls back ALL already-swapped groups on any failure.
+            # Keep current host settings/network/release pointers until separately reconciled.
+            groups = ["world", "server/config", "server/defaultconfigs", "server/datapacks", "configs",
+                      "server/whitelist.json", "server/ops.json", "dashboard/characters", "dashboard/menu-artwork"]
+            groups += ["dashboard/" + name for name in BACKUP_DASHBOARD if name != "settings.json"]
+            moves = []
+            write_json(safety / "transaction.json", {"state": "applying", "groups": groups, "at": utcnow()})
             try:
-                os.replace(stage / "world", self.layout.world)
-            except Exception:
-                if (safety / "world").exists() and not self.layout.world.exists():
-                    os.replace(safety / "world", self.layout.world)
-                raise
-            # Restore content-bearing configuration too, but retain the current installation's
-            # network/world-path properties and release pointer until release rollback is approved.
-            for group in ("config", "defaultconfigs"):
-                source, target = stage / "server" / group, self.layout.server / group
-                if source.exists():
-                    if target.exists():
-                        os.replace(target, safety / group)
+                for relative in groups:
+                    source, target = stage / relative, self.layout.home / relative
+                    if not source.exists():
+                        continue
+                    preserved = safety / {"server/config": "config", "server/defaultconfigs": "defaultconfigs",
+                                          "dashboard/characters": "characters"}.get(relative, relative)
+                    preserved.parent.mkdir(parents=True, exist_ok=True)
+                    had_target = target.exists()
+                    if had_target:
+                        os.replace(target, preserved)
+                    moves.append((source, target, preserved, had_target))
+                    target.parent.mkdir(parents=True, exist_ok=True)
                     os.replace(source, target)
-            character_source = stage / 'dashboard/characters'
-            if character_source.exists():
-                character_target = self.layout.state / 'characters'
-                # Preserve current profiles/history and telemetry before restoring saved profiles.
-                if character_target.exists():
-                    os.replace(character_target, safety / 'characters')
-                character_target.parent.mkdir(parents=True, exist_ok=True)
-                os.replace(character_source, character_target)
+                write_json(safety / "transaction.json", {"state": "complete", "groups": groups, "at": utcnow()})
+            except BaseException:
+                rollback_errors = []
+                for source, target, preserved, had_target in reversed(moves):
+                    try:
+                        if target.exists():
+                            source.parent.mkdir(parents=True, exist_ok=True)
+                            os.replace(target, source)
+                        if had_target and preserved.exists():
+                            os.replace(preserved, target)
+                    except OSError:
+                        rollback_errors.append(str(target.relative_to(self.layout.home)))
+                write_json(safety / "transaction.json", {"state": "recovery-required" if rollback_errors else "rolled-back",
+                           "unrecovered": rollback_errors, "at": utcnow()})
+                raise
             write_json(safety / "receipt.json", {"restored_from": ident, "at": utcnow(),
                        "note": "Pre-restore world and configs preserved. Original properties and release metadata are retained in the staged snapshot for explicit reconciliation."})
             notify("World restored; prior world preserved at " + str(safety))

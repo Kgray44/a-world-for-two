@@ -70,6 +70,9 @@ class Playit:
     def snapshot(self):
         with self._lock:
             result = safe_snapshot(self._status,self._lifecycle,self._stats)
+            if os.name != 'nt':
+                return dict(result, installed=False, state='unavailable on Linux', service_status='unavailable',
+                            at=None, logs=[], management='Windows Playit service controls are unavailable on Linux. Snow must separately configure a supported game-only tunnel or private network; no agent or network service was changed.')
             service = None
             if os.name == 'nt':
                 import psutil
