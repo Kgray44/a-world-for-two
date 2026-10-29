@@ -45,6 +45,8 @@ from .storage import Storage
 class Application:
     def __init__(self, home):
         self.layout = Layout(home)
+        if os.name == "posix" and hasattr(os, "geteuid") and os.geteuid() == 0:
+            raise UserError("Run Control Room as the dedicated nonroot account")
         self.storage = Storage(self.layout)
         self.storage.reserve(80 * 1024 * 1024)
         self.layout.create()
