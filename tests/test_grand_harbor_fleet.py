@@ -3,7 +3,7 @@ from copy import deepcopy
 import gzip
 import io
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -220,11 +220,21 @@ class FleetExportTests(unittest.TestCase):
             source, output = root/'registry.json', root/'export'
             source.write_text(json.dumps(registry()))
             result = type('Guard', (), {'returncode': 0, 'stdout': '{"allowed":false}'})()
+            original_resolve = Path.resolve
+            def destination_drive(path, *args, **kwargs):
+                # This test targets the AERO guard, independent of CI's /tmp drive.
+                # Keep every real read/existence check and all exporter gates intact.
+                return PureWindowsPath('D:/awft-guard-fixture') if path == output else original_resolve(path, *args, **kwargs)
             with patch.object(fleet, 'build', return_value={'design': {}, 'bounds': [0]*6, 'rooms': [], 'key': 'resolute-wren'}), \
                     patch.object(fleet, 'structure_nbt', return_value=b'fixture'), \
-                    patch.object(fleet.subprocess, 'run', return_value=result):
+                    patch.object(Path, 'resolve', destination_drive), \
+                    patch.object(fleet.subprocess, 'run', return_value=result) as guard:
                 with self.assertRaisesRegex(UserError, 'passing ReserveGuard'):
                     fleet.export(source, output, ['resolute-wren'])
+                guard.assert_called_once()
+                arguments = guard.call_args.args[0]
+                self.assertEqual(arguments[arguments.index('-EstimatedCBytes')+1], '0')
+                self.assertEqual(arguments[arguments.index('-EstimatedDBytes')+1], str(fleet.MAX_EXPORT_BYTES))
             self.assertFalse(output.exists())
 
 
