@@ -5,8 +5,10 @@ and lavender architecture, a patterned ceiling, long luminous white pendants
 and deep flowering beds. This addition follows that player scale: a 45-block
 colonnade, a nine-block principal aisle, and a ceiling beam ten or nine clear
 blocks above its two floor levels. Twenty-four three-, four- and five-block
-white pendants hang from actual ceiling mounts and chains. This document records
-prepared source; construction and artistic acceptance remain pending.
+white pendants hang from actual ceiling mounts and chains. The complete
+3,247-position addition was placed once in the authoritative construction
+candidate on October 29 and passed normal settlement and exact full-field
+verification. Genuine photographs and artistic acceptance remain pending.
 
 The actual stopped construction checkpoint `20261029T052317Z-89312d`, SHA-256
 `ab64b9e7b4fa0e5dad2b77deb41a6ee8344ad46c6d522a4ef2048116d7e1017a`,
@@ -49,9 +51,40 @@ model appearance or artistic acceptance.
 “Build It!” is the sole world writer. It confirmed this tentative reservation
 is compatible with the current Tortuga work and will schedule deployment after
 the current Tortuga/LIFE priority. Other workstreams continue. This chat owns
-only the `codex/castle-lavender-promenade` source branch until a specific exclusive
-world lease is issued. The permanent configured save remains a separate
-master-owned release operation.
+the `codex/castle-lavender-promenade` source branch and performed only the exact
+five-operation temporary lease described below. That lease has released
+cleanly; the master again owns all runtime and client inputs. The permanent
+configured save remains a separate master-owned release operation.
+
+## Actual construction, October 29
+
+Under the master-issued `exclusive-castle-promenade64-1793285794060172900`
+lease, the existing native construction driver completed these operations on
+candidate.64 / bridge0.6.50:
+
+| Native operation | Actual result |
+| --- | --- |
+| Exact BEFORE | All 3,247 target preimages matched |
+| Retained SUPPORT | All 1,048 support/interface states matched |
+| PLACE, once only | All 3,247 authored changes completed at 14:59:04 UTC |
+| Ordinary NORMAL settlement | Three passes, shape changes `[0,0,0]`; two new BE targets skipped normally |
+| Complete FULL | All 4,128 construction and retained-context states matched at 14:59:09 UTC |
+
+Every terminal recorded zero failures, no cleanup requirement, zero temporary
+tickets and zero pending shared chunk futures. The same-stem release receipt
+was written with the fresh empty roster and no placement uncertainty. The
+[sanitized native evidence](../evidence/lavender-promenade64-construction.json)
+records the exact packet and terminal hashes, source/checkpoint identities and
+remaining acceptance work. Private canonical receipts remain in the existing
+construction home. No actor, client, runtime configuration, installed artifact,
+shared source or Git index was changed during the lease.
+
+These are real construction and block-state results. They do not establish
+appearance, model collision, normal walking, night lighting, multiplayer,
+restart persistence or permanent-runtime promotion. The master owns the next
+genuine client photographs and retained completion checkpoint; the source
+author will inspect those actual images and prepare narrowly scoped corrections
+if they expose visible defects.
 
 ## Required actual completion
 

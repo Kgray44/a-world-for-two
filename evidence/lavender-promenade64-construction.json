@@ -1,0 +1,122 @@
+{
+  "format": "awft-lavender-promenade-native-evidence:1",
+  "date": "2026-10-29",
+  "candidate": "0.1.0-candidate.64",
+  "bridge": "0.6.50",
+  "pack_sha256": "89544d33df5caf6c89a7b4af5619e58ef3077896bd357ae9ecdd4fac9bf559ac",
+  "source_commit": "bc6742e",
+  "source_sha256": "1dc7f3dfd30309bd902280e4649545e317d9340d8388c331498bc5a15af7faab",
+  "source_manifest_sha256": "3d7ca1526493fe34473a8b9e92e414d7db395ce153891ebbbfeb31cb1dd454f3",
+  "source_checkpoint": {
+    "id": "20261029T144140Z-8d3957",
+    "sha256": "e2804f1674be8c1f84a686a4badbd5a860ceb4ae1b9afbfb119cf9ad59b41ae9",
+    "verified": true
+  },
+  "native_custody_id": "20261028T191243Z-6ad3a8",
+  "native_custody_receipt_unchanged": true,
+  "lease_id": "exclusive-castle-promenade64-1793285794060172900.json",
+  "release_sha256": "e02bc3745a2ceafc833ebbf99cc9b9d81bedfcf6713adc85826d9c342963cf91",
+  "release_at": "2026-10-29T14:59:48.959599+00:00",
+  "clean_release": true,
+  "placement_attempts": 1,
+  "phases": [
+    {
+      "phase": "BEFORE",
+      "terminal_sha256": "45121cdd766174cf55fa14bf182408458e41654acdc01f204389789b2b7fbaf0",
+      "operation": "verify",
+      "plan_sha256": "280cd40786f34783c3a9c93d8758d7dc1619766c023e6892d1a85449281a490c",
+      "blocks": 3247,
+      "finished": "2026-10-29T14:58:34.152061300Z",
+      "failures": 0,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_chunk_futures": 0,
+      "cleanup_required": false,
+      "terminal_file": "settlement-result-75345e0b-0c16-4426-95e6-ad7378626b4b.json"
+    },
+    {
+      "phase": "SUPPORT",
+      "terminal_sha256": "eeb5795b5dd5dca36aa608685fc82c26b411f25102395c7173c5d69a8adf17c2",
+      "operation": "verify",
+      "plan_sha256": "fb1c5d3773858f9b8304f0a0c4a00925be7a79cebacdac1f33fdc747af3fc760",
+      "blocks": 1048,
+      "finished": "2026-10-29T14:59:03.152092100Z",
+      "failures": 0,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_chunk_futures": 0,
+      "cleanup_required": false,
+      "terminal_file": "settlement-result-b4ef4d67-04e1-4d05-a7f5-390e95f04ffc.json"
+    },
+    {
+      "phase": "PLACE_ONCE",
+      "terminal_sha256": "522897ef8ccfe57cb950ed92383dcc92a76f2a423a00e4013ecbf25a0afe9ff0",
+      "operation": "place",
+      "plan_sha256": "6cb730c8d5bb0a7fc7d99f5c5128aedcf7e4b4a84716524117d61b613e786cf8",
+      "blocks": 3247,
+      "finished": "2026-10-29T14:59:04.604508200Z",
+      "failures": 0,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_chunk_futures": 0,
+      "cleanup_required": false,
+      "terminal_file": "settlement-result-8e5a0dad-9b7b-4edd-b67d-64386e1ec001.json"
+    },
+    {
+      "phase": "NORMAL",
+      "terminal_sha256": "543d068f51ad396ccc8ad6348bdc11a94ecdf84f424aa2f44b7d71ee54d8aa0e",
+      "operation": "settle",
+      "plan_sha256": "451d6c29bb5502e7e54d7391311d728c2aa9735f89bede0ffbb8556324961275",
+      "blocks": 3247,
+      "finished": "2026-10-29T14:59:07.752408300Z",
+      "failures": 0,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_chunk_futures": 0,
+      "cleanup_required": false,
+      "terminal_file": "settlement-result-42aeffd0-5994-455b-986c-b845e2d192c6.json"
+    },
+    {
+      "phase": "FULL",
+      "terminal_sha256": "8c34f3a6acffed12557ccf70d9e9278d911e89596302d5112d7c9df265c4fb67",
+      "operation": "verify",
+      "plan_sha256": "e5ff6d3a35b5cd61bc1b58b74bffd3737d5030acaa932c5bc262904e77e319d5",
+      "blocks": 4128,
+      "finished": "2026-10-29T14:59:09.453017800Z",
+      "failures": 0,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_chunk_futures": 0,
+      "cleanup_required": false,
+      "terminal_file": "settlement-result-c11bd3b3-dcb8-4085-9c64-92af65ef7d65.json"
+    }
+  ],
+  "normal_shape_changes_per_pass": [
+    0,
+    0,
+    0
+  ],
+  "new_native_BE_targets_skipped_during_normal_settle": 2,
+  "authored_scale": {
+    "length_m": 45,
+    "nominal_walk_width_m": 9,
+    "continuous_clear_width_m": 6,
+    "floor_y": [
+      65,
+      66
+    ],
+    "ceiling_beam_y": 76,
+    "clear_blocks_below_ceiling": [
+      9,
+      10
+    ],
+    "paired_columns": 9,
+    "white_pendants": 24,
+    "rooted_planting_cells": 58,
+    "volumetric_foliage_blocks": 154,
+    "seating_bays": 2
+  },
+  "evidence_scope": "Real Minecraft server placement and exact state readback in the authoritative construction candidate. This is not artistic, walking, multiplayer, restart or permanent-runtime promotion evidence.",
+  "pending": [
+    "Genuine Minecraft day/sunset/night views",
+    "Normal authenticated player in a scale screenshot",
+    "Visual comparison and any defect corrections",
+    "Actual walking/model/light review",
+    "Retained normal-stop completion checkpoint for final release"
+  ]
+}
