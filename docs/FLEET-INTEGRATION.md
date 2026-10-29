@@ -4,6 +4,14 @@
 `01a183b8-3be2-7f93-8f23-f2e914745038`. Master: **Build It!**, chat
 `01a17947-1d00-7fd1-aa5e-d1fb514f8671`.
 
+**Owner inspection, October28,21:28EDT:** the new ships' sparse interiors and
+detail are **NOT ACCEPTED**. An additive six-vessel furnishing correction is
+source-ready, with distinct cabins/work areas, all original stock preserved,
+17 new checks and the full1038-test run passing except one existing host skip.
+It has not been placed or visually approved. Five packets can proceed to current
+native admission; Mercy remains behind her actual water repair. See
+[exact contents, source-only packets and deployment conditions](FLEET-FURNISHING-CORRECTION.md).
+
 **Latest actual deployment, October28 20:48EDT:** Petrel, Mercy and Reed Fin
 were also placed under the exclusive candidate63 job. Petrel/Reed completed
 native settling/AFTER/map; Mercy stopped on an actual lower-hold mismatch.
@@ -229,7 +237,7 @@ matched bounded harbor performance samples remain separate requirements.
 | Acceptance dimension | Fleet lane state |
 | --- | --- |
 | Original source structures and belowdecks | Implemented; targeted source checks pass |
-| Current new structure placement and graphic quality | Pending master batch and actual Minecraft views |
+| Current new structure placement and graphic quality | Six new structures placed; Mercy's final AFTER incomplete; owner rejected sparse detail; additive correction source-ready, not placed or accepted |
 | Original cog/tender retention | Each original UUID is saved once in6ad3a8; preserve intents, tags and actual wildlife passengers |
 | Actual sailing, rowing and cargo use | Pending current native inspection and player use; no repeat creation |
 | Embarkation, collision, hoist, cannon interaction | Pending actual operation |
@@ -237,7 +245,7 @@ matched bounded harbor performance samples remain separate requirements.
 | Restart persistence | Pending current normal restart and reinspection |
 | Full-harbor performance | No fleet-lane TPS/MSPT/FPS measurements yet |
 | Configured permanent-save integration | Master-owned, pending controlled promotion |
-| Owner visual/gameplay acceptance | Pending |
+| Owner visual/gameplay acceptance | NOT ACCEPTED after owner inspection; corrected detail needs actual views and review |
 
 All local writers were admitted above the separate30GiB C:/D: reserves. This is
 monitoring of owned work, not an OS quota; it cannot constrain external apps or
