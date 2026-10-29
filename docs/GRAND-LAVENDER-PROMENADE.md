@@ -78,7 +78,17 @@ refusal, protected room air, full player scale, missing column/pendant refusal,
 disconnected decoration and blocked body refusal, and removal of an earlier
 source-only plant. The authenticated stopped893 preparation also passes actual
 saved preimage/substrate checks. The refined planting/retaining-wall composition
-proposes 3,247 changes, including154 foliage blocks, and writes no world.
+proposes 3,247 changes, including 154 foliage blocks, and writes no world.
+
+A fresh independent read of verified stopped checkpoint
+`20261029T144140Z-8d3957`, SHA-256
+`e2804f1674be8c1f84a686a4badbd5a860ceb4ae1b9afbfb119cf9ad59b41ae9`,
+found zero cell differences in BEFORE, SUPPORT, PLACE and FULL against the
+frozen893 source. The new private packet manifest has SHA-256
+`3d7ca1526493fe34473a8b9e92e414d7db395ce153891ebbbfeb31cb1dd454f3`.
+The canonical6ad native custody receipt remains unchanged. This fresh read
+preserves the intervening town additions; native admission and placement remain
+pending the master's exclusive window.
 
 `python -B -m unittest discover -s tests -v` ran 1,435 tests with one failure and
 two skips. The unchanged baseline compatibility test at line110 expects198
