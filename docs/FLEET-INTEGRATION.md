@@ -4,6 +4,14 @@
 `01a183b8-3be2-7f93-8f23-f2e914745038`. Master: **Build It!**, chat
 `01a17947-1d00-7fd1-aa5e-d1fb514f8671`.
 
+**Latest actual deployment, October28 20:48EDT:** Petrel, Mercy and Reed Fin
+were also placed under the exclusive candidate63 job. Petrel/Reed completed
+native settling/AFTER/map; Mercy stopped on an actual lower-hold mismatch.
+Root's subsequent one-cell diagnostic confirms flowing water in intended AIR.
+All six new vessel structures exist; Mercy remains partial and all physical
+walking/visual/maritime gameplay acceptance remains open. See
+[the exact candidate63 outcome and retained failure](FLEET-NATIVE-DEPLOYMENT63.md).
+
 **Actual deployment update, 2026-10-28 22:21 UTC:** Resolute Wren, Tern Pilot
 Cutter and Salt Marigold Ketch now exist in the authoritative construction
 world. Under a new exclusive master lease, each passed fresh native BEFORE and
