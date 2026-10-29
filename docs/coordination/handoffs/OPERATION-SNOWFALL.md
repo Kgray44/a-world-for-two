@@ -50,6 +50,14 @@ Local Python3.12.10 /Java21.0.10 /Node24.18.0, Windows:
   green checkpoint. Private bounded raw logs remain ignored under runtime/verification.
 - Subsequent final checks/Ubuntu CI results are recorded in the PR. CI Linux tests
   can establish native OS fixture behavior, not actual server/world acceptance.
+- Ubuntu run40917479985/job123601460472 ran all1,461 tests and passed every
+  Snowfall Linux fixture, including same-UID socket lifecycle/reconnection and the
+  inherited writer descriptor. Its one failure was the pre-existing fleet guard
+  test assuming a C:/D: temporary destination on Ubuntu. The test now supplies only
+  a Windows-drive fixture for that guard branch, asserts the exact C0/D32MiB
+  allocation and keeps refusal/no-output checks. All17 fleet checks passed locally;
+  no production fleet exporter, storage gate or artistic source changed. Failed CI
+  remains retained. Later exact-head CI determines final source qualification.
 
 WSL was unavailable; Snow's Ubuntu release/account/storage/network/privileges and
 Plex contention remain unknown. No native Minecraft/systemd/reboot, SSH forwarding,
