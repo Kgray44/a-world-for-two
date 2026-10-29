@@ -155,7 +155,8 @@ python -B -m tools.snowfall_host configure --prepared /private/path/units-review
 python -B -m tools.snowfall_host prepare-libraries --home /srv/awft/data --confirmation 'PREPARE LIBRARIES /srv/awft/data'
 ```
 
-Neither command accepts the EULA or starts Java. Snow can explicitly install the
+Neither command accepts the EULA or starts Minecraft. The library installer uses
+Java without opening a world. Snow can explicitly install the
 two reviewed units as root; this verifies them and reloads systemd without enabling
 or starting either. Identical installation is rerunnable; differing existing units
 are refused pending preservation and upgrade review.
