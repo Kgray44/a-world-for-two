@@ -116,7 +116,20 @@
     "Genuine Minecraft day/sunset/night views",
     "Normal authenticated player in a scale screenshot",
     "Visual comparison and any defect corrections",
-    "Actual walking/model/light review",
-    "Retained normal-stop completion checkpoint for final release"
-  ]
+    "Actual walking/model/light review"
+  ],
+  "saved_checkpoint_verification": {
+    "checkpoint_id": "20261029T150836Z-29a970",
+    "checkpoint_sha256": "23d398ee287619892f8b96574c7edddae343adcea6d34ee3aa2b6ae01ad6f061",
+    "archive_bytes": 251588787,
+    "source_bytes": 339245849,
+    "archive_integrity": "verified",
+    "read_method": "Authenticated immutable BackupWorld archive read, no live region access",
+    "full_plan_sha256": "e5ff6d3a35b5cd61bc1b58b74bffd3737d5030acaa932c5bc262904e77e319d5",
+    "checked_cells": 4128,
+    "block_state_differences": 0,
+    "saved_region_sha256": "f49d0441ff0272824fafdf28c6d5afd536feddfa0ee5445e3fe0bfa05fe487f5",
+    "canonical6ad_receipt_unchanged": true,
+    "scope": "Retained normal-stop save includes exact constructed blocks and protected route/grape witnesses. Does not establish a successful reload or artistic acceptance."
+  }
 }

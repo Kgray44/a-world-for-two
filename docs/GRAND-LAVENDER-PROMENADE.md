@@ -86,6 +86,15 @@ genuine client photographs and retained completion checkpoint; the source
 author will inspect those actual images and prepare narrowly scoped corrections
 if they expose visible defects.
 
+The master then retained the normal-stop archive `20261029T150836Z-29a970`,
+SHA-256 `23d398ee287619892f8b96574c7edddae343adcea6d34ee3aa2b6ae01ad6f061`.
+An independent authenticated archive read matched all 4,128 complete-field
+states, including the protected route and grape witnesses, with zero
+differences. The archive is 251,588,787 bytes and preserves 339,245,849 source
+bytes in 704 files. Canonical6ad remains unchanged. This proves the constructed
+promenade was retained in that recovery checkpoint for final release; a
+successful reload, normal walking and graphical quality remain separate work.
+
 ## Required actual completion
 
 1. Read the fresh retained checkpoint and current registry, preserve all
