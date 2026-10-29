@@ -113,10 +113,10 @@
   },
   "evidence_scope": "Real Minecraft server placement and exact state readback in the authoritative construction candidate. This is not artistic, walking, multiplayer, restart or permanent-runtime promotion evidence.",
   "pending": [
-    "Genuine Minecraft day/sunset/night views",
-    "Normal authenticated player in a scale screenshot",
-    "Visual comparison and any defect corrections",
-    "Actual walking/model/light review"
+    "Master-admitted photo finish384 before/support/once place/normal/full",
+    "Repeated actual day/night and player-scale photos after correction",
+    "Actual normal walking and model review",
+    "Retained completion checkpoint after the finish correction"
   ],
   "saved_checkpoint_verification": {
     "checkpoint_id": "20261029T150836Z-29a970",
@@ -131,5 +131,129 @@
     "saved_region_sha256": "f49d0441ff0272824fafdf28c6d5afd536feddfa0ee5445e3fe0bfa05fe487f5",
     "canonical6ad_receipt_unchanged": true,
     "scope": "Retained normal-stop save includes exact constructed blocks and protected route/grape witnesses. Does not establish a successful reload or artistic acceptance."
+  },
+  "actual_visual_review": {
+    "photos": [
+      {
+        "file": "logs\\visual-review\\after65-day-1793288210\\promenade-north-day.png",
+        "sha256": "cbff14c2a591ea6dae54f00d92a11773cd7cc922d3e6bf3e73fb112e4b36452e",
+        "at": "2026-10-29T15:35:07.842128100Z",
+        "position": [
+          1294.5,
+          66.0,
+          -994.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      },
+      {
+        "file": "logs\\visual-review\\after65-day-1793288210\\promenade-south-day.png",
+        "sha256": "1841a807159fe0194b08146c56efb71a9fa8b8fb49fbe15c89aab08b702788a5",
+        "at": "2026-10-29T15:35:21.950257800Z",
+        "position": [
+          1294.5,
+          67.0,
+          -953.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      },
+      {
+        "file": "logs\\visual-review\\after65-day-1793288210\\promenade-ceiling.png",
+        "sha256": "246a0430f494e056fc58946a6935277287c502c4f7aec86556156d2faf3165f3",
+        "at": "2026-10-29T15:37:47.443202700Z",
+        "position": [
+          1294.5,
+          66.0,
+          -978.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      },
+      {
+        "file": "logs\\visual-review\\after65-day-1793288210\\promenade-west-garden.png",
+        "sha256": "47aa0bdb3835ed1e8d21e21a17d4f566c720338d499e5b8a1b8ea645ca2ee0ee",
+        "at": "2026-10-29T15:37:58.561496900Z",
+        "position": [
+          1279.5,
+          69.0,
+          -972.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      },
+      {
+        "file": "logs\\visual-review\\after65-day-1793288210\\promenade-roof-castle.png",
+        "sha256": "0b6008064cbafc8b24d66b54b58237b11b05254a7ec9ba6658198fe38c68e1b2",
+        "at": "2026-10-29T15:38:09.668643600Z",
+        "position": [
+          1308.5,
+          90.0,
+          -970.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      },
+      {
+        "file": "logs\\visual-review\\after65-night-1793288510\\promenade-night.png",
+        "sha256": "0d723fefeb5acf5b55f8996eb95e2cb55e134de4521ec65e690c1aeb9688dc13",
+        "at": "2026-10-29T15:41:13.511055200Z",
+        "position": [
+          1294.5,
+          66.0,
+          -978.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      },
+      {
+        "file": "logs\\visual-review\\after65-night-1793288510\\promenade-authenticated-player-scale.png",
+        "sha256": "6922bd80a7bda79bb1a80d5ad2fc15bb8dd90fd3abf5aaf87d3732d233a5e325",
+        "at": "2026-10-29T15:44:23.327537Z",
+        "position": [
+          1294.5,
+          66.0,
+          -978.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      },
+      {
+        "file": "logs\\visual-review\\after65-night-1793288510\\promenade-sunset-player.png",
+        "sha256": "8928da24f625a0c6fa0c572b105953e3734827b4a31607ff9ba62bf732ea1dac",
+        "at": "2026-10-29T15:44:26.371697200Z",
+        "position": [
+          1294.5,
+          66.0,
+          -978.5
+        ],
+        "kind": "actual Minecraft framebuffer",
+        "camera_and_target_chunk_neighborhoods_present": true
+      }
+    ],
+    "reference": "Owner attachment image-1.png, original preserved",
+    "weather": "Actual overcast/drizzle is visible; standard weather-clear commands did not remove AdvancedWeather drizzle. No clear-sky rendering is claimed.",
+    "observed_strengths": [
+      "Monumental columns and wide aisle relative to normal player",
+      "Connected repeated white pendants and visible night floor lighting",
+      "Recessed ceiling and complete roof edges",
+      "Integrated raised flower beds and glowberry trails"
+    ],
+    "normal_player_scale": "Actual authenticated Survival player shown in normal F5 camera, with Survival HUD visible; no mannequin or pasted character.",
+    "observed_finish_defects": [
+      "Pink terracotta reads rust-red rather than soft pink",
+      "Opaque lavender leaf projections read as hanging panels",
+      "Old dirt/gravel floor strips interrupt the pale palace paving"
+    ],
+    "focused_correction": {
+      "manifest_sha256": "170a0088d67fc3fea9bdc1a647505c7cf393fe8d247189becd932a96276d32da",
+      "targets": 384,
+      "soft_pink_accents": 207,
+      "green_foliage": 55,
+      "known_floor_surfaces": 122,
+      "native_actions": 0,
+      "status": "Prepared only; master review and exclusive native slot required"
+    },
+    "artistic_acceptance": "Not complete: apply and inspect the focused finish correction in actual Minecraft."
   }
 }

@@ -95,6 +95,44 @@ bytes in 704 files. Canonical6ad remains unchanged. This proves the constructed
 promenade was retained in that recovery checkpoint for final release; a
 successful reload, normal walking and graphical quality remain separate work.
 
+## Actual photographs and focused finish correction
+
+Eight unchanged, hash-verified Minecraft photographs now cover both entrances,
+the ceiling, western garden, complete roof beside the castle, night lighting,
+and the normal authenticated Survival player in F5 at night and sunset. The
+player is small beneath the columns and pendants, which confirms the intended
+grand scale visually. The images show actual overcast/drizzle; no fictional
+clear-sky or shader rendering is substituted. The source framebuffers and their
+native camera/readiness receipts remain in the master's visual-review folder;
+their exact identities are in the sanitized evidence record.
+
+The review found three finish defects. Pink terracotta renders rust-red rather
+than soft pink, the inward lavender-leaf projections read as opaque suspended
+panels, and the retained dirt/gravel track interrupts the pale palace floor.
+`tools/artistic_lavender_promenade_finish.py` prepares a focused correction:
+207 already placed accent cells to native pink concrete tile/panel/pillar
+equivalents, 55 projections to flowering green azalea foliage, and 122 exact
+known original walking floors to the surrounding calcite/inlay palette. The
+original block Y levels and every stair facing/half/shape remain identical.
+The grape and its exact supporting floor remain read-only. No columns, roof,
+lights, entrances, inventories or actor fixtures are rebuilt.
+
+This 384-target proposal is bound to retained29a and immutable constructed
+sources. Its before/support/place/normal/full packet manifest is
+`170a0088d67fc3fea9bdc1a647505c7cf393fe8d247189becd932a96276d32da`.
+The original path producer omits unchanged AIR cells, so each floor's body
+clearance is positively read from the authenticated archive and included in
+the 368-cell SUPPORT and 4,353-cell FULL plans. The finite material and route
+checks pass. The preliminary R1 proposal is retained and superseded; no finish
+packet has yet been applied.
+
+All 13 focused construction/finish fixtures pass. The full suite ran 1,441
+tests with the same unchanged baseline compatibility-count failure and two
+skips; pack validation and JavaScript syntax checks pass. The master continues
+the resident fixtures before assigning the correction window. Repeated real
+photographs and a new retained checkpoint are required after the correction;
+these pre-correction photos do not establish final artistic acceptance.
+
 ## Required actual completion
 
 1. Read the fresh retained checkpoint and current registry, preserve all
