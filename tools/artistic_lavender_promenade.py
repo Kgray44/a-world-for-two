@@ -250,7 +250,7 @@ def build(p):
     p.phase = 'gardens'
     # Two-metre-deep raised soil beds, rooted paired lilacs, variable bush
     # heights and supported climbing foliage. The existing tree edge is retained.
-    for side,xs in (('west',(1285,1286)),('east',(1301,1302))):
+    for side,xs in (('west',(1286,1287)),('east',(1301,1302))):
         for z in range(-995,-952):
             if side_opening(z) or side=='west' and z<=-984:
                 continue
@@ -261,6 +261,7 @@ def build(p):
                 q=(x,f+1,z)
                 # No imported owner object or existing leaf is cleared for a bed.
                 if base(p.actual(q)) not in SOFT or q in p.protected:continue
+                if q in p.blocks and base(p.blocks[q]) not in AIR:continue
                 p.supported_floor(x,z,f,'chipped:purpur_block_bricks')
                 p.put(x,f+1,z,'minecraft:dirt')
                 if (z+2*x)%5==0:
@@ -268,18 +269,36 @@ def build(p):
                     p.put(x,f+3,z,'minecraft:lilac',half='upper')
                 elif (z+x)%3==0:
                     p.put(x,f+2,z,'regions_unexplored:purple_lupine')
+                elif (z+x)%4==0:
+                    p.put(x,f+2,z,'regions_unexplored:lavender_wisteria_shrub',half='lower')
+                    p.put(x,f+3,z,'regions_unexplored:lavender_wisteria_shrub',half='upper')
                 else:
                     p.put(x,f+2,z,'minecraft:flowering_azalea' if (z+x)%2 else 'minecraft:azalea')
                 p.beds.append([x,f+1,z])
+            # A complete outer retaining lip encloses each raised bed. The
+            # occupied inner edge uses the actual column bases/low ledges.
+            outer=1285 if side=='west' else 1303
+            q=outer,f+1,z
+            if base(p.actual(q)) in SOFT and q not in p.protected:
+                p.supported_floor(outer,z,f,'chipped:purpur_block_bricks')
+                p.put(outer,f+1,z,'chipped:carved_purpur_block')
+                p.put(outer,f+2,z,'minecraft:purpur_slab',type='bottom',waterlogged=False)
             # Pale front ledge and layered leafy climbing frames are on the
             # column line, outside the continuous central walking reservation.
             frame=1288 if side=='west' else 1300
             if min(abs(z-v) for v in POSTS)>1:
                 p.put(frame,f+1,z,'chipped:purpur_block_bricks')
-                p.put(frame,f+2,z,'minecraft:purpur_slab',type='bottom',waterlogged=False)
-                if (z+frame)%2:
-                    for y in range(f+3, min(f+6,73)):
-                        p.put(frame,y,z,'minecraft:flowering_azalea_leaves',distance=7,persistent=True,waterlogged=False)
+                p.put(frame,f+2,z,'minecraft:purpur_slab',type='top',waterlogged=False)
+                crown=min(f+6+(z%2),73)
+                inward=1 if side=='west' else -1
+                for y in range(f+3,crown+1):
+                    p.put(frame,y,z,'minecraft:flowering_azalea_leaves' if (y+z)%3 else 'minecraft:azalea_leaves',
+                          distance=7,persistent=True,waterlogged=False)
+                    # A second leafy plane gives each hedge actual volume,
+                    # while the nine-wide principal aisle stays untouched.
+                    if f+4<=y<crown:
+                        p.put(frame+inward,y,z,'regions_unexplored:lavender_wisteria_leaves',
+                              distance=7,persistent=True,waterlogged=False)
     # Supported trailing glowberry greenery stays above the side beds, away
     # from the pedestrian body volume. Native attached vines require normal
     # placement survival and light readback during the master's actual run.
@@ -306,6 +325,9 @@ def build(p):
         p.put(1285,f+1,z+1,'handcrafted:cherry_side_table',color='pink',facing='east',waterlogged=False)
         p.put(1285,f+2,z+1,'minecraft:potted_allium')
         p.seats.append({'bench':[1285,f+1,z],'view':'west-facing castle garden bay, seat faces the promenade'})
+    p.beds=[q for q in p.beds if p.at(tuple(q))=='minecraft:dirt'
+            and base(p.at((q[0],q[1]+1,q[2]))) in {'minecraft:lilac','minecraft:azalea',
+            'minecraft:flowering_azalea','regions_unexplored:purple_lupine','regions_unexplored:lavender_wisteria_shrub'}]
     return p
 
 
@@ -363,6 +385,7 @@ def validate(p):
             'paired_columns':9,'bay_intervals_m':[b-a for a,b in zip(POSTS,POSTS[1:])],
             'white_pendants':24,'rod_lengths':[3,4,5],
             'rooted_planting_cells':len(p.beds),'seating_bays':2,
+            'volumetric_foliage_blocks':sum(base(s).endswith('_leaves') for s in p.blocks.values()),
             'all_authored_solid_components_connected_to_saved_substrate':True,
             'saved_routes_and_grape_retained':True,'native_BEs_replaced':0,
             'material_rule':material,

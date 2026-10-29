@@ -21,11 +21,13 @@ def registry():
     blocks.update({'minecraft:purpur_slab':{'type':['top','bottom','double'],'waterlogged':['true','false']},
                    'minecraft:chain':{'axis':['x','y','z'],'waterlogged':['true','false']},
                    'minecraft:end_rod':{'facing':['up','down']},'minecraft:lilac':{'half':['lower','upper']},
-                   'minecraft:flowering_azalea_leaves':{'distance':[str(v) for v in range(1,8)],'persistent':['true','false'],'waterlogged':['true','false']},
+                   'regions_unexplored:lavender_wisteria_shrub':{'half':['lower','upper']},
                    'minecraft:cave_vines_plant':{'berries':['true','false']},
                    'minecraft:cave_vines':{'age':[str(v) for v in range(26)],'berries':['true','false']},
                    'handcrafted:cherry_bench':{'facing':['east'],'color':['pink'],'shape':['single'],'waterlogged':['false']},
                    'handcrafted:cherry_side_table':{'facing':['east'],'color':['pink'],'waterlogged':['false']}})
+    for k in ('minecraft:flowering_azalea_leaves','minecraft:azalea_leaves','regions_unexplored:lavender_wisteria_leaves'):
+        blocks[k]={'distance':[str(v) for v in range(1,8)],'persistent':['true','false'],'waterlogged':['true','false']}
     return {'blocks':blocks}
 
 

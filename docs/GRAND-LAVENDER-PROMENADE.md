@@ -24,7 +24,8 @@ crossbeams and roof edges. Five- and six-block bays have stepped arches, carved
 capitals, inward corbels, raised ceiling ribs, recessed panels, a patterned
 weathering layer and complete exterior cornices. Pale paving includes two
 carved inlay strips. Rooted soil beds contain purple lupines, lilacs and azalea
-bushes, with elevated flowering foliage and supported glowberry trails. Two
+bushes and lavender wisteria shrubs, with elevated flowering foliage in two
+planes, enclosed carved planters and supported glowberry trails. Two
 bench and flower-table pockets open toward the aisle. There is no new pool or
 mechanism. The working watermill to the northeast and planned white bridge
 are outside this footprint; their exact source masks remain independent.
@@ -76,7 +77,8 @@ Seven focused synthetic tests pass: retained routes and grape, water and BE
 refusal, protected room air, full player scale, missing column/pendant refusal,
 disconnected decoration and blocked body refusal, and removal of an earlier
 source-only plant. The authenticated stopped893 preparation also passes actual
-saved preimage/substrate checks. It proposes 3,071 changes and writes no world.
+saved preimage/substrate checks. The refined planting/retaining-wall composition
+proposes 3,247 changes, including154 foliage blocks, and writes no world.
 
 `python -B -m unittest discover -s tests -v` ran 1,435 tests with one failure and
 two skips. The unchanged baseline compatibility test at line110 expects198
