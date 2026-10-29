@@ -327,7 +327,8 @@ class Metrics:
     def alerts(self, sample, storage_snapshot=None):
         alerts = []
         storage = storage_snapshot if storage_snapshot is not None else self.storage.snapshot()
-        low = any(d.get("low") or d.get("free", 0) < 32 * GiB for d in storage["drives"])
+        low = any(d.get("low") or d.get("free", 0) < (32 * GiB if os.name == "nt" else d.get("reserve", 30 * GiB) + GiB)
+                  for d in storage["drives"])
         settings = self.layout.settings()
         over_world = self._sizes["world"] is not None and self._sizes["world"] >= (settings["world_budget_gib"] - 1) * GiB
         over_cache = self._sizes["caches"] is not None and self._sizes["caches"] >= settings["cache_budget_gib"] * GiB

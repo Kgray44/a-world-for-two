@@ -118,7 +118,7 @@ class Installer:
                     "runtime": "not yet started", "next": "Accept the EULA, verify both player names, then start the server."}
 
     def install_neoforge(self, version, notify=lambda _: None):
-        args = self.layout.server / "libraries/net/neoforged/neoforge" / version / "win_args.txt"
+        args = self.layout.server / "libraries/net/neoforged/neoforge" / version / ("win_args.txt" if os.name == "nt" else "unix_args.txt")
         if args.exists():
             return
         pins = read_json(REPO / "catalog/tools.lock.json")

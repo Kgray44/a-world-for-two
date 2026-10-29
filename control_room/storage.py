@@ -73,6 +73,14 @@ class Storage:
             self._usage = (time.monotonic(), tree_size(self.layout.home))
         return self._usage[1]
 
+    def floor(self):
+        if os.name == "nt":
+            return FLOOR
+        value = self.layout.settings().get("storage_reserve_gib", 30)
+        if type(value) is not int or not 1 <= value <= 1024:
+            raise UserError("Set a Linux storage reserve between 1 and 1024 GiB")
+        return value * GiB
+
     def breakdown(self, force=False):
         """Measure all project files, including worlds, staging and failed receipts."""
         with self._lock:
@@ -173,14 +181,15 @@ class Storage:
                 if result.returncode or not receipt.get("allowed"):
                     raise UserError("Storage reserve check rejected this operation: " + receipt.get("reason", "unknown"))
             else:
-                # Portable tests and CI retain the same floor on their actual volume.
+                # Linux uses the selected data volume and its explicit host policy.
                 existing = target
                 while not existing.exists():
                     existing = existing.parent
                 free = shutil.disk_usage(existing).free
-                self.last = {"allowed": free - additional >= FLOOR, "free": free, "estimated": additional}
+                floor = self.floor()
+                self.last = {"allowed": free - additional >= floor, "free": free, "estimated": additional, "reserve": floor}
                 if not self.last["allowed"]:
-                    raise UserError("The operation would cross the 30 GiB storage reserve")
+                    raise UserError("The operation would cross the configured Linux storage reserve")
             self._checked = time.monotonic()
             return self.last
 
@@ -223,12 +232,15 @@ class Storage:
 
     def snapshot(self, live=False, refresh=False):
         disks = []
-        paths = ["C:\\", "D:\\"] if os.name == "nt" else [str(self.layout.home.anchor)]
+        existing = self.layout.home
+        while not existing.exists():
+            existing = existing.parent
+        paths = ["C:\\", "D:\\"] if os.name == "nt" else [str(existing)]
         for path in paths:
             try:
                 item = shutil.disk_usage(path)
                 disks.append({"drive": path, "total": item.total, "used": item.used,
-                              "free": item.free, "reserve": FLOOR, "low": item.free <= FLOOR})
+                              "free": item.free, "reserve": self.floor(), "low": item.free <= self.floor()})
             except OSError:
                 disks.append({"drive": path, "error": "Drive unavailable"})
         breakdown = self.live_inventory(60, force=refresh)

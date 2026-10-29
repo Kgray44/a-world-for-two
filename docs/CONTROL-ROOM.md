@@ -1,5 +1,9 @@
 # Control Room
 
+Dedicated Ubuntu hosting, independent service ownership, SSH access and safe
+migration preparation are documented in [Operation Snowfall](OPERATION-SNOWFALL.md).
+That runbook does not authorize production transfer or activation.
+
 Run `python -m control_room run --home "D:\A World for Two"` and open
 `http://127.0.0.1:8765`. The dashboard is private and binds to loopback.
 
