@@ -1,0 +1,26 @@
+{
+  "format": "awft-fleet-camera-overrides:1",
+  "status": "SOURCE CAMERA RECIPE ONLY; no image, native call or world action",
+  "batch_manifest_sha256": "6c3aa58711e9a7b2032e559ba8e16c04419bbf40c9721acb3011f4850a59079f",
+  "geometry_and_placement_changes": 0,
+  "reason": "The generic major-ship deck pose lies offboard on these smaller hulls. Use each existing onboard working-deck pose for its deck capture.",
+  "integration": "Require actual admitted placement first. Replace only the named deck recipe; retain every other view, immutable source and original manifest. Use a fresh unique capture prefix and verify actual current position/headroom. This is not walking or gameplay acceptance.",
+  "vessels": [
+    {
+      "key": "tern-pilot-cutter",
+      "camera_source_sha256": "367882e5dbf72e988692b958736545154c41f323707d2ece47fba557a6b0043c",
+      "source_view": "working-deck",
+      "world_views": [
+        {"name": "deck", "feet": [1166.5, 65, -1337.5], "look_at": [1169, 66, -1341]}
+      ]
+    },
+    {
+      "key": "salt-marigold-ketch",
+      "camera_source_sha256": "35517786c9f6c42dc5687665f755ce36085122757c90a797270ae98c917b7700",
+      "source_view": "working-deck",
+      "world_views": [
+        {"name": "deck", "feet": [1229.5, 65, -1320.5], "look_at": [1227, 66, -1317]}
+      ]
+    }
+  ]
+}
