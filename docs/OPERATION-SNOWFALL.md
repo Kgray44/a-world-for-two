@@ -88,6 +88,10 @@ data requires a separately reviewed larger budget before staging. AERO writers
 check at least 30 GiB free on **each** of C: and D:, including projected writes.
 This monitor covers owned writers, not external applications or pre-existing ones.
 
+`stage --project-budget-gib N --storage-reserve-gib N` selects a reviewed
+destination policy before its first allocation. Match those values in the host
+configuration. This never lowers the Windows guard's 30 GiB floor on either drive.
+
 ## Offline inventory and transfer preparation
 
 The following commands are for a **future separately authorized migration window**.

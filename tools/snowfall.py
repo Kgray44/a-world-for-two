@@ -270,10 +270,13 @@ def verify(bundle, expected_sha):
     return manifest
 
 
-def stage(bundle, destination, expected_sha, max_bytes):
+def stage(bundle, destination, expected_sha, max_bytes, project_budget_gib=100, storage_reserve_gib=30):
     """Install a verified bundle only into a fresh, inactive home; never swap saves."""
     if type(max_bytes) is not int or not 0 < max_bytes <= 2048 * GiB:
         raise UserError("Declare a staging allocation between 1 byte and 2 TiB")
+    if (type(project_budget_gib) is not int or not 10 <= project_budget_gib <= 2048
+            or type(storage_reserve_gib) is not int or not 1 <= storage_reserve_gib <= 1024):
+        raise UserError("Invalid destination project budget or storage reserve")
     if (bundle / "INCOMPLETE.json").exists():
         raise UserError("Bundle is marked incomplete")
     complete = read_json(bundle / "COMPLETE.json", {})
@@ -284,7 +287,10 @@ def stage(bundle, destination, expected_sha, max_bytes):
         raise UserError("Staging exceeds its declared byte bound")
     destination = new_destination(destination, bundle)
     # Reserve against the destination's configured budget, not the source volume.
-    layout = Layout(destination)
+    class StagingLayout(Layout):
+        def settings(self):
+            return super().settings() | {"project_budget_gib": project_budget_gib, "storage_reserve_gib": storage_reserve_gib}
+    layout = StagingLayout(destination)
     storage = Storage(layout)
     estimate = manifest["source_bytes"] + len(manifest["files"]) * 8192 + MAX_MANIFEST + 2 * 1024 * 1024
     storage.reserve(estimate, destination)
@@ -369,6 +375,8 @@ def main():
         if action == "stage":
             command.add_argument("--destination", type=Path, required=True)
             command.add_argument("--max-bytes", type=int, required=True)
+            command.add_argument("--project-budget-gib", type=int, default=100)
+            command.add_argument("--storage-reserve-gib", type=int, default=30)
     args = parser.parse_args()
     try:
         if args.action == "inventory":
@@ -379,7 +387,8 @@ def main():
             value = verify(args.bundle, args.manifest_sha256)
             result = {"verified": True, "files": len(value["files"]), "source_bytes": value["source_bytes"]}
         else:
-            result = stage(args.bundle, args.destination, args.manifest_sha256, args.max_bytes)
+            result = stage(args.bundle, args.destination, args.manifest_sha256, args.max_bytes,
+                           args.project_budget_gib, args.storage_reserve_gib)
         print(json.dumps(result, indent=2))
     except (UserError, OSError, ValueError, KeyError) as exc:
         parser.exit(1, "Snowfall: " + str(exc) + "\n")
