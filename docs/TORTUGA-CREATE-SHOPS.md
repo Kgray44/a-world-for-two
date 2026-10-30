@@ -39,9 +39,10 @@ The last three locations are in [western shops](TORTUGA-CREATE-WEST.md). For eac
 process, preserve components/counts and any actual failed partial, check STOP or
 crank expiry, and repeat after the coordinated restart. Native item movement,
 recipes, player access, performance and owner acceptance remain unverified here.
-Railway commissioning was removed from the remaining requirements by the owner;
-none of these recipes depends on further railway work. Accepted tubes/zipline
-and their current support remain protected.
+The owner excluded all railway work: stations, tracks, rail routes/loops,
+infrastructure finishing, trains and commissioning. Existing installations stay
+untouched. None of these recipes depends on further railway work. Accepted
+tubes/zipline and their current support remain protected.
 
 ## Historical construction source
 

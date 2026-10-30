@@ -2,11 +2,13 @@
 
 ## Owner scope override — 2026-10-30
 
-The owner removed **railway commissioning and the south forest** from remaining
-project completion requirements. Stop further railway planning, assembly,
-schedules and commissioning. Preserve the existing hardware, source and failed
-or partial receipts; this override authorizes no removal. Earlier railway and
-forest requirements below are historical, not the current backlog.
+The owner removed **all railway and rail infrastructure work**, together with
+the south forest, from remaining project completion requirements. The exclusion
+explicitly covers stations, tracks, rail routes, loops, supporting infrastructure
+and finishing, trains, assembly, schedules and commissioning. Stop further rail
+planning, construction and testing. Preserve all existing installations, source
+and failed or partial receipts untouched; this override authorizes no removal.
+Earlier railway and forest requirements below are historical, not the backlog.
 
 The owner accepted the **Hypertubes and zipline as complete**. Preserve those
 systems, chain-length128 configuration and wrench support. That acceptance is
