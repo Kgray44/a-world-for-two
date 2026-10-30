@@ -1,5 +1,48 @@
 # Keel Store: a contained continuously powered working mill
 
+## Current physical blocker — 2026-10-30
+
+Root placed the33 dry targets. **Do not replay them or replace the barrel,
+hopper, mill or their actual inventories.** The authenticated normal-stop
+checkpoint `20261030T111759Z-2ed349`, SHA256
+`655cfcbedc8f2be40a5289cce74785ad0d1df25317f98c46d445c5aef21fbb20`,
+contains the real hopper `(1325,66,-1203)` as
+`minecraft:hopper[enabled=true,facing=down]`, despite the FEED lever
+`(1325,67,-1202)` being powered. The clutch and DRIVE lever are powered/STOP;
+the proposed water-source cell remains AIR. The hopper disagrees with the
+intended locked state. **Water activation and wheat feeding remain held.**
+This supersedes the historical source-only status and intended dry AFTER below.
+
+Root's smallest supported recovery attempt needs no construction or new helper:
+
+1. Inspect current source AIR, actual DRIVE STOP and genuinely empty input
+   barrel/hopper/mill. If goods are present, preserve/count the real partial
+   instead of treating this as an empty-machine test. Keep water absent.
+2. Through ordinary player interaction, toggle FEED STOP **OFF**, inspect the
+   actual hopper, then toggle it **ON** and inspect again. Require ordinary
+   unlocked `enabled=true` when OFF and locked `enabled=false` when ON.
+   Wait for the actual native update result; elapsed time alone is not a pass.
+3. If ON still leaves the hopper enabled, retain that failed check and keep the
+   wet phase held. A separate small wiring correction then needs actual support,
+   walking-space and inventory preservation checks. Do not write `enabled=false`
+   directly, loosen AFTER, remove the barrel or replay dry construction.
+4. Only a successful native OFF/ON check admits subsequent fresh seal/water
+   commissioning. Other seven shops do not depend on this Keel recovery.
+
+Pinned Minecraft1.21.1 `HopperBlock.checkPoweredState` sets enabled to the inverse
+of `Level.hasNeighborSignal` during `neighborChanged`; `LeverBlock.pull` invokes
+neighbor updates at both the lever and its attached block. Ordinary interaction
+therefore tests the existing circuit before assuming it needs different hardware.
+This is a source-supported recovery path, **not a successful runtime test**.
+The exact class SHA256s from the retained server SRG artifact are
+`ba8d1df706b655b1a22a725fd1904f7d41f818526c5e6f1c69b55efc33d30f45`
+for HopperBlock and
+`40057bfb243f9e80c808b4f09874f2876c2a9bcce65e846d102864f759cfde1f`
+for LeverBlock. Neither saved state nor bytecode inspection proves current RPM,
+feed locking, fluid containment, item yield, STOP performance or restart reuse.
+
+## Historical construction source
+
 This is a direct source packet for the existing Native construction pipeline,
 with no Java, runtime, configuration, Packwiz, client or observation changes.
 It complements the first three interactive shop processes. It is not deployed

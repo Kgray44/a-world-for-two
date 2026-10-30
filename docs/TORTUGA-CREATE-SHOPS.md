@@ -1,5 +1,50 @@
 # Tortuga: first three real shop processes
 
+## Current operating handoff — 2026-10-30
+
+Root has actually placed all eight shops'80 dry hardware targets, including the
+three shops in this document. **Their construction steps below are historical;
+do not replay PLACE, reconstruct containers or regenerate stock.** Root remains
+the sole actual world/client writer. This source update performs no gameplay.
+
+The shortest first recipe is **one existing iron ingot -> one iron sheet**:
+record actual inventory counts, put the ingot on Pelican's existing depot
+`(1357,65,-1127)`, operate the east crank `(1358,67,-1127)`, observe the real press
+stroke and collect/store the actual sheet. Pressing needs neither fuel nor water;
+the longer raw-iron/furnace sequence below follows this first useful milestone.
+The retained starter chest `(1313,68,-994)` contained four iron ingots,16 wheat
+and a Create wrench in checkpoint `20261030T111759Z-2ed349`, SHA256
+`655cfcbedc8f2be40a5289cce74785ad0d1df25317f98c46d445c5aef21fbb20`.
+Those are saved counts, not permission to recreate them or assume current stock.
+
+Record actor, starter chest, raw/finished barrels, depot, furnace and dropped
+items before/after. Require one legitimate ingot consumed and one actual sheet
+retained. Release the crank, verify actual zero speed after its native activity
+expires, and repeat after Root's next coordinated normal save/restart with the
+same actual inventories. No new observer, restart window or source stock is
+needed to attempt the initial process.
+
+| Installed shop | First actual operation still required |
+| --- | --- |
+| Pelican Forge | One ingot -> one sheet; then raw iron + legitimate fuel -> ingot -> sheet. |
+| Harbor Chair & Cup | One wheat -> one or three flour, plus zero or one seed; record actual randomized yield. |
+| Sandbar Carpenter | One bamboo plank -> one bamboo mosaic; collect actual ejected work. |
+| Keel Store | Empty-machine FEED STOP check first; hold water/feed until the real hopper locks. See [the failed check](TORTUGA-CREATE-CONTINUOUS-MILL.md). |
+| White Clam | One unchanged wheat through the native pump/tube lane, then16 and genuine selective extraction. See [routing](TORTUGA-CREATE-WAREHOUSE.md). |
+| Crooked Kettle | One flour +1,000mB water -> one dough, with the actual empty bucket retained. |
+| Low Water Kitchen | One wheat -> actual flour/seeds through its own real mill. |
+| Bent Spar Repairs | One sugar cane -> one paper through its own real press. |
+
+The last three locations are in [western shops](TORTUGA-CREATE-WEST.md). For each
+process, preserve components/counts and any actual failed partial, check STOP or
+crank expiry, and repeat after the coordinated restart. Native item movement,
+recipes, player access, performance and owner acceptance remain unverified here.
+Railway commissioning was removed from the remaining requirements by the owner;
+none of these recipes depends on further railway work. Accepted tubes/zipline
+and their current support remain protected.
+
+## Historical construction source
+
 This additive package uses the existing Native BEFORE / support / PLACE /
 normal-neighbor SETTLE / full AFTER pipeline. It adds29 cells inside three
 already-built shops. It does not replace furniture, inventory, rooms or routes;

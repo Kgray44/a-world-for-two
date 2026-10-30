@@ -1,5 +1,13 @@
 # West Tortuga: three small useful shop processes
 
+**Current status,2026-10-30:** Root has actually placed all ten dry hardware
+targets below. Preserve those machines, current inventories and furnishings;
+the construction-source/PLACE stages are historical and must not be replayed.
+Proceed through ordinary current player interactions to the three actual recipes
+below. Goods, basin water and returned buckets must come from real inventory
+interactions. STOP/idle, actual counts, access and restart reuse remain unverified.
+Root retains sole Native/world authority; no railway work is a dependency.
+
 Phase2 adds ten hardware cells inside three already-built western shops. The
 earlier five shop source packages remain frozen and retain first deployment
 priority. This packet uses the existing Native BEFORE/support/PLACE/normal-join/

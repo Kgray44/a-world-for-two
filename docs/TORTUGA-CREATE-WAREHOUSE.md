@@ -1,5 +1,12 @@
 # White Clam: real pneumatic receiving and dispatch
 
+**Current status,2026-10-30:** Root has actually placed all eight dry targets.
+The construction admission/PLACE steps below are historical and must not be
+replayed. Inspect the current real empty lane and operate the existing crank;
+start commissioning at step2 below, then move one legitimate wheat at step3.
+No goods or filter were supplied by the source packet. Actual transfer, sorting,
+STOP/idle and restart reuse remain unverified. Root retains sole Native authority.
+
 This eight-cell additive source uses the existing Native construction pipeline.
 It creates no goods, filter item, BE inventory tags, runtime controller or new
 observer. It is source-qualified against the authenticated d72 recovery, not

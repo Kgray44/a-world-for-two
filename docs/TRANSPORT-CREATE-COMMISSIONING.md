@@ -1,5 +1,35 @@
 # Transport and Create commissioning handoff
 
+## Owner scope override — 2026-10-30
+
+The owner removed **railway commissioning and the south forest** from remaining
+project completion requirements. Stop further railway planning, assembly,
+schedules and commissioning. Preserve the existing hardware, source and failed
+or partial receipts; this override authorizes no removal. Earlier railway and
+forest requirements below are historical, not the current backlog.
+
+The owner accepted the **Hypertubes and zipline as complete**. Preserve those
+systems, chain-length128 configuration and wrench support. That acceptance is
+not a newly performed multiplayer or restart test by this chat.
+
+Remaining work here is actual Create processing and logistics. Master **Build
+It!** remains the sole Native/world/client writer; this specialist has source
+authority only. All eight shops'80 dry targets were actually placed by Root,
+but placement does not establish recipes, transfer, sorting, STOP or reuse.
+**Do not replay their historical construction plans.**
+
+Start with one legitimate iron ingot through the existing Pelican press, then
+prove stopped/idle behavior and preserve the actual output through the next
+coordinated save/restart. Continue the seven other installed shops independently.
+Keel's water activation stays held until its actual hopper lock works. Current
+operating instructions and the concrete failed STOP check are in
+[first three shops](TORTUGA-CREATE-SHOPS.md),
+[Keel mill](TORTUGA-CREATE-CONTINUOUS-MILL.md),
+[White Clam routing](TORTUGA-CREATE-WAREHOUSE.md) and
+[three western shops](TORTUGA-CREATE-WEST.md).
+
+## Historical preparation and retained evidence
+
 Owner: `Commission transport and Create`, chat `01a183b6-8091-7453-8f0d-bde8101d7a31`.
 Branch: `codex/transport-create-commission`, base `3333bc60646cc594093063ed514a3e51246e35b0`.
 The master owns deployment under [WORKSTREAMS](coordination/WORKSTREAMS.md) and
