@@ -1,34 +1,38 @@
 # Living World and Character Studio
 
-**Current introduced milestone - 2026-10-30 UTC:** **107 ordinary villagers in
-107 Tortuga properties + 246 wildlife = 353 LIFE actors**, plus **45 separate
-Drowned Rose EasyNPC patrons = 398 introduced/current managed actors**. The Small
-Compass received one real villager under bridge 0.6.60 at 12:13:15 UTC: spawned 1 /
-nativeFinalized 1, zero failures, cleanup passed and zero temporary tickets/shared
-futures. Its normal AI flag is enabled; **HOME/JOB acquisition and schedule remain pending**.
-Seed terminal SHA256: `f170bbac6265e8b4b27615bce12c62137c02f1ccaec951e2af2de37825386cc6`.
+**Current saved milestone - 2026-10-30 UTC: 123 ordinary villagers + 246 wildlife =
+369 LIFE actors, plus 45 separate Drowned Rose EasyNPC patrons = 414 managed actors.**
+The latest ten additional East residents were admitted at 15:23:14 UTC: spawned10 /
+nativeFinalized10, zero failures, cleanup passed and zero temporary tickets/shared
+futures. Seed terminal SHA256:
+`527987717c43213b64df83c7ccfeea9c587dce7c30daa10d3cbad45129589157`.
 
-Root's latest verified normal-stop checkpoint, `20261030T121506Z-1f9612`, records this
-398 milestone and the latest planting/access work. Archive SHA256:
-`94266e1cdba7f1e0bfb66cfae1501184ed36d06c6e38b21deb5fc679e70f2988`.
-This update checked its receipt, **not a new archive/entity census**. The last
-independently decoded census remains `20261030T111759Z-2ed349`: **397 identities
-exactly once** (352 LIFE + 45 Tavern), including Sparrow, all expected types/tags
-and **NoAI=0**. That audit joined 352 LIFE intents and 45 Tavern ledger identities
-against 14 saved entity regions / 1,476 serialized records including passengers.
-Its archive SHA256 is `655cfcbedc8f2be40a5289cce74785ad0d1df25317f98c46d445c5aef21fbb20`;
-private audit SHA256 is `08b3fc7da6c536ffbee5de8f405446aed32886eca575ad1454f83a5e8da2b25e`.
-Earlier `97b9f9` remains historical396 before Sparrow. Saved presence and normal AI
-flags do not verify simultaneous loading, HOME/JOB acquisition or schedules.
+The verified normal-stop checkpoint `20261030T152536Z-60a4e4` was independently
+decoded once: **all414 intended UUIDs occur exactly once**, with expected types/tags,
+all45 saved Tavern ledger identities and **NoAI=0 for all414**. It contains369 LIFE
+intents;17 saved entity regions yielded1,901 serialized records including passengers.
+Archive SHA256: `65f9f459ec10e630ab623a50281a2c0cba004dc4f312f2f5fe3ff04bd1a84971`.
+Private audit SHA256: `9cf1da1ed8ac0d17e0d3c4b7e9d844a0e5e7854283fe3e26964d5af8eb9ea647`.
+The earlier2ed349 census397 and1f9612 introduced398 milestones remain historical.
+Saved identity and AI flags do not prove simultaneous loading or current behavior.
 
-Allocation is now 39 East, 29 of 36 new West, 13 retained/refined West, 11 baseline
-West and 15 original/core/northern properties. **108/118 properties have people**,
-counting Drowned Rose once. **10 properties remain genuinely empty; 11 ordinary
-villager placements/HOME admissions remain**: seven new West, three protected properties
-and Drowned Rose. Its 45 EasyNPC patrons are separate from ordinary housed villagers.
-Remaining sites still need their scoped protected-envelope or connected HOME/job
-qualification. Juniper's Remedy, Oar & Feather and Ragged Sail remain protected.
-Preserve contents, routes, masks and human mechanisms; pending homes are not residents.
+Of123 villagers, **96 have saved HOME memories and95 have JOB_SITE memories**;
+16 have potential-job memories. Their96 HOME and95 JOB positions are distinct,
+with no duplicated saved position groups.72 HOME and56 JOB memories match the
+intended coordinates.93 have last-slept and last-woken memories;98 have last-worked
+memories. None has a saved sleeping-position field at this checkpoint. These are
+serialized memory summaries, **not town-wide sleep/work routines, current POI
+exclusivity, pathfinding or HOME/job acceptance**.
+
+Building coverage remains **108/118 properties with people**:107 ordinary-villager
+properties plus Drowned Rose's separate45-patron property. The latest16 villagers
+are second residents and do not raise that coverage. **Ten properties remain empty;
+11 ordinary HOME admissions remained at this census**. The subsequent Drowned Rose
+galley worker actually spawned15:46:33UTC, reducing unintroduced properties to10.
+Current introductions are415 (124 villagers+246wildlife+45patrons); the independent
+census remains414. The worker's actual bed/job admission is not schedule acceptance. This property allocation is
+Root-authoritative; the independent entity scan counts actors. Preserve protected
+homes, contents, routes and human mechanisms.
 
 Wildlife remains **158 Naturalist birds, 44 ladybugs, 11 deer, 20 dragonflies, four
 improved cats, three Doggy Talents dogs, one koi, one shima enaga, one duck and
@@ -45,41 +49,43 @@ were preserved. The two saved seats carried Toby Keel and Bert Oar with matching
 owners/passengers; the earlier exact-three comparison remains a retained diagnostic.
 Those historical serialization checks do not establish current visible behavior.
 
-The matched private installation is **Tavern 0.1.14 + bridge 0.6.61 + client QA 0.1.10**,
-with Easy NPC Core 7.17.1, updated at 12:15 UTC:
+The matched private installation is **Tavern0.1.14 + bridge0.6.64 + client QA0.1.11**,
+with Easy NPC Core7.17.1. The matched64 install retained the exact previous artifacts
+and normal-stop096bdd backup. Public candidate65 remains214 managed selections.
 
-- Tavern 0.1.14 SHA256: `82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854`.
-- Bridge 0.6.61 SHA256: `6998d96b1226c68004ddc28a0827e8bfe99562eba2af1e0a68de93b01c513b12`.
-- Client QA 0.1.10 SHA256: `4b1378208634bccc7bd54ac5040fb6114fb721d28afe4942a2fe31848e6b2869`.
-- Matched-install receipt SHA256: `6011791d9a1e7f8dfba7ff73e8b326de90adf43cf4c616a44b7e7a8e59f43f7d`.
+- Tavern0.1.14 SHA256: `82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854`.
+- Bridge0.6.64 SHA256: `c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20`.
+- Client QA0.1.11 SHA256: `0ee97a04bf93680c151969a031dc42b79d5837d1e25b41f0694972e123941872`.
+- Matched-install receipt SHA256: `67af36a1ca3ae0676ea7fcd5110972a49fe063d55be9164b7547e10548c37bdc`.
 
-**Current 0.1.14 micro/sip rendering and bridge 0.6.61 full-resource/strict SeedGen
-parity remain unqualified.** The first matched client startup crashed before join
-at 08:18:44 local time in Architectury's client-tick event iterator. No CDP writer
-application witness or SeedGen parity trial was observed before that crash; its
-primary stack contains no CDP/SeedGen/bridge frame. This does not establish which
-mod changed the listener list. Crash SHA256:
-`76cc8c149f5a78c04a185aea9ba09193368be6e7a92175f072960d4b38c92d00`.
+Native64 passed strict authenticated modded-world parity on two reconnects and
+registered SeedGen as DH's generator; actual HIGH-detail distant views were reviewed.
+The complete605,704,801-byte streamed capture now fits its finite2GiB hash-work limit.
+It is not a2GiB retained allocation. Prior63 correctly refused the512MiB budget;
+prior62's repeated-visit refusal, provider failures and61 startup failure remain
+retained. All210 unrelated63 classes are unchanged. The complete1,492-test suite
+passed after64 (two skipped), pack validation passed214 selections and JavaScript
+syntax passed. These checks do not replace Native gameplay or visual evidence.
+See [the focused DH/SeedGen record](DH-SEEDGEN-REPAIR.md) for the remaining cache,
+far-field attribution, shader and multiplayer boundaries. No public release was
+published, and whole-overlay acceptance remains open.
 
-Source handlers cover all 390 observed pack headers. Native60 stopped at the CDP
-runtime inventory guard. The focused61 offline native-class probe reproduced the
-old HashMap corruption, then checked 24 fixed fields / 49,152 literal supplier
-bytes, the existing-map monitor and exception unlock. All 209 unrelated60 classes
-remain byte-identical. Qualification SHA256:
-`e19bbbfc8836fc012a7c6edfdcc3e896196ec7c897ac5ae7ab7b8ad040750644`.
-The **1,492-test full suite (2 skipped) predates61**; it is not a new full61 run.
-These focused checks do not prove Native full-resource parity, distant terrain
-generation or rendering. The public 214-mod candidate65 baseline remains unchanged;
-private overlays and release-excluded QA are not a published Prism release.
-
-Historical Tavern 0.1.12 actual **seat/band pixels and four native note observations**
-are proven. They do not qualify current 0.1.14 micro/sip, all dismounts, heard audio,
-a complete ensemble cycle or two-client synchronization. Older QA 0.1.9 also observed
-four musicians with existing playback progress and recent notes. **Heard audio
-remains unverified.** See [the scoped client observations](../proposals/qa-npc-client-snapshot/NATIVE-EVIDENCE.md).
+**Tavern14 has one actual seated drinking-frame observation.** At15:01:17 UTC under
+bridge62/QA11, a passenger was using native Farmer's Delight hot cocoa:8/32 use ticks
+elapsed,24 remaining. The same-frame screenshot was independently viewed and shows
+the raised mug/arm during the hold phase, after the six-tick ease. Crowd geometry
+hides exact lip contact. PNG SHA256:
+`b029b85a43270da6e8bf3c3beb698a6f311c137cf992b4a2c31c0b4e0d938939`;
+observation SHA256: `864977afc83188a7b1d48e5ab5d552c87398a32e5c40db5c647264502527bc17`.
+**Precise mouth alignment, a complete standing/seated sip cycle and temporal
+micro-motion remain unverified.** Multiple rendered viewpoints and the complete
+raise/hold/lower sequence remain open; a single frame cannot establish the whole animation.
+Historical Tavern12 seat/band pixels and four native recent-note observations remain
+scoped evidence. **Heard audio, a complete ensemble cycle, clear/blocked dismounts
+and two-client synchronization remain open.** See [the scoped client observations](../proposals/qa-npc-client-snapshot/NATIVE-EVIDENCE.md).
 
 Plants are separate from living LIFE. **1,330 undergrowth targets** are installed;
-they are not trees. **455 cumulative ordinary sapling plantings** are recorded
+they are not trees. **455 cumulative ordinary sapling plantings** are historically recorded
 (385+70), with **three subsequently mature native outcomes**. This is not a count
 of 455 remaining saplings. The latest70 receipt SHA256 is
 `d49bcaf2c1caec87d4d55922a8b4ba0cf783b3c183971ff2a85b63d250fcd5f5`. The historical
@@ -126,7 +132,7 @@ workstreams and owner acceptance.
 Barnacle Bill’s first native spawn acquired a home and smoker, worked, slept and
 returned the authored greeting through normal player chat. The game acknowledged
 the applied profile hash. That dated result remains evidence for this one
-interaction/behavior sequence; current107-resident acceptance is separate.
+interaction/behavior sequence; current123-resident acceptance is separate.
 
 ![Bill's actual dialogue and native home/job memories](images/living-world-20261029/barnacle-bill-dialogue-home-job.png)
 
@@ -307,7 +313,7 @@ the supplied `expected` revision. Conversation previews run as existing backgrou
 
 The records and pending-work language below describe their named historical
 source checkpoints. They are preserved rather than rewritten and do not
-supersede the current106-resident milestone above.
+supersede the current123-resident milestone above.
 
 The OpenAI extension and editable-model correction are recorded in
 [the 0.2.0 source receipt](../evidence/living-world/openai-qualification.json).

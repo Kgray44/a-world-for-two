@@ -23,10 +23,11 @@
         "Historical dedicated server startup and original30 client rendering",
         "Independent f7e43f saved census:351 LIFE plus45 EasyNPC identities=396 actors",
         "All45 current roster identities saved once, AI enabled, ownership and skin fields preserved",
-        "Latest independent2ed349 saved census:352 LIFE plus45 EasyNPC identities=397 actors, all NoAI0"
+        "Latest independent2ed349 saved census:352 LIFE plus45 EasyNPC identities=397 actors, all NoAI0",
+        "Latest independent60a4e4 saved census:369 LIFE plus45 EasyNPC identities=414 actors, every UUID exactly once and all saved NoAI0"
       ],
       "pending": [
-        "Current matched Tavern0.1.14 final rendering and behavior",
+        "Complete matched Tavern0.1.14 rendering and behavior beyond the reviewed single native DRINK frame",
         "Native clear/blocked dismount, sipping and instrument poses",
         "Multiplayer",
         "Release integration"
@@ -54,17 +55,20 @@
       "optional_dependencies": [
         "Easy NPC Config UI 7.17.1"
       ],
-      "status": "Matched installed; startup crashed before join, current client rendering and behavior unqualified",
+      "status": "Matched installed; one seated native DRINK frame with visible mug/raised arm verified; complete behavior and audio acceptance pending",
       "verified": [
-        "Matched private client/server0.1.14 installed at2026-10-30T12:15:22Z with bridge0.6.61; release-excluded QA0.1.10 retained; not runtime acceptance",
+        "Matched private client/server0.1.14 bytes rechecked with bridge0.6.63 and release-excluded QA0.1.11 at the15:28UTC install; not whole-overlay runtime acceptance",
+        "Historical matched0.1.14 installation under bridge0.6.61 at2026-10-30T12:15:22Z is retained; current bridge is0.6.64",
         "Independent2ed349 normal-stop census saves all45 roster-ledger actors and352 LIFE actors exactly once, all NoAI0",
         "Independent f7e43f normal-stop save preserves all45 roster actors and351 LIFE actors, all NoAI0",
         "Original identities including Oona Kelp and Niamh Wick saved once; no remaining identity-recovery hold",
         "Four actual client musicians had existing active native playback progress and recent notes under0.1.10; audio was not heard or recorded",
-        "Historical0.1.12 actual seat and band pixels plus four native note observations are proven; not current0.1.14 micro/sip or heard-audio acceptance"
+        "Historical0.1.12 actual seat and band pixels plus four native note observations are proven; not current0.1.14 micro/sip or heard-audio acceptance",
+        "Independent60a4e4 normal-stop census saves all45 Tavern ledger identities and369 LIFE actors exactly once, all NoAI0",
+        "Tavern0.1.14 actual15:01:17UTC seated native hot-cocoa DRINK frame:8/32 use ticks,24remaining; saved PNG visibly contains the raised mug/arm. Precise mouth alignment and a complete temporal sip cycle remain unverified"
       ],
       "pending": [
-        "Native0.1.14 client startup, final micro/sip and Smooth model seating/instrument rendering",
+        "Precise mouth alignment, standing/seated full sip cycle, temporal micro-motion and complete Smooth model seating/instrument rendering",
         "Native clear/blocked dismount and subsequent walking",
         "Heard music, complete ensemble cycle and two-client synchronization",
         "Current restart/reload behavior and measured performance",
@@ -75,16 +79,17 @@
     {
       "id": "awft-control-bridge",
       "name": "A World for Two Control Bridge private DH/resource custody and canopy repair",
-      "version": "0.6.61",
+      "version": "0.6.64",
       "side": "both",
       "minecraft": "1.21.1",
       "loader": "neoforge",
-      "filename": "awft-control-bridge-0.6.61.jar",
-      "bytes": 788213,
-      "sha256": "6998d96b1226c68004ddc28a0827e8bfe99562eba2af1e0a68de93b01c513b12",
-      "source": "compat/proposals/cdp-native-cache61-r1/",
-      "status": "Matched installed; focused native-class cache probe qualified, current client resource/parity trial has not reached join",
+      "filename": "awft-control-bridge-0.6.64.jar",
+      "bytes": 793142,
+      "sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20",
+      "source": "compat/proposals/resource-hash-work64-r1/",
+      "status": "Matched installed; KG Native64 strict SeedGen parity and DH rendering verified; full release and multiplayer remain pending",
       "verified": [
+        "Matched private server/client0.6.63 installed at2026-10-30T15:28:04Z, with unchanged Tavern0.1.14 and release-excluded QA0.1.11; not full runtime acceptance",
         "Matched private client/server0.6.61 installed at2026-10-30T12:15:22Z with Tavern0.1.14 and QA0.1.10; not full runtime acceptance",
         "Source handlers cover390 opened-pack headers. Native60 refused CDP map/namespace inventory;61 retains every custody/fingerprint check and serializes only the pinned native cache writer on its existing resources-map monitor",
         "Focused61 actual-native-class probe reproduced old HashMap corruption, then preserved49152 supplier bytes over24 fixed fields, correct monitor and exception unlock; all209 unrelated60 classes are byte-identical",
@@ -92,13 +97,17 @@
         "All385 admitted ordinary sapling positions independently saved as the intended species in2ed349; one birch advanced to stage1",
         "Native59 preplanted GROW failed after37 owned cell changes; those changes rolled back and complete12167-cell snapshot restoration proved",
         "Later Native60 GROW observed mature trunk/canopy at three roots, then refused fourth1250/-1080 before its first owned mutation because grass snowy flag changed; cleanup passed with0tickets/futures and no recovery required",
-        "Prism direct-D InstanceDir recovery allowed real client launches; historical Qt-lock blocker resolved"
+        "Prism direct-D InstanceDir recovery allowed real client launches; historical Qt-lock blocker resolved",
+        "Native62 completed all390 opened-pack inventories, then failed on repeated hash visit262145 in effective override-stack hashing; this was not a distinct-ID inventory overflow",
+        "Source63 separates repeated hash visits (1048576, the existing traversal-budget value) from distinct/root IDs (262144);512MiB aggregate,32MiB/resource,60seconds,512packs and depth16 unchanged",
+        "Actual candidate63 JAR passed19 counter/digest/bounds checks,14 Tectonic native-API checks and27 legacy custody checks; all210 unrelated62 classes byte-identical, no added/removed entries",
+        "Independent60a4e4 archive census finds414 managed identities exactly once, all saved NoAI0;96 HOME and95 JOB_SITE memories are saved-state evidence, not schedule acceptance",
+        "Native64 completed all390 opened packs,65891distinctIDs and605704801hashed bytes on both provisional/seeded passes in two client reconnects; native server/client fingerprints matched and SeedGen registered as DH generator. Actual HIGH-detail frames reviewed at59/30/58/60FPS;30was immediately after moving, not a steady-state benchmark."
       ],
       "pending": [
-        "Actual61 client full390-pack resource capture and strict SeedGen terrain parity",
-        "Actual distant terrain generation and client rendering",
-        "Whole-south-shore dense canopy and player-scale visual/density qualification; stopped fourth root remains held without retry",
-        "Public release integration"
+        "New far-field SeedGen completion attribution and fidelity across more biomes",
+        "Existing cached coarse data refinement; no cache was merged or removed",
+        "Sera/current multiplayer, sustained resource benchmark and public release qualification"
       ],
       "public_download_url": null,
       "preserved_canopy_source": "compat/control-bridge/proposals/native-natural-canopy-r2/",
@@ -106,13 +115,13 @@
       "preserved_resource_custody_source": "compat/proposals/resource-custody-create59-r1/"
     }
   ],
-  "counting": "Current introduced353 LIFE (107 ordinary villagers+246 wildlife)+45 separate Tavern=398, recorded by latest Root retained1f9612 save receipt. Last independent saved census remains2ed349:397. No simultaneous loading, current398 independent census or behavior acceptance. Public Packwiz stays214 mods in candidate65; QA stays release-excluded.",
+  "counting": "Current414 saved managed actors=369 LIFE (123 ordinary villagers+246 wildlife)+45 separate Tavern. Independent60a4e4 archive census verifies every intended UUID once and all NoAI0. Actor counts do not equal distinct property occupancy or prove simultaneous loading, HOME/JOB routines, behavior or visual/audio acceptance. Public Packwiz stays214 mods/candidate65; QA remains release-excluded.",
   "requested_tavern_population": 45,
   "actual_tavern_population": 45,
   "registered_tavern_population": 45,
   "missing_existing_patrons": 0,
-  "missing_identity_recovery": "Resolved: all45 original/profile identities saved once in latest2ed349; no blanket respawn.",
-  "actual_tavern_population_basis": "All45 introduced/registered Tavern UUIDs occur exactly once in the2ed349 saved entity regions and saved Tavern ledger; no simultaneous loading, client rendering or behavior acceptance claimed.",
+  "missing_identity_recovery": "Resolved: all45 original/profile identities saved exactly once in60a4e4; no blanket respawn.",
+  "actual_tavern_population_basis": "All45 saved Tavern ledger UUIDs occur exactly once in60a4e4 saved entity regions, with AI enabled; no simultaneous loading, complete behavior/audio or ensemble acceptance inferred.",
   "recovery_window": {
     "active": false,
     "temporary_tickets_remaining": 0,
@@ -122,24 +131,57 @@
     "historical_closed_window": true
   },
   "last_independent_saved_population": {
-    "checkpoint_id": "20261030T111759Z-2ed349",
-    "checkpoint_sha256": "655cfcbedc8f2be40a5289cce74785ad0d1df25317f98c46d445c5aef21fbb20",
-    "life": 352,
-    "villagers": 106,
+    "checkpoint_id": "20261030T152536Z-60a4e4",
+    "checkpoint_sha256": "65f9f459ec10e630ab623a50281a2c0cba004dc4f312f2f5fe3ff04bd1a84971",
+    "life": 369,
+    "villagers": 123,
     "wildlife": 246,
     "tavern": 45,
-    "combined": 397,
-    "AI_enabled_saved": 397,
+    "combined": 414,
+    "AI_enabled_saved": 414,
     "NoAI_true": 0,
     "managed_UUIDs_unique": true,
-    "Sparrow_present_exactly_once": true,
-    "census_sha256": "08b3fc7da6c536ffbee5de8f405446aed32886eca575ad1454f83a5e8da2b25e",
-    "entity_regions_scanned": 14,
-    "serialized_entity_records_inspected": 1476,
-    "scope": "Saved identity/type/tag/AI presence joined to352 LIFE intents and45 Tavern ledger UUIDs; not HOME/JOB, actual schedules, simultaneous loading, audio, visual or multiplayer acceptance",
-    "historical": true
+    "all_intent_type_and_tags_match": true,
+    "all_tavern_ledger_UUIDs_match": true,
+    "census_sha256": "9cf1da1ed8ac0d17e0d3c4b7e9d844a0e5e7854283fe3e26964d5af8eb9ea647",
+    "entity_regions_scanned": 17,
+    "serialized_entity_records_inspected": 1901,
+    "managed_identity_set_sha256": "a5837e17849ac9a8fe2076feb1d5c1a9d89d7fe27227d564905bfc7286b9eae7",
+    "HOME_JOB_sleep_summary": {
+      "currently_saved_sleeping_position": 0,
+      "distinct_saved_HOME_positions": 96,
+      "distinct_saved_JOB_positions": 95,
+      "duplicated_saved_HOME_position_groups": 0,
+      "duplicated_saved_JOB_position_groups": 0,
+      "ordinary_villagers": 123,
+      "profession_counts": {
+        "minecraft:armorer": 1,
+        "minecraft:butcher": 18,
+        "minecraft:cartographer": 9,
+        "minecraft:cleric": 1,
+        "minecraft:farmer": 1,
+        "minecraft:fisherman": 31,
+        "minecraft:leatherworker": 2,
+        "minecraft:librarian": 3,
+        "minecraft:mason": 3,
+        "minecraft:none": 28,
+        "minecraft:shepherd": 17,
+        "minecraft:toolsmith": 9
+      },
+      "saved_HOME_matches_planned_bed": 72,
+      "saved_HOME_memories": 96,
+      "saved_JOB_SITE_memories": 95,
+      "saved_JOB_matches_planned_job": 56,
+      "saved_last_slept_memories": 93,
+      "saved_last_woken_memories": 93,
+      "saved_last_worked_at_POI_memories": 98,
+      "saved_potential_JOB_SITE_memories": 16,
+      "scope": "Serialized memories/positions only. Matching a planned coordinate is not current bed/job block, POI exclusivity, pathfinding, scheduled work, sleeping/waking behavior or town-wide acceptance."
+    },
+    "scope": "One immutable saved-entity scan joined369 LIFE intents and45 saved Tavern ledger identities. Serialized HOME/JOB/sleep memories are not live routines, actual pathfinding, POI exclusivity, simultaneous loading, visual/audio or multiplayer acceptance.",
+    "historical": false
   },
-  "matched_install_receipt_sha256": "6011791d9a1e7f8dfba7ff73e8b326de90adf43cf4c616a44b7e7a8e59f43f7d",
+  "matched_install_receipt_sha256": "67af36a1ca3ae0676ea7fcd5110972a49fe063d55be9164b7547e10548c37bdc",
   "ordinary_saplings": {
     "placed": 455,
     "mature_trees_claimed": 3,
@@ -190,9 +232,10 @@
     "counting": "Cumulative historical planting actions385+70; includes three subsequently mature roots and is not a count of455 remaining saplings",
     "latest70_receipt_sha256": "d49bcaf2c1caec87d4d55922a8b4ba0cf783b3c183971ff2a85b63d250fcd5f5",
     "latest_retained_checkpoint_id": "20261030T121506Z-1f9612",
-    "independent_saved385_audit_is_historical": true
+    "independent_saved385_audit_is_historical": true,
+    "population_update_scope": "Historical planting/tree receipts retained unchanged;60a4e4 entity audit did not recensus terrain or confer new maturity/density credit"
   },
-  "matched_install_at": "2026-10-30T12:15:22.477459+00:00",
+  "matched_install_at": "2026-10-30T15:57:44.362846+00:00",
   "runtime_verified": false,
   "native_music_observation": {
     "at": "2026-10-30T08:01:59.005579600Z",
@@ -204,50 +247,53 @@
     "snapshot_sha256": "38fe935ff2ef459bdb2a02c96d0fb4f97e380ac9df327618e2a8fcc6254f01f0"
   },
   "client_qa": {
-    "version": "0.1.10",
-    "filename": "awft-settlement-qa-0.1.10.jar",
-    "bytes": 46426,
-    "sha256": "4b1378208634bccc7bd54ac5040fb6114fb721d28afe4942a2fe31848e6b2869",
+    "version": "0.1.11",
+    "filename": "awft-settlement-qa-0.1.11.jar",
+    "bytes": 47633,
+    "sha256": "0ee97a04bf93680c151969a031dc42b79d5837d1e25b41f0694972e123941872",
     "side": "client",
     "release_excluded": true,
     "installed": true,
     "runtime_accepted": false,
-    "basis": "Matched-install receipt; not a public mod addition or current client visual acceptance"
+    "basis": "Private release-excluded QA11 bytes rechecked; actual named native DRINK/frame observation is scoped evidence, not complete helper/game acceptance"
   },
   "current_introduced_population": {
-    "life": 353,
-    "villagers": 107,
+    "life": 369,
+    "villagers": 123,
     "ordinary_villager_properties": 107,
+    "property_occupancy_not_rederived_by_entity_census": true,
     "wildlife": 246,
     "tavern": 45,
-    "combined": 398,
-    "basis": "Prior397 plus successful SmallCompass1 Native admission under60; Root retained1f9612 save records398. No new independent entity/archive audit here; HOME/JOB and schedule pending",
-    "latest_seed_receipt_sha256": "f170bbac6265e8b4b27615bce12c62137c02f1ccaec951e2af2de37825386cc6",
-    "latest_seed_finished": "2026-10-30T12:13:15.390222700Z",
-    "spawned": 1,
-    "native_finalizations": 1,
+    "combined": 414,
+    "basis": "Native ten additional East second-resident admissions plus independently decoded414 saved identities in60a4e4;123 actors do not imply123 properties",
+    "latest_seed_receipt_sha256": "527987717c43213b64df83c7ccfeea9c587dce7c30daa10d3cbad45129589157",
+    "latest_seed_finished": "2026-10-30T15:23:14.166361200Z",
+    "spawned": 10,
+    "native_finalizations": 10,
     "failures": 0,
     "cleanup_passed": true,
     "temporary_tickets_remaining": 0,
     "pending_shared_futures": 0,
     "HOME_JOB_schedule_verified": false,
     "native_behavior_acceptance": false,
-    "latest_seed_bridge": "0.6.60",
-    "historical_saved397_census_sha256": "08b3fc7da6c536ffbee5de8f405446aed32886eca575ad1454f83a5e8da2b25e"
+    "latest_seed_bridge": "0.6.62",
+    "independent_saved414_census_sha256": "9cf1da1ed8ac0d17e0d3c4b7e9d844a0e5e7854283fe3e26964d5af8eb9ea647",
+    "property_occupancy_basis": "Root authoritative property allocation:107 ordinary properties,16 additional second residents; independent entity audit is123 ordinary actors"
   },
   "latest_retained_checkpoint_population": {
-    "checkpoint_id": "20261030T121506Z-1f9612",
-    "checkpoint_sha256": "94266e1cdba7f1e0bfb66cfae1501184ed36d06c6e38b21deb5fc679e70f2988",
-    "life": 353,
-    "villagers": 107,
+    "checkpoint_id": "20261030T152536Z-60a4e4",
+    "checkpoint_sha256": "65f9f459ec10e630ab623a50281a2c0cba004dc4f312f2f5fe3ff04bd1a84971",
+    "life": 369,
+    "villagers": 123,
     "wildlife": 246,
     "tavern": 45,
-    "combined": 398,
-    "source": "Root verified normal-stop companion and successful SmallCompass Native seed receipt",
-    "independent_population_audit_performed_here": false,
-    "scope": "Retained save records current introduced398; last independently decoded397 census remains2ed349. No new loading, AI schedule or behavior acceptance"
+    "combined": 414,
+    "census_sha256": "9cf1da1ed8ac0d17e0d3c4b7e9d844a0e5e7854283fe3e26964d5af8eb9ea647",
+    "source": "Root normal-stop archive independently decoded against saved LIFE intents and Tavern ledger",
+    "independent_population_audit_performed_here": true,
+    "scope": "Saved identity, AI and memory presence; not current behavior, loaded population or complete art/audio acceptance"
   },
-  "installed_metadata_sha256": "a659f3358e42fd31af46a33d89e9f0a75da1d4d1661e11dc54b510a939a0d8af",
+  "installed_metadata_sha256": "4e986d96737e9f7f6417d1e1044e1d5f16c3ca5690ae7afe8a8e2634b8e27cf6",
   "historical_independent_saved_populations": [
     {
       "checkpoint_id": "20261030T081801Z-f7e43f",
@@ -263,6 +309,24 @@
       "census_sha256": "dd065893749270100e8e973ed9c6c1d10df86304633e275cf950e0a965db3fc4",
       "scope": "Saved identity, AI, ownership, actor inventories, species, ledger/config and seat serialization; not runtime/audio/visual/restart acceptance",
       "historical": true
+    },
+    {
+      "checkpoint_id": "20261030T111759Z-2ed349",
+      "checkpoint_sha256": "655cfcbedc8f2be40a5289cce74785ad0d1df25317f98c46d445c5aef21fbb20",
+      "life": 352,
+      "villagers": 106,
+      "wildlife": 246,
+      "tavern": 45,
+      "combined": 397,
+      "AI_enabled_saved": 397,
+      "NoAI_true": 0,
+      "managed_UUIDs_unique": true,
+      "Sparrow_present_exactly_once": true,
+      "census_sha256": "08b3fc7da6c536ffbee5de8f405446aed32886eca575ad1454f83a5e8da2b25e",
+      "entity_regions_scanned": 14,
+      "serialized_entity_records_inspected": 1476,
+      "scope": "Saved identity/type/tag/AI presence joined to352 LIFE intents and45 Tavern ledger UUIDs; not HOME/JOB, actual schedules, simultaneous loading, audio, visual or multiplayer acceptance",
+      "historical": true
     }
   ],
   "property_occupancy": {
@@ -274,7 +338,13 @@
     "ordinary_villager_HOME_admissions_remaining_including_Tavern": 11,
     "remaining_new_West": 7,
     "remaining_protected": 3,
-    "remaining_Tavern_ordinary_home": 1
+    "remaining_Tavern_ordinary_home": 1,
+    "as_of_checkpoint_id": "20261030T152536Z-60a4e4",
+    "historical": false,
+    "current_distinct_property_occupancy_not_reaudited": true,
+    "scope": "Current Root-authoritative property allocation remains107 ordinary properties plus one Drowned Rose patron property=108/118;16 latest residents are second residents, so123 actors do not raise coverage. Entity census did not independently repeat building allocation.",
+    "additional_second_residents": 16,
+    "pending_DrownedRose_ordinary_galley_worker_seeded": false
   },
   "source_verification": {
     "full_suite": {
@@ -291,16 +361,89 @@
       "existing_map_monitor_and_exception_unlock_verified": true,
       "unrelated60_class_bytes_preserved": 209,
       "client_server_or_world_started": false
+    },
+    "focused63": {
+      "qualification_sha256": "495240251425cb9c1a9fcccd2bc249d3ce0ab0def46a1dba024d543d95f08f81",
+      "jar_sha256": "f3d40567e253efe64a3f820f660c5b4aae1bec7c8a1283573c701addb779ce83",
+      "counter_digest_bounds_checks": 19,
+      "tectonic_native_API_checks": 14,
+      "legacy_resource_custody_checks": 27,
+      "total_focused_checks": 60,
+      "hash_visit262145_passed": true,
+      "distinct_ID262145_refused": true,
+      "all_unrelated62_class_bytes_preserved": 210,
+      "client_server_or_world_started": false,
+      "Native_full_parity_or_rendering_qualified": false
     }
   },
   "latest_client_trial": {
-    "local_time": "2026-10-30 08:18:44",
-    "status": "startup_crashed_before_join",
-    "crash_sha256": "76cc8c149f5a78c04a185aea9ba09193368be6e7a92175f072960d4b38c92d00",
-    "exception": "ConcurrentModificationException in Architectury EventFactory$1.handleInvocation:61 during clientTickPost",
-    "CDP_postApply_witness_observed": false,
-    "Native61_full_resource_parity_qualified": false,
-    "Tavern14_micro_sip_qualified": false,
-    "causal_mod_attribution": "Not established; no CDP/SeedGen/bridge frame in primary crash stack"
+    "bridge": "0.6.64",
+    "tavern": "0.1.14",
+    "qa": "0.1.11",
+    "native_dh_seedgen_parity_and_registration": true,
+    "SeedGen_off_warning": false,
+    "two_reconnects": true,
+    "horizontal_quality": "HIGH",
+    "radius_chunks": 128,
+    "finest_resolution": "BLOCK",
+    "observed_FPS_samples": [
+      59,
+      30,
+      58,
+      60
+    ],
+    "native_summary_sha256": "6b62a29712b7ab427f3ef5cf6dda2e7959f1a33eb579d664fc4baf2c91bf3a75",
+    "fresh_far_field_completion_independently_attributed": false,
+    "client_closed_normally": true,
+    "public_release_updated": false
+  },
+  "historical_client_trials": [
+    {
+      "local_time": "2026-10-30 08:18:44",
+      "status": "startup_crashed_before_join",
+      "crash_sha256": "76cc8c149f5a78c04a185aea9ba09193368be6e7a92175f072960d4b38c92d00",
+      "exception": "ConcurrentModificationException in Architectury EventFactory$1.handleInvocation:61 during clientTickPost",
+      "CDP_postApply_witness_observed": false,
+      "Native61_full_resource_parity_qualified": false,
+      "Tavern14_micro_sip_qualified": false,
+      "causal_mod_attribution": "Not established; no CDP/SeedGen/bridge frame in primary crash stack",
+      "historical": true
+    }
+  ],
+  "native14_drink_observation": {
+    "at": "2026-10-30T15:01:17.417888900Z",
+    "adapter_version": "0.1.14",
+    "observed_under_bridge": "0.6.62",
+    "QA_version": "0.1.11",
+    "actual_native_DRINK": true,
+    "is_passenger": true,
+    "is_using_item": true,
+    "item": "farmersdelight:hot_cocoa",
+    "native_use_ticks_elapsed": 8,
+    "native_use_ticks_remaining": 24,
+    "native_use_duration": 32,
+    "actual_model_class": "com.huaxiaosheng.smoothplayeranimations.anim.NpcPlayerModel",
+    "native_frame": 88239,
+    "framebuffer_sha256": "b029b85a43270da6e8bf3c3beb698a6f311c137cf992b4a2c31c0b4e0d938939",
+    "receipt_sha256": "864977afc83188a7b1d48e5ab5d552c87398a32e5c40db5c647264502527bc17",
+    "framebuffer_independently_viewed": true,
+    "visible_mug_and_raised_arm": true,
+    "precise_mouth_alignment_qualified": false,
+    "full_temporal_sip_cycle_qualified": false,
+    "temporal_micro_motion_qualified": false,
+    "heard_audio_verified": false,
+    "multiplayer_qualified": false,
+    "scope": "One same-frame native seated DRINK observation plus actual framebuffer; model post-render fields may be restored and are not alone mouth-placement proof",
+    "sip_phase": "Full hold at elapsed8, after the native six-tick ease; exact lip contact hidden by crowd",
+    "multiple_rendered_viewpoints_qualified": false,
+    "full_raise_hold_lower_cycle_qualified": false
+  },
+  "latest_native_galley_addition": {
+    "villagers": 1,
+    "finished": "2026-10-30T15:46:33.078437600Z",
+    "terminal_sha256": "5b2a150c8b58781ab59b9feacd9a5bff942694d8c1e773f6d519955ea380d20d",
+    "actual_introduced_combined_after_saved414": 415,
+    "independent_saved_census_remains": 414,
+    "full_schedule_acceptance": false
   }
 }

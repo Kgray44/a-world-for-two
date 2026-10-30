@@ -1,0 +1,13 @@
+# Distant Horizons and SeedGen: October 30 repair
+
+The matched private server and KG client now use bridge **0.6.64**, DH 3.3.3 and SeedGen 0.9.1. Two actual reconnects passed the unchanged native fingerprint check and authenticated modded-terrain initialization. SeedGen registered as DH's generator, and the misleading warning that all the installed terrain mods were missing no longer appeared.
+
+The failure was in our compatibility capture. It counted repeated hashing passes as distinct resources, then exhausted a 512 MiB cumulative read budget. The complete capture actually visits 65,891 distinct IDs, hashes 389,476 resource instances and streams 605,704,801 bytes. The corrected limits distinguish repeated visits and allow a finite 2 GiB hash-work budget. This is streamed through the existing 64 KiB buffer; it is not a 2 GiB retained allocation. The per-resource 32 MiB limit, distinct-ID limit, provider checks, timeout, digest feed and native parity checks remain enforced.
+
+KG's local DH horizontal quality is now **HIGH**; finest resolution remains **BLOCK**, and distance remains **128 chunks**. This keeps finer detail farther away. The general pack and Sera's conservative profile were not changed to HIGH. Both existing cache folders were preserved, and the verified connection consistently used the `Owned+artistic+staging` alias.
+
+Actual native screenshots were reviewed from the original handoff, near the harbor, toward the cliff and at another horizon. Recorded FPS samples were 59, 30 immediately after moving, 58 and 60. These are observations, not a sustained performance benchmark. The client was closed normally after restoring KG's position and creative mode; computer control was released. The active server remains online.
+
+Remaining limits: existing coarse cache entries need normal refinement; matching fingerprints and generator registration do not independently establish completion of every newly requested far-field section. The sampled cache check did not attribute fresh far-field completion specifically to SeedGen. Wider terrain fidelity, shader combinations and Sera's current multiplayer installation remain unqualified. No cache merge, cache deletion, world replacement or public release publication occurred.
+
+The [sanitized native summary](../evidence/dh-seedgen-20261030-native64.json) records the exact installed artifact and evidence boundaries. The focused source proposals are [resource visit accounting](../compat/proposals/resource-hash-visits63-r1/) and [bounded hash work](../compat/proposals/resource-hash-work64-r1/). Raw game logs, caches, worlds and private authorization remain outside Git.

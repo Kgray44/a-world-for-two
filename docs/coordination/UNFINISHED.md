@@ -6,13 +6,21 @@
 
 **Rail exclusion includes all new stations, tracks, rail routes/loops, rail-infrastructure finishing, trains and rail commissioning. Do not continue any of that work.** Existing installations stay untouched. Create shops, processing and non-rail logistics remain in scope.
 
-**Current actual population:107 ordinary villagers +246 wildlife =353 LIFE, plus45 separate Drowned Rose patrons =398 managed actors.** Small Compass’s worker was actually introduced after its four route-clearance and seven cartographer-fitout cells. **108/118 properties contain people;10 are empty and11 ordinary-villager HOME/job requirements remain.** The latest Root-retained normal-stop checkpoint is **20261030T121506Z-1f9612**. The earlier independently decoded2ed349 census proved397 identities; do not relabel that older census as398. See [Living World’s current census and artifact custody](../LIVING-WORLD.md) for exact hashes and evidence tiers. Saved presence and normal AI do not qualify every claim, schedule, route or multiplayer behavior.
+**Current independently saved population:123 ordinary villagers +246 wildlife =369 LIFE, plus45 separate Drowned Rose patrons =414 managed actors.** The latest ten residents completed actual SEED at **15:23:14 UTC**,10 spawned/zero failures, terminal `740b6761-65b7-4216-98e3-6e438c507b4e`. The latest16 additional villagers are second residents, not new properties: **108/118 properties contain people —107 ordinary-villager properties plus the Tavern;10 remain empty; the galley admission below subsequently reduced11 ordinary HOME/job admissions to10**. All height/protection holds stay intact.
+
+Normal-stop **20261030T152536Z-60a4e4**, archive SHA256 `65f9f459ec10e630ab623a50281a2c0cba004dc4f312f2f5fe3ff04bd1a84971`, was independently decoded: **all414 intended identities occur exactly once with expected types/tags and NoAI=0**. Private audit SHA256 `9cf1da1ed8ac0d17e0d3c4b7e9d844a0e5e7854283fe3e26964d5af8eb9ea647` is retained under `H/staging/retained60a4e4-independent-census-20261030T153234Z/`. The older397/398 censuses remain historical. [Living World](../LIVING-WORLD.md) carries exact current census/artifact custody; saved presence does not prove every HOME/job claim, schedule, path or multiplayer behavior.
 
 Sparrow-Key and Small Compass now have actual residents. Oilglass and the unchanged protected HOME sites remain held; preserve stock, routes and masks. Larkwater’s four ladder and two helm cells are placed and full-tag verified. Access/fixture evidence does not establish machine function or resident schedules.
 
-**Runtime update in progress:**Root is installing **bridge0.6.62 / Tavern0.1.14 / client QA0.1.11** and will verify the matched installation/startup. The previous confirmed installation was61/14/QA10; **no Native62 result is claimed**. Tavern13’s status-file `AccessDenied` pause and the first61 client’s pre-join Architectury iterator crash remain historical failures. Tavern14’s short atomic-reader-lock repair and61’s CDP native-write-monitor repair have focused offline qualification; actual sip/micro-animation, heard music, resource parity, visible LOD and current multiplayer remain open. DH56’s queue fix is active, without a sustained-performance acceptance claim.
+**Current DH/SeedGen fix: matched bridge0.6.64 / Tavern0.1.14 / client QA0.1.11.** Both Native reconnects completed the full390-pack resource capture and authenticated modded registry rebuild. Native client/server fingerprints match and SeedGen registered as DH generator; the SeedGen-off warning is absent. Actual DH views were reviewed with horizontal HIGH, finest BLOCK and radius128. Source counts/byte budgets are repaired without changing the digest, terrain definitions or per-resource/time limits. New far-field completion attribution, old-cache refinement, broader fidelity and multiplayer remain separate. See [the focused repair record](../DH-SEEDGEN-REPAIR.md).
 
-**Retained forest history, no remaining forest obligation:**455 cumulative ordinary plantings are recorded, not455 remaining saplings. Three prior roots produced native mature trunk/canopy outcomes; Root’s later16-root growth batch completed cleanly and is being retained. The121-sample normal-generation survey also completed cleanly. Failed/restoredX1247 and pre-mutation snowy-soil refusalX1250 remain held; no retry is authorized. Existing protection and custody are preserved even though forest expansion is now out of scope.
+**Owner stopping point:**finish this focused DH/SeedGen check, then stop for now. Other unfinished construction and release work remains open; no whole-project completion is claimed.
+
+**Scoped current art/behavior evidence:**all eight real62 Survival frames were visually reviewed. West alley depth/light/greenery reads well; original/forge furnishings and castle/northern roofs have useful detail. Tight forge access, fountain bowl/plaza balance, Lark helm/ladder views and wider night/access/roof coverage still need actual review; fountain/Lark framing and chat overlays limited these pictures. The one-counter candle proposal and three corrected camera poses are **Source only**, not placed art or actor credit. Tavern14’s actual raised mug/full-hold phase is visible, but crowd geometry occludes mouth contact; full sip/micro-motion, heard audio, ensemble behavior and multiplayer remain open.
+
+**Drowned Rose galley:**one ordinary staff villager actually spawned at15:46:33UTC with zero failures and clean release, after its three fixtures/FULL360/scene28. Current introductions are415 (124ordinary villagers+246wildlife+45patrons); the independent60a4e4 census remains414 and the newer096bdd retained save is not relabeled an independent415census. Ten empty properties remain protected. Its HOME/job behavior and schedule still need observation.
+
+**Retained forest history, no remaining forest obligation:**455 cumulative ordinary plantings are recorded, not455 remaining saplings. Three prior roots produced native mature trunk/canopy outcomes; Root’s later16-root growth batch completed cleanly; its results are retained as historical work. The121-sample normal-generation survey also completed cleanly. Failed/restoredX1247 and pre-mutation snowy-soil refusalX1250 remain held; no retry is authorized. Existing protection and custody are preserved even though forest expansion is now out of scope.
 
 Remaining priorities are **Tortuga artwork and population, Tavern behavior, real Create-shop processing, fleet, landmarks, DH/SeedGen/maps, Control Room, current multiplayer/graphics and release/promotion**. Main/GitHub publication, clean current Prism qualification and controlled permanent-runtime promotion remain open. Hypertubes and KG’s zipline remain owner-accepted complete. The original **Working2 /Integrated2 /Remaining4** scoreboard is retained as a historical six-feature record, not a new acceptance count after railway removal.
 
@@ -32,7 +40,7 @@ Computer Use remains Root-coordinated and released after each inspection burst. 
   found39 normal-AI residents; nighttime NBT found **38 HOME/39 JOB/36 sleeping**.
   **Bill and White Clam** have representative physical sleep/morning evidence;
   Bill also has actual dialogue/work proof. Do not call all39 behavior-qualified.
-- **107 real villagers are actually introduced in107 separate properties.** The
+- **123 real villagers are actually introduced in107 ordinary-villager properties.** The
   earlier 82-resident milestone is retained. Shell Drawer and Last-Kettle Galley
   added two villagers at02:02:48UTC, bringing new West to **27/36**; a further 14
   original/core/retained residents brought the city total to98. The next seven
@@ -42,6 +50,9 @@ Computer Use remains Root-coordinated and released after each inspection burst. 
   verification. Existing narrow rooms were furnished under the owner's
   exemption without rebuilding them. Later Sparrow-Key and Small Compass added
   two actual residents, bringing new West to29/36 and the city total to107.
+  Six further residents and the latest ten actual SEED10/0 are second residents:
+  total123, with ordinary property coverage still107. All414 actors are retained
+  once in the independently audited60a4e4 save; no pending Source actor is counted.
   Available HOME/job/native-route checks and actual introductions are distinct
   from observing every resident claim, commute, work, sleep, wake and persist.
 - **246 wildlife are actually introduced:**158 Naturalist birds,44 ladybugs,
@@ -77,7 +88,7 @@ Computer Use remains Root-coordinated and released after each inspection burst. 
   Both images were independently viewed/hash-matched; individual physical
   evidence does not qualify all39 East or13 West schedules.
 - Use the existing118-property inventory to supply **1–3 actual villagers per
-  Tortuga building** with real HOME/job routes. The current107 introductions
+  Tortuga building** with real HOME/job routes. The current123 introductions
   are only the beginning. Do not count attached bays, floors or15
   refinement operations as new buildings. Keep southern Court4/Bramble6 in the
   later wider settlement scope. 246 wildlife are now introduced;
@@ -108,7 +119,7 @@ retained. No map, saved aggregate or representative photo closes behavior/art re
 | Night lighting | **1,702 targets** across755/328/619, including **200 Macaw fixtures and179 mature berry heads**, actually placed/settled/verified/mapped. | Real night brightness, model collision, glare, view and walking review. Source light placement is not measured gameplay/performance or owner art acceptance. |
 | Public focal pieces | **Well79**, separate **memorial repair3** and **Forge11** passed current before/normal/full-after/map. The old memorial7 failure remains retained. | Actual public-space views/access and owner review. Preserve the below-Y64 cap, natural water, lava/obsidian and existing inventories. Do not replay old memorial7 or fit unknown context. |
 | New471 detail | **122 pale route +207 depth accents +55 foliage +22 North/65 East berries** actually placed in five clean before/place/normal/FULL/map stages; no tavern preimage overlap. | Actual night/walk/survival/art review. Preserve earlier completed layers; do not replay them. |
-| Living LIFE | **353 LIFE (107 villagers +246 wildlife) +45 patrons =398 actual actors**;108/118 properties populated. Root-retained1f checkpoint; independent2ed census397 before Small Compass. Historical exact-seat save/reload retained. | Resolve10 empty properties/11 ordinary HOME requirements while preserving holds. Verify HOME/job claims, schedules, habitats, Bill natural return, Tavern14 poses/audio, restart and multiplayer. Installation and note counters do not establish acceptance. |
+| Living LIFE | **369 LIFE (123 villagers in107 properties +246 wildlife) +45 patrons =414 independently saved actors**;108/118 properties populated. Latest ten SEED10/0. | Resolve10 empty properties without clipping height masks. Galley3 fixtures/full360/scene28 and subsequent staff SEED1/0 are actual; current introductions415 versus independent saved414. Verify claims/schedules, habitats, Tavern sip/audio, reuse and multiplayer; saved flags are not behavior acceptance. |
 
 ## Travel, machinery and fleet
 
@@ -129,7 +140,7 @@ retained. No map, saved aggregate or representative photo closes behavior/art re
 | Fountain | Earlier real pumped header/four-flow/STOP-drain/reopen and placed sculpture/ornament results exist. | Final balanced artwork/plaza, current controls, ordinary restart/reuse and owner acceptance. Preserve pump/gate/flow paths. |
 | Main wooden drawbridge | Earlier real55° cycles and retained moving ornament checks exist. | Current controls/restart/cycles, pedestrians, vessel/sweep clearance, topside artwork and owner acceptance after all surrounding changes. |
 | Secondary white Rosebridge | Finite proposed relocation source exists; the separate wooden moving bridge is protected. | Remove/restore/recreate only through its own exact admission and actual completion evidence. No relocation completion is claimed here. |
-| DH/SeedGen/distant terrain | DH56 queue fix active; focused provider/CDP repairs retained, Roxy/Voxy excluded. Native60 CDP custody failure and61 pre-join client crash preserved.62 installation is in progress. | Qualify current fixes in the real client, visible LOD, strict parity/fallback, maps and resources. Offline fixtures and installation do not prove Native parity or performance. |
+| DH/SeedGen/distant terrain | DH56 queue fix active; matched63 installed. Actual62 stopped at262,145 hash visits;63 counter repair passed60 focused offline checks. | Genuine Native63 full-resource/strict SeedGen parity, visible LOD/maps and current resource/travel acceptance remain pending. A20 TPS single server interval and offline checks are not sustained runtime/performance acceptance. |
 | Future structure frequency | Proposed/source changes prepared. | Required native comparison/qualification before selection for future chunks only; existing generated land stays intact. |
 
 ## Retained work removed from completion scope —2026-10-30
@@ -151,17 +162,19 @@ The historical Core+tavern adapter9722a2… introduced30 patrons, then15 more we
 introduced separately. Repeat initialization retained existing identities. All45
 remain registered; preserve their ledger and premises, with no creation replay.
 
-**Bridge0.6.62 / Tavern0.1.14 / QA0.1.11 installation is in progress under Root**,
-not a claimed matched Native result.61/14/QA10 was previously confirmed. All45
-patrons remain alongside353 LIFE =398 current actors. The5f396 census is historical;
-exact hashes remain in [Living World](../LIVING-WORLD.md).
+**Bridge0.6.64 / Tavern0.1.14 / QA0.1.11 are matched installed.** All45 patrons
+remain alongside369 LIFE =414 managed actors in independent60a4e4 census, each
+intended identity once with NoAI=0. Exact hashes are in [Living World](../LIVING-WORLD.md).
+The latest ten actual residents are second residents; property coverage stays108/118.
+Root's three galley fixtures passed full360/scene28; its ordinary staff worker then
+actually spawned1/0. Current introductions415 are distinct from the saved414 census.
 
-Historical5f retained three original Seat/passenger records and scoped same-seat
-Native reload passed; this does not qualify current poses. Tavern13 Ada pixels,
-snapshots and its AccessDenied pause remain preserved. Tavern14’s short atomic
-reader lock is qualified offline; current sip/micro-animation, heard music, natural
-movement, ensemble behavior, art, performance and two-player behavior remain open.
-A note counter is not heard-audio evidence. The legacy2/2/4 score remains historical.
+Historical exact-seat save/reload evidence remains scoped. Tavern14’s actual
+raised-mug/full-hold frame is visible, with mouth contact obscured by the crowd.
+Full standing/seated sip sequences, temporal micro-motion, heard music, ensemble
+behavior, natural dismounts, art and current two-player behavior remain open.
+Source candle/camera proposals are not placed art. No note counter proves heard
+audio, and the legacy2/2/4 score remains historical.
 
 ## Gameplay and Control Room qualification
 
