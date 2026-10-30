@@ -1,0 +1,456 @@
+[
+  {
+    "id": "awft_tortuga_greetings_0",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Mind the step. It has defeated three captains and a very confident barrel."
+  },
+  {
+    "id": "awft_tortuga_greetings_1",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Welcome ashore. The sea has been asking for a refund."
+  },
+  {
+    "id": "awft_tortuga_greetings_2",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Wipe yer boots. The floor's already got enough tragic backstory."
+  },
+  {
+    "id": "awft_tortuga_greetings_3",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Come in, come in. We've nearly convinced the soup to stand down."
+  },
+  {
+    "id": "awft_tortuga_jokes_0",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A captain asked me for a skeleton crew. I told him to pay the living one first."
+  },
+  {
+    "id": "awft_tortuga_jokes_1",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "That map marks buried treasure. Mostly the shovel we lost looking for it."
+  },
+  {
+    "id": "awft_tortuga_jokes_2",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "I've seen braver biscuits. They went down with the tea."
+  },
+  {
+    "id": "awft_tortuga_jokes_3",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Our ship has excellent ventilation. The carpenter calls them holes."
+  },
+  {
+    "id": "awft_tortuga_jokes_4",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Never argue with a Kraken. Eight arms and somehow still no point."
+  },
+  {
+    "id": "awft_tortuga_jokes_5",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The captain says we're rich in experience. The merchant won't accept it."
+  },
+  {
+    "id": "awft_tortuga_contextual_0",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The shipwright wants fewer inventions near the hull. Sensible, if unambitious."
+  },
+  {
+    "id": "awft_tortuga_contextual_1",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "KG's last contraption made a noise I usually associate with insurance."
+  },
+  {
+    "id": "awft_tortuga_contextual_2",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The ropes are coiled, the sails are patched, and the captain is still thinking."
+  },
+  {
+    "id": "awft_tortuga_contextual_3",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "That barrel's been promoted. It listens better than the first mate."
+  },
+  {
+    "id": "awft_tortuga_goodbyes_0",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Fair winds. If they're unfair, request a different ocean."
+  },
+  {
+    "id": "awft_tortuga_goodbyes_1",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Come back with a story. Preferably one the furniture survives."
+  },
+  {
+    "id": "awft_tortuga_weather_0",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Storm coming? Tell it we already paid the dramatic-weather fee."
+  },
+  {
+    "id": "awft_tortuga_weather_1",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Rain's good for the decks. Terrible for a pirate's carefully cultivated dignity."
+  },
+  {
+    "id": "awft_tortuga_weather_2",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A proper sea breeze. Smells of salt and somebody else's repair bill."
+  },
+  {
+    "id": "awft_tortuga_weather_3",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The clouds look angry. Probably read the captain's navigation notes."
+  },
+  {
+    "id": "awft_tortuga_nearby_player_0",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A visitor! Hide the good mugs. Actually, find the good mugs."
+  },
+  {
+    "id": "awft_tortuga_nearby_player_1",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "If ye hear creaking, it's the ship. If ye hear bargaining, it's the shipwright."
+  },
+  {
+    "id": "awft_tortuga_nighttime_0",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "At night the harbor whispers. Mostly requests to stop dropping anchors on it."
+  },
+  {
+    "id": "awft_tortuga_nighttime_1",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "That lantern is our brightest officer."
+  },
+  {
+    "id": "awft_tortuga_tavern_0",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "One drink for courage, one for the story, water for remembering where ye parked the ship."
+  },
+  {
+    "id": "awft_tortuga_tavern_1",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "No fighting near the stew. It gets ideas."
+  },
+  {
+    "id": "awft_tortuga_tavern_2",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The house special is a mystery. The cook respects its privacy."
+  },
+  {
+    "id": "awft_tortuga_tavern_3",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Last call! For sensible decisions. The tavern remains open."
+  },
+  {
+    "id": "awft_tortuga_tavern_4",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Finn says his fish was as big as this room. He owes this room an apology."
+  },
+  {
+    "id": "awft_tortuga_tavern_5",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Blackthorn bought a treasure map. Turned out to be the tavern seating plan."
+  },
+  {
+    "id": "awft_tortuga_catchphrases_0",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "That's nautical enough for me."
+  },
+  {
+    "id": "awft_tortuga_catchphrases_1",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Keep the joke; mind the rigging."
+  },
+  {
+    "id": "awft_tortuga_starters_0",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Want the true story, the good story, or Finn's version?"
+  },
+  {
+    "id": "awft_tortuga_starters_1",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "What brings ye to our questionable shore?"
+  },
+  {
+    "id": "awft_tortuga_animals_0",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The harbor cat inspected my cargo. Confiscated the fish as a matter of policy."
+  },
+  {
+    "id": "awft_tortuga_animals_1",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_tortuga"
+      ]
+    },
+    "weight": 1.0,
+    "text": "That gull's a thief. No manners, no hat, no professional pride."
+  }
+]

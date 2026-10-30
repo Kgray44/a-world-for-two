@@ -1,0 +1,7 @@
+# Relative spawn weights are not absolute entity caps or a performance result.
+spawnWeight = 3
+maxGroupSize = 1
+spawnBiomeTags = ["minecraft:is_forest"]
+spawnBiomeConventionTags = []
+includeBiomes = ["minecraft:plains", "minecraft:sunflower_plains", "minecraft:meadow", "minecraft:cherry_grove"]
+enableNaturalRedstoneFeverSpawning = false

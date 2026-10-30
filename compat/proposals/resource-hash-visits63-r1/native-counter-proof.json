@@ -1,0 +1,69 @@
+{
+  "format": "awft-resource-counter-proof:1",
+  "state": "SOURCE_ONLY_JAVA_AND_BUILD_HELD_UNTIL_CLIENT_CLOSED",
+  "native62_primary": {
+    "exception": "java.io.IOException: Bounded complete resource count exceeded",
+    "accumulator_resource_line": 415,
+    "capture_effective_stack_line": 76,
+    "before_hybrid_line": 129,
+    "actual_opened_pack_headers": 390,
+    "ordered_indexes": [
+      0,
+      389
+    ],
+    "header_classes": {
+      "net.minecraft.server.packs.PathPackResources": 377,
+      "net.minecraft.server.packs.VanillaPackResources": 1,
+      "net.neoforged.neoforge.resource.EmptyPackResources": 1,
+      "net.minecraft.server.packs.CompositePackResources": 4,
+      "com.yungnickyoung.minecraft.yungsapi.world.structure.locate.LocateReplacerDataPackResources": 1,
+      "net.mehvahdjukaar.moonlight.api.resources.pack.CachePathPackResources": 1,
+      "net.mehvahdjukaar.moonlight.api.resources.pack.InMemoryPackResources": 1,
+      "com.tacz.guns.resource.GunPackLoader$1": 1,
+      "com.simibubi.create.foundation.pack.DynamicPack": 1,
+      "plus.dragons.createdragonsplus.data.runtime.RuntimePackResources": 2
+    },
+    "header_excerpt_sha256": "ab25b378eb6e28356c75a8fa8887ee524f0a3a25b3db22bd09a60961df7a7c61",
+    "primary_frames_excerpt_sha256": "40778b4e564888a74b518b7cd93fc56ab885984e1d66ff2cc99e05beae4352e1",
+    "derived_fact": "Resource line415 preincrements entries, so refusal is hash visit262145. Capture line76 is after all390 full opened inventories; no distinct inventory exception occurred. Actual byte and distinct totals were not printed in62.",
+    "not_native_full_parity": true
+  },
+  "repair": {
+    "counter_unit": "Repeated byte-hash invocation; not unique resource ID",
+    "hash_visit_limit_before": 262144,
+    "hash_visit_limit_after": 1048576,
+    "hash_visit_budget_source": "Pre-existing finite MAX_VISITS=1048576; distinct/root counters retain262144",
+    "distinct_limit": 262144,
+    "all_other_limits_unchanged": true,
+    "digest_domain_order_and_payload_unchanged": true,
+    "record_abi_preserved": "Attestation.orderedPacks/sha256/entries/bytes; entries remains legacy hash-visit count",
+    "diagnostics": "Three capture boundary summaries plus bounded refusal facts: phase,hashVisits,distinct IDs at last completed top-level boundary,currentRootIds,traversalVisits,bytes,openedIndex,pack,resource"
+  },
+  "static_support": {
+    "file": "static-count-support.json",
+    "sha256": "78142f76a70f1adf03c153075e97f7bb1d9442728143a2e2634c2e4fbe80b558",
+    "not_actual390_runtime_topology_or_exact_required_visit_count": true
+  },
+  "scope_checks": {
+    "passed": true,
+    "distinct_root_guard_sites_preserved": 7,
+    "initial_static_checker_failure": "Exact-line assertion incorrectly rejected an unchanged guard with appended diagnostic assignment; corrected to assert guard substring. Production guard unchanged.",
+    "all_existing_line_positions_preserved": true,
+    "helpers_appended": true
+  },
+  "Java_probe": {
+    "file": "NativeHashVisitBudgetProbe.java",
+    "state": "NOT_RUN",
+    "required_cases": [
+      "hash262145 passes",
+      "distinct262145 refuses",
+      "hash1048577 refuses",
+      "unchanged aggregate and per-resource byte caps",
+      "unchanged deadline and traversal caps",
+      "unchanged digest byte feed",
+      "unchanged Attestation ABI"
+    ]
+  },
+  "native_client_server_world_install_actions": 0,
+  "build_or_Java_actions": 0
+}

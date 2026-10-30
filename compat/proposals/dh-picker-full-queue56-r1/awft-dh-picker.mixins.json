@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "worldfortwo.bridge.mixin",
+  "plugin": "worldfortwo.bridge.DhPickerQueueYieldPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["DhPickerQueueYieldMixin"],
+  "injectors": {"defaultRequire": 1}
+}

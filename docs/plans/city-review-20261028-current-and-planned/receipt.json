@@ -1,0 +1,226 @@
+{
+  "format": "awft-whole-city-current-and-planned-map:1",
+  "created_utc": "2026-10-28T22:03:15.917298+00:00",
+  "png": "pirate-city-current-and-planned.png",
+  "png_sha256": "7f874291b7377b00e06586e0324796143c6565f0460a89e2dd4640a2cc6ccae4",
+  "bytes": 125127,
+  "dimensions": [
+    2480,
+    2180
+  ],
+  "bounds_xz": [
+    968,
+    -1376,
+    1424,
+    -1008
+  ],
+  "north_up": true,
+  "coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+  "approved_east_layout_sha256": "6f24640d9efefae3340be80d34bcd0e4788f2ded695aefe03d1d6815761a12a4",
+  "approved_east_floor_masses": 155,
+  "unbuilt_outline_parts": 148,
+  "actual_new_west_buildings": 36,
+  "actual_refined_old_buildings": 15,
+  "actual_east_compounds": [
+    "east-coal",
+    "shoal-warden",
+    "thin-sail"
+  ],
+  "actual_garden_packets": 2,
+  "native_immutable_proofs": [
+    {
+      "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+      "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+      "finished": "2026-10-28T21:48:23.802354900Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+      "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+      "finished": "2026-10-28T17:46:57.402879Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+      "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+      "finished": "2026-10-28T17:47:06.053073700Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+      "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+      "finished": "2026-10-28T18:47:44.366930300Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+      "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+      "finished": "2026-10-28T18:47:50.363850200Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+      "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+      "finished": "2026-10-28T18:47:54.204529900Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+      "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+      "finished": "2026-10-28T18:48:00.102243100Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+      "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+      "finished": "2026-10-28T18:48:06.564802500Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+      "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+      "finished": "2026-10-28T18:48:11.155313300Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+      "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+      "finished": "2026-10-28T19:34:38.830868500Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+      "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+      "finished": "2026-10-28T19:34:52.175705600Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+      "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+      "finished": "2026-10-28T20:52:25.086631700Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+      "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+      "finished": "2026-10-28T20:26:40.595505100Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+      "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+      "finished": "2026-10-28T20:26:52.596420500Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+      "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+      "finished": "2026-10-28T20:27:01.243523800Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+      "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+      "finished": "2026-10-28T21:48:30.652260900Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+      "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+      "finished": "2026-10-28T21:48:34.351841300Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+      "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+      "finished": "2026-10-28T21:55:33.152618400Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    },
+    {
+      "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+      "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+      "finished": "2026-10-28T21:55:37.501028900Z",
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0,
+      "immutable_complete_marker_verified": true
+    }
+  ],
+  "all_proof_complete_hash_markers_verified": true,
+  "source_receipts_sha256": {
+    "west36": "e9152cdf12ae18605aeca44ce054f510c5f574e055058924f4ae41cbb8d24729",
+    "west15": "0ca4c77d608dafca2434fab1c0b01783412da25d7bb6172730c5a5e39c3911be",
+    "east3": "e1981bffbd5c4c295478a8a7d3711e23212aabb45f99506fb4775c67e57d481e",
+    "garden55": "4add96de9bcb133e6ce3266e041175e4cdd98b450ed09f60357d9780cbe32d4f"
+  },
+  "existing_old_E_roofs_removed_from_map": 0,
+  "planned_outlines_filled_as_current": false,
+  "world_writes": 0,
+  "runtime_actions": 0,
+  "artistic_acceptance": false,
+  "reserve_guard": {
+    "utc": "2026-10-28T22:03:15.3505369Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 120601321472,
+    "dFreeBytes": 282746441728,
+    "estimatedCBytes": 33554432,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "scope": "Actual placed source-target coverage over the pinned saved terrain baseline. Old East roofs remain gray; approved future masses have dashed outlines only. No unexplored terrain is invented."
+}

@@ -1,4 +1,4 @@
-"""Upgrade only owned helper artifacts in the stopped, private artistic runtime."""
+"""Upgrade only reviewed artifacts in the stopped, private artistic runtime."""
 from pathlib import Path
 import json
 import os
@@ -14,7 +14,8 @@ from .playtest import guard
 from .artistic_capture import CLIENT
 
 
-def upgrade(home, *, include_mapping=False, include_chains=False):
+def upgrade(home, *, include_mapping=False, include_chains=False,
+            include_living_world=False, include_cozy_pets=False):
     layout=Layout(home)
     owner=read_json(layout.state/'artistic-owner.json',{})
     if (owner.get('format')!='awft-artistic-stage:1'
@@ -42,6 +43,56 @@ def upgrade(home, *, include_mapping=False, include_chains=False):
                 or m.get('hashes',{}).get('sha256')!='70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0'):
             raise UserError('Only the exact reviewed new zipline chain backend is admitted')
         permitted.add('reconnectible-chains')
+    if include_living_world:
+        # Exact reviewed NEW additions only; no update/removal exception.
+        approved = {'awft-living-world': ('awft:living-world',
+                               '0.2.0',
+                               '0.2.0',
+                               'awft-living-world-0.2.0.jar',
+                               '093b7a487e664c7ef7a8e73c2fb2d2e4dca3f2da17944dd678c0e4dabcd31a70'),
+         'chatting-villagers': ('curseforge:1638757',
+                                'curseforge:9064041',
+                                '1.1.0',
+                                'chattingvillagers-neoforge-1.21.1-1.1.0.jar',
+                                'a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a'),
+         'smart-villagers-ai': ('l9oZCCPS',
+                                'bGNaqTaL',
+                                '2.0.0+neoforge-1.21.1',
+                                'smartvillagers-neoforge-1.21.1-2.0.0.jar',
+                                'bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630')}
+        for slug, expected in approved.items():
+            m=new.get(slug,{})
+            actual=(m.get('project_id'),m.get('version_id'),m.get('version'),
+                    m.get('filename'),m.get('hashes',{}).get('sha256'))
+            if (slug in old or actual!=expected or m.get('side')!='both' or m.get('kind')!='mod'
+                    or m.get('optional',False) is not False or m.get('default',True) is not True):
+                raise UserError('Only the exact reviewed new Living World artifacts are admitted')
+        permitted.update(approved)
+    if include_cozy_pets:
+        # Exact reviewed NEW additions only; no update/removal exception.
+        approved = {'adorable-hamster-pets': ('LmrhZdK2',
+                                   'LyCV3JSL',
+                                   '3.7.0-1.21.1+neoforge',
+                                   'adorablehamsterpets-3.7.0-1.21.1+neoforge.jar',
+                                   '0651244d2aaf4c127ee1818a24910bf6612a33bb3aa078217ee8c695abf2cbc8be118d29ed5e271f8f7ba316f146767b8882800a38713177993444db7df2041a'),
+         'aquarius-libs': ('KkHnyaL6',
+                           'sPrpmle3',
+                           '1.2.0-neoforge-1.21.1-21.1.217',
+                           'aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar',
+                           '4521e42504e1ecc73aab95895655425eb0914ddb964b242edea77f9bf38c406d63232187212b7cb3295821243599b6ba3d4b21805439aedd0df9f0ed4db9bb42'),
+         'patchouli': ('nU0bVIaL',
+                       'BIogJv2D',
+                       '1.21.1-93-neoforge',
+                       'Patchouli-1.21.1-93-NEOFORGE.jar',
+                       '0b5c172db9a6eeecb5ca44b359a83548c3a60be7ff313959acdfc1e5b8039736c18e57e947d435b52d06da31159d2d02ea36e5742668dbc826308a4c99e4039f')}
+        for slug, expected in approved.items():
+            m=new.get(slug,{})
+            actual=(m.get('project_id'),m.get('version_id'),m.get('version'),
+                    m.get('filename'),m.get('hashes',{}).get('sha512'))
+            if (slug in old or actual!=expected or m.get('side')!='both' or m.get('kind')!='mod'
+                    or m.get('optional',False) is not False or m.get('default',True) is not True):
+                raise UserError('Only the exact reviewed new cozy pets artifacts are admitted')
+        permitted.update(approved)
     if include_mapping:
         m=new.get('maphorizons',{});before=old.get('maphorizons',{})
         if (m.get('filename')!='maphorizons-1.1.0-awft.2.jar'
@@ -51,7 +102,7 @@ def upgrade(home, *, include_mapping=False, include_chains=False):
             raise UserError('The exact reviewed mapping repair and predecessor are required')
         permitted.add('maphorizons')
     if not changes or not changes<=permitted:
-        raise UserError('Only the explicitly admitted helper and mapping artifact changes are allowed')
+        raise UserError('Only the explicitly admitted helper, mapping and exact new artifact changes are allowed')
     maximum=3*tree_size(REPO/'packwiz')+8*1024**2
     if maximum>64*1024**2:raise UserError('Split the manifest upgrade into a bounded step')
     guard(8*1024**2,maximum)
@@ -113,5 +164,8 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--home',required=True,type=Path)
     p.add_argument('--include-mapping',action='store_true')
     p.add_argument('--include-chains',action='store_true')
+    p.add_argument('--include-living-world',action='store_true')
+    p.add_argument('--include-cozy-pets',action='store_true')
     args=p.parse_args()
-    print(json.dumps(upgrade(args.home,include_mapping=args.include_mapping,include_chains=args.include_chains)))
+    print(json.dumps(upgrade(args.home,include_mapping=args.include_mapping,include_chains=args.include_chains,
+        include_living_world=args.include_living_world,include_cozy_pets=args.include_cozy_pets)))

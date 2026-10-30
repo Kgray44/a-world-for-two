@@ -1,0 +1,123 @@
+--- sealed62/LithostitchedSeedgenResources.java
++++ proposal63/LithostitchedSeedgenResources.java
+@@ -39,9 +39,9 @@
+ 
+ /** Original bounded byte attestation. No JSON normalization, registry edit or pack close. */
+ public final class LithostitchedSeedgenResources {
+-    private static final int MAX_PACKS=512,MAX_ENTRIES=262144,MAX_TEXT=4096,MAX_VISITS=1048576;
++    private static final int MAX_PACKS=512,MAX_ENTRIES=262144,MAX_TEXT=4096,MAX_VISITS=1048576,MAX_HASH_VISITS=MAX_VISITS;
+     private static final long MAX_BYTES=512L*1024*1024,MAX_RESOURCE=32L*1024*1024;
+-    public record Attestation(List<String> orderedPacks,String sha256,int entries,long bytes) {
++    public record Attestation(List<String> orderedPacks,String sha256,int entries,long bytes) { // entries is the legacy ABI name for hash visits, not distinct IDs.
+         public Attestation {orderedPacks=List.copyOf(orderedPacks);}
+     }
+     private LithostitchedSeedgenResources(){}
+@@ -53,10 +53,10 @@
+         Accumulator out=new Accumulator();var identities=new ArrayList<String>();var allIds=new TreeSet<ResourceLocation>();logPackHeaders(opened);
+         out.text("awft-native-server-data:3");out.number(opened.size());
+         for(int index=0;index<opened.size();index++) {
+-            PackResources pack=opened.get(index);String identity=pack.packId();
++            PackResources pack=opened.get(index);String identity=pack.packId();out.openedIndex=index;out.packContext=identity;
+             identities.add(identity);out.number(index);out.text(identity);out.text(pack.getClass().getName());
+             var inventory=inventory(pack,out,0);allIds.addAll(inventory.ids());
+-            if(allIds.size()>MAX_ENTRIES)throw new IOException("Bounded whole server-data resource inventory exceeded");
++            requireDistinctIds(allIds.size());out.distinctIds=allIds.size();
+         }
+         // Bind the actual effective manager, including stack order/filter results,
+         // instead of assuming raw opened packs describe every selected overlay.
+@@ -66,17 +66,17 @@
+         for(int n=0;n<effective.size();n++)if(effective.get(n)!=opened.get(n))throw new IOException("Effective native pack order/identity differs from opened inventory");
+         out.text("effective-packs");out.number(effective.size());
+         for(var pack:effective){out.text(pack.packId());out.text(pack.getClass().getName());}
+-        out.text("effective-stacks");out.number(allIds.size());
++        report(out,"opened-pack-inventory-complete");out.phase="effective-override-stacks";out.openedIndex=-1;out.packContext="effective-manager";out.rootIds=-1;out.text("effective-stacks");out.number(allIds.size());
+         for(var id:allIds) {
+             var stack=resources.getResourceStack(id);
+             out.text(id.toString());out.number(stack.size());
+             if(stack.size()>MAX_PACKS)throw new IOException("Bounded native override stack exceeded");
+             for(var resource:stack) {
+-                out.text(resource.sourcePackId());
++                out.packContext=resource.sourcePackId();out.text(resource.sourcePackId());
+                 out.resource(id.toString(),resource::open);
+             }
+         }
+-        for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();for(var view:out.taczViews)view.unchanged();for(var view:out.runtimeViews)runtimeUnchanged(view,out);for(var view:out.createViews)createUnchanged(view,out);
++        report(out,"effective-override-stacks-complete");out.phase="generated-final-stability";for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();for(var view:out.taczViews)view.unchanged();for(var view:out.runtimeViews)runtimeUnchanged(view,out);for(var view:out.createViews)createUnchanged(view,out);report(out,"capture-complete");
+         return new Attestation(identities,HexFormat.of().formatHex(out.digest.digest()),out.entries,out.bytes);
+     }
+     /** The native listing is cross-checked against a strict finite root walk:
+@@ -85,7 +85,7 @@
+      * come through the real PackResources.getResource. No pack is closed here. */
+     @SuppressWarnings("unchecked")
+     private static Inventory inventory(PackResources pack,Accumulator out,int depth,PackResources parent)throws IOException {
+-        if(depth>16||++out.packs>MAX_PACKS)throw new IOException("Bounded complete pack structure exceeded");
++        if(depth>16||++out.packs>MAX_PACKS)throw new IOException("Bounded complete pack structure exceeded");out.packContext=pack.packId();out.rootIds=-1;
+         var ids=new TreeSet<ResourceLocation>();var rawNames=new TreeSet<String>();
+         var readable=new TreeMap<ResourceLocation,Boolean>();var childInventories=new ArrayList<Inventory>();int[] visits={0};
+         PackResources.ResourceOutput collect=(id,supplier)->{
+@@ -179,7 +179,7 @@
+                 }
+                 if(!namespaces.isEmpty())throw new IOException("Native empty pack unexpectedly supplies namespaces");
+             }
+-            if(ids.size()>MAX_ENTRIES)throw new IOException("Bounded native pack inventory exceeded");
++            if(ids.size()>MAX_ENTRIES)throw new IOException("Bounded native pack inventory exceeded");out.packContext=pack.packId();out.rootIds=ids.size();
+             // Every real child is hashed before its Composite winner. A fully
+             // masked child-byte change must still refuse the fresh seed load.
+             out.text("selected-native-resources");out.number(ids.size());
+@@ -401,26 +401,26 @@
+     }
+     private static final class Accumulator {
+         final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();final ArrayList<MoonlightInMemoryPackCustody.View> memoryViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.TaczView> taczViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.RuntimeView> runtimeViews=new ArrayList<>();final ArrayList<CreateDynamicPackCustody.View> createViews=new ArrayList<>();
+-        final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;
++        final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;String phase="opened-pack-inventory",packContext="none";int distinctIds,rootIds=-1,openedIndex=-1;
+         void visit()throws IOException {
+-            if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw new IOException("Native server-data inventory exceeded its finite traversal bound");
++            if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw counterFailure(this,"Native server-data inventory exceeded its finite traversal bound","<traversal>");
+         }
+         void number(long value){digest.update(ByteBuffer.allocate(Long.BYTES).putLong(value).array());}
+         void text(String value)throws IOException {
+-            if(System.nanoTime()-deadline>=0)throw new IOException("Native server-data attestation exceeded its finite deadline");
++            if(System.nanoTime()-deadline>=0)throw counterFailure(this,"Native server-data attestation exceeded its finite deadline","<text-or-read>");
+             if(value==null||value.length()>MAX_TEXT)throw new IOException("Bounded native resource identity exceeded");
+             byte[] raw=value.getBytes(StandardCharsets.UTF_8);number(raw.length);digest.update(raw);
+         }
+         String resource(String identity,IoSupplier<InputStream> source)throws IOException {
+-            if(++entries>MAX_ENTRIES)throw new IOException("Bounded complete resource count exceeded");
++            if(++entries>MAX_HASH_VISITS)throw counterFailure(this,"Bounded complete resource hash-visit count exceeded",identity);
+             text(identity);number(source==null?0:1);if(source==null)return null;
+             MessageDigest content=sha();long size=0;byte[] buffer=new byte[65536];
+             try(InputStream stream=source.get()) {
+                 if(stream==null)throw new IOException("Native resource supplier returned null");
+                 for(int n;(n=stream.read(buffer))!=-1;) {
+                     size+=n;bytes+=n;
+-                    if(System.nanoTime()-deadline>=0)throw new IOException("Native server-data attestation exceeded its finite deadline");
+-                    if(size>MAX_RESOURCE||bytes>MAX_BYTES)throw new IOException("Bounded complete server-data byte attestation exceeded");
++                    if(System.nanoTime()-deadline>=0)throw counterFailure(this,"Native server-data attestation exceeded its finite deadline","<text-or-read>");
++                    if(size>MAX_RESOURCE||bytes>MAX_BYTES)throw counterFailure(this,"Bounded complete server-data byte attestation exceeded; resourceBytes="+size+" resourceLimit="+MAX_RESOURCE,identity);
+                     content.update(buffer,0,n);
+                 }
+             }
+@@ -584,4 +584,23 @@
+             throw new IOException("Pinned Tectonic archive/absent-root witness changed during capture");
+     }
+     private static String hashBytes(byte[] bytes){return HexFormat.of().formatHex(sha().digest(bytes));}
++    /** Distinct inventory cardinality has its original bound, independent of repeated byte hashing. */
++    private static void requireDistinctIds(int count)throws IOException {
++        if(count>MAX_ENTRIES)throw new IOException("Bounded whole server-data resource inventory exceeded; distinctIds="+count+" distinctLimit="+MAX_ENTRIES);
++    }
++    private static String counterFacts(Accumulator out) {
++        return "phase="+out.phase+" hashVisits="+out.entries+" hashVisitLimit="+MAX_HASH_VISITS
++            +" distinctIdsAtCompletedPackBoundary="+out.distinctIds+" distinctLimit="+MAX_ENTRIES
++            +" currentRootIds="+out.rootIds+" traversalVisits="+out.visits+" traversalLimit="+MAX_VISITS
++            +" bytes="+out.bytes+" byteLimit="+MAX_BYTES+" openedIndex="+out.openedIndex+" pack="+boundedDiagnostic(out.packContext);
++    }
++    private static String boundedDiagnostic(String value) {
++        if(value==null)return "null";return value.length()>256?value.substring(0,256)+"...":value;
++    }
++    private static IOException counterFailure(Accumulator out,String reason,String identity) {
++        return new IOException(reason+"; "+counterFacts(out)+" resource="+boundedDiagnostic(identity));
++    }
++    private static void report(Accumulator out,String event) {
++        org.slf4j.LoggerFactory.getLogger("AWFT-SeedGen-Pack-Custody").info("SERVER_DATA custody {} {}",event,counterFacts(out));
++    }
+ }

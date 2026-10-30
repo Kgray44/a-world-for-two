@@ -226,16 +226,19 @@ class ConfigurationTests(Fixture):
                 with self.assertRaises(UserError):
                     server.command(command)
 
-    def test_mill_commissioning_requires_confirmation_and_typed_bundle(self):
+    def test_retained_mill_resume_requires_confirmation_and_typed_bundle(self):
         server = Server(self.layout, self.storage)
-        command = 'awftmill commission mill-commission-1234567890abcdef ' + 'b' * 64
+        write_json(self.layout.state / 'artistic-owner.json',
+                   {'format': 'awft-artistic-stage:1', 'home': str(self.layout.home)})
+        self.layout.save_settings(self.layout.settings() | {'permanent_world': False, 'port': 25575})
+        command = 'awftmill resume mill-resume-1234567890abcdef ' + 'b' * 64
         with patch.object(server, '_write') as write:
             with self.assertRaises(UserError):
                 server.command(command)
             server.command(command, confirmed=True)
             write.assert_called_once_with(command)
             for bad in [command + ' extra', command.replace('b' * 64, 'invalid'),
-                        command.replace('mill-commission-', '../')]:
+                        command.replace('mill-resume-', '../')]:
                 with self.assertRaises(UserError):
                     server.command(bad, confirmed=True)
 
@@ -319,15 +322,68 @@ class ConfigurationTests(Fixture):
                 server.command(command, confirmed=True)
 
 
+    def test_tavern_commands_keep_private_scope_and_mutation_confirmation(self):
+        server = Server(self.layout, self.storage)
+        commands = ('awfttavern initialize ' + 'a' * 64,
+                    'awfttavern restore-original 4a494cee-f2c4-3b5c-aa06-e52b2e4bb447 ' + 'b' * 64,
+                    'awfttavern reconstruct-missing 62622710-89e4-3007-82c1-4693b3818539 ' + 'c' * 64,
+                    'awfttavern prepare-recovery', 'awfttavern finish-recovery',
+                    'awfttavern suspend true', 'awfttavern music false',
+                    'awfttavern resident barnacle-bill enabled false')
+        with patch.object(server, '_write') as write:
+            for command in commands:
+                with self.assertRaises(UserError):
+                    server.command(command, confirmed=True)
+            write_json(self.layout.state / 'artistic-owner.json',
+                       {'format': 'awft-artistic-stage:1', 'home': str(self.layout.home)})
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': False, 'port': 25575})
+            for command in commands:
+                with self.assertRaises(UserError):
+                    server.command(command)
+                server.command(command, confirmed=True)
+                for bad in (command + ' extra', command + '\nstop'):
+                    with self.assertRaises(UserError):
+                        server.command(bad, confirmed=True)
+            server.command('awfttavern inspect')
+            self.assertEqual(write.call_count, len(commands) + 1)
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': True})
+            with self.assertRaises(UserError):
+                server.command('awfttavern inspect')
+
+    def test_advanced_weather_commands_are_private_exact_and_confirmed(self):
+        server = Server(self.layout, self.storage)
+        commands = ('aw set clear', 'aw set sunny', 'aw auto')
+        with patch.object(server, '_write') as write:
+            for command in commands + ('aw',):
+                with self.assertRaises(UserError):
+                    server.command(command, confirmed=True)
+            write_json(self.layout.state / 'artistic-owner.json',
+                       {'format': 'awft-artistic-stage:1', 'home': str(self.layout.home)})
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': False, 'port': 25575})
+            server.command('aw')
+            for command in commands:
+                with self.assertRaises(UserError):
+                    server.command(command)
+                server.command(command, confirmed=True)
+            for bad in ('aw set blizzard', 'aw auto extra', 'aw set clear\nstop', 'aw arbitrary'):
+                with self.assertRaises(UserError):
+                    server.command(bad, confirmed=True)
+            self.assertEqual(write.call_count, 4)
+            self.layout.save_settings(self.layout.settings() | {'permanent_world': True})
+            with self.assertRaises(UserError):
+                server.command('aw set clear', confirmed=True)
+
     def test_native_growth_and_life_commands_keep_private_scope_and_mutation_confirmation(self):
         server = Server(self.layout, self.storage)
         commands = [('awfttrees', 'grow', 'describe', 'trees-'),
                     ('awfttreepatch', 'grow', 'inspect', 'treepatch-'),
+                    ('awftrelocate', 'move', 'inspect', 'relocation-'),
+                    ('awftrelocate', 'record-conserved', 'inspect-quarantined', 'relocation-'),
                     ('awftlife', 'seed', 'inspect', 'life-'),
                     ('awftfountain', 'reset', 'inspect', 'fountain-'),
                     ('awftfountain', 'recover-gate', 'inspect', 'fountain-'),
                     ('awftfountain', 'park-gate', 'inspect', 'fountain-'),
-                    ('awftmill', 'resume', 'inspect', 'mill-commission-')]
+                    ('awftmill', 'resume', 'inspect', 'mill-resume-')]
         for family, mutation, observation, prefix in commands:
             command = family + ' ' + mutation + ' ' + prefix + 'e' * 16 + ' ' + 'e' * 64
             with self.subTest(family=family), patch.object(server, '_write') as write:
@@ -514,9 +570,12 @@ class MetricsHistoryTests(Fixture):
         metrics = Metrics(self.layout, self.storage, server)
         with metrics.connect() as connection:
             connection.execute("CREATE TABLE samples (at REAL PRIMARY KEY, data TEXT NOT NULL)")
-        with patch.object(metrics, "alerts", return_value=[]), patch.object(metrics.clients, "collect", return_value=[]):
+        with patch.object(metrics, "alerts", return_value=[]), patch.object(metrics.clients, "collect", return_value=[]), \
+                patch.object(self.storage, 'snapshot', create=True, return_value={'breakdown': {}}):
             first = metrics.collect()
             second = metrics.collect()
+            self.assertTrue(metrics._bookkeeping_idle.wait(3), 'The history writer did not finish its bounded test work')
+            metrics.close()
         reopened = Metrics(self.layout, self.storage, server).history()
         self.assertEqual(len(reopened), 1)
         self.assertEqual(reopened[0]["at"], second["at"])

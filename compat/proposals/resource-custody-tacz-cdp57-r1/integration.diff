@@ -1,0 +1,148 @@
+--- bridge56/LithostitchedSeedgenResources.java
++++ bridge57/LithostitchedSeedgenResources.java
+@@ -50,7 +50,7 @@
+     }
+     public static Attestation capture(List<PackResources> opened,ResourceManager resources)throws IOException {
+         if(opened.isEmpty()||opened.size()>MAX_PACKS)throw new IOException("Bounded opened server-data packs required");
+-        Accumulator out=new Accumulator();var identities=new ArrayList<String>();var allIds=new TreeSet<ResourceLocation>();
++        Accumulator out=new Accumulator();var identities=new ArrayList<String>();var allIds=new TreeSet<ResourceLocation>();logPackHeaders(opened);
+         out.text("awft-native-server-data:3");out.number(opened.size());
+         for(int index=0;index<opened.size();index++) {
+             PackResources pack=opened.get(index);String identity=pack.packId();
+@@ -76,7 +76,7 @@
+                 out.resource(id.toString(),resource::open);
+             }
+         }
+-        for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();
++        for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();for(var view:out.taczViews)view.unchanged();for(var view:out.runtimeViews)runtimeUnchanged(view,out);
+         return new Attestation(identities,HexFormat.of().formatHex(out.digest.digest()),out.entries,out.bytes);
+     }
+     /** The native listing is cross-checked against a strict finite root walk:
+@@ -98,10 +98,10 @@
+             // One exact native dynamic provider is inventoried through its own API.
+             var runtimeIds=YungLocatePackCustody.matches(pack)?YungLocatePackCustody.inventory(pack):null;
+             var moonlight=MoonlightCachePackCustody.matches(pack)?MoonlightCachePackCustody.inspect(pack):null;
+-            if(moonlight!=null)out.cachedViews.add(moonlight);var memory=MoonlightInMemoryPackCustody.matches(pack)?MoonlightInMemoryPackCustody.inspect(pack,out.deadline):null;if(memory!=null)out.memoryViews.add(memory);
++            if(moonlight!=null)out.cachedViews.add(moonlight);var memory=MoonlightInMemoryPackCustody.matches(pack)?MoonlightInMemoryPackCustody.inspect(pack,out.deadline):null;if(memory!=null)out.memoryViews.add(memory);var delegating=GeneratedServerPackCustody.tacz(pack)?GeneratedServerPackCustody.inspectTacz(pack,out.deadline):null;var generated=GeneratedServerPackCustody.runtime(pack)?GeneratedServerPackCustody.inspectRuntime(pack,out.deadline):null;if(delegating!=null)out.taczViews.add(delegating);if(generated!=null)out.runtimeViews.add(generated);
+             // An unknown subclass could override any listed/read resource method.
+             if(type!=PathPackResources.class&&type!=VanillaPackResources.class&&type!=CompositePackResources.class
+-                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null&&memory==null)
++                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null&&memory==null&&delegating==null&&generated==null)
+                 throw new IOException("Unsupported actual PackResources implementation: "+type.getName()+" pack="+pack.packId());
+             // Check that a file-backed native pack is actually open, rather than
+             // allowing its logged failed-open path to masquerade as an empty pack.
+@@ -130,14 +130,14 @@
+                     out.text("vanilla-native-root");out.number(rootIndex);
+                     ids.addAll(pathIds(namespace,selected.get(rootIndex).resolve(namespace),out,rawNames));
+                 }
+-            }else if(type==CompositePackResources.class) {
+-                PackResources primary=(PackResources)Roots.PRIMARY.invoke(pack);
+-                var children=(List<PackResources>)Roots.STACK.invoke(pack);
++            }else if(type==CompositePackResources.class||delegating!=null) {
++                PackResources primary=delegating==null?(PackResources)Roots.PRIMARY.invoke(pack):null;
++                var children=delegating==null?(List<PackResources>)Roots.STACK.invoke(pack):delegating.children;
+                 // Native constructor's stack is reversed overlays followed by
+                 // the exact primary. Do not count/hash the primary twice.
+-                if(children.isEmpty()||children.size()>MAX_PACKS||children.getLast()!=primary)
++                if(delegating==null&&(children.isEmpty()||children.size()>MAX_PACKS||children.getLast()!=primary))
+                     throw new IOException("Pinned composite primary/overlay topology changed");
+-                out.number(children.size());
++                out.number(children.size());if(delegating!=null){out.text("native-TaCZ-ordered-children:1");out.text(delegating.metadata);}
+                 for(var child:children){Inventory childInventory=inventory(child,out,depth+1);childInventories.add(childInventory);ids.addAll(childInventory.ids());}
+                 // Empty namespace directories are legal, so check the full
+                 // native child namespace union, not only namespaces with files.
+@@ -165,7 +165,7 @@
+                 for(var entry:directories.entrySet())for(String dir:entry.getValue())pack.listResources(PackType.SERVER_DATA,entry.getKey(),dir,collect);
+                 if(!ids.equals(nested))throw new IOException("Native file resource inventory is incomplete");
+                 ids.addAll(expected);
+-            }else if(moonlight!=null||memory!=null) {
++            }else if(generated!=null){runtimeInventory(generated,out,ids);}else if(moonlight!=null||memory!=null) {
+                 if(moonlight!=null)moonlightInventory(pack,moonlight,out,ids,rawNames);else memoryInventory(pack,memory,out,ids);
+             }else if(runtimeIds!=null) {
+                 ids.addAll(runtimeIds);
+@@ -188,9 +188,9 @@
+                 boolean parserRejected=FileUtil.decomposePath(id.getPath()).error().isPresent();
+                 readable.put(id,source!=null);
+                 out.text("native-selected-readability");out.text(id.toString());out.number(parserRejected?1:0);out.number(source==null?0:1);
+-                out.resource(id.toString(),source);
+-            }
+-            if(moonlight!=null)moonlight.unchanged();if(memory!=null)memory.unchanged();
++                String selectedHash=out.resource(id.toString(),source);if(generated!=null&&!java.util.Objects.equals(generated.selectedHashes.get(id),selectedHash))throw new IOException("Native runtime listed/selected bytes differ");
++            }
++            if(moonlight!=null)moonlight.unchanged();if(memory!=null)memory.unchanged();if(delegating!=null)delegating.unchanged();if(generated!=null)runtimeUnchanged(generated,out);
+             return new Inventory(ids,Map.copyOf(readable));
+         }catch(IOException failure){throw failure;}
+         catch(UncheckedIOException failure){throw failure.getCause();}
+@@ -203,7 +203,7 @@
+      * unavailable; a readable child or absent child proof refuses its null. */
+     static boolean attestedNativeAbsence(Class<?> type,ResourceLocation id,Set<String> rawNames,List<Inventory> children) {
+         if(FileUtil.decomposePath(id.getPath()).error().isEmpty())return false;
+-        if(type==CompositePackResources.class) {
++        if(type==CompositePackResources.class||type.getName().equals(GeneratedServerPackCustody.TACZ)) {
+             boolean member=false;
+             for(var child:children)if(child.ids().contains(id)) {
+                 Boolean state=child.readable().get(id);
+@@ -400,7 +400,7 @@
+         }
+     }
+     private static final class Accumulator {
+-        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();final ArrayList<MoonlightInMemoryPackCustody.View> memoryViews=new ArrayList<>();
++        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();final ArrayList<MoonlightInMemoryPackCustody.View> memoryViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.TaczView> taczViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.RuntimeView> runtimeViews=new ArrayList<>();
+         final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;
+         void visit()throws IOException {
+             if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw new IOException("Native server-data inventory exceeded its finite traversal bound");
+@@ -411,9 +411,9 @@
+             if(value==null||value.length()>MAX_TEXT)throw new IOException("Bounded native resource identity exceeded");
+             byte[] raw=value.getBytes(StandardCharsets.UTF_8);number(raw.length);digest.update(raw);
+         }
+-        void resource(String identity,IoSupplier<InputStream> source)throws IOException {
++        String resource(String identity,IoSupplier<InputStream> source)throws IOException {
+             if(++entries>MAX_ENTRIES)throw new IOException("Bounded complete resource count exceeded");
+-            text(identity);number(source==null?0:1);if(source==null)return;
++            text(identity);number(source==null?0:1);if(source==null)return null;
+             MessageDigest content=sha();long size=0;byte[] buffer=new byte[65536];
+             try(InputStream stream=source.get()) {
+                 if(stream==null)throw new IOException("Native resource supplier returned null");
+@@ -424,7 +424,7 @@
+                     content.update(buffer,0,n);
+                 }
+             }
+-            number(size);digest.update(content.digest());
++            byte[] value=content.digest();number(size);digest.update(value);return HexFormat.of().formatHex(value);
+         }
+     }
+     /** Exact native memory storage was independently cross-checked with list/get.
+@@ -445,4 +445,33 @@
+         ids.addAll(view.ids());view.unchanged();
+     }
+     private static MessageDigest sha(){try{return MessageDigest.getInstance("SHA-256");}catch(NoSuchAlgorithmException impossible){throw new AssertionError(impossible);}}
++    /** Log every actual opened identity before the first provider-specific traversal. */
++    private static void logPackHeaders(List<PackResources> packs)throws IOException {
++        int total=0;
++        for(var pack:packs) {
++            if(pack==null||pack.packId()==null||pack.packId().length()>MAX_TEXT||pack.getClass().getName().length()>MAX_TEXT)
++                throw new IOException("Bounded opened native pack headers required");
++            total+=pack.packId().length()+pack.getClass().getName().length();
++            if(total>131072)throw new IOException("Bounded complete native pack header text exceeded");
++        }
++        var log=org.slf4j.LoggerFactory.getLogger("AWFT-SeedGen-Pack-Custody");
++        for(int n=0;n<packs.size();n++)log.info("Opened SERVER_DATA pack [{}] id={} class={}",n,packs.get(n).packId(),packs.get(n).getClass().getName());
++    }
++    /** Hash complete native map bytes, then cross-check the original native list/get API. */
++    private static void runtimeInventory(GeneratedServerPackCustody.RuntimeView view,Accumulator out,TreeSet<ResourceLocation> ids)throws IOException {
++        out.text("native-CDP-runtime-map:1");out.text(view.metadata);out.number(view.raw().size());
++        for(var entry:new TreeMap<>(view.raw()).entrySet())
++            view.rawHashes.put(entry.getKey(),out.resource("native-runtime-raw/"+entry.getKey(),entry.getValue()));
++        ids.addAll(view.ids());
++        for(var id:ids)view.selectedHashes.put(id,out.resource("native-runtime-listed/"+id,view.listed(id)));
++        view.unchanged();
++    }
++    private static void runtimeUnchanged(GeneratedServerPackCustody.RuntimeView view,Accumulator out)throws IOException {
++        view.unchanged();
++        for(var entry:view.rawHashes.entrySet()) {
++            String actual=out.resource("native-runtime-stable/"+entry.getKey(),view.raw().get(entry.getKey()));
++            if(!java.util.Objects.equals(entry.getValue(),actual))throw new IOException("Native runtime bytes changed during custody");
++        }
++        view.unchanged();
++    }
+ }

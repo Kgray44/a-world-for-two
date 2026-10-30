@@ -1,0 +1,31 @@
+{
+  "schema": "awft-source-freeze:1",
+  "version": "0.6.56",
+  "files": {
+    "awft-dh-picker.mixins.json": {
+      "sha256": "0c669ff7a8e53a7d27643ec9e54d3dc079d95d8452b3d0d580546b33c9bcef93",
+      "bytes": 260
+    },
+    "DhPickerFullQueueProbe.java": {
+      "sha256": "4d4a72a96ae6ba372b2cd47687c14672bf34681ea8d3150b0f17cede7e7f97c8",
+      "bytes": 16113
+    },
+    "DhPickerQueueYieldMixin.java": {
+      "sha256": "949e984465a7b6d4a81ba9af7137febd08560dd38fd2699dd960028904022817",
+      "bytes": 371
+    },
+    "DhPickerQueueYieldPlugin.java": {
+      "sha256": "2e12ae2c84cf9b12c31eab90d888772c876fdc55b0ae4a744294e7de1f071648",
+      "bytes": 11217
+    },
+    "native-api-proof.json": {
+      "sha256": "78fc2de19440b92ddd735ac4f4badcbcfa3e6c433946a38eaddebdcc77b484aa",
+      "bytes": 1097
+    },
+    "README.md": {
+      "sha256": "0ef808e6d69a4f5acb7e293a3a01cf130e95210dd60c3aae0523f4919956dd06",
+      "bytes": 3134
+    }
+  },
+  "scope": "New isolated proposal only; no active/runtime/config/Git changes"
+}

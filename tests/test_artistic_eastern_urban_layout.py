@@ -3,10 +3,19 @@ import unittest
 from control_room.common import UserError
 from tools.artistic_eastern_move_blueprint import cells,closed_vanilla_pairs
 from tools.artistic_eastern_urban_layout import grow_parcels,largest_rectangle,rectangle,transaction_order
-from tools.artistic_eastern_urban_custody import classify_current,pods_from_current
+from tools.artistic_eastern_urban_custody import apply_authored_delta,classify_current,pods_from_current
 
 
 class EasternUrbanLayoutTests(unittest.TestCase):
+    def test_full_readonly_context_cannot_be_promoted_to_authored_delta(self):
+        owned={(0,64,0):'minecraft:bricks'}
+        changed={(1,65,0):'minecraft:spruce_planks'}
+        apply_authored_delta(owned,changed,1)
+        self.assertIn((1,65,0),owned)
+        context={**changed,(12,65,0):'minecraft:barrel'}
+        with self.assertRaises(UserError):apply_authored_delta(owned,context,1)
+        self.assertNotIn((12,65,0),owned)
+
     def test_growth_reaches_queued_neighbours_without_crossing_street(self):
         land={(x,z) for x in range(15) for z in range(9)};road={(7,z) for z in range(9)}
         seeds=[{'exact_seed':[2,4]},{'exact_seed':[12,4]}]

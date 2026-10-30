@@ -1,0 +1,20 @@
+{
+  "format": "awft-final-floor-native-source-freeze:1",
+  "source_hashes": {
+    "compat/control-bridge/proposals/native-relocation-final-floor-r7/NativeRelocationSupport.java": "86f6ced4f485ccef343be864d3584cd782cbab7b5fca29ff7f38e9364bc18725",
+    "compat/control-bridge/proposals/native-relocation-final-floor-r7/NativeWindowStateWitness.java": "72e9f2d94f2e5eb535af74100c368f9bbcd10a3a9e373cd11c329e0e20da360d",
+    "compat/control-bridge/proposals/native-relocation-final-floor-r7/README.md": "58b3708d04fcbebfc529925482d52a0bb53f6ffd9e85c4ededbb6dad948ec1a5",
+    "tools/native_eastern_catalog_r7.py": "2ac7cbae00bb9c22a76a63bf752f48f50e986f6860e307b132528b58541bfd06",
+    "tools/native_eastern_relocation_r7.py": "58eb5bbb4db4f9c6b679fa1c65eca58d1e5749c0d4dfb2cf624cbfdfea1bb425",
+    "tools/artistic_eastern_pipeline_r7.py": "c65ed8847f3b317a409e69d299abb7935a12b03063545fbe264e19e0e019a901"
+  },
+  "catalog_sha256": "879c7a3894df08e541c083b4a0a8bfb75bc7fd6b3017e8898befe4c7ceefaf14",
+  "allocation_sha256": "ad2d190159c0913c84b1585494067060da1b76a32c0da862ba44bfd8b0f4b87b",
+  "compile_receipt_sha256": "bd4f79397e44ddafe90a632dfa8fe0e55d41bed61ba9cefbac3d953b1d42052e",
+  "compile_pass": true,
+  "native_actions": 0,
+  "unchanged93_destinations": true,
+  "raw_source98_unchanged": true,
+  "changed5_old_new_ledger_directories_absent_observed": true,
+  "native_acceptance": "not performed"
+}

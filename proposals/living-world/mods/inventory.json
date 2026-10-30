@@ -1,0 +1,234 @@
+{
+  "schema": "awft-living-world-mods:1",
+  "checked_at": "2026-10-28",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.262",
+  "java": 21,
+  "scope": "isolated integration proposal; no canonical catalog/Packwiz/runtime changes",
+  "required_requests": [
+    "chatting-villagers",
+    "smart-villagers-ai",
+    "simple-voice-chat",
+    "creaturepals",
+    "naturalist",
+    "critters-and-companions",
+    "ribbits",
+    "doggy-talents-next",
+    "cozys-improved-cats"
+  ],
+  "mods": [
+    {
+      "id": "chatting-villagers",
+      "name": "Chatting Villagers",
+      "project_id": 1638757,
+      "file_id": 9064041,
+      "version": "1.1.0",
+      "filename": "chattingvillagers-neoforge-1.21.1-1.1.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/9064/41/chattingvillagers-neoforge-1.21.1-1.1.0.jar",
+      "size": 316142,
+      "hashes": {
+        "sha512": "79ec018d408c02f7e76aa19ec0d1623b39f7ea7ecbfeb86f2da8bb0ff51379b4d321daae0f3919e500e14b2c01807674ea4a1d21d231e2997be9e744c7d3d4c7",
+        "sha256": "a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a"
+      },
+      "side": "both",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/chatting-villagers/files/9064041",
+      "dependencies": [
+        {
+          "mod_id": "neoforge",
+          "range": "[21.1.80,)",
+          "dependency_type": "required"
+        },
+        {
+          "mod_id": "minecraft",
+          "range": "[1.21.1]",
+          "dependency_type": "required"
+        }
+      ],
+      "default_enabled": true,
+      "status": "pinned-proposal-awaiting-native-validation",
+      "runtime": "not run",
+      "reason": "1.1.0 native NeoForge JAR inspected; public GitHub main is older Fabric-only source.",
+      "download_measured_sha512": true
+    },
+    {
+      "id": "smart-villagers-ai",
+      "name": "Smart Villagers AI",
+      "project_id": "l9oZCCPS",
+      "version_id": "bGNaqTaL",
+      "version": "2.0.0+neoforge-1.21.1",
+      "filename": "smartvillagers-neoforge-1.21.1-2.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/l9oZCCPS/versions/bGNaqTaL/smartvillagers-neoforge-1.21.1-2.0.0.jar",
+      "size": 285498,
+      "hashes": {
+        "sha1": "f9a901f1f3e93d2ec68233d5637d3039bacbbcf7",
+        "sha512": "196e5da485353e84d1f316bac60be9aded75eef3483d9d16e40daf9db4e4611ef6a08ac2bfc502b60e3874e3531cd90506dd14325ccd0c1309e526902af0710d"
+      },
+      "side": "both",
+      "source": "https://github.com/MeherBenSalem/CivilizationAI",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "9eGKb6K1",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "default_enabled": true,
+      "runtime": "not run",
+      "status": "pinned-proposal-awaiting-native-validation",
+      "reason": "Exact author artifact pin; active pack unchanged.",
+      "download_verified_sha512": true,
+      "sha256": "bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630"
+    },
+    {
+      "id": "creaturepals",
+      "name": "CreaturePals",
+      "project_id": "nM3kknhP",
+      "version_id": "PKx9rt8i",
+      "version": "1.3.15+1.21.1-forge",
+      "filename": "creaturepals-1.3.15-1.21.1-forge.jar",
+      "url": "https://cdn.modrinth.com/data/nM3kknhP/versions/PKx9rt8i/creaturepals-1.3.15-1.21.1-forge.jar",
+      "size": 9457441,
+      "hashes": {
+        "sha512": "b964f17d405e6a346eb1b8b57f2fa0894138b2d44a3775ec184b61695a3698721bf8b87ff665bb80329e2a32e9a4fafc75f4db44f4e901e53b154b3ce3858f1f",
+        "sha1": "784b16881e2e7d8f008568a050ffa31e3f714669"
+      },
+      "side": "both",
+      "source": "https://github.com/elefant-ai/creature-chat-evolved",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "u58R1TMW",
+          "file_name": null,
+          "dependency_type": "required"
+        },
+        {
+          "version_id": null,
+          "project_id": "Aqlf1Shp",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "default_enabled": false,
+      "runtime": "not run",
+      "status": "held-incompatible-metadata",
+      "reason": "Advertised NeoForge1.21.1 file contains Fabric entrypoints and a Connector placeholder demanding Forge47/Minecraft1.20.1; Player2 requires owner setup and AI behaviors lack a verified text-only switch.",
+      "download_verified_sha512": true,
+      "sha256": "d25b9631624382e235b067eb58fdd8210cf7ddc5ac42d61509b2a34862f7bcd6"
+    },
+    {
+      "id": "simple-voice-chat",
+      "name": "Simple Voice Chat",
+      "project_id": "9eGKb6K1",
+      "version_id": "2s7zUspF",
+      "version": "neoforge-1.21.1-2.6.22",
+      "filename": "voicechat-neoforge-1.21.1-2.6.22.jar",
+      "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/2s7zUspF/voicechat-neoforge-1.21.1-2.6.22.jar",
+      "size": 4918442,
+      "hashes": {
+        "sha1": "3b2001d8df61fe6dc03dcd5f5cd4a8f49821feb0",
+        "sha512": "309e3b18e299b2bccf9128dbb05c2603a9860f7cd68858d23f8fdb8265ea85ec7fb1655c95b87c0a9522ae1fd6380b26e4a4c31207f9c7af80870fcc6207abad"
+      },
+      "side": "both",
+      "source": "https://github.com/henkelmax/simple-voice-chat",
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "9eGKb6K1",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "9s6osm5g",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "default_enabled": false,
+      "runtime": "not run",
+      "status": "pinned-proposal-awaiting-native-validation",
+      "reason": "Exact author artifact pin; active pack unchanged."
+    },
+    {
+      "id": "naturalist",
+      "name": "Naturalist",
+      "version": "2.0.7+1.21.1-neoforge",
+      "filename": "naturalist-2.0.7-neoforge-1.21.1.jar",
+      "hashes": {
+        "sha1": "a7f9f6d9991880c377d2248af5c1ea05a0aa1039",
+        "sha512": "5d56ec2d1e5f994c9b63cf7578e9ed1be2cd4f58a055503e32bdd90c80d9802af04d3f6e1eec08394180e196ce32b2c2e71df8ba19d918e77df1694c9007e7e1"
+      },
+      "side": "both",
+      "status": "existing-pin-animal-ai-unverified",
+      "runtime": "not run",
+      "default_enabled": false,
+      "reason": "Existing gameplay mod retained; CreaturePals compatibility and support for its entity classes unverified."
+    },
+    {
+      "id": "critters-and-companions",
+      "name": "Critters and Companions",
+      "version": "2.7.0",
+      "filename": "crittersandcompanions-neoforge-1.21.1-2.7.0.jar",
+      "hashes": {
+        "sha512": "f93bb48b07122d1c93cd931169752814c46f2ed964da987ab5ce654e8f70242c57265c3853bbb357f5fd95c412e775bf7b9a2abeb2a2a0858eae95c8d8ba451d",
+        "sha1": "957286bd79fd0b735c2e9619a249dde77292ca06"
+      },
+      "side": "both",
+      "status": "existing-pin-animal-ai-unverified",
+      "runtime": "not run",
+      "default_enabled": false,
+      "reason": "Existing gameplay mod retained; CreaturePals compatibility and support for its entity classes unverified."
+    },
+    {
+      "id": "ribbits",
+      "name": "Ribbits",
+      "version": "4.1.6",
+      "filename": "Ribbits-1.21.1-NeoForge-4.1.6.jar",
+      "hashes": {
+        "sha512": "5e78b0d63757d5904b96e0c4565d56832ca42b1cbba939b98101f848f618cfcda94d5aeadeacb0faff85bdd05fb071f2df551a42c3e7d0e3a2564adbec227931",
+        "sha1": "22dfd6a52d31bcab58b93c2d4a637ae1b2a01895"
+      },
+      "side": "both",
+      "status": "existing-pin-animal-ai-unverified",
+      "runtime": "not run",
+      "default_enabled": false,
+      "reason": "Existing gameplay mod retained; CreaturePals compatibility and support for its entity classes unverified."
+    },
+    {
+      "id": "doggy-talents-next",
+      "name": "Doggy Talents Next",
+      "version": "1.19.1",
+      "filename": "DoggyTalentsNext-1.21.1-1.19.1.jar",
+      "hashes": {
+        "sha512": "17d1f743011579b820ddc31b782e4ce292972cfdc415994641228c4a9d81e11d00d2825b3d36f93079e3231cd60b35a7f577214d9ce52db1b1e6169336419bdb",
+        "sha1": "5c3dacdea8a191d21a6869b741fa41e7c66d1d0a"
+      },
+      "side": "both",
+      "status": "existing-pin-animal-ai-unverified",
+      "runtime": "not run",
+      "default_enabled": false,
+      "reason": "Existing gameplay mod retained; CreaturePals compatibility and support for its entity classes unverified."
+    },
+    {
+      "id": "cozys-improved-cats",
+      "name": "Cozy's Improved Cats",
+      "version": "2.1.0-Neoforge-1.21.1",
+      "filename": "cozys-improved-cats-2.1.0-neoforge-1.21.1.jar",
+      "hashes": {
+        "sha512": "73e532fc4e4af9e985e20d797cd38b61bffe1974bef598100d4379846e6eff88589e89fa547efe81e180ab6e58b11de4ea85917d48e3ae1020159170003419df",
+        "sha1": "b6ee883f195632920abd64ca46d11f32c4b0d572"
+      },
+      "side": "both",
+      "status": "existing-pin-animal-ai-unverified",
+      "runtime": "not run",
+      "default_enabled": false,
+      "reason": "Existing gameplay mod retained; CreaturePals compatibility and support for its entity classes unverified."
+    }
+  ],
+  "source_commits": {
+    "smart-villagers-ai": "a619f2b577277246b353894d77140ff78f8c9c03",
+    "chatting-villagers-old-fabric-source": "5be7f1facb63031af7457320b27652ce10c60dae",
+    "creaturepals": "0d38c75dd1faec58b6c7a2748668b858a0f11ac8"
+  }
+}

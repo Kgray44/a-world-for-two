@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="awft_living_world"
+version="0.2.0"
+displayName="A World for Two · Living World"
+description='''Narrow district, personality and privacy adapter for pinned villager mods.'''
+[[dependencies.awft_living_world]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.262,21.2)"
+ordering="NONE"
+side="SERVER"
+[[dependencies.awft_living_world]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="SERVER"
+[[dependencies.awft_living_world]]
+modId="smartvillagers"
+type="required"
+versionRange="[2.0.0]"
+ordering="AFTER"
+side="SERVER"
+[[dependencies.awft_living_world]]
+modId="chattingvillagers"
+type="required"
+versionRange="[1.1.0]"
+ordering="AFTER"
+side="SERVER"
+[[mixins]]
+config="awft-living-world.mixins.json"

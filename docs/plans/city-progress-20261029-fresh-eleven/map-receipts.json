@@ -1,0 +1,4030 @@
+[
+  {
+    "addition": 1,
+    "building": "white-clam",
+    "image": "fresh-addition-01-overhead.png",
+    "image_sha256": "f7b27cc999f1e2b809c0121c7693d8cfdcaf642b056f66066bf6d7e92b125cda",
+    "actual_E_compounds_at_milestone": 4,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 35,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+      "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+      "blocks": 4282,
+      "finished": "2026-10-29T00:28:00.425312700Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+    "actual_admitted_plan_sha256": "258c518bf5349a8b7f7034889efe1aba92dda0628e76fc8b1ca792ba50e5c01a",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 1367,
+    "old_surface_pixels_removed_at_exact_old_height": 80,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 2,
+    "building": "copper-bell",
+    "image": "fresh-addition-02-overhead.png",
+    "image_sha256": "65caa2949cd6ff6c738b6256eaab2e74834ff9f38f7cde4d9def23bc4e3881d7",
+    "actual_E_compounds_at_milestone": 5,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 34,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+      "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+      "blocks": 3940,
+      "finished": "2026-10-29T00:28:10.479059Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+    "actual_admitted_plan_sha256": "cd174d3ee41c2d026074aac2ce94f6af4a32851b775cd37096171f7016b0b2fd",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 1367,
+    "old_surface_pixels_removed_at_exact_old_height": 80,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 3,
+    "building": "tide-fish",
+    "image": "fresh-addition-03-overhead.png",
+    "image_sha256": "3bd9dd0b5817dac7ac8f94e2e953140a23db74d505f535bedf17a00a95476cd8",
+    "actual_E_compounds_at_milestone": 6,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 33,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+      "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+      "blocks": 2772,
+      "finished": "2026-10-29T00:28:21.327821600Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+    "actual_admitted_plan_sha256": "c0f3e855f4d8a22fb8e1a5778bd820d552d1b2fc87566435b4a994b7ddf683c7",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 1367,
+    "old_surface_pixels_removed_at_exact_old_height": 80,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 4,
+    "building": "worn-book",
+    "image": "fresh-addition-04-overhead.png",
+    "image_sha256": "30b1c9b9629387a8639b2ebb88d7a5676019d5827ae1b4dc423e8a02783bd724",
+    "actual_E_compounds_at_milestone": 7,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 32,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+      "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+      "blocks": 4092,
+      "finished": "2026-10-29T00:33:05.525199600Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+    "actual_admitted_plan_sha256": "0d18f1766e42653601149f7a57cfe7f91aa03901b55f8176e7e72f1fbe757656",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 5,
+    "building": "bridge-customs",
+    "image": "fresh-addition-05-overhead.png",
+    "image_sha256": "d119364fa3976a8a08ff944beececffec8f54af0b874e3db7eeb1b4bd9ec6edf",
+    "actual_E_compounds_at_milestone": 8,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 31,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "aebe8d08dbef70af7ffb1592d55fe0e7526d2ce19e64a48db10a50a452ff6f36",
+      "plan_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+      "blocks": 3810,
+      "finished": "2026-10-29T00:33:14.976084Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+    "actual_admitted_plan_sha256": "2d11b65b4bfc0f58c095a2a7c267293be0edb83866dccce5fd52e413b38b4cec",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+        "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+        "blocks": 4092,
+        "finished": "2026-10-29T00:33:05.525199600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 6,
+    "building": "crooked-inn",
+    "image": "fresh-addition-06-overhead.png",
+    "image_sha256": "ed154298094b69fced494876d7f18b10065f14bc277bfbc466344337a7835325",
+    "actual_E_compounds_at_milestone": 9,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 30,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "e92e1de13faa8fb8b4481e612fcb71abf4cfab7d8a41b9037d6011181d63ad0e",
+      "plan_sha256": "bec85919b9ac114debd3b2b5dc6030102651de993ad15ab421a63dcdafa9a07a",
+      "blocks": 6607,
+      "finished": "2026-10-29T00:33:27.626232500Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "bec85919b9ac114debd3b2b5dc6030102651de993ad15ab421a63dcdafa9a07a",
+    "actual_admitted_plan_sha256": "e5fe8eebe72b98e495ca769c54d7206c92084ea11749685ad2b6770b82556f95",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+        "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+        "blocks": 4092,
+        "finished": "2026-10-29T00:33:05.525199600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "aebe8d08dbef70af7ffb1592d55fe0e7526d2ce19e64a48db10a50a452ff6f36",
+        "plan_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+        "blocks": 3810,
+        "finished": "2026-10-29T00:33:14.976084Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 7,
+    "building": "lampblack",
+    "image": "fresh-addition-07-overhead.png",
+    "image_sha256": "a3cf7b51ff09d342a1e6d495be3b5d2f2ab2281f3f67862f36e97e18da662fc3",
+    "actual_E_compounds_at_milestone": 10,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 29,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "e58135086087906fdfd9b6732ad073a68dcd19cc1093c70dc0960a75efb1dd33",
+      "plan_sha256": "7886c7559cc918d0d59fa6c30c42bb1ed6b271ba112f015b214eba56edbbf58e",
+      "blocks": 6452,
+      "finished": "2026-10-29T00:33:40.824807800Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "7886c7559cc918d0d59fa6c30c42bb1ed6b271ba112f015b214eba56edbbf58e",
+    "actual_admitted_plan_sha256": "f31acec665f3a7ef4818fe8c21bda29faba97dcee757db0e50be56a9664c488c",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+        "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+        "blocks": 4092,
+        "finished": "2026-10-29T00:33:05.525199600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "aebe8d08dbef70af7ffb1592d55fe0e7526d2ce19e64a48db10a50a452ff6f36",
+        "plan_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+        "blocks": 3810,
+        "finished": "2026-10-29T00:33:14.976084Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e92e1de13faa8fb8b4481e612fcb71abf4cfab7d8a41b9037d6011181d63ad0e",
+        "plan_sha256": "bec85919b9ac114debd3b2b5dc6030102651de993ad15ab421a63dcdafa9a07a",
+        "blocks": 6607,
+        "finished": "2026-10-29T00:33:27.626232500Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 8,
+    "building": "moon-branch",
+    "image": "fresh-addition-08-overhead.png",
+    "image_sha256": "16da7f98a4ee7d56965de38bb4a3e2634d7d2fd0419380d15d1608f4adfd8cde",
+    "actual_E_compounds_at_milestone": 11,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 28,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "834bad0895653263203c9b2731fc92d528b09d32bff7c49c3b9614d0a9161fed",
+      "plan_sha256": "60c07b90a7e1d0234313864450662f0ce39eb9c65abb74f6004a6e896401adbb",
+      "blocks": 5750,
+      "finished": "2026-10-29T00:33:52.375268400Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "60c07b90a7e1d0234313864450662f0ce39eb9c65abb74f6004a6e896401adbb",
+    "actual_admitted_plan_sha256": "b9b411baf19d210ef29a900a5d3d9092c1d8e84dc897f912520843132a48f85e",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+        "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+        "blocks": 4092,
+        "finished": "2026-10-29T00:33:05.525199600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "aebe8d08dbef70af7ffb1592d55fe0e7526d2ce19e64a48db10a50a452ff6f36",
+        "plan_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+        "blocks": 3810,
+        "finished": "2026-10-29T00:33:14.976084Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e92e1de13faa8fb8b4481e612fcb71abf4cfab7d8a41b9037d6011181d63ad0e",
+        "plan_sha256": "bec85919b9ac114debd3b2b5dc6030102651de993ad15ab421a63dcdafa9a07a",
+        "blocks": 6607,
+        "finished": "2026-10-29T00:33:27.626232500Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e58135086087906fdfd9b6732ad073a68dcd19cc1093c70dc0960a75efb1dd33",
+        "plan_sha256": "7886c7559cc918d0d59fa6c30c42bb1ed6b271ba112f015b214eba56edbbf58e",
+        "blocks": 6452,
+        "finished": "2026-10-29T00:33:40.824807800Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 9,
+    "building": "nail-drift",
+    "image": "fresh-addition-09-overhead.png",
+    "image_sha256": "3e26e142211ec0c53fef23640dfb86060fd7629117c9c4f01b31bb6c950b04ae",
+    "actual_E_compounds_at_milestone": 12,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 27,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "abcc8ed648a8ec4bce7aab33331428639b61def339c971944dbc93f81fd64433",
+      "plan_sha256": "0454eb9b917d09c2b261be3d9c28f98b79bb85be04df20e9e999de3f55ab055f",
+      "blocks": 1516,
+      "finished": "2026-10-29T00:33:59.225537900Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "0454eb9b917d09c2b261be3d9c28f98b79bb85be04df20e9e999de3f55ab055f",
+    "actual_admitted_plan_sha256": "6ca39c98a3eddbd6d2f566ba17b53e3023df20b835c18dd66e6f43d65758f0ad",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+        "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+        "blocks": 4092,
+        "finished": "2026-10-29T00:33:05.525199600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "aebe8d08dbef70af7ffb1592d55fe0e7526d2ce19e64a48db10a50a452ff6f36",
+        "plan_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+        "blocks": 3810,
+        "finished": "2026-10-29T00:33:14.976084Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e92e1de13faa8fb8b4481e612fcb71abf4cfab7d8a41b9037d6011181d63ad0e",
+        "plan_sha256": "bec85919b9ac114debd3b2b5dc6030102651de993ad15ab421a63dcdafa9a07a",
+        "blocks": 6607,
+        "finished": "2026-10-29T00:33:27.626232500Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e58135086087906fdfd9b6732ad073a68dcd19cc1093c70dc0960a75efb1dd33",
+        "plan_sha256": "7886c7559cc918d0d59fa6c30c42bb1ed6b271ba112f015b214eba56edbbf58e",
+        "blocks": 6452,
+        "finished": "2026-10-29T00:33:40.824807800Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "834bad0895653263203c9b2731fc92d528b09d32bff7c49c3b9614d0a9161fed",
+        "plan_sha256": "60c07b90a7e1d0234313864450662f0ce39eb9c65abb74f6004a6e896401adbb",
+        "blocks": 5750,
+        "finished": "2026-10-29T00:33:52.375268400Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 10,
+    "building": "bridge-cooper",
+    "image": "fresh-addition-10-overhead.png",
+    "image_sha256": "4f8ef2f3f777710275dff7d61da14d4b461fbf41bcd2e9f0575b99711490ebfc",
+    "actual_E_compounds_at_milestone": 13,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 26,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "696bf243189085d1ceff0805177267156df5047d8f66865055f2debbf15645f6",
+      "plan_sha256": "2930462fe34a0ff2b96b341787c4ea77c2beeb7eebf05fa6f991662a85caf33e",
+      "blocks": 4196,
+      "finished": "2026-10-29T00:38:36.375104600Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "2930462fe34a0ff2b96b341787c4ea77c2beeb7eebf05fa6f991662a85caf33e",
+    "actual_admitted_plan_sha256": "79b17f322cf7b73f31ba8b73c43e104a7edf2fe892a23263940bcebfad3c65d1",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+        "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+        "blocks": 4092,
+        "finished": "2026-10-29T00:33:05.525199600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "aebe8d08dbef70af7ffb1592d55fe0e7526d2ce19e64a48db10a50a452ff6f36",
+        "plan_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+        "blocks": 3810,
+        "finished": "2026-10-29T00:33:14.976084Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e92e1de13faa8fb8b4481e612fcb71abf4cfab7d8a41b9037d6011181d63ad0e",
+        "plan_sha256": "bec85919b9ac114debd3b2b5dc6030102651de993ad15ab421a63dcdafa9a07a",
+        "blocks": 6607,
+        "finished": "2026-10-29T00:33:27.626232500Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e58135086087906fdfd9b6732ad073a68dcd19cc1093c70dc0960a75efb1dd33",
+        "plan_sha256": "7886c7559cc918d0d59fa6c30c42bb1ed6b271ba112f015b214eba56edbbf58e",
+        "blocks": 6452,
+        "finished": "2026-10-29T00:33:40.824807800Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "834bad0895653263203c9b2731fc92d528b09d32bff7c49c3b9614d0a9161fed",
+        "plan_sha256": "60c07b90a7e1d0234313864450662f0ce39eb9c65abb74f6004a6e896401adbb",
+        "blocks": 5750,
+        "finished": "2026-10-29T00:33:52.375268400Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "abcc8ed648a8ec4bce7aab33331428639b61def339c971944dbc93f81fd64433",
+        "plan_sha256": "0454eb9b917d09c2b261be3d9c28f98b79bb85be04df20e9e999de3f55ab055f",
+        "blocks": 1516,
+        "finished": "2026-10-29T00:33:59.225537900Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  },
+  {
+    "addition": 11,
+    "building": "keel-store",
+    "image": "fresh-addition-11-overhead.png",
+    "image_sha256": "7d491c6a5049d7d6d2bdcd4d8304e1faf1797fa826a0096f64c153cca078dbac",
+    "actual_E_compounds_at_milestone": 14,
+    "total_nonempty_E": 39,
+    "remaining_unbuilt_E": 25,
+    "actual_W36": true,
+    "actual_W15_refinements": true,
+    "actual_garden_packets": 2,
+    "new_native_full_after": {
+      "terminal_sha256": "d6143f7d750eeb693961eb041e0b6d136606e29f3f150561afe0dc0d0321eeb5",
+      "plan_sha256": "f72807d2bf3a82d29a343f67960b5fcbaba505f1abab3340831fcd005e285d05",
+      "blocks": 4670,
+      "finished": "2026-10-29T00:38:47.324954200Z",
+      "complete_marker_verified": true,
+      "failures": 0,
+      "cleanup_required": false,
+      "temporary_tickets_remaining": 0
+    },
+    "actual_composed_after_sha256": "f72807d2bf3a82d29a343f67960b5fcbaba505f1abab3340831fcd005e285d05",
+    "actual_admitted_plan_sha256": "adb6ca77b024d599f0d3bc695175cc1f5e6386dac4d66a52c81fb1347b7c030b",
+    "read_only_context_cells_not_highlighted_as_new": 0,
+    "prior_fresh_proofs": [
+      {
+        "terminal_sha256": "ec62ee175ba0117c242d653771440c9382bb021a5eb20fc2682764f29f7daa78",
+        "plan_sha256": "451c5985657f254cc03ec7d78786f4598b820b1ae1965ab56d058e40bf99adbf",
+        "blocks": 4282,
+        "finished": "2026-10-29T00:28:00.425312700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "f669cba7d5b7bcb1f164d62333b0a777f0f34e3d7ce248c3dc3f0b112372be48",
+        "plan_sha256": "4da787a5c7e5e8fd3e545700125fc06643bff1fe2349437c5c76954cc22effb0",
+        "blocks": 3940,
+        "finished": "2026-10-29T00:28:10.479059Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e7a1ecef6d7541f8466e56ed7301f2834a8c509a17bf33aba62a07e45a002e1b",
+        "plan_sha256": "2584b8032d81529f5b25972679238f6aaaad53268f05532053e6f2516ace64c5",
+        "blocks": 2772,
+        "finished": "2026-10-29T00:28:21.327821600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "ad7b5d5f34eadf156ac049fb37653c5f6795dc3a920685d826f2a2bf835b2581",
+        "plan_sha256": "f61633011aa0576886695ada6e71d243e3d71dd77985564c6530f43091991b1f",
+        "blocks": 4092,
+        "finished": "2026-10-29T00:33:05.525199600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "aebe8d08dbef70af7ffb1592d55fe0e7526d2ce19e64a48db10a50a452ff6f36",
+        "plan_sha256": "9dfe973210a456560f50bca877890bb2c6cd759134e03c174d64e55f29bb42f7",
+        "blocks": 3810,
+        "finished": "2026-10-29T00:33:14.976084Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e92e1de13faa8fb8b4481e612fcb71abf4cfab7d8a41b9037d6011181d63ad0e",
+        "plan_sha256": "bec85919b9ac114debd3b2b5dc6030102651de993ad15ab421a63dcdafa9a07a",
+        "blocks": 6607,
+        "finished": "2026-10-29T00:33:27.626232500Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "e58135086087906fdfd9b6732ad073a68dcd19cc1093c70dc0960a75efb1dd33",
+        "plan_sha256": "7886c7559cc918d0d59fa6c30c42bb1ed6b271ba112f015b214eba56edbbf58e",
+        "blocks": 6452,
+        "finished": "2026-10-29T00:33:40.824807800Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "834bad0895653263203c9b2731fc92d528b09d32bff7c49c3b9614d0a9161fed",
+        "plan_sha256": "60c07b90a7e1d0234313864450662f0ce39eb9c65abb74f6004a6e896401adbb",
+        "blocks": 5750,
+        "finished": "2026-10-29T00:33:52.375268400Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "abcc8ed648a8ec4bce7aab33331428639b61def339c971944dbc93f81fd64433",
+        "plan_sha256": "0454eb9b917d09c2b261be3d9c28f98b79bb85be04df20e9e999de3f55ab055f",
+        "blocks": 1516,
+        "finished": "2026-10-29T00:33:59.225537900Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "696bf243189085d1ceff0805177267156df5047d8f66865055f2debbf15645f6",
+        "plan_sha256": "2930462fe34a0ff2b96b341787c4ea77c2beeb7eebf05fa6f991662a85caf33e",
+        "blocks": 4196,
+        "finished": "2026-10-29T00:38:36.375104600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "prior_base_receipt_sha256": "836b60f9255b64487e6bc59700f6c9b234da3f3c06cbf714192cc0a5f831fb4a",
+    "prior19_proofs": [
+      {
+        "terminal_sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+        "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+        "finished": "2026-10-28T21:48:23.802354900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+        "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+        "finished": "2026-10-28T21:48:30.652260900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+        "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+        "finished": "2026-10-28T21:48:34.351841300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "086ab7990c5818667b07b3196bae04f93badcd61b41ea1b7a36f9db6ebe2b9ad",
+        "plan_sha256": "c011da2775f073aa5e55bde09f34324e6246892ade6df97df123ec54024a26d6",
+        "finished": "2026-10-28T21:55:33.152618400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      },
+      {
+        "terminal_sha256": "b548b05ab0fbbad9dd4af662e39173109355898aee000746f012483313dc89c2",
+        "plan_sha256": "60355b85c6a3ed82fffc15289f368b931bff993907c221f75e5b102bb0049f20",
+        "finished": "2026-10-28T21:55:37.501028900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "immutable_complete_marker_verified": true
+      }
+    ],
+    "context_geometry_sources": [
+      {
+        "sha256": "87af4f6fdecf0f18b6e29c5c95853da4098364e0a7bf8ed9092e02e2c39a069b",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "ed4fbe6a143feca334b95e2857cd5e9f6ab1c6d28e8fb1d14ea5839471f39b4a",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "46a702ed5870347d60b867e73de1a55e97ae95f8a7831cc3136e06fde2f1a347",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "d8fce6e6bd13d4d0f80da96a9ac75cabceec953a6a8f29e96d09f441bacaf7cd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "f8db2be81f1790c708329c895d4d363f2c7a428734376cfd5d754f844d7fa806",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "6cae260bc1cef822eab0cd38db8b55640d560224c4cf42a12e7913149556de31",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "22f139456b5bb1e8e905b89f968015db91b93949f13df47925de55e1ca682207",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "056e60e8ebf51d9d191c9299dde085e8d6c383b4e805f611440d02429ac23acd",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "81a526c5f39eeaf34abb29dc6265d5652be0587cb258ee00f19087b829e4fb8d",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "2b0d413919958bcdfef89d150efcd8e2cdff4dd881eb76e81247a37b1bd2a2dc",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "7582f170404041071fdea372c313dbf9434b197d4b2b1c66629a3f2323114911",
+        "role": "actual W addition coverage"
+      },
+      {
+        "sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "role": "actual W15 refinement context"
+      },
+      {
+        "sha256": "0c8854621c69b73ce7427f4ca3b3d78d06f69e18bb7b13228db09c1d8fa6aaaa",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d4e82543e4ab4c5e3579fb7c4f4a4cfb570ff438f72877b7052788ffe2daa258",
+        "role": "actual55 garden target coverage"
+      },
+      {
+        "sha256": "d9ea4625f5ee937b3faf563b9c4d293f73ff9467d194876a6192f5bf516669d6",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "dedbf3343c2f79f5a3df70cedec2a98e87dc262211107e042c4deddf8ffe3c83",
+        "role": "actual original East3 coverage"
+      },
+      {
+        "sha256": "1f0ec79dafa05e4eddaef42af8edbe17669e07f854253bae199fae6b7e4ab6ae",
+        "role": "actual original East3 coverage"
+      }
+    ],
+    "retirement_proofs": [
+      {
+        "terminal_sha256": "11594764f154c6fe48f78233355a3c12e6a79b34a6664c5f644dfe61ec6380f9",
+        "plan_sha256": "792785cf76005eebf1dbdfff1412aa861b9525d08f23694145de99f19326b7b4",
+        "blocks": 1367,
+        "finished": "2026-10-29T00:27:49.783088700Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      },
+      {
+        "terminal_sha256": "45be342d2b70e90f652f9fad6832fc6be73e7921d1365e1b80e45eccdb79e594",
+        "plan_sha256": "01bbb773c73160745228135225b243db7a837ed217b28be4eacd57438870b627",
+        "blocks": 5965,
+        "finished": "2026-10-29T00:32:54.925231600Z",
+        "complete_marker_verified": true,
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0
+      }
+    ],
+    "retirement_cells": 7332,
+    "old_surface_pixels_removed_at_exact_old_height": 615,
+    "old_grid_wholesale_removed": false,
+    "remaining_layout_outlines_are_current_buildings": false,
+    "Source99details_placed": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0,
+    "reserve_guard": {
+      "utc": "2026-10-29T00:45:19.7908654Z",
+      "allowed": true,
+      "floorBytesEach": 32212254720,
+      "cFreeBytes": 119460360192,
+      "dFreeBytes": 281772519424,
+      "estimatedCBytes": 33554432,
+      "estimatedDBytes": 0,
+      "reason": "Both drives remain above reserve after estimated writes"
+    }
+  }
+]

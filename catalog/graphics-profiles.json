@@ -14,9 +14,10 @@
         "Shader": "Complementary Reimagined; BSL and Unbound selectable after validation",
         "LOD cache budget": "4 GiB per test world; stop managed generation before exhaustion",
         "Dynamic lighting": "Optional; evaluate with shaders and moving contraptions",
-        "Weather particles": "Conservative counts until severe-weather benchmark passes"
+        "Weather particles": "Conservative counts until severe-weather benchmark passes",
+        "DH horizontal detail": "HIGH, finest resolution BLOCK; KG local Native64 check, radius128 unchanged"
       },
-      "validation": "Candidate settings. No measured FPS, shader/LOD/weather acceptance or Sable visual compatibility claim yet."
+      "validation": "KG Native64 distant views observed59/30/58/60FPS (30right after moving); not a sustained benchmark, shader acceptance or Sera measurement. Existing caches retained."
     },
     {
       "id": "balanced",

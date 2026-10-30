@@ -865,7 +865,7 @@
     ],
     [
       "the-explorers-friend",
-      "The Explorer\u00e2\u20ac\u2122s Friend",
+      "The Explorerâ€™s Friend",
       "atlas"
     ],
     [
@@ -925,7 +925,7 @@
     ],
     [
       "countereds-smooth-f5",
-      "Countered\u00e2\u20ac\u2122s Smooth F5",
+      "Counteredâ€™s Smooth F5",
       "cinematics"
     ],
     [
@@ -1122,6 +1122,31 @@
       "reconnectible-chains",
       "Reconnectible Chains",
       "navigation"
+    ],
+    [
+      "chatting-villagers",
+      "Chatting Villagers",
+      "living-world"
+    ],
+    [
+      "smart-villagers-ai",
+      "Smart Villagers AI",
+      "living-world"
+    ],
+    [
+      "adorable-hamster-pets",
+      "Adorable Hamster Pets",
+      "pets"
+    ],
+    [
+      "animal-garden-sugar-glider",
+      "Animal Garden: Sugar Glider",
+      "pets"
+    ],
+    [
+      "aquarius-libs",
+      "Aquarius Libs (required Sugar Glider dependency)",
+      "dependency"
     ]
   ]
 }

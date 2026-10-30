@@ -1,0 +1,35 @@
+{
+  "format": "awft-qa11-source-regression:1",
+  "actual_issue": "QA10 blanket4KiB read rejects38452-byte regular owner marker accepted by unchanged main helper.",
+  "owner_marker_limit": 65536,
+  "authorization_and_request_limit_unchanged": 4096,
+  "all_native_observer_authority_and_trigger_logic_unchanged_after_reader_only_substitution": true,
+  "byte_unchanged_files": [
+    "compat/qa-client/src/worldfortwo/qa/SettlementCapture.java",
+    "compat/qa-client/src/worldfortwo/qa/NpcClientSnapshot.java",
+    "compat/qa-client/src/worldfortwo/qa/NativeXaeroView.java",
+    "compat/qa-client/src/worldfortwo/qa/MapCaptureGate.java",
+    "compat/qa-client/probes/MapCaptureGateProbe.java"
+  ],
+  "source_syntax": "PASS",
+  "reader_fixtures": "Prepared actual Java boundary/UTF8/regular/no-link fixtures; NOT run until client closed.",
+  "compiled": false,
+  "installed": false,
+  "Native_calls": 0,
+  "images_generated": 0,
+  "files": {
+    "BASELINE.json": "d2a1336456532e8c4d2093a351b82804554ece8e31ddc20d4c3f5c2e66dfa363",
+    "build.py": "117fa636a119bd5cfe63272eaeadc46e000e8f4bb42d862c81c3584f2e929061",
+    "README.md": "f4c231cb4d9576c3836a9a7947f65e9d6f9ef564bb74cb1c5c3b7c3be50439df",
+    "compat/qa-client/README.md": "3953bbd2dccaf62bc799dcf32f217121be26b38073166eb682bbeabe7e40527e",
+    "compat/qa-client/probes/DrinkCaptureFilesProbe.java": "88ba2551c24d09c0f82c35821ea3ec92af8d43f29cb9ab18de5f5799404fdcca",
+    "compat/qa-client/probes/MapCaptureGateProbe.java": "85f5298cb84d98e93fef0c13cf3190f66baf3f9ad3cbb86e533a932952f04fce",
+    "compat/qa-client/resources/META-INF/neoforge.mods.toml": "cb4e221e7b110f809421f05ef2ce9f2556be1d22994e03032e5d673226859eec",
+    "compat/qa-client/src/worldfortwo/qa/DrinkCaptureFiles.java": "b5273a89983a52aa94217bfbfa4abaa3b26eb41d073c2a8bf137201f48ea61a1",
+    "compat/qa-client/src/worldfortwo/qa/MapCaptureGate.java": "359a076e3b7410e19114f750b3918d1a57bc5803da8cad2af984f714411dcf01",
+    "compat/qa-client/src/worldfortwo/qa/NativeDrinkCapture.java": "d7489109a7326d2856ac5472d4cc66cd891ae5166dcef8f1b3b76cb9025b8aad",
+    "compat/qa-client/src/worldfortwo/qa/NativeXaeroView.java": "fc93fe077e8f0d68e7a5c3084b25768888b5b57a0005880a375b88b9f55dbe7a",
+    "compat/qa-client/src/worldfortwo/qa/NpcClientSnapshot.java": "da7e1b1aa287ba10ee10d97b1bc00a04be5e004c48879c5f3aef73b424f71a8b",
+    "compat/qa-client/src/worldfortwo/qa/SettlementCapture.java": "82d373d2ff72bbfe996091e22391b56b1b056b25638169b32bc9a65c0b31921c"
+  }
+}

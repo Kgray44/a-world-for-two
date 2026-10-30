@@ -27,6 +27,7 @@ public class ControlBridge {
     private static final Gson GSON = new GsonBuilder().create();
     private long beforeTick, lastSample = System.nanoTime(), tickNanos;
     private int ticks;
+    private final TickWindow performanceTicks = new TickWindow();
     private final PlayerSupport playerSupport = new PlayerSupport();
     private final AtlasSupport atlasSupport = new AtlasSupport();
     private final CinematicSupport cinematicSupport = new CinematicSupport();
@@ -35,17 +36,19 @@ public class ControlBridge {
     private final EngineeringSupport engineeringSupport = new EngineeringSupport();
     private String operationOwner;
     private long operationGeneration;
-    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final RefinementGlueAdmission refinementGlueAdmission=new RefinementGlueAdmission("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final NativeImportJoins nativeImportJoins=new NativeImportJoins("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final NativeFountainSupport nativeFountainSupport=new NativeFountainSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final NativeTreePatchSupport nativeTreePatchSupport=new NativeTreePatchSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final NativeTreeGrowthSupport nativeTreeGrowthSupport=new NativeTreeGrowthSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final NativeHabitatLifeSupport nativeHabitatLifeSupport=new NativeHabitatLifeSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final NativeChainRouteSupport nativeChainRouteSupport=new NativeChainRouteSupport("0.1.0-candidate.49","0.6.35",this::acquire);
-    private final RetainedBridgeGlueInspection retainedBridgeGlueInspection=new RetainedBridgeGlueInspection("0.1.0-candidate.49","0.6.35",this::acquire);
+    private final AttractionSupport attractionSupport=new AttractionSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final HarborCraftSupport harborCraftSupport=new HarborCraftSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final ArtisticEngineeringSupport artisticEngineeringSupport=new ArtisticEngineeringSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final RefinementGlueAdmission refinementGlueAdmission=new RefinementGlueAdmission("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final NativeImportJoins nativeImportJoins=new NativeImportJoins("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final NativeFountainSupport nativeFountainSupport=new NativeFountainSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final NativeRelocationSupport nativeRelocationSupport=new NativeRelocationSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final NativeTreePatchSupport nativeTreePatchSupport=new NativeTreePatchSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final NativeTreeGrowthSupport nativeTreeGrowthSupport=new NativeTreeGrowthSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final NativeHabitatLifeSupport nativeHabitatLifeSupport=new NativeHabitatLifeSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final NativeChainRouteSupport nativeChainRouteSupport=new NativeChainRouteSupport("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final RetainedBridgeGlueInspection retainedBridgeGlueInspection=new RetainedBridgeGlueInspection("0.1.0-candidate.65","0.6.51",this::acquire);
+    private final TransportObservationSupport transportObservation=new TransportObservationSupport("0.1.0-candidate.65","0.6.51",()->operationOwner==null&&!settlementSupport.busy()&&!engineeringSupport.busy());
     private final DragonTextureMirror dragonTextureMirror=new DragonTextureMirror();
 
     private final class WorldLease implements AttractionSupport.Lease,HarborCraftSupport.Lease,ArtisticEngineeringSupport.Lease {
@@ -55,7 +58,7 @@ public class ControlBridge {
         public void close(){if(closed)return;if(valid())operationOwner=null;closed=true;}
     }
     private WorldLease acquire(String owner,boolean temporarySimulation){
-        if(operationOwner!=null || settlementSupport.busy() || engineeringSupport.busy() || refinementGlueAdmission.busy() || nativeImportJoins.busy() || nativeFountainSupport.busy() || nativeTreeGrowthSupport.busy() || nativeTreePatchSupport.busy() || nativeHabitatLifeSupport.busy() || nativeChainRouteSupport.busy() || retainedBridgeGlueInspection.busy())
+        if(operationOwner!=null || settlementSupport.busy() || engineeringSupport.busy() || refinementGlueAdmission.busy() || nativeImportJoins.busy() || nativeFountainSupport.busy() || nativeTreeGrowthSupport.busy() || nativeTreePatchSupport.busy() || nativeRelocationSupport.busy() || nativeHabitatLifeSupport.busy() || nativeChainRouteSupport.busy() || retainedBridgeGlueInspection.busy())
             throw new IllegalStateException("Another native world operation or pending cleanup owns the world");
         // Acquisition is exclusive but never wakes simulation. In particular,
         // chain prepare-create must finish persisted reads before any wake.
@@ -63,8 +66,8 @@ public class ControlBridge {
     }
 
     public ControlBridge(IEventBus modBus) {
-        settlementSupport.admissionGate(()->operationOwner==null && !engineeringSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy() && !nativeTreeGrowthSupport.busy() && !nativeTreePatchSupport.busy() && !nativeHabitatLifeSupport.busy() && !nativeChainRouteSupport.busy() && !retainedBridgeGlueInspection.busy());
-        engineeringSupport.admissionGate(()->operationOwner==null && !settlementSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy() && !nativeTreeGrowthSupport.busy() && !nativeTreePatchSupport.busy() && !nativeHabitatLifeSupport.busy() && !nativeChainRouteSupport.busy() && !retainedBridgeGlueInspection.busy());
+        settlementSupport.admissionGate(()->operationOwner==null && !engineeringSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy() && !nativeTreeGrowthSupport.busy() && !nativeTreePatchSupport.busy() && !nativeRelocationSupport.busy() && !nativeHabitatLifeSupport.busy() && !nativeChainRouteSupport.busy() && !retainedBridgeGlueInspection.busy());
+        engineeringSupport.admissionGate(()->operationOwner==null && !settlementSupport.busy() && !refinementGlueAdmission.busy() && !nativeImportJoins.busy() && !nativeFountainSupport.busy() && !nativeTreeGrowthSupport.busy() && !nativeTreePatchSupport.busy() && !nativeRelocationSupport.busy() && !nativeHabitatLifeSupport.busy() && !nativeChainRouteSupport.busy() && !retainedBridgeGlueInspection.busy());
         modBus.addListener(dragonTextureMirror::payloads);
         NeoForge.EVENT_BUS.addListener(dragonTextureMirror::sync);
         NeoForge.EVENT_BUS.addListener(this::started);
@@ -83,6 +86,8 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(nativeFountainSupport::commands);
         NeoForge.EVENT_BUS.addListener(nativeTreeGrowthSupport::commands);
         NeoForge.EVENT_BUS.addListener(nativeTreePatchSupport::commands);
+        NeoForge.EVENT_BUS.addListener(nativeRelocationSupport::commands);
+        NeoForge.EVENT_BUS.addListener(transportObservation::commands);
         NeoForge.EVENT_BUS.addListener(nativeHabitatLifeSupport::commands);
         NeoForge.EVENT_BUS.addListener(nativeChainRouteSupport::commands);
         NeoForge.EVENT_BUS.addListener(retainedBridgeGlueInspection::commands);
@@ -97,13 +102,14 @@ public class ControlBridge {
         NeoForge.EVENT_BUS.addListener(cinematicSupport::left);
     }
     private void stopping(ServerStoppingEvent event){
-        attractionSupport.stopped();harborCraftSupport.stopped();artisticEngineeringSupport.stop();refinementGlueAdmission.stop();nativeImportJoins.stopped();nativeFountainSupport.stopped();nativeTreeGrowthSupport.stopped();nativeTreePatchSupport.stopped();nativeHabitatLifeSupport.stopped();nativeChainRouteSupport.stopped();retainedBridgeGlueInspection.stop();
+        attractionSupport.stopped();harborCraftSupport.stopped();artisticEngineeringSupport.stop();refinementGlueAdmission.stop();nativeImportJoins.stopped();nativeFountainSupport.stopped();nativeTreeGrowthSupport.stopped();nativeTreePatchSupport.stopped();nativeRelocationSupport.stop();nativeHabitatLifeSupport.stopped();nativeChainRouteSupport.stopped();retainedBridgeGlueInspection.stop();
         engineeringSupport.stopped();settlementSupport.stopped();dragonTextureMirror.stopped();
     }
     private void started(ServerStartedEvent event) {
         serverStarted = true;
         chunkDiagnostics.invalidate();
         ticks = 0; tickNanos = 0; lastSample = System.nanoTime();
+        performanceTicks.resetLifecycle();
         // An explicit project default, applied once to new project worlds only.
         Path marker = FMLPaths.GAMEDIR.get().resolve("../dashboard/sleep-rule-initialized").normalize();
         if (!Files.exists(marker)) {
@@ -114,7 +120,7 @@ public class ControlBridge {
         }
     }
     private void stopped(ServerStoppedEvent event) { serverStarted = false; }
-    private void before(ServerTickEvent.Pre event) { beforeTick = System.nanoTime(); }
+    private void before(ServerTickEvent.Pre event) { beforeTick = System.nanoTime(); performanceTicks.started(beforeTick); }
     private void after(ServerTickEvent.Post event) {
         long now = System.nanoTime();
         if (serverStarted) {
@@ -130,12 +136,14 @@ public class ControlBridge {
             nativeFountainSupport.tick(event.getServer());
             nativeTreeGrowthSupport.tick(event.getServer());
             nativeTreePatchSupport.tick(event.getServer());
+            nativeRelocationSupport.tick(event.getServer());
             nativeHabitatLifeSupport.tick(event.getServer());
             nativeChainRouteSupport.tick(event.getServer());
             retainedBridgeGlueInspection.tick(event.getServer());
         }
         now = System.nanoTime();
         tickNanos += now - beforeTick;
+        performanceTicks.finished(now - beforeTick);
         ticks++;
         if (now - lastSample < 5_000_000_000L) return;
         MinecraftServer server = event.getServer();
@@ -147,6 +155,7 @@ public class ControlBridge {
         data.put("tps", ticks * 1_000_000_000.0 / (now - lastSample));
         data.put("mspt", tickNanos / 1_000_000.0 / ticks);
         data.put("ticks_sampled", ticks);
+        data.put("tick_window", performanceTicks.snapshotAndReset());
         data.put("interval_ms", (now - lastSample) / 1_000_000.0);
         var heap = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
         data.put("heap_used", heap.getUsed()); data.put("heap_max", heap.getMax());

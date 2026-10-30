@@ -16,7 +16,6 @@ from datetime import datetime
 import psutil
 
 from .common import GiB, read_json, utcnow, write_json
-from .storage import tree_size
 
 
 LIVE_SECONDS = 15
@@ -74,10 +73,18 @@ class Metrics:
         self._process = None
         self._thread = None
         self.last_gc = None
-        self._last_storage = 0
-        self._sizes = {"world": 0, "caches": 0}
+        self._sizes = {"world": None, "caches": None}
         self.observers = []
         self._atlas_index = None
+        self._pending_atlas = None
+        self._bookkeeping_lock = threading.Lock()
+        self._bookkeeping_wake = threading.Event()
+        self._bookkeeping_idle = threading.Event()
+        self._bookkeeping_idle.set()
+        self._bookkeeping_thread = None
+        self._pending_sample = None  # Coalesce; never accumulate an unbounded queue.
+        self._bookkeeping_error = None
+        self._clients = []
         from .client_metrics import ClientMetrics
         self.clients = ClientMetrics(layout)
 
@@ -133,8 +140,7 @@ class Metrics:
             except psutil.Error:
                 self._process = None
         self.apply_bridge(sample, server)
-        sample['clients'] = self.clients.collect()
-        self.storage.checkpoint(64 * 1024 * 1024)
+        sample['clients'] = deepcopy(self._clients)
         gc = self.layout.logs / "gc.log"
         if gc.exists():
             with gc.open("rb") as stream:
@@ -144,13 +150,82 @@ class Metrics:
             if pauses:
                 sample["gc_pause_ms"] = float(pauses[-1])
                 sample["gc_source"] = "Most recent Java unified GC log pause (not an interval total)"
-        if time.monotonic() - self._last_storage > 60:
-            self._sizes = {"world": tree_size(self.layout.world), "caches": tree_size(self.layout.caches)}
-            self._last_storage = time.monotonic()
-        sample["managed_sizes"] = self._sizes
-        sample["alerts"] = self.alerts(sample)
+        # Storage already measures these exact categories in its owned worker.
+        # Never wait for that worker's lock or recursively rescan on this path.
+        storage = self.storage.snapshot()
+        inventory = storage.get('breakdown', {})
+        if inventory.get('measured_at'):
+            sizes = {row['key']: row.get('bytes') for row in inventory.get('categories', [])}
+            self._sizes = {key: sizes.get(key) for key in ('world', 'caches')}
+        sample["managed_sizes"] = dict(self._sizes)
+        sample['managed_sizes_at'] = inventory.get('measured_at')
+        sample['managed_sizes_updating'] = inventory.get('updating', False)
+        sample["alerts"] = self.alerts(sample, storage_snapshot=storage)
+        if self._bookkeeping_error:
+            sample['bookkeeping_error'] = self._bookkeeping_error
         self._latest = sample
+        self._queue_bookkeeping(sample)
+        return sample
+
+    def _queue_bookkeeping(self, sample):
+        with self._bookkeeping_lock:
+            if self._stop.is_set():
+                return
+            self._pending_sample = deepcopy(sample)
+            self._bookkeeping_idle.clear()
+            if self._bookkeeping_thread is None:
+                self._bookkeeping_thread = threading.Thread(
+                    target=self._run_bookkeeping, daemon=True, name='awft-metrics-bookkeeping')
+                self._bookkeeping_thread.start()
+            self._bookkeeping_wake.set()
+
+    def _run_bookkeeping(self):
+        while True:
+            self._bookkeeping_wake.wait()
+            with self._bookkeeping_lock:
+                sample, self._pending_sample = self._pending_sample, None
+                atlas = self._pending_atlas
+                self._bookkeeping_wake.clear()
+            if sample is None:
+                if self._stop.is_set():
+                    return
+                continue
+            try:
+                self._bookkeep(sample, atlas)
+                self._bookkeeping_error = None
+            except Exception as exc:
+                self._bookkeeping_error = str(exc)
+            with self._bookkeeping_lock:
+                if self._pending_sample is not None:
+                    self._bookkeeping_wake.set()
+                else:
+                    self._bookkeeping_idle.set()
+                    if self._stop.is_set():
+                        return
+
+    def _bookkeep(self, sample, atlas):
+        # This reservation may wait for the inventory lock and scan the project.
+        # It still precedes every managed index/history write; live telemetry
+        # keeps its own collector while this independent work is pending.
+        self.storage.checkpoint(64 * 1024 * 1024)
+        if self._stop.is_set():
+            return
+        process_at = time.time()
+        clients = self.clients.collect()
+        for client in clients:
+            client['process_at'] = process_at
+        self._clients = clients
+        if self._stop.is_set():
+            return
+        if atlas and atlas[0] != self._atlas_index:
+            write_json(self.layout.state / 'atlas-index.json', atlas[1])
+            self._atlas_index = atlas[0]
+            with self._bookkeeping_lock:
+                if self._pending_atlas is not None and self._pending_atlas[0] == atlas[0]:
+                    self._pending_atlas = None
         for observer in self.observers:
+            if self._stop.is_set():
+                return
             try:
                 observer(sample)
             except Exception as exc:
@@ -167,7 +242,6 @@ class Metrics:
             # A checkpoint cannot run inside this connection's write transaction.
             connection.commit()
             connection.execute("PRAGMA wal_checkpoint(PASSIVE)")
-        return sample
 
     def apply_bridge(self, sample, server):
         """Accept only fresh data tied to this verified, owned JVM instance."""
@@ -241,12 +315,8 @@ class Metrics:
                 sample['atlas_index_full'] = atlas['index_full']
                 serialized = json.dumps(atlas['locations'], sort_keys=True)
                 if serialized != self._atlas_index:
-                    # This bounded replacement is part of the metrics writer's
-                    # reservation. Recheck that writer periodically instead of
-                    # recursively scanning the project on every structure event.
-                    self.storage.checkpoint(64 * 1024 * 1024)
-                    write_json(self.layout.state / 'atlas-index.json', atlas['locations'])
-                    self._atlas_index = serialized
+                    with self._bookkeeping_lock:
+                        self._pending_atlas = (serialized, atlas['locations'])
             sample["unavailable"].pop("dimensions", None)
             if data.get('chunk_diagnostics'):
                 from .chunks import validate
@@ -254,13 +324,13 @@ class Metrics:
         except (OSError, ValueError, KeyError, TypeError) as exc:
             sample["bridge_error"] = str(exc)
 
-    def alerts(self, sample):
+    def alerts(self, sample, storage_snapshot=None):
         alerts = []
-        storage = self.storage.snapshot()
+        storage = storage_snapshot if storage_snapshot is not None else self.storage.snapshot()
         low = any(d.get("low") or d.get("free", 0) < 32 * GiB for d in storage["drives"])
         settings = self.layout.settings()
-        over_world = self._sizes["world"] >= (settings["world_budget_gib"] - 1) * GiB
-        over_cache = self._sizes["caches"] >= settings["cache_budget_gib"] * GiB
+        over_world = self._sizes["world"] is not None and self._sizes["world"] >= (settings["world_budget_gib"] - 1) * GiB
+        over_cache = self._sizes["caches"] is not None and self._sizes["caches"] >= settings["cache_budget_gib"] * GiB
         if low or over_world or over_cache:
             alerts.append({"severity": "critical", "message": "Storage reserve or managed generation budget is close to its limit. Managed server writers are stopping safely."})
             if self.server.state == "online":
@@ -328,6 +398,15 @@ class Metrics:
             sample['players'] = None
         sample['players_online'] = len(sample['players']) if sample['players_available'] else None
 
+        claims = sample.get('atlas_claims')
+        if isinstance(claims, dict):
+            fresh = measurement_freshness(claims.get('at'), now, DIAGNOSTIC_SECONDS, parent=bridge)
+            sample['freshness']['atlas_claims'] = fresh
+            if not fresh['current']:
+                sample['last_known']['atlas_claims'] = claims
+                sample['atlas_claims'] = {'at': claims.get('at'), 'available': False, 'items': [],
+                    'unavailable': 'Claim boundaries are stale or unavailable; retained observations are last known.'}
+
         diagnostic = sample.get('chunk_diagnostics')
         if diagnostic:
             fresh = measurement_freshness(diagnostic.get('at'), now,
@@ -342,7 +421,8 @@ class Metrics:
         for client in sample.get('clients', []):
             fresh = measurement_freshness(client.get('at'), now, parent=snapshot)
             client['freshness'] = fresh
-            client['process_freshness'] = dict(snapshot)
+            process = measurement_freshness(client.get('process_at', sample.get('at')), now, parent=snapshot)
+            client['process_freshness'] = process
             client['last_known'] = {}
             if not fresh['current']:
                 client['last_known']['game'] = {key: client[key] for key in ('at', *CLIENT_FIELDS)
@@ -350,10 +430,10 @@ class Metrics:
                 for key in CLIENT_FIELDS:
                     if key in client:
                         client[key] = None
-            if not snapshot['current']:
+            if not process['current']:
                 client['last_known']['process'] = {key: client[key] for key in ('rss', 'cpu_percent_host')
                                                    if key in client}
-                client['last_known']['process']['measured_at'] = sample.get('at')
+                client['last_known']['process']['measured_at'] = client.get('process_at', sample.get('at'))
                 client.update(rss=None, cpu_percent_host=None)
         return sample
 
@@ -376,5 +456,8 @@ class Metrics:
 
     def close(self):
         self._stop.set()
+        self._bookkeeping_wake.set()
         if self._thread:
             self._thread.join(timeout=10)
+        if self._bookkeeping_thread:
+            self._bookkeeping_thread.join(timeout=10)

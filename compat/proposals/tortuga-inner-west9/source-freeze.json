@@ -1,0 +1,28 @@
+{
+  "format": "awft-original-source-freeze:1",
+  "created": "2026-10-28T19:30:20.976198+00:00",
+  "files": {
+    "tools/artistic_tortuga_inner_west_sprint.py": {
+      "sha256": "f92f2ff1b831983b98cd30f2780b1d883f74d85559c0bf6f867732a9b7a246cc",
+      "bytes": 49633
+    },
+    "tests/test_artistic_tortuga_inner_west_sprint.py": {
+      "sha256": "5a2da17325aff58b9250470466d951dddaf4687730c148e1e73f26f2f69e2bf8",
+      "bytes": 5225
+    },
+    "docs/ARTISTIC-TORTUGA-INNER-WEST-SPRINT.md": {
+      "sha256": "ef03c15c7cb88d17934d972684a4b29fa6be567e4b34fb8511ca51aa2e4abfcb",
+      "bytes": 2980
+    }
+  },
+  "tests": {
+    "suite": "tests.test_artistic_tortuga_inner_west_sprint",
+    "passed": 7,
+    "seconds": 0.633,
+    "tier": "synthetic source geometry, route/support/schema semantics; not native or art acceptance"
+  },
+  "native_actions": 0,
+  "world_writes": 0,
+  "current_private_bundle_manifest_sha256": "c42ad52915b0984087bcfd27e7665fd306527a833fbc96c4b3595b4870450cdc",
+  "construction_requires_fresh_native_admission": true
+}

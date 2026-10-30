@@ -1,0 +1,37 @@
+{
+  "format": "awft-source-freeze:1",
+  "at": "2026-10-30T14:53:50.456063+00:00",
+  "state": "SOURCE_ONLY_JAVA_AND_BUILD_HELD_UNTIL_CLIENT_CLOSED",
+  "base62_resource_sha256": "bf30cd567b1db3d3487b57a5021da35dd1a35b48851fcee5491db65182ce5f97",
+  "base62_jar_sha256": "0d8b27fa4607129b8f53f7c9db87c87a31acfd8406743c8ba99251e197a4c255",
+  "runtime_source_target": "compat/control-bridge/src/worldfortwo/bridge/LithostitchedSeedgenResources.java",
+  "files": {
+    "integration.diff": {
+      "bytes": 10759,
+      "sha256": "b39eb2c34940887879ea3743743e5b19514347ccfab63a06593cf3c2bafd1601"
+    },
+    "LithostitchedSeedgenResources.java": {
+      "bytes": 48271,
+      "sha256": "b18146159802f201e9b076023e34a8871a238fade62574d0c982c93d74feae04"
+    },
+    "native-counter-proof.json": {
+      "bytes": 3511,
+      "sha256": "286730d750f8133a1ee755cfe2ae939fa992f42d51cff062d9c797c68ba0f87e"
+    },
+    "NativeHashVisitBudgetProbe.java": {
+      "bytes": 7263,
+      "sha256": "6b25a35340f2bb892e4e38534ec5117f7381c9a949a5bb78a0f941fc49b25ebd"
+    },
+    "README.md": {
+      "bytes": 2707,
+      "sha256": "da7627bdf5f8c12537b5b682caf0f595ca02a5184448e9acaf075c7f7edcf8d0"
+    },
+    "static-count-support.json": {
+      "bytes": 160055,
+      "sha256": "78142f76a70f1adf03c153075e97f7bb1d9442728143a2e2634c2e4fbe80b558"
+    }
+  },
+  "Java_build_runs": 0,
+  "runtime_world_install_actions": 0,
+  "actual63_full_resource_parity_generation_or_rendering_qualified": false
+}

@@ -1,0 +1,23 @@
+{
+  "official_archive": "DistantHorizons-3.3.3-1.21.1-fabric-neoforge.jar",
+  "archive_size": 28289212,
+  "archive_sha256": "864e70def5b0d54d619b940b66bb2784e91d3f3fc253064fdc1b3fc5786cbfab",
+  "class": "com.seibel.distanthorizons.core.util.threading.PriorityTaskPicker",
+  "class_size": 9750,
+  "class_sha256": "bf5e5df87a4510b92baac14ef5b3a80bbfdcd3718fb4d19eae07b768ea518ee3",
+  "method": "startNextTask(Z)V",
+  "method_code_length": 246,
+  "method_code_sha256": "e928dc77c7dab02eed8d14cd2793be68195fc395b04dcb5f6dc66c6fed136e79",
+  "normalized_before_sha256": "add48e98891f3efecaf1e4cbdd1d90d80f7760c95e8c5873c3357a31c79c2933",
+  "normalized_after_sha256": "d256fd516f0280046ce8c003d9c9bf0a9d85e890eee6c791ed44a078ec38fe8a",
+  "single_branch": {
+    "offset": 162,
+    "old_target": 65,
+    "new_target": 223
+  },
+  "observed_pool_state": "Running, pool size = 1, active threads = 1, queued tasks = 16, completed tasks = 0",
+  "native_exception_table_preserved": true,
+  "native_frames_preserved": true,
+  "upstream_body_packaged": false,
+  "runtime_validated": false
+}

@@ -1,0 +1,19 @@
+{
+  "format": "awft-drink-capture-baseline:1",
+  "baseline_installed_QA9": {
+    "filename": "awft-settlement-qa-0.1.9.jar",
+    "bytes": 33788,
+    "sha256": "c3d90ee6dee6003dee7618bb9e98e7161f9eb6d225857a33c21ff44c4bda01a6"
+  },
+  "frozen_source_copy": "proposals\\qa-npc-client-snapshot",
+  "baseline_source_sha256": {
+    "compat/qa-client/README.md": "3953bbd2dccaf62bc799dcf32f217121be26b38073166eb682bbeabe7e40527e",
+    "compat/qa-client/probes/MapCaptureGateProbe.java": "85f5298cb84d98e93fef0c13cf3190f66baf3f9ad3cbb86e533a932952f04fce",
+    "compat/qa-client/resources/META-INF/neoforge.mods.toml": "f2e62e75bfa0cb02e4419b7af70bfc4db7fb95226f3ab815458fc1272dd61ed7",
+    "compat/qa-client/src/worldfortwo/qa/MapCaptureGate.java": "359a076e3b7410e19114f750b3918d1a57bc5803da8cad2af984f714411dcf01",
+    "compat/qa-client/src/worldfortwo/qa/NativeXaeroView.java": "fc93fe077e8f0d68e7a5c3084b25768888b5b57a0005880a375b88b9f55dbe7a",
+    "compat/qa-client/src/worldfortwo/qa/NpcClientSnapshot.java": "da7e1b1aa287ba10ee10d97b1bc00a04be5e004c48879c5f3aef73b424f71a8b",
+    "compat/qa-client/src/worldfortwo/qa/SettlementCapture.java": "78995b4ee3a90b170e3f4914a1c9641571fdb43ea8d540f4bbc1c31974dd51d9"
+  },
+  "installed_by_this_proposal": false
+}
