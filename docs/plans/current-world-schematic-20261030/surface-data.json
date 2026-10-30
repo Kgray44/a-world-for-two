@@ -74,12 +74,12 @@
   "full_chunks_read": 1903,
   "columns_by_category": {
     "water": 199947,
-    "context": 61803,
-    "greenery": 103566,
+    "context": 63214,
+    "greenery": 102155,
     "ground": 108872,
     "unknown": 4528
   },
   "failed_chunks": [],
-  "png_sha256": "d309c2f53117f70e35df0c625ba2a2a5ffe9642f66de7e71b137d73f27896acd",
-  "elapsed_seconds": 5.875
+  "png_sha256": "9a35df5260b626186bdb6f9ec28ed6f74f96cee18307140865f68b58264d50e6",
+  "elapsed_seconds": 3.453
 }

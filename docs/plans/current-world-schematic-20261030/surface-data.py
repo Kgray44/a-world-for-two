@@ -21,12 +21,13 @@ im=Image.new('RGB',(x1-x0+1,z1-z0+1),COLORS['unknown']);px=im.load()
 counts=Counter();regions=[];failed=[];chunks=0;started=time.monotonic()
 AIR={'minecraft:air','minecraft:cave_air','minecraft:void_air'}
 NATURAL={'stone','dirt','grass_block','coarse_dirt','rooted_dirt','podzol','mycelium','mud','packed_mud','sand','red_sand','sandstone','red_sandstone','gravel','clay','andesite','granite','diorite','calcite','tuff','deepslate','bedrock','snow','snow_block','powder_snow','ice','packed_ice','blue_ice','dripstone_block','moss_block'}
-VEG=('leaves','sapling','grass','flower','bush','petal','fern','vine','lily','roots','tendril','mushroom','berry','berries','orchid','tulip','dandelion','poppy','allium','azalea','peony','sunflower','lilac','bamboo','cattail','reed','hedge','lavender','clover','rose','lotus','wisteria','blossom','seagrass','kelp','cane','log','stem','moss_carpet')
+VEG=('leaves','sapling','grass','flower','bush','petal','fern','vine','lily','roots','tendril','mushroom','berry','berries','orchid','tulip','dandelion','poppy','allium','azalea','peony','sunflower','lilac','bamboo','cattail','reed','hedge','lavender','clover','rose','lotus','wisteria','blossom','seagrass','kelp','cane','moss_carpet')
 def classify(s):
  b=s.split('[',1)[0];ns,_,name=b.partition(':')
  if b in AIR:return 'unknown'
  if b in ('minecraft:water','minecraft:ice','minecraft:packed_ice','minecraft:blue_ice'):return 'water'
  if name in NATURAL or name.endswith('_ore'):return 'ground'
+ if name=='bamboo_block' or {'planks','stairs','slab','door','trapdoor','roof','beam','log','wood','fence','gate','window','shutter','pillar','post','bricks','panel','sign','bookshelf','cabinet','shelf','table','chair','bench','crate','barrel','chest','counter','bed','lantern','lamp','wall','ladder','railing'}.intersection(name.split('_')):return 'context'
  if any(t in name for t in VEG):return 'greenery'
  if ns in ('regions_unexplored','biomesoplenty') and any(t in name for t in ('dirt','soil','rock','stone','silt','sand','peat','chalk')):return 'ground'
  return 'context'

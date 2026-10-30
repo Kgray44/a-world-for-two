@@ -3,6 +3,12 @@
 30 October 2026. These two maps use the same muted palette, flat geometry,
 Georgia headings and paper frame as the previous Tortuga construction maps.
 
+Both maps use the same semantic colors throughout: **gray for buildings and
+structures, green for plants and living things, and tan/brown for ground work**.
+Green is no longer used to identify newly completed buildings. Structural timber
+is not classified as vegetation, and visible overhead foliage is preserved over
+building footprints. Population totals are recorded separately from live positions.
+
 - `tortuga-current-overhead.png`: full north-bank Tortuga, original district,
   western and eastern compounds, surrounding greenery and harbor footprints.
 - `whole-build-current-overhead.png`: both towns, all seven vessel structures,

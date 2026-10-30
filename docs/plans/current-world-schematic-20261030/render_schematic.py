@@ -8,8 +8,22 @@ OUT=Path(__file__).resolve().parent
 ROOT=OUT.parents[2]
 HOME=Path(r'D:\A World for Two\staging\world-tests\20261027T053650Z-artistic')
 INV=HOME/'staging/Tortuga-completed-building-inventory-SOURCE-FINAL-1793293819653515300/building-inventory-SOURCE.json'
-PAPER='#efe8d6';INK='#34392f';WATER='#9bb7b1';GROUND='#d8d0ae';CONTEXT='#8b8d7f';BUILT='#467f59';EDGE='#174d32';GREEN='#33704c';PAVERS='#a18462';SHIP='#9b6e4e'
+PAPER='#efe8d6';INK='#34392f';WATER='#9bb7b1';GROUND='#d8d0ae';CONTEXT='#8b8d7f';BUILT=CONTEXT;EDGE='#5d6257';GREEN='#33704c';PAVERS='#a18462';SHIP=CONTEXT
 sources=[]
+
+def vegetation(state):
+    name=state.split('[',1)[0].split(':',1)[-1]
+    structural={'planks','stairs','slab','door','trapdoor','roof','beam','log','wood',
+                'fence','gate','window','shutter','pillar','post','bricks','panel',
+                'sign','bookshelf','cabinet','shelf','table','chair','bench','crate',
+                'barrel','chest','counter','bed','lantern','lamp','wall','ladder','railing'}
+    if name in ('grass_block','rooted_dirt','dirt','moss_block','bamboo_block') or structural.intersection(name.split('_')):return False
+    return any(t in name for t in (
+        'leaves','sapling','short_grass','tall_grass','flower','bush','petal','fern',
+        'vine','lily','roots','tendril','mushroom','berry','berries','orchid','tulip',
+        'dandelion','poppy','allium','azalea','peony','sunflower','lilac','bamboo',
+        'cattail','reed','hedge','lavender','clover','rose','lotus','wisteria','blossom',
+        'seagrass','kelp','sugar_cane','moss_carpet'))
 def read(p):
     raw=p.read_bytes();sources.append({'path':str(p.relative_to(HOME)) if p.is_relative_to(HOME)else p.name,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw)})
     return json.loads(raw)
@@ -20,7 +34,7 @@ def flatten(doc):
     return {(r[0],r[1],r[2]):doc['palette'][r[3]]for r in doc.get('blocks',[])}
 cache={}
 def roof(p,min_y=67):
-    if(p,min_y)not in cache:cache[p,min_y]={(x,z)for(x,y,z),s in flatten(read(p)).items()if y>=min_y and s.split('[',1)[0]not in('minecraft:air','minecraft:cave_air','minecraft:void_air','minecraft:water')}
+    if(p,min_y)not in cache:cache[p,min_y]={(x,z)for(x,y,z),s in flatten(read(p)).items()if y>=min_y and s.split('[',1)[0]not in('minecraft:air','minecraft:cave_air','minecraft:void_air','minecraft:water') and not vegetation(s)}
     return cache[p,min_y]
 def rows(cells):
     by=defaultdict(list)
@@ -48,8 +62,10 @@ for r in completed['results']:
     if r['operation']!='place':continue
     p=HOME/r['plan'];d=read(p)
     if hashlib.sha256(p.read_bytes()).hexdigest()!=r['plan_sha256']:raise ValueError('Exact actual ground/lush plan differs')
-    target=green if r['step']in(3,6)else ground
-    target.update((x,z)for(x,y,z),s in flatten(d).items()if s.split('[',1)[0]not in('minecraft:air','minecraft:water'))
+    for(x,y,z),s in flatten(d).items():
+        if s.split('[',1)[0]in('minecraft:air','minecraft:water'):continue
+        target=green if r['step']in(3,6) and vegetation(s)else ground
+        target.add((x,z))
 
 ships=[
  ('Rosewater Lark',(1140,-1450),'staging/artistic-ship-2c8c6d503fe92246/prototype.json'),
@@ -67,6 +83,11 @@ for p in ['staging/prototype-castle-palace-e6ffcde57520b8cb/prototype.json','sta
 
 base=Image.open(OUT/'surface-data.png').convert('RGB');assert base.size==(556,861)
 surface=read(OUT/'surface-data.json')
+# A roof footprint must not erase foliage that actually sits above it. Structural
+# timber is gray; the saved surface classifier does not call logs vegetation.
+green_rgb=tuple(bytes.fromhex(GREEN[1:]))
+visible_green={(x,z)for x,z in newcity|retained|context|shipcells
+               if 900<=x<=1455 and -1540<=z<=-680 and base.getpixel((x-900,z+1540))==green_rgb}
 zipfile=OUT/'zipline-actual.json'
 zipdata=read(zipfile)if zipfile.exists()else None
 def make(name,bounds,scale,title,subtitle,whole):
@@ -82,7 +103,7 @@ def make(name,bounds,scale,title,subtitle,whole):
             for x,z in clipped:
                 for dx,dz,a,b in [(0,-1,(x,z),(x+1,z)),(1,0,(x+1,z),(x+1,z+1)),(0,1,(x+1,z+1),(x,z+1)),(-1,0,(x,z+1),(x,z))]:
                     if(x+dx,z+dz)not in clipped:d.line((pt(a),pt(b)),fill=edge,width=1)
-    area(ground,PAVERS);area(green,GREEN);area(context,CONTEXT);area(retained,CONTEXT);area(newcity,BUILT,EDGE);area(shipcells,SHIP,'#554936')
+    area(ground,PAVERS);area(green,GREEN);area(context,CONTEXT);area(retained,CONTEXT);area(newcity,BUILT,EDGE);area(shipcells,SHIP,'#554936');area(visible_green,GREEN)
     d.text((95,29),title,font=font(45,True),fill=INK);d.text((98,91),subtitle,font=font(28),fill=INK)
     d.text((98,134),'118 Tortuga properties · 39 East / 36 new West · ground, greenery and retained landmarks',font=font(23),fill=INK)
     d.text((W-130,40),'N',font=font(33,True),fill=INK);d.line((W-110,135,W-110,95),fill=INK,width=4);d.polygon(((W-110,86),(W-119,102),(W-101,102)),fill=INK)
@@ -111,7 +132,7 @@ def make(name,bounds,scale,title,subtitle,whole):
         for z in(-991,-943):
             a=pt((1331,z));d.rectangle((a[0]-5,a[1]-5,a[0]+5,a[1]+5),fill='#d6a367',outline=INK,width=1)
     legend_y=T+h*scale+24
-    items=[(CONTEXT,'Retained / landmarks'),(BUILT,'Completed city'),(PAVERS,'Ground treatments'),(GREEN,'Greenery'),(SHIP,'Seven vessel structures')]
+    items=[(CONTEXT,'Buildings / structures'),(PAVERS,'Ground work'),(GREEN,'Plants / living things')]
     avail=W-190;chunk=avail/len(items)
     for i,(color,text)in enumerate(items):
         xx=95+i*chunk;d.rectangle((xx,legend_y,xx+25,legend_y+25),fill=color);d.text((xx+36,legend_y-3),text,font=font(19 if whole else 21),fill=INK)
@@ -121,5 +142,5 @@ def make(name,bounds,scale,title,subtitle,whole):
     name=OUT/(name+'.png');im.save(name,optimize=True)
     return {'image':name.name,'sha256':hashlib.sha256(name.read_bytes()).hexdigest(),'bounds_xz':bounds,'pixels_per_block':scale,'world_writes':0}
 maps=[make('tortuga-current-overhead',[940,-1430,1420,-1090],5,'TORTUGA · FULL CITY','Entire north bank, original district, western and eastern quarters',False),make('whole-build-current-overhead',[900,-1540,1455,-680],3,'ROSEWATER · ENTIRE BUILD','Tortuga, south town, castle, fountain, bridges, transport and fleet',True)]
-(OUT/'map-evidence.json').write_text(json.dumps({'style_reference':'docs/plans/tortuga-east-progress-20261029-verified/east-addition-39-pelican-forge-overhead.png','maps':maps,'surface':surface,'geometry_sources':sources,'zipline_actual':bool(zipdata),'world_writes':0},indent=2)+'\n',encoding='utf-8')
+(OUT/'map-evidence.json').write_text(json.dumps({'style_reference':'docs/plans/tortuga-east-progress-20261029-verified/east-addition-39-pelican-forge-overhead.png','palette':{'buildings_structures':CONTEXT,'ground_work':PAVERS,'plants_living_things':GREEN,'water':WATER},'maps':maps,'surface':surface,'geometry_sources':sources,'zipline_actual':bool(zipdata),'world_writes':0},indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'maps':maps,'geometry_columns':{'new_city':len(newcity),'retained':len(retained),'ground':len(ground),'greenery':len(green),'vessels':len(shipcells),'context':len(context)}}))

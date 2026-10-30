@@ -1,9 +1,15 @@
 {
   "style_reference": "docs/plans/tortuga-east-progress-20261029-verified/east-addition-39-pelican-forge-overhead.png",
+  "palette": {
+    "buildings_structures": "#8b8d7f",
+    "ground_work": "#a18462",
+    "plants_living_things": "#33704c",
+    "water": "#9bb7b1"
+  },
   "maps": [
     {
       "image": "tortuga-current-overhead.png",
-      "sha256": "f9653f991c62b038260dab85a8d40ca4e7b06b3c54a5799792b2af6a3855bca7",
+      "sha256": "a7e38255e3bfa432c9fa962584dfe7cc8d84f23ee0e60976d27c816a8eb96a20",
       "bounds_xz": [
         940,
         -1430,
@@ -15,7 +21,7 @@
     },
     {
       "image": "whole-build-current-overhead.png",
-      "sha256": "f400e4da31f509f77a6771ca853d18bf3973ce2d773b05ee61ab6c350a1f6ab9",
+      "sha256": "bfe556bba1acbd5a66fb2187310aa3cb752a39c92be3c692cfea47b930ce5334",
       "bounds_xz": [
         900,
         -1540,
@@ -102,14 +108,14 @@
     "full_chunks_read": 1903,
     "columns_by_category": {
       "water": 199947,
-      "context": 61803,
-      "greenery": 103566,
+      "context": 63214,
+      "greenery": 102155,
       "ground": 108872,
       "unknown": 4528
     },
     "failed_chunks": [],
-    "png_sha256": "d309c2f53117f70e35df0c625ba2a2a5ffe9642f66de7e71b137d73f27896acd",
-    "elapsed_seconds": 5.875
+    "png_sha256": "9a35df5260b626186bdb6f9ec28ed6f74f96cee18307140865f68b58264d50e6",
+    "elapsed_seconds": 3.453
   },
   "geometry_sources": [
     {
@@ -514,7 +520,7 @@
     },
     {
       "path": "surface-data.json",
-      "sha256": "84b7d6e976d5704442911efaf95eca14e73c992abc2ff017b0a45c38339bd876",
+      "sha256": "105bdd269415688f456d3108ff73eef313e4d5c7486a5b35bcb91efc26b66b4d",
       "bytes": 2198
     },
     {
