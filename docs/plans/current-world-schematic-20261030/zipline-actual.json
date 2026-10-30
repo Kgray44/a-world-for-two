@@ -1,0 +1,13 @@
+{
+  "format": "awft-saved-zipline-map:1",
+  "source": "Actual Connectible Chains saved knot entities and their Chains RelX/RelY/RelZ connections",
+  "checkpoint_id": "20261030T155547Z-096bdd",
+  "checkpoint_sha256": "82cf88ee5bbea9616767109506739e73c6b04492bcc4adc9b90860bb4f10ac09",
+  "source_entries": ["world/RosewaterArtistic/entities/r.2.-2.mca", "world/RosewaterArtistic/entities/r.2.-3.mca"],
+  "nodes_xyz": [[1160,168,-760],[1168,158,-784],[1144,152,-840],[1128,150,-848],[1120,146,-864],[1122,146,-880],[1112,141,-920],[1088,131,-968],[1064,124,-1008],[1048,115,-1064],[1056,107,-1112],[1048,99,-1176],[1048,90,-1232],[1064,86,-1248],[1100,72,-1256]],
+  "nodes_xz": [[1160,-760],[1168,-784],[1144,-840],[1128,-848],[1120,-864],[1122,-880],[1112,-920],[1088,-968],[1064,-1008],[1048,-1064],[1056,-1112],[1048,-1176],[1048,-1232],[1064,-1248],[1100,-1256]],
+  "links": [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,12],[12,13],[13,14]],
+  "entity_position_offset_xyz": [0.5,0.75,0.5],
+  "representation": "Exact saved connected route projected overhead; not the earlier proposed guide corridor",
+  "world_writes": 0
+}

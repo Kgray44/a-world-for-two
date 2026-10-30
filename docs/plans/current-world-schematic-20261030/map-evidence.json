@@ -1,0 +1,528 @@
+{
+  "style_reference": "docs/plans/tortuga-east-progress-20261029-verified/east-addition-39-pelican-forge-overhead.png",
+  "maps": [
+    {
+      "image": "tortuga-current-overhead.png",
+      "sha256": "f9653f991c62b038260dab85a8d40ca4e7b06b3c54a5799792b2af6a3855bca7",
+      "bounds_xz": [
+        940,
+        -1430,
+        1420,
+        -1090
+      ],
+      "pixels_per_block": 5,
+      "world_writes": 0
+    },
+    {
+      "image": "whole-build-current-overhead.png",
+      "sha256": "f400e4da31f509f77a6771ca853d18bf3973ce2d773b05ee61ab6c350a1f6ab9",
+      "bounds_xz": [
+        900,
+        -1540,
+        1455,
+        -680
+      ],
+      "pixels_per_block": 3,
+      "world_writes": 0
+    }
+  ],
+  "surface": {
+    "format": "awft-immutable-top-surface-map:1",
+    "bounds_xz": [
+      900,
+      -1540,
+      1455,
+      -680
+    ],
+    "pixels_per_block": 1,
+    "north_up": true,
+    "checkpoint": "20261030T155547Z-096bdd",
+    "checkpoint_sha256": "82cf88ee5bbea9616767109506739e73c6b04492bcc4adc9b90860bb4f10ac09",
+    "checkpoint_at": "2026-10-30T15:55:54.404825+00:00",
+    "world_save_not_modified": true,
+    "native_commands": 0,
+    "method": "Saved WORLD_SURFACE heightmap, exact block at highest surface, seasonal snow layer omitted; category is block-name based, not construction ownership. Current player changes after checkpoint are not included.",
+    "colors": {
+      "water": "#9bb7b1",
+      "ground": "#d8d0ae",
+      "context": "#c4c0a4",
+      "greenery": "#33704c",
+      "unknown": "#e4dfcf"
+    },
+    "regions": [
+      {
+        "region": [
+          1,
+          -4
+        ],
+        "sha256": "3e8631dd6820c61083484af6e2af9245800ba6e693d1092b44d9b5c574111c04",
+        "bytes": 4009984
+      },
+      {
+        "region": [
+          1,
+          -3
+        ],
+        "sha256": "5d13f4c0426d844b63f63b4814ac145ba765b2066e843fa6d9053885d8c8972d",
+        "bytes": 7106560
+      },
+      {
+        "region": [
+          1,
+          -2
+        ],
+        "sha256": "c51da249832a8a7ab652315a14143c66fdd80e35e8d805f0fd6c688f0c7a611e",
+        "bytes": 9375744
+      },
+      {
+        "region": [
+          2,
+          -4
+        ],
+        "sha256": "f84c9e7a06ade8c86bb93e0777da486c492b137444e353a451a1a012acd06031",
+        "bytes": 9359360
+      },
+      {
+        "region": [
+          2,
+          -3
+        ],
+        "sha256": "b738528a6d1c6a3842dcd6553ad1861910ad9fbf5857c21278233ea2edd65252",
+        "bytes": 10002432
+      },
+      {
+        "region": [
+          2,
+          -2
+        ],
+        "sha256": "5bc7b4f39bfe969a1b1a72314869606d1b3e27656bf563968b2990473dd48e52",
+        "bytes": 10768384
+      }
+    ],
+    "full_chunks_read": 1903,
+    "columns_by_category": {
+      "water": 199947,
+      "context": 61803,
+      "greenery": 103566,
+      "ground": 108872,
+      "unknown": 4528
+    },
+    "failed_chunks": [],
+    "png_sha256": "d309c2f53117f70e35df0c625ba2a2a5ffe9642f66de7e71b137d73f27896acd",
+    "elapsed_seconds": 5.875
+  },
+  "geometry_sources": [
+    {
+      "path": "staging\\Tortuga-completed-building-inventory-SOURCE-FINAL-1793293819653515300\\building-inventory-SOURCE.json",
+      "sha256": "eb165891c8ed78699854890a51139872790becb09fb6fb81be181e7aeea6a6ad",
+      "bytes": 432221
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\shoal-warden-SOURCE-ONLY.json",
+      "sha256": "68e7b824d2c34a39653ec45701a6773529afe3965c70fe045517df73e19d41d9",
+      "bytes": 383096
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\east-coal-SOURCE-ONLY.json",
+      "sha256": "984bceb99348bab1726cb277c442a7863f1651272b3b9642991e68df8b9a5103",
+      "bytes": 57333
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\thin-sail-SOURCE-ONLY.json",
+      "sha256": "4b7ff40b8e42f278023520477136176d5f3fdf712e22d1bf54676f8c47d3d47d",
+      "bytes": 125929
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\white-clam-SOURCE-ONLY.json",
+      "sha256": "7a5220c5278d887503469929bf4fffb2b3cb1265124d247db8a600b185dd5e3e",
+      "bytes": 529051
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\copper-bell-SOURCE-ONLY.json",
+      "sha256": "4b15ebb6a46c003c2e65b1498cf3c477ed0cb3faa173d6ad971cd93fc6a990e1",
+      "bytes": 510846
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\tide-fish-SOURCE-ONLY.json",
+      "sha256": "551e1e6c1f6b7bb8ca3b2fefeb74fa74557b9b1959d74fda30722c5c18b8a7d9",
+      "bytes": 358517
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\worn-book-SOURCE-ONLY.json",
+      "sha256": "c934b3c401737fa9e69b86444c74a5482e1fb6754205bdfb43f4380df1d7cb53",
+      "bytes": 458610
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\bridge-customs-SOURCE-ONLY.json",
+      "sha256": "8c1ea00f20ac6c96c0031ed48b394114249781c130e84741db8ca393036e53ce",
+      "bytes": 439764
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\crooked-inn-SOURCE-ONLY.json",
+      "sha256": "09ac4744384bb8a6b404ca88caba56cf147cd1363f5ed6938747ea2e350a18f5",
+      "bytes": 729702
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\lampblack-SOURCE-ONLY.json",
+      "sha256": "f3490c054545d52eabe0da20ae9f6de59fa2161277fb48dfb40ce6d4517a2af4",
+      "bytes": 730480
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\moon-branch-SOURCE-ONLY.json",
+      "sha256": "e04342f40e82aed82ee96d785ecc45580012b263d79661ebf44d6a14ebd98534",
+      "bytes": 630572
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\nail-drift-SOURCE-ONLY.json",
+      "sha256": "f567beb6f6287737a2101dd4e93e39d62055ba22c02531de309eed3dc26c2283",
+      "bytes": 192789
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\bridge-cooper-SOURCE-ONLY.json",
+      "sha256": "a8b2e030b6d2d412879d07e2bcfd4c4bb866d957e89242d539b9e54b4726dd7b",
+      "bytes": 515586
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\keel-store-SOURCE-ONLY.json",
+      "sha256": "b869a317513d082d197a1bf3c16da4e55b1cedd421e291a8120aba5dd279ece5",
+      "bytes": 531105
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\lantern-harbor-inn-SOURCE-ONLY.json",
+      "sha256": "eefd851a7e9d5c6204e1837b4e1c168c7f1fa4744c3e294b1fa168b0f182c674",
+      "bytes": 339194
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\net-mender-SOURCE-ONLY.json",
+      "sha256": "8b80d35628527824bc66325683c89ed5cbb09f11c007843dbcc8d3c019b901ef",
+      "bytes": 285882
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\crooked-row-SOURCE-ONLY.json",
+      "sha256": "c394507fc8dbd352351db6c4ea69ee7e14efe80b8ea664d406236308957d4fb4",
+      "bytes": 385414
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\copper-kettle-SOURCE-ONLY.json",
+      "sha256": "98f794efdb5a8cf47f6d3e97db20ec7db5bce702115e5067a69d33c6635c042e",
+      "bytes": 921852
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\bent-gull-SOURCE-ONLY.json",
+      "sha256": "7c88df7c7c6241eb6618e3f6874ace6c3d23ccf799f56fb1481aaeba191b4f1e",
+      "bytes": 289724
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\tin-whistle-SOURCE-ONLY.json",
+      "sha256": "f84a1e2e2a43e9b6fca0b5b18cd90795071ac6bdd2b993cf1b7fc402579af532",
+      "bytes": 369111
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\tide-broker-SOURCE-ONLY.json",
+      "sha256": "328a977d2f52afa819ab93ca49bfb49d74e63c2950320edf51cc16fc1682a855",
+      "bytes": 679536
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\ropes-pearl-SOURCE-ONLY.json",
+      "sha256": "5f3747630597d3efa9767a96a94ac4cf8f7f6ee08e44d7f5f9b26c9cbb4f3663",
+      "bytes": 623404
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\marrow-side-SOURCE-ONLY.json",
+      "sha256": "d966767060d1ae431a6792d8b5a4bb94d2d5dc2848765f92dc5839b8547b9874",
+      "bytes": 611525
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\moth-candle-SOURCE-ONLY.json",
+      "sha256": "2ad77d87c1a4e56957dbc6a4a0bf6b5f58364301db9cbd33b14d2d230aaea5bd",
+      "bytes": 371177
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\willow-door-SOURCE-ONLY.json",
+      "sha256": "a2148f5617b7f8b38e4da047a937f1a8c0e3039ad5cba1de0b82ac9f2a80f14e",
+      "bytes": 1177714
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\anchor-dice-SOURCE-ONLY.json",
+      "sha256": "9982a74bff4915e4e4570b9b5ff3925f66d0dc1c6f773e71297d4652816e8c6b",
+      "bytes": 527734
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\lantern-cod-SOURCE-ONLY.json",
+      "sha256": "0fd23b772240509e580bb1416b37677805b5c496a34d92531268dcd7cf3c8792",
+      "bytes": 259945
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\sail-fool-SOURCE-ONLY.json",
+      "sha256": "9f2eaf68501a4d6f78013ed0734188ba16f5ea1db397db8e525b2f38ac8f6792",
+      "bytes": 344129
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\old-rum-SOURCE-ONLY.json",
+      "sha256": "428dcabe609b4665d64c001b4ea49433fa7f799f12ef6898330817ddf82bad2a",
+      "bytes": 377490
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\bay-kettle-SOURCE-ONLY.json",
+      "sha256": "884e3b0d0c6c937b6bc23cd333b33ac9ddeef6137a8037ab2590044f1a8b0cd0",
+      "bytes": 282286
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\sandbar-SOURCE-ONLY.json",
+      "sha256": "d7ec57751bd254877965a45998c05193d7a4daab079e0ad5439428da8d196a95",
+      "bytes": 830925
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\foxtail-SOURCE-ONLY.json",
+      "sha256": "030236ce0c0dd1eb49e13ce9020c288627db3ef8f8fa0590d19d91634d49f4fa",
+      "bytes": 805825
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\navy-blue-SOURCE-ONLY.json",
+      "sha256": "ac6edabc38e50f44f922ca1d7f3a5b1541ce13047c33621411c86e22272849f0",
+      "bytes": 723649
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\quarter-jack-SOURCE-ONLY.json",
+      "sha256": "fb9911a110a0ec85c40ae58b51bc68b79f15e3739fbf055ebbd1f2fcdc984564",
+      "bytes": 966750
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\cook-snap-SOURCE-ONLY.json",
+      "sha256": "151f299482e7793dbb651fb3f0668ee6ab60bee02888626b36e71e6827fb7634",
+      "bytes": 410945
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\river-stone-SOURCE-ONLY.json",
+      "sha256": "a36879bc207017e442f97ee54249e73d2d25e0e1ab43ff5aafd9a7440d9b1068",
+      "bytes": 493012
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\harbor-chair-SOURCE-ONLY.json",
+      "sha256": "1b2de030cbe1253b8cbd6f5cb6503ff11e3851228dbc1c2e1320ee824c543d3d",
+      "bytes": 476912
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\split-shell-SOURCE-ONLY.json",
+      "sha256": "ec1b0124a071553077a72d7a1c8b4b62e009002c5e6afa9260a69e87340fdb3b",
+      "bytes": 517534
+    },
+    {
+      "path": "staging\\eastern-shared-roofs-rich-source-1793241266230005000\\pelican-forge-SOURCE-ONLY.json",
+      "sha256": "e77a6ac99adbde2771d3351051f4ebf213d7b1906e25036c9ca58d3c47150ada",
+      "bytes": 552720
+    },
+    {
+      "path": "staging\\tortuga-fill-half-tide-hook-1793207406034724900\\manifest.json",
+      "sha256": "5f87166f24476b11971400aee2933ff52ca716501f7a392fbbf8355dc09f2547",
+      "bytes": 23814
+    },
+    {
+      "path": "staging\\tortuga-fill-tenon-watch-hook-1793207410549902000\\manifest.json",
+      "sha256": "13fc29a5b6452fe4611de3fefc7fb8d0e85e4fdae53c0531429360b0b3043c47",
+      "bytes": 33633
+    },
+    {
+      "path": "staging\\tortuga-fill-bent-ropewalk-coast-1793211126478817700\\manifest.json",
+      "sha256": "1cfec91ed478a49a5eea53e3ee6c8aec72ecc1a642f0fd397f713b204632069f",
+      "bytes": 17796
+    },
+    {
+      "path": "staging\\tortuga-fill-leaning-galley-hook-1793211150053264700\\manifest.json",
+      "sha256": "1c0d5bb1ca3c46a1232aad6e473e8fdbbe088d40dd6ecf2334ab0bd70a429c14",
+      "bytes": 18238
+    },
+    {
+      "path": "staging\\tortuga-fill-tide-stove-west-quay-1793211157736738700\\manifest.json",
+      "sha256": "1e6947baa291649295a6b27a7414b42cac7cc2598cf8329070a6755f7d608e48",
+      "bytes": 15368
+    },
+    {
+      "path": "staging\\tortuga-fill-net-needle-crook-1793212893524565700\\manifest.json",
+      "sha256": "345b32431c44cf7df6bb37f03b933dd9c1fd7670dd4e9f70243ec56c99d2ce47",
+      "bytes": 24384
+    },
+    {
+      "path": "staging\\tortuga-fill-moon-tackle-returns-1793212899675804500\\manifest.json",
+      "sha256": "5e5eb07cf443dc9851875f7bcc0cd8aee849d61dadf3152f76bbec2966ce5486",
+      "bytes": 24770
+    },
+    {
+      "path": "staging\\tortuga-fill-chart-window-loft-1793212905634658900\\manifest.json",
+      "sha256": "accfeb92b096f3d87ae939f41014a5870d2489f3377c150ac4a150f05ccf99a1",
+      "bytes": 17119
+    },
+    {
+      "path": "staging\\tortuga-western-spit-1793215072699978000\\manifest.json",
+      "sha256": "cbb7810513c9718345cff6440878508f529b3d1394aab854cd47bd3b5c5b9293",
+      "bytes": 71721
+    },
+    {
+      "path": "staging\\tortuga-fill-inner-west-current-9-1793215653202868100\\manifest.json",
+      "sha256": "c42ad52915b0984087bcfd27e7665fd306527a833fbc96c4b3595b4870450cdc",
+      "bytes": 69289
+    },
+    {
+      "path": "staging\\tortuga-narrow-workrooms-1793219506153531200\\manifest.json",
+      "sha256": "8b39adfbdab0ceaffe848fc8a5f208e4990a4a282a2c5a7fb0356e39f6e0da4d",
+      "bytes": 33786
+    },
+    {
+      "path": "staging\\west15-shells-1793218803041549500\\manifest.json",
+      "sha256": "52669f6d5ae92e82a18c1577a99a56e2648fc2dc570a3ff8b33987659b404f42",
+      "bytes": 75576
+    },
+    {
+      "path": "staging\\west-r2-three-frontage-preview-1793168582590227200\\manifest.json",
+      "sha256": "59b539a07ea9671680e5a99090de4c5d912ce5ca27320fa6eb34dc9bf60f71d2",
+      "bytes": 69928
+    },
+    {
+      "path": "staging\\artistic-captains-rest-1793170982583234800\\manifest.json",
+      "sha256": "7ef14f65b0bbe56a089360ae065c7bdfef66bc8cc00d4666d60f100f134596fe",
+      "bytes": 34308
+    },
+    {
+      "path": "staging\\tortuga-trade-pair-1793195118561023300\\manifest.json",
+      "sha256": "5b138ed9a5482547303ab0ef9bd2c42d2170d23d98a82ef8099af6483984ef91",
+      "bytes": 42032
+    },
+    {
+      "path": "staging\\tortuga-headland-pair-1793199900323997200\\manifest.json",
+      "sha256": "e0031924fe57343bd9630e544979a92fc9e5efec06d6197c46b6279f3f443e0b",
+      "bytes": 13618
+    },
+    {
+      "path": "staging\\tortuga-quill-court-1793202602131514100\\manifest.json",
+      "sha256": "cb3fe9a2d0e192cd4c562d8a07335daa74989b9ece21df88fd828318e04c7209",
+      "bytes": 30835
+    },
+    {
+      "path": "staging\\neighborhood-canonical-ridges-20261027T1852Z\\signal-canonical-full-VERIFY-ONLY.json",
+      "sha256": "89df5767701762039fc37e8803509ea5e3862512a35a64f52e9add8cf8f57139",
+      "bytes": 1728277
+    },
+    {
+      "path": "staging\\artistic-pirate-spit-byte-slots-1793124362042040500\\manifest.json",
+      "sha256": "5e6563074d85c3af42cba188194b2941724c98184cba71c4df6950641cf14c2b",
+      "bytes": 543899
+    },
+    {
+      "path": "staging\\artistic-requested-originals-20261027T1753Z\\manifest.json",
+      "sha256": "d593c4e92be30900e4efac735f952c8e74451fc401cffb07f187effea587de09",
+      "bytes": 1116210
+    },
+    {
+      "path": "staging\\artistic-harbor-651ac8f3e0f20997\\manifest.json",
+      "sha256": "c703320f62b12fa5ea251ccef042416d98af0231e74d5aa1c878404bf74b16ab",
+      "bytes": 33688
+    },
+    {
+      "path": "staging\\WEST-GROUND-LUSH63-EXECUTION-1793239356433478800\\ACTUAL-COMPLETED.json",
+      "sha256": "79da89c5dc3e03999e633aa5e5402e8d664135fe602d038c1b32618fb6ba9bd1",
+      "bytes": 14766
+    },
+    {
+      "path": "staging\\WEST-GROUND-LUSH63-EXECUTION-1793239356433478800\\01-ADMITTED-DELTA.json",
+      "sha256": "caeecee15913e76ffe3295ac7d5e1887c8753fb106c3b95683d72dc45bf2d351",
+      "bytes": 5487
+    },
+    {
+      "path": "staging\\WEST-GROUND-LUSH63-EXECUTION-1793239356433478800\\02-ADMITTED-DELTA.json",
+      "sha256": "79817ba8ba052cae1e9db8023964796605cd15419e88394b3fb15ae8ad862e67",
+      "bytes": 5307
+    },
+    {
+      "path": "staging\\WEST-GROUND-LUSH63-EXECUTION-1793239356433478800\\03-ADMITTED-DELTA.json",
+      "sha256": "092eecc2423cb629e64c7845ac78aefdff18842d326fd82f250394b5074bab1f",
+      "bytes": 6884
+    },
+    {
+      "path": "staging\\WEST-GROUND-LUSH63-EXECUTION-1793239356433478800\\04-ADMITTED-DELTA.json",
+      "sha256": "d1fecdefb65e8388cf3b1b484acd51ea5ad80b54c9912fcd647db0d77304cf63",
+      "bytes": 18850
+    },
+    {
+      "path": "staging\\WEST-GROUND-LUSH63-EXECUTION-1793239356433478800\\05-ADMITTED-DELTA.json",
+      "sha256": "70c9ae2f1d05b1505d73533acde734706c82debaa2a4dfea87c3cd31a522e20f",
+      "bytes": 36204
+    },
+    {
+      "path": "staging\\WEST-GROUND-LUSH63-EXECUTION-1793239356433478800\\06-ADMITTED-DELTA.json",
+      "sha256": "4d358271e25fdcad47b1893525b8739c14565fcd8abee97d9164e8ca537ce15e",
+      "bytes": 55768
+    },
+    {
+      "path": "staging\\artistic-ship-2c8c6d503fe92246\\prototype.json",
+      "sha256": "bf8ae618cb4aadaa08fddce0d0a7a0d1901f3fc06d09e16f60184fc05f3eb48c",
+      "bytes": 668740
+    },
+    {
+      "path": "staging\\fleet-wren55-execution-1793225953291708100\\wren-ADMITTED-PLACE-ONCE.json",
+      "sha256": "0b70e349a73de87292a96d8e9fca25469c12fedbfbd43738b3c137dcb9b0ebc1",
+      "bytes": 294369
+    },
+    {
+      "path": "staging\\fleet63-three-ships-execution-1793234569364722600\\golden-petrel-ship-ADMITTED-PLACE-ONCE.json",
+      "sha256": "cb922c0c3662cce30c14f75fb25eb275168c81b913be913b2e0b2a6bbe8765eb",
+      "bytes": 512644
+    },
+    {
+      "path": "staging\\fleet63-three-ships-execution-1793234569364722600\\mercy-of-the-tide-ship-ADMITTED-PLACE-ONCE.json",
+      "sha256": "e30ee7e068bc302746136fc6fc5340dd38dbadb55ff4934694bfdae2f4973f4a",
+      "bytes": 641968
+    },
+    {
+      "path": "staging\\fleet-wren55-execution-1793225953291708100\\tern-pilot-cutter-ADMITTED-PLACE-ONCE.json",
+      "sha256": "c67350467fa0115b646f18046b1a3c31ac6f393cdffd63641793d3ae4bab01a6",
+      "bytes": 29610
+    },
+    {
+      "path": "staging\\fleet-wren55-execution-1793225953291708100\\salt-marigold-ketch-ADMITTED-PLACE-ONCE.json",
+      "sha256": "033836b6f209037f0d513f6451ca9e002dd9bc35a2ed9046d58a57dce68bff4e",
+      "bytes": 42368
+    },
+    {
+      "path": "staging\\fleet63-three-ships-execution-1793234569364722600\\reed-ADMITTED-PLACE-ONCE.json",
+      "sha256": "271366c852143c1b3e40cc33891759f36b05a51195d7ec7aabf63af2fc91d7a5",
+      "bytes": 11736
+    },
+    {
+      "path": "staging\\prototype-castle-palace-e6ffcde57520b8cb\\prototype.json",
+      "sha256": "e6ffcde57520b8cb75798548ce6f8683f147c8b47f05d5bc3c9be46746159931",
+      "bytes": 2058493
+    },
+    {
+      "path": "staging\\prototype-rosebridge-9c9b37cea97a69d9\\prototype.json",
+      "sha256": "9c9b37cea97a69d9f510bfed83b70c072793ebc35fed175ce50b3355506a51f2",
+      "bytes": 271685
+    },
+    {
+      "path": "staging\\bridge-tower-native-settle-20261027T1823Z\\full-verification.json",
+      "sha256": "5500bf6e11c36d4b0dca9bcdeac555b3bf9b600db8763c80d091c1e0194317b0",
+      "bytes": 396817
+    },
+    {
+      "path": "staging\\artistic-engineering-r2-1793106029261770100\\mill-quarter.json",
+      "sha256": "181e2191572846967c41e77bf5b406d0dddcc484488aa60d6725728ba651b199",
+      "bytes": 148718
+    },
+    {
+      "path": "staging\\artistic-fountain-centerpiece-r5-20261027T2109Z\\plaza.json",
+      "sha256": "56df548d3cbc4c16900334a3e38af56c33f2fb5c294e70d8107cb62552600a82",
+      "bytes": 53751
+    },
+    {
+      "path": "surface-data.json",
+      "sha256": "84b7d6e976d5704442911efaf95eca14e73c992abc2ff017b0a45c38339bd876",
+      "bytes": 2198
+    },
+    {
+      "path": "zipline-actual.json",
+      "sha256": "e6eed8087031843c20d2801f3c5fe15fd8208a1e3a5517e586e540c01adb945f",
+      "bytes": 1153
+    }
+  ],
+  "zipline_actual": true,
+  "world_writes": 0
+}
