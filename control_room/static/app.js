@@ -282,6 +282,47 @@ async function setupPage() {
     card('Let’s get you home',`<div class="setup-step"><span class="step-number">1</span><div><h3>Install the dedicated server</h3><p>Downloads the pinned NeoForge and mod files, verifies their hashes and separates client-only mods. Existing worlds and settings are preserved.</p>${button('install','Install server','primary')}${button('repair','Repair installation','ghost')}</div></div><div class="setup-step"><span class="step-number">2</span><div><h3>Read Minecraft’s EULA</h3><p><a href="https://www.minecraft.net/en-us/eula" target="_blank" rel="noopener noreferrer">Read the official agreement ↗</a>. Acceptance is the owner’s choice.</p>${d.eula_accepted?pill('OWNER ACCEPTANCE RECORDED','good'):`<label class="check-label"><input id="accept-eula" type="checkbox"> I have read and accept Minecraft’s EULA.</label>${button('accept-eula','Record my acceptance','small')}`}</div></div><div class="setup-step"><span class="step-number">3</span><div><h3>Welcome KG & Sera</h3><p>Whitelist: ${esc(d.players.KG||'KG not configured')} · ${esc(d.players.Sera||'Sera not configured')}. Change access any time from Players & access.</p>${button('goto-players','Edit whitelist','small')}</div></div><div class="setup-step"><span class="step-number">4</span><div><h3>Open Prism, import your instance, and play</h3><p>Use the generated KG and Sera Prism packages. Their Packwiz pre-launch step checks the same release before Minecraft starts. Sign in with your own licensed Microsoft account.</p><div class="button-row">${button('prism','Open Prism Launcher','primary')}${button('start','Start world')}</div></div></div>`);
 }
 
+function tavernCurrent(data) {
+  return data?.current===true&&currentMeasurement({current:true,measured_at:data.at,max_age_seconds:data.max_age_seconds??15});
+}
+function tavernCardHTML(data,busy=false) {
+  const current=tavernCurrent(data),counts=data?.counts||{},registered=counts.registered,loaded=counts.loaded;
+  const controls=current&&registered>0&&!busy,life=data?.life_admission;
+  const display=value=>Number.isInteger(value)?number(value,0):'—';
+  const control=(action,value,label,allowed=true)=>`<button class="button small" data-tavern-control="${action}" data-value="${value}" ${controls&&allowed?'':'disabled'}>${label}</button>`;
+  return card('The Drowned Rose',
+    (!current?notice(data?.reason||'Waiting for current tavern telemetry. Counts and controls are unavailable.','warn'):'')+
+    row(`${current?'Registered':'Last reported registrations'} · Easy NPC`,display(registered))+
+    row('Loaded at this report',display(loaded))+
+    row('Native LIFE · last completed admission',life?`${display(life.registered_total)} <small>${esc(when(life.at))}</small>`:'Unavailable')+
+    '<p class="subtle">Tavern NPCs are separate from Native LIFE villagers and wildlife, and from editable character profiles. The LIFE admission total is historical, not a live entity census.</p>'+
+    (data?.fault?notice('Tavern fault: '+data.fault,'error'):'')+
+    `<p class="subtle">${esc(data?.qualification||'Awaiting visual, behavior and audio qualification')}. ${data?.paused?'Activity is paused.':data?.suspended?'The room is inactive; activity rests while it is unloaded or nobody is nearby.':''}</p>`+
+    `<div class="button-row">${control('music',!data?.music,data?.music?'Pause performances':'Enable performances',!data?.fault||data?.music===true)}${control('suspend',!data?.paused,data?.paused?'Resume tavern activity':'Pause tavern activity',!data?.fault||data?.paused!==true)}</div>`+
+    `<p class="subtle">Report ${esc(when(data?.at))}. Requests await the next current reading; a click is not a runtime acknowledgement.</p>`+
+    `<details><summary>Tavern roster · ${display(counts.roster)}</summary><div class="table-wrap"><table><thead><tr><th>Patron</th><th>Activity at report</th><th>Registration / loading</th></tr></thead><tbody>${(data?.residents||[]).map(r=>`<tr><td>${esc(r.name||r.id)}</td><td>${esc(r.activity||'Unknown')}</td><td>${r.registered?'Registered':'Unregistered'} · ${r.loaded?'Loaded':'Unloaded'}</td></tr>`).join('')}</tbody></table></div></details>`,
+    pill(current?'Current telemetry':'Telemetry unavailable',current?'good':'warn'));
+}
+function mountTavernCard(root) {
+  let closed=false,data=null,busy=false,expiry;
+  const draw=()=>{if(!closed){root.innerHTML=tavernCardHTML(data,busy);clearTimeout(expiry);const remaining=measurementMillis(data?.at)+(data?.max_age_seconds??15)*1000-Date.now();if(tavernCurrent(data)&&remaining>=0)expiry=setTimeout(draw,remaining+10);}};
+  const poller=new VisiblePoller(async()=>{const next=await api('/api/tavern');if(!closed){data=next;draw();}},
+    {delay:()=>5000,onError:error=>{if(!closed){data={current:false,reason:error.message};draw();}}});
+  const click=async event=>{
+    const target=event.target.closest('[data-tavern-control]');
+    if(!target||target.disabled||busy||!tavernCurrent(data))return;
+    const action=target.dataset.tavernControl,value=target.dataset.value==='true';
+    if(!['music','suspend'].includes(action))return;
+    const body=action==='music'?{action,enabled:value}:{action,suspended:value};
+    busy=true;draw();
+    try{await api('/api/tavern/control',body);if(!closed){toast('Tavern request sent; awaiting the next current report.');poller.wake();}}
+    catch(error){if(!closed)toast(error.message,true);}
+    finally{busy=false;draw();}
+  };
+  root.addEventListener('click',click);draw();poller.start();
+  return()=>{closed=true;clearTimeout(expiry);poller.stop();root.removeEventListener('click',click);};
+}
+
 const viewCurrent=(page,generation)=>state.page===page&&state.renderGeneration===generation;
 async function render() {
   const view=++state.renderGeneration,page=state.page;$('#page-label').textContent=labels[page];$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===page));
@@ -294,7 +335,17 @@ async function render() {
     else if(page==='console')await consolePage();else if(page==='backups')await backupsPage();else if(page==='connectivity')await connectivityPage();
     else if(page==='graphics')await graphicsPage();else if(page==='compatibility')await compatibilityPage();else if(page==='setup')await setupPage();
     else if(page==='atlas'){const module=await import('/atlas.js');if(!viewCurrent(page,view))return;state.atlas=module;await state.atlas.mount({api,esc,header,button,bytes,toast,modal,confirmAction});}
-    else if(page==='characters'){const module=await import('/characters.js');if(!viewCurrent(page,view))return;const cleanup=await module.mountCharacters({root:$('#main'),api,toast,navigate:hash=>{location.hash=hash;}});if(viewCurrent(page,view))state.charactersCleanup=cleanup;else cleanup?.();}
+    else if(page==='characters'){
+      const module=await import('/characters.js');if(!viewCurrent(page,view))return;
+      $('#main').innerHTML='<div data-tavern-card></div><div data-character-studio></div>';
+      const closeTavern=mountTavernCard($('#main [data-tavern-card]'));let studioCleanup;
+      const cleanup=()=>{closeTavern();studioCleanup?.();};
+      cleanup.canLeave=()=>studioCleanup?.canLeave?.()??true;
+      state.charactersCleanup=cleanup;
+      try{studioCleanup=await module.mountCharacters({root:$('#main [data-character-studio]'),api,toast,navigate:hash=>{location.hash=hash;}});}
+      catch(error){cleanup();if(state.charactersCleanup===cleanup)state.charactersCleanup=null;throw error;}
+      if(!viewCurrent(page,view))cleanup();
+    }
     else if(page==='cinematics'){const module=await import('/cinematics.js');if(!viewCurrent(page,view))return;await module.mount({api,esc,header,card,bytes,toast,modal,confirmAction,request:(path,options)=>localSession.request(path,options),csrf:()=>state.csrf});}
     showJobs();
     if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');if(state.page==='players'&&$('#whitelist-list'))$('#whitelist-list').innerHTML=whitelistHtml(d);}

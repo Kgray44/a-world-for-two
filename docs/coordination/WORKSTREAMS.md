@@ -1,54 +1,100 @@
 # A World for Two — authoritative workstream coordination
 
-Updated 2026-10-29 UTC by the master chat **Build It!**
+Updated 2026-10-30 UTC by the master chat **Build It!**
 (`01a17947-1d00-7fd1-aa5e-d1fb514f8671`). The owner's Master Coordination &
 Permanent-World Ownership instruction governs this document. Finish the existing
 vision; new workstreams do not authorize feature expansion.
 
-## Current coordinated milestone —71 villagers introduced in71 unique properties
+## Current coordinated milestone — 2026-10-30 12:10 UTC
 
-**Official city name: Tortuga.** Actual introductions now total **71 villagers
-in71 unique properties** on candidate65: **East39, West36 additions14, retained/
-refined West7, and earlier baseline West11**. **22 of the36 new West additions**
-remain unpopulated. Current managed78 comprises71 villagers plusseven prior
-managed nonvillagers. The newly introduced19 are **not yet backed up or behavior/
-restart-cycle verified**. The saved0d0f5a52/59 census below is historical,
-preceding that cohort; it must not be relabelled as a71-resident backup.
+The independently audited normal-stop archive **20261030T111759Z-2ed349** saves **106 ordinary villagers +246 wildlife =352 LIFE actors**, plus **45 separate Drowned Rose patrons =397 managed actors**, all expected identities retained once with enabled AI. Of118 actual properties, **107 contain people and11 are empty;12 ordinary-villager HOME/job requirements remain**. Tavern patrons count as one populated property and do not replace ordinary housed villagers. Saved presence does not qualify every HOME/job claim, schedule, route or multiplayer behavior. See [Living World’s current census and artifact custody](../LIVING-WORLD.md) for the exact archive, audit and runtime hashes; raw entity data remains private.
 
-- **Bill’s first resident demonstration is dated historical evidence.** Native
-  spawn `af4d71dd`, Studio acknowledgment `e8a823e…` and normal `!` player chat
-  proved his exact custom greeting at **2026-10-29 15:26:09UTC** with external AI
-  disabled/no API key or consent change. HOME1249,65,−1172, JOB1249,65,−1173,
-  work2699193 and physical night-sleep/day-awake were observed then. The later
-  0d0f5a saved read has **no HOME/job_site memory**, while retaining a potential
-  job and past work/sleep/wake memories. **Bill needs current claim/behavior
-  requalification**; the older success is preserved and not called a current
-  whole-LIFE pass.
+**Forest:**2ed349 independently saves all **385 ordinary saplings**. After that save, **70 further roots were actually planted in five clean Native before/place/normal/after/map batches**, bringing historical ordinary plantings to **455 roots**. Three of the prior385 then produced **actual native mature trunk/canopy outcomes under bridge0.6.60**;455 is therefore not a count of remaining saplings or mature trees. The fourth growth root atX1250/Z−1080 refused on snowy-soil drift **before owned mutation**. The earlierX1247/Z−740 failure remains exactly restored and held; neither root is approved for retry. Failed receipts, habitat exclusions, hives and human protections remain intact. Root’s normal-generation survey is currently active with **121 planned samples**; completion requires its actual clean terminal, not this handoff. Thousands-scale mature south-shore forest and density/art review remain open.
+
+**Homes and access:**Sparrow-Key’s actual resident is included in the106 saved villagers. **Small Compass’s four route-clearance cells and seven-cell cartographer fitout are complete; its worker has not spawned.** Larkwater’s four ladder cells and two helm cells are placed and full-tag verified. These fixture/access results do not establish resident schedules or machine function. The remaining protected homes and Oilglass’s cable-reservation hold stay in force; preserve stock, routes and all existing masks.
+
+The matched private installation is **bridge0.6.60 / Tavern0.1.13 / client QA0.1.10**. **Bridge0.6.61 and Tavern0.1.14 are qualified offline and ready, not installed.** The actual0.1.13 client hit a Tavern status-file `AccessDenied` failure that left it paused. The0.1.14 short atomic-reader-lock fix is qualified offline; it is not a Native gameplay result. Earlier patron identity recovery and scoped same-seat save/reload evidence remain retained, with no introduction replay.
+
+**Client, resources and rendering:**actual0.1.13 Ada pixels and Native client snapshots were captured, but sip, micro-animation, heard music, complete tavern behavior and multiplayer acceptance remain open. **DH56’s queue fix is active**, without a visible-LOD or sustained-performance acceptance claim. **Bridge0.6.60’s actual CDP `HashMap` custody failure disables SeedGen**;0.6.61’s native-write-monitor repair is qualified offline, not a Native resource/parity success. The earlier path, collector, GC, note and provider observations retain only their dated scopes. No current performance, heard-audio or cinematic success is inferred.
+
+Computer Use remains **reauthorized for Root-coordinated inspection bursts**, released after each burst. Root retains sole world/runtime authority except for an explicitly granted finite lease. The fixed delivery scoreboard remains **Working2 /Integrated2 /Remaining4**. Main/GitHub publication, a current qualified Prism release and permanent runtime promotion, rail, full forest, and final gameplay/art acceptance remain open.
+
+The dated milestones below retain their evidence and backlog. Earlier374/392/394/396 population snapshots and their then-current runtime/source states are **historical**, superseded for independently saved population by2ed349; none of their failed receipts is erased.
+
+### Historical304-plus30 introduction snapshot - superseded by the live milestone above
+
+**Official city name: Tortuga.** The current introduction snapshot is
+**82 villagers in 82 unique properties +222 wildlife =304 managed LIFE entities**,
+plus **30 genuine Drowned Rose tavern patrons in their separate ledger**.
+Combined saved count is **334**, not 334 LIFE villagers. Property allocation stays
+**East39/39, new West25/36, retained/refined West7 and baseline West11**. Of 118
+inventoried actual properties,36 remain unpopulated, including11 new West additions.
+Tavern patrons do not inflate the housed-building count or prove resident schedules.
+
+The latest normal-stop archive **20261030T011021Z-14ced4** independently confirms
+**all 334 saved identities**:304 LIFE +30 tavern patrons. All have enabled AI;
+LIFE owner fields are preserved. Tavern names, persistence, ledger/config and
+all 30 UUIDs match; the protected unmanaged bird is additional and not double-counted.
+The historical258 archive is retained, and the newer46 LIFE introductions are now
+included in the saved334 audit. This is saved identity/AI/custody evidence, not
+live behavior, audio, seating, art, restart reuse or multiplayer acceptance.
+
+- **The next 11 western residents are actually introduced**, with a clean Native
+  INSPECT and SEED completed **00:36:24UTC** in
+  `H/staging/west11-current-c806-actual65-1793320576538006200/`.
+  Existing beds, professions, independent routes and normal day/night schedules
+  still need representative current behavior checks; do not report all82 as
+  HOME/JOB/sleep-qualified merely because their native admission passed.
+- **Wildlife now totals222 actual introductions:**158 Naturalist birds,
+  44 ladybugs,11 deer, two improved cats, one koi, one shima enaga, one duck,
+  one Doggy Talents dog and three Ribbits. The latest 31 rooftop/perch birds
+  completed SEED **00:41:17UTC**, Wren's dog **00:43:30UTC**, and the three eastern
+  music-room Ribbits **00:44:21UTC**. All four latest cohorts released their
+  resources cleanly. Ordinary AI/factory gates passed; nesting, town confinement,
+  long-term routines and survival are not inferred. Ribbits retain their genuine
+  default role and native finalization/home behavior; actual music still needs
+  observation. No fake player ownership, NoAI, perpetual teleportation or
+  force-loaded population was used.
+- The full **334-entity saved audit** matches all 304 LIFE and30 tavern identities,
+  with no missing/duplicate/species/tag errors or disabled AI. It is not a
+  total-world wildlife count or restart-behavior proof. Shore18, butterfly2 and
+  the independent17-dragonfly Native INSPECTs respected ordinary spawn-hook
+  refusals: **zero spawned**, no override or unchanged retry. The dragonfly
+  refusal saw literal AIR under its actual factory position. Five independent
+  original AIR sites remain source-only pending Root review.
+- **Bill’s first resident demonstration remains dated evidence.** Normal player
+  chat proved his custom local greeting at **2026-10-29 15:26:09UTC**, alongside
+  observed HOME/JOB/work and physical sleep/wake, with external AI disabled.
+  The later historical0d0f5a read lacked HOME/job-site memories. A **three-cell
+  entry correction is now actually placed**, but his unassisted natural return
+  remains untested; individual current claims/routes still need review.
 - **39 East villagers are actually introduced in39/39 approved compounds.**
   The ten named residents retain their Studio profile acknowledgments. A genuine
-  daytime NBT observation found **39 with normal AI**. A nighttime observation
+  earlier daytime NBT observation found **39 with normal AI**. A nighttime observation
   found **38 HOME memories,39 JOB memories and36 sleeping**; these aggregate
   observations do not establish full behavior qualification for every resident.
   Representative **Bill and White Clam** have physical sleep/morning evidence.
   Bill additionally has the demonstrated custom dialogue/work evidence above.
-- **The latest19 residents actually spawned in clean15+4 Native cohorts**,
+- **The earlier19 residents actually spawned in clean15+4 Native cohorts**,
   with ordinary AI, no native owners and0 remaining tickets/futures. They occupy
   **seven retained/refined properties,11 baseline properties and one additional
-  West36 property (Tide Stove)**. Thus West36 is **14/36**, not32/36. Source/actual
+  West36 property (Tide Stove)**. That earlier milestone brought West36 to **14/36**; the latest11 bring it to **25/36**. Source/actual
   receipts are `H/staging/west19-actors-qualified-013269-SOURCE-20261029T192612Z/`
   `ACTUAL-ALL19-SEEDS65.json` and the two cohort `ACTUAL-SEED65.json` records.
-  Individual HOME/job claims, schedules, sleep and restart behavior remain pending.
+  Two of these new West homes now have paired physical night-sleep and daytime
+  awake/empty-bed observations. These examples do not qualify all 19 schedules
+  or restart behavior. All19 were included in the historical saved79 census and remain preserved.
 - The earlier West13 cohort retains one genuine nighttime sleeping example;
   it does not qualify every western resident. Original/core/northern properties
   outside the counted groups still need their own population work.
-- **Living LIFE remains the immediate priority.** Managed78 is **71 villagers
-  +seven prior managed nonvillager entries**, not78 villagers or a total-world
-  census. All25 ordinary East HOME sites and the earlier West13 fitouts are
-  actual. The later19 HOME sites/18 AIR-only public workstations are also actual;
-  their corresponding19 actors have now spawned. Three decorative obstructions
-  were removed with normal settlement and retained690-cell HOME verification;
-  the resulting behavior still needs observation. The historical uppercase-name
-  refusal is retained; creature expansion requires separate actual evidence.
+- **Living LIFE remains the immediate priority.** The current 304 introductions
+  are82 villagers and222 wildlife, not304 villagers or a total-world census.
+  The new tavern cat's earlier46m movement in town is not confinement proof.
+  Existing25 ordinary East HOME sites, West13 fitouts, later19 HOME/18 public
+  workstation fitouts and newest11 western HOME preparations are actual; their
+  residents have now spawned. Three decorative obstructions and Bill's three
+  entry cells were corrected without inventory/bed/job replay; natural return
+  and individual routines remain under review.
 - Five exact bed-clearance cells are actually corrected through normal
   settlement and **full1,122-cell verification**. All34 BE cells were retained;
   Rivet was subsequently seen physically sleeping in the actual bed, and one
@@ -61,11 +107,12 @@ preceding that cohort; it must not be relabelled as a71-resident backup.
   sustained-frame-rate acceptance.
 - The owner now requires **1–3 genuine villagers per actual Tortuga building**,
   with real HOME/job access, normal day/night behavior and restart evidence;
-  named10 plus the ordinary56 source target are only the beginning. Inventory
+  the ten named residents and current 82 are only the beginning. Inventory
   unique buildings before assigning capacity: floors, attached work bays and15
   refinement events must not inflate building counts. The wider southern
   settlements remain a separate later population scope. Several hundred
-  wildlife remain a goal, not an actual spawned count.
+  varied wildlife remain the goal;222 are actually introduced, with distribution,
+  habitat behavior, persistence and performance acceptance still required.
 - **East39/39 is actually built.** Current14 corrections and final25 include
   corrected roofs, deeper façades, real paired entries and distinct furnishings.
   **West36 additions +15 refinements** are structurally accepted by the owner.
@@ -87,11 +134,25 @@ preceding that cohort; it must not be relabelled as a71-resident backup.
   the exact BEFORE witnesses were derived for the two natural snow caps;
   **no snow/weather cells were written**. The original clean refusal is retained.
   **New night-photo/art review remains pending**; this does not close all lighting.
-- **Forest474 is actually placed, normally settled and full1,391/map verified.**
-  Its completion file exists and records all six clean Native operations:
-  `H/staging/actual-west19-east3-forest474-65-1793301659530786200/`
-  `FOREST474-ACTUAL-COMPLETE.json`. Whole-forest completion and actual visual
-  review remain explicitly false/pending;474 is not a whole-shore coverage claim.
+- **Forest undergrowth474 +856 =1,330 targets are actually placed** through
+  bounded normal/full/map checks. These are undergrowth, **not1,330 trees**.
+  The latest eight-root upland attempt (**00:48:42UTC**) first passed INSPECT8,
+  then produced **four actual mature native trunk/canopy outcomes**. The fifth
+  attempted root refused an existing block, restored its exact eight owned
+  cells, and stopped: cleanup passed, zero tickets/futures, no recovery-required
+  state or quarantine. Preserve all outcomes; never credit eight grown trees
+  or replay the failed root. The earlier32 snow-witness refusals and31-root
+  standby timeout remain historical non-growth results. **Roughly thousands of
+  actual trees across the full south shore**, with dense4–5m spacing where
+  suitable, are still required; neither four trees nor source locators finish it.
+- **All 471 prepared landscaping/detail targets are now actually placed** in
+  five clean before→place→normal→FULL→map batches:122 pale promenade route,
+  207 architectural depth/pink accents,55 foliage,22 northern and65 eastern
+  mature berry cells. Receipts are under
+  `H/staging/landscaping471-actual65-tavern-overlay-1793322059933693300/`.
+  These are new completed geometry batches, not a replay of earlier layers.
+  No tavern preimage overlapped the changes. Current night brightness, walking
+  clearance and artistic review remain separate.
 - **Night1,702 is actually placed and verified** across West755, CoreNorth328 and
   EastApproach619, including **200 Macaw fixtures and179 mature berry heads**.
   The covered well79, exact three-cell memorial repair and Forge11 display
@@ -113,46 +174,51 @@ preceding that cohort; it must not be relabelled as a71-resident backup.
   strict **7,419 remaining AIR** and all **14 original exact native classes/full
   tags before and after**. No hull, old furniture or inventory tags were replayed.
   New same-view photographs and real walking/art review remain required.
-- Installed matching server/client is **candidate65 / bridge0.6.51**, Java
-  **39244**, birth **1793301377.740292**, Control Room8766/game25575. Bridge SHA
+- Matching server/client now includes the **private65 baseline plus Core and
+  tavern adapter9722a2… overlay**. Baseline bridge remains0.6.51, SHA
   `ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632`;
-  pack SHA `671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28`.
-  The restarted server was verified empty and the owned QA client is closed.
-  Root owns the current Native batch. Resident observations remain scoped,
-  separate from whole-pack gameplay, multiplayer, restart and owner acceptance.
-- Latest retained normal-stop recovery is **historical pre19**
-  **20261029T190728Z-0d0f5a**, SHA
-  `ab18da166d7166b3e30a6b1bb99473fb9b16f613dab3dfcc11bd3fd557b9aac9`:
-  **811 files /339,574,356 source bytes /251,904,906 archive bytes**. Its
-  authenticated census found **59/59 managed identities:52 villagers +seven
-  prior nonvillagers**, with0 missing/duplicate/species/tag mismatches and all59
-  `PersistenceRequired=1`; `NoAI` was omitted in the saved tags, not fabricated
-  as an explicitly stored false. Saved villager memories contain **47 HOME,
-  46 JOB,49 work,48 last-slept,48 last-woken**, and six saved sleeping positions
-  at snapshot DayTime12095. These are archive observations, **not live daytime
-  or restart-gameplay proof**. Public-safe aggregate:
-  `H/staging/living52-saved-census-0d0f5a-1793301348133116800/public-safe-aggregate.json`.
-  The live managed ledger was stable/equal to the saved59 at that read. LIFE's
-  separate013269 receipt and canonical **6ad3a8 remain unchanged**. Later live
-  fitouts are not automatically part of0d0f5a; no permanent promotion occurred.
-- **No external world-write lease is active.** The castle-promenade64 lease
-  completed and released; earlier internal63 leases are also released. Root
-  is the sole current world writer. The owned QA client quit normally with
-  actual exit/empty-roster acknowledgment after Creative/original-position
-  restoration before the retained stop/restart; the client is now closed.
-  Source workers have no competing
-  Native/client/restart authority; fresh actual roster and a specific lease
-  remain required for the next delegated world operation.
+  baseline pack SHA `671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28`.
+  The published/canonical214-entry pack remains the baseline; this private
+  matched overlay is **not a new public pack or qualified Prism release**.
+  Reconcile overlay source/inventory/release contents before public handover.
+- Latest retained normal-stop recovery is **20261030T011021Z-14ced4**, SHA
+  `ca85397dd193fadee75297cd70c1d1b595eff3f1b3499a60c76aa6475414234f`.
+  Independent saved audit SHA
+  `745012b3c8442f320730e6c8d8465a5c7e76b899898b77359fec34db432f90bb`
+  confirms 304 LIFE +30 separate tavern patrons, all 334 present with enabled AI,
+  all 304 owner fields preserved, all 30 tavern names/persistence/ledger/config
+  matched, and **2,916 tavern geometry preimage cells unchanged**. The protected
+  unmanaged bird is additional. Historical c806ec saved258 and c6cdb7 saved79
+  remain retained; c6 memories are not current 82-resident behavior counts.
+  LIFE013269/canonical6ad3a8 remain unchanged; no permanent-runtime promotion.
+- **Tavern30 is actually installed and initialized.** The matched Core/adapter
+  created 30 real Drowned Rose patrons at **01:07:51.124UTC**. A second initialize
+  at **01:09:03.933UTC** created **zero** and retained the same 30 identities.
+  Their ledger is separate from LIFE. Reserve **X1291..1312/Z−1290..−1269** and
+  preserve the existing cat/bird. Saved 334 proves persistence in the normal-stop
+  archive, not post-restart activity, audio, seating or visual acceptance.
+  Root requested the next server start; actual readiness/reuse requires its own
+  live evidence rather than a stale PID or source claim.
+- **Root controls the current Native/world batch.** Source workers have no
+  competing world/client/restart authority. Earlier leases and failed receipts
+  stay retained; fresh actual roster and an exact delegated lease govern any
+  subsequent worker operation, not a stale client/PID statement here.
 - The earlier candidate64 Bill recipe refusal was clean: two required protection
   hashes were missing, and no resident/world mutation occurred in that attempt.
   The corrected recipe and focused65 receipt/header repair enabled the genuine
   spawn and interaction above. Failed evidence is retained; this was not a
   destructive failure or a rollback of city/player data.
-- Source/docs milestone **PR6** is published through `1adf30e` and `8e30bf7`;
-  later integration remains in Root's source/publication queue. The current
-  source run passed **1,476 tests, two skipped**, pack validation **214** and
-  the JavaScript syntax check. **PR6 CI is still failing**; local source/build
-  checks do not establish remote CI or final release acceptance.
+- **PR6 source/docs are published through86aebe and a28a7ed.** Both exact-head
+  `86aebe` validate checks succeeded; no new-head CI result is inferred. The local
+  source run passed **1,476 tests/two skipped**, pack validation **214** and the
+  JavaScript syntax check. These do not establish final gameplay or release
+  acceptance. The existing compatibility prerelease now contains **14 new
+  standalone component assets +one additive publication-provenance asset**;
+  all 15 remote byte hashes matched. They cover Presentation0.2.3, Living
+  World0.2.0 and experimental MapHorizons1.1.0-awft.2, with source/licences/notices.
+  The unchanged bridge0.6.51 assets are also public. **No candidate65 Prism ZIP
+  or whole-pack release acceptance is claimed**; rendered SeedGen/Xaero parity
+  remains unproved.
 - Incoming **PR13 castle photo/source** (head `3c1dea…`) and **PR14 Operation
   Snowfall preparation** (head
   `74e1c2060789a26a9e7ddf38887ddfb07cbd93a4`) are source/review work. PR14's
@@ -169,12 +235,10 @@ preceding that cohort; it must not be relabelled as a71-resident backup.
 - Bill's actual views are retained under
   `H/logs/visual-review/bill-first-live-1793287109919142600`. They prove only the
   named live observations, not full-town visual or whole-LIFE owner acceptance.
-- [Current Tortuga overhead —52 introductions](../plans/tortuga-living52-20261029/tortuga-living52-verified-overhead.png)
-  retains the verified city/greenery extent and labels39 East/13 West property
-  introductions plus the four newly installed corridor lights. Markers are not
-  live actor positions; the sanitized receipt binds genuine Native completions.
-  The earlier39-only map is retained. West behavior and new night-light artwork
-  remain pending; East aggregate night counts do not qualify the whole52.
+- [Historical Tortuga overhead —71 introductions](../plans/tortuga-living71-20261029/tortuga-living71-verified-overhead.png)
+  marks assigned properties, not live actor positions. The39/52 originals remain
+  retained. Aggregate census, individual photos and the map do not establish
+  whole-population behavior or full-city art acceptance.
 - [Current unfinished projects](UNFINISHED.md) separates source, installed,
   actual-world, visual, multiplayer, restart, official-promotion and owner states.
   The original six-hour deadline passed incomplete. No placement count, map or
@@ -211,15 +275,15 @@ master-issued exclusive lease. A region reservation is not a write lease.
 
 | Resource | Verified identity and current state |
 | --- | --- |
-| Master development checkout | `C:\Users\kkids\Documents\A World for Two`, branch `codex/master-integration`; initial baseline main `3333bc60646cc594093063ed514a3e51246e35b0`. PR6 milestones `1adf30e`/`8e30bf7` published; later candidate64/65 source remains in Root's publication queue. Concurrent work retained. |
+| Master development checkout | `C:\Users\kkids\Documents\A World for Two`, branch `codex/master-integration`; initial baseline main `3333bc60646cc594093063ed514a3e51246e35b0`. PR6 source/docs through `86aebe` and `a28a7ed` are published; exact86aebe CI passed. Further unreviewed source stays held. Concurrent work retained. |
 | Active town construction save | `D:\A World for Two\staging\world-tests\20261027T053650Z-artistic\world\RosewaterArtistic`. This contains the town KG reviewed and the current construction. It is the authoritative construction candidate, not a disposable replacement to regenerate. |
 | Construction runtime home, abbreviated **H** | `D:\A World for Two\staging\world-tests\20261027T053650Z-artistic`; loopback game port **25575**, Control Room **8766**. Its existing settings still say `permanent_world=false` because the native construction tools deliberately admit this private runtime only. |
 | Configured permanent runtime | `D:\A World for Two`, world `world\AWorldForTwo`, game port **25565**, `permanent_world=true`, immutable public candidate.31. It has not received the new town work and must not be overwritten or silently relabelled. Controlled final promotion remains a master-owned integration task. |
-| Latest construction checkpoint | Normal-stop **0d0f5a**, SHA **ab18da166d7166b3e30a6b1bb99473fb9b16f613dab3dfcc11bd3fd557b9aac9**; exact saved census59/59 confirms52villagers+7prior nonvillagers. Saved memories are not live/restart behavior proof. LIFE013269 remains separately linked; canonical custody **6ad3a8 /0ba7ad2097fb52273a37da6a76d8fc030133b79cd26d81b97531d8d74c2546c2** is unchanged. |
-| Installed construction pack | Matching server/client **candidate65 /bridge0.6.51**, bridge SHA `ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632`; pack SHA `671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28`. First live Bill function demonstrated; full gameplay/restart/multiplayer/owner qualification remains separate. |
+| Latest construction checkpoint | Normal-stop **5f7983**, SHA **7753471f6d96cf92fc831c97895628468858d3077450a5aab17708d03f3b937c**; corrected saved audit confirms **396/396:351 LIFE +45 tavern**, enabled AI and retained ownership/ledger identities. Three original Seat/passenger records are saved and their Native reload passed; Smooth-model pose remains visually wrong. This archive has29 prior saplings, not the239 planted later. LIFE013269/canonical6ad3a8 remain unchanged. |
+| Installed construction pack | Matching server/client **private candidate65 baseline +bridge0.6.54/Tavern0.1.10 overlays**; baseline pack SHA `671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28`. Tavern1.11 is pending, not installed. First Bill function and scoped45-patron/three-seat Native reuse are demonstrated; full gameplay, heard audio, multiplayer and owner qualification remain separate. |
 | Previous private runtime evidence | candidate.49 / bridge0.6.35, pack `750dc6e324246300f45649f4d94093c4384576cbb9cce9d247bd8dfaeff55c6c`, produced the32-tree and5-building results saved in306. |
-| Current live window | Java **39244**, birth **1793301377.740292**, restarted and verified empty. Root is the sole world writer; no external lease is active. Source workers have no Native authority. |
-| Client | Existing KG Prism instance `D:\A World for Two\instances\AWFT_Check_20261026_214756`; owned QA client is closed after acknowledged restoration/quit. Actual roster/session evidence still governs admission. |
+| Current live window | Root owns current world operations. Fresh roster/process/session receipts govern runtime authority; this source handoff does not grant a Native lease or assert a current PID. |
+| Client | Existing licensed KG Prism client remains Root-coordinated. Fresh actual roster/session evidence governs admission; merely opening a client does not prove a human session. |
 
 There is deliberately one active construction runtime and one client. Source
 worktrees are permitted; complete extra Minecraft installations/world copies are
@@ -231,11 +295,11 @@ permanent runtime until an actual verified promotion has occurred.
 
 | ID | Owner | Scope | Branch / PR / current handoff |
 | --- | --- | --- | --- |
-| MASTER | **Build It!**, master chat above | Integration, shared files, official/save writes, backups, deployment and final acceptance | `codex/master-integration`; PR6 milestones `1adf30e`/`8e30bf7` published, later64/65 source in Root's publication queue. No external active world lease. |
+| MASTER | **Build It!**, master chat above | Integration, shared files, official/save writes, backups, deployment and final acceptance | `codex/master-integration`; PR6 source/docs through `86aebe`/`a28a7ed` published; standalone component assets verified public. Further source review and runtime leases remain Root-owned. |
 | CITY | Master with internal `grand_harbor_ships` / `south_bank_district` | Whole accepted-footprint pirate city, interiors, roofs, usable routes, outdoor finish and progress maps | East39 actually built; West36+15 structurally accepted; completed63 layers recorded above. Further changes require actual photo/walk findings and a specific Native lease. |
-| LAND-LIFE | Master with internal South/Castle source lanes | Dense eligible south forest, understory, habitats, source protection and measured population ramps | Prior native tree/actor/hive results remain scoped historical captures. Fresh current habitat/census/behavior evidence is required; greenery is separate from living LIFE. No independent internal Native lease. |
+| LAND-LIFE | Master with internal South/Castle source lanes | Dense eligible south forest, understory, habitats, source protection and measured population ramps | **268 ordinary saplings actually planted** through bounded Native checks;29 are in5f and239 were verified later. No mature-tree credit. Prior growth/hive outcomes and failed/held roots remain separate. Current351 habitats/all396 saved managed actors stay protected; next tranche is source-only/RAM-held. No independent Native lease. |
 | CASTLE-PLAZA-BRIDGE | Master; completed external `01a187fe` promenade lease | Castle/wider finish, fountain, drawbridge, landscape and review | Promenade3,247 actually placed/full4,128-verified, released and retained29a970. Existing castle retained; final visual/traversal acceptance open. |
-| LIVING-LIFE | Specialist `01a18473`, Root admission/real-play owner | Native residents, premises, home/job behavior, schedules/dialogue and broader habitats | Bill spawned1, profile acknowledged, custom normal-chat reply and HOME/JOB/work/night-sleep/day-awake observed. Seven retained intents +Bill=8. Remainingnine/24 fixture cells and six wildlife are source-only; fish2 held. Whole LIFE not complete. |
+| LIVING-LIFE | Specialist `01a18473`, Root admission/real-play owner | Native residents, premises, home/job behavior, schedules/dialogue and broader habitats | **105 villagers +246 wildlife =351 LIFE**, plus45 separate tavern patrons, all396 saved in5f.106/118 properties have people;12 empty properties/13 ordinary HOME requirements remain. Three original seats passed scoped Native reload, but Smooth-model pose, Bill natural return and whole-population behavior/audio/multiplayer remain open. |
 | TRANSPORT | **Commission transport and Create**, chat `01a183b6-8091-7453-8f0d-bde8101d7a31` | Railway/station/trains/route/schedules; Hypertubes; western zipline; watermill, press and pneumatic logistics; prepare operation/acceptance tooling | Owned code checkout `C:\Users\kkids\.codex\worktrees\transport-create-commission\A World for Two`, based on3333bc6; branch `codex/transport-create-commission`, PR [#5](https://github.com/Kgray44/a-world-for-two/pull/5), source5cc20c9. [Current deployment handoff](handoffs/TRANSPORT.md). No live lease. |
 | FLEET | **Build historic harbor fleet**, chat `01a183b8-3be2-7f93-8f23-f2e914745038` | Historic ships, explorable belowdecks, harbor/naval mechanics and deployment-ready artifacts | Owned checkout `C:\Users\kkids\.codex\worktrees\historic-harbor-fleet\A World for Two`, branch `codex/historic-harbor-fleet`, based on3333bc6; PR [#3](https://github.com/Kgray44/a-world-for-two/pull/3), checkpoint8994b74. [Initial boundaries](handoffs/FLEET.md). No live lease. |
 | WORLDGEN | **Refine future world generation**, chat `01a183b8-961e-77b3-bf51-077fc8b7a610` | Finish modest future-terrain structure frequency change; preserve generated terrain and SeedGen parity | Owned worktree `worldgen-future-terrain`, branch `codex/worldgen-future-terrain`, base3333bc6; PR [#4](https://github.com/Kgray44/a-world-for-two/pull/4), head6a9679b. Comparing the existing isolated four-set `proposals/future-structure-frequency/`; the broader pre-coordination comparison is held/unselected. No install/test lease. |
@@ -332,16 +396,16 @@ source tests/API probes are not gameplay, graphics or owner approval.
 | Major item | Implemented | Runtime | Visual | Multiplayer | Restart | Official integration | Owner acceptance |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Full pirate city | East39 /West36+15 built | Actual bounded placement/normal/after/map; saved8d3957 | Photo-led fixes applied; full current review pending | Pending current city | Saved; current reuse pending | Pending promotion | **Layout approved**, full art pending |
-| Dense south forest | Partial density/understory | Scoped native outcomes; held failures preserved | Pending full forest | Pending | Saved outcomes; current reuse pending | Pending | Pending |
-| Greenery LIFE | West batches +355/9; Ground3625/Spine716; botanical1769+799+242; Night1702 | These bounded layers actually verified/mapped; Dock320 complete | Current day/night/walk review pending | Pending current extent | Saved8d3957; reuse pending | Pending | Pending |
-| Living LIFE | Installed65 support; first Bill resident function demonstrated/integrated | Spawn1/profile ack/custom normal-chat greeting; actual HOME/JOB/work and night sleep/day awake observed; eight managed intents | Scoped Bill photos; whole population review pending | Pending | Bill save/reload and broader schedule persistence pending | Pending | Whole LIFE pending; not a six-feature-score increment |
+| Dense south forest | Partial canopy;1,330 undergrowth targets plus268 ordinary saplings actually planted | Prior29 +new239 passed Native before/place/normal/after/map;239 receipt records15 complete batches. Zero mature-tree credit; failed/held growth roots preserved | Full mature forest pending | Pending | 5f saves29 prior saplings;239 later actual placements await a new stopped-save audit | Pending | Thousands-scale density/owner acceptance pending |
+| Greenery LIFE | West batches +355/9; Ground3625/Spine716; botanical1769+799+242; Night1702; new471 detail | These bounded layers actually verified/mapped; Dock320 complete | Current day/night/walk review pending | Pending current extent | Saved8d3957; reuse pending | Pending | Pending |
+| Living LIFE | Installed65 private bridge54/Tavern1.10;105 villagers +246 wildlife =351 LIFE | Saved5f proves all351 LIFE +45 tavern =396, with enabled AI/ownership/identities retained | Scoped Bill/West/tavern evidence; Smooth-model standing defect persists;1.11 pending | Pending | Three original Seat/passenger records saved and same-seat Native reload passed; broader natural behavior/reuse remains pending | Pending | 106/118 populated;12 empty/13 ordinary HOME requirements; whole LIFE pending |
 | Castle/wider settlement | Existing construction plus promenade3,247 | Promenade full4,128-verified, released and saved29a970 | Final rooms/facades/access/light review pending | Pending final | Saved promenade; current reuse pending | Pending | Earlier areas only; whole castle finish pending |
 | Fountain | Prior real pump/four-flow/STOP-drain/reopen and placed ornament | Scoped earlier results | Final balanced artwork pending | Pending | Current controls/reuse pending | Pending | Pending centerpiece |
 | Drawbridge | Moving bridge and ornament placed | Earlier real55° cycles retained | Current finish/view/clearance review pending | Pending current | Current cycles/restart pending | Pending | Pending full result |
 | Hypertubes and KG zipline | Installed and owner-used | **Owner-accepted complete**; preserve KG work | Accepted named installations | Broader coverage separate | Broader coverage separate | Pending controlled promotion | **Complete** |
 | Train and Create processing | Infrastructure; eight dry shops80 installed | Real journey/recipes/transfer/STOP not yet qualified; Keel water held | Current player-use views pending | Pending | Operational reuse pending | Pending | Pending |
 | Fleet/harbor/sailing | Six vessels; earlier furnishings; Mercy old171 plus new62/109 | Static placement verified; Mercy7419dry/original14tags pass; real sailing unproved | New Mercy/fleet walks and photos pending | Pending | Current boarding/use/reload pending | Pending | Pending |
-| Final pack, DH/SeedGen/maps/performance | Matching65 installed; historical pre64 source suite1,471 OK/two skipped, five receipt checks and Java21 build64 pass | Current Bill function demonstrated; strict parity/full gameplay still open | Current final pending | Historical two-player only | Final qualification pending | Public31 only | Pending final |
+| Final pack, DH/SeedGen/maps/performance | Matching65 baseline/privateCore+tavern overlay installed; source1,476/two skipped, pack214/node pass; exact86aebe CI green | Scoped resident function; rendered SeedGen/Xaero parity/full gameplay open | Current final pending | Historical two-player only | Final qualification pending | Public31 pack +standalone bridge/three candidate components; no65 Prism release | Pending final |
 
 Outstanding whole-project criteria include every original requested feature or an
 explicitly accepted documented limitation, real two-player travel/gameplay and
@@ -371,7 +435,7 @@ Candidate53 (bridge0.6.39) is online on Java45036, owned by Control Room Python2
 
 Actual Pippin native inspect b47716ad passed. One explicitly reviewed move828ecf11 invoked the genuine native clone once and returned320, then failed its destination state/survival check. Original uninvoked intent/quarantine and the new invoked intent/quarantine are preserved. All owned tickets/futures cleaned up. NEVER replay/refund this move or create a fictitious completion. A read-only native verification e2bb7e51 passes seven moved furniture/storage identities and supplied inventory checks; full typed/all-slot conservation remains pending. The complete320-state check identifies exactly two MCW window quarters whose native adjacency changed to bottom/top when the external partner pair was omitted. Any independent ordinary window completion needs exact actual-before admission; source gates are not weakened.
 
-Western fifteen-building muted-roof/architectural-depth packet is frozen. Group1 (five existing houses) has genuine before16865fa0, placebc558b20 and normal-settlec54758de. Full verification9b5b1233 reports four dynamic MCW top-roof end parts; source owner is independently deriving them from the pinned native shape algorithm and full physical context. Groups2/3 are untouched. Do not call all15 finished, move existing inventories or replay group1 placement.
+Western fifteen-building muted-roof/architectural-depth packet is frozen. Group1 (five existing houses) has genuine before16865fa0, placebc558b20 and normal-settlec54758de. Full verification9b5b1233 reports four dynamic MCW top-roof end parts; source owner is independently deriving them from the pinned native shape algorithm and full physical context. Groups2/3 are untouched. Do not call all 15 finished, move existing inventories or replay group1 placement.
 
 Master source integrated Control Room quiet initial job history, real53 controller recovery documentation, and frozen transport proposals through3a8ec221. Master branch pushed at e3d6562; main, release and official-world promotion remain pending. Significant forest/LIFE activity remains paused behind complete Pirate City architecture. Actual Minecraft artistic screenshots of the32 new buildings/current refinements are still required.
 

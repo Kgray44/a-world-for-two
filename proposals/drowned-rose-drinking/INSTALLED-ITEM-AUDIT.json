@@ -1,0 +1,66 @@
+{
+  "source_only": true,
+  "offline_installed_JAR_audit": true,
+  "inputs": [
+    {
+      "name": "FarmersDelight-1.21.1-1.3.4.jar",
+      "bytes": 3160490,
+      "sha256": "139ad7696462c89c03eea463f805abffa552526c5dadaadae221dd9624cb197c"
+    },
+    {
+      "name": "letsdo-farm_and_charm-neoforge-1.1.29.jar",
+      "bytes": 3414667,
+      "sha256": "cf5e8db36245a2d0644df364151b2b19494b4620a1b82d9e3d20eb62c1253f5f"
+    },
+    {
+      "name": "letsdo-vinery-neoforge-1.5.6.jar",
+      "bytes": 2570708,
+      "sha256": "7e5e4e901a599a499bd510490ec12e72e8547e53b61790778fa7848852c451ec"
+    },
+    {
+      "name": "handcrafted-neoforge-1.21.1-4.0.3.jar",
+      "bytes": 7132842,
+      "sha256": "6f2a776fb28ed07d370899814e5e711fbeebe31396097d78a3b550439b364948"
+    },
+    {
+      "name": "easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "bytes": 3038455,
+      "sha256": "b9ff47febbc3d2d5f2b8785e94178174e8eeb9d24e4fcb7a1d33c3770af4d823"
+    },
+    {
+      "embedded_in": "letsdo-farm_and_charm-neoforge-1.1.29.jar",
+      "name": "META-INF/jars/foundation-neoforge-1.0.7.jar",
+      "bytes": 627258,
+      "sha256": "4251e639c1bfc537e5538df792de082586f91fbb7b5d258dcd4258d3b5092b42"
+    }
+  ],
+  "recommended_registry_ids": [
+    "farmersdelight:apple_cider",
+    "farmersdelight:hot_cocoa"
+  ],
+  "native_item_class": "vectorwing.farmersdelight.common.item.DrinkableItem",
+  "native_use_animation": "DRINK",
+  "native_use_duration_ticks": 32,
+  "mug_model_parent": "farmersdelight:item/mug",
+  "model_parent_is_NOT_registry_item": true,
+  "mug_model": "generated item sprite with built-in third-person mug hand transforms; not newly authored 3D tankard",
+  "farm_charm_cups": [
+    "farm_and_charm:strawberry_tea_cup",
+    "farm_and_charm:nettle_tea_cup",
+    "farm_and_charm:ribwort_tea_cup"
+  ],
+  "farm_charm_class": "net.satisfy.foundation.food.EffectDrinkItem",
+  "farm_charm_native_use_animation": "DRINK",
+  "vinery_drink_chain": [
+    "net.satisfy.vinery.core.item.DrinkBlockItem",
+    "net.satisfy.foundation.food.PlaceableDrinkItem"
+  ],
+  "vinery_native_use_animation": "DRINK",
+  "handcrafted_cup_class": "net.minecraft.world.item.BlockItem",
+  "handcrafted_empty_cups_NOT_functional_drinks": true,
+  "EasyNPC7_17_1_DRINK_arm_branch": "absent; actual switch falls through to DEFAULT",
+  "current_startUsingItem_not_visible_sip_proof": true,
+  "gameplay_item_completion_Mob_effects_container_and_audio": "NOT_VERIFIED",
+  "client_mixin_application_and_visible_mouth_placement": "NOT_VERIFIED",
+  "native_world_runtime_installs_or_version_changes": 0
+}

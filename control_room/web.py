@@ -40,6 +40,7 @@ from .players import Players, profile
 from .server import Server
 from .settings import Settings
 from .storage import Storage
+from .tavern import Tavern
 
 
 class Application:
@@ -67,6 +68,7 @@ class Application:
         self.cinematics = Cinematics(self.layout, self.storage, self.server, self.players, self.metrics.latest)
         self.graphics = Graphics(self.layout, self.storage)
         self.characters = Characters(self.layout, self.storage)
+        self.tavern = Tavern(self.layout.home, self.server.command)
         self.playit = Playit()
         self.token = secrets.token_urlsafe(32)
 
@@ -173,6 +175,8 @@ class Application:
         return content.getvalue()
 
     def get(self, path, query):
+        if path == '/api/tavern':
+            return self.tavern.snapshot()
         first = lambda name, default="": query.get(name, [default])[0]
         routes = {
             "/api/bootstrap": lambda: {"app_id": "awft-control-room", "home": str(self.layout.home), "csrf": self.token, "version": __version__,
@@ -232,6 +236,8 @@ class Application:
 
     def post(self, path, body):
         job = lambda title, function, *args: self.jobs.submit(title, function, *args)
+        if path == '/api/tavern/control':
+            return self.tavern.control(body)
         if path.startswith('/api/characters/'):
             return self.character_action(path, body)
         if path == '/api/cinematics/settings':

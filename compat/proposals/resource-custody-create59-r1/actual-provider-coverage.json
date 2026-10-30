@@ -1,0 +1,26 @@
+{
+  "actual_opened_headers": 390,
+  "distinct_classes": {
+    "net.minecraft.server.packs.PathPackResources": 377,
+    "net.minecraft.server.packs.VanillaPackResources": 1,
+    "net.neoforged.neoforge.resource.EmptyPackResources": 1,
+    "net.minecraft.server.packs.CompositePackResources": 4,
+    "com.yungnickyoung.minecraft.yungsapi.world.structure.locate.LocateReplacerDataPackResources": 1,
+    "net.mehvahdjukaar.moonlight.api.resources.pack.CachePathPackResources": 1,
+    "net.mehvahdjukaar.moonlight.api.resources.pack.InMemoryPackResources": 1,
+    "com.tacz.guns.resource.GunPackLoader$1": 1,
+    "com.simibubi.create.foundation.pack.DynamicPack": 1,
+    "plus.dragons.createdragonsplus.data.runtime.RuntimePackResources": 2
+  },
+  "sole_uncovered_class": "com.simibubi.create.foundation.pack.DynamicPack",
+  "custom_order": {
+    "tacz_resources": 248,
+    "create:dynamic_data": 249,
+    "create_dragons_plus:runtime": 250,
+    "create_central_kitchen:runtime": 251
+  },
+  "cdp_native_traversal_pending": true,
+  "actual_private_witness_sha256": "a6610f1fba2b72e64c10f94d42631af183b21e5f2edbc63cbfe9b345dc4627e3",
+  "no_other_unknown_selected_class_observed": true,
+  "not_a_future_universal_provider_claim": true
+}

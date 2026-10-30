@@ -1,0 +1,86 @@
+--- 57/NativeTreePatchSupport.java
++++ 58/NativeTreePatchSupport.java
+@@ -78,7 +78,8 @@
+     private final Set<String> patchIds=new HashSet<>();
+     private final Set<BlockPos> heldRoots=new HashSet<>(),approvedFoliage=new HashSet<>();
+     private final Set<String> leafIds=new HashSet<>();
+-    private boolean naturalCanopyReviewed,naturalCanopyRoot;
++    private boolean naturalCanopyReviewed,naturalCanopyRoot,ownedPreplantedReviewed,ownedPreplantedRoot;
++    private Set<BlockState> ownedPreplantedOutputs=Set.of();
+     private Set<BlockState> naturalTreeOutputs=Set.of();
+     private final Set<Long> eligibleColumns=new HashSet<>();
+     private int rootIndex,captureCursor;
+@@ -149,6 +150,7 @@
+             ||!ready.get("bare_patch_construction_clearance_reviewed").getAsBoolean())
+             throw new IllegalStateException("Exact parent-reviewed bare patch/live-capture authority required; not whole-town art acceptance");
+         naturalCanopyReviewed=optionalFlag(ready,"allow_natural_leaf_to_descriptor_tree_materials");
++        ownedPreplantedReviewed=optionalFlag(ready,"allow_owned_preplanted_saplings")&&optionalFlag(ready,"owned_planting_provenance_reviewed");
+         JsonObject mask=read(ref("protection"),MAX_INPUT);
+         if(!mask.get("seed").getAsString().equals(plan.get("seed").getAsString())
+             ||!mask.get("world_path").getAsString().equals(plan.get("world_path").getAsString())
+@@ -200,6 +202,12 @@
+             for(int x=write[0];x<=write[3];x++)for(int z=write[2];z<=write[5];z++)
+                 if(protectedColumns.contains(TreeGrowthScope.column(x,z)))throw new IllegalStateException("Preserve full architecture/AIR/path/flight/flow/view masks");
+             parse(row.get("expected_root").getAsString());parse(row.get("expected_soil").getAsString());
++            if(optionalFlag(row,"allow_owned_preplanted_sapling")){
++                BlockState recorded=parse(row.get("expected_root").getAsString());Block selected=BuiltInRegistries.BLOCK.get(ResourceLocation.parse(row.get("sapling").getAsString()));
++                if(!ownedPreplantedReviewed||recorded.getBlock()!=selected||!(selected instanceof SaplingBlock)||!recorded.hasProperty(SaplingBlock.STAGE)
++                    ||recorded.hasBlockEntity()||!recorded.getFluidState().isEmpty()||recorded.is(BlockTags.LOGS))
++                    throw new IllegalStateException("Exact reviewed owned preplanted sapling state/species required");
++            }
+             boolean leafOnly=literalFlag(row,"allow_native_leaf_to_leaf_only"),treeMaterials=optionalFlag(row,"allow_natural_leaf_to_native_tree_materials");
+             if(leafOnly==treeMaterials||treeMaterials&&!naturalCanopyReviewed)
+                 throw new IllegalStateException("Exactly one reviewed leaf-only or explicit natural-tree-material mode required");
+@@ -245,6 +253,7 @@
+         rootPlan=patchRoots.get(rootIndex);rootId=rootPlan.get("id").getAsString();currentSaplingId=rootPlan.get("sapling").getAsString();
+         qualification=rootPlan.getAsJsonObject("qualification");JsonArray p=rootPlan.getAsJsonArray("root");
+         naturalCanopyRoot=optionalFlag(rootPlan,"allow_natural_leaf_to_native_tree_materials");naturalTreeOutputs=Set.of();
++        ownedPreplantedRoot=optionalFlag(rootPlan,"allow_owned_preplanted_sapling");ownedPreplantedOutputs=Set.of();
+         if(naturalCanopyRoot){
+             JsonObject descriptor=descriptors.get(currentSaplingId);
+             if(!sha(JSON.toJson(sorted(descriptor)).getBytes(StandardCharsets.UTF_8)).equals(qualification.get("native_descriptor_sha256").getAsString()))
+@@ -252,6 +261,14 @@
+             naturalTreeOutputs=qualifiedNaturalTreeOutputs(descriptor);
+         }
+         root=new BlockPos(p.get(0).getAsInt(),p.get(1).getAsInt(),p.get(2).getAsInt());sapling=BuiltInRegistries.BLOCK.get(ResourceLocation.parse(currentSaplingId)).defaultBlockState();
++        if(ownedPreplantedRoot){
++            JsonObject descriptor=descriptors.get(currentSaplingId);
++            if(!sha(JSON.toJson(sorted(descriptor)).getBytes(StandardCharsets.UTF_8)).equals(qualification.get("native_descriptor_sha256").getAsString()))
++                throw new IllegalStateException("Owned root outputs require the exact sealed native feature descriptor");
++            Set<BlockState> outputs=new HashSet<>(qualifiedNaturalTreeOutputs(descriptor));BlockState recorded=parse(rootPlan.get("expected_root").getAsString());
++            outputs.add(Blocks.AIR.defaultBlockState());outputs.add(recorded.setValue(SaplingBlock.STAGE,0));outputs.add(recorded.setValue(SaplingBlock.STAGE,1));
++            ownedPreplantedOutputs=TreeGrowthScope.snapshotSet(outputs);
++        }
+         int[] write=box(rootPlan.getAsJsonArray("write_bounds"));knownBounds=box(rootPlan.getAsJsonArray("known_bounds"));
+         writeBounds=new AABB(write[0],write[1],write[2],write[3]+1,write[4]+1,write[5]+1);
+         before.clear();approvedFoliage.clear();leafIds.clear();chunks.clear();capturedSha=capturedName=null;captureCursor=0;mutated=false;rolls=successRolls=performCalls=0;
+@@ -439,7 +456,9 @@
+             if(mutated||worldResidual)quarantine(auditInitializationFailure);
+             throw new IllegalStateException("Native bee audit initialization failed before this growth's owned setter",auditInitializationFailure);
+         }
+-        TreeGrowthScope scope=naturalCanopyRoot?new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage,naturalTreeOutputs)
++        TreeGrowthScope scope=ownedPreplantedRoot?new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage,
++                naturalCanopyRoot?naturalTreeOutputs:Set.of(),root,parse(rootPlan.get("expected_root").getAsString()),ownedPreplantedOutputs)
++            :naturalCanopyRoot?new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage,naturalTreeOutputs)
+             :new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage);
+         try{
+             report.put("this_growth_owned_setter_invoked",false);
+@@ -457,12 +476,16 @@
+             scope.hookWitness(root);
+             rootIntent(); // durable native field/intent precedes the first physical setter
+             // Set before invocation: a native setter may throw after a partial physical write.
+-            report.put("this_growth_owned_setter_invoked",true);
+-            mutated=true;anyMutated=true;if(!level.setBlock(root,sapling,3))throw new IllegalStateException("Native sapling placement refused");
++            if(!ownedPreplantedRoot){
++                report.put("this_growth_owned_setter_invoked",true);
++                mutated=true;anyMutated=true;if(!level.setBlock(root,sapling,3))throw new IllegalStateException("Native sapling placement refused");
++            } // A pre-existing root keeps its actual stage; no reset or AIR workaround.
++            report.put("owned_preplanted_sapling",ownedPreplantedRoot);
+             for(int n=0;n<MAX_ATTEMPTS;n++){
+                 BlockState current=level.getBlockState(root);if(current.getBlock()!=sapling.getBlock())break;
+                 BonemealableBlock target=(BonemealableBlock)current.getBlock();if(!target.isValidBonemealTarget(level,root,current))throw new IllegalStateException("Native bonemeal target refused");
+                 rolls++;if(!target.isBonemealSuccess(level,level.random,root,current))continue;successRolls++;
++                if(ownedPreplantedRoot){report.put("this_growth_owned_setter_invoked",true);mutated=true;anyMutated=true;}
+                 int stage=current.getValue(SaplingBlock.STAGE);target.performBonemeal(level,level.random,root,current);performCalls++;
+                 if(scope.violation!=null)throw new IllegalStateException(scope.violation);
+                 BlockState next=level.getBlockState(root);if(stage==1&&next.getBlock()==sapling.getBlock())throw new IllegalStateException("Native feature did not grow; do not select another variant by repeated forcing");

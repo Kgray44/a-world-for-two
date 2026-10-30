@@ -1,0 +1,131 @@
+{
+  "format": "awft-amendments55-exact-native-api:1",
+  "observed_error": {
+    "client_bridge": "0.6.54",
+    "at_UTC": "2026-10-30T06:41:40Z",
+    "class": "net.mehvahdjukaar.moonlight.api.resources.pack.InMemoryPackResources",
+    "pack": "amendments:generated_server_pack",
+    "result": "Strict custody refusal followed by server rejection;no parity success"
+  },
+  "native_artifacts": [
+    {
+      "filename": "moonlight-1.21.1-3.7.2-neoforge.jar",
+      "bytes": 2299162,
+      "sha256": "4a9f15108607cc70273f8a0b6eb24e1e99af8eef44bc3ae8681767ca7ce21b0f"
+    },
+    {
+      "filename": "amendments-1.21-2.2.2-neoforge.jar",
+      "bytes": 1187127,
+      "sha256": "9c48c7c6ec4f743a4eb4c8e80473c7204e6632287b2c5bfeb370be27482618dc"
+    }
+  ],
+  "classes": [
+    {
+      "class": "net/mehvahdjukaar/moonlight/api/resources/pack/InMemoryPackResources.class",
+      "bytes": 11654,
+      "sha256": "5c90d2b2db7661e9c04be3f5d6c35441235e9c3dc0af24a08622b51ea1aa3b06",
+      "superclass": "net/minecraft/server/packs/AbstractPackResources",
+      "methods": [
+        {
+          "name": "<init>",
+          "descriptor": "(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/PackType;)V",
+          "code_bytes": 8,
+          "code_sha256": "69bba4fd98fbffa96f60ea5c7792d443e74aa9baf54036c18101c5170e10a141"
+        },
+        {
+          "name": "<init>",
+          "descriptor": "(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/PackType;Z)V",
+          "code_bytes": 91,
+          "code_sha256": "268f3f262228afc3edfec409904abdcca3f1198461a594ec046586b6cd2d2bb1"
+        },
+        {
+          "name": "getNamespaces",
+          "descriptor": "(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;",
+          "code_bytes": 17,
+          "code_sha256": "dc685c3eecde8ad847c4f988fab40646e85439fe628996dc4c9274b36289bae2"
+        },
+        {
+          "name": "getMetadataSection",
+          "descriptor": "(Lnet/minecraft/server/packs/metadata/MetadataSectionSerializer;)Ljava/lang/Object;",
+          "code_bytes": 19,
+          "code_sha256": "af1f6da8b487400d20c4cbcbc455d5ce8765f2ed22de414b763d925f030ac5cd"
+        },
+        {
+          "name": "getRootResource",
+          "descriptor": "([Ljava/lang/String;)Lnet/minecraft/server/packs/resources/IoSupplier;",
+          "code_bytes": 36,
+          "code_sha256": "292b711b35586122bf2ac8065fda3210411ef94c72cf839f8c8a4e0b0f0f8f88"
+        },
+        {
+          "name": "listResources",
+          "descriptor": "(Lnet/minecraft/server/packs/PackType;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V",
+          "code_bytes": 55,
+          "code_sha256": "ed7f9987623dd76ceee38716681280d1a704007ade7468ed43b2b49134115824"
+        },
+        {
+          "name": "getResource",
+          "descriptor": "(Lnet/minecraft/server/packs/PackType;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/server/packs/resources/IoSupplier;",
+          "code_bytes": 29,
+          "code_sha256": "0c148508c621d4a3947f39d9501eee75bf7a72e4c27fb8965bd959f7921f305e"
+        },
+        {
+          "name": "addResource",
+          "descriptor": "(Lnet/minecraft/resources/ResourceLocation;[B)V",
+          "code_bytes": 51,
+          "code_sha256": "099c61b0ec1f4bbad3ee2710bde05e5df697dff54d5a7566ae3fc530d8aeb536"
+        },
+        {
+          "name": "clearAllResources",
+          "descriptor": "()Z",
+          "code_bytes": 41,
+          "code_sha256": "710a26089bb5d5a38f697edad6428d531f2133c6c9ea4381eda63e23f808931f"
+        }
+      ]
+    },
+    {
+      "class": "net/mehvahdjukaar/moonlight/api/misc/ResourceLocationSearchTrie.class",
+      "bytes": 2857,
+      "sha256": "c0ca41f03ea10925bbfb88d0675fe760ba067a36f53a17ad3ef212e18e44d843",
+      "superclass": "net/mehvahdjukaar/moonlight/api/misc/PathSearchTrie",
+      "methods": [
+        {
+          "name": "<init>",
+          "descriptor": "()V",
+          "code_bytes": 5,
+          "code_sha256": "d6f7264189858f154b120ac2e9b76f4b4dae9ddb629e4ec627af7810207e1a24"
+        }
+      ]
+    },
+    {
+      "class": "net/mehvahdjukaar/amendments/common/WallLanternServerResources.class",
+      "bytes": 9314,
+      "sha256": "cea6d14a849b6183b5abcba3190eae3085ab495cce2a03dcaa00c4d4cb182b04",
+      "superclass": "net/mehvahdjukaar/moonlight/api/resources/pack/DynamicServerResourceProvider",
+      "methods": [
+        {
+          "name": "<init>",
+          "descriptor": "()V",
+          "code_bytes": 13,
+          "code_sha256": "b19682ec9407686f69e26ac8330d0da9f253b12714947542f818578766bb4c63"
+        },
+        {
+          "name": "regenerateDynamicAssets",
+          "descriptor": "(Ljava/util/function/Consumer;)V",
+          "code_bytes": 12,
+          "code_sha256": "eb315f76c19c5c735d36bff13fcf39e4bb3c7f5ac3de3554c97d1acf737788cd"
+        }
+      ]
+    }
+  ],
+  "duplicate_listing_semantics": "Native addResource overwrites map value and appends trie ID;every callback byte-checked and unique coverage compared with original raw keys",
+  "bounds": {
+    "data_keys_and_callbacks": 65536,
+    "roots_and_namespaces": 4096,
+    "per_resource_bytes": 33554432,
+    "combined_raw_map_bytes": 67108864,
+    "native_read_bytes": 201326592,
+    "whole_capture_deadline_seconds_unchanged": 60,
+    "whole_capture_bytes_unchanged": 536870912
+  },
+  "upstream_source_classes_or_assets_copied": false
+}

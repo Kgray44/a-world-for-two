@@ -1,0 +1,77 @@
+--- bridge57-resource/LithostitchedSeedgenResources.java
++++ bridge59-resource/LithostitchedSeedgenResources.java
+@@ -76,7 +76,7 @@
+                 out.resource(id.toString(),resource::open);
+             }
+         }
+-        for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();for(var view:out.taczViews)view.unchanged();for(var view:out.runtimeViews)runtimeUnchanged(view,out);
++        for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();for(var view:out.taczViews)view.unchanged();for(var view:out.runtimeViews)runtimeUnchanged(view,out);for(var view:out.createViews)createUnchanged(view,out);
+         return new Attestation(identities,HexFormat.of().formatHex(out.digest.digest()),out.entries,out.bytes);
+     }
+     /** The native listing is cross-checked against a strict finite root walk:
+@@ -98,10 +98,10 @@
+             // One exact native dynamic provider is inventoried through its own API.
+             var runtimeIds=YungLocatePackCustody.matches(pack)?YungLocatePackCustody.inventory(pack):null;
+             var moonlight=MoonlightCachePackCustody.matches(pack)?MoonlightCachePackCustody.inspect(pack):null;
+-            if(moonlight!=null)out.cachedViews.add(moonlight);var memory=MoonlightInMemoryPackCustody.matches(pack)?MoonlightInMemoryPackCustody.inspect(pack,out.deadline):null;if(memory!=null)out.memoryViews.add(memory);var delegating=GeneratedServerPackCustody.tacz(pack)?GeneratedServerPackCustody.inspectTacz(pack,out.deadline):null;var generated=GeneratedServerPackCustody.runtime(pack)?GeneratedServerPackCustody.inspectRuntime(pack,out.deadline):null;if(delegating!=null)out.taczViews.add(delegating);if(generated!=null)out.runtimeViews.add(generated);
++            if(moonlight!=null)out.cachedViews.add(moonlight);var memory=MoonlightInMemoryPackCustody.matches(pack)?MoonlightInMemoryPackCustody.inspect(pack,out.deadline):null;if(memory!=null)out.memoryViews.add(memory);var delegating=GeneratedServerPackCustody.tacz(pack)?GeneratedServerPackCustody.inspectTacz(pack,out.deadline):null;var generated=GeneratedServerPackCustody.runtime(pack)?GeneratedServerPackCustody.inspectRuntime(pack,out.deadline):null;if(delegating!=null)out.taczViews.add(delegating);if(generated!=null)out.runtimeViews.add(generated);var create=CreateDynamicPackCustody.matches(pack)?CreateDynamicPackCustody.inspect(pack,out.deadline):null;if(create!=null)out.createViews.add(create);
+             // An unknown subclass could override any listed/read resource method.
+             if(type!=PathPackResources.class&&type!=VanillaPackResources.class&&type!=CompositePackResources.class
+-                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null&&memory==null&&delegating==null&&generated==null)
++                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null&&memory==null&&delegating==null&&generated==null&&create==null)
+                 throw new IOException("Unsupported actual PackResources implementation: "+type.getName()+" pack="+pack.packId());
+             // Check that a file-backed native pack is actually open, rather than
+             // allowing its logged failed-open path to masquerade as an empty pack.
+@@ -165,7 +165,7 @@
+                 for(var entry:directories.entrySet())for(String dir:entry.getValue())pack.listResources(PackType.SERVER_DATA,entry.getKey(),dir,collect);
+                 if(!ids.equals(nested))throw new IOException("Native file resource inventory is incomplete");
+                 ids.addAll(expected);
+-            }else if(generated!=null){runtimeInventory(generated,out,ids);}else if(moonlight!=null||memory!=null) {
++            }else if(create!=null){createInventory(create,out,ids);}else if(generated!=null){runtimeInventory(generated,out,ids);}else if(moonlight!=null||memory!=null) {
+                 if(moonlight!=null)moonlightInventory(pack,moonlight,out,ids,rawNames);else memoryInventory(pack,memory,out,ids);
+             }else if(runtimeIds!=null) {
+                 ids.addAll(runtimeIds);
+@@ -188,9 +188,9 @@
+                 boolean parserRejected=FileUtil.decomposePath(id.getPath()).error().isPresent();
+                 readable.put(id,source!=null);
+                 out.text("native-selected-readability");out.text(id.toString());out.number(parserRejected?1:0);out.number(source==null?0:1);
+-                String selectedHash=out.resource(id.toString(),source);if(generated!=null&&!java.util.Objects.equals(generated.selectedHashes.get(id),selectedHash))throw new IOException("Native runtime listed/selected bytes differ");
+-            }
+-            if(moonlight!=null)moonlight.unchanged();if(memory!=null)memory.unchanged();if(delegating!=null)delegating.unchanged();if(generated!=null)runtimeUnchanged(generated,out);
++                String selectedHash=out.resource(id.toString(),source);if(generated!=null&&!java.util.Objects.equals(generated.selectedHashes.get(id),selectedHash))throw new IOException("Native runtime listed/selected bytes differ");if(create!=null&&!java.util.Objects.equals(create.selectedHashes.get(id),selectedHash))throw new IOException("Native Create original/selected bytes differ");
++            }
++            if(moonlight!=null)moonlight.unchanged();if(memory!=null)memory.unchanged();if(delegating!=null)delegating.unchanged();if(generated!=null)runtimeUnchanged(generated,out);if(create!=null)createUnchanged(create,out);
+             return new Inventory(ids,Map.copyOf(readable));
+         }catch(IOException failure){throw failure;}
+         catch(UncheckedIOException failure){throw failure.getCause();}
+@@ -400,7 +400,7 @@
+         }
+     }
+     private static final class Accumulator {
+-        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();final ArrayList<MoonlightInMemoryPackCustody.View> memoryViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.TaczView> taczViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.RuntimeView> runtimeViews=new ArrayList<>();
++        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();final ArrayList<MoonlightInMemoryPackCustody.View> memoryViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.TaczView> taczViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.RuntimeView> runtimeViews=new ArrayList<>();final ArrayList<CreateDynamicPackCustody.View> createViews=new ArrayList<>();
+         final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;
+         void visit()throws IOException {
+             if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw new IOException("Native server-data inventory exceeded its finite traversal bound");
+@@ -474,4 +474,21 @@
+         }
+         view.unchanged();
+     }
++    /** Complete Create map bytes, including namespace-root files the native empty query misses. */
++    private static void createInventory(CreateDynamicPackCustody.View view,Accumulator out,TreeSet<ResourceLocation> ids)throws IOException {
++        out.text("native-Create-dynamic-map:1");out.text(view.metadata);out.number(view.raw().size());
++        for(var entry:new TreeMap<>(view.raw()).entrySet())
++            view.rawHashes.put(entry.getKey(),out.resource("native-Create-raw/"+entry.getKey(),entry.getValue()));
++        ids.addAll(view.ids());
++        for(var id:ids)view.selectedHashes.put(id,out.resource("native-Create-original/"+id,view.listedOrDirect(id)));
++        view.unchanged();
++    }
++    private static void createUnchanged(CreateDynamicPackCustody.View view,Accumulator out)throws IOException {
++        view.unchanged();
++        for(var entry:view.rawHashes.entrySet()) {
++            String actual=out.resource("native-Create-stable/"+entry.getKey(),view.raw().get(entry.getKey()));
++            if(!java.util.Objects.equals(entry.getValue(),actual))throw new IOException("Native Create bytes changed during custody");
++        }
++        view.unchanged();
++    }
+ }

@@ -1,0 +1,306 @@
+{
+  "format": "awft-private-runtime-overlays:1",
+  "base_pack_version": "0.1.0-candidate.65",
+  "public_pack_mod_count": 214,
+  "publication": "Private matched server/client qualification overlay; not a published Prism release",
+  "mods": [
+    {
+      "id": "easy-npc-core",
+      "name": "Easy NPC Core",
+      "version": "7.17.1",
+      "side": "both",
+      "minecraft": "1.21.1",
+      "loader": "neoforge",
+      "project_id": "Epm6R3P2",
+      "version_id": "QyvBBoEd",
+      "filename": "easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "bytes": 3038455,
+      "sha256": "b9ff47febbc3d2d5f2b8785e94178174e8eeb9d24e4fcb7a1d33c3770af4d823",
+      "source": "https://modrinth.com/mod/easy-npc-core/version/QyvBBoEd",
+      "status": "Integrated but awaiting runtime validation",
+      "verified": [
+        "Matching private server/client Easy NPC Core7.17.1 bytes",
+        "Historical dedicated server startup and original30 client rendering",
+        "Independent f7e43f saved census:351 LIFE plus45 EasyNPC identities=396 actors",
+        "All45 current roster identities saved once, AI enabled, ownership and skin fields preserved",
+        "Latest independent2ed349 saved census:352 LIFE plus45 EasyNPC identities=397 actors, all NoAI0"
+      ],
+      "pending": [
+        "Current matched Tavern0.1.14 final rendering and behavior",
+        "Native clear/blocked dismount, sipping and instrument poses",
+        "Multiplayer",
+        "Release integration"
+      ]
+    },
+    {
+      "id": "awft-tavern",
+      "name": "A World for Two: Drowned Rose",
+      "version": "0.1.14",
+      "side": "both",
+      "minecraft": "1.21.1",
+      "loader": "neoforge",
+      "filename": "awft-tavern-0.1.14.jar",
+      "bytes": 112495,
+      "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854",
+      "source": "proposals/drowned-rose/",
+      "license": "MIT",
+      "required_dependencies": [
+        "easy-npc-core 7.17.1",
+        "Immersive Melodies 0.8.0",
+        "Handcrafted 4.0.3",
+        "Resourceful Lib 3.0.12",
+        "Farmer's Delight 1.3.4"
+      ],
+      "optional_dependencies": [
+        "Easy NPC Config UI 7.17.1"
+      ],
+      "status": "Matched installed; startup crashed before join, current client rendering and behavior unqualified",
+      "verified": [
+        "Matched private client/server0.1.14 installed at2026-10-30T12:15:22Z with bridge0.6.61; release-excluded QA0.1.10 retained; not runtime acceptance",
+        "Independent2ed349 normal-stop census saves all45 roster-ledger actors and352 LIFE actors exactly once, all NoAI0",
+        "Independent f7e43f normal-stop save preserves all45 roster actors and351 LIFE actors, all NoAI0",
+        "Original identities including Oona Kelp and Niamh Wick saved once; no remaining identity-recovery hold",
+        "Four actual client musicians had existing active native playback progress and recent notes under0.1.10; audio was not heard or recorded",
+        "Historical0.1.12 actual seat and band pixels plus four native note observations are proven; not current0.1.14 micro/sip or heard-audio acceptance"
+      ],
+      "pending": [
+        "Native0.1.14 client startup, final micro/sip and Smooth model seating/instrument rendering",
+        "Native clear/blocked dismount and subsequent walking",
+        "Heard music, complete ensemble cycle and two-client synchronization",
+        "Current restart/reload behavior and measured performance",
+        "Public artifact pin and release integration"
+      ],
+      "public_download_url": null
+    },
+    {
+      "id": "awft-control-bridge",
+      "name": "A World for Two Control Bridge private DH/resource custody and canopy repair",
+      "version": "0.6.61",
+      "side": "both",
+      "minecraft": "1.21.1",
+      "loader": "neoforge",
+      "filename": "awft-control-bridge-0.6.61.jar",
+      "bytes": 788213,
+      "sha256": "6998d96b1226c68004ddc28a0827e8bfe99562eba2af1e0a68de93b01c513b12",
+      "source": "compat/proposals/cdp-native-cache61-r1/",
+      "status": "Matched installed; focused native-class cache probe qualified, current client resource/parity trial has not reached join",
+      "verified": [
+        "Matched private client/server0.6.61 installed at2026-10-30T12:15:22Z with Tavern0.1.14 and QA0.1.10; not full runtime acceptance",
+        "Source handlers cover390 opened-pack headers. Native60 refused CDP map/namespace inventory;61 retains every custody/fingerprint check and serializes only the pinned native cache writer on its existing resources-map monitor",
+        "Focused61 actual-native-class probe reproduced old HashMap corruption, then preserved49152 supplier bytes over24 fixed fields, correct monitor and exception unlock; all209 unrelated60 classes are byte-identical",
+        "Independent2ed349 saved census finds all397 managed identities exactly once, including Sparrow; all saved NoAI0",
+        "All385 admitted ordinary sapling positions independently saved as the intended species in2ed349; one birch advanced to stage1",
+        "Native59 preplanted GROW failed after37 owned cell changes; those changes rolled back and complete12167-cell snapshot restoration proved",
+        "Later Native60 GROW observed mature trunk/canopy at three roots, then refused fourth1250/-1080 before its first owned mutation because grass snowy flag changed; cleanup passed with0tickets/futures and no recovery required",
+        "Prism direct-D InstanceDir recovery allowed real client launches; historical Qt-lock blocker resolved"
+      ],
+      "pending": [
+        "Actual61 client full390-pack resource capture and strict SeedGen terrain parity",
+        "Actual distant terrain generation and client rendering",
+        "Whole-south-shore dense canopy and player-scale visual/density qualification; stopped fourth root remains held without retry",
+        "Public release integration"
+      ],
+      "public_download_url": null,
+      "preserved_canopy_source": "compat/control-bridge/proposals/native-natural-canopy-r2/",
+      "preserved_preplanted_canopy_source": "compat/proposals/preplanted-sapling58-r1/",
+      "preserved_resource_custody_source": "compat/proposals/resource-custody-create59-r1/"
+    }
+  ],
+  "counting": "Current introduced353 LIFE (107 ordinary villagers+246 wildlife)+45 separate Tavern=398, recorded by latest Root retained1f9612 save receipt. Last independent saved census remains2ed349:397. No simultaneous loading, current398 independent census or behavior acceptance. Public Packwiz stays214 mods in candidate65; QA stays release-excluded.",
+  "requested_tavern_population": 45,
+  "actual_tavern_population": 45,
+  "registered_tavern_population": 45,
+  "missing_existing_patrons": 0,
+  "missing_identity_recovery": "Resolved: all45 original/profile identities saved once in latest2ed349; no blanket respawn.",
+  "actual_tavern_population_basis": "All45 introduced/registered Tavern UUIDs occur exactly once in the2ed349 saved entity regions and saved Tavern ledger; no simultaneous loading, client rendering or behavior acceptance claimed.",
+  "recovery_window": {
+    "active": false,
+    "temporary_tickets_remaining": 0,
+    "pending_native_futures": 0,
+    "cleanup_required": false,
+    "receipt_sha256": "5713d8ee933b082dec1c7204ac26b2f16b60b099ed8a47e4b32c6d21828bcac0",
+    "historical_closed_window": true
+  },
+  "last_independent_saved_population": {
+    "checkpoint_id": "20261030T111759Z-2ed349",
+    "checkpoint_sha256": "655cfcbedc8f2be40a5289cce74785ad0d1df25317f98c46d445c5aef21fbb20",
+    "life": 352,
+    "villagers": 106,
+    "wildlife": 246,
+    "tavern": 45,
+    "combined": 397,
+    "AI_enabled_saved": 397,
+    "NoAI_true": 0,
+    "managed_UUIDs_unique": true,
+    "Sparrow_present_exactly_once": true,
+    "census_sha256": "08b3fc7da6c536ffbee5de8f405446aed32886eca575ad1454f83a5e8da2b25e",
+    "entity_regions_scanned": 14,
+    "serialized_entity_records_inspected": 1476,
+    "scope": "Saved identity/type/tag/AI presence joined to352 LIFE intents and45 Tavern ledger UUIDs; not HOME/JOB, actual schedules, simultaneous loading, audio, visual or multiplayer acceptance",
+    "historical": true
+  },
+  "matched_install_receipt_sha256": "6011791d9a1e7f8dfba7ff73e8b326de90adf43cf4c616a44b7e7a8e59f43f7d",
+  "ordinary_saplings": {
+    "placed": 455,
+    "mature_trees_claimed": 3,
+    "native_full_field_verified": true,
+    "first8_receipt_sha256": "c41edbccd41d310a6b754c26832aaf6f1ea10bff5d49c2e9729c9be20ec313a8",
+    "remaining21_receipt_sha256": "120aa1822e145919d3dbbf23b3b376a6897248bce25d294ea745150864105837",
+    "saved_checkpoint_id": "20261030T111759Z-2ed349",
+    "basis": "Independent2ed349 audit saved385 intended-species saplings. Three then matured natively; Root later placed70 additional ordinary saplings (receipt d49bcaf2...). Latest1f9612 retains that progress; no new sapling archive census here and no whole-forest visual/density acceptance.",
+    "first_preplanted59_grow": {
+      "status": "failed_and_rolled_back",
+      "owned_cell_changes_rolled_back": 37,
+      "full_restored_snapshot_cells": 12167,
+      "mature_tree_credit": 0
+    },
+    "saved_checkpoint_sha256": "655cfcbedc8f2be40a5289cce74785ad0d1df25317f98c46d445c5aef21fbb20",
+    "saved_same_species_positions": 385,
+    "saved_census_sha256": "08b3fc7da6c536ffbee5de8f405446aed32886eca575ad1454f83a5e8da2b25e",
+    "mature_trees_saved_in_this_checkpoint": 0,
+    "saved_state_counts": {
+      "minecraft:birch_sapling[stage=0]": 292,
+      "regions_unexplored:pine_sapling[stage=0]": 46,
+      "regions_unexplored:silver_birch_sapling[stage=0]": 46,
+      "minecraft:birch_sapling[stage=1]": 1
+    },
+    "post_checkpoint_native60_grow": {
+      "started": "2026-10-30T11:27:12.031581600Z",
+      "finished": "2026-10-30T11:27:34.847204100Z",
+      "receipt_sha256": "68a6543141f1cfc4848a7a7efada613f8d80b6b3570fd0b9baeecfe3e1329dfd",
+      "native_mature_outcomes": 3,
+      "stopped_root_id": "preplanted58-birch-1250-1080",
+      "stopped_root_index": 3,
+      "refused_before_its_first_owned_mutation": true,
+      "drift_position": [
+        1240,
+        63,
+        -1085
+      ],
+      "expected": "minecraft:grass_block[snowy=false]",
+      "actual": "minecraft:grass_block[snowy=true]",
+      "successful_prior_roots_retained": true,
+      "cleanup_passed": true,
+      "temporary_tickets_remaining": 0,
+      "pending_shared_futures": 0,
+      "world_recovery_required": false,
+      "native_visual_or_density_acceptance": false,
+      "retry_authorized": false
+    },
+    "counting": "Cumulative historical planting actions385+70; includes three subsequently mature roots and is not a count of455 remaining saplings",
+    "latest70_receipt_sha256": "d49bcaf2c1caec87d4d55922a8b4ba0cf783b3c183971ff2a85b63d250fcd5f5",
+    "latest_retained_checkpoint_id": "20261030T121506Z-1f9612",
+    "independent_saved385_audit_is_historical": true
+  },
+  "matched_install_at": "2026-10-30T12:15:22.477459+00:00",
+  "runtime_verified": false,
+  "native_music_observation": {
+    "at": "2026-10-30T08:01:59.005579600Z",
+    "musicians_with_existing_active_progress": 4,
+    "recent_note_age_ms": 40,
+    "native_audibility_predicate": true,
+    "heard_audio_verified": false,
+    "instrument_pose_verified": false,
+    "snapshot_sha256": "38fe935ff2ef459bdb2a02c96d0fb4f97e380ac9df327618e2a8fcc6254f01f0"
+  },
+  "client_qa": {
+    "version": "0.1.10",
+    "filename": "awft-settlement-qa-0.1.10.jar",
+    "bytes": 46426,
+    "sha256": "4b1378208634bccc7bd54ac5040fb6114fb721d28afe4942a2fe31848e6b2869",
+    "side": "client",
+    "release_excluded": true,
+    "installed": true,
+    "runtime_accepted": false,
+    "basis": "Matched-install receipt; not a public mod addition or current client visual acceptance"
+  },
+  "current_introduced_population": {
+    "life": 353,
+    "villagers": 107,
+    "ordinary_villager_properties": 107,
+    "wildlife": 246,
+    "tavern": 45,
+    "combined": 398,
+    "basis": "Prior397 plus successful SmallCompass1 Native admission under60; Root retained1f9612 save records398. No new independent entity/archive audit here; HOME/JOB and schedule pending",
+    "latest_seed_receipt_sha256": "f170bbac6265e8b4b27615bce12c62137c02f1ccaec951e2af2de37825386cc6",
+    "latest_seed_finished": "2026-10-30T12:13:15.390222700Z",
+    "spawned": 1,
+    "native_finalizations": 1,
+    "failures": 0,
+    "cleanup_passed": true,
+    "temporary_tickets_remaining": 0,
+    "pending_shared_futures": 0,
+    "HOME_JOB_schedule_verified": false,
+    "native_behavior_acceptance": false,
+    "latest_seed_bridge": "0.6.60",
+    "historical_saved397_census_sha256": "08b3fc7da6c536ffbee5de8f405446aed32886eca575ad1454f83a5e8da2b25e"
+  },
+  "latest_retained_checkpoint_population": {
+    "checkpoint_id": "20261030T121506Z-1f9612",
+    "checkpoint_sha256": "94266e1cdba7f1e0bfb66cfae1501184ed36d06c6e38b21deb5fc679e70f2988",
+    "life": 353,
+    "villagers": 107,
+    "wildlife": 246,
+    "tavern": 45,
+    "combined": 398,
+    "source": "Root verified normal-stop companion and successful SmallCompass Native seed receipt",
+    "independent_population_audit_performed_here": false,
+    "scope": "Retained save records current introduced398; last independently decoded397 census remains2ed349. No new loading, AI schedule or behavior acceptance"
+  },
+  "installed_metadata_sha256": "a659f3358e42fd31af46a33d89e9f0a75da1d4d1661e11dc54b510a939a0d8af",
+  "historical_independent_saved_populations": [
+    {
+      "checkpoint_id": "20261030T081801Z-f7e43f",
+      "checkpoint_sha256": "ae393e867e1e9003918f78fd9b1d8bab1e2f691cff2cf51b06519cd9072d4e24",
+      "life": 351,
+      "villagers": 105,
+      "wildlife": 246,
+      "tavern": 45,
+      "combined": 396,
+      "NoAI_enabled": 396,
+      "current_saved_seats": 2,
+      "valid_exact_owner_passengers": 2,
+      "census_sha256": "dd065893749270100e8e973ed9c6c1d10df86304633e275cf950e0a965db3fc4",
+      "scope": "Saved identity, AI, ownership, actor inventories, species, ledger/config and seat serialization; not runtime/audio/visual/restart acceptance",
+      "historical": true
+    }
+  ],
+  "property_occupancy": {
+    "tracked_properties": 118,
+    "ordinary_villager_properties": 107,
+    "separate_Tavern_property": 1,
+    "properties_with_people": 108,
+    "genuinely_empty": 10,
+    "ordinary_villager_HOME_admissions_remaining_including_Tavern": 11,
+    "remaining_new_West": 7,
+    "remaining_protected": 3,
+    "remaining_Tavern_ordinary_home": 1
+  },
+  "source_verification": {
+    "full_suite": {
+      "tests": 1492,
+      "skipped": 2,
+      "seconds": 115.883,
+      "scope": "Pre61 source snapshot; not a full61 regression run"
+    },
+    "focused61": {
+      "qualification_sha256": "e19bbbfc8836fc012a7c6edfdcc3e896196ec7c897ac5ae7ab7b8ad040750644",
+      "fixed_rounds": 24,
+      "native_supplier_bytes_verified": 49152,
+      "old_native_HashMap_corruption_reproduced": true,
+      "existing_map_monitor_and_exception_unlock_verified": true,
+      "unrelated60_class_bytes_preserved": 209,
+      "client_server_or_world_started": false
+    }
+  },
+  "latest_client_trial": {
+    "local_time": "2026-10-30 08:18:44",
+    "status": "startup_crashed_before_join",
+    "crash_sha256": "76cc8c149f5a78c04a185aea9ba09193368be6e7a92175f072960d4b38c92d00",
+    "exception": "ConcurrentModificationException in Architectury EventFactory$1.handleInvocation:61 during clientTickPost",
+    "CDP_postApply_witness_observed": false,
+    "Native61_full_resource_parity_qualified": false,
+    "Tavern14_micro_sip_qualified": false,
+    "causal_mod_attribution": "Not established; no CDP/SeedGen/bridge frame in primary crash stack"
+  }
+}

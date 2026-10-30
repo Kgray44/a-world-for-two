@@ -54,6 +54,96 @@ class OverviewSyncTests(unittest.TestCase):
         self.assertEqual(verified['server_integrity']['status'], 'verified')
         return verified
 
+    def matching_client_reports(self):
+        report = {'format': 'awft-client-receipt:1', 'jar_integrity': 'pass',
+                  'pack_sha256': digest(self.pack), 'at': '2026-10-30T01:00:00+00:00'}
+        write_json(self.layout.state / 'client-reports.json', {'KG': report, 'Sera': report})
+
+    def private_overlay(self, **flags):
+        names = ['easy-npc-fixture.jar', 'tavern-fixture.jar']
+        for name in names:
+            path = self.layout.server / 'mods' / name
+            path.write_bytes(('private fixture ' + name).encode())
+            self.receipt['files'][name] = digest(path)
+        self.receipt['private_overlay'] = {
+            'name': 'Drowned Rose native tavern qualification', 'base_candidate': 'test-1',
+            'new_server_and_client_mods': names, 'runtime_accepted': False,
+            'public_pack_published': False, **flags}
+        write_json(self.layout.server / 'installed.json', self.receipt)
+        return names
+
+    def test_baseline_client_match_and_integrity_remain_unchanged_without_overlay(self):
+        self.matching_client_reports()
+        for result in (self.finish_initial(), self.manager.sync()):
+            self.assertEqual(result['server'], 'matches')
+            self.assertFalse(result['relaunch_required'])
+            self.assertNotIn('private_overlay', result)
+            self.assertEqual({p['state'] for p in result['players'].values()}, {'reported match'})
+
+    def test_private_server_overlay_does_not_promote_baseline_client_receipts(self):
+        self.matching_client_reports()
+        names = self.private_overlay()
+        initial = self.manager.overview_sync()
+        self.assertTrue(initial['relaunch_required'])
+        self.assertEqual(initial['private_overlay']['new_server_and_client_mods'], names)
+        self.wait_idle()
+        overview = self.manager.overview_sync()
+        self.assertEqual(overview['server_integrity']['status'], 'verified')
+        self.assertTrue(overview['server_integrity']['current'])
+        self.assertEqual(overview['server_integrity']['last_verified_provenance']['expected_files'], 3)
+        self.assertFalse(overview['server_integrity']['published_client_pack_match'])
+        for result in (overview, self.manager.sync()):
+            self.assertEqual(result['server'], 'private overlay installed; qualification pending')
+            self.assertEqual(result['pack_sha256'], digest(self.pack))
+            self.assertTrue(result['relaunch_required'])
+            self.assertFalse(result['private_overlay']['runtime_accepted'])
+            self.assertFalse(result['private_overlay']['public_pack_published'])
+            for player in result['players'].values():
+                self.assertEqual(player['baseline_state'], 'reported match')
+                self.assertEqual(player['state'], 'private overlay required')
+                self.assertIn('relaunch', player['message'])
+                self.assertIn('Pending runtime qualification', player['message'])
+
+    def test_overlay_receipt_flags_do_not_prove_a_matching_private_client(self):
+        self.matching_client_reports()
+        self.private_overlay(runtime_accepted=True, public_pack_published=True)
+        result = self.manager.sync()
+        self.assertEqual(result['server'], 'private overlay installed; client verification required')
+        self.assertTrue(result['relaunch_required'])
+        self.assertEqual({p['state'] for p in result['players'].values()}, {'private overlay required'})
+
+    def test_overlay_display_keeps_strict_baseline_and_additional_file_hash_checks(self):
+        names = self.private_overlay()
+        self.assertEqual(self.manager.sync()['server'], 'private overlay installed; qualification pending')
+        for path in (self.jar, self.layout.server / 'mods' / names[0]):
+            with self.subTest(file=path.name):
+                original = path.read_bytes()
+                path.write_bytes(b'changed file')
+                try:
+                    self.assertEqual(self.manager.sync()['server'], 'not installed or differs')
+                finally:
+                    path.write_bytes(original)
+
+    def test_overlay_declaration_invalidates_the_cached_receipt_identity(self):
+        self.matching_client_reports()
+        before = self.finish_initial()['server_integrity']['current_inventory_signature']
+        self.private_overlay()
+        result = self.manager.overview_sync()
+        self.assertNotEqual(result['server_integrity']['current_inventory_signature'], before)
+        self.assertFalse(result['server_integrity']['current'])
+        self.assertTrue(result['relaunch_required'])
+        self.assertEqual(result['players']['KG']['state'], 'private overlay required')
+        self.wait_idle()
+
+    def test_malformed_overlay_is_not_a_baseline_client_match(self):
+        self.matching_client_reports()
+        self.receipt['private_overlay'] = 'unrecognized declaration'
+        write_json(self.layout.server / 'installed.json', self.receipt)
+        result = self.manager.sync()
+        self.assertEqual(result['players']['KG']['state'], 'private overlay required')
+        self.assertTrue(result['relaunch_required'])
+        self.assertEqual(result['private_overlay']['name'], 'Private runtime overlay')
+
     def block_scan(self, after_hash=False):
         entered, release = threading.Event(), threading.Event()
         self.addCleanup(release.set)
