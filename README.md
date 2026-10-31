@@ -1,5 +1,7 @@
 # A World for Two
 
+**Join the current construction server:** [Download candidate.65 for Prism](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/A-World-for-Two-0.1.0-candidate.65-Prism.zip). Import it as a new instance, use Java 21, keep Packwiz enabled, and connect to `malls-cup.tun.ply.gg`. Sera: maximum memory **4096 MiB**, shaders off, optional Essential off. This experimental prerelease includes bridge 0.6.64, Easy NPC Core 7.17.1 and tavern 0.1.14 to match the active construction server. [Release and verification notes](https://github.com/Kgray44/a-world-for-two/releases/tag/awft-0.1.0-candidate.65). Earlier checkpoints below retain their historical scope.
+
 **Our little corner of an endless world.**
 
 ![A quiet sunset beside the village lake](assets/menu/a-world-for-two-background.jpg)
