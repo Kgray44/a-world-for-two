@@ -46,7 +46,17 @@ class YungRuntimePackPins(unittest.TestCase):
             with self.subTest(composed=name):
                 raw=(moonlight/name).read_bytes()
                 self.assertEqual(hashlib.sha256(raw).hexdigest(),current['final_sources'][name])
-                self.assertEqual((ACTIVE/name).read_bytes(),raw.replace(b'\r\n',b'\n'))
+                if name == 'MoonlightCachePackCustody.java':
+                    self.assertEqual((ACTIVE/name).read_bytes(),raw.replace(b'\r\n',b'\n'))
+                else:
+                    # The current bridge composes later reviewed resource-provider
+                    # repairs through source64; retain the historical probe input
+                    # above and bind the published handler to its current freeze.
+                    published=json.loads((ROOT/'compat/control-bridge/candidate65-bridge64-source.json').read_text())
+                    self.assertEqual(published['bridge_version'],'0.6.64')
+                    self.assertEqual(published['artifact_sha256'],'c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20')
+                    self.assertEqual(hashlib.sha256((ACTIVE/name).read_bytes()).hexdigest(),
+                                     published['files']['src/worldfortwo/bridge/'+name])
 
 
 if __name__=='__main__':

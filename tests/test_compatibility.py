@@ -107,7 +107,7 @@ class CompatibilityGenerationTests(unittest.TestCase):
         for resolved, source in zip(data['resolved_files'], lock['mods']):
             for key in ('project_id', 'version_id', 'version', 'filename', 'hashes', 'side', 'optional', 'default'):
                 self.assertEqual(resolved.get(key), source.get(key), (source['slug'], key))
-        self.assertEqual(data['counts']['enabled_mod_entries'], 204)
+        self.assertEqual(data['counts']['enabled_mod_entries'], 206)
         self.assertEqual(len(data['requests']), 229)
         chains = next(v for v in data['resolved_files'] if v['slug'] == 'reconnectible-chains')
         self.assertEqual(chains['version_id'], 'e4yVoAvP')

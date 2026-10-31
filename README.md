@@ -1,5 +1,12 @@
 # A World for Two
 
+**Joining KG's current construction server:** download the
+[candidate.65 Prism ZIP](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/A-World-for-Two-0.1.0-candidate.65-Prism.zip),
+import it as a new Prism instance, choose Java 21, and connect to
+`malls-cup.tun.ply.gg`. Sera should set maximum memory to 4096 MiB. This experimental
+prerelease contains the current bridge64 / Easy NPC / tavern14 additions; see
+[installation steps](docs/INSTALL.md) and [candidate.65 notes](docs/RELEASE-NOTES-candidate.65.md).
+
 **Our little corner of an endless world.**
 
 ![A quiet sunset beside the village lake](assets/menu/a-world-for-two-background.jpg)
@@ -14,12 +21,13 @@ waterfront named **Tortuga**, Rosewater Castle, sailing adventures and Create ma
 | Build | Availability | Manifest selection |
 | --- | --- | --- |
 | **Public candidate.31** | Published, immutable prerelease; fresh Prism import remains unqualified | **197 entries · 191 client-capable · 164 server-capable** |
-| **Private candidate.65 / bridge 0.6.51** | Current construction runtime; no public candidate.65 Prism ZIP yet | **214 catalogue entries · 213 default-selected · 207 client · 171 server** |
+| **Current candidate.65 / bridge 0.6.64** | Experimental Prism release for the construction server | **216 catalogue entries · 215 default-selected · 209 client · 173 server** |
 
 Shared mods count on both sides. Essential is optional and disabled. These are
 manifest counts, not Minecraft's loaded-container counts. Eight shader choices
 and one resource pack are pinned. The public starter retains its candidate.31
-snapshot and does not contain the private construction work.
+snapshot and does not match the current construction server. Candidate.65 includes
+the current bridge, Easy NPC and tavern additions; the world remains on KG's host.
 
 [Source CI for `86aebe5`](https://github.com/Kgray44/a-world-for-two/actions/runs/40942422630)
 passed. The [standalone bridge 0.6.51 JAR, source and checksums](https://github.com/Kgray44/a-world-for-two/releases/tag/compat-0.1.0)

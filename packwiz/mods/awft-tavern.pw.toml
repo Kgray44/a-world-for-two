@@ -1,0 +1,8 @@
+name = "A World for Two Drowned Rose"
+filename = "awft-tavern-0.1.14.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/awft-tavern-0.1.14.jar"
+hash-format = "sha256"
+hash = "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"

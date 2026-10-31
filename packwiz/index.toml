@@ -557,12 +557,17 @@ metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "3858318f0d3712b91d49df07169756b5dfe5dbcef9ccd099a888439d0b96a92f"
+hash = "892d1565a1bf9cd500db15bc66349371b77590f2e7c7dd6e00206e524b38d393"
 metafile = true
 
 [[files]]
 file = "mods/awft-living-world.pw.toml"
 hash = "702a18e4c1f87ca5c203d9b8e02f99c0dd88aab986831ba981ae7bfb96d5cf22"
+metafile = true
+
+[[files]]
+file = "mods/awft-tavern.pw.toml"
+hash = "e3279194de6042c1f4cf46da5bff053e771567c930053ff5897ba6dfeefa912d"
 metafile = true
 
 [[files]]
@@ -798,6 +803,11 @@ metafile = true
 [[files]]
 file = "mods/dynamic-fps.pw.toml"
 hash = "67241a713fbf873928f39f4f7bc7661cb4f2fdcc70a8fe41cdaee8df1faee024"
+metafile = true
+
+[[files]]
+file = "mods/easy-npc-core.pw.toml"
+hash = "52d415d8b9d1ad1628cf3aded47f3fb2fa8aa8d6aed83bda9f97eaa06a24a0e1"
 metafile = true
 
 [[files]]

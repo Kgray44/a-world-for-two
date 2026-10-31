@@ -674,7 +674,7 @@
       "status": "Alternative selected",
       "version": "0.6.3-neoforge-21.1",
       "side": null,
-      "project_id": "NTi7d3Xc",
+      "project_id": null,
       "reason": "Regions Unexplored is the selected block/biome expansion. Adding another broad biome pool before distribution/spawn testing risks excessive overlap.",
       "source": "https://modrinth.com/mod/regions-unexplored",
       "runtime": "not run",
@@ -701,7 +701,7 @@
       "status": "Alternative selected",
       "version": "0.6.3-neoforge-21.1",
       "side": null,
-      "project_id": "WBvnqHfV",
+      "project_id": null,
       "reason": "Regions Unexplored is selected for the first terrain comparison; this compatible alternative remains documented.",
       "source": "https://modrinth.com/mod/regions-unexplored",
       "runtime": "not run",
@@ -1241,7 +1241,7 @@
       "status": "Alternative selected",
       "version": "0.18.28",
       "side": null,
-      "project_id": "zPR191Ph",
+      "project_id": null,
       "reason": "Original project has no NeoForge 1.21.1 file in the captured metadata. Cinematic Interactions is the selected workstation animation system.",
       "source": "https://github.com/dcvke/CinematicInteractions/releases/tag/v0.18.28-neoforge-1.21.1-beta",
       "runtime": "not run",
@@ -1298,9 +1298,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "HGckQa6S",
+      "project_id": null,
       "reason": "Exact-name research found a Flame torch resource pack and several unrelated particle/content projects. The intended project is ambiguous, so no unrelated substitute is silently installed.",
-      "source": "https://modrinth.com/project/HGckQa6S",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -1312,7 +1312,7 @@
       "status": "Alternative selected",
       "version": "1.6.0-neoforge+mc1.21.1",
       "side": null,
-      "project_id": "vBxRFGLR",
+      "project_id": null,
       "reason": "Kaleidoscope Cookery is integrated. The separately named Kaleidoscope is a deprecated client color/fog mod migrated to Fuzz, not a cooking system; it has no matching NeoForge 1.21.1 file.",
       "source": "https://modrinth.com/mod/kaleidoscope-cookery",
       "runtime": "not run",
@@ -1694,7 +1694,7 @@
       "status": "Alternative selected",
       "version": "3.3.3-1.21.1",
       "side": null,
-      "project_id": "fxxUqruK",
+      "project_id": null,
       "reason": "Distant Horizons + SeedGen explicitly replaces Voxy under the owner's addendum. No active dependency or profile includes it.",
       "source": "https://modrinth.com/mod/distanthorizons",
       "runtime": "not run",
@@ -1721,7 +1721,7 @@
       "status": "Alternative selected",
       "version": "3.3.3-1.21.1",
       "side": null,
-      "project_id": "Ap78bKTp",
+      "project_id": null,
       "reason": "Superseded by the owner's definitive Distant Horizons decision. Roxy is not installed or required.",
       "source": "https://modrinth.com/mod/distanthorizons",
       "runtime": "not run",
@@ -1775,7 +1775,7 @@
       "status": "Alternative selected",
       "version": "3.3.3-1.21.1",
       "side": null,
-      "project_id": "lKiXKLvv",
+      "project_id": null,
       "reason": "The selected DH/SeedGen server-client architecture supplies distant terrain; a separate Voxy transport is not installed.",
       "source": "https://modrinth.com/mod/distanthorizons",
       "runtime": "not run",
@@ -1982,9 +1982,9 @@
       "status": "Incompatible, with evidence",
       "version": null,
       "side": null,
-      "project_id": "VSNURh3q",
+      "project_id": null,
       "reason": "Official C2ME is Fabric. DH SeedGen's author additionally documents device-dependent C2ME/noise-optimizer incompatibility. Connector forks are excluded from this NeoForge candidate.",
-      "source": "https://modrinth.com/project/VSNURh3q",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -1996,9 +1996,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "4WWQxlQP",
+      "project_id": null,
       "reason": "NeoForge 1.21.1 releases exist. Excluded pending a measured A/B run with the mandatory optimizers and weather/SeedGen; no unsupported improvement claim is made.",
-      "source": "https://modrinth.com/project/4WWQxlQP",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2010,9 +2010,9 @@
       "status": "Incompatible, with evidence",
       "version": null,
       "side": null,
-      "project_id": "Ps1zyz6x",
+      "project_id": null,
       "reason": "Sable 2.0.6's actual neoforge.mods.toml declares ScalableLux incompatible. It is excluded.",
-      "source": "https://modrinth.com/project/Ps1zyz6x",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2024,9 +2024,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "r0v8vy1s",
+      "project_id": null,
       "reason": "A matching NeoForge file exists; redstone behavior with Create and actual tick improvements need an isolated A/B test before inclusion.",
-      "source": "https://modrinth.com/project/r0v8vy1s",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2038,9 +2038,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "roccmqou",
+      "project_id": null,
       "reason": "Matching NeoForge file found. Recipe-heavy Create/cooking interactions and actual benefit are unmeasured; retained as a benchmark candidate.",
-      "source": "https://modrinth.com/project/roccmqou",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2261,7 +2261,7 @@
       "status": "Alternative selected",
       "version": "10.1.0.9",
       "side": null,
-      "project_id": "sTnFU4hH",
+      "project_id": null,
       "reason": "Serene Seasons is explicitly selected in the addendum; Advanced Weather includes season integration.",
       "source": "https://modrinth.com/mod/serene-seasons",
       "runtime": "not run",
@@ -2474,9 +2474,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "rcTfTZr3",
+      "project_id": null,
       "reason": "The original is Fabric; a NeoForge beta port (pf-neoforge) exists. AmbientSounds and Sound Physics are selected while audio overlap and beta stability remain unmeasured.",
-      "source": "https://modrinth.com/project/rcTfTZr3",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2580,9 +2580,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "nrikgvxm",
+      "project_id": null,
       "reason": "Compatible loader file exists but Advanced Weather already provides custom precipitation. Do not enable a second particle/weather renderer without an overlap and storm-cost test.",
-      "source": "https://modrinth.com/project/nrikgvxm",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2718,7 +2718,7 @@
       "status": "Alternative selected",
       "version": "1.1.0+1.21.1",
       "side": null,
-      "project_id": "MPCX6s5C",
+      "project_id": null,
       "reason": "Smooth Player Animations is selected; its author lists NEA compatibility. Additional override/rendering tests are required before adding a second animation controller.",
       "source": "https://modrinth.com/mod/smoothplayeranimations",
       "runtime": "not run",
@@ -2880,9 +2880,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "JrIYhb1P",
+      "project_id": null,
       "reason": "The exact requested Cosmetic Armor Reworked must be distinguished from the unrelated Fabric Cosmetic Armor and unofficial forks. Not substituted silently.",
-      "source": "https://modrinth.com/project/JrIYhb1P",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3138,7 +3138,7 @@
       "status": "Alternative selected",
       "version": "0.1.2+awft.3",
       "side": null,
-      "project_id": "WuGVWUF2",
+      "project_id": null,
       "reason": "Owner excluded Fog from defaults. Preserve DH/shader fog and evaluate Advanced Weather's native effects first.",
       "source": "https://modrinth.com/mod/advanced-weather",
       "runtime": "not run",
@@ -3164,9 +3164,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "jYouLOe1",
+      "project_id": null,
       "reason": "Optional only after measured shader/DH/weather tests demonstrate an improvement; excluded from defaults.",
-      "source": "https://modrinth.com/project/jYouLOe1",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3302,7 +3302,7 @@
       "status": "Unresolved, with investigation details",
       "version": "1.21.1-1.2.1",
       "side": null,
-      "project_id": "efSTEGLV",
+      "project_id": null,
       "reason": "A NeoForge release supports MIDI, but a third default instrument system is not enabled before checking overlap. Music Maker is preferred for piano; Immersive Melodies remains portable music.",
       "source": "https://modrinth.com/mod/music-maker-mod",
       "runtime": "not run",
@@ -3422,7 +3422,7 @@
       "status": "Alternative selected",
       "version": "1.70.2-1.21.1",
       "side": null,
-      "project_id": "KQZSjctJ",
+      "project_id": null,
       "reason": "Prefer the selected melee system's combat scythes and a distinct farming scythe if verified; avoid a duplicate combat arsenal.",
       "source": "https://modrinth.com/mod/simply-swords",
       "runtime": "not run",
@@ -3449,7 +3449,7 @@
       "status": "Alternative selected",
       "version": "1.70.2-1.21.1",
       "side": null,
-      "project_id": "Ol439igP",
+      "project_id": null,
       "reason": "Simply Swords + Better Combat is the requested primary weapon combination. Avoid adding a second broad arsenal.",
       "source": "https://modrinth.com/mod/simply-swords",
       "runtime": "not run",
@@ -3507,9 +3507,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "lkwjObIy",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/lkwjObIy",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3521,9 +3521,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "uetGbPKW",
+      "project_id": null,
       "reason": "Available files are alpha. Inventory ownership must be proven configurable before combining physical corpses with the one selected grave system; inventory safety takes priority.",
-      "source": "https://modrinth.com/project/uetGbPKW",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3690,9 +3690,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "vYSi4UOX",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/vYSi4UOX",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3873,9 +3873,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "1kmgQF26",
+      "project_id": null,
       "reason": "NeoForge port found. Excluded until its roaming AI is checked against Doggy Talents Next and Cozy's Improved Cats ownership, teleportation and recovery.",
-      "source": "https://modrinth.com/project/1kmgQF26",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3918,9 +3918,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "XVZogNXg",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/XVZogNXg",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3963,7 +3963,7 @@
       "status": "Alternative selected",
       "version": "1.2.0",
       "side": null,
-      "project_id": "tNai0h2Y",
+      "project_id": null,
       "reason": "Excluded by atmosphere preference: nightmares, bedbugs and penalties overlap the peaceful sleep design. Use the selected bed system, Comforts and Sleep Through The Night.",
       "source": "https://modrinth.com/mod/sleep-through-the-night",
       "runtime": "not run",
@@ -4252,9 +4252,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "87F3C8QL",
+      "project_id": null,
       "reason": "Exact-name Modrinth result is a chicken-coop mod with no matching NeoForge file; it does not establish the intended life-cycle project. No competing AI controller is installed.",
-      "source": "https://modrinth.com/project/87F3C8QL",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -4266,9 +4266,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "yFwACx6Z",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/yFwACx6Z",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -4539,7 +4539,7 @@
       "status": "Alternative selected",
       "version": "0.1.7.4",
       "side": null,
-      "project_id": "tK1VK6Oq",
+      "project_id": null,
       "reason": "Hypertubes handles players and Overpressure handles pneumatic items; Create's native vertical and diagonal Chutes remain available. No third item network is enabled before a distinct gameplay requirement and measured benefit are established.",
       "source": "https://www.curseforge.com/minecraft/mc-mods/create-overpressure/files/9196247",
       "runtime": "not run",
@@ -4595,9 +4595,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "M1DHa9hR",
+      "project_id": null,
       "reason": "Retained as a potential building convenience. Exact native loader/Create version and interaction with the selected pneumatic system need verification before inclusion.",
-      "source": "https://modrinth.com/project/M1DHa9hR",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -4979,9 +4979,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "8a1Ksvnk",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/8a1Ksvnk",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -5021,9 +5021,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "o8eM9Cnp",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/o8eM9Cnp",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -5133,17 +5133,6 @@
         "metadata": "pass",
         "jar": "pending",
         "runtime": "not run"
-      },
-      "runtime_observation": {
-        "note": "Pinned native parser accepted the configured intro. Final-settlement camera path and client playback remain separate.",
-        "evidence_source": "evidence/runtime/cinematic-native-parser.json",
-        "evidence_sha256": "1a22dc28806a74f139ef67378e83ae8fea572634e86ef80583aeed428879ab34",
-        "observed_version": "1.0.0-alpha.1+neoforge-1.21.1",
-        "observed_file_hash": {
-          "sha512": "05e2c3c510a64642d1e5d35a8fd430c0d3ab38b985f3453611d06b1f2e74241e7f43b6e99bc20e64ae03e1b634c517aae0aa84681f1fa1537defdf15a20d9228"
-        },
-        "current_file_matches_observed_pin": true,
-        "evidence_scope": "Limited prior-candidate observation; no lock runtime gate is promoted"
       }
     },
     {
@@ -5341,9 +5330,9 @@
       "status": "Incompatible, with evidence",
       "version": null,
       "side": null,
-      "project_id": "A59AYZTC",
+      "project_id": null,
       "reason": "The author publishes Fabric 0.4-beta for Minecraft 1.21.1. Native NeoForge 1.1.1 requires Minecraft 1.21.11 and NeoForge 21.11.42, not this 1.21.1 / 21.1 stack. Official release JAR descriptors and source properties were inspected. No matching native backport is available; Fairy Tales supplies complementary abilities but is not represented as Dairatz tameable fairies.",
-      "source": "https://modrinth.com/project/A59AYZTC",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -6099,7 +6088,7 @@
       "side": null,
       "project_id": null,
       "reason": "The original author’s V9 and V9.1 beta files are legacy OptiFine-era releases without established Iris/DH support. The official CurseForge download refused automated retrieval (HTTP 403), and no authorized API key is present. An unchanged author download and native client test are required; Bliss is documented as a derivative, not substituted for the requested original. The owner explicitly deferred Chocapic; it remains pending and absent from the active lock.",
-      "source": "https://www.curseforge.com/minecraft/shaders/chocapic13-shaders/files/3059792",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -6206,7 +6195,7 @@
       "side": null,
       "project_id": null,
       "reason": "The author’s 1.200 release offers pastel color schemes and a cozy style, but its published version list stops at 1.21 and this exact build’s DH support is unverified. Retained for investigation; Bliss, BSL and Solas provide the initial cozy choices.",
-      "source": "https://modrinth.com/shader/pastel-shaders",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -6403,9 +6392,9 @@
   ],
   "source_lock": {
     "path": "catalog/lock.json",
-    "sha256": "699d6dee928c0bb2ebc83a97f0bd3f1e7f438ed59463d08c7e7a0113fa555a47",
+    "sha256": "048a66c79737c18830f8e3e5dba805fde7890288c4e8cbb9b10cfb402cb06962",
     "pack_path": "packwiz/pack.toml",
-    "pack_sha256": "671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28",
+    "pack_sha256": "e74331274b5b99b055e8e9ad2914d314c4476f36a6b4044eb5c89b18d6db268e",
     "minecraft": "1.21.1",
     "neoforge": "21.1.262",
     "java": 21,
@@ -6568,22 +6557,22 @@
       "name": "A World for Two Control Bridge",
       "request": null,
       "kind": "mod",
-      "version": "0.6.51",
-      "version_id": "0.6.51",
-      "filename": "awft-control-bridge-0.6.51.jar",
-      "size": 725738,
+      "version": "0.6.64",
+      "version_id": "0.6.64",
+      "filename": "awft-control-bridge-0.6.64.jar",
+      "size": 793142,
       "side": "both",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
+        "sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20"
       },
-      "source": "https://github.com/Kgray44/a-world-for-two",
+      "source": "https://github.com/Kgray44/a-world-for-two/tree/awft-0.1.0-candidate.65/compat/control-bridge",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",
-        "jar": "pending",
-        "runtime": "not run"
+        "jar": "pass",
+        "runtime": "Owner startup and reconnect observed; Sera multiplayer pending"
       }
     },
     {
@@ -11758,13 +11747,59 @@
         "jar": "pending",
         "runtime": "not run"
       }
+    },
+    {
+      "project_id": "Epm6R3P2",
+      "slug": "easy-npc-core",
+      "name": "Easy NPC Core",
+      "request": null,
+      "kind": "mod",
+      "version": "7.17.1",
+      "version_id": "QyvBBoEd",
+      "filename": "easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "size": 3038455,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "e3f93183a92de47ba0c2ed5bdab8f31a4c1df0c2a29c93c1815c2a50df7ff5a609c8de6aad84e593b3291115f5d184bc75d4b3b8e03c0ac8e02508eff52b8a3e",
+        "sha1": "dbe3e7ff4b0a48e63fe8a28a2330180d77194d39"
+      },
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "Present on active server and owner client; Sera pending"
+      }
+    },
+    {
+      "project_id": "awft:tavern",
+      "slug": "awft-tavern",
+      "name": "A World for Two Drowned Rose",
+      "request": null,
+      "kind": "mod",
+      "version": "0.1.14",
+      "version_id": "0.1.14",
+      "filename": "awft-tavern-0.1.14.jar",
+      "size": 112495,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"
+      },
+      "source": "https://github.com/Kgray44/a-world-for-two/tree/awft-0.1.0-candidate.65/proposals/drowned-rose",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "Present on active server and owner client; Sera pending"
+      }
     }
   ],
   "counts": {
     "requested_candidates": 229,
-    "resolved_files": 214,
-    "mod_entries_including_optional": 205,
-    "enabled_mod_entries": 204,
+    "resolved_files": 216,
+    "mod_entries_including_optional": 207,
+    "enabled_mod_entries": 206,
     "shader_packs": 8,
     "resource_packs": 1,
     "decision_statuses": {
@@ -11777,15 +11812,6 @@
   },
   "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.65, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
   "runtime_evidence": [
-    {
-      "source": "evidence/runtime/client-startup-initial.json",
-      "source_sha256": "210d7712cb6441a18943f104e91b3e0583a3ea8f612b5dad07550104f9be7ce3",
-      "at": "2026-10-26T19:04:36.307627+00:00",
-      "candidate": null,
-      "pack_sha256": "8eaa55f126b31c0e3f1cb8ee86536da64c83a9ffa64af799e66d873324f4fd80",
-      "claim": "Earlier licensed Prism client reached the owner-confirmed Minecraft main menu; native renderer initialization was recorded.",
-      "boundary": "This earlier pack startup is not current-candidate gameplay, shader, FPS or two-player acceptance."
-    },
     {
       "source": "evidence/runtime/owner-crafting-table-confirmation.json",
       "source_sha256": "4f0e344440be6c4431adf502636bafb888a5253108341a32f4f0d366c1d8946d",
@@ -11805,15 +11831,6 @@
       "boundary": "Fresh client agreement, active generation fidelity and MapHorizons-to-Xaero map population remain unverified."
     },
     {
-      "source": "evidence/runtime/cinematic-native-parser.json",
-      "source_sha256": "1a22dc28806a74f139ef67378e83ae8fea572634e86ef80583aeed428879ab34",
-      "at": "2026-10-26T21:21:04.284963+00:00",
-      "candidate": null,
-      "pack_sha256": null,
-      "claim": "The pinned Lumiera parser accepted the configured intro in a vanilla-registry bootstrap.",
-      "boundary": "Parser proof only; not native cinematic playback, multiplayer or a cinematic of the final settlement."
-    },
-    {
       "source": "evidence/runtime/permanent-settlement-construction.json",
       "source_sha256": "996ea225d2339cb4d755a4a660ff6b8531b30839f5438c2907c188afe8ef7b03",
       "at": "2026-10-27T02:13:20.963875+00:00",
@@ -11823,7 +11840,20 @@
       "boundary": "Block/state/inventory and native power evidence only; control cycles, later expansions, artistic quality and full mod-function acceptance remain separate."
     }
   ],
-  "evidence_rejections": [],
+  "evidence_rejections": [
+    {
+      "source": "evidence/runtime/client-startup-initial.json",
+      "expected_sha256": "210d7712cb6441a18943f104e91b3e0583a3ea8f612b5dad07550104f9be7ce3",
+      "actual_sha256": null,
+      "reason": "Missing or changed immutable receipt; observation omitted pending review"
+    },
+    {
+      "source": "evidence/runtime/cinematic-native-parser.json",
+      "expected_sha256": "1a22dc28806a74f139ef67378e83ae8fea572634e86ef80583aeed428879ab34",
+      "actual_sha256": null,
+      "reason": "Missing or changed immutable receipt; observation omitted pending review"
+    }
+  ],
   "isolated_candidates": [
     {
       "project_id": "github:Richard-Sen27/pirates-n-ships",

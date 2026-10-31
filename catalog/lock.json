@@ -7,7 +7,7 @@
   "java": 21,
   "generated": "2026-10-29T15:05:46.151427+00:00",
   "release_status": "candidate",
-  "validation": "Explicitly reviewed helper/mapping changes and optional exact zipline cable addition only; native restart and integration checks pending",
+  "validation": "Current candidate.65 construction runtime pins, including bridge64 and tavern14; fresh import and two-player acceptance recorded separately.",
   "mods": [
     {
       "project_id": "zV5r3pPn",
@@ -277,15 +277,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.51",
-      "version": "0.6.51",
+      "version_id": "0.6.64",
+      "version": "0.6.64",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.51.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.51.jar",
-      "size": 725738,
+      "filename": "awft-control-bridge-0.6.64.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/awft-control-bridge-0.6.64.jar",
+      "size": 793142,
       "hashes": {
-        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
+        "sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20"
       },
       "side": "both",
       "kind": "mod",
@@ -297,13 +297,13 @@
       "license": {
         "id": "MIT"
       },
-      "source": "https://github.com/Kgray44/a-world-for-two",
-      "selection_reason": "Exact owned server bridge: measured tick/JVM telemetry and lifecycle-safe Chunky listener setup.",
+      "source": "https://github.com/Kgray44/a-world-for-two/tree/awft-0.1.0-candidate.65/compat/control-bridge",
+      "selection_reason": "Exact helper installed on the current construction server and matching owner client; includes bounded resource-capture repair.",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",
-        "jar": "pending",
-        "runtime": "not run"
+        "jar": "pass",
+        "runtime": "Owner startup and reconnect observed; Sera multiplayer pending"
       }
     },
     {
@@ -1042,7 +1042,7 @@
     {
       "project_id": "Y4XyzgIp",
       "slug": "aztec-ruins",
-      "name": "Aztec Temple & Ruins - Ruins Structure ✅",
+      "name": "Aztec Temple & Ruins - Ruins Structure \u2705",
       "version_id": "lyaZWn68",
       "version": "1.0+mod",
       "release_type": "release",
@@ -5231,7 +5231,7 @@
     {
       "project_id": "curseforge:935975",
       "slug": "lets-forge-pirates",
-      "name": "Let’s Forge Pirates",
+      "name": "Let\u2019s Forge Pirates",
       "version_id": "5814128",
       "version": "4.0",
       "provider": "curseforge",
@@ -6495,7 +6495,7 @@
     {
       "project_id": "ccKDOlHs",
       "slug": "owo-lib",
-      "name": "oωo (owo-lib)",
+      "name": "o\u03c9o (owo-lib)",
       "version_id": "wbdHEItB",
       "version": "0.12.15.6-beta.1+1.21",
       "release_type": "beta",
@@ -9898,6 +9898,105 @@
         "metadata": "pass",
         "jar": "pending",
         "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "Epm6R3P2",
+      "slug": "easy-npc-core",
+      "name": "Easy NPC Core",
+      "version_id": "QyvBBoEd",
+      "version": "7.17.1",
+      "release_type": "release",
+      "filename": "easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "url": "https://cdn.modrinth.com/data/Epm6R3P2/versions/QyvBBoEd/easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "hashes": {
+        "sha512": "e3f93183a92de47ba0c2ed5bdab8f31a4c1df0c2a29c93c1815c2a50df7ff5a609c8de6aad84e593b3291115f5d184bc75d4b3b8e03c0ac8e02508eff52b8a3e",
+        "sha1": "dbe3e7ff4b0a48e63fe8a28a2330180d77194d39"
+      },
+      "size": 3038455,
+      "provider": "modrinth",
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "y4JF3gXL",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "ngLoLP1P",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "license": {
+        "id": "custom",
+        "name": "Upstream distribution; downloaded from author Modrinth CDN"
+      },
+      "selection_reason": "Exact current tavern NPC dependency; configuration UI is optional and excluded.",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "Present on active server and owner client; Sera pending"
+      }
+    },
+    {
+      "project_id": "awft:tavern",
+      "slug": "awft-tavern",
+      "name": "A World for Two Drowned Rose",
+      "version_id": "0.1.14",
+      "version": "0.1.14",
+      "provider": "local-build",
+      "release_type": "candidate",
+      "filename": "awft-tavern-0.1.14.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/awft-tavern-0.1.14.jar",
+      "size": 112495,
+      "hashes": {
+        "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "project_id": "Epm6R3P2",
+          "version_id": null,
+          "dependency_type": "required"
+        },
+        {
+          "project_id": "R2OftAxM",
+          "version_id": null,
+          "dependency_type": "required"
+        },
+        {
+          "project_id": "pJmCFF0p",
+          "version_id": null,
+          "dependency_type": "required"
+        },
+        {
+          "project_id": "TaSmHw8V",
+          "version_id": null,
+          "dependency_type": "required"
+        }
+      ],
+      "license": {
+        "id": "MIT"
+      },
+      "source": "https://github.com/Kgray44/a-world-for-two/tree/awft-0.1.0-candidate.65/proposals/drowned-rose",
+      "selection_reason": "Exact current server/client tavern adapter; behavior acceptance remains pending.",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "Present on active server and owner client; Sera pending"
       }
     }
   ]

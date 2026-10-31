@@ -9,7 +9,7 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.51'
+BRIDGE_VERSION = '0.6.64'
 
 
 def validate_runtime_identity(source, candidate, bridge):
@@ -46,6 +46,7 @@ def build(home, destination, storage):
     # These exact installed APIs are compiler inputs only. Their classes and
     # nested libraries are never copied into the owned bridge artifact.
     api_hashes = {
+        'moonlight-1.21.1-3.7.2-neoforge.jar': '4a9f15108607cc70273f8a0b6eb24e1e99af8eef44bc3ae8681767ca7ce21b0f',
         'DistantHorizons-3.3.3-1.21.1-fabric-neoforge.jar': '864e70def5b0d54d619b940b66bb2784e91d3f3fc253064fdc1b3fc5786cbfab',
         'lithostitched-1.8.1-neoforge-21.1.jar': 'e0da669fa5facc61a09b9b7bae21b322993de1fcd1eb05787adffb7309598cca',
         'Distant Horizons SeedGen 0.9.1 for 1.21.1 NeoForge.jar': '58469f92f7cf13ff3c2928659ce1a57d7d05314b30e0779cb187b6fbfdb43b4e',

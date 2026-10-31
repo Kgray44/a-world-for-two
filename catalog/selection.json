@@ -1062,6 +1062,11 @@
       "version": "BIogJv2D",
       "side": "both",
       "reason": "Required by the exact Adorable Hamster Pets native NeoForge descriptor: Patchouli >= 1.21.1-93-NEOFORGE; upstream Modrinth dependency metadata is empty."
+    },
+    {
+      "request": "easy-npc-core",
+      "project": "easy-npc-core",
+      "version": "QyvBBoEd"
     }
   ],
   "artifacts": [
@@ -1145,7 +1150,7 @@
     {
       "project_id": "curseforge:935975",
       "slug": "lets-forge-pirates",
-      "name": "Let’s Forge Pirates",
+      "name": "Let\u2019s Forge Pirates",
       "version_id": "5814128",
       "version": "4.0",
       "provider": "curseforge",
@@ -1221,15 +1226,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.51",
-      "version": "0.6.51",
+      "version_id": "0.6.64",
+      "version": "0.6.64",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.51.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.51.jar",
-      "size": 725738,
+      "filename": "awft-control-bridge-0.6.64.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/awft-control-bridge-0.6.64.jar",
+      "size": 793142,
       "hashes": {
-        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
+        "sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20"
       },
       "side": "both",
       "kind": "mod",
@@ -1241,13 +1246,13 @@
       "license": {
         "id": "MIT"
       },
-      "source": "https://github.com/Kgray44/a-world-for-two",
-      "selection_reason": "Exact owned server bridge: measured tick/JVM telemetry and lifecycle-safe Chunky listener setup.",
+      "source": "https://github.com/Kgray44/a-world-for-two/tree/awft-0.1.0-candidate.65/compat/control-bridge",
+      "selection_reason": "Exact helper installed on the current construction server and matching owner client; includes bounded resource-capture repair.",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",
-        "jar": "pending",
-        "runtime": "not run"
+        "jar": "pass",
+        "runtime": "Owner startup and reconnect observed; Sera multiplayer pending"
       }
     },
     {
@@ -1531,6 +1536,59 @@
         "metadata": "pass",
         "jar": "pass",
         "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "awft:tavern",
+      "slug": "awft-tavern",
+      "name": "A World for Two Drowned Rose",
+      "version_id": "0.1.14",
+      "version": "0.1.14",
+      "provider": "local-build",
+      "release_type": "candidate",
+      "filename": "awft-tavern-0.1.14.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/awft-tavern-0.1.14.jar",
+      "size": 112495,
+      "hashes": {
+        "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "project_id": "Epm6R3P2",
+          "version_id": null,
+          "dependency_type": "required"
+        },
+        {
+          "project_id": "R2OftAxM",
+          "version_id": null,
+          "dependency_type": "required"
+        },
+        {
+          "project_id": "pJmCFF0p",
+          "version_id": null,
+          "dependency_type": "required"
+        },
+        {
+          "project_id": "TaSmHw8V",
+          "version_id": null,
+          "dependency_type": "required"
+        }
+      ],
+      "license": {
+        "id": "MIT"
+      },
+      "source": "https://github.com/Kgray44/a-world-for-two/tree/awft-0.1.0-candidate.65/proposals/drowned-rose",
+      "selection_reason": "Exact current server/client tavern adapter; behavior acceptance remains pending.",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "Present on active server and owner client; Sera pending"
       }
     }
   ],

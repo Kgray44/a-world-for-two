@@ -78,6 +78,9 @@ public final class NativeTreePatchSupport {
     private final Set<String> patchIds=new HashSet<>();
     private final Set<BlockPos> heldRoots=new HashSet<>(),approvedFoliage=new HashSet<>();
     private final Set<String> leafIds=new HashSet<>();
+    private boolean naturalCanopyReviewed,naturalCanopyRoot,ownedPreplantedReviewed,ownedPreplantedRoot;
+    private Set<BlockState> ownedPreplantedOutputs=Set.of();
+    private Set<BlockState> naturalTreeOutputs=Set.of();
     private final Set<Long> eligibleColumns=new HashSet<>();
     private int rootIndex,captureCursor;
     private String rootId,currentSaplingId,requestSha,capturedSha,capturedName;
@@ -146,6 +149,8 @@ public final class NativeTreePatchSupport {
             ||!ready.get("preserve_all_existing_trunks_BEs_and_hives").getAsBoolean()
             ||!ready.get("bare_patch_construction_clearance_reviewed").getAsBoolean())
             throw new IllegalStateException("Exact parent-reviewed bare patch/live-capture authority required; not whole-town art acceptance");
+        naturalCanopyReviewed=optionalFlag(ready,"allow_natural_leaf_to_descriptor_tree_materials");
+        ownedPreplantedReviewed=optionalFlag(ready,"allow_owned_preplanted_saplings")&&optionalFlag(ready,"owned_planting_provenance_reviewed");
         JsonObject mask=read(ref("protection"),MAX_INPUT);
         if(!mask.get("seed").getAsString().equals(plan.get("seed").getAsString())
             ||!mask.get("world_path").getAsString().equals(plan.get("world_path").getAsString())
@@ -197,7 +202,15 @@ public final class NativeTreePatchSupport {
             for(int x=write[0];x<=write[3];x++)for(int z=write[2];z<=write[5];z++)
                 if(protectedColumns.contains(TreeGrowthScope.column(x,z)))throw new IllegalStateException("Preserve full architecture/AIR/path/flight/flow/view masks");
             parse(row.get("expected_root").getAsString());parse(row.get("expected_soil").getAsString());
-            if(!row.get("allow_native_leaf_to_leaf_only").getAsBoolean())throw new IllegalStateException("Dense patch must explicitly bind narrow native foliage overlap policy");
+            if(optionalFlag(row,"allow_owned_preplanted_sapling")){
+                BlockState recorded=parse(row.get("expected_root").getAsString());Block selected=BuiltInRegistries.BLOCK.get(ResourceLocation.parse(row.get("sapling").getAsString()));
+                if(!ownedPreplantedReviewed||recorded.getBlock()!=selected||!(selected instanceof SaplingBlock)||!recorded.hasProperty(SaplingBlock.STAGE)
+                    ||recorded.hasBlockEntity()||!recorded.getFluidState().isEmpty()||recorded.is(BlockTags.LOGS))
+                    throw new IllegalStateException("Exact reviewed owned preplanted sapling state/species required");
+            }
+            boolean leafOnly=literalFlag(row,"allow_native_leaf_to_leaf_only"),treeMaterials=optionalFlag(row,"allow_natural_leaf_to_native_tree_materials");
+            if(leafOnly==treeMaterials||treeMaterials&&!naturalCanopyReviewed)
+                throw new IllegalStateException("Exactly one reviewed leaf-only or explicit natural-tree-material mode required");
             JsonArray leaves=row.getAsJsonArray("native_leaf_block_ids");if(leaves.size()>32)throw new IllegalStateException("Finite reviewed native foliage identities required");
             for(JsonElement leaf:leaves){ResourceLocation key=ResourceLocation.parse(leaf.getAsString());if(!BuiltInRegistries.BLOCK.containsKey(key)
                 ||!(BuiltInRegistries.BLOCK.get(key)instanceof LeavesBlock))throw new IllegalStateException("Actual reviewed LeavesBlock required");}
@@ -239,7 +252,23 @@ public final class NativeTreePatchSupport {
         if(savedReadiness==null||!savedReadiness.ready())throw new IllegalStateException("Actual complete current persisted FULL halo proof must precede the first ticket");
         rootPlan=patchRoots.get(rootIndex);rootId=rootPlan.get("id").getAsString();currentSaplingId=rootPlan.get("sapling").getAsString();
         qualification=rootPlan.getAsJsonObject("qualification");JsonArray p=rootPlan.getAsJsonArray("root");
+        naturalCanopyRoot=optionalFlag(rootPlan,"allow_natural_leaf_to_native_tree_materials");naturalTreeOutputs=Set.of();
+        ownedPreplantedRoot=optionalFlag(rootPlan,"allow_owned_preplanted_sapling");ownedPreplantedOutputs=Set.of();
+        if(naturalCanopyRoot){
+            JsonObject descriptor=descriptors.get(currentSaplingId);
+            if(!sha(JSON.toJson(sorted(descriptor)).getBytes(StandardCharsets.UTF_8)).equals(qualification.get("native_descriptor_sha256").getAsString()))
+                throw new IllegalStateException("Natural canopy output set requires the exact sealed native feature descriptor");
+            naturalTreeOutputs=qualifiedNaturalTreeOutputs(descriptor);
+        }
         root=new BlockPos(p.get(0).getAsInt(),p.get(1).getAsInt(),p.get(2).getAsInt());sapling=BuiltInRegistries.BLOCK.get(ResourceLocation.parse(currentSaplingId)).defaultBlockState();
+        if(ownedPreplantedRoot){
+            JsonObject descriptor=descriptors.get(currentSaplingId);
+            if(!sha(JSON.toJson(sorted(descriptor)).getBytes(StandardCharsets.UTF_8)).equals(qualification.get("native_descriptor_sha256").getAsString()))
+                throw new IllegalStateException("Owned root outputs require the exact sealed native feature descriptor");
+            Set<BlockState> outputs=new HashSet<>(qualifiedNaturalTreeOutputs(descriptor));BlockState recorded=parse(rootPlan.get("expected_root").getAsString());
+            outputs.add(Blocks.AIR.defaultBlockState());outputs.add(recorded.setValue(SaplingBlock.STAGE,0));outputs.add(recorded.setValue(SaplingBlock.STAGE,1));
+            ownedPreplantedOutputs=TreeGrowthScope.snapshotSet(outputs);
+        }
         int[] write=box(rootPlan.getAsJsonArray("write_bounds"));knownBounds=box(rootPlan.getAsJsonArray("known_bounds"));
         writeBounds=new AABB(write[0],write[1],write[2],write[3]+1,write[4]+1,write[5]+1);
         before.clear();approvedFoliage.clear();leafIds.clear();chunks.clear();capturedSha=capturedName=null;captureCursor=0;mutated=false;rolls=successRolls=performCalls=0;
@@ -259,7 +288,8 @@ public final class NativeTreePatchSupport {
             BlockPos p=new BlockPos(x,y,z);BlockState state=level.getBlockState(p);before.put(p,state);
             if(writeBounds.contains(x+.5,y+.5,z+.5)&&state.getBlock()instanceof LeavesBlock&&state.is(BlockTags.LEAVES)
                 &&leafIds.contains(BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString())&&!state.hasBlockEntity()
-                &&state.getFluidState().isEmpty()&&level.getBlockEntity(p)==null)approvedFoliage.add(p);
+                &&state.getFluidState().isEmpty()&&level.getBlockEntity(p)==null
+                &&(!naturalCanopyRoot||state.hasProperty(LeavesBlock.PERSISTENT)&&!state.getValue(LeavesBlock.PERSISTENT)))approvedFoliage.add(p);
         }
         if(captureCursor<total)return;
         if(!before.get(root).equals(parse(rootPlan.get("expected_root").getAsString()))
@@ -272,6 +302,7 @@ public final class NativeTreePatchSupport {
         value.addProperty("approved_current_native_foliage_cells",approvedFoliage.size());value.addProperty("ordinary_feature_not_yet_called",true);
         Path file=writeArchive(value,"tree-patch-preimage");capturedName=file.getFileName().toString();capturedSha=sha(bounded(file,8*1024*1024));
         report.put("live_preimage",capturedName);report.put("live_preimage_sha256",capturedSha);report.put("live_preimage_cells",before.size());
+        report.put("explicit_natural_canopy_mode",naturalCanopyRoot);report.put("descriptor_qualified_output_states",naturalTreeOutputs.size());
         if(action.equals("inspect")){rootOutcomes.add(Map.of("root_id",rootId,"status","CURRENT_NATIVE_FIELD_CAPTURED_NO_MUTATION","preimage",capturedName,"preimage_sha256",capturedSha));phase=Phase.NEXT;return;}
         phase=Phase.GROW;
     }
@@ -308,6 +339,65 @@ public final class NativeTreePatchSupport {
     private static long volume(int[] b){return ((long)b[3]-b[0]+1)*(b[4]-b[1]+1)*((long)b[5]-b[2]+1);}
     @SuppressWarnings({"unchecked","rawtypes"}) private static BlockState parse(String text){if(!text.matches("[a-z0-9_.-]+:[a-z0-9_./-]+(?:\\[[a-z0-9_=,]+\\])?"))throw new IllegalStateException("Invalid native block state");String[] parts=text.split("\\[",2);ResourceLocation id=ResourceLocation.parse(parts[0]);if(!BuiltInRegistries.BLOCK.containsKey(id))throw new IllegalStateException("Unknown native block");BlockState state=BuiltInRegistries.BLOCK.get(id).defaultBlockState();Set<String> keys=new HashSet<>();if(parts.length==2)for(String item:parts[1].substring(0,parts[1].length()-1).split(",")){String[] pair=item.split("=",2);if(pair.length!=2||!keys.add(pair[0]))throw new IllegalStateException("Invalid property");Property property=state.getBlock().getStateDefinition().getProperty(pair[0]);if(property==null)throw new IllegalStateException("Unknown property");state=state.setValue(property,(Comparable)property.getValue(pair[1]).orElseThrow());}if(keys.size()!=state.getProperties().size())throw new IllegalStateException("Complete native preimage properties required");return state;}
     private static JsonElement sorted(JsonElement value){if(value.isJsonObject()){JsonObject result=new JsonObject();TreeSet<String> keys=new TreeSet<>(value.getAsJsonObject().keySet());for(String key:keys)result.add(key,sorted(value.getAsJsonObject().get(key)));return result;}if(value.isJsonArray()){JsonArray result=new JsonArray();for(JsonElement v:value.getAsJsonArray())result.add(sorted(v));return result;}return value;}
+    private static boolean literalFlag(JsonObject row,String key){JsonElement v=row.get(key);if(v==null||!v.isJsonPrimitive()||!v.getAsJsonPrimitive().isBoolean())throw new IllegalStateException("Literal canopy permission boolean required: "+key);return v.getAsBoolean();}
+    private static boolean optionalFlag(JsonObject row,String key){return row.has(key)&&literalFlag(row,key);}
+    private static final Map<String,String> MATERIAL_CLASSES=Map.ofEntries(
+        Map.entry("net.minecraft.world.level.block.RotatedPillarBlock","24b5dd143485aedee9c2669baa6989d8fab7c4e7dd73717a22e49245e571b6a2"),
+        Map.entry("net.minecraft.world.level.block.LeavesBlock","65d07f0a9abde031caac6a013efe04a28a2fc3e599e4ec5faf09aa989c884bdd"),
+        Map.entry("net.regions_unexplored.block.type.wood.PineLogBlock","c4f04fa2469055e34db9bac750c4fa6276e2acba1ecf0653acd717771b3fca37"),
+        Map.entry("net.regions_unexplored.block.type.wood.AspenLogBlock","2aedfbdeff1df830ab27f234cb55d8bd7557e356f39b2ca133e1a7714dacbf9f"),
+        Map.entry("net.regions_unexplored.block.type.wood.BranchBlock","b56b2cedaabf1ef1dbb92791bc0c86e76eb604955e2c10a2646fa98ee32180a8"),
+        Map.entry("net.regions_unexplored.block.type.leaves.RUTintedParticlesLeavesBlock","79f4070b32979914d923021a6b907af770503305e88f5b6ed3cc5c0fc86653b2"),
+        Map.entry("net.regions_unexplored.block.type.leaves.RUUntintedParticlesLeavesBlock","6ace5c846c20b0d1b5d2dbf729661d9d03d2a1dec91657c24aed8232e6352b57"));
+    /** Only named material roles in the already sealed codecs; never a recursive Name walk. */
+    private static Set<BlockState> qualifiedNaturalTreeOutputs(JsonObject descriptor)throws Exception{
+        JsonObject features=descriptor.getAsJsonObject("features");if(features.size()<1||features.size()>16)throw new IllegalStateException("Finite sealed features required");
+        Set<BlockState> states=new HashSet<>();
+        for(var item:features.entrySet()){
+            JsonObject codec=item.getValue().getAsJsonObject().getAsJsonObject("actual_codec");String type=codec.get("type").getAsString();
+            if(!Set.of("minecraft:tree","regions_unexplored:larch_tree","regions_unexplored:sakura_tree","regions_unexplored:aspen_tree").contains(type))throw new IllegalStateException("Unknown natural tree codec qualification");
+            JsonObject config=codec.getAsJsonObject("config");materialProvider(config.getAsJsonObject("trunk_provider"),"log",states);materialProvider(config.getAsJsonObject("foliage_provider"),"leaf",states);
+            if(config.has("branch_provider"))materialProvider(config.getAsJsonObject("branch_provider"),"branch",states);
+            JsonArray decorators=config.has("decorators")?config.getAsJsonArray("decorators"):new JsonArray();if(decorators.size()>32)throw new IllegalStateException("Finite tree decorators required");
+            for(JsonElement element:decorators){JsonObject d=element.getAsJsonObject();String kind=d.get("type").getAsString();
+                if(Set.of("regions_unexplored:random_branch","regions_unexplored:group_branch").contains(kind)){
+                    JsonObject branch=new JsonObject();branch.addProperty("Name",d.get("branch_block").getAsString());materialState(branch,"branch",states);
+                    JsonObject log=new JsonObject();log.addProperty("Name",d.get("log_block").getAsString());materialState(log,"log",states);
+                    if(d.has("leaves_provider"))materialProvider(d.getAsJsonObject("leaves_provider"),"leaf",states);
+                }else if(!Set.of("minecraft:beehive","regions_unexplored:place_on_ground").contains(kind))throw new IllegalStateException("Unknown native decorator qualification");
+                // Hives/ground decorations are NOT added to canopy output permission.
+            }
+        }
+        if(states.isEmpty()||states.size()>256)throw new IllegalStateException("Finite exact descriptor output set required");return TreeGrowthScope.snapshotSet(states);
+    }
+    private static void materialProvider(JsonObject provider,String role,Set<BlockState> states)throws Exception{
+        if(provider==null||!provider.keySet().equals(Set.of("type","state"))||!provider.get("type").getAsString().equals("minecraft:simple_state_provider"))throw new IllegalStateException("Only qualified literal simple-state tree providers are admitted");
+        materialState(provider.getAsJsonObject("state"),role,states);
+    }
+    @SuppressWarnings({"rawtypes","unchecked"}) private static void materialState(JsonObject value,String role,Set<BlockState> output)throws Exception{
+        if(!value.has("Name")||!Set.of("Name","Properties").containsAll(value.keySet()))throw new IllegalStateException("Exact tree material state required");
+        ResourceLocation key=ResourceLocation.parse(value.get("Name").getAsString());if(!BuiltInRegistries.BLOCK.containsKey(key))throw new IllegalStateException("Unregistered tree material");
+        Block block=BuiltInRegistries.BLOCK.get(key);BlockState base=block.defaultBlockState();String name=block.getClass().getName(),pin=MATERIAL_CLASSES.get(name);
+        if(pin==null)throw new IllegalStateException("Unqualified tree material class: "+name);resource(block.getClass(),"/"+name.replace('.','/')+".class",pin);
+        if(value.has("Properties"))for(var property:value.getAsJsonObject("Properties").entrySet()){
+            Property p=block.getStateDefinition().getProperty(property.getKey());if(p==null)throw new IllegalStateException("Unknown provider property");base=base.setValue(p,(Comparable)p.getValue(property.getValue().getAsString()).orElseThrow());
+        }
+        Set<String> dynamic;
+        if(role.equals("leaf")){
+            if(!(block instanceof LeavesBlock)||!base.is(BlockTags.LEAVES)||!base.hasProperty(LeavesBlock.PERSISTENT)||base.getValue(LeavesBlock.PERSISTENT))throw new IllegalStateException("Only natural nonpersistent native leaves");
+            dynamic=Set.of("distance");
+        }else if(role.equals("branch")){
+            if(!name.equals("net.regions_unexplored.block.type.wood.BranchBlock")||!base.is(BlockTags.LOGS)||!base.getProperties().stream().map(Property::getName).collect(java.util.stream.Collectors.toSet()).equals(Set.of("facing")))throw new IllegalStateException("Only pinned directional natural BranchBlock");
+            dynamic=Set.of("facing");
+        }else{
+            if(!base.is(BlockTags.LOGS)||!(name.equals("net.minecraft.world.level.block.RotatedPillarBlock")||name.equals("net.regions_unexplored.block.type.wood.PineLogBlock")||name.equals("net.regions_unexplored.block.type.wood.AspenLogBlock")))throw new IllegalStateException("Only pinned native trunk/wood classes");
+            dynamic=name.endsWith("PineLogBlock")?Set.of("axis","transition_block"):name.endsWith("AspenLogBlock")?Set.of("axis","is_base"):Set.of("axis");
+        }
+        var possible=block.getStateDefinition().getPossibleStates();if(possible.size()>4096)throw new IllegalStateException("Finite material state definition required");
+        for(BlockState candidate:possible){boolean matches=true;for(Property p:base.getProperties())if(!dynamic.contains(p.getName())&&!candidate.getValue(p).equals(base.getValue(p)))matches=false;
+            if(matches&&!candidate.hasBlockEntity()&&candidate.getFluidState().isEmpty()){output.add(candidate);if(output.size()>256)throw new IllegalStateException("Qualified material state budget exceeded");}
+        }
+    }
     private JsonObject describe(String id)throws Throwable{
         SaplingBlock block=(SaplingBlock)BuiltInRegistries.BLOCK.get(ResourceLocation.parse(id));TreeGrower grower=(TreeGrower)MethodHandles.privateLookupIn(SaplingBlock.class,MethodHandles.lookup()).findGetter(SaplingBlock.class,"treeGrower",TreeGrower.class).invoke(block);
         var lookup=MethodHandles.privateLookupIn(TreeGrower.class,MethodHandles.lookup());JsonObject value=new JsonObject(),roles=new JsonObject(),features=new JsonObject();value.addProperty("sapling",id);value.addProperty("actual_block_class",block.getClass().getName());value.addProperty("grower_name",(String)lookup.findGetter(TreeGrower.class,"name",String.class).invoke(grower));value.addProperty("secondary_chance",(float)lookup.findGetter(TreeGrower.class,"secondaryChance",float.class).invoke(grower));
@@ -366,7 +456,10 @@ public final class NativeTreePatchSupport {
             if(mutated||worldResidual)quarantine(auditInitializationFailure);
             throw new IllegalStateException("Native bee audit initialization failed before this growth's owned setter",auditInitializationFailure);
         }
-        TreeGrowthScope scope=new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage);
+        TreeGrowthScope scope=ownedPreplantedRoot?new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage,
+                naturalCanopyRoot?naturalTreeOutputs:Set.of(),root,parse(rootPlan.get("expected_root").getAsString()),ownedPreplantedOutputs)
+            :naturalCanopyRoot?new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage,naturalTreeOutputs)
+            :new TreeGrowthScope(level,before,writeBounds,protectedColumns,root.getY()-1,TreeBeeAudit.mayCreateNest(descriptor),approvedFoliage);
         try{
             report.put("this_growth_owned_setter_invoked",false);
             long recheckStarted=System.nanoTime();
@@ -383,12 +476,16 @@ public final class NativeTreePatchSupport {
             scope.hookWitness(root);
             rootIntent(); // durable native field/intent precedes the first physical setter
             // Set before invocation: a native setter may throw after a partial physical write.
-            report.put("this_growth_owned_setter_invoked",true);
-            mutated=true;anyMutated=true;if(!level.setBlock(root,sapling,3))throw new IllegalStateException("Native sapling placement refused");
+            if(!ownedPreplantedRoot){
+                report.put("this_growth_owned_setter_invoked",true);
+                mutated=true;anyMutated=true;if(!level.setBlock(root,sapling,3))throw new IllegalStateException("Native sapling placement refused");
+            } // A pre-existing root keeps its actual stage; no reset or AIR workaround.
+            report.put("owned_preplanted_sapling",ownedPreplantedRoot);
             for(int n=0;n<MAX_ATTEMPTS;n++){
                 BlockState current=level.getBlockState(root);if(current.getBlock()!=sapling.getBlock())break;
                 BonemealableBlock target=(BonemealableBlock)current.getBlock();if(!target.isValidBonemealTarget(level,root,current))throw new IllegalStateException("Native bonemeal target refused");
                 rolls++;if(!target.isBonemealSuccess(level,level.random,root,current))continue;successRolls++;
+                if(ownedPreplantedRoot){report.put("this_growth_owned_setter_invoked",true);mutated=true;anyMutated=true;}
                 int stage=current.getValue(SaplingBlock.STAGE);target.performBonemeal(level,level.random,root,current);performCalls++;
                 if(scope.violation!=null)throw new IllegalStateException(scope.violation);
                 BlockState next=level.getBlockState(root);if(stage==1&&next.getBlock()==sapling.getBlock())throw new IllegalStateException("Native feature did not grow; do not select another variant by repeated forcing");

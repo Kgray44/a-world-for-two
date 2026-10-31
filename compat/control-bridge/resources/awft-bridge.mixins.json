@@ -22,6 +22,7 @@
     "BddTextureResourceMixin",
     "BddGlowParameterMixin",
     "SeedgenTectonicResourcesMixin",
+    "SeedgenMoonlightEarlyReloadMixin",
     "HybridAquaticSeedgenMixin",
     "LithostitchedSeedgenAttemptMixin",
     "LithostitchedSeedgenPacketMixin",

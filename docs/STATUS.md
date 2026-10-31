@@ -1,5 +1,15 @@
 # Build and acceptance status
 
+**Candidate.65 client publication, October 30, 2026 (America/New_York):** the
+experimental Prism release targets the current construction server with bridge
+0.6.64, Easy NPC Core 7.17.1 and tavern adapter 0.1.14. The exact client gameplay
+inventory matches the owner's 200 installed gameplay mods, excluding the QA
+helper. The release lock retains 216 files, including 206 default-enabled mods,
+eight shader choices and one resource pack. Sera's installation and actual remote
+two-player acceptance remain separate. See [candidate.65 release notes](RELEASE-NOTES-candidate.65.md)
+and [installation steps](INSTALL.md). The October 29 checkpoint below is retained
+as historical evidence and does not describe the new release artifact.
+
 **Documentation checkpoint: 2026-10-29 UTC.** Public candidate.31 remains the
 published immutable prerelease. Private candidate.63 is the current construction
 runtime and has a matching licensed client join. All39 eastern Tortuga compounds

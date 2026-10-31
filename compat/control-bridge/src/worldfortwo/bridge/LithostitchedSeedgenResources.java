@@ -39,9 +39,9 @@ import net.neoforged.neoforge.resource.EmptyPackResources;
 
 /** Original bounded byte attestation. No JSON normalization, registry edit or pack close. */
 public final class LithostitchedSeedgenResources {
-    private static final int MAX_PACKS=512,MAX_ENTRIES=262144,MAX_TEXT=4096,MAX_VISITS=1048576;
-    private static final long MAX_BYTES=512L*1024*1024,MAX_RESOURCE=32L*1024*1024;
-    public record Attestation(List<String> orderedPacks,String sha256,int entries,long bytes) {
+    private static final int MAX_PACKS=512,MAX_ENTRIES=262144,MAX_TEXT=4096,MAX_VISITS=1048576,MAX_HASH_VISITS=MAX_VISITS;
+    private static final long MAX_HASH_WORK_BYTES=2L*1024*1024*1024,MAX_RESOURCE=32L*1024*1024;
+    public record Attestation(List<String> orderedPacks,String sha256,int entries,long bytes) { // entries and bytes retain their legacy ABI names for hash visits and cumulative streamed payload hash work; neither is logical retained size.
         public Attestation {orderedPacks=List.copyOf(orderedPacks);}
     }
     private LithostitchedSeedgenResources(){}
@@ -50,13 +50,13 @@ public final class LithostitchedSeedgenResources {
     }
     public static Attestation capture(List<PackResources> opened,ResourceManager resources)throws IOException {
         if(opened.isEmpty()||opened.size()>MAX_PACKS)throw new IOException("Bounded opened server-data packs required");
-        Accumulator out=new Accumulator();var identities=new ArrayList<String>();var allIds=new TreeSet<ResourceLocation>();
+        Accumulator out=new Accumulator();var identities=new ArrayList<String>();var allIds=new TreeSet<ResourceLocation>();logPackHeaders(opened);
         out.text("awft-native-server-data:3");out.number(opened.size());
         for(int index=0;index<opened.size();index++) {
-            PackResources pack=opened.get(index);String identity=pack.packId();
+            PackResources pack=opened.get(index);String identity=pack.packId();out.openedIndex=index;out.packContext=identity;
             identities.add(identity);out.number(index);out.text(identity);out.text(pack.getClass().getName());
             var inventory=inventory(pack,out,0);allIds.addAll(inventory.ids());
-            if(allIds.size()>MAX_ENTRIES)throw new IOException("Bounded whole server-data resource inventory exceeded");
+            requireDistinctIds(allIds.size());out.distinctIds=allIds.size();
         }
         // Bind the actual effective manager, including stack order/filter results,
         // instead of assuming raw opened packs describe every selected overlay.
@@ -66,17 +66,17 @@ public final class LithostitchedSeedgenResources {
         for(int n=0;n<effective.size();n++)if(effective.get(n)!=opened.get(n))throw new IOException("Effective native pack order/identity differs from opened inventory");
         out.text("effective-packs");out.number(effective.size());
         for(var pack:effective){out.text(pack.packId());out.text(pack.getClass().getName());}
-        out.text("effective-stacks");out.number(allIds.size());
+        report(out,"opened-pack-inventory-complete");out.phase="effective-override-stacks";out.openedIndex=-1;out.packContext="effective-manager";out.rootIds=-1;out.text("effective-stacks");out.number(allIds.size());
         for(var id:allIds) {
             var stack=resources.getResourceStack(id);
             out.text(id.toString());out.number(stack.size());
             if(stack.size()>MAX_PACKS)throw new IOException("Bounded native override stack exceeded");
             for(var resource:stack) {
-                out.text(resource.sourcePackId());
+                out.packContext=resource.sourcePackId();out.text(resource.sourcePackId());
                 out.resource(id.toString(),resource::open);
             }
         }
-        for(var view:out.cachedViews)view.unchanged();
+        report(out,"effective-override-stacks-complete");out.phase="generated-final-stability";for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();for(var view:out.taczViews)view.unchanged();for(var view:out.runtimeViews)runtimeUnchanged(view,out);for(var view:out.createViews)createUnchanged(view,out);report(out,"capture-complete");
         return new Attestation(identities,HexFormat.of().formatHex(out.digest.digest()),out.entries,out.bytes);
     }
     /** The native listing is cross-checked against a strict finite root walk:
@@ -84,8 +84,8 @@ public final class LithostitchedSeedgenResources {
      * The independent walk throws on those failures; final selected bytes still
      * come through the real PackResources.getResource. No pack is closed here. */
     @SuppressWarnings("unchecked")
-    private static Inventory inventory(PackResources pack,Accumulator out,int depth)throws IOException {
-        if(depth>16||++out.packs>MAX_PACKS)throw new IOException("Bounded complete pack structure exceeded");
+    private static Inventory inventory(PackResources pack,Accumulator out,int depth,PackResources parent)throws IOException {
+        if(depth>16||++out.packs>MAX_PACKS)throw new IOException("Bounded complete pack structure exceeded");out.packContext=pack.packId();out.rootIds=-1;
         var ids=new TreeSet<ResourceLocation>();var rawNames=new TreeSet<String>();
         var readable=new TreeMap<ResourceLocation,Boolean>();var childInventories=new ArrayList<Inventory>();int[] visits={0};
         PackResources.ResourceOutput collect=(id,supplier)->{
@@ -98,10 +98,10 @@ public final class LithostitchedSeedgenResources {
             // One exact native dynamic provider is inventoried through its own API.
             var runtimeIds=YungLocatePackCustody.matches(pack)?YungLocatePackCustody.inventory(pack):null;
             var moonlight=MoonlightCachePackCustody.matches(pack)?MoonlightCachePackCustody.inspect(pack):null;
-            if(moonlight!=null)out.cachedViews.add(moonlight);
+            if(moonlight!=null)out.cachedViews.add(moonlight);var memory=MoonlightInMemoryPackCustody.matches(pack)?MoonlightInMemoryPackCustody.inspect(pack,out.deadline):null;if(memory!=null)out.memoryViews.add(memory);var delegating=GeneratedServerPackCustody.tacz(pack)?GeneratedServerPackCustody.inspectTacz(pack,out.deadline):null;var generated=GeneratedServerPackCustody.runtime(pack)?GeneratedServerPackCustody.inspectRuntime(pack,out.deadline):null;if(delegating!=null)out.taczViews.add(delegating);if(generated!=null)out.runtimeViews.add(generated);var create=CreateDynamicPackCustody.matches(pack)?CreateDynamicPackCustody.inspect(pack,out.deadline):null;if(create!=null)out.createViews.add(create);
             // An unknown subclass could override any listed/read resource method.
             if(type!=PathPackResources.class&&type!=VanillaPackResources.class&&type!=CompositePackResources.class
-                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null)
+                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null&&memory==null&&delegating==null&&generated==null&&create==null)
                 throw new IOException("Unsupported actual PackResources implementation: "+type.getName()+" pack="+pack.packId());
             // Check that a file-backed native pack is actually open, rather than
             // allowing its logged failed-open path to masquerade as an empty pack.
@@ -117,7 +117,7 @@ public final class LithostitchedSeedgenResources {
             out.resource("pack.mcmeta",pack.getRootResource("pack.mcmeta"));
             if(type==PathPackResources.class) {
                 Path root=(Path)Roots.PATH.invoke(pack);
-                requireDirectory(root);
+                try{if(!declaredEmptyTectonicOverlay(pack,parent,root,out))requireDirectory(root);}catch(IOException failure){throw new IOException("Exact native pack root refusal: pack="+pack.packId()+" class="+pack.getClass().getName()+" root="+root+" filesystem="+root.getFileSystem().getClass().getName()+" parent="+(parent==null?"none":parent.packId()+"/"+parent.getClass().getName())+" cause="+failure.getMessage(),failure);}
                 Path data=root.resolve("data");
                 if(!namespaces.equals(pathNamespaces(data,out)))throw new IOException("Native path namespace inventory is incomplete");
                 for(String namespace:namespaces)ids.addAll(pathIds(namespace,data.resolve(namespace),out,rawNames));
@@ -130,15 +130,15 @@ public final class LithostitchedSeedgenResources {
                     out.text("vanilla-native-root");out.number(rootIndex);
                     ids.addAll(pathIds(namespace,selected.get(rootIndex).resolve(namespace),out,rawNames));
                 }
-            }else if(type==CompositePackResources.class) {
-                PackResources primary=(PackResources)Roots.PRIMARY.invoke(pack);
-                var children=(List<PackResources>)Roots.STACK.invoke(pack);
+            }else if(type==CompositePackResources.class||delegating!=null) {
+                PackResources primary=delegating==null?(PackResources)Roots.PRIMARY.invoke(pack):null;
+                var children=delegating==null?(List<PackResources>)Roots.STACK.invoke(pack):delegating.children;
                 // Native constructor's stack is reversed overlays followed by
                 // the exact primary. Do not count/hash the primary twice.
-                if(children.isEmpty()||children.size()>MAX_PACKS||children.getLast()!=primary)
+                if(delegating==null&&(children.isEmpty()||children.size()>MAX_PACKS||children.getLast()!=primary))
                     throw new IOException("Pinned composite primary/overlay topology changed");
-                out.number(children.size());
-                for(var child:children){Inventory childInventory=inventory(child,out,depth+1);childInventories.add(childInventory);ids.addAll(childInventory.ids());}
+                out.number(children.size());if(delegating!=null){out.text("native-TaCZ-ordered-children:1");out.text(delegating.metadata);}
+                for(var child:children){Inventory childInventory=inventory(child,out,depth+1,pack);childInventories.add(childInventory);ids.addAll(childInventory.ids());}
                 // Empty namespace directories are legal, so check the full
                 // native child namespace union, not only namespaces with files.
                 var childNamespaces=new TreeSet<String>();
@@ -165,8 +165,8 @@ public final class LithostitchedSeedgenResources {
                 for(var entry:directories.entrySet())for(String dir:entry.getValue())pack.listResources(PackType.SERVER_DATA,entry.getKey(),dir,collect);
                 if(!ids.equals(nested))throw new IOException("Native file resource inventory is incomplete");
                 ids.addAll(expected);
-            }else if(moonlight!=null) {
-                moonlightInventory(pack,moonlight,out,ids,rawNames);
+            }else if(create!=null){createInventory(create,out,ids);}else if(generated!=null){runtimeInventory(generated,out,ids);}else if(moonlight!=null||memory!=null) {
+                if(moonlight!=null)moonlightInventory(pack,moonlight,out,ids,rawNames);else memoryInventory(pack,memory,out,ids);
             }else if(runtimeIds!=null) {
                 ids.addAll(runtimeIds);
             }else if(type==EmptyPackResources.class) {
@@ -179,7 +179,7 @@ public final class LithostitchedSeedgenResources {
                 }
                 if(!namespaces.isEmpty())throw new IOException("Native empty pack unexpectedly supplies namespaces");
             }
-            if(ids.size()>MAX_ENTRIES)throw new IOException("Bounded native pack inventory exceeded");
+            if(ids.size()>MAX_ENTRIES)throw new IOException("Bounded native pack inventory exceeded");out.packContext=pack.packId();out.rootIds=ids.size();
             // Every real child is hashed before its Composite winner. A fully
             // masked child-byte change must still refuse the fresh seed load.
             out.text("selected-native-resources");out.number(ids.size());
@@ -188,9 +188,9 @@ public final class LithostitchedSeedgenResources {
                 boolean parserRejected=FileUtil.decomposePath(id.getPath()).error().isPresent();
                 readable.put(id,source!=null);
                 out.text("native-selected-readability");out.text(id.toString());out.number(parserRejected?1:0);out.number(source==null?0:1);
-                out.resource(id.toString(),source);
+                String selectedHash=out.resource(id.toString(),source);if(generated!=null&&!java.util.Objects.equals(generated.selectedHashes.get(id),selectedHash))throw new IOException("Native runtime listed/selected bytes differ");if(create!=null&&!java.util.Objects.equals(create.selectedHashes.get(id),selectedHash))throw new IOException("Native Create original/selected bytes differ");
             }
-            if(moonlight!=null)moonlight.unchanged();
+            if(moonlight!=null)moonlight.unchanged();if(memory!=null)memory.unchanged();if(delegating!=null)delegating.unchanged();if(generated!=null)runtimeUnchanged(generated,out);if(create!=null)createUnchanged(create,out);
             return new Inventory(ids,Map.copyOf(readable));
         }catch(IOException failure){throw failure;}
         catch(UncheckedIOException failure){throw failure.getCause();}
@@ -203,7 +203,7 @@ public final class LithostitchedSeedgenResources {
      * unavailable; a readable child or absent child proof refuses its null. */
     static boolean attestedNativeAbsence(Class<?> type,ResourceLocation id,Set<String> rawNames,List<Inventory> children) {
         if(FileUtil.decomposePath(id.getPath()).error().isEmpty())return false;
-        if(type==CompositePackResources.class) {
+        if(type==CompositePackResources.class||type.getName().equals(GeneratedServerPackCustody.TACZ)) {
             boolean member=false;
             for(var child:children)if(child.ids().contains(id)) {
                 Boolean state=child.readable().get(id);
@@ -400,32 +400,207 @@ public final class LithostitchedSeedgenResources {
         }
     }
     private static final class Accumulator {
-        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();
-        final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;
+        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();final ArrayList<MoonlightInMemoryPackCustody.View> memoryViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.TaczView> taczViews=new ArrayList<>();final ArrayList<GeneratedServerPackCustody.RuntimeView> runtimeViews=new ArrayList<>();final ArrayList<CreateDynamicPackCustody.View> createViews=new ArrayList<>();
+        final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;String phase="opened-pack-inventory",packContext="none";int distinctIds,rootIds=-1,openedIndex=-1;
         void visit()throws IOException {
-            if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw new IOException("Native server-data inventory exceeded its finite traversal bound");
+            if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw counterFailure(this,"Native server-data inventory exceeded its finite traversal bound","<traversal>");
         }
         void number(long value){digest.update(ByteBuffer.allocate(Long.BYTES).putLong(value).array());}
         void text(String value)throws IOException {
-            if(System.nanoTime()-deadline>=0)throw new IOException("Native server-data attestation exceeded its finite deadline");
+            if(System.nanoTime()-deadline>=0)throw counterFailure(this,"Native server-data attestation exceeded its finite deadline","<text-or-read>");
             if(value==null||value.length()>MAX_TEXT)throw new IOException("Bounded native resource identity exceeded");
             byte[] raw=value.getBytes(StandardCharsets.UTF_8);number(raw.length);digest.update(raw);
         }
-        void resource(String identity,IoSupplier<InputStream> source)throws IOException {
-            if(++entries>MAX_ENTRIES)throw new IOException("Bounded complete resource count exceeded");
-            text(identity);number(source==null?0:1);if(source==null)return;
+        String resource(String identity,IoSupplier<InputStream> source)throws IOException {
+            if(++entries>MAX_HASH_VISITS)throw counterFailure(this,"Bounded complete resource hash-visit count exceeded",identity);
+            text(identity);number(source==null?0:1);if(source==null)return null;
             MessageDigest content=sha();long size=0;byte[] buffer=new byte[65536];
             try(InputStream stream=source.get()) {
                 if(stream==null)throw new IOException("Native resource supplier returned null");
                 for(int n;(n=stream.read(buffer))!=-1;) {
                     size+=n;bytes+=n;
-                    if(System.nanoTime()-deadline>=0)throw new IOException("Native server-data attestation exceeded its finite deadline");
-                    if(size>MAX_RESOURCE||bytes>MAX_BYTES)throw new IOException("Bounded complete server-data byte attestation exceeded");
+                    if(System.nanoTime()-deadline>=0)throw counterFailure(this,"Native server-data attestation exceeded its finite deadline","<text-or-read>");
+                    if(size>MAX_RESOURCE||bytes>MAX_HASH_WORK_BYTES)throw counterFailure(this,(size>MAX_RESOURCE?"Bounded server-data per-resource size exceeded":"Bounded cumulative server-data hash-read work exceeded")+"; resourceBytes="+size+" resourceLimit="+MAX_RESOURCE,identity);
                     content.update(buffer,0,n);
                 }
             }
-            number(size);digest.update(content.digest());
+            byte[] value=content.digest();number(size);digest.update(value);return HexFormat.of().formatHex(value);
         }
     }
+    /** Exact native memory storage was independently cross-checked with list/get.
+     * Feed every original root and selected data byte into the SAME accumulator;
+     * effective manager stacks and both end-of-capture checks remain unchanged. */
+    private static void memoryInventory(PackResources pack,MoonlightInMemoryPackCustody.View view,
+            Accumulator out,TreeSet<ResourceLocation> ids)throws IOException {
+        out.text("moonlight-memory-map:1");out.text(PackType.SERVER_DATA.name());
+        out.number(view.hidden()?1:0);
+        out.text("native-PackMetadataSection");out.text("message.moonlight.runtime");
+        out.number(view.packFormat());out.number(0); // exact native supportedFormats.empty
+        out.number(view.rootNames().size());
+        for(String name:new TreeSet<>(view.rootNames())) {
+            var source=pack.getRootResource(name.split("/",-1));
+            if(source==null)throw new IOException("Native Moonlight memory root disappeared");
+            out.resource("moonlight-memory-root/"+name,source);
+        }
+        ids.addAll(view.ids());view.unchanged();
+    }
     private static MessageDigest sha(){try{return MessageDigest.getInstance("SHA-256");}catch(NoSuchAlgorithmException impossible){throw new AssertionError(impossible);}}
+    /** Log every actual opened identity before the first provider-specific traversal. */
+    private static void logPackHeaders(List<PackResources> packs)throws IOException {
+        int total=0;
+        for(var pack:packs) {
+            if(pack==null||pack.packId()==null||pack.packId().length()>MAX_TEXT||pack.getClass().getName().length()>MAX_TEXT)
+                throw new IOException("Bounded opened native pack headers required");
+            total+=pack.packId().length()+pack.getClass().getName().length();
+            if(total>131072)throw new IOException("Bounded complete native pack header text exceeded");
+        }
+        var log=org.slf4j.LoggerFactory.getLogger("AWFT-SeedGen-Pack-Custody");
+        for(int n=0;n<packs.size();n++)log.info("Opened SERVER_DATA pack [{}] id={} class={}",n,packs.get(n).packId(),packs.get(n).getClass().getName());
+    }
+    /** Hash complete native map bytes, then cross-check the original native list/get API. */
+    private static void runtimeInventory(GeneratedServerPackCustody.RuntimeView view,Accumulator out,TreeSet<ResourceLocation> ids)throws IOException {
+        out.text("native-CDP-runtime-map:1");out.text(view.metadata);out.number(view.raw().size());
+        for(var entry:new TreeMap<>(view.raw()).entrySet())
+            view.rawHashes.put(entry.getKey(),out.resource("native-runtime-raw/"+entry.getKey(),entry.getValue()));
+        ids.addAll(view.ids());
+        for(var id:ids)view.selectedHashes.put(id,out.resource("native-runtime-listed/"+id,view.listed(id)));
+        view.unchanged();
+    }
+    private static void runtimeUnchanged(GeneratedServerPackCustody.RuntimeView view,Accumulator out)throws IOException {
+        view.unchanged();
+        for(var entry:view.rawHashes.entrySet()) {
+            String actual=out.resource("native-runtime-stable/"+entry.getKey(),view.raw().get(entry.getKey()));
+            if(!java.util.Objects.equals(entry.getValue(),actual))throw new IOException("Native runtime bytes changed during custody");
+        }
+        view.unchanged();
+    }
+    /** Complete Create map bytes, including namespace-root files the native empty query misses. */
+    private static void createInventory(CreateDynamicPackCustody.View view,Accumulator out,TreeSet<ResourceLocation> ids)throws IOException {
+        out.text("native-Create-dynamic-map:1");out.text(view.metadata);out.number(view.raw().size());
+        for(var entry:new TreeMap<>(view.raw()).entrySet())
+            view.rawHashes.put(entry.getKey(),out.resource("native-Create-raw/"+entry.getKey(),entry.getValue()));
+        ids.addAll(view.ids());
+        for(var id:ids)view.selectedHashes.put(id,out.resource("native-Create-original/"+id,view.listedOrDirect(id)));
+        view.unchanged();
+    }
+    private static void createUnchanged(CreateDynamicPackCustody.View view,Accumulator out)throws IOException {
+        view.unchanged();
+        for(var entry:view.rawHashes.entrySet()) {
+            String actual=out.resource("native-Create-stable/"+entry.getKey(),view.raw().get(entry.getKey()));
+            if(!java.util.Objects.equals(entry.getValue(),actual))throw new IOException("Native Create bytes changed during custody");
+        }
+        view.unchanged();
+    }
+
+    // The sole admitted absent root is a declaration in this exact pinned native archive.
+    private static final String TECTONIC_EMPTY_ARCHIVE_SHA="cf188c70e7dd94f6e3a81cef9fe99f1151f13217809f7576aaedb0c3e6547ae1";
+    private static final String TECTONIC_EMPTY_META_SHA="201909f97c52ab64836b97f535d91bb4e38fc9e4681b6304188e36f9fdfccd1d";
+    private static final String TECTONIC_META="resourcepacks/tectonic/pack.mcmeta";
+    private static Inventory inventory(PackResources pack,Accumulator out,int depth)throws IOException {
+        return inventory(pack,out,depth,null);
+    }
+    private static boolean declaredEmptyTectonicOverlay(PackResources pack,PackResources parent,Path root,Accumulator out)throws Throwable {
+        if(parent==null||parent.getClass()!=CompositePackResources.class||!parent.packId().equals("tectonic")
+                ||pack.getClass()!=PathPackResources.class||!pack.packId().equals("tectonic"))return false;
+        var primary=(PackResources)Roots.PRIMARY.invoke(parent);
+        if(primary.getClass()!=PathPackResources.class)return false;
+        Path base=(Path)Roots.PATH.invoke(primary);
+        if(!root.equals(base.resolve("intentionally_empty"))||attributes(root)!=null)return false;
+        if(!net.neoforged.fml.ModList.get().isLoaded("tectonic"))return false;
+        var file=net.neoforged.fml.ModList.get().getModFileById("tectonic").getFile();
+        attestDeclaredEmptyTectonicOverlay(pack,parent,file.getFilePath(),file.findResource("resourcepacks/tectonic"));
+        out.text("pinned-native-Tectonic-declared-empty-overlay:1");out.text(TECTONIC_EMPTY_ARCHIVE_SHA);
+        out.text(TECTONIC_EMPTY_META_SHA);out.text("resourcepacks/tectonic/intentionally_empty");out.number(0);
+        org.slf4j.LoggerFactory.getLogger("AWFT-SeedGen-Resources").info(
+            "Attested exact native declared-empty overlay: parent={} class={} root={} archive={} members=0; all other missing roots still refuse",
+            parent.packId(),pack.getClass().getName(),root,TECTONIC_EMPTY_ARCHIVE_SHA);
+        return true;
+    }
+    /** Package-private actual-API fixture overload; runtime paths come only from the pinned ModList file. */
+    @SuppressWarnings("unchecked")
+    static void attestDeclaredEmptyTectonicOverlay(PackResources child,PackResources parent,Path archive,Path expectedBase)throws Throwable {
+        if(parent==null||parent.getClass()!=CompositePackResources.class||child.getClass()!=PathPackResources.class
+                ||!parent.packId().equals("tectonic")||!child.packId().equals("tectonic"))
+            throw new IOException("Exact native Tectonic parent/child identities required");
+        var primary=(PackResources)Roots.PRIMARY.invoke(parent);var stack=(List<PackResources>)Roots.STACK.invoke(parent);
+        if(primary.getClass()!=PathPackResources.class||!primary.packId().equals("tectonic")||stack.size()<2
+                ||stack.size()>MAX_PACKS||stack.getLast()!=primary)throw new IOException("Exact native Tectonic primary/overlay topology required");
+        Path primaryRoot=(Path)Roots.PATH.invoke(primary),root=(Path)Roots.PATH.invoke(child);
+        if(!primaryRoot.equals(expectedBase)||!root.equals(expectedBase.resolve("intentionally_empty"))||attributes(root)!=null)
+            throw new IOException("Only exact absent native Tectonic intentionally_empty root is admitted");
+        requireDirectory(primaryRoot);int exact=0;var identities=new java.util.IdentityHashMap<PackResources,Boolean>();
+        for(var member:stack){
+            if(member.getClass()!=PathPackResources.class||!member.packId().equals("tectonic")||identities.put(member,true)!=null)
+                throw new IOException("Native Tectonic child topology changed");
+            Path memberRoot=(Path)Roots.PATH.invoke(member);
+            if(!memberRoot.startsWith(expectedBase)||!memberRoot.normalize().equals(memberRoot))throw new IOException("Native Tectonic child escapes its exact root");
+            if(memberRoot.equals(root)){exact++;if(member!=child)throw new IOException("Native Tectonic empty child identity changed");}
+        }
+        if(exact!=1)throw new IOException("Native Tectonic empty child must occur once");
+        if(net.minecraft.SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA)!=48)
+            throw new IOException("Exact Minecraft1.21.1 server-data format48 required");
+        var before=attributes(archive);
+        if(before==null||!before.isRegularFile()||before.isSymbolicLink()||before.size()!=451757L)
+            throw new IOException("Pinned Tectonic3.0.28 archive required");
+        byte[] bytes;try(InputStream in=Files.newInputStream(archive)){bytes=in.readNBytes(451758);}
+        if(bytes.length!=451757||!hashBytes(bytes).equals(TECTONIC_EMPTY_ARCHIVE_SHA))throw new IOException("Pinned Tectonic archive digest differs");
+        byte[] metadata;
+        try(ZipFile zip=new ZipFile(archive.toFile())){
+            if(zip.size()>MAX_VISITS)throw new IOException("Tectonic archive inventory exceeds finite custody");
+            var entries=zip.entries();while(entries.hasMoreElements()){
+                String name=entries.nextElement().getName();
+                if(name.equals("resourcepacks/tectonic/intentionally_empty")||name.startsWith("resourcepacks/tectonic/intentionally_empty/"))
+                    throw new IOException("Declared-empty Tectonic overlay contains an archive member");
+            }
+            var entry=zip.getEntry(TECTONIC_META);
+            if(entry==null||entry.getSize()!=3878)throw new IOException("Exact Tectonic built-in metadata required");
+            try(InputStream in=zip.getInputStream(entry)){metadata=in.readNBytes(3879);}
+        }
+        if(metadata.length!=3878||!hashBytes(metadata).equals(TECTONIC_EMPTY_META_SHA))throw new IOException("Pinned Tectonic overlay metadata differs");
+        var json=com.google.gson.JsonParser.parseString(new String(metadata,StandardCharsets.UTF_8)).getAsJsonObject();int declarations=0;
+        for(var value:json.getAsJsonObject("overlays").getAsJsonArray("entries")){
+            var row=value.getAsJsonObject();if(!row.get("directory").getAsString().equals("intentionally_empty"))continue;declarations++;
+            var formats=row.getAsJsonArray("formats");
+            if(formats.size()!=2||formats.get(0).getAsInt()!=1||formats.get(1).getAsInt()!=999||row.get("min_format").getAsInt()!=1
+                    ||row.get("max_format").getAsInt()!=999||row.has("conditions")||row.has("neoforge:conditions"))
+                throw new IOException("Exact unconditional format48 empty-overlay declaration required");
+        }
+        if(declarations!=1)throw new IOException("Unique native Tectonic empty-overlay declaration required");
+        var source=primary.getRootResource("pack.mcmeta");
+        if(source==null)throw new IOException("Native Tectonic primary metadata disappeared");
+        try(InputStream in=source.get()){if(!java.util.Arrays.equals(metadata,in.readNBytes(3879)))throw new IOException("Native Tectonic primary metadata differs from archive");}
+        if(!child.getNamespaces(PackType.SERVER_DATA).isEmpty()||child.getRootResource("pack.mcmeta")!=null||child.getRootResource("icon.png")!=null)
+            throw new IOException("Native declared-empty child supplies unexpected namespaces/root bytes");
+        var namespaces=new TreeSet<>(parent.getNamespaces(PackType.SERVER_DATA));
+        if(namespaces.size()>4096)throw new IOException("Bounded native Tectonic parent namespaces required");
+        for(String namespace:namespaces){
+            child.listResources(PackType.SERVER_DATA,namespace,"",(id,supplier)->{throw new IllegalStateException("Native declared-empty child listed a resource");});
+            if(child.getResource(PackType.SERVER_DATA,ResourceLocation.fromNamespaceAndPath(namespace,"awft_declared_empty_readback"))!=null)
+                throw new IOException("Native declared-empty child supplied selected bytes");
+        }
+        var after=attributes(archive);
+        if(after==null||after.size()!=before.size()||!after.lastModifiedTime().equals(before.lastModifiedTime())
+                ||!java.util.Objects.equals(after.fileKey(),before.fileKey())||attributes(root)!=null)
+            throw new IOException("Pinned Tectonic archive/absent-root witness changed during capture");
+    }
+    private static String hashBytes(byte[] bytes){return HexFormat.of().formatHex(sha().digest(bytes));}
+    /** Distinct inventory cardinality has its original bound, independent of repeated byte hashing. */
+    private static void requireDistinctIds(int count)throws IOException {
+        if(count>MAX_ENTRIES)throw new IOException("Bounded whole server-data resource inventory exceeded; distinctIds="+count+" distinctLimit="+MAX_ENTRIES);
+    }
+    private static String counterFacts(Accumulator out) {
+        return "phase="+out.phase+" hashVisits="+out.entries+" hashVisitLimit="+MAX_HASH_VISITS
+            +" distinctIdsAtCompletedPackBoundary="+out.distinctIds+" distinctLimit="+MAX_ENTRIES
+            +" currentRootIds="+out.rootIds+" traversalVisits="+out.visits+" traversalLimit="+MAX_VISITS
+            +" hashReadWorkBytes="+out.bytes+" hashReadWorkLimit="+MAX_HASH_WORK_BYTES+" inventoryCalls="+out.packs+" inventoryLimit="+MAX_PACKS+" openedIndex="+out.openedIndex+" pack="+boundedDiagnostic(out.packContext);
+    }
+    private static String boundedDiagnostic(String value) {
+        if(value==null)return "null";return value.length()>256?value.substring(0,256)+"...":value;
+    }
+    private static IOException counterFailure(Accumulator out,String reason,String identity) {
+        return new IOException(reason+"; "+counterFacts(out)+" resource="+boundedDiagnostic(identity));
+    }
+    private static void report(Accumulator out,String event) {
+        org.slf4j.LoggerFactory.getLogger("AWFT-SeedGen-Pack-Custody").info("SERVER_DATA custody {} {}",event,counterFacts(out));
+    }
 }

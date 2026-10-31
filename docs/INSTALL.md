@@ -1,5 +1,22 @@
 # Install A World for Two
 
+## Join the current construction server (candidate.65)
+
+Download [candidate.65 Prism ZIP](https://github.com/Kgray44/a-world-for-two/releases/download/awft-0.1.0-candidate.65/A-World-for-Two-0.1.0-candidate.65-Prism.zip).
+In Prism choose **Add Instance → Import from ZIP**, import as a new instance,
+select **Java 21**, and sign into your own licensed Minecraft Java account.
+Sera should set maximum memory to **4096 MiB**. Keep the Packwiz pre-launch step
+enabled and start with shaders off. Choose **Join Our World → Public (KG and
+Sera)**, or Direct Connection to **`malls-cup.tun.ply.gg`**. Your exact Java
+username must be whitelisted by the host.
+
+This experimental prerelease includes the active construction server's bridge
+0.6.64, Easy NPC 7.17.1 and tavern 0.1.14. The earlier candidate.31 pack does not
+match that server. [Candidate.65 notes](RELEASE-NOTES-candidate.65.md) distinguish
+byte verification from fresh import, startup and two-player acceptance.
+
+## Earlier public candidate.31
+
 The public download is the immutable **candidate.31 prerelease**. Its ZIP and
 checksum were verified; a clean native Prism import remains unqualified.
 **Private candidate.48 has reached native startup and a licensed owner join**,
