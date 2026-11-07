@@ -1,11 +1,15 @@
 'use strict';
 import {LocalSession} from './session.js';
+import {VisiblePoller} from './polling.js';
+import {playerView} from './atlas-state.js';
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const state = {csrf:'', page:'overview', overview:null, jobs:[], history:[], tab:'installed', raw:null, seenJobs:new Set(), busy:false};
+const state = {csrf:'', page:'overview', overview:null, jobs:[], history:[], tab:'installed', raw:null, seenJobs:new Set(), busy:false, connected:false, renderGeneration:0};
 const localSession=new LocalSession(globalThis.fetch.bind(globalThis),token=>{state.csrf=token;});
-const labels = {overview:'Overview', performance:'Performance', storage:'Storage', mods:'Mod Manager', settings:'World settings', players:'Players & access', atlas:'World Atlas', cinematics:'Cinematics', console:'Console & logs', backups:'Backups', connectivity:'Connectivity', graphics:'Graphics & distance', compatibility:'Compatibility', setup:'Setup & repair'};
+const labels = {overview:'Overview', performance:'Performance', storage:'Storage', mods:'Mod Manager', settings:'World settings', players:'Players & access', atlas:'World Atlas', characters:'Characters', cinematics:'Cinematics', console:'Console & logs', backups:'Backups', connectivity:'Connectivity', graphics:'Graphics & distance', compatibility:'Compatibility', setup:'Setup & repair'};
+const routePage=()=>{const page=location.hash.slice(1).split(/[?\/]/)[0];return labels[page]?page:'overview';};
+let previousRoute=location.hash;
 const bytes = value => {if(value == null) return '—'; if(value === 0) return '0 B'; const i = Math.min(4,Math.floor(Math.log(value)/Math.log(1024))); return `${(value/1024**i).toLocaleString(undefined,{maximumFractionDigits:i>1?2:0})} ${['B','KiB','MiB','GiB','TiB'][i]}`;};
 const number = (value, digits=1) => value == null ? '—' : Number(value).toLocaleString(undefined,{maximumFractionDigits:digits});
 const when = value => value ? new Date(value).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : 'Not yet';
@@ -47,7 +51,9 @@ export function idleSimulationRows(value,current,dimension) {
 }
 
 async function api(path, body) {
-  const response = await localSession.request(path, body === undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  let response;
+  try {response = await localSession.request(path, body === undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});}
+  catch(error){if(['TimeoutError','AbortError'].includes(error.name))throw new Error('Control Room did not respond in time. An action may still be running; check Task history and server state before retrying.');throw error;}
   const data = await response.json();
   if(!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
   return data;
@@ -85,19 +91,19 @@ function chart(id,values,key,secondary=null) {
 }
 
 function overview() {
-  const d=state.overview,m=d.metrics||{},s=d.server,online=s.state==='online';
-  const tps=liveMetric(m,'tps','tick'),mspt=liveMetric(m,'mspt','tick'),playerCount=currentMeasurement(m.freshness?.bridge)?m.players_online:s.state==='offline'?0:null;
+  const d=state.overview,m=d.metrics||{},s=d.server,serverCurrent=state.connected&&currentMeasurement({measured_at:d.at,current:true,max_age_seconds:15}),online=serverCurrent&&s.state==='online';
+  const tps=liveMetric(m,'tps','tick'),mspt=liveMetric(m,'mspt','tick'),playerCount=serverCurrent?(currentMeasurement(m.freshness?.bridge)?m.players_online:s.state==='offline'?0:null):null;
   const integrity=d.sync.server_integrity;
   const integrityNote=integrity?`${esc(integrity.status)}${integrity.last_verified_at?`<small>Last full check ${when(integrity.last_verified_at)} · ${number(integrity.age_seconds,0)} s ago</small>`:'<small>Waiting for a full background check</small>'}`:'Unavailable';
-  const controls=d.active_test?`<a class="button primary" href="${esc(d.active_test.url)}">Open live playtest →</a>`:online?button('stop','Ⅱ Stop world')+button('restart','↻ Restart','ghost'):button('start','▷ Start world','primary');
+  const controls=!serverCurrent?button('start','Server status unavailable','','disabled'):d.active_test?`<a class="button primary" href="${esc(d.active_test.url)}">Open live playtest →</a>`:online?button('stop','Ⅱ Stop world')+button('restart','↻ Restart','ghost'):button('start','▷ Start world','primary');
   const warnings=(m.alerts||[]).map(a=>notice(a.message,a.severity==='critical'?'error':'warn')).join('')+(s.warning?notice(s.warning,'warn'):'')+freshnessNotice(m);
   $('#main').innerHTML=header('Welcome home.', 'A little world, beautifully looked after.',button('prism','◇ Open Prism Launcher'))+warnings+
-    `<section class="hero"><div class="hero-copy">${pill(`< ${s.state.toUpperCase()} >`,online?'good':'')}<h2>${online?'Your next adventure is waiting.':'A place to call ours.'}</h2><p>${online?'The world is awake. Find a quiet meadow, follow the river, or take the long way home.':'Mountains to wander. A cottage to come home to. Start your shared world when you’re ready.'}</p><div class="button-row">${controls}${button('goto-console','View console','ghost')}</div></div>${landscape}</section>`+
+    `<section class="hero"><div class="hero-copy">${pill(`< ${serverCurrent?s.state.toUpperCase():'UNAVAILABLE'} >`,online?'good':'')}<h2>${online?'Your next adventure is waiting.':'A place to call ours.'}</h2><p>${online?'The world is awake. Find a quiet meadow, follow the river, or take the long way home.':'Mountains to wander. A cottage to come home to. Start your shared world when you’re ready.'}</p><div class="button-row">${controls}${button('goto-console','View console','ghost')}</div></div>${landscape}</section>`+
     `<div class="metric-grid">${metric('SERVER TICK RATE',number(tps),tps==null?'':'TPS',`${tps==null?'Unavailable':`Measured MSPT · ${number(mspt)} ms`} · ${esc(measurementLabel(m.freshness?.tick))}`)}${metric('JAVA PROCESS MEMORY',bytes(liveMetric(m,'server_rss')),'',esc(measurementLabel(m.freshness?.snapshot)),'▱')}${metric('PLAYERS ONLINE',number(playerCount,0),'',playerCount==null?'Presence unknown · fresh bridge telemetry required':`Maximum · ${s.status?.players?.max??2}`,'♧')}${metric('WORLD STORAGE',bytes(d.storage.breakdown.categories.find(x=>x.key==='world')?.bytes??null),'',d.storage.breakdown.measured_at?`Measured ${when(d.storage.breakdown.measured_at)}`:'Collecting first measurement…','◇')}</div>`+
     `<div class="grid-two">${card('A healthy little world',`<canvas id="overview-chart" class="chart" role="img" aria-label="Measured server TPS over time"></canvas><div class="chart-legend"><span>Server TPS · actual NeoForge readings</span></div>`,pill('HISTORY'))}${card('At a glance',row('Minecraft',esc(d.pack.minecraft))+row('NeoForge',esc(d.pack.neoforge))+row('Pack release',`<span class="mono">${esc(d.pack.version)}</span>`)+row('Mod file check',integrityNote)+row('Uptime',duration(s.uptime_seconds))+row('View / simulation',`${esc(d.world.view_distance)} / ${esc(d.world.simulation_distance)} chunks`)+row('Latest backup',when(d.last_backup?.created)))}</div>`+
     `<div class="grid-equal">${card('Just the two of you',Object.entries(d.sync.players).map(([name,p])=>`<div class="player-card"><div class="player-avatar">${name==='KG'?'KG':'S'}</div><div class="player-main"><strong>${name}</strong><small>${esc(p.message)}</small></div>${pill(p.state,p.state==='reported match'?'good':'')}</div>`).join(''),button('goto-players','Manage access →','ghost small'))}${card('Room to grow',row('Project files',bytes(d.storage.project_bytes))+row('Project budget',bytes(d.storage.project_budget))+d.storage.drives.map(x=>row(`${x.drive} free`,`${bytes(x.free)} ${x.low?pill('LOW','error'):''}`)).join('')+`<p class="subtle">Both drives keep a separate 30 GiB reserve.</p>`,button('goto-storage','View storage →','ghost small'))}</div>`+
     `<div class="section-label">LITTLE THINGS THAT KEEP IT RUNNING</div><div class="quick-actions">${[['backup','↶','Create a backup','Save a safe little snapshot'],['health','✓','Check world health','See what needs attention'],['diagnostics','⌁','Performance report','Export real measurements'],['goto-mods','◇','Find a new mod','Stage, review, then deploy']].map(([a,i,t,n])=>`<button class="quick-action" data-action="${a}"><span class="action-icon">${i}</span><span><b>${t}</b><small>${n}</small></span></button>`).join('')}</div>`;
-  chart('overview-chart',state.history,'tps');
+  chart('overview-chart',state.history,'tps');scheduleLiveExpiry();
 }
 
 function storagePage(data) {
@@ -143,11 +149,13 @@ function performance() {
     `<div class="grid-equal">${card('Server tick rate','<canvas id="tps-chart" class="chart" role="img" aria-label="Server TPS history"></canvas>')}${card('Host & server CPU','<canvas id="cpu-chart" class="chart" role="img" aria-label="Host and server CPU history"></canvas><div class="chart-legend"><span>Host</span><span>Server</span></div>')}</div>`+
     ((m.clients||[]).length?`<div class="grid-equal">${m.clients.map(client=>{const current=currentMeasurement(client.freshness),processCurrent=currentMeasurement(client.process_freshness);return card(`${esc(client.player||'Local')} · Minecraft client`,row('Context',current?esc(client.in_world?'In world':client.screen):'Unavailable; client presence is unconfirmed')+row('Client FPS',number(current?client.fps:null,0))+row('Java RSS',bytes(processCurrent?client.rss:null))+row('JVM heap',current?`${bytes(client.heap_used)} / ${bytes(client.heap_max)}`:'Unavailable')+row('Client CPU',`${number(processCurrent?client.cpu_percent_host:null)}% of host`)+row('Frame intervals',current&&client.frame_interval_ms?`${number(client.frame_interval_ms.mean,2)} ms mean · ${number(client.frame_interval_ms.p95,2)} ms p95`:'Unavailable')+row('Camera / focus',current?`${esc(client.camera)} · ${client.focused?'focused':'background'}`:'Unconfirmed')+`<p class="subtle">${esc(measurementLabel(client.freshness))}. Frame intervals include frame pacing; they are not GPU execution times.${client.integration_error?' '+esc(client.integration_error):''}</p>`);}).join('')}</div>`:'')+
     `<div class="grid-equal">${card('Java & world telemetry',row('Java RSS',bytes(liveMetric(m,'server_rss')))+row('JVM heap usage',bridge('heap_used')==null?'Unavailable':`${bytes(bridge('heap_used'))} / ${bytes(bridge('heap_max'))}`)+row('Latest GC pause',liveMetric(m,'gc_pause_ms')==null?'Unavailable':`${number(liveMetric(m,'gc_pause_ms'))} ms`)+row('Visible chunk holders',number(bridge('loaded_chunks'),0))+row('Entity counts',number(bridge('entities'),0))+row('Dimensions',bridge('dimensions')?Object.entries(bridge('dimensions')).map(([name,v])=>`${esc(name)}: ${number(v.loaded_chunks,0)} holders · ${number(v.entities,0)} entities`).join('<br>'):'Unavailable')+`<p class="subtle">${esc(measurementLabel(m.freshness?.bridge))}${m.bridge_error?' · '+esc(m.bridge_error):''}</p>`)}${card('A useful next step',`<p class="details">A one-minute spark sample helps explain expensive ticks, entity simulation and chunk generation. The console will show spark’s report link. Review it before sharing.</p>${button('profile','Start 60-second sample','primary')}<p class="subtle">FPS, frametimes and GPU load require a real client benchmark. They are never inferred from server TPS.</p>`)}</div>`+chunkDiagnostics(m);
-  chart('tps-chart',state.history,'tps');chart('cpu-chart',state.history,'host_cpu','server_cpu');
+  chart('tps-chart',state.history,'tps');chart('cpu-chart',state.history,'host_cpu','server_cpu');scheduleLiveExpiry();
 }
 
 async function modsPage() {
+  const view=state.renderGeneration,tab=state.tab;
   let d=await api('/api/mods');
+  if(!viewCurrent('mods',view)||state.tab!==tab)return;
   const candidate=state.tab==='candidate';
   if(candidate)d={...d,...d.candidate};
   $('#main').innerHTML=header('Make this world your own.','One manifest. Exact versions. Every change gets a safe place to land.',pill(`${d.mods.length} PINNED FILES`))+
@@ -156,16 +164,18 @@ async function modsPage() {
     $('#mod-content').innerHTML=(candidate?notice('This is the current complete build candidate. The installed release is shown separately; gameplay acceptance is pending.','warn'):'')+`<div class="toolbar"><input id="inventory-filter" placeholder="Filter mods, versions or feature groups…" aria-label="Filter inventory">${pill(esc(d.version))}</div><div class="card table-wrap"><table><thead><tr><th>MOD</th><th>EXACT VERSION</th><th>INSTALLATION</th><th>VALIDATION</th><th></th></tr></thead><tbody>${d.mods.map(m=>`<tr data-inventory-name="${esc((m.name+' '+m.version+' '+(m.request||'')).toLowerCase())}"><td class="name">${esc(m.name)}<small>${esc(m.request||'Required dependency')}${m.optional?' · Optional':''}</small></td><td class="mono version">${esc(m.version)}</td><td>${pill(m.side)}</td><td>${pill(m.validation?.runtime==='pass'?'Runtime tested':'Runtime pending',m.validation?.runtime==='pass'?'good':'warn')}</td><td><div class="button-row">${m.provider&&m.provider!=='modrinth'?`<a class="button small" href="${esc(m.source)}" target="_blank" rel="noopener">Author source</a>`:button('mod-versions','Versions','small',`data-project="${esc(m.slug)}"`)}${candidate?'':button('mod-remove','Remove','ghost small',`data-project="${esc(m.slug)}" data-name="${esc(m.name)}"`)}</div></td></tr>`).join('')}</tbody></table></div>`;
   } else if(state.tab==='search') {
     $('#mod-content').innerHTML=`<form id="mod-search" class="toolbar"><input name="q" placeholder="Search Modrinth or paste a project URL…" aria-label="Find a mod" required><button class="button primary">Search mods</button></form><div id="search-results" class="card">${empty('Find something lovely. We’ll check the loader, version, dependencies and installation side.')}</div><details class="card"><summary>CurseForge lookup</summary><p class="subtle">Uses an authorized host API key. Restricted downloads and distribution rules are respected.</p><form id="curseforge-search" class="toolbar"><input name="id" placeholder="Numeric CurseForge project ID" required><button class="button">Look up</button></form><div id="curseforge-result"></div></details>`;
-    const manual=await api('/api/mods/manual');
+    const manual=await api('/api/mods/manual');if(!viewCurrent('mods',view)||state.tab!==tab)return;
     if(manual.length)$('#mod-content').insertAdjacentHTML('beforeend',card('Author downloads',`<p class="subtle">Download the exact file to your Downloads folder, then import it here. Every import checks its pinned size and hash. This prepares the candidate cache.</p>${manual.map(m=>`<div class="result-card"><h3>${esc(m.name)} · ${esc(m.version)}</h3><p class="mono">${esc(m.filename)}</p><p class="subtle">${esc(m.license.id)} · ${bytes(m.size)}</p><div class="button-row"><a class="button" href="${esc(m.source)}" target="_blank" rel="noopener">Open author file</a>${button('manual-import',m.cached?'Recheck download':'Import downloaded file','primary',`data-slug="${esc(m.slug)}"`)}${pill(m.cached?'Cached':'Download needed',m.cached?'good':'warn')}</div></div>`).join('')}`));
   } else {
-    const proposals=await api('/api/proposals');
+    const proposals=await api('/api/proposals');if(!viewCurrent('mods',view)||state.tab!==tab)return;
     $('#mod-content').innerHTML=notice('A staged change downloads and checks files in isolation. Production deployment requires review, exact-candidate runtime acceptance, a verified backup and a matching published client release.')+card('A safe place for new ideas',proposals.length?proposals.map(p=>`<div class="result-card"><div class="result-head"><div><h3>${esc(p.version)}</h3><span class="subtle">${when(p.created)} · ${p.changes.length} changes</span></div>${pill(p.status,p.static_errors.length?'error':'warn')}</div><p>${p.changes.map(c=>`${esc(c.name)} · ${esc(c.from||'new')} → ${esc(c.to||'removed')}`).join('<br>')}</p><div class="button-row">${button('proposal-review','Review change','small',`data-id="${p.id}"`)}${button('proposal-rollback','Roll back','ghost small',`data-id="${p.id}" data-version="${esc(p.version)}"`)}</div></div>`).join(''):empty('No changes waiting. Your active manifest has stayed exactly where you left it.'));
   }
 }
 
 async function settingsPage() {
+  const view=state.renderGeneration;
   const d=await api('/api/settings');
+  if(!viewCurrent('settings',view))return;
   function settingsForm(scope,title) {return card(title,`<form class="settings-form" data-scope="${scope}"><div class="field-grid">${d.fields.filter(f=>f.scope===scope).map(f=>`<div class="field"><label for="setting-${f.key}">${esc(f.label)} ${pill(f.change,f.change.startsWith('Dangerous')?'warn':'')}</label>${f.type==='boolean'?`<label class="check-label"><input id="setting-${f.key}" name="${f.key}" type="checkbox" ${f.current?'checked':''}>Enabled</label>`:f.type==='enum'?`<select id="setting-${f.key}" name="${f.key}">${f.values.map(v=>`<option ${v===f.current?'selected':''}>${esc(v)}</option>`).join('')}</select>`:`<input id="setting-${f.key}" name="${f.key}" type="${f.type==='integer'?'number':f.key==='level-seed'?'password':'text'}" ${f.min!=null?`min="${f.min}" max="${f.max}"`:''} value="${esc(f.current)}">`}<small>${esc(f.description)}<br>Recommended: ${esc(String(f.recommended??'default'))}</small></div>`).join('')}</div><button class="button primary">Save ${scope==='server'?'world':'Control Room'} settings</button></form>`);}
   $('#main').innerHTML=header('A world that feels just right.','Clear settings, thoughtful defaults and a way back to your previous values.')+
     notice('Stop the world before changing restart-required settings. Client-only weather, shaders and LOD rendering are managed through graphics profiles on each player’s computer.')+
@@ -173,12 +183,14 @@ async function settingsPage() {
     `<div class="section-label">MOD INTEGRATION</div>`+card('Weather, seasons, Create & distant terrain',d.mods.length?`<div class="field-grid">${d.mods.map(m=>`<form class="mod-setting-form field" data-id="${esc(m.id)}" data-expected="${esc(m.expected||'')}" data-type="${m.type}"><label for="mod-setting-${esc(m.id)}">${esc(m.label)}</label>${m.available?(m.type==='boolean'?`<label class="check-label"><input id="mod-setting-${esc(m.id)}" name="value" type="checkbox" ${m.current?'checked':''}>Enabled</label>`:`<input id="mod-setting-${esc(m.id)}" name="value" type="number" step="${m.type==='integer'?'1':'any'}" min="${m.min}" max="${m.max}" value="${esc(m.current)}">`)+`<small>${esc(m.description||'')} · Requires restart</small><button class="button small">Save setting</button>`:`<small>${esc(m.reason)}</small>`}</form>`).join('')}</div>`:`<p class="subtle">Generated settings will appear after the first successful mod load. No guessed configuration keys are written.</p>`)+
     `<div class="section-label">ADVANCED SETTINGS</div>`+card('Configuration editor',`<form id="raw-open" class="toolbar"><select name="path" id="config-files" aria-label="Configuration file"><option value="server.properties">server.properties</option></select><button class="button">Open file</button></form><div id="raw-editor"></div><p class="subtle">Syntax checks, a reviewable diff, optimistic concurrency and a prior-value snapshot protect every save. Mod-specific values still need their upstream schema.</p>`)+
     card('Previous configurations',`<div id="config-history">Loading history…</div><p class="subtle">${esc(d.gc)}</p>`);
-  const files=await api('/api/config/files');$('#config-files').insertAdjacentHTML('beforeend',files.map(f=>`<option>${esc(f)}</option>`).join(''));
-  const history=await api('/api/config/history');$('#config-history').innerHTML=history.length?history.slice(0,12).map(h=>row(esc(h.path),button('config-restore',`Restore ${when(h.created)}`,'small',`data-id="${esc(h.id)}"`))).join(''):empty('Previous values will be saved here whenever you change a configuration.');
+  const files=await api('/api/config/files');if(!viewCurrent('settings',view))return;$('#config-files').insertAdjacentHTML('beforeend',files.map(f=>`<option>${esc(f)}</option>`).join(''));
+  const history=await api('/api/config/history');if(!viewCurrent('settings',view))return;$('#config-history').innerHTML=history.length?history.slice(0,12).map(h=>row(esc(h.path),button('config-restore',`Restore ${when(h.created)}`,'small',`data-id="${esc(h.id)}"`))).join(''):empty('Previous values will be saved here whenever you change a configuration.');
 }
 
 async function playersPage() {
+  const view=state.renderGeneration;
   const d=await api('/api/players');
+  if(!viewCurrent('players',view))return;
   $('#main').innerHTML=header('Good company only.','An editable whitelist, verified Java profiles and clear player permissions.',pill('ONLINE AUTHENTICATION ON','good'))+
     `<div class="grid-two">${card('Who’s welcome here',`<div id="whitelist-list">${whitelistHtml(d)}</div><form id="whitelist-add" class="toolbar"><input name="name" placeholder="Minecraft Java username" pattern="[A-Za-z0-9_]{1,16}" aria-label="Player to add to whitelist" required><button class="button primary">＋ Add to whitelist</button></form><p class="subtle">Names are verified with Mojang. Changes work while the server is online or offline; existing access is backed up.</p>`)}${card('Who’s here right now',d.online?row('Players online',`${d.online.online} / ${d.online.max}`)+(d.online.sample||[]).map(p=>row(p.name,button('player-kick','Kick','small',`data-name="${esc(p.name)}"`))).join(''):empty('Player presence is unknown until fresh server telemetry arrives. Last-known positions do not imply a disconnect.'))}</div>`+
     card('Little arrivals & goodbyes',d.events.length?d.events.slice().reverse().map(e=>row(`${e.name} ${e.event}`,when(e.at))).join(''):empty('Join and leave events will appear once players visit.'));
@@ -200,28 +212,41 @@ function drawPlayerMap(p) {
   ctx.fillStyle='#fff9e9';ctx.fillRect(7,5,21,24);ctx.fillStyle='#183d32';ctx.font='bold 14px Segoe UI';ctx.fillText('N',12,23);
 }
 async function playerDetails(name) {
-  const p=await api('/api/player/details?name='+encodeURIComponent(name));state.playerDetails=name;
+  const response=await api('/api/player/details?name='+encodeURIComponent(name)),p={...response,received_at:Date.now()};state.playerDetails=name;state.playerSnapshot=p;
   modal(p.name,`<p class="subtle mono">${esc(p.uuid)}</p><div class="player-detail-grid"><section><h3>Access & permissions</h3><form id="player-permissions" data-name="${esc(p.name)}"><div class="field"><label for="player-permission-level">User / operator level</label><select id="player-permission-level" name="level">${[[0,'Member · no operator permissions'],[1,'Operator 1 · bypass spawn protection'],[2,'Operator 2 · gameplay commands'],[3,'Operator 3 · player administration'],[4,'Operator 4 · full server control']].map(([v,label])=>`<option value="${v}" ${p.operator_level===v?'selected':''}>${label}</option>`).join('')}</select></div><label class="check-label"><input type="checkbox" name="bypass" ${p.bypass_player_limit?'checked':''}>Bypass the player limit (operators only)</label><p class="subtle">Permission changes are saved to the real operator list. Level 4 includes server stop commands. Prior values are backed up.</p><button class="button primary">Review permission change</button></form><div class="button-row profile-actions">${button(p.whitelisted?'player-whitelist-remove':'player-whitelist-add',p.whitelisted?'Remove from whitelist':'Add to whitelist','small',`data-name="${esc(p.name)}"`)}${p.online?button('player-kick','Kick player','danger small',`data-name="${esc(p.name)}"`):''}</div><h3 class="profile-subheading">Player settings</h3><form id="player-game-settings" data-name="${esc(p.name)}"><div class="field"><label for="player-game-mode">Game mode</label><select id="player-game-mode" name="mode" ${p.online?'':'disabled'}>${['survival','creative','adventure','spectator'].map(v=>`<option ${p.location?.game_mode===v?'selected':''}>${v}</option>`).join('')}</select></div><button class="button small" ${p.online?'':'disabled'}>Review game mode change</button></form><form id="player-xp-settings" data-name="${esc(p.name)}"><div class="field"><label for="player-xp-level">Experience level</label><input id="player-xp-level" name="level" type="number" min="0" max="1000" value="${p.location?.xp_level??0}" ${p.online?'':'disabled'}></div><button class="button small" ${p.online?'':'disabled'}>Review XP change</button></form><p class="subtle">Game settings require the player to be online. Native Java permission levels are used; visitor/build restrictions need a claim system or spectator mode.</p></section><section><h3>Where they are</h3><div id="player-live">${playerLiveHtml(p)}</div></section></div>`);
-  drawPlayerMap(p);
+  renderPlayerSnapshot();
 }
-async function refreshPlayerDetails(){if(!state.playerDetails||!$('#modal').open||!$('#player-live'))return;const p=await api('/api/player/details?name='+encodeURIComponent(state.playerDetails));$('#player-live').innerHTML=playerLiveHtml(p);drawPlayerMap(p);}
+let playerExpiry;
+function renderPlayerSnapshot(){
+  clearTimeout(playerExpiry);if(!$('#modal').open||!$('#player-live')||!state.playerSnapshot)return;
+  const p=playerView(state.playerSnapshot);$('#player-live').innerHTML=playerLiveHtml(p);drawPlayerMap(p);
+  $$('#player-game-settings input,#player-game-settings select,#player-game-settings button,#player-xp-settings input,#player-xp-settings button').forEach(input=>input.disabled=p.online!==true);
+  const end=Math.min(state.playerSnapshot.received_at+15000,state.playerSnapshot.location_state==='live'?measurementMillis(state.playerSnapshot.location?.at)+15000:Infinity);
+  if(Number.isFinite(end)&&end>=Date.now())playerExpiry=setTimeout(renderPlayerSnapshot,end-Date.now()+100);
+}
+async function refreshPlayerDetails(){if(!state.playerDetails||!$('#modal').open||!$('#player-live'))return;const name=state.playerDetails,p=await api('/api/player/details?name='+encodeURIComponent(name));if(!$('#modal').open||!$('#player-live')||state.playerDetails!==name)return;state.playerSnapshot={...p,received_at:Date.now()};renderPlayerSnapshot();}
 
 async function consolePage() {
   $('#main').innerHTML=header('Listen to the world.','Live server output, useful diagnostics and a safe command console.',`<a class="button" href="/api/export/diagnostics.zip">↓ Diagnostic bundle</a>`)+
     `<div class="toolbar"><input id="log-query" placeholder="Search console output…" aria-label="Search logs"><select id="log-level" aria-label="Log severity"><option value="all">All messages</option><option value="warning">Warnings</option><option value="error">Errors</option></select></div><div id="console-log" class="log" role="log" aria-label="Server console">Waiting for server output…</div><form id="console-command" class="command-form"><input name="command" placeholder="Try list, neoforge tps, or say Welcome home" aria-label="Server command" required><button class="button primary">Send command</button></form><p class="subtle">Player-access and world-setting commands require confirmation. Commands outside the safe allowlist stay in the local server console.</p><div class="section-label">IF SOMETHING GOES WRONG</div>${card('Crash reports','<div id="crash-list">Loading…</div>')}`;
-  await refreshConsole();const crashes=await api('/api/crashes');$('#crash-list').innerHTML=crashes.length?crashes.map(c=>row(esc(c.name),button('crash-read','Read report','small',`data-name="${esc(c.name)}"`))).join(''):empty('No crash reports found. A quiet console is a good thing.');
+  await refreshConsole();const crashes=await api('/api/crashes');if(state.page!=='console'||!$('#crash-list'))return;$('#crash-list').innerHTML=crashes.length?crashes.map(c=>row(esc(c.name),button('crash-read','Read report','small',`data-name="${esc(c.name)}"`))).join(''):empty('No crash reports found. A quiet console is a good thing.');
 }
 async function refreshConsole() {const node=$('#console-log');if(!node)return;const follow=node.scrollHeight-node.scrollTop-node.clientHeight<60;const logs=await api(`/api/console?query=${encodeURIComponent($('#log-query').value)}&level=${$('#log-level').value}`);node.innerHTML=logs.length?logs.map(l=>`<span class="${l.level}">${esc(new Date(l.at).toLocaleTimeString())} ${esc(l.text)}</span>`).join('\n'):'No matching console messages yet.';if(follow)node.scrollTop=node.scrollHeight;}
 
 async function backupsPage() {
+  const view=state.renderGeneration;
   const d=await api('/api/backups');
+  if(!viewCurrent('backups',view))return;
+  state.backupsDirty=false;
   $('#main').innerHTML=header('Keep the memories safe.','Verified snapshots, clear history and careful restores.',button('backup','＋ Create backup','primary'))+
     notice('Backups use a controlled stop so Minecraft can flush the world, then resume after verification. Restore requires the server to be offline and preserves the current world in a separate safety directory.')+
-    card('Your world, through time',d.length?`<div class="table-wrap"><table><thead><tr><th>CREATED</th><th>ARCHIVE SIZE</th><th>WORLD & CONFIG FILES</th><th>INTEGRITY</th><th></th></tr></thead><tbody>${d.map(b=>`<tr><td class="name">${when(b.created)}<small class="mono">${esc(b.id)}</small></td><td>${bytes(b.bytes)}</td><td>${number(b.files,0)} files · ${bytes(b.source_bytes)}</td><td>${pill(b.integrity,b.integrity==='verified'?'good':'warn')}</td><td><div class="button-row">${button('backup-verify','Verify','small',`data-id="${b.id}"`)}${button('backup-restore','Restore','danger small',`data-id="${b.id}"`)}</div></td></tr>`).join('')}</tbody></table></div>`:empty('Your first backup will appear after Minecraft has created and saved a world.'));
+    card('Your world, through time',d.length?`<div class="table-wrap"><table><thead><tr><th>CREATED</th><th>ARCHIVE SIZE</th><th>WORLD & CONFIG FILES</th><th>INTEGRITY</th><th></th></tr></thead><tbody>${d.map(b=>`<tr><td class="name">${when(b.created)}<small class="mono">${esc(b.id)}</small></td><td>${bytes(b.bytes)}</td><td>${number(b.files,0)} files · ${bytes(b.source_bytes)}</td><td>${pill(b.integrity,b.integrity==='verified'?'good':'warn')}<small>${b.checked_at?'Last check':'At creation'} ${when(b.checked_at||b.created)}</small></td><td><div class="button-row">${button('backup-verify','Verify','small',`data-id="${b.id}"`)}${button('backup-restore','Restore','danger small',`data-id="${b.id}"`)}</div></td></tr>`).join('')}</tbody></table></div>`:empty('Your first backup will appear after Minecraft has created and saved a world.'));
 }
 
 async function connectivityPage() {
+  const view=state.renderGeneration;
   const d=await api('/api/connectivity');
+  if(!viewCurrent('connectivity',view))return;
   $('#main').innerHTML=header('The long distance, made shorter.','A private world for you, wherever the two of you happen to be.')+
     `<div class="grid-equal">${card('On this laptop',row('Minecraft address',`<code>${esc(d.local_address)}</code>`)+row('Control Room',`<code>${esc(d.dashboard)}</code>`)+row('Authentication',pill('ONLINE MODE','good'))+row('Whitelist',pill('ENFORCED','good')))}${card('Sera’s way home',row('Playit agent',esc(d.playit.state))+row('External connection',esc(d.external_connection))+`<form id="tunnel-address"><div class="field"><label for="join-address">Playit join address</label><input id="join-address" name="address" placeholder="your-tunnel.joinmc.link" value="${esc(d.playit.address||'')}"><small>Owner-supplied address. A configured address is not proof of a working remote connection.</small></div><button class="button primary">Save join address</button></form>`)}</div>`+
     card('Playit, right here',`${row('Windows service',esc(d.playit.service_status||'Unknown'))}${row('Agent version',esc(d.playit.version||'Unknown'))}${row('Linked account',pill(d.playit.linked?'LINKED':'NOT CONFIRMED',d.playit.linked?'good':'warn'))}${row('Active connections',number(d.playit.stats?.active_tcp??0,0)+' TCP · '+number(d.playit.stats?.active_udp??0,0)+' UDP')}${row('Traffic',bytes(d.playit.stats?.bytes_in??0)+' received · '+bytes(d.playit.stats?.bytes_out??0)+' sent')}<div class="button-row">${button('playit-start','Start Playit','primary')}${button('playit-stop','Stop Playit','danger')}${button('playit-refresh','Refresh','')}</div><p class="subtle">${esc(d.playit.management||'')} ${esc(d.playit.ipc_error||d.playit.error||'')}</p>${(d.playit.tunnels||[]).map(t=>`<div class="result-card">${row('Public join address',`<code>${esc(t.display_address)}</code>`)}${row('Local destination',`<code>${esc(t.destination)}</code>`)}${row('Tunnel',pill(t.is_disabled?'DISABLED':'ENABLED',t.is_disabled?'warn':'good'))}${t.destination!==d.local_address?'<p class="subtle">This tunnel targets a different local game port from this dashboard. Check the intended server before sharing it.</p>':''}</div>`).join('')}${(d.playit.notices||[]).map(n=>notice(n,'warn')).join('')}<p class="subtle">Last local agent update: ${when(d.playit.at)}. ${esc(d.playit.remote_join||'')}</p><h3>Recent activity</h3><pre id="playit-logs">${esc((d.playit.logs||[]).map(l=>`${l.at} [${l.level}] ${l.message}`).join('\n')||'Waiting for live Playit activity…')}</pre>`)+
@@ -229,7 +254,9 @@ async function connectivityPage() {
 }
 
 async function graphicsPage() {
+  const view=state.renderGeneration;
   const data=await api('/api/graphics');
+  if(!viewCurrent('graphics',view))return;
   $('#main').innerHTML=header('A world beyond the horizon.','Distant Horizons + SeedGen. Shared content, personal graphics.')+
     notice('These are local client settings. Control Room does not remotely edit Sera’s computer. Both profiles use the same gameplay manifest; shader choices never change the dedicated server’s mod set.')+
     `<div class="grid-equal">${data.profiles.map(p=>`<section class="profile-card"><div class="eyebrow">${esc(p.audience)}</div><h3>${esc(p.name)}</h3><p class="subtle">${esc(p.description)}</p>${Object.entries(p.settings).map(([k,v])=>row(k,esc(v))).join('')}<p class="subtle">${esc(p.validation)}</p></section>`).join('')}</div>`+
@@ -238,33 +265,92 @@ async function graphicsPage() {
 }
 
 async function compatibilityPage() {
+  const view=state.renderGeneration;
   const d=await api('/api/compatibility');
+  if(!viewCurrent('compatibility',view))return;
   $('#main').innerHTML=header('Every detail, accounted for.','Requested mods, exact identities, selected versions and the evidence behind each decision.')+
     `<div class="toolbar"><input id="compat-filter" placeholder="Filter requested mods, evidence or status…" aria-label="Filter compatibility report"><span class="subtle">${d.requests.length} requests tracked</span></div>`+
     card('Compatibility inventory',`<div class="table-wrap"><table><thead><tr><th>REQUEST</th><th>DECISION</th><th>VERSION</th><th>EVIDENCE / LIMITATION</th></tr></thead><tbody>${d.requests.map(r=>`<tr data-compat-text="${esc(JSON.stringify(r).toLowerCase())}"><td class="name">${esc(r.name)}<small>${esc(r.group)}</small></td><td>${pill(r.status,r.status.startsWith('Integrated and tested')?'good':r.status.startsWith('Incompatible')?'error':'warn')}</td><td class="mono version">${esc(r.version||'—')}</td><td>${esc(r.reason)}${r.source?`<small><a href="${esc(r.source)}" target="_blank" rel="noopener noreferrer">Upstream evidence ↗</a></small>`:''}</td></tr>`).join('')}</tbody></table></div>`);
 }
 
 async function setupPage() {
+  const view=state.renderGeneration;
   const d=await api('/api/setup');
+  if(!viewCurrent('setup',view))return;
   $('#main').innerHTML=header('A good beginning.','A few things to set up once. Then it’s just Start World.')+
     card('Your installation',row('Data directory',`<code>${esc(d.home)}</code>`)+row('Java',`${esc(d.java_version||'Not found')} ${pill(d.java_21?'JAVA 21 READY':'JAVA 21 REQUIRED',d.java_21?'good':'warn')}`)+row('Pack installed',d.installed?esc(d.installed.pack_version):'Not yet')+row('Minecraft EULA',pill(d.eula_accepted?'ACCEPTED BY OWNER':'AWAITING OWNER',d.eula_accepted?'good':'warn')))+
     card('Let’s get you home',`<div class="setup-step"><span class="step-number">1</span><div><h3>Install the dedicated server</h3><p>Downloads the pinned NeoForge and mod files, verifies their hashes and separates client-only mods. Existing worlds and settings are preserved.</p>${button('install','Install server','primary')}${button('repair','Repair installation','ghost')}</div></div><div class="setup-step"><span class="step-number">2</span><div><h3>Read Minecraft’s EULA</h3><p><a href="https://www.minecraft.net/en-us/eula" target="_blank" rel="noopener noreferrer">Read the official agreement ↗</a>. Acceptance is the owner’s choice.</p>${d.eula_accepted?pill('OWNER ACCEPTANCE RECORDED','good'):`<label class="check-label"><input id="accept-eula" type="checkbox"> I have read and accept Minecraft’s EULA.</label>${button('accept-eula','Record my acceptance','small')}`}</div></div><div class="setup-step"><span class="step-number">3</span><div><h3>Welcome KG & Sera</h3><p>Whitelist: ${esc(d.players.KG||'KG not configured')} · ${esc(d.players.Sera||'Sera not configured')}. Change access any time from Players & access.</p>${button('goto-players','Edit whitelist','small')}</div></div><div class="setup-step"><span class="step-number">4</span><div><h3>Open Prism, import your instance, and play</h3><p>Use the generated KG and Sera Prism packages. Their Packwiz pre-launch step checks the same release before Minecraft starts. Sign in with your own licensed Microsoft account.</p><div class="button-row">${button('prism','Open Prism Launcher','primary')}${button('start','Start world')}</div></div></div>`);
 }
 
+function tavernCurrent(data) {
+  return data?.current===true&&currentMeasurement({current:true,measured_at:data.at,max_age_seconds:data.max_age_seconds??15});
+}
+function tavernCardHTML(data,busy=false) {
+  const current=tavernCurrent(data),counts=data?.counts||{},registered=counts.registered,loaded=counts.loaded;
+  const controls=current&&registered>0&&!busy,life=data?.life_admission;
+  const display=value=>Number.isInteger(value)?number(value,0):'—';
+  const control=(action,value,label,allowed=true)=>`<button class="button small" data-tavern-control="${action}" data-value="${value}" ${controls&&allowed?'':'disabled'}>${label}</button>`;
+  return card('The Drowned Rose',
+    (!current?notice(data?.reason||'Waiting for current tavern telemetry. Counts and controls are unavailable.','warn'):'')+
+    row(`${current?'Registered':'Last reported registrations'} · Easy NPC`,display(registered))+
+    row('Loaded at this report',display(loaded))+
+    row('Native LIFE · last completed admission',life?`${display(life.registered_total)} <small>${esc(when(life.at))}</small>`:'Unavailable')+
+    '<p class="subtle">Tavern NPCs are separate from Native LIFE villagers and wildlife, and from editable character profiles. The LIFE admission total is historical, not a live entity census.</p>'+
+    (data?.fault?notice('Tavern fault: '+data.fault,'error'):'')+
+    `<p class="subtle">${esc(data?.qualification||'Awaiting visual, behavior and audio qualification')}. ${data?.paused?'Activity is paused.':data?.suspended?'The room is inactive; activity rests while it is unloaded or nobody is nearby.':''}</p>`+
+    `<div class="button-row">${control('music',!data?.music,data?.music?'Pause performances':'Enable performances',!data?.fault||data?.music===true)}${control('suspend',!data?.paused,data?.paused?'Resume tavern activity':'Pause tavern activity',!data?.fault||data?.paused!==true)}</div>`+
+    `<p class="subtle">Report ${esc(when(data?.at))}. Requests await the next current reading; a click is not a runtime acknowledgement.</p>`+
+    `<details><summary>Tavern roster · ${display(counts.roster)}</summary><div class="table-wrap"><table><thead><tr><th>Patron</th><th>Activity at report</th><th>Registration / loading</th></tr></thead><tbody>${(data?.residents||[]).map(r=>`<tr><td>${esc(r.name||r.id)}</td><td>${esc(r.activity||'Unknown')}</td><td>${r.registered?'Registered':'Unregistered'} · ${r.loaded?'Loaded':'Unloaded'}</td></tr>`).join('')}</tbody></table></div></details>`,
+    pill(current?'Current telemetry':'Telemetry unavailable',current?'good':'warn'));
+}
+function mountTavernCard(root) {
+  let closed=false,data=null,busy=false,expiry;
+  const draw=()=>{if(!closed){root.innerHTML=tavernCardHTML(data,busy);clearTimeout(expiry);const remaining=measurementMillis(data?.at)+(data?.max_age_seconds??15)*1000-Date.now();if(tavernCurrent(data)&&remaining>=0)expiry=setTimeout(draw,remaining+10);}};
+  const poller=new VisiblePoller(async()=>{const next=await api('/api/tavern');if(!closed){data=next;draw();}},
+    {delay:()=>5000,onError:error=>{if(!closed){data={current:false,reason:error.message};draw();}}});
+  const click=async event=>{
+    const target=event.target.closest('[data-tavern-control]');
+    if(!target||target.disabled||busy||!tavernCurrent(data))return;
+    const action=target.dataset.tavernControl,value=target.dataset.value==='true';
+    if(!['music','suspend'].includes(action))return;
+    const body=action==='music'?{action,enabled:value}:{action,suspended:value};
+    busy=true;draw();
+    try{await api('/api/tavern/control',body);if(!closed){toast('Tavern request sent; awaiting the next current report.');poller.wake();}}
+    catch(error){if(!closed)toast(error.message,true);}
+    finally{busy=false;draw();}
+  };
+  root.addEventListener('click',click);draw();poller.start();
+  return()=>{closed=true;clearTimeout(expiry);poller.stop();root.removeEventListener('click',click);};
+}
+
+const viewCurrent=(page,generation)=>state.page===page&&state.renderGeneration===generation;
 async function render() {
-  const page=state.page;$('#page-label').textContent=labels[page];$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===page));
+  const view=++state.renderGeneration,page=state.page;$('#page-label').textContent=labels[page];$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===page));
   if(page!=='atlas'&&state.atlas){state.atlas.unmount();state.atlas=null;}
+  if(state.charactersCleanup){state.charactersCleanup();state.charactersCleanup=null;}
   try {
-    if(page==='overview')overview();else if(page==='performance')performance();else if(page==='storage')storagePage(await api('/api/storage'));
+    if(!['overview','performance'].includes(page))$('#main').innerHTML='<div class="loading"><span class="spinner"></span>Opening '+esc(labels[page])+'…</div>';
+    if(page==='overview')overview();else if(page==='performance')performance();else if(page==='storage'){const response=await api('/api/storage');if(viewCurrent(page,view))storagePage(response);}
     else if(page==='mods')await modsPage();else if(page==='settings')await settingsPage();else if(page==='players')await playersPage();
     else if(page==='console')await consolePage();else if(page==='backups')await backupsPage();else if(page==='connectivity')await connectivityPage();
     else if(page==='graphics')await graphicsPage();else if(page==='compatibility')await compatibilityPage();else if(page==='setup')await setupPage();
-    else if(page==='atlas'){state.atlas=await import('/atlas.js');await state.atlas.mount({api,esc,header,button,bytes,toast,modal,confirmAction});}
-    else if(page==='cinematics'){const module=await import('/cinematics.js');await module.mount({api,esc,header,card,bytes,toast,modal,confirmAction,request:(path,options)=>localSession.request(path,options),csrf:()=>state.csrf});}
+    else if(page==='atlas'){const module=await import('/atlas.js');if(!viewCurrent(page,view))return;state.atlas=module;await state.atlas.mount({api,esc,header,button,bytes,toast,modal,confirmAction});}
+    else if(page==='characters'){
+      const module=await import('/characters.js');if(!viewCurrent(page,view))return;
+      $('#main').innerHTML='<div data-tavern-card></div><div data-character-studio></div>';
+      const closeTavern=mountTavernCard($('#main [data-tavern-card]'));let studioCleanup;
+      const cleanup=()=>{closeTavern();studioCleanup?.();};
+      cleanup.canLeave=()=>studioCleanup?.canLeave?.()??true;
+      state.charactersCleanup=cleanup;
+      try{studioCleanup=await module.mountCharacters({root:$('#main [data-character-studio]'),api,toast,navigate:hash=>{location.hash=hash;}});}
+      catch(error){cleanup();if(state.charactersCleanup===cleanup)state.charactersCleanup=null;throw error;}
+      if(!viewCurrent(page,view))cleanup();
+    }
+    else if(page==='cinematics'){const module=await import('/cinematics.js');if(!viewCurrent(page,view))return;await module.mount({api,esc,header,card,bytes,toast,modal,confirmAction,request:(path,options)=>localSession.request(path,options),csrf:()=>state.csrf});}
     showJobs();
-    if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');$('#whitelist-list').innerHTML=whitelistHtml(d);}
+    if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');if(state.page==='players'&&$('#whitelist-list'))$('#whitelist-list').innerHTML=whitelistHtml(d);}
     await refreshPlayerDetails();
-  } catch(error) {$('#main').innerHTML=header(labels[page],'This view needs a little attention.')+notice(error.message,'error');}
+  } catch(error) {if(!viewCurrent(page,view))return;$('#main').innerHTML=header(labels[page],'This view needs a little attention.')+notice(error.message,'error');}
 }
 function showJobs() {
   $('#job-strip')?.remove();const jobs=state.jobs.filter(j=>['running','queued'].includes(j.status));
@@ -276,17 +362,30 @@ async function refresh() {
     [state.overview,state.jobs]=await Promise.all([api('/api/overview'),api('/api/jobs')]);
     const context=$('#playtest-context'),activeTest=state.overview.active_test;
     if(context){context.hidden=!activeTest;context.replaceChildren();if(activeTest){context.append(document.createTextNode('Your playtest world is running. This page manages the main installation. '));const link=document.createElement('a');link.href=activeTest.url;link.textContent='Open the live playtest Control Room →';context.append(link);}}
-    $('#connection').className='connection';$('#connection').innerHTML='<i></i> Connected locally';
+    state.connected=true;$('#connection').className='connection';$('#connection').innerHTML='<i></i> Connected locally';
     $('#last-update').textContent=measurementLabel(state.overview.metrics?.freshness?.snapshot);
-    if(!state.history.length || Date.now()-(state.historyAt||0)>15000){state.history=await api('/api/history?hours=1');state.historyAt=Date.now();}
-    for(const j of state.jobs){if(['failed','complete'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);toast(j.status==='failed'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status==='failed');}}
+    if(['overview','performance'].includes(state.page)&&(!state.historyAt || Date.now()-state.historyAt>60000)){state.history=await api('/api/history?hours=1');state.historyAt=Date.now();}
+    for(const j of state.jobs){if(['failed','complete','interrupted'].includes(j.status)&&!state.seenJobs.has(j.id)){state.seenJobs.add(j.id);if(state.jobsLoaded){state.backupsDirty=true;toast(j.status!=='complete'?`${j.title}: ${j.error}`:`${j.title} finished.`,j.status!=='complete');}}}
+    state.jobsLoaded=true;
     if(['overview','performance'].includes(state.page))await render();else if(state.page==='storage')storagePage(await api('/api/storage'));else if(state.page==='console')await refreshConsole();else if(state.page==='connectivity'&&!$('#modal').open&&!document.activeElement?.closest('form'))await connectivityPage();
+    else if(state.page==='backups'&&state.backupsDirty&&!$('#modal').open)await backupsPage();
     showJobs();
-    if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');$('#whitelist-list').innerHTML=whitelistHtml(d);}
+    if(state.page==='players'&&$('#whitelist-list')){const d=await api('/api/players');if(state.page==='players'&&$('#whitelist-list'))$('#whitelist-list').innerHTML=whitelistHtml(d);}
     await refreshPlayerDetails();
-  }catch(error){$('#connection').className='connection error';$('#connection').innerHTML='<i></i> Connection lost';$('#last-update').textContent='Waiting to reconnect · live data is stale';}
+    return true;
+  }catch(error){state.connected=false;if(state.overview&&['overview','performance'].includes(state.page)){if(state.page==='overview')overview();else performance();}$('#connection').className='connection error';$('#connection').innerHTML='<i></i> Connection lost';$('#last-update').textContent='Waiting to reconnect · live data is stale';return false;}
   finally{state.busy=false;}
 }
+
+let liveExpiry;
+function scheduleLiveExpiry(){
+  clearTimeout(liveExpiry);
+  if(document.hidden||!['overview','performance'].includes(state.page)||!state.overview)return;
+  const m=state.overview.metrics||{},fresh=[...Object.values(m.freshness||{}),...(m.clients||[]).flatMap(c=>[c.freshness,c.process_freshness]),{measured_at:state.overview.at,current:state.connected,max_age_seconds:15}];
+  const waits=fresh.filter(currentMeasurement).map(info=>measurementMillis(info.measured_at)+info.max_age_seconds*1000-Date.now()+100);
+  if(waits.length)liveExpiry=setTimeout(()=>{if(!document.hidden&&['overview','performance'].includes(state.page)){if(state.page==='overview')overview();else performance();}},Math.max(100,Math.min(...waits)));
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&state.overview){if(state.page==='overview')overview();else if(state.page==='performance')performance();}});
 
 async function versionsDialog(project) {
   const d=await api('/api/mods/versions?project='+encodeURIComponent(project));
@@ -314,7 +413,7 @@ document.addEventListener('click',async event=>{
     else if(action==='diagnostics')location.href='/api/export/metrics.csv';
     else if(action==='profile')await run('/api/diagnostics/start');
     else if(action==='refresh-storage')storagePage(await api('/api/storage?refresh=1'));
-    else if(action==='jobs'){const jobs=await api('/api/jobs');modal('Task history',jobs.length?jobs.map(j=>`<details class="result-card"><summary>${esc(j.title)} · ${esc(j.status)} · ${when(j.created)}</summary>${j.error?notice(j.error,'error'):''}<pre>${esc(j.messages.join('\n'))}</pre>${j.result?`<pre>${esc(JSON.stringify(j.result,null,2))}</pre>`:''}</details>`).join(''):empty('No tasks have run in this Control Room session.'));}
+    else if(action==='jobs'){const jobs=await api('/api/jobs');modal('Task history',jobs.length?jobs.map(j=>`<details class="result-card"><summary>${esc(j.title)} · ${esc(j.status)} · ${when(j.created)}</summary>${j.error?notice(j.error,'error'):''}${j.history_warning?notice(j.history_warning,'warn'):''}${j.result?.history_warning?notice(j.result.history_warning,'warn'):''}<pre>${esc(j.messages.join('\n'))}</pre>${j.result?`<pre>${esc(JSON.stringify(j.result,null,2))}</pre>`:''}</details>`).join(''):empty('No tasks have run in this Control Room session.'));}
     else if(action==='manual-import')await run('/api/mods/import-manual',{slug:target.dataset.slug});
     else if(action==='mod-versions')await versionsDialog(target.dataset.project);
     else if(action==='mod-remove')confirmAction('Remove '+target.dataset.name+'?','A proposal will check dependent mods and flag saved-world content risks. This does not remove anything from the running server.',async()=>{await run('/api/mods/propose',{action:'remove',project:target.dataset.project});state.tab='proposals';await modsPage();},'Stage removal');
@@ -352,13 +451,17 @@ document.addEventListener('submit',async event=>{
 document.addEventListener('input',event=>{const e=event.target;if(e.id==='inventory-filter')$$('[data-inventory-name]').forEach(r=>r.classList.toggle('hidden',!r.dataset.inventoryName.includes(e.value.toLowerCase())));if(e.id==='compat-filter')$$('[data-compat-text]').forEach(r=>r.classList.toggle('hidden',!r.dataset.compatText.includes(e.value.toLowerCase())));if(e.id==='log-query')refreshConsole().catch(e=>toast(e.message,true));});
 document.addEventListener('change',event=>{if(event.target.id==='log-level')refreshConsole().catch(e=>toast(e.message,true));});
 window.addEventListener('hashchange',()=>{
-  state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';
+  if(state.charactersCleanup?.canLeave&&!state.charactersCleanup.canLeave()){history.replaceState(null,'',previousRoute||'#characters');return;}
+  previousRoute=location.hash;
+  state.page=routePage();
   document.body.classList.remove('menu-open');
   // Begin a newly selected page at the top; polling preserves the reading position.
   window.scrollTo(0,0);
   render();
+  poller.wake();
 });
 window.addEventListener('resize',()=>{if(state.page==='overview')chart('overview-chart',state.history,'tps');if(state.page==='performance'){chart('tps-chart',state.history,'tps');chart('cpu-chart',state.history,'host_cpu','server_cpu');}});
 $('#modal-close').onclick=()=>$('#modal').close();$('#menu').onclick=()=>{const open=document.body.classList.toggle('menu-open');$('#menu').setAttribute('aria-expanded',String(open));};
 document.addEventListener('keydown',event=>{if(event.key==='Escape'){document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false');}});
-(async()=>{try{const bootstrap=await api('/api/bootstrap');localSession.bind(bootstrap);if(bootstrap.test_context){$('.local-tag').textContent='DISPOSABLE TEST';document.title='A World for Two · Disposable playtest';}state.page=labels[location.hash.slice(1)]?location.hash.slice(1):'overview';await refresh();await render();setInterval(refresh,3000);}catch(error){$('#main').innerHTML=header('Your world is taking a moment.','Open Control Room with the local launch script.')+notice(error.message,'error');}})();
+const poller=new VisiblePoller(async()=>{if(!await refresh())throw new Error('Dashboard unavailable');},{delay:()=>state.jobs.some(j=>['queued','running'].includes(j.status))?3000:['overview','performance','players','console','connectivity'].includes(state.page)?5000:15000});
+(async()=>{try{const bootstrap=await api('/api/bootstrap');localSession.bind(bootstrap);if(bootstrap.test_context){$('.local-tag').textContent='DISPOSABLE TEST';document.title='A World for Two · Disposable playtest';}state.page=routePage();await refresh();await render();}catch(error){$('#main').innerHTML=header('Your world is taking a moment.','Open Control Room with the local launch script.')+notice(error.message,'error');}finally{poller.start();}})();

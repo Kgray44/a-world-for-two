@@ -1,0 +1,25 @@
+{
+  "scope": "Exact native CDP cached-output writer, existing Map monitor only",
+  "native60_primary_error": "Native runtime namespace/map inventory is incomplete at RuntimeView.snapshot:144",
+  "native60_failure_time_local": "2026-10-30 07:39:12.277",
+  "native60_actual_failed_counts_not_logged": true,
+  "native_provider": {
+    "jar": "CreateDragonsPlus-1.11.9.jar",
+    "bytes": 1085674,
+    "sha256": "37f05a6775bbe811fe8c2833fa6289a1c704d0b25bdd5f239d343a5c6f62ed8a",
+    "class_sha256": "05098526debde24c618391bd8c1eeaa3b285eeff290371aeedfc0602d532a244",
+    "class_bytes": 14620,
+    "writer": "writeIfNeeded(Path,byte[],HashCode)",
+    "writer_native_body_instructions": 8,
+    "map_constructor": "java.util.HashMap",
+    "write_operation": "resources.put(path,native IoSupplier)"
+  },
+  "minecraft_primary_class_pins": {
+    "DataProvider.class": "69daa190dee9881d3423f815878b329eb6c575396d9687acf6b9e4126ee39318",
+    "RecipeProvider.class": "faf25a7160863736b4aa78431fa2da4eccc989adb569199f4d66eabb2010075c"
+  },
+  "native_completion": "DataProvider.saveStable -> CompletableFuture.runAsync on Util.backgroundExecutor; RecipeProvider.run joins all futures; CDP addDataProvider.run(this).join",
+  "old_fixture_limitation": "Used ConcurrentHashMap rather than actual native HashMap",
+  "native_bytes_suppliers_and_all_custody_fingerprint_gates_preserved": true,
+  "active_runtime_or_install_actions": 0
+}

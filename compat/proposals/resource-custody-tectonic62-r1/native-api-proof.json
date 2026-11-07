@@ -1,0 +1,42 @@
+{
+  "scope": "One exact native Tectonic declared-empty child only; every other missing root refuses",
+  "native61_failure": "Exact native pack root must be an available directory -> requireDirectory:279 -> inventory:120 -> composite child:141",
+  "failed_absolute_path_observed": false,
+  "identification_limit": "Current exception omits pack/path. This exact selected child is a guaranteed blocker, not a directly observed failed absolute path.62 adds precise refusal facts.",
+  "artifact": {
+    "file": "tectonic-3.0.28-neoforge-21.1.jar",
+    "bytes": 451757,
+    "sha256": "cf188c70e7dd94f6e3a81cef9fe99f1151f13217809f7576aaedb0c3e6547ae1"
+  },
+  "metadata": {
+    "path": "resourcepacks/tectonic/pack.mcmeta",
+    "bytes": 3878,
+    "sha256": "201909f97c52ab64836b97f535d91bb4e38fc9e4681b6304188e36f9fdfccd1d",
+    "selected_entry": {
+      "directory": "intentionally_empty",
+      "formats": [
+        1,
+        999
+      ],
+      "min_format": 1,
+      "max_format": 999
+    },
+    "actual_descendant_archive_members": 0
+  },
+  "required_runtime_proof": [
+    "Exact native Composite/Path classes and tectonic identities",
+    "Primary last, unique child, all native children confined to actual ModList root",
+    "Exact archive bytes/hash and exact selected metadata bytes/hash",
+    "All ZIP member names prove zero content under the declared prefix",
+    "Native namespace/list/root/selected readback empty",
+    "Archive attributes and root absence stable before/after"
+  ],
+  "unchanged": [
+    "All resource and fingerprint comparisons/bounds",
+    "Native resources/overrides/config-selected children",
+    "CDP61 existing-map monitor",
+    "Canopy permissions and DH56 queue repair"
+  ],
+  "runtime_or_Java_actions": 0,
+  "state": "SOURCE_ONLY_BUILD_HELD_UNTIL_CLIENT_CLOSED"
+}

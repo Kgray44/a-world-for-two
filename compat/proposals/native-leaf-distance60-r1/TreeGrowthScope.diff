@@ -1,0 +1,30 @@
+--- 59/TreeGrowthScope.java
++++ 60/TreeGrowthScope.java
+@@ -125,6 +125,17 @@
+             boolean originalLog,boolean originalBE,boolean originalFluid,boolean qualifiedOutput,boolean desiredBE,boolean desiredFluid){
+         return enabled&&exactPosition&&exactOriginal&&originalSapling&&!originalLog&&!originalBE&&!originalFluid&&qualifiedOutput&&!desiredBE&&!desiredFluid;
+     }
++    /** Neighbor-distance bookkeeping only; never permits another leaf material or property change. */
++    static boolean naturalLeafDistanceOnly(boolean explicitNaturalCanopy,BlockState original,BlockState desired){
++        if(!explicitNaturalCanopy||original==null||desired==null||original.getBlock()!=desired.getBlock()
++            ||!(original.getBlock()instanceof LeavesBlock)||!original.hasProperty(LeavesBlock.DISTANCE)||!desired.hasProperty(LeavesBlock.DISTANCE)
++            ||!original.hasProperty(LeavesBlock.PERSISTENT)||!desired.hasProperty(LeavesBlock.PERSISTENT)
++            ||original.getValue(LeavesBlock.PERSISTENT)||desired.getValue(LeavesBlock.PERSISTENT)
++            ||original.hasBlockEntity()||desired.hasBlockEntity()||!original.getFluidState().isEmpty()||!desired.getFluidState().isEmpty())return false;
++        int from=original.getValue(LeavesBlock.DISTANCE),to=desired.getValue(LeavesBlock.DISTANCE);
++        return from>=1&&from<=7&&to>=1&&to<=7&&from!=to
++            &&original.setValue(LeavesBlock.DISTANCE,to).equals(desired);
++    }
+     @SuppressWarnings({"rawtypes","unchecked"}) private static String diagnosticState(BlockState state){
+         if(state==null)return "UNKNOWN";
+         StringJoiner props=new StringJoiner(",");
+@@ -157,7 +168,8 @@
+             original.is(BlockTags.LOGS),original.hasBlockEntity(),!original.getFluidState().isEmpty(),scope.ownedPreplantedOutputs.contains(desired),
+             desired.hasBlockEntity(),!desired.getFluidState().isEmpty());
+         // A new mode never broadens old persistent-leaf permission accidentally.
+-        boolean canopyAllowed=scope.approvedNaturalTreeOutputs.isEmpty()?nativeFoliageOnly:naturalCanopy;
++        boolean leafDistanceOnly=naturalLeafDistanceOnly(!scope.approvedNaturalTreeOutputs.isEmpty(),original,desired);
++        boolean canopyAllowed=scope.approvedNaturalTreeOutputs.isEmpty()?nativeFoliageOnly:(naturalCanopy||leafDistanceOnly);
+         if(original.hasBlockEntity()||(level.getBlockEntity(position)!=null&&!scope.attempted.contains(position))||!original.getFluidState().isEmpty()
+             ||original.getBlock() instanceof LeavesBlock&&!canopyAllowed||original.is(BlockTags.LOGS)
+             ||!(ownedRootAllowed||canopyAllowed||original.isAir()||SOFT.contains(id)||(position.getY()<=scope.soilY&&original.is(BlockTags.DIRT))))

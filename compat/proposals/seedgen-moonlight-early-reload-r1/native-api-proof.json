@@ -1,0 +1,254 @@
+{
+  "format": "awft-moonlight-early-reload-native-api:1",
+  "created": "2026-10-30T05:36:03.696792+00:00",
+  "native_artifacts": {
+    "moonlight": {
+      "bytes": 2299162,
+      "sha256": "4a9f15108607cc70273f8a0b6eb24e1e99af8eef44bc3ae8681767ca7ce21b0f"
+    },
+    "seedgen": {
+      "bytes": 1355029,
+      "sha256": "58469f92f7cf13ff3c2928659ce1a57d7d05314b30e0779cb187b6fbfdb43b4e"
+    }
+  },
+  "native_classes": [
+    {
+      "class": "net/mehvahdjukaar/moonlight/core/mixins/WorldLoaderMixin.class",
+      "bytes": 4070,
+      "sha256": "db6ae46336727ad3709d2e1869930aea0ceeff5d126920affe2f1a32596827ef"
+    },
+    {
+      "class": "net/mehvahdjukaar/moonlight/core/mixins/platform/MinecraftServerMixin.class",
+      "bytes": 3520,
+      "sha256": "74c3418168affb4d666c7b65ccd47e5e46c21cbc14f37fc886626fd19114c555"
+    },
+    {
+      "class": "net/mehvahdjukaar/moonlight/core/misc/ReloadInstanceWrapper.class",
+      "bytes": 6448,
+      "sha256": "83a3f999f0d4887d8765e4164b7bef559d5e33eaee239db44e05280278e047b8"
+    },
+    {
+      "class": "net/mehvahdjukaar/moonlight/core/pack/DynamicResourcesInternals.class",
+      "bytes": 10683,
+      "sha256": "1bfae9472a04ff12b6880e33ca09f8147ebc3f16c875d45fd89af6f5e67b47a2"
+    },
+    {
+      "class": "net/mehvahdjukaar/moonlight/api/resources/pack/DynamicResourcesProvider.class",
+      "bytes": 15293,
+      "sha256": "10ddb6444a49129f51dbc60b18790451a743f62038525a9e0bed7c61641ac229"
+    },
+    {
+      "class": "net/mehvahdjukaar/moonlight/api/resources/pack/GlobalCachedStrategy.class",
+      "bytes": 9554,
+      "sha256": "99c1ce4e8dd3f4cd62b42f2075025571bee6b18a57c6fe84d14399ac8e8c3075"
+    },
+    {
+      "class": "net/mehvahdjukaar/moonlight/api/resources/pack/CachePathPackResources.class",
+      "bytes": 5276,
+      "sha256": "17d77a2dfb8f3dca2967c2dfc4c339e74de64120b810c12cbe94f1cccef022b4"
+    }
+  ],
+  "native_public_static_entry": {
+    "access_flags": 9,
+    "descriptor": "(Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/mehvahdjukaar/moonlight/api/misc/IProgressTracker;)V",
+    "code_bytes": 27,
+    "code_sha256": "9c3a9bd530b06e46baec909b1a31d768c050883bb155830806264fc174e754ec",
+    "exceptions": [],
+    "locals_live_at_395": []
+  },
+  "seedgen_private_static_attempt": {
+    "access_flags": 10,
+    "descriptor": "(ZZ)Lnet/minecraft/core/RegistryAccess$Frozen;",
+    "code_bytes": 765,
+    "code_sha256": "a59964aed4ad9e9812c971fd642762400467f4865575b30645725f0066d10aab",
+    "exceptions": [
+      {
+        "start": 88,
+        "end": 107,
+        "handler": 164,
+        "catch_type_cp": 403
+      },
+      {
+        "start": 88,
+        "end": 107,
+        "handler": 164,
+        "catch_type_cp": 137
+      },
+      {
+        "start": 110,
+        "end": 161,
+        "handler": 164,
+        "catch_type_cp": 403
+      },
+      {
+        "start": 110,
+        "end": 161,
+        "handler": 164,
+        "catch_type_cp": 137
+      },
+      {
+        "start": 221,
+        "end": 303,
+        "handler": 318,
+        "catch_type_cp": 142
+      },
+      {
+        "start": 325,
+        "end": 332,
+        "handler": 335,
+        "catch_type_cp": 142
+      },
+      {
+        "start": 204,
+        "end": 347,
+        "handler": 350,
+        "catch_type_cp": 240
+      },
+      {
+        "start": 469,
+        "end": 561,
+        "handler": 564,
+        "catch_type_cp": 135
+      },
+      {
+        "start": 469,
+        "end": 561,
+        "handler": 564,
+        "catch_type_cp": 137
+      },
+      {
+        "start": 392,
+        "end": 683,
+        "handler": 693,
+        "catch_type_cp": 142
+      },
+      {
+        "start": 695,
+        "end": 702,
+        "handler": 705,
+        "catch_type_cp": 142
+      },
+      {
+        "start": 4,
+        "end": 690,
+        "handler": 717,
+        "catch_type_cp": 135
+      },
+      {
+        "start": 4,
+        "end": 690,
+        "handler": 717,
+        "catch_type_cp": 137
+      },
+      {
+        "start": 693,
+        "end": 717,
+        "handler": 717,
+        "catch_type_cp": 135
+      },
+      {
+        "start": 693,
+        "end": 717,
+        "handler": 717,
+        "catch_type_cp": 137
+      }
+    ],
+    "locals_live_at_395": [
+      {
+        "slot": 0,
+        "name": "withMods",
+        "descriptor": "Z",
+        "start": 0,
+        "end": 765
+      },
+      {
+        "slot": 1,
+        "name": "wholeSet",
+        "descriptor": "Z",
+        "start": 0,
+        "end": 765
+      },
+      {
+        "slot": 2,
+        "name": "startedAt",
+        "descriptor": "J",
+        "start": 4,
+        "end": 765
+      },
+      {
+        "slot": 4,
+        "name": "packs",
+        "descriptor": "Lnet/minecraft/server/packs/repository/PackRepository;",
+        "start": 9,
+        "end": 717
+      },
+      {
+        "slot": 5,
+        "name": "opened",
+        "descriptor": "Ljava/util/List;",
+        "start": 38,
+        "end": 717
+      },
+      {
+        "slot": 6,
+        "name": "modPacks",
+        "descriptor": "I",
+        "start": 41,
+        "end": 717
+      },
+      {
+        "slot": 7,
+        "name": "dataPacks",
+        "descriptor": "I",
+        "start": 172,
+        "end": 717
+      },
+      {
+        "slot": 8,
+        "name": "names",
+        "descriptor": "Ljava/util/List;",
+        "start": 181,
+        "end": 717
+      },
+      {
+        "slot": 9,
+        "name": "resources",
+        "descriptor": "Lnet/minecraft/server/packs/resources/CloseableResourceManager;",
+        "start": 392,
+        "end": 717
+      }
+    ]
+  },
+  "seedgen_call_offsets": {
+    "manager_constructor": 387,
+    "manager_store_local9": 390,
+    "injection_before_registry_access_factory": 395,
+    "registry_data_loads": [
+      442,
+      533
+    ]
+  },
+  "native_server_hook_conditions": {
+    "not_filtered_resource_manager": true,
+    "selected_resource": "moonlight:moonlight/token.json",
+    "mod_initialization_complete": true,
+    "progress_tree_roots": 1
+  },
+  "native_pipeline_order": [
+    "EarlyPackReloadEvent",
+    "GlobalCachedStrategy.refreshState",
+    "DynamicResourcesProvider.prepare",
+    "DynamicResourcesProvider.reload",
+    "native commitChanges",
+    "GlobalCachedStrategy.writeNewState"
+  ],
+  "native_lifecycle_executed_by_fixture": false,
+  "remaining_native_gates": [
+    "mixin linkage/local capture",
+    "normal token and mod initialization eligibility",
+    "real native cache generation result/logs",
+    "strict resource custody",
+    "strict terrain fingerprint equality",
+    "actual SeedGen generation and DH rendering"
+  ]
+}

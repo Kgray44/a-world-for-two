@@ -1,0 +1,482 @@
+[
+  {
+    "pass": 1,
+    "title": "TORTUGA",
+    "phase": "Worn masonry \u00b7 first alley",
+    "image": "tortuga-west-pass-01-overhead.png",
+    "image_sha256": "95e81c0f5eeee4636ddfbc1789094f19354e9ba06d70d345f0159e4b328ea37d",
+    "actual_ground_cells_cumulative": 210,
+    "actual_greenery_targets_cumulative": 0,
+    "actual_grass_soil_pockets_cumulative": 0,
+    "actual_east_compounds": 14,
+    "pending_east_compounds": 25,
+    "actual_native_proofs": [
+      {
+        "operation": "verify-before",
+        "terminal_sha256": "696e50617a24c9b9e44e6c2b897d69fe3a02794f33c861e68b1bf08eaec21718",
+        "plan_sha256": "404f75ca455a5bfbc8c7cefea91aac60ec0441fca3948db218e0addc70978b91",
+        "finished": "2026-10-29T02:02:37.026390200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "ea3e479089395b6a9b83b2e6c22a819bb2c60bafaa5bab6f34cd62c8233baa86",
+        "plan_sha256": "caeecee15913e76ffe3295ac7d5e1887c8753fb106c3b95683d72dc45bf2d351",
+        "finished": "2026-10-29T02:03:54.336042300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "216e233fb48e9aeed4d4999b2e7c5e27ee867ee0f77eb65fbf83283b24602c42",
+        "plan_sha256": "caeecee15913e76ffe3295ac7d5e1887c8753fb106c3b95683d72dc45bf2d351",
+        "finished": "2026-10-29T02:03:55.525826300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "a2622c310aecafc74146276ac940ec1df8068e19641349b61ed65904b9233ff1",
+        "plan_sha256": "dccc59675e21eb41743dee6b03b85fca49aab5fea5a00998e5df50eb5049af51",
+        "finished": "2026-10-29T02:03:56.925309100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "e00e3008d048aabbddeeb12c989ffcb695ec5cbd8e325d1aafff272edae2fe5e",
+        "plan_sha256": "caeecee15913e76ffe3295ac7d5e1887c8753fb106c3b95683d72dc45bf2d351",
+        "finished": "2026-10-29T02:03:57.675871700Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    ],
+    "baseline_image_sha256": "7d491c6a5049d7d6d2bdcd4d8304e1faf1797fa826a0096f64c153cca078dbac",
+    "baseline_receipt_sha256": "9d16a268cf9932bb4469722b1204e6beb90894d99b86065740d25f2bd84a8744",
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "native_completion_record_sha256": "79da89c5dc3e03999e633aa5e5402e8d664135fe602d038c1b32618fb6ba9bd1",
+    "geometry_frame": {
+      "x0": 968,
+      "z0": -1376,
+      "left": 95,
+      "top": 190,
+      "pixels_per_block": 5
+    },
+    "representation": "Schematic work coverage; existing14-East geometry/verified partial old-surface retirement and25 pending outlines preserved from the previous proven map",
+    "source_plans_relabelled_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0
+  },
+  {
+    "pass": 2,
+    "title": "TORTUGA",
+    "phase": "Outdoor gravel replaced \u00b7 first alley",
+    "image": "tortuga-west-pass-02-overhead.png",
+    "image_sha256": "bdd78fd43b6942685d8f544baf4137f057a019d386674c5f2aba0055d306a759",
+    "actual_ground_cells_cumulative": 410,
+    "actual_greenery_targets_cumulative": 0,
+    "actual_grass_soil_pockets_cumulative": 0,
+    "actual_east_compounds": 14,
+    "pending_east_compounds": 25,
+    "actual_native_proofs": [
+      {
+        "operation": "verify-before",
+        "terminal_sha256": "52cc39c2e6a9fbf5124dca393eddead34c94bf2defa7e9d1b57affb1e1d0d907",
+        "plan_sha256": "9dfa514f6ae3c3e84e603c07a69522197dece72931f6da694506dad6d7c35582",
+        "finished": "2026-10-29T02:03:59.080858200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "5d8b2c2ec1dd472dd1e54f0c312d56e3e15f2b23bb25a94bdd5e889ba700a0a3",
+        "plan_sha256": "79817ba8ba052cae1e9db8023964796605cd15419e88394b3fb15ae8ad862e67",
+        "finished": "2026-10-29T02:03:59.534000500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "3cbdc7343e8f2b6f4139a920f1e02c52acfd5de23141ef7ea70793095db0911c",
+        "plan_sha256": "79817ba8ba052cae1e9db8023964796605cd15419e88394b3fb15ae8ad862e67",
+        "finished": "2026-10-29T02:04:00.625541900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "68397c3dc6d3be113e8e8ce16d15c7778801c1fefe723b384c6c18d11754b22a",
+        "plan_sha256": "37625ac60059555041e390fc5ae0281939a91ce00203e10e65718fba3d6c032b",
+        "finished": "2026-10-29T02:04:01.878830900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "7b97ad7f49e256ebc24d9f921d6a3307088b1e886d977b0af902ab9359084163",
+        "plan_sha256": "79817ba8ba052cae1e9db8023964796605cd15419e88394b3fb15ae8ad862e67",
+        "finished": "2026-10-29T02:04:02.374683200Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    ],
+    "baseline_image_sha256": "7d491c6a5049d7d6d2bdcd4d8304e1faf1797fa826a0096f64c153cca078dbac",
+    "baseline_receipt_sha256": "9d16a268cf9932bb4469722b1204e6beb90894d99b86065740d25f2bd84a8744",
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "native_completion_record_sha256": "79da89c5dc3e03999e633aa5e5402e8d664135fe602d038c1b32618fb6ba9bd1",
+    "geometry_frame": {
+      "x0": 968,
+      "z0": -1376,
+      "left": 95,
+      "top": 190,
+      "pixels_per_block": 5
+    },
+    "representation": "Schematic work coverage; existing14-East geometry/verified partial old-surface retirement and25 pending outlines preserved from the previous proven map",
+    "source_plans_relabelled_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0
+  },
+  {
+    "pass": 3,
+    "title": "TORTUGA",
+    "phase": "Rooted and climbing greenery \u00b7 first alley",
+    "image": "tortuga-west-pass-03-overhead.png",
+    "image_sha256": "d941732904495ed12ecb8b4d32a3c879a46639249def989a2dfa86c647d2c1d5",
+    "actual_ground_cells_cumulative": 410,
+    "actual_greenery_targets_cumulative": 219,
+    "actual_grass_soil_pockets_cumulative": 17,
+    "actual_east_compounds": 14,
+    "pending_east_compounds": 25,
+    "actual_native_proofs": [
+      {
+        "operation": "verify-before",
+        "terminal_sha256": "a276fe68f35e30d7a12863f46f14cff04aba62701555ed4a5d8e1c775c680d7b",
+        "plan_sha256": "df1693aa3d292d7c6606318e399bee0425fed4a3b4dca6e7a42646af9738e0a8",
+        "finished": "2026-10-29T02:04:03.425835900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "6b9a3428bf433cbbc1ead5646a18decafb8f20ce996fc205f66bde39ff2b3b46",
+        "plan_sha256": "092eecc2423cb629e64c7845ac78aefdff18842d326fd82f250394b5074bab1f",
+        "finished": "2026-10-29T02:04:04.376769100Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "e3c1e6bd8929e044f51a2ca4a965139087402d04e9e70d924c77633bde978a0c",
+        "plan_sha256": "092eecc2423cb629e64c7845ac78aefdff18842d326fd82f250394b5074bab1f",
+        "finished": "2026-10-29T02:04:05.578410800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "5490e7c08b465f0964d463f1692bd75263ae2bded7f159043c4c0fda51a00047",
+        "plan_sha256": "736f039333a6b72eeda088694e68b996ccf0b12d6d2a6e483841741867563294",
+        "finished": "2026-10-29T02:04:06.726243Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "ee73d94d7e1700816b08dc0c4853d9982ed07076d389ca4fd73dacac90c21017",
+        "plan_sha256": "092eecc2423cb629e64c7845ac78aefdff18842d326fd82f250394b5074bab1f",
+        "finished": "2026-10-29T02:04:07.574717Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    ],
+    "baseline_image_sha256": "7d491c6a5049d7d6d2bdcd4d8304e1faf1797fa826a0096f64c153cca078dbac",
+    "baseline_receipt_sha256": "9d16a268cf9932bb4469722b1204e6beb90894d99b86065740d25f2bd84a8744",
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "native_completion_record_sha256": "79da89c5dc3e03999e633aa5e5402e8d664135fe602d038c1b32618fb6ba9bd1",
+    "geometry_frame": {
+      "x0": 968,
+      "z0": -1376,
+      "left": 95,
+      "top": 190,
+      "pixels_per_block": 5
+    },
+    "representation": "Schematic work coverage; existing14-East geometry/verified partial old-surface retirement and25 pending outlines preserved from the previous proven map",
+    "source_plans_relabelled_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0
+  },
+  {
+    "pass": 4,
+    "title": "TORTUGA",
+    "phase": "Worn masonry \u00b7 wider West",
+    "image": "tortuga-west-pass-04-overhead.png",
+    "image_sha256": "6284f5a7908d8444584b397ea0c672317dc8483cf03e427379893daa4c004b34",
+    "actual_ground_cells_cumulative": 1364,
+    "actual_greenery_targets_cumulative": 219,
+    "actual_grass_soil_pockets_cumulative": 17,
+    "actual_east_compounds": 14,
+    "pending_east_compounds": 25,
+    "actual_native_proofs": [
+      {
+        "operation": "verify-before",
+        "terminal_sha256": "e7f8fcd2d55ba49811643f8fa3e128743a21087eb035c61aea4a4d74053e3c66",
+        "plan_sha256": "57162dddc7e26a011ccad030734a123e2c5e98f81f356966eb93bfef70fc698c",
+        "finished": "2026-10-29T02:04:10.533083600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "2a4e6eedbc890c81e62f6ded34fb612b7f1d4c3ac1f56a2f3da55fec4b077192",
+        "plan_sha256": "d1fecdefb65e8388cf3b1b484acd51ea5ad80b54c9912fcd647db0d77304cf63",
+        "finished": "2026-10-29T02:04:11.931685800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "1e22f75cb2198fd8f1877cac74509fbca619670b66f4e365eeec700df922a94d",
+        "plan_sha256": "d1fecdefb65e8388cf3b1b484acd51ea5ad80b54c9912fcd647db0d77304cf63",
+        "finished": "2026-10-29T02:04:13.581733600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "420259d4858e05e75c752e04587279172ea61574a0b6bd41801ae2e3e139f548",
+        "plan_sha256": "feffca6ab66475bd8906a98c24ca6846e1ebd2647147aeb1510ff02c10908c8a",
+        "finished": "2026-10-29T02:04:16.576863800Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "9f3e6b59eb5959f50f6259bb28748389606e71f3f94d328b344a25d84c3c94d0",
+        "plan_sha256": "d1fecdefb65e8388cf3b1b484acd51ea5ad80b54c9912fcd647db0d77304cf63",
+        "finished": "2026-10-29T02:04:17.627659400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    ],
+    "baseline_image_sha256": "7d491c6a5049d7d6d2bdcd4d8304e1faf1797fa826a0096f64c153cca078dbac",
+    "baseline_receipt_sha256": "9d16a268cf9932bb4469722b1204e6beb90894d99b86065740d25f2bd84a8744",
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "native_completion_record_sha256": "79da89c5dc3e03999e633aa5e5402e8d664135fe602d038c1b32618fb6ba9bd1",
+    "geometry_frame": {
+      "x0": 968,
+      "z0": -1376,
+      "left": 95,
+      "top": 190,
+      "pixels_per_block": 5
+    },
+    "representation": "Schematic work coverage; existing14-East geometry/verified partial old-surface retirement and25 pending outlines preserved from the previous proven map",
+    "source_plans_relabelled_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0
+  },
+  {
+    "pass": 5,
+    "title": "TORTUGA",
+    "phase": "Outdoor gravel replaced \u00b7 wider West",
+    "image": "tortuga-west-pass-05-overhead.png",
+    "image_sha256": "02c6b8e6d1a9eb00fbca7c7e00944dd8b7fbbda716051a4bb70366f4451972e7",
+    "actual_ground_cells_cumulative": 3285,
+    "actual_greenery_targets_cumulative": 219,
+    "actual_grass_soil_pockets_cumulative": 17,
+    "actual_east_compounds": 14,
+    "pending_east_compounds": 25,
+    "actual_native_proofs": [
+      {
+        "operation": "verify-before",
+        "terminal_sha256": "b688c430560f4a07dcb86f619d1246e52142980835f28b16bd3339c6b4ad97bd",
+        "plan_sha256": "4a28b77ddfde0d19b33bedbac2db0adc05682f0d23e78f4e9f17e4700f13050e",
+        "finished": "2026-10-29T02:04:22.277740300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "11345fbb392422b6023270d96911843e5a56ed73876aa64cbdcd7fb73046b122",
+        "plan_sha256": "70c9ae2f1d05b1505d73533acde734706c82debaa2a4dfea87c3cd31a522e20f",
+        "finished": "2026-10-29T02:04:23.680679600Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "7f01c16897e2cb81e0b25fae99a38b4db25e1a6767f56284bd5af3a3f6db9116",
+        "plan_sha256": "70c9ae2f1d05b1505d73533acde734706c82debaa2a4dfea87c3cd31a522e20f",
+        "finished": "2026-10-29T02:04:26.026952300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "e262a3ebe9ae9ad0bfce987dd9b4cc8ceb37c105aa513b5e0f8ca121a14c3a1b",
+        "plan_sha256": "631ede8d74442b679ff451b25c181512c86368b7db47d38bdfeed94db1aacb3b",
+        "finished": "2026-10-29T02:04:30.676630500Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "b0f9dc13968cabf48a83e9aaf20d18c0dd8187100cd8bdbbfca854bd41c558c4",
+        "plan_sha256": "70c9ae2f1d05b1505d73533acde734706c82debaa2a4dfea87c3cd31a522e20f",
+        "finished": "2026-10-29T02:04:31.879358300Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    ],
+    "baseline_image_sha256": "7d491c6a5049d7d6d2bdcd4d8304e1faf1797fa826a0096f64c153cca078dbac",
+    "baseline_receipt_sha256": "9d16a268cf9932bb4469722b1204e6beb90894d99b86065740d25f2bd84a8744",
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "native_completion_record_sha256": "79da89c5dc3e03999e633aa5e5402e8d664135fe602d038c1b32618fb6ba9bd1",
+    "geometry_frame": {
+      "x0": 968,
+      "z0": -1376,
+      "left": 95,
+      "top": 190,
+      "pixels_per_block": 5
+    },
+    "representation": "Schematic work coverage; existing14-East geometry/verified partial old-surface retirement and25 pending outlines preserved from the previous proven map",
+    "source_plans_relabelled_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0
+  },
+  {
+    "pass": 6,
+    "title": "TORTUGA",
+    "phase": "Layered greenery \u00b7 whole eligible West",
+    "image": "tortuga-west-pass-06-overhead.png",
+    "image_sha256": "621cec7ee241593783b8b9dc6298d94d076b081c631d214d4d42eaedabd8ff92",
+    "actual_ground_cells_cumulative": 3285,
+    "actual_greenery_targets_cumulative": 2967,
+    "actual_grass_soil_pockets_cumulative": 405,
+    "actual_east_compounds": 14,
+    "pending_east_compounds": 25,
+    "actual_native_proofs": [
+      {
+        "operation": "verify-before",
+        "terminal_sha256": "dbf9ae2b1e28221a92e4df6a0b578fe7e20c26cf8ddf26f7d0ae754568de2e96",
+        "plan_sha256": "5cbf433bd38c055881c85409749afe6c337a25bafb2ce006f72bc6015146a2d2",
+        "finished": "2026-10-29T02:04:35.076502400Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "place",
+        "terminal_sha256": "792ada9eb5eda65570d5cdfae322c0ac53cf9b545cbaaf988db17ef5d72b67ff",
+        "plan_sha256": "4d358271e25fdcad47b1893525b8739c14565fcd8abee97d9164e8ca537ce15e",
+        "finished": "2026-10-29T02:04:36.380354Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "settle",
+        "terminal_sha256": "9ca0fe7fadcb27f8c8ffb12dad8aea84242fa2441ce6f609155a4a30446613f0",
+        "plan_sha256": "4d358271e25fdcad47b1893525b8739c14565fcd8abee97d9164e8ca537ce15e",
+        "finished": "2026-10-29T02:04:39.179167Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "verify",
+        "terminal_sha256": "b7b6e5b2f77d536f8110b1f53871a7e3852b17d965100e174737a6d14d301f07",
+        "plan_sha256": "543761400adad6bda3df3c3d5dda78fd002c1591b64310ae7d0114410c4cb12a",
+        "finished": "2026-10-29T02:04:42.325480900Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      },
+      {
+        "operation": "map",
+        "terminal_sha256": "ed032192f9cd5c30e74ffe878f21dda6269df5b81648213f183a85e69615fea5",
+        "plan_sha256": "4d358271e25fdcad47b1893525b8739c14565fcd8abee97d9164e8ca537ce15e",
+        "finished": "2026-10-29T02:04:43.728502Z",
+        "failures": 0,
+        "cleanup_required": false,
+        "temporary_tickets_remaining": 0,
+        "pending_shared_chunk_futures": 0
+      }
+    ],
+    "baseline_image_sha256": "7d491c6a5049d7d6d2bdcd4d8304e1faf1797fa826a0096f64c153cca078dbac",
+    "baseline_receipt_sha256": "9d16a268cf9932bb4469722b1204e6beb90894d99b86065740d25f2bd84a8744",
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "native_completion_record_sha256": "79da89c5dc3e03999e633aa5e5402e8d664135fe602d038c1b32618fb6ba9bd1",
+    "geometry_frame": {
+      "x0": 968,
+      "z0": -1376,
+      "left": 95,
+      "top": 190,
+      "pixels_per_block": 5
+    },
+    "representation": "Schematic work coverage; existing14-East geometry/verified partial old-surface retirement and25 pending outlines preserved from the previous proven map",
+    "source_plans_relabelled_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0,
+    "native_actions": 0
+  }
+]

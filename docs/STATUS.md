@@ -1,51 +1,64 @@
 # Build and acceptance status
 
-**Documentation checkpoint: 2026-10-28 UTC.** Public candidate.31 remains the
-published immutable prerelease. Private candidate.48 reached native readiness
-and a licensed owner join. Construction, mechanism commissioning and visual
-refinement continue; the complete world and final release are not accepted.
-See the [candidate.48 native record](NATIVE-CANDIDATE48.md).
+**Documentation checkpoint: 2026-10-29 UTC.** Public candidate.31 remains the
+published immutable prerelease. Private candidate.63 is the current construction
+runtime and has a matching licensed client join. All39 eastern Tortuga compounds
+are physically built. Final cleanup, whole-boundary landscaping, gameplay and
+artistic acceptance remain open; the complete world and final release are not
+accepted. See the [current unfinished projects](coordination/UNFINISHED.md).
 
 ## Public download and private development
 
 | Component | Public prerelease | Private development |
 | --- | --- | --- |
-| Candidate | **0.1.0-candidate.31** | **0.1.0-candidate.48** |
+| Candidate | **0.1.0-candidate.31** | **0.1.0-candidate.63** |
 | Availability | Immutable Prism starter | Running owned preview; unreleased |
-| Enabled mods | **197 total; 191 client; 164 server** | **198 total; 192 client; 165 server** |
-| Owned server helper | Bridge 0.6.17 | Bridge 0.6.34 |
+| Enabled mods | **197 total; 191 client; 164 server** | **204 total; 198 client; 171 server** |
+| Owned server helper | Bridge 0.6.17 | Bridge 0.6.49 |
 | Fresh installation | ZIP/checksum verified; clean Prism import unqualified | Matching final starter and clean import pending |
 | Runtime scope | Historical named records | Startup, licensed owner join, scoped construction and native mechanisms; full multiplayer pending |
 
 Shared mods count on both sides; Essential is optional and disabled. Both use
 Minecraft 1.21.1, NeoForge 21.1.262 and Java 21. Eight shaders and one resource pack
 are pinned. KG's maximum client heap is 6 GiB; Sera's conservative profile is 4 GiB.
-The [development lock](../catalog/lock.json) contains 208 files and 199 mod records,
-198 enabled by default. [Compatibility](COMPATIBILITY.md) preserves all 224 requested
+The [development lock](../catalog/lock.json) contains 214 files and 205 mod records,
+204 enabled by default. [Compatibility](COMPATIBILITY.md) preserves all 229 requested
 candidates. These are development counts, not a claim that all integration work
 is finished. Public candidate.31 retains its own immutable snapshot.
 
-The private bridge is 584,264 bytes, SHA-256
-`071fe778b27c9450c6a9a7b602825ee2ff19bfcdba9f23ba3cb24302bd6b4b1d`.
+The private bridge is 723,477 bytes, SHA-256
+`3087e224a5d62179c76d9304c8d76c5991d4fe0fae0f647c0e91bfc65f9514cf`.
 Its pack manifest SHA-256 is
-`0e5775d8d22771e97b34b5b9f508af7baf001e6371d80588315ef08261eeed0b`.
+`69fd33efdb77fe5f39e0a9a63b3a7f1e492a1cda0d9b7482d8c302b5e75997ad`.
+
+The active town remains the valuable RosewaterArtistic construction save on
+game port25575 / Control Room8766. The configured permanent runtime on25565
+has not received this town; controlled promotion is still required. The latest
+verified normal-stop recovery89312d retains all39 eastern compounds, six vessels,
+five furnishing upgrades, six western landscaping batches and owner mechanisms.
+Canonical source custody and previous recovery/failed receipts remain intact.
 
 ## Work in progress
 
 | Area | Current evidence | Remaining work |
 | --- | --- | --- |
-| Whole north-bank pirate city | First muted western shop/headland corrections and eastern reshaping/infill clusters have native results | Buildings must occupy most buildable ground; tightly interlock varied masses with narrow crooked alleys. Correct all rejected bright/grid extensions, retain accepted originals and household contents, and review actual views |
-| Full 3D architecture | New projecting/recessed entry, window and carved details are placed; actual hall views still show plain areas | Continue exterior and sensible interior relief across every structure; no flat or boxed fallback |
+| Whole north-bank pirate city | West36 additions/15 refinements structurally owner-accepted; East39/39 actual placements with full native state results | The11,630-cell residual cleanup is complete. Inspect final streets/interiors/roofs and refine visible defects. No remaining planned eastern compound is counted as pending construction |
+| Full 3D architecture | Current14 corrections and all25 final compounds include closed roofs, deeper façades, real door protection and distinctive purposeful furnishings | Actual views and access checks across the finished city; existing photos verify representative rooms/views only. Placed does not mean artistically accepted |
 | Main drawbridge | Current ornamented spans passed separate receiver repair and two actual 55-degree cycles | Normal restart, vessel clearance, player use and final visual review |
 | Fountain centerpiece | Revised body passed real pumped fill, four cascades, STOP/drain/reopen in47;26 carved additions and wet composition verified in 48 | Final artwork, current operation/persistence and player use |
-| Southern forest | 14 additional native saplings grew in 48; earlier durable outcomes retained | Dense continuous coverage across the entire south shore to the cliff; native silhouette/ecology and persistence review |
-| Greenery LIFE | 3,284 additional southern plant/vine states placed and settled; one 396-state sector held before placement | Finish woodland and town-wide flowers, climbers, planters and undergrowth, retaining native survival and paths |
+| Southern forest | Earlier ordinary native-grown tree/undergrowth outcomes retained; held/failed plots remain separate | Dense continuous4–5-block tree spacing across eligible south shore to cliff/east alignment, nature walks, native silhouettes, wildlife and persistence |
+| Ground and greenery LIFE | Six West batches deployed:3,285 ground cells and2,967 botanical targets; later355 West details,320-target northern dock,3,625 additional ground and1,769 additional botanical targets placed | Continue actual visual refinement across the blue northern boundary;716 clearer-spine and799/242 further botanical layers remain unplaced. Native placement does not establish lushness or path quality |
 | Living LIFE | First seven animals/small creatures admitted through ordinary hooks with normal AI flags | Broader population, actual behavior/persistence and genuinely usable HOME/job POIs before town residents; firefly held for darkness |
 | Station, trains and route | Mill/short shuttle infrastructure placed; retained native tube/processing partial state preserved | Correctly resume commissioning, assemble/drive trains and finish a complete route/loop; no powered-network claim from blocks |
-| Hypertubes and Overpressure | Existing native links and mill installations have scoped partial records | Complete normal detector/input, power, routing, passenger travel, chunk crossings and restart checks |
-| Western zipline | Detailed stations/frames and finite route source prepared | Native stocked cable creation, continuous riding/braking, streaming and restart |
-| Harbor and fleet | Static flagship prototype and harbor work exist | Complete detailed fleet, furnish/inspect ships and commission actual sailing craft; static hulls do not establish mobility |
-| Distant terrain/graphics | DH+SeedGen retained; strict current provider failure preserved | Exact Moonlight generated-pack custody and genuine parity, map integration, travel/shader/current resource benchmarks |
+| Hypertubes | **Owner-accepted complete**; preserve the installation | No replacement or repeated commissioning is a completion prerequisite |
+| Overpressure and processing | Scoped plumbing, machine and partial commissioning outcomes exist | Demonstrate real feed/process/output and routing, automation and restart; static machines do not prove production |
+| Western zipline | **Owner rode it successfully and declares it complete**; user-built installation, requested wrench tags and128 chain distance retained | Preserve accepted work; do not replace it with the separate cable-route proposal or repeatedly recommission it |
+| Harbor and fleet | Six vessel structures and five actual bounded furnishing upgrades; Mercy's later stopped snapshot is dry | Fresh Mercy hull/dryness checks and remaining furnishings; water repair only if an actual renewed failure requires it. Final boarding/belowdecks/art and intended mobility/clearance remain open; static hulls do not establish sailing |
+| Distant terrain/graphics | DH+SeedGen retained; client uses strict server-download fallback; Roxy/Voxy excluded | Resolve actual visible distant-terrain issue, current parity/delivery, MapHorizons/Xaero integration and travel/shader/resource benchmarks |
+| Future structures | Small structure-frequency source proposal retained | Native qualification and deployment for newly generated chunks only |
+| LivingWorld/PETS | Installed in63; matching client/server startup/join | Actual character/dialogue/pet/provider behavior and multiplayer acceptance |
+| Control Room | Features implemented; fast telemetry fix runtime-observed through a slow storage scan | Current browser/mobile/permissions/Atlas/backup/service and simultaneous-construction workflow qualification |
+| Release | Public31 remains immutable; current source qualification passes | Current Prism ZIP/clean import/Packwiz update, current two-player checks, final GitHub integration/docs, permanent-runtime promotion and selective cleanup |
 
 The material rule permits intentional unlimited one-axis beams, borders, fences
 and roof edges. A building's same block ID cannot exceed three consecutive cells
@@ -56,11 +69,21 @@ substitute for occupied building footprint; tiny purposeful courts are exception
 
 ## Native and source evidence
 
-The source suite completed 911 tests in 102.480 seconds: 910 passed and one Windows
-real-symlink fixture skipped. Packwiz reported 208 entries/no errors; Control Room
-JavaScript syntax passed. Additional source changes have focused checks and the
-release-excluded QA helper has exact-JAR compilation. Source fixtures are not
-native art, player travel, multiplayer or performance evidence.
+The latest comprehensive source run completed1,413 tests in123.096 seconds;
+its recorded process returned0. Packwiz validation and Control Room JavaScript
+syntax passed. Subsequent scoped source additions retain focused checks. These
+results are source qualification, not native art, player travel, multiplayer or
+performance evidence; they do not increase the working-feature scoreboard.
+
+Current native evidence separately records all39 eastern compounds, six western
+ground/greenery batches and five ship furnishing updates. Actual selected
+[Minecraft captures](images/tortuga-20261029/screenshots.json) include a
+furnished bookshop, a partial roof view and a western alley. The bookshop is
+convincingly furnished in that view; neither it nor the overhead construction
+maps establishes whole-city acceptance. Unready blue-sky frames are excluded.
+
+The following candidate.48 outcomes are historical and retained; they do not
+replace current qualification:
 
 Candidate.48's fourteen grown-tree results retain two separate held plots and
 all original failures. Seven requests initially left undispatched by stale
@@ -86,7 +109,7 @@ Before replacing the public release: finish the requested implementation and
 native visual review, qualify current operation/persistence and two-player/travel
 performance, build the matching Prism ZIP and verify a clean native Prism import.
 Strict SeedGen parity remains unresolved; DH server LOD downloads remain the
-fallback. No fingerprint checks were relaxed and no final48 pack is published.
+fallback. No fingerprint checks were relaxed; candidate.63 is not a published final pack.
 Useful checkpoints, human progress and failed receipts remain private and intact.
 Selective staging cleanup follows completion and preserves useful recovery data.
 

@@ -1,0 +1,17 @@
+{
+  "baseline_builder_sha256": "3318ffd0dd2b182512835a7bce5c7bfcbeab29365a4955818690c85b112636a8",
+  "baseline_source_sha256": {
+    "README.md": "3953bbd2dccaf62bc799dcf32f217121be26b38073166eb682bbeabe7e40527e",
+    "probes/MapCaptureGateProbe.java": "85f5298cb84d98e93fef0c13cf3190f66baf3f9ad3cbb86e533a932952f04fce",
+    "resources/META-INF/neoforge.mods.toml": "858dbda5650cb8fe5f6bf18e415e867702278590a6110e5518d43eff16168fa7",
+    "src/worldfortwo/qa/MapCaptureGate.java": "359a076e3b7410e19114f750b3918d1a57bc5803da8cad2af984f714411dcf01",
+    "src/worldfortwo/qa/NativeXaeroView.java": "fc93fe077e8f0d68e7a5c3084b25768888b5b57a0005880a375b88b9f55dbe7a",
+    "src/worldfortwo/qa/SettlementCapture.java": "2866fef1f3482b00616e40ba5768ec064abdccd716cb3dd3e5b5c8426abb455d"
+  },
+  "actual_installed_qa": {
+    "name": "awft-settlement-qa-0.1.8.jar",
+    "bytes": 23221,
+    "sha256": "5c947dcb9962a11a53791d6a2d63bcab39af939dc3aea1818dce74c2efdd09d6"
+  },
+  "scope": "Source proposal and private build only; active helper untouched"
+}

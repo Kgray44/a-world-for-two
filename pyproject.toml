@@ -12,7 +12,7 @@ awft = "control_room.__main__:main"
 control_room = ["static/*"]
 
 [tool.setuptools.packages.find]
-include = ["control_room*", "tools*"]
+include = ["control_room*", "tools*", "living_world*"]
 
 [build-system]
 requires = ["setuptools==80.9.0"]

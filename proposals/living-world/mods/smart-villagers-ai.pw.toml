@@ -1,0 +1,12 @@
+name = "Smart Villagers AI"
+filename = "smartvillagers-neoforge-1.21.1-2.0.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/l9oZCCPS/versions/bGNaqTaL/smartvillagers-neoforge-1.21.1-2.0.0.jar"
+hash-format = "sha512"
+hash = "196e5da485353e84d1f316bac60be9aded75eef3483d9d16e40daf9db4e4611ef6a08ac2bfc502b60e3874e3531cd90506dd14325ccd0c1309e526902af0710d"
+
+[update.modrinth]
+mod-id = "l9oZCCPS"
+version = "bGNaqTaL"

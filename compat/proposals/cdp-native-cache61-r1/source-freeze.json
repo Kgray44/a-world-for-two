@@ -1,0 +1,35 @@
+{
+  "format": "awft-source-freeze:1",
+  "files": {
+    "awft-cdp-cache.mixins.json": {
+      "bytes": 264,
+      "sha256": "f8af3d2fdd4f449ccdfe3f74f33dcedf571f25f9148677715d76dfbdbf768a3f"
+    },
+    "CdpRuntimeCacheWriteMixin.java": {
+      "bytes": 367,
+      "sha256": "113045a631cc9b155888f4deebd6c56ba684caa69371f8434b94fb1ba9d60b5d"
+    },
+    "CdpRuntimeCacheWritePlugin.java": {
+      "bytes": 9694,
+      "sha256": "6648288f9c908cf851dba6c3063b9aff97978af07322d6df296d7b98856883c1"
+    },
+    "GeneratedServerPackCustody.java": {
+      "bytes": 14970,
+      "sha256": "5d7b58699225ab0af0766f8fc8a19c8b05133a0ad697fd769e758f760f54e663"
+    },
+    "native-api-proof.json": {
+      "bytes": 1441,
+      "sha256": "d7fb712e53919f61ed6a9f4f5e4f90fa698643a0a8e5353d261e3a0e57262957"
+    },
+    "NativeCdpCacheProbe.java": {
+      "bytes": 9215,
+      "sha256": "5b04f6308590ac71c832e92a21dd2db00e8e65ec9313f110ae6751cecd3f0090"
+    },
+    "README.md": {
+      "bytes": 2513,
+      "sha256": "65e9ae89dbdfb5d50d354c2912fc11f2e0882425f21f1b96ab8afb873501a109"
+    }
+  },
+  "runtime_qualified": false,
+  "native_world_client_or_install_actions": 0
+}

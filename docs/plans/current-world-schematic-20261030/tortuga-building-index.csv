@@ -1,0 +1,119 @@
+﻿id,name,district,purpose,x,z
+east/shoal-warden,Shoal Warden’s Quay,east39,pilot workroom 1; upper household 1; pilot workroom 2,1370.0,-1193.0
+east/east-coal,East Coal Chandlery,east39,hardware workroom 1,1361.0,-1156.0
+east/thin-sail,Thin Sail Lookout,east39,pilot workroom 1,1386.5,-1126.5
+east/white-clam,White Clam Warehouse,east39,warehouse workroom 1; warehouse workroom 2; warehouse workroom 3,1310.5,-1133.0
+east/copper-bell,Copper Bell Bindery,east39,archive workroom 1; upper household 1; archive workroom 2,1309.0,-1227.5
+east/tide-fish,Tidefish Hall,east39,fish workroom 1; upper household 1; fish workroom 2,1360.5,-1201.0
+east/worn-book,The Worn Book,east39,archive workroom 1; upper household 1,1255.5,-1210.0
+east/bridge-customs,The Crooked Customs,east39,charts workroom 1; upper household 1; charts workroom 2,1231.0,-1210.5
+east/crooked-inn,Crooked Lantern Rooms,east39,inn workroom 1; upper household 1,1297.5,-1212.0
+east/lampblack,Lampblack Court,east39,hardware workroom 1; upper household 1,1247.5,-1187.5
+east/moon-branch,Moon Branch Rooms,east39,inn workroom 1; upper household 1,1293.0,-1185.5
+east/nail-drift,Nail & Drift,east39,cooper workroom 1; cooper workroom 2,1331.5,-1185.5
+east/bridge-cooper,Bridge Cooperage,east39,cooper workroom 1; upper household 1; cooper workroom 2,1224.0,-1198.5
+east/keel-store,Keel Store & Galley,east39,galley workroom 1; upper household 1; galley workroom 2,1322.5,-1203.0
+east/lantern-harbor-inn,Lantern Harbor Inn,east39,inn workroom 1; upper household 1,1298.0,-1252.0
+east/net-mender,Net Mender’s Hall,east39,cloth workroom 1; upper household 1; cloth workroom 2,1272.5,-1194.5
+east/crooked-row,Crooked Row Outfitters,east39,cloth workroom 1; upper household 1; cloth workroom 2,1274.0,-1180.0
+east/copper-kettle,Copper Kettle Chandlery,east39,hardware workroom 1; upper household 1; hardware workroom 2,1320.0,-1270.0
+east/bent-gull,The Bent Gull Quayside,east39,galley workroom 1; upper household 1; galley workroom 2,1334.5,-1250.5
+east/tin-whistle,Tin Whistle House,east39,music workroom 1; upper household 1,1325.0,-1238.0
+east/tide-broker,Tide Broker’s House,east39,charts workroom 1; upper household 1,1337.0,-1228.0
+east/ropes-pearl,Ropes & Pearl,east39,cloth workroom 1; upper household 1; cloth workroom 2,1273.0,-1210.5
+east/marrow-side,Marrow Side Cloth House,east39,cloth workroom 1; upper household 1; cloth workroom 2,1347.5,-1205.0
+east/moth-candle,Moth & Candle,east39,hardware workroom 1; upper household 1; hardware workroom 2,1311.5,-1186.0
+east/willow-door,Willow Door House,east39,galley workroom 1; upper household 1; galley workroom 2,1235.0,-1155.5
+east/anchor-dice,Anchor & Dice,east39,inn workroom 1; upper household 1,1251.5,-1171.5
+east/lantern-cod,Lantern Cod Galley,east39,fish workroom 1; fish workroom 2,1307.0,-1173.0
+east/sail-fool,The Sailor’s Folly,east39,music workroom 1; upper household 1,1330.0,-1173.5
+east/old-rum,Old Rum Warehouse,east39,warehouse workroom 1; upper household 1,1351.5,-1176.0
+east/bay-kettle,Bay Kettle Rooms,east39,galley workroom 1; upper household 1,1245.5,-1162.5
+east/sandbar,Sandbar Carpenter,east39,cooper workroom 1; upper household 1; cooper workroom 2,1269.0,-1149.5
+east/foxtail,Foxtail House,east39,inn workroom 1; upper household 1,1291.5,-1152.5
+east/navy-blue,Navy Blue Tailor,east39,cloth workroom 1; upper household 1; cloth workroom 2,1315.5,-1161.0
+east/quarter-jack,Quarter Jack’s Hall,east39,music workroom 1; upper household 1,1337.5,-1155.0
+east/cook-snap,Cook & Snap,east39,fish workroom 1; upper household 1,1357.0,-1142.0
+east/river-stone,River Stone Rooms,east39,inn workroom 1; upper household 1; inn workroom 2,1265.0,-1131.5
+east/harbor-chair,Harbor Chair & Cup,east39,galley workroom 1; upper household 1; galley workroom 2,1283.5,-1126.0
+east/split-shell,Split Shell House,east39,cooper workroom 1; upper household 1; cooper workroom 2,1333.0,-1132.0
+east/pelican-forge,Pelican Forge,east39,hardware workroom 1; upper household 1; hardware workroom 2,1363.0,-1125.5
+west-new/tortuga-fill-half-tide-hook/1,Soot & Scone,west36_new,Bread • Supper,1121.0,-1260.5
+west-new/tortuga-fill-half-tide-hook/2,The Half-Tide,west36_new,Music • Ale • Supper,1122.0,-1248.0
+west-new/tortuga-fill-tenon-watch-hook/1,The Crooked Tenon,west36_new,Ship Joinery • Repairs,1044.0,-1247.0
+west-new/tortuga-fill-tenon-watch-hook/2,The Tucked Pennant,west36_new,Cloth • Pennants • Repairs,1053.5,-1248.5
+west-new/tortuga-fill-tenon-watch-hook/3,Lantern at the Bend,west36_new,Lanterns • Coast Charts,1086.0,-1233.5
+west-new/tortuga-fill-bent-ropewalk-coast/1,The Bent Ropewalk,west36_new,Canvas • Rigging • Repairs,1169.5,-1206.5
+west-new/tortuga-fill-leaning-galley-hook/1,The Leaning Galley,west36_new,Supper • Service • Rooms,1130.0,-1225.5
+west-new/tortuga-fill-tide-stove-west-quay/1,The Tide Stove,west36_new,Warm Food • Repairs,985.0,-1275.5
+west-new/tortuga-fill-net-needle-crook/1,The Cork & Needle,west36_new,Nets • Corks • Repairs,1012.5,-1249.5
+west-new/tortuga-fill-net-needle-crook/2,The Mended Wake,west36_new,Cloth • Sea Coats • Home,1013.0,-1273.5
+west-new/tortuga-fill-moon-tackle-returns/1,Moonwatch Fittings,west36_new,Charts • Instruments • Home,1093.5,-1267.0
+west-new/tortuga-fill-moon-tackle-returns/2,The Gull’s Last Hook,west36_new,Tackle • Repairs • Home,1076.5,-1235.0
+west-new/tortuga-fill-chart-window-loft/1,The Small Meridian,west36_new,Charts • Watchglasses • Home,1045.5,-1228.0
+west-new/tortuga-western-spit/1,The Crooked Kettle,west36_new,Tea • Supper • Home,1021.5,-1309.0
+west-new/tortuga-western-spit/2,Saltwind Fittings,west36_new,Boat Fittings • Repairs,995.5,-1260.0
+west-new/tortuga-western-spit/3,The Red Thread,west36_new,Sea Coats • Stitching,1027.5,-1263.5
+west-new/tortuga-western-spit/4,Low Water Kitchen,west36_new,Warm Food • Home,1036.0,-1264.5
+west-new/tortuga-western-spit/5,The Small Ferrule,west36_new,Fasteners • Fittings,1047.0,-1238.0
+west-new/tortuga-western-spit/6,Bent Spar Repairs,west36_new,Spars • Joinery • Home,1074.0,-1245.0
+west-new/tortuga-western-spit/7,The Seated Needle,west36_new,Mending • Tea • Home,1086.5,-1277.0
+west-new/tortuga-western-spit/8,The Folded Pennant,west36_new,Pennants • Cloth • Home,1094.5,-1244.0
+west-new/tortuga-western-spit/9,The Oilglass Bench,west36_new,Lanterns • Repairs,1057.0,-1228.5
+west-new/tortuga-western-spit/10,Sparrow-Key Fittings,west36_new,Small Fittings • Repairs,1066.5,-1228.5
+west-new/tortuga-fill-inner-west-current-9/1,The Barnacle Cup,west36_new,Crew Lodging • Supper,1102.5,-1267.0
+west-new/tortuga-fill-inner-west-current-9/2,Nell’s Net Loft,west36_new,Net Repairs • Home,1105.0,-1245.5
+west-new/tortuga-fill-inner-west-current-9/3,Half Mast Repairs,west36_new,Fittings • Home,1106.5,-1234.0
+west-new/tortuga-fill-inner-west-current-9/4,Sable Spindle,west36_new,Cloth • Family Home,1142.0,-1224.5
+west-new/tortuga-fill-inner-west-current-9/5,The Shell Drawer,west36_new,Coast Notes • Instruments,1124.0,-1218.0
+west-new/tortuga-fill-inner-west-current-9/6,Paper Wren,west36_new,Binding • Reading Home,1132.0,-1215.0
+west-new/tortuga-fill-inner-west-current-9/7,The Gull’s Supper,west36_new,Cookery • Crew Rooms,1147.0,-1203.5
+west-new/tortuga-fill-inner-west-current-9/8,The Small Compass,west36_new,Coast Instruments • Home,1152.0,-1223.0
+west-new/tortuga-fill-inner-west-current-9/9,The Copper Eel,west36_new,Small Fittings • Home,1177.5,-1197.5
+west-new/tortuga-narrow-workrooms/1,The Long Splice,west36_new,Cordage • Repairs,1025.5,-1249.5
+west-new/tortuga-narrow-workrooms/2,The Folded Jack,west36_new,Sail Pennants • Cutting,1019.0,-1298.0
+west-new/tortuga-narrow-workrooms/3,The Bent Crate,west36_new,Crate Fittings • Repairs,1053.5,-1277.5
+west-new/tortuga-narrow-workrooms/4,Last-Kettle Galley,west36_new,Crew Supper • Tea,1059.5,-1307.5
+west-retained/western-ten/sailmaker,The Lark’s Canvas,west15_retained_refined,sailmaker,1007.0,-1258.5
+west-retained/western-ten/ferryman,The Oar & Feather,west15_retained_refined,ferryman,1040.0,-1236.5
+west-retained/western-ten/apothecary,Juniper’s Remedy,west15_retained_refined,apothecary,1055.5,-1237.5
+west-retained/western-ten/baker,The Copper Crust,west15_retained_refined,baker,1066.5,-1236.5
+west-retained/western-ten/stargazer,The Small Astrolabe,west15_retained_refined,stargazer,1097.5,-1235.5
+west-retained/western-ten/weaver,Wren & Willow,west15_retained_refined,weaver,1115.0,-1234.0
+west-retained/western-ten/mariner,The Two Tides,west15_retained_refined,mariner,1139.5,-1216.5
+west-retained/western-ten/bookbinder,The Bent Page,west15_retained_refined,bookbinder,1154.5,-1214.5
+west-retained/western-ten/soup-kitchen,The Kindly Kettle,west15_retained_refined,soup kitchen,1168.5,-1218.5
+west-retained/western-ten/fish-curer,Silverfin & Smoke,west15_retained_refined,fish curer,1110.5,-1263.5
+west-retained/west-shipwright/shipwright,The Wren’s Keel,west15_retained_refined,shipwright,1020.0,-1260.5
+west-retained/west-smith/smith,The Rivet & Ember,west15_retained_refined,smith,1045.0,-1263.5
+west-retained/west-armoury/armoury,The Black Gull Armoury,west15_retained_refined,armoury,1032.0,-1248.0
+west-retained/west-tavern/tavern,The Lantern Wake,west15_retained_refined,tavern,1061.0,-1266.5
+west-retained/west-florist/florist,Marigold & Tide,west15_retained_refined,florist,1085.0,-1246.0
+west-baseline/the-bent-wick,The Bent Wick,west_retained_baseline,Occupied craft shop and upper home,1075.5,-1267.5
+west-baseline/widow-finch’s-cooperage,Widow Finch’s Cooperage,west_retained_baseline,Occupied craft shop and upper home,1084.5,-1265.0
+west-baseline/the-ragged-sail,The Ragged Sail,west_retained_baseline,Occupied craft shop and upper home,1074.0,-1254.5
+west-baseline/captains-rest,Captain’s Rest,west_retained_baseline,"Tavern, common rooms and chart loft/berths",1046.0,-1285.5
+west-baseline/crooked-iron,The Crooked Iron,west_retained_baseline,Smith/armourer and home,1016.5,-1288.5
+west-baseline/sounding-line,The Sounding Line,west_retained_baseline,Chart/sail merchant and home,1027.0,-1287.0
+west-baseline/tideglass,Tideglass Bottle & Chart,west_retained_baseline,Bottle maker’s tucked home; Deep glass display and workroom,1039.5,-1304.5
+west-baseline/thimble-salt,Thimble & Salt,west_retained_baseline,Seamstress’s small oriel home; Compact cloth and sail-repair room,1048.5,-1304.5
+west-baseline/kettle-bend,Kettle Bend Supper House,west_retained_baseline,Cook’s upper home; Bent supper and tea room,1166.0,-1229.5
+west-baseline/keel-quill,Keel & Quill Bookbindery,west_retained_baseline,Bookbinder’s upper home; Bookbinding and public reading counter,1176.0,-1230.0
+west-baseline/mugs-mending,Mugs & Mending,west_retained_baseline,"Mender’s tucked upper home; Tea, stitching and sheltered nook",1188.5,-1227.0
+west-baseline/needlewake,Needlewake Cloth & Home,west_retained_baseline,Seamstress’s upper home; Low tailoring and fitting room,1179.0,-1216.5
+original-signal/chandler,The Copper Lantern,original_north_core,Chandler and rope store,1229.5,-1250.5
+original-signal/sailmaker,Seven Stitches,original_north_core,Sailmaker with tall crew lodgings,1239.0,-1252.5
+original-signal/inn,The Wren's Wake,original_north_core,L-plan corner tavern and small inn,1250.5,-1253.0
+original-signal/fishmonger,Tide & Scale,original_north_core,Fishmonger beneath an asymmetric saltbox roof,1262.5,-1249.5
+original-signal/harbormaster,The Sounding House,original_north_core,Stone harbor office with a stepped corner bay,1273.0,-1248.5
+original-signal/bookbinder,Ink & Bramble,original_north_core,Cropped-corner bookshop with a jettied reading room,1230.5,-1234.0
+original-signal/apothecary,The Glass Rosemary,original_north_core,Green-shuttered herbal shop with a side stair bay,1240.0,-1235.0
+original-signal/archhouse,Needle Court House,original_north_core,Three-storey house over a real courtyard passage,1252.0,-1233.5
+original-signal/lodging,The Blue Thread,original_north_core,Narrow sailors house with a deep balcony,1264.5,-1233.0
+original-signal/keeper,Rose Compass Studio,original_north_core,Tall narrow home with a quay-view painter studio,1275.5,-1231.5
+north-landmark/drowned-rose,The Drowned Rose,north_three_landmarks,"Large tavern, gallery, galley and music/seating rooms",1300.0,-1279.5
+north-landmark/imported-pirate-tavern,Pirate tavern,north_three_landmarks,Imported tavern and upper accommodation,1295.5,-1317.0
+north-landmark/imported-fishermans-shop,Fishermans shop,north_three_landmarks,"Imported fishmonger, kitchen/prep and loft",1324.0,-1332.5
+original-spit/ninth-knot,The Ninth Knot,original_spit,Net/sail repair shop,1280.5,-1283.0
+original-spit/pilot-tip,The Last Sounding,original_spit,Enclosed pilot chart/sounding shelter,1311.0,-1363.0
+original-harbor/wren-shipwright,The Wren Shipwright,original_harbor,Dry-land repair workshop with working loft and private bunk,1219.0,-1234.5

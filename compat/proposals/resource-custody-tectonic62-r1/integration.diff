@@ -1,0 +1,127 @@
+--- exact61/LithostitchedSeedgenResources.java
++++ proposal62/LithostitchedSeedgenResources.java
+@@ -84,7 +84,7 @@
+      * The independent walk throws on those failures; final selected bytes still
+      * come through the real PackResources.getResource. No pack is closed here. */
+     @SuppressWarnings("unchecked")
+-    private static Inventory inventory(PackResources pack,Accumulator out,int depth)throws IOException {
++    private static Inventory inventory(PackResources pack,Accumulator out,int depth,PackResources parent)throws IOException {
+         if(depth>16||++out.packs>MAX_PACKS)throw new IOException("Bounded complete pack structure exceeded");
+         var ids=new TreeSet<ResourceLocation>();var rawNames=new TreeSet<String>();
+         var readable=new TreeMap<ResourceLocation,Boolean>();var childInventories=new ArrayList<Inventory>();int[] visits={0};
+@@ -117,7 +117,7 @@
+             out.resource("pack.mcmeta",pack.getRootResource("pack.mcmeta"));
+             if(type==PathPackResources.class) {
+                 Path root=(Path)Roots.PATH.invoke(pack);
+-                requireDirectory(root);
++                try{if(!declaredEmptyTectonicOverlay(pack,parent,root,out))requireDirectory(root);}catch(IOException failure){throw new IOException("Exact native pack root refusal: pack="+pack.packId()+" class="+pack.getClass().getName()+" root="+root+" filesystem="+root.getFileSystem().getClass().getName()+" parent="+(parent==null?"none":parent.packId()+"/"+parent.getClass().getName())+" cause="+failure.getMessage(),failure);}
+                 Path data=root.resolve("data");
+                 if(!namespaces.equals(pathNamespaces(data,out)))throw new IOException("Native path namespace inventory is incomplete");
+                 for(String namespace:namespaces)ids.addAll(pathIds(namespace,data.resolve(namespace),out,rawNames));
+@@ -138,7 +138,7 @@
+                 if(delegating==null&&(children.isEmpty()||children.size()>MAX_PACKS||children.getLast()!=primary))
+                     throw new IOException("Pinned composite primary/overlay topology changed");
+                 out.number(children.size());if(delegating!=null){out.text("native-TaCZ-ordered-children:1");out.text(delegating.metadata);}
+-                for(var child:children){Inventory childInventory=inventory(child,out,depth+1);childInventories.add(childInventory);ids.addAll(childInventory.ids());}
++                for(var child:children){Inventory childInventory=inventory(child,out,depth+1,pack);childInventories.add(childInventory);ids.addAll(childInventory.ids());}
+                 // Empty namespace directories are legal, so check the full
+                 // native child namespace union, not only namespaces with files.
+                 var childNamespaces=new TreeSet<String>();
+@@ -491,4 +491,97 @@
+         }
+         view.unchanged();
+     }
++
++    // The sole admitted absent root is a declaration in this exact pinned native archive.
++    private static final String TECTONIC_EMPTY_ARCHIVE_SHA="cf188c70e7dd94f6e3a81cef9fe99f1151f13217809f7576aaedb0c3e6547ae1";
++    private static final String TECTONIC_EMPTY_META_SHA="201909f97c52ab64836b97f535d91bb4e38fc9e4681b6304188e36f9fdfccd1d";
++    private static final String TECTONIC_META="resourcepacks/tectonic/pack.mcmeta";
++    private static Inventory inventory(PackResources pack,Accumulator out,int depth)throws IOException {
++        return inventory(pack,out,depth,null);
++    }
++    private static boolean declaredEmptyTectonicOverlay(PackResources pack,PackResources parent,Path root,Accumulator out)throws Throwable {
++        if(parent==null||parent.getClass()!=CompositePackResources.class||!parent.packId().equals("tectonic")
++                ||pack.getClass()!=PathPackResources.class||!pack.packId().equals("tectonic"))return false;
++        var primary=(PackResources)Roots.PRIMARY.invoke(parent);
++        if(primary.getClass()!=PathPackResources.class)return false;
++        Path base=(Path)Roots.PATH.invoke(primary);
++        if(!root.equals(base.resolve("intentionally_empty"))||attributes(root)!=null)return false;
++        if(!net.neoforged.fml.ModList.get().isLoaded("tectonic"))return false;
++        var file=net.neoforged.fml.ModList.get().getModFileById("tectonic").getFile();
++        attestDeclaredEmptyTectonicOverlay(pack,parent,file.getFilePath(),file.findResource("resourcepacks/tectonic"));
++        out.text("pinned-native-Tectonic-declared-empty-overlay:1");out.text(TECTONIC_EMPTY_ARCHIVE_SHA);
++        out.text(TECTONIC_EMPTY_META_SHA);out.text("resourcepacks/tectonic/intentionally_empty");out.number(0);
++        org.slf4j.LoggerFactory.getLogger("AWFT-SeedGen-Resources").info(
++            "Attested exact native declared-empty overlay: parent={} class={} root={} archive={} members=0; all other missing roots still refuse",
++            parent.packId(),pack.getClass().getName(),root,TECTONIC_EMPTY_ARCHIVE_SHA);
++        return true;
++    }
++    /** Package-private actual-API fixture overload; runtime paths come only from the pinned ModList file. */
++    @SuppressWarnings("unchecked")
++    static void attestDeclaredEmptyTectonicOverlay(PackResources child,PackResources parent,Path archive,Path expectedBase)throws Throwable {
++        if(parent==null||parent.getClass()!=CompositePackResources.class||child.getClass()!=PathPackResources.class
++                ||!parent.packId().equals("tectonic")||!child.packId().equals("tectonic"))
++            throw new IOException("Exact native Tectonic parent/child identities required");
++        var primary=(PackResources)Roots.PRIMARY.invoke(parent);var stack=(List<PackResources>)Roots.STACK.invoke(parent);
++        if(primary.getClass()!=PathPackResources.class||!primary.packId().equals("tectonic")||stack.size()<2
++                ||stack.size()>MAX_PACKS||stack.getLast()!=primary)throw new IOException("Exact native Tectonic primary/overlay topology required");
++        Path primaryRoot=(Path)Roots.PATH.invoke(primary),root=(Path)Roots.PATH.invoke(child);
++        if(!primaryRoot.equals(expectedBase)||!root.equals(expectedBase.resolve("intentionally_empty"))||attributes(root)!=null)
++            throw new IOException("Only exact absent native Tectonic intentionally_empty root is admitted");
++        requireDirectory(primaryRoot);int exact=0;var identities=new java.util.IdentityHashMap<PackResources,Boolean>();
++        for(var member:stack){
++            if(member.getClass()!=PathPackResources.class||!member.packId().equals("tectonic")||identities.put(member,true)!=null)
++                throw new IOException("Native Tectonic child topology changed");
++            Path memberRoot=(Path)Roots.PATH.invoke(member);
++            if(!memberRoot.startsWith(expectedBase)||!memberRoot.normalize().equals(memberRoot))throw new IOException("Native Tectonic child escapes its exact root");
++            if(memberRoot.equals(root)){exact++;if(member!=child)throw new IOException("Native Tectonic empty child identity changed");}
++        }
++        if(exact!=1)throw new IOException("Native Tectonic empty child must occur once");
++        if(net.minecraft.SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA)!=48)
++            throw new IOException("Exact Minecraft1.21.1 server-data format48 required");
++        var before=attributes(archive);
++        if(before==null||!before.isRegularFile()||before.isSymbolicLink()||before.size()!=451757L)
++            throw new IOException("Pinned Tectonic3.0.28 archive required");
++        byte[] bytes;try(InputStream in=Files.newInputStream(archive)){bytes=in.readNBytes(451758);}
++        if(bytes.length!=451757||!hashBytes(bytes).equals(TECTONIC_EMPTY_ARCHIVE_SHA))throw new IOException("Pinned Tectonic archive digest differs");
++        byte[] metadata;
++        try(ZipFile zip=new ZipFile(archive.toFile())){
++            if(zip.size()>MAX_VISITS)throw new IOException("Tectonic archive inventory exceeds finite custody");
++            var entries=zip.entries();while(entries.hasMoreElements()){
++                String name=entries.nextElement().getName();
++                if(name.equals("resourcepacks/tectonic/intentionally_empty")||name.startsWith("resourcepacks/tectonic/intentionally_empty/"))
++                    throw new IOException("Declared-empty Tectonic overlay contains an archive member");
++            }
++            var entry=zip.getEntry(TECTONIC_META);
++            if(entry==null||entry.getSize()!=3878)throw new IOException("Exact Tectonic built-in metadata required");
++            try(InputStream in=zip.getInputStream(entry)){metadata=in.readNBytes(3879);}
++        }
++        if(metadata.length!=3878||!hashBytes(metadata).equals(TECTONIC_EMPTY_META_SHA))throw new IOException("Pinned Tectonic overlay metadata differs");
++        var json=com.google.gson.JsonParser.parseString(new String(metadata,StandardCharsets.UTF_8)).getAsJsonObject();int declarations=0;
++        for(var value:json.getAsJsonObject("overlays").getAsJsonArray("entries")){
++            var row=value.getAsJsonObject();if(!row.get("directory").getAsString().equals("intentionally_empty"))continue;declarations++;
++            var formats=row.getAsJsonArray("formats");
++            if(formats.size()!=2||formats.get(0).getAsInt()!=1||formats.get(1).getAsInt()!=999||row.get("min_format").getAsInt()!=1
++                    ||row.get("max_format").getAsInt()!=999||row.has("conditions")||row.has("neoforge:conditions"))
++                throw new IOException("Exact unconditional format48 empty-overlay declaration required");
++        }
++        if(declarations!=1)throw new IOException("Unique native Tectonic empty-overlay declaration required");
++        var source=primary.getRootResource("pack.mcmeta");
++        if(source==null)throw new IOException("Native Tectonic primary metadata disappeared");
++        try(InputStream in=source.get()){if(!java.util.Arrays.equals(metadata,in.readNBytes(3879)))throw new IOException("Native Tectonic primary metadata differs from archive");}
++        if(!child.getNamespaces(PackType.SERVER_DATA).isEmpty()||child.getRootResource("pack.mcmeta")!=null||child.getRootResource("icon.png")!=null)
++            throw new IOException("Native declared-empty child supplies unexpected namespaces/root bytes");
++        var namespaces=new TreeSet<>(parent.getNamespaces(PackType.SERVER_DATA));
++        if(namespaces.size()>4096)throw new IOException("Bounded native Tectonic parent namespaces required");
++        for(String namespace:namespaces){
++            child.listResources(PackType.SERVER_DATA,namespace,"",(id,supplier)->{throw new IllegalStateException("Native declared-empty child listed a resource");});
++            if(child.getResource(PackType.SERVER_DATA,ResourceLocation.fromNamespaceAndPath(namespace,"awft_declared_empty_readback"))!=null)
++                throw new IOException("Native declared-empty child supplied selected bytes");
++        }
++        var after=attributes(archive);
++        if(after==null||after.size()!=before.size()||!after.lastModifiedTime().equals(before.lastModifiedTime())
++                ||!java.util.Objects.equals(after.fileKey(),before.fileKey())||attributes(root)!=null)
++            throw new IOException("Pinned Tectonic archive/absent-root witness changed during capture");
++    }
++    private static String hashBytes(byte[] bytes){return HexFormat.of().formatHex(sha().digest(bytes));}
+ }

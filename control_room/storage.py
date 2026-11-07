@@ -189,7 +189,7 @@ class Storage:
             return self.reserve(remaining, target)
         return self.last
 
-    def live_inventory(self, refresh_seconds=60):
+    def live_inventory(self, refresh_seconds=60, force=False):
         """Return the last measured inventory while one bounded scan refreshes it.
 
         Recursive storage measurement must not hold up server telemetry or every
@@ -198,7 +198,7 @@ class Storage:
         """
         with self._inventory_guard:
             updating = self._inventory_worker is not None and self._inventory_worker.is_alive()
-            if not updating and (self._inventory_worker is None or time.monotonic() - self._inventory_attempt >= refresh_seconds):
+            if not updating and (force or self._inventory_worker is None or time.monotonic() - self._inventory_attempt >= refresh_seconds):
                 self._inventory_attempt = time.monotonic()
 
                 def measure():
@@ -221,7 +221,7 @@ class Storage:
         }
         return dict(breakdown, updating=updating, scan_error=self._inventory_error, refresh_seconds=refresh_seconds)
 
-    def snapshot(self, live=False):
+    def snapshot(self, live=False, refresh=False):
         disks = []
         paths = ["C:\\", "D:\\"] if os.name == "nt" else [str(self.layout.home.anchor)]
         for path in paths:
@@ -231,7 +231,7 @@ class Storage:
                               "free": item.free, "reserve": FLOOR, "low": item.free <= FLOOR})
             except OSError:
                 disks.append({"drive": path, "error": "Drive unavailable"})
-        breakdown = self.live_inventory(5 if live else 60)
+        breakdown = self.live_inventory(60, force=refresh)
         return {"drives": disks, "project_bytes": breakdown["bytes"], "breakdown": breakdown,
                 "associated": self._associated_latest,
                 "project_budget": self.layout.settings()["project_budget_gib"] * GiB,

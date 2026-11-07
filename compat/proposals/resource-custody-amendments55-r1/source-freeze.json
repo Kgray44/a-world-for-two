@@ -1,0 +1,61 @@
+{
+  "format": "awft-amendments55-source-freeze:1",
+  "created": "2026-10-30T07:08:45.383720+00:00",
+  "source_only_and_private_build": true,
+  "source_files": {
+    "integration.diff": {
+      "bytes": 20942,
+      "sha256": "7d7bba9d55c7fcc3e8a084088c7083b7c9107f23847b27dcece23b44272ec110"
+    },
+    "LithostitchedSeedgenResources.java": {
+      "bytes": 31503,
+      "sha256": "7c692402379279d7b63f59988d47eb0808414d6f37d657b2e5510af5de62b60a"
+    },
+    "MoonlightInMemoryPackCustody.java": {
+      "bytes": 14889,
+      "sha256": "6607c22dcca0622be2c6d24b5374f6162633365f48fae7f6b7a0f585fa207559"
+    },
+    "MoonlightMemoryPackProbe.java": {
+      "bytes": 8257,
+      "sha256": "8d93c7a759f59bec36e58f647f67b8c9f6af58d63f23040d80d01e7aea3f3d31"
+    },
+    "native-api-proof.json": {
+      "bytes": 5544,
+      "sha256": "a9de78e13ba4ef1b7d8c857765a442afa891ba3039889fa4994c0cce820a2077"
+    },
+    "README.md": {
+      "bytes": 5458,
+      "sha256": "dd28b439f6f4560794c0a467d14c0259b81e971c8f47776142dd3506e054eb58"
+    }
+  },
+  "base54_artifact_sha256": "82860fa9a353e8915217b90d4006304e073e26a55795311a472346ab6faad202",
+  "qualified_private55_artifact": {
+    "path": "D:\\A World for Two\\staging\\private-bridge55-amendments65-SEALED-1793343975918045800\\awft-control-bridge-0.6.55.jar",
+    "bytes": 749292,
+    "sha256": "a1bce7fb10fb9cfdc526a58f91aa5728a4f566854d07a03d7d4e0801194c4ad0"
+  },
+  "private_qualification": {
+    "path": "D:\\A World for Two\\staging\\private-bridge55-amendments65-SEALED-1793343975918045800\\FINAL-QUALIFICATION.json",
+    "bytes": 3799,
+    "sha256": "4842dd6c521a7881c8b7ac158bc13ead2e2dfd490507ad0a20e99483b91e5dd6"
+  },
+  "entry_comparison": {
+    "path": "D:\\A World for Two\\staging\\private-bridge55-amendments65-SEALED-1793343975918045800\\entry-comparison.json",
+    "bytes": 13916,
+    "sha256": "cab8a079804b73fd0164a3319c45f5238a6073f9b27f6293fb5468ab2f32b42e"
+  },
+  "offline_actual_native_factory_fixture_passed": true,
+  "actual_game_loader_reload_or_world_actions": 0,
+  "native_strict_parity_generation_rendering": "PENDING",
+  "active_src_config_catalog_packwiz_Git_index_or_runtime_changes": 0,
+  "reserve_guard": {
+    "utc": "2026-10-30T07:08:45.1877597Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 125943672832,
+    "dFreeBytes": 580592914432,
+    "estimatedCBytes": 131072,
+    "estimatedDBytes": 65536,
+    "reason": "Both drives remain above reserve after estimated writes"
+  }
+}

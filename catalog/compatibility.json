@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-28T13:22:57.184240+00:00",
+  "generated": "2026-10-29T15:05:46.151427+00:00",
   "generation_basis": "Source lock timestamp; unchanged inputs produce identical reports",
-  "pack_version": "0.1.0-candidate.48",
+  "pack_version": "0.1.0-candidate.65",
   "requests": [
     {
       "id": "farmers-delight",
@@ -6242,13 +6242,170 @@
         "jar": "pending",
         "runtime": "not run"
       }
+    },
+    {
+      "id": "chatting-villagers",
+      "name": "Chatting Villagers",
+      "group": "living-world",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "1.1.0",
+      "side": "both",
+      "project_id": "curseforge:1638757",
+      "reason": "Pinned exact private integration candidate; source and Java API checks passed; native startup and gameplay qualification pending.",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/chatting-villagers/files/9064041",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "curseforge:1638757",
+        "version_id": "curseforge:9064041",
+        "filename": "chattingvillagers-neoforge-1.21.1-1.1.0.jar",
+        "hashes": {
+          "sha256": "a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a",
+          "sha512": "79ec018d408c02f7e76aa19ec0d1623b39f7ea7ecbfeb86f2da8bb0ff51379b4d321daae0f3919e500e14b2c01807674ea4a1d21d231e2997be9e744c7d3d4c7"
+        },
+        "size": 316142,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "smart-villagers-ai",
+      "name": "Smart Villagers AI",
+      "group": "living-world",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "2.0.0+neoforge-1.21.1",
+      "side": "both",
+      "project_id": "l9oZCCPS",
+      "reason": "Pinned exact private integration candidate; source and Java API checks passed; native startup and gameplay qualification pending.",
+      "source": "https://github.com/MeherBenSalem/CivilizationAI",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "l9oZCCPS",
+        "version_id": "bGNaqTaL",
+        "filename": "smartvillagers-neoforge-1.21.1-2.0.0.jar",
+        "hashes": {
+          "sha256": "bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630",
+          "sha512": "196e5da485353e84d1f316bac60be9aded75eef3483d9d16e40daf9db4e4611ef6a08ac2bfc502b60e3874e3531cd90506dd14325ccd0c1309e526902af0710d"
+        },
+        "size": 285498,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "adorable-hamster-pets",
+      "name": "Adorable Hamster Pets",
+      "group": "pets",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "3.7.0-1.21.1+neoforge",
+      "side": "both",
+      "project_id": "LmrhZdK2",
+      "reason": "Owner-requested pets; reviewed 3.7.0 beta exception, exact native dependencies and safe cozy defaults in proposals/cozy-pets. Runtime and multiplayer qualification pending.",
+      "source": "https://modrinth.com/mod/adorable-hamster-pets",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "LmrhZdK2",
+        "version_id": "LyCV3JSL",
+        "filename": "adorablehamsterpets-3.7.0-1.21.1+neoforge.jar",
+        "hashes": {
+          "sha512": "0651244d2aaf4c127ee1818a24910bf6612a33bb3aa078217ee8c695abf2cbc8be118d29ed5e271f8f7ba316f146767b8882800a38713177993444db7df2041a",
+          "sha1": "3d1bc31982eff30195e3a58247774b5136459e8d",
+          "sha256": "ff4baffe9fb285048cad2155225012836bd9b70a9910921e611c08b38e64ba4c"
+        },
+        "size": 20292862,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "animal-garden-sugar-glider",
+      "name": "Animal Garden: Sugar Glider",
+      "group": "pets",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "1.0.0-neoforge-1.21.1-21.1.214",
+      "side": "both",
+      "project_id": "WktWffF9",
+      "reason": "Sugar gliders are marsupials, not flying squirrels; this is an explicitly labeled gliding-pet alternative.",
+      "source": "https://modrinth.com/mod/animal-garden-sugar-glider",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "WktWffF9",
+        "version_id": "uHLwVY2K",
+        "filename": "animalgarden-sugargilder-1.0.0-neoforge-1.21.1-21.1.214.jar",
+        "hashes": {
+          "sha512": "e218e905fc931377819e8122a329320a10d5a4d13b38aea3867c4a6b3693cdc7bc2791a057322932296439c36fe7dc32dbc144e7ff303f06babefbf587e3f4bf",
+          "sha1": "38056787d20cfb87d3f9854aa73f507c7eeac733"
+        },
+        "size": 317381,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "aquarius-libs",
+      "name": "Aquarius Libs (required Sugar Glider dependency)",
+      "group": "dependency",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "1.2.0-neoforge-1.21.1-21.1.217",
+      "side": "both",
+      "project_id": "KkHnyaL6",
+      "reason": "Explicit author-required dependency for Animal Garden Sugar Glider; absent from upstream version metadata. Exact hash and native API reviewed; runtime pending.",
+      "source": "https://modrinth.com/mod/aquarius-libs",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "KkHnyaL6",
+        "version_id": "sPrpmle3",
+        "filename": "aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar",
+        "hashes": {
+          "sha512": "4521e42504e1ecc73aab95895655425eb0914ddb964b242edea77f9bf38c406d63232187212b7cb3295821243599b6ba3d4b21805439aedd0df9f0ed4db9bb42",
+          "sha1": "300b579495e253a48a1ce38a606b4a73386ad296",
+          "sha256": "6ad4d547330d02dade5946c6b7172d00f7d6cc7357751dd41440046f85abef28"
+        },
+        "size": 234187,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
     }
   ],
   "source_lock": {
     "path": "catalog/lock.json",
-    "sha256": "6e891cfbc5e2209cd9d7034324c002c9a1b35ca9f26301fadc290d4d18754eaa",
+    "sha256": "699d6dee928c0bb2ebc83a97f0bd3f1e7f438ed59463d08c7e7a0113fa555a47",
     "pack_path": "packwiz/pack.toml",
-    "pack_sha256": "0e5775d8d22771e97b34b5b9f508af7baf001e6371d80588315ef08261eeed0b",
+    "pack_sha256": "671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28",
     "minecraft": "1.21.1",
     "neoforge": "21.1.262",
     "java": 21,
@@ -6411,15 +6568,15 @@
       "name": "A World for Two Control Bridge",
       "request": null,
       "kind": "mod",
-      "version": "0.6.34",
-      "version_id": "0.6.34",
-      "filename": "awft-control-bridge-0.6.34.jar",
-      "size": 584264,
+      "version": "0.6.51",
+      "version_id": "0.6.51",
+      "filename": "awft-control-bridge-0.6.51.jar",
+      "size": 725738,
       "side": "both",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "071fe778b27c9450c6a9a7b602825ee2ff19bfcdba9f23ba3cb24302bd6b4b1d"
+        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
       "status": "Integrated but awaiting runtime validation",
@@ -11448,24 +11605,177 @@
         "jar": "pending",
         "runtime": "not run"
       }
+    },
+    {
+      "project_id": "awft:living-world",
+      "slug": "awft-living-world",
+      "name": "A World for Two Living World",
+      "request": null,
+      "kind": "mod",
+      "version": "0.2.0",
+      "version_id": "0.2.0",
+      "filename": "awft-living-world-0.2.0.jar",
+      "size": 70852,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha256": "093b7a487e664c7ef7a8e73c2fb2d2e4dca3f2da17944dd678c0e4dabcd31a70",
+        "sha512": "0e69a253bb1b3c168852107c174d9d74f9a6b8bba824f952616d391975d73bd5b1fc0de574e807d024e11f368f81dc7dffdff821b409155c8e5cfae93bc869dd"
+      },
+      "source": "https://github.com/Kgray44/a-world-for-two",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "curseforge:1638757",
+      "slug": "chatting-villagers",
+      "name": "Chatting Villagers",
+      "request": null,
+      "kind": "mod",
+      "version": "1.1.0",
+      "version_id": "curseforge:9064041",
+      "filename": "chattingvillagers-neoforge-1.21.1-1.1.0.jar",
+      "size": 316142,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha256": "a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a",
+        "sha512": "79ec018d408c02f7e76aa19ec0d1623b39f7ea7ecbfeb86f2da8bb0ff51379b4d321daae0f3919e500e14b2c01807674ea4a1d21d231e2997be9e744c7d3d4c7"
+      },
+      "source": "https://www.curseforge.com/minecraft/mc-mods/chatting-villagers/files/9064041",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "l9oZCCPS",
+      "slug": "smart-villagers-ai",
+      "name": "Smart Villagers AI",
+      "request": null,
+      "kind": "mod",
+      "version": "2.0.0+neoforge-1.21.1",
+      "version_id": "bGNaqTaL",
+      "filename": "smartvillagers-neoforge-1.21.1-2.0.0.jar",
+      "size": 285498,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha256": "bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630",
+        "sha512": "196e5da485353e84d1f316bac60be9aded75eef3483d9d16e40daf9db4e4611ef6a08ac2bfc502b60e3874e3531cd90506dd14325ccd0c1309e526902af0710d"
+      },
+      "source": "https://github.com/MeherBenSalem/CivilizationAI",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "LmrhZdK2",
+      "slug": "adorable-hamster-pets",
+      "name": "Adorable Hamster Pets",
+      "request": "adorable-hamster-pets",
+      "kind": "mod",
+      "version": "3.7.0-1.21.1+neoforge",
+      "version_id": "LyCV3JSL",
+      "filename": "adorablehamsterpets-3.7.0-1.21.1+neoforge.jar",
+      "size": 20292862,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "0651244d2aaf4c127ee1818a24910bf6612a33bb3aa078217ee8c695abf2cbc8be118d29ed5e271f8f7ba316f146767b8882800a38713177993444db7df2041a",
+        "sha1": "3d1bc31982eff30195e3a58247774b5136459e8d",
+        "sha256": "ff4baffe9fb285048cad2155225012836bd9b70a9910921e611c08b38e64ba4c"
+      },
+      "source": "https://modrinth.com/mod/adorable-hamster-pets",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "KkHnyaL6",
+      "slug": "aquarius-libs",
+      "name": "Aquarius Libs",
+      "request": "aquarius-libs",
+      "kind": "mod",
+      "version": "1.2.0-neoforge-1.21.1-21.1.217",
+      "version_id": "sPrpmle3",
+      "filename": "aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar",
+      "size": 234187,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "4521e42504e1ecc73aab95895655425eb0914ddb964b242edea77f9bf38c406d63232187212b7cb3295821243599b6ba3d4b21805439aedd0df9f0ed4db9bb42",
+        "sha1": "300b579495e253a48a1ce38a606b4a73386ad296",
+        "sha256": "6ad4d547330d02dade5946c6b7172d00f7d6cc7357751dd41440046f85abef28"
+      },
+      "source": "https://modrinth.com/mod/aquarius-libs",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "nU0bVIaL",
+      "slug": "patchouli",
+      "name": "Patchouli",
+      "request": null,
+      "kind": "mod",
+      "version": "1.21.1-93-neoforge",
+      "version_id": "BIogJv2D",
+      "filename": "Patchouli-1.21.1-93-NEOFORGE.jar",
+      "size": 646777,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "0b5c172db9a6eeecb5ca44b359a83548c3a60be7ff313959acdfc1e5b8039736c18e57e947d435b52d06da31159d2d02ea36e5742668dbc826308a4c99e4039f",
+        "sha1": "5413bb9b8fc35ebe46b06b48bf9afafbd8471140",
+        "sha256": "959af52ed6640c316c3a8469203420be4aeea11ad6603890ba83bf48f5d9f993"
+      },
+      "source": "https://modrinth.com/mod/patchouli",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
     }
   ],
   "counts": {
-    "requested_candidates": 224,
-    "resolved_files": 208,
-    "mod_entries_including_optional": 199,
-    "enabled_mod_entries": 198,
+    "requested_candidates": 229,
+    "resolved_files": 214,
+    "mod_entries_including_optional": 205,
+    "enabled_mod_entries": 204,
     "shader_packs": 8,
     "resource_packs": 1,
     "decision_statuses": {
-      "Integrated but awaiting runtime validation": 158,
+      "Integrated but awaiting runtime validation": 163,
       "Alternative selected": 21,
       "Unresolved, with investigation details": 41,
       "Incompatible, with evidence": 3,
       "Experimental native map validation pending": 1
     }
   },
-  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.48, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
+  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.65, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
   "runtime_evidence": [
     {
       "source": "evidence/runtime/client-startup-initial.json",

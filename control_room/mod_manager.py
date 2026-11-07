@@ -270,6 +270,7 @@ class ModManager:
         signature = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
         return {'version': lock['version'], 'pack_sha256': sha, 'receipt_present': bool(receipt),
                 'receipt_pack_sha256': receipt.get('pack_sha256'), 'expected': expected, 'files': files,
+                'private_overlay': receipt.get('private_overlay'),
                 'actual': actual, 'signature': signature,
                 'provenance': {'pack_version': lock['version'], 'pack_sha256': sha,
                                'installed_receipt_sha256': receipt_sha, 'inventory_signature': signature,
@@ -283,8 +284,9 @@ class ModManager:
             snapshot = self._overview_snapshot()
         except (OSError, ValueError, TypeError, KeyError, _InventoryChanged) as exc:
             return self._sync_summary(None, None) | self._overview_integrity.view(error=str(exc)[:300])
-        return (self._sync_summary(snapshot['version'], snapshot['pack_sha256'])
-                | self._overview_integrity.view(snapshot))
+        return self._private_overlay_sync(
+            self._sync_summary(snapshot['version'], snapshot['pack_sha256'])
+            | self._overview_integrity.view(snapshot), snapshot['private_overlay'])
 
     def active(self):
         active = read_json(self.layout.home / "packwiz/active.json")
@@ -558,14 +560,51 @@ class ModManager:
                 "players": players, "pending": any(p["status"] == "ready for review" for p in self.proposals()),
                 "relaunch_required": any(p["state"] != "reported match" for p in players.values())}
 
+    @staticmethod
+    def _private_overlay_sync(result, declaration):
+        """A baseline client receipt cannot qualify additional private runtime files."""
+        if declaration is None:
+            return result
+        overlay = declaration if isinstance(declaration, dict) else {}
+        name = overlay.get('name')
+        name = name if isinstance(name, str) and 0 < len(name) <= 160 else 'Private runtime overlay'
+        mods = overlay.get('new_server_and_client_mods', [])
+        mods = [filename for filename in mods if isinstance(filename, str)
+                and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.+ -]{0,199}\.jar', filename)] \
+            if isinstance(mods, list) and len(mods) <= SYNC_MAX_FILES else []
+        accepted = overlay.get('runtime_accepted') is True
+        qualification = 'reported accepted; client verification required' if accepted else 'pending runtime qualification'
+        message = (name + ': install its matching private client mods and relaunch. '
+                   'The baseline pack receipt does not verify this overlay. ' + qualification.capitalize() + '.')
+        result['private_overlay'] = {
+            'name': name, 'base_candidate': overlay.get('base_candidate', result['version']),
+            'new_server_and_client_mods': mods, 'required': True,
+            'runtime_accepted': accepted,
+            'public_pack_published': overlay.get('public_pack_published') is True,
+            'qualification': qualification, 'client_verification': 'Overlay-specific verification required',
+        }
+        result['relaunch_required'] = True
+        for player in result['players'].values():
+            player['baseline_state'] = player['state']
+            player['state'] = 'private overlay required'
+            player['message'] = message
+        if result.get('server') == 'matches':
+            result['server'] = ('private overlay installed; client verification required' if accepted
+                                else 'private overlay installed; qualification pending')
+        if 'server_integrity' in result:
+            result['server_integrity']['receipt_scope'] = 'Installed receipt including the declared private overlay'
+            result['server_integrity']['published_client_pack_match'] = False
+        return result
+
     def sync(self):
         # Deliberately remain synchronous and uncached for explicit checks.
         lock, source = self.active()
         sha = digest(source / 'pack.toml')
         installed = read_json(self.layout.server / 'installed.json')
-        return self._sync_summary(lock['version'], sha) | {
+        return self._private_overlay_sync(self._sync_summary(lock['version'], sha) | {
             'server': 'matches' if installed and installed.get('pack_sha256') == sha
-            and not verify_installed(self.layout) else 'not installed or differs'}
+            and not verify_installed(self.layout) else 'not installed or differs'},
+            installed.get('private_overlay') if installed else None)
 
     def import_client_report(self, player, report):
         if player not in ("KG", "Sera") or not isinstance(report, dict):

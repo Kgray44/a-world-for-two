@@ -1,0 +1,42 @@
+{
+  "bridge_version": "0.6.64",
+  "bridge_sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20",
+  "matched_client_server": true,
+  "complete_resource_scans_per_join": 2,
+  "opened_packs": 390,
+  "distinct_resource_ids": 65891,
+  "hash_visits": 389476,
+  "hash_read_work_bytes": 605704801,
+  "server_and_client_native_fingerprints_match": true,
+  "authenticated_modded_seed_rebuild_passed": true,
+  "native_SeedGen_generator_registered_both_reconnects": true,
+  "SeedGen_off_warning_absent": true,
+  "horizontalQuality": "HIGH",
+  "finest_resolution": "BLOCK",
+  "radius_chunks": 128,
+  "Native_FPS_samples": [
+    59,
+    30,
+    58,
+    60
+  ],
+  "FPS_scope": "59 stationary;30 immediately after location change;58 cliff;60 horizon, not long stability benchmark",
+  "cache_preserved": true,
+  "new_far_field_completion_not_independently_attributed": true,
+  "normal_client_closed": true,
+  "computer_control_released": true,
+  "two_player_acceptance": false,
+  "public_release_updated": false,
+  "format": "awft-dh-seedgen-native64-summary:1",
+  "private_evidence_summary_sha256": "6b62a29712b7ab427f3ef5cf6dda2e7959f1a33eb579d664fc4baf2c91bf3a75",
+  "repository_checks": {
+    "unittest_run": 1492,
+    "skipped": 2,
+    "elapsed_seconds": 76.383,
+    "result": "passed",
+    "pack_validate_mods": 214,
+    "pack_validate_errors": [],
+    "node_syntax": "passed",
+    "not_gameplay_acceptance": true
+  }
+}

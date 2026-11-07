@@ -1,0 +1,89 @@
+{
+  "recorded_at_utc": "2026-10-28T22:30:44Z",
+  "status": "INTEGRATED_SOURCE_CHECKS_PASS_NATIVE_ACCEPTANCE_OPEN",
+  "source_commit": "240feda06ff42dea908edb595e58eee4e3b40fb2",
+  "source_tree": "ee0bf53d2d51013d86859ae2c48321dd54fe4342",
+  "main_lane_dependency_repair": {
+    "commit": "26f1cfbb43c3b3fc18fa7fc5a13b1a1497c194de",
+    "parent": "3d337e4305006d4745ba6ba85c458accf54ef1f1",
+    "message": "Include frozen city source dependencies required by published construction tests",
+    "files": 6,
+    "source": "Committed codex/master-integration branch; fetched by exact SHA and merged without conflicts.",
+    "dirty_main_files_copied": false,
+    "living_world_or_dashboard_code_changed_by_merge": false
+  },
+  "full_local_python": {
+    "command": "python -m unittest discover -s tests -v",
+    "total": 1173,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 1,
+    "seconds": 80.795,
+    "result": "pass",
+    "skip": "Existing symlink fixture lacks host creation privilege.",
+    "retained_private_log": ".local/living-world/integrated-full-suite-r1.log",
+    "private_log_sha256": "ffb0235d9870fe0ff521a12298f4eefd13503d11eda775d67eb065e2a2f36a59"
+  },
+  "ci_source_tree_match": {
+    "run": 40780012524,
+    "url": "https://github.com/Kgray44/a-world-for-two/actions/runs/40780012524",
+    "job": 123139006124,
+    "conclusion": "success",
+    "event": "pull_request",
+    "head_revision": "7ba973baec90d0e7898ec981fad43bb8f2d527cb",
+    "checkout_commit": "86952a6c34ac70623c05563811953502099bf3c4",
+    "checkout_parents": [
+      "26f1cfbb43c3b3fc18fa7fc5a13b1a1497c194de",
+      "7ba973baec90d0e7898ec981fad43bb8f2d527cb"
+    ],
+    "checkout_tree": "ee0bf53d2d51013d86859ae2c48321dd54fe4342",
+    "matches_local_source_tree": true,
+    "total_tests": 1173,
+    "errors": 0,
+    "skipped": 3,
+    "seconds": 59.305,
+    "skips": [
+      "Pinned upstream provider compiler inputs are unavailable on the hosted runner.",
+      "The local Gson compiler input is unavailable on the hosted runner.",
+      "Windows extended-path regression does not run on Linux."
+    ],
+    "scope": "Actual source CI. This does not establish native Mixin, game, provider or owner acceptance. Later receipt/documentation commits require their own CI result."
+  },
+  "other_local_checks": {
+    "focused_python_jvm": {"total": 49, "result": "pass", "receipt": "evidence/living-world/correction-qualification.json"},
+    "frontend": {"total": 23, "result": "pass", "source_unchanged": true},
+    "app_and_characters_syntax": "pass",
+    "canonical_pack_validate": {"mods": 208, "errors": [], "tier": "manifest integrity"}
+  },
+  "native_build": {
+    "built_from_commit": "d8bf5b4c9520439d9fdffcc1a888cd3011f706dc",
+    "compat_subtree_at_build_and_integrated_commit": "b290eed6d4d7e0f844eaa83a56db2908d00f137c",
+    "build_helper_and_proposals_unchanged": true,
+    "bytes": 53207,
+    "sha256": "75fe24c46dbb703f74c980cc231588d1a9ac855a72740668c4b25b3807959aea",
+    "receipt": "evidence/living-world/correction-qualification.json",
+    "tier": "Java 21 compilation against exact pinned APIs; native Mixin application and gameplay are untested."
+  },
+  "preserved_failed_history": [
+    {"receipt": "evidence/living-world/qualification.json", "status": "Historical source candidate held for subsequently discovered source defects."},
+    {"receipt": "evidence/living-world/correction-qualification.json", "status": "Corrected source candidate; pre-main-repair local missing-module failures retained."},
+    {"ci_run": 40780008021, "head": "7ba973baec90d0e7898ec981fad43bb8f2d527cb", "status": "Standalone push failed on the same three missing-module imports before this main merge; 1143 tests, 3 errors, 3 skips."}
+  ],
+  "owner_test_assignment": "Main development lane coordinates and runs the remaining native tests, as explicitly selected by the user. Full runtime cases are in PR #11 and docs/LIVING-WORLD.md.",
+  "remaining_acceptance": [
+    "Native Mixin/startup, actual entity UUID bindings and measured district geometry",
+    "Save/apply acknowledgement, edited in-game response and normal restart persistence",
+    "Two real players, synchronized bubbles and simultaneous different-NPC interactions",
+    "Trading/jobs/movement and measured crowded-area CPU/RSS/MSPT, response latency and network behavior",
+    "Pending-reply configuration/consent changes, disconnect/relogin, teleport and unload",
+    "Actual opted-in provider response/failure/timeout and owner integration/publication decision"
+  ],
+  "invariants": {
+    "official_server_or_permanent_save_changed": false,
+    "canonical_pack_changed": false,
+    "eula_or_account_actions_taken": false,
+    "native_runtime_started_for_corrections_or_main_merge": false,
+    "downloaded_jars_or_private_logs_committed": false,
+    "historical_failures_preserved": true
+  }
+}

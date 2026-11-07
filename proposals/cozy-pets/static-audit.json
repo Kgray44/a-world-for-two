@@ -1,0 +1,483 @@
+{
+  "tier": "hash-verified static JAR, resource and source inspection; no gameplay acceptance",
+  "at": "2026-10-28",
+  "source_repository": "https://github.com/DawsonBodenhamer/AdorableHamsterPets-Source",
+  "source_commit": "585d2b5063735f1a7e9573010dae25d024e6ce67",
+  "upstream_metadata_warning": "Hamster 3.7.0 and Sugar Glider 1.0.0 have empty Modrinth dependency arrays. Hamster native descriptor requires four libraries; author current Sugar Glider page requires Aquarius Libs, while this older JAR is self-contained and declares no dependency. Preserve the explicit Aquarius pin.",
+  "jars": {
+    "adorable-hamster-pets": {
+      "filename": "adorablehamsterpets-3.7.0-1.21.1+neoforge.jar",
+      "size": 20292862,
+      "sha512": "0651244d2aaf4c127ee1818a24910bf6612a33bb3aa078217ee8c695abf2cbc8be118d29ed5e271f8f7ba316f146767b8882800a38713177993444db7df2041a",
+      "native_metadata": {
+        "mods": [
+          {
+            "id": "adorablehamsterpets",
+            "version": "3.7.0-1.21.1+neoforge",
+            "embedded": false
+          }
+        ],
+        "dependencies": [
+          {
+            "modId": "neoforge",
+            "type": "required",
+            "versionRange": "[21.1.172,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "minecraft",
+            "type": "required",
+            "versionRange": "[1.21.1,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "architectury",
+            "type": "required",
+            "versionRange": "[13.0.8,)",
+            "ordering": "AFTER",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "geckolib",
+            "type": "required",
+            "versionRange": "[4.8.3,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "fzzy_config",
+            "type": "required",
+            "versionRange": "[0.7.6,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "patchouli",
+            "type": "required",
+            "versionRange": "[1.21.1-93-NEOFORGE,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "jade",
+            "type": "optional",
+            "versionRange": "[15.9.3,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "accessories",
+            "type": "optional",
+            "versionRange": "[1.1.0-beta.53,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          },
+          {
+            "modId": "curios",
+            "type": "optional",
+            "versionRange": "[9.5.1,)",
+            "ordering": "NONE",
+            "side": "BOTH",
+            "owner": "adorablehamsterpets"
+          }
+        ],
+        "embedded": [],
+        "library": false
+      }
+    },
+    "aquarius-libs": {
+      "filename": "aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar",
+      "size": 234187,
+      "sha512": "4521e42504e1ecc73aab95895655425eb0914ddb964b242edea77f9bf38c406d63232187212b7cb3295821243599b6ba3d4b21805439aedd0df9f0ed4db9bb42",
+      "native_metadata": {
+        "mods": [
+          {
+            "id": "aquarius_libs",
+            "version": "1.2.0",
+            "embedded": false
+          }
+        ],
+        "dependencies": [],
+        "embedded": [],
+        "library": false
+      }
+    },
+    "patchouli": {
+      "filename": "Patchouli-1.21.1-93-NEOFORGE.jar",
+      "size": 646777,
+      "sha512": "0b5c172db9a6eeecb5ca44b359a83548c3a60be7ff313959acdfc1e5b8039736c18e57e947d435b52d06da31159d2d02ea36e5742668dbc826308a4c99e4039f",
+      "native_metadata": {
+        "mods": [
+          {
+            "id": "patchouli",
+            "version": "1.21.1-93-NEOFORGE",
+            "embedded": false
+          }
+        ],
+        "dependencies": [
+          {
+            "modId": "neoforge",
+            "type": "REQUIRED",
+            "versionRange": "[21.0.31-beta,)",
+            "owner": "patchouli"
+          },
+          {
+            "modId": "minecraft",
+            "type": "REQUIRED",
+            "versionRange": "[1.21.1,1.21.2)",
+            "owner": "patchouli"
+          }
+        ],
+        "embedded": [],
+        "library": false
+      }
+    },
+    "animal-garden-sugar-glider": {
+      "filename": "animalgarden-sugargilder-1.0.0-neoforge-1.21.1-21.1.214.jar",
+      "size": 317381,
+      "sha512": "e218e905fc931377819e8122a329320a10d5a4d13b38aea3867c4a6b3693cdc7bc2791a057322932296439c36fe7dc32dbc144e7ff303f06babefbf587e3f4bf",
+      "native_metadata": {
+        "mods": [
+          {
+            "id": "animalgarden_sugarglider",
+            "version": "1.0.0",
+            "embedded": false
+          }
+        ],
+        "dependencies": [],
+        "embedded": [],
+        "library": false
+      }
+    }
+  },
+  "config_fields": {
+    "main.toml": {
+      "class": "AhpMainConfig",
+      "class_sha256": "2cce9a8c83d83ac5cd8d8c54eeffab09de719c926b9a09141b637f0ee3047a18",
+      "source_blob": "4e0d7b2fb5cbf4789c980f3d9e2fa158868627ff",
+      "fields": {
+        "enableHamsterThrowing": {
+          "value": false,
+          "source_line": 67,
+          "declaration": "public boolean enableHamsterThrowing = true;"
+        },
+        "yeetFriendlyFire": {
+          "value": false,
+          "source_line": 726,
+          "declaration": "public boolean yeetFriendlyFire = true;"
+        },
+        "hamsterThrowDamage": {
+          "value": 0.0,
+          "source_line": 235,
+          "declaration": "public ValidatedDouble hamsterThrowDamage = new ValidatedDouble(20.0, 40.0, 0.0);"
+        },
+        "netheriteArmorThrowDamageBonus": {
+          "value": 0.0,
+          "source_line": 501,
+          "declaration": "public ValidatedCondition<Double> netheriteArmorThrowDamageBonus = new ValidatedDouble(10.0, 100.0, 0.0)"
+        },
+        "enableRedstoneFever": {
+          "value": false,
+          "source_line": 51,
+          "declaration": "public boolean enableRedstoneFever = true;"
+        },
+        "enableCropSnacking": {
+          "value": false,
+          "source_line": 75,
+          "declaration": "public boolean enableCropSnacking = true;"
+        },
+        "enableItemStealing": {
+          "value": false,
+          "source_line": 79,
+          "declaration": "public boolean enableItemStealing = true;"
+        },
+        "enableIndependentDiamondSeeking": {
+          "value": false,
+          "source_line": 103,
+          "declaration": "public boolean enableIndependentDiamondSeeking = true;"
+        },
+        "enableHideAndSeek": {
+          "value": false,
+          "source_line": 91,
+          "declaration": "public boolean enableHideAndSeek = true;"
+        },
+        "enableTagGame": {
+          "value": false,
+          "source_line": 83,
+          "declaration": "public boolean enableTagGame = true;"
+        },
+        "enableRavagerFlee": {
+          "value": false,
+          "source_line": 146,
+          "declaration": "public boolean enableRavagerFlee = true;"
+        },
+        "enableSpiderFlee": {
+          "value": false,
+          "source_line": 152,
+          "declaration": "public boolean enableSpiderFlee = true;"
+        },
+        "preventOwnerFriendlyFire": {
+          "value": true,
+          "source_line": 138,
+          "declaration": "public boolean preventOwnerFriendlyFire = false;"
+        },
+        "acornRingPreventsDamageToOtherPets": {
+          "value": true,
+          "source_line": 262,
+          "declaration": "public boolean acornRingPreventsDamageToOtherPets = false;"
+        },
+        "enableTeleportRescue": {
+          "value": true,
+          "source_line": 59,
+          "declaration": "public boolean enableTeleportRescue = true;"
+        },
+        "preventHamsterEndPortalTravel": {
+          "value": true,
+          "source_line": 63,
+          "declaration": "public boolean preventHamsterEndPortalTravel = true;"
+        },
+        "keepHamstersOnShoulderOnDeath": {
+          "value": true,
+          "source_line": 557,
+          "declaration": "public boolean keepHamstersOnShoulderOnDeath = false;"
+        },
+        "maxShoulderHamsters": {
+          "value": 2,
+          "source_line": 548,
+          "declaration": "public ValidatedInt maxShoulderHamsters = new ValidatedInt(3, 3, 1);"
+        },
+        "enableWanderMode": {
+          "value": true,
+          "source_line": 71,
+          "declaration": "public ValidatedBoolean enableWanderMode = new ValidatedBoolean(true);"
+        },
+        "defaultWanderDistance": {
+          "value": "NEAR",
+          "source_line": 786,
+          "declaration": "public ValidatedEnum<WanderDistance> defaultWanderDistance = new ValidatedEnum<>(WanderDistance.MEDIUM);"
+        },
+        "wanderDistanceNear": {
+          "value": 4,
+          "source_line": 790,
+          "declaration": "public ValidatedInt wanderDistanceNear = new ValidatedInt(8, 64, 1);"
+        },
+        "enableRespawnInBed": {
+          "value": true,
+          "source_line": 757,
+          "declaration": "public ValidatedBoolean enableRespawnInBed = new ValidatedBoolean(false);"
+        },
+        "freeBedRespawns": {
+          "value": true,
+          "source_line": 771,
+          "declaration": "public ValidatedCondition<Boolean> freeBedRespawns = new ValidatedBoolean(false)"
+        },
+        "allowSleepInBed": {
+          "value": true,
+          "source_line": 802,
+          "declaration": "public ValidatedBoolean allowSleepInBed = new ValidatedBoolean(true);"
+        },
+        "sleepDuringDay": {
+          "value": true,
+          "source_line": 839,
+          "declaration": "public ValidatedCondition<Boolean> sleepDuringDay = new ValidatedBoolean(true)"
+        },
+        "enablePetting": {
+          "value": true,
+          "source_line": 126,
+          "declaration": "public boolean enablePetting = true;"
+        },
+        "enableDynamicShoulderAnimations": {
+          "value": true,
+          "source_line": 624,
+          "declaration": "public ValidatedBoolean enableDynamicShoulderAnimations = new ValidatedBoolean(true);"
+        },
+        "enableBreeding": {
+          "value": true,
+          "source_line": 55,
+          "declaration": "public boolean enableBreeding = true;"
+        },
+        "babiesSpawnWild": {
+          "value": false,
+          "source_line": 414,
+          "declaration": "public boolean babiesSpawnWild = true;"
+        },
+        "breedingCooldownSeconds": {
+          "value": 1200,
+          "source_line": 202,
+          "declaration": "public ValidatedInt breedingCooldownSeconds = new ValidatedInt(300, 1200, 1);"
+        },
+        "litterSizeMin": {
+          "value": 1,
+          "source_line": 426,
+          "declaration": "public ValidatedInt litterSizeMin = new ValidatedInt(1, 15, 1);"
+        },
+        "litterSizeMax": {
+          "value": 1,
+          "source_line": 430,
+          "declaration": "public ValidatedInt litterSizeMax = new ValidatedInt(3, 20, 1);"
+        },
+        "maxLittersPerHamster": {
+          "value": 8,
+          "source_line": 422,
+          "declaration": "public ValidatedInt maxLittersPerHamster = new ValidatedInt(50, 100, 1);"
+        },
+        "playerBreedingLimit": {
+          "value": true,
+          "source_line": 434,
+          "declaration": "public ValidatedBoolean playerBreedingLimit = new ValidatedBoolean(false);"
+        },
+        "playerBreedingLimitType": {
+          "value": "DAILY",
+          "source_line": 440,
+          "declaration": "public ValidatedCondition<LitterLimitType> playerBreedingLimitType = new ValidatedEnum<>(LitterLimitType.DAILY)"
+        },
+        "maxLittersPerPlayer": {
+          "value": 2,
+          "source_line": 445,
+          "declaration": "public ValidatedCondition<Integer> maxLittersPerPlayer = new ValidatedInt(5, 100, 1)"
+        },
+        "useIrlTimeForBreedingLimit": {
+          "value": true,
+          "source_line": 453,
+          "declaration": "public ValidatedCondition<Boolean> useIrlTimeForBreedingLimit = new ValidatedBoolean(false)"
+        }
+      }
+    },
+    "worldgen.toml": {
+      "class": "AhpWorldGenConfig",
+      "class_sha256": "91be9391812baa06e47d336bd7e65c9d6f4021fc0d72b2b19dc114cc5e30bb5a",
+      "source_blob": "cfbdda5e4bce3b6f9c0f880b7cadd4dbad49ad28",
+      "fields": {
+        "spawnWeight": {
+          "value": 3,
+          "source_line": 42,
+          "declaration": "public ValidatedInt spawnWeight = new ValidatedInt(30, 100, 1);"
+        },
+        "maxGroupSize": {
+          "value": 1,
+          "source_line": 46,
+          "declaration": "public ValidatedInt maxGroupSize = new ValidatedInt(1, 10, 1);"
+        },
+        "spawnBiomeTags": {
+          "value": [
+            "minecraft:is_forest"
+          ],
+          "source_line": 54,
+          "declaration": "public List<String> spawnBiomeTags = new ArrayList<>(List.of("
+        },
+        "spawnBiomeConventionTags": {
+          "value": [],
+          "source_line": 66,
+          "declaration": "public List<String> spawnBiomeConventionTags = new ArrayList<>(List.of("
+        },
+        "includeBiomes": {
+          "value": [
+            "minecraft:plains",
+            "minecraft:sunflower_plains",
+            "minecraft:meadow",
+            "minecraft:cherry_grove"
+          ],
+          "source_line": 79,
+          "declaration": "public List<String> includeBiomes = new ArrayList<>(List.of("
+        },
+        "enableNaturalRedstoneFeverSpawning": {
+          "value": false,
+          "source_line": 424,
+          "declaration": "public boolean enableNaturalRedstoneFeverSpawning = true;"
+        }
+      }
+    }
+  },
+  "sugar_glider_spawn": {
+    "resource": "data/animalgarden_sugarglider/neoforge/biome_modifier/spawn_sugarglider.json",
+    "upstream_sha256": "cbbafc201429fa4ab2c6f1eb654069029280d722325bd3c8be7cad174a73bb76",
+    "upstream": {
+      "type": "neoforge:add_spawns",
+      "biomes": "#animalgarden_sugarglider:sugarglider",
+      "spawners": [
+        {
+          "type": "animalgarden_sugarglider:sugarglider",
+          "weight": 8,
+          "minCount": 1,
+          "maxCount": 1
+        }
+      ]
+    },
+    "override_weight": 2,
+    "override_group": [
+      1,
+      1
+    ],
+    "scope": "Same native biome tag and modifier ID; replaces weight8 with2, no extra add_spawns modifier and no new biome list."
+  },
+  "runtime_observation": {
+    "glider_server_hash_matches": true,
+    "glider_existing_prism_client_hash_matches": true,
+    "server_log_registers_mod": "Animal Garden - Sugar Glider 1.0.0 (animalgarden_sugarglider)",
+    "aquarius_libs_present": false,
+    "boundary": "Read-only installed-file hashes and startup listing only; no entities/behavior/multiplayer/performance test."
+  },
+  "native_dependency_closure": {
+    "jars": [
+      "animalgarden-sugargilder-1.0.0-neoforge-1.21.1-21.1.214.jar",
+      "architectury-13.0.11-neoforge.jar",
+      "fzzy_config-0.7.7+fix1+1.21+neoforge.jar",
+      "geckolib-neoforge-1.21.1-4.9.3.jar",
+      "kotlinforforge-5.12.0-all.jar",
+      "adorablehamsterpets-3.7.0-1.21.1+neoforge.jar",
+      "aquariuslibs-1.2.0-neoforge-1.21.1-21.1.217.jar",
+      "Patchouli-1.21.1-93-NEOFORGE.jar"
+    ],
+    "errors": [],
+    "warnings": [],
+    "tier": "static JAR and dependency metadata, not runtime",
+    "scope": "Eight exact pet/dependency JARs, both-side native constraints; not the complete runtime or a game launch."
+  },
+  "safety_behavior_review": {
+    "throw_guard": {
+      "source": "common/src/main/java/net/dawson/adorablehamsterpets/util/HamsterShoulderUtil.java",
+      "lines": [
+        101,
+        109
+      ],
+      "effect": "Server tryThrowFromShoulder returns when enableHamsterThrowing is false."
+    },
+    "bed_recovery": {
+      "source": "common/src/main/java/net/dawson/adorablehamsterpets/util/HamsterBedUtil.java",
+      "lines": [
+        56,
+        171
+      ],
+      "effect": "Needs valid linked bed. Copies hamster custom NBT and owner, creates a new UUID, updates bed link; recover at5percent health asleep. External managed Tags are not guaranteed. Hold/reconcile managed slot instead of refilling it."
+    },
+    "enum_serialization": "Hash-verified Fzzy0.7.7+fix1 ValidatedEnum bytecode serializes Enum.name(); NEAR and DAILY confirmed in hamster JAR."
+  },
+  "full_pack_native_dependency_review": {
+    "enabled_mod_jars": 201,
+    "errors": [],
+    "warnings": [],
+    "scope": {
+      "base_commit": "3d337e4305006d4745ba6ba85c458accf54ef1f1",
+      "base_candidate": "0.1.0-candidate.53",
+      "additions": [
+        "adorable-hamster-pets",
+        "aquarius-libs",
+        "patchouli"
+      ],
+      "runtime": "not run"
+    },
+    "source_artifacts": "Every enabled mod was size/hash verified against the exact source lock before native dependency validation; existing D cache read only, no full installation/copy.",
+    "private_report_sha256": "9b232eb427ea39a0a0be9fb866ffdefb7bd96d3f5e5467d2ffce2e4d1ab31bc4",
+    "tier": "static native descriptors and file hashes only; no entity AI/rendering/performance/multiplayer acceptance"
+  }
+}

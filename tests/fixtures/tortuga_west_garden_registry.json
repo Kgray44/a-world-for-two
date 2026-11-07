@@ -1,0 +1,191 @@
+{
+  "format": "awft-tested-block-property-subset:1",
+  "provenance": "Exact Native43/retained artistic registry property definitions only; no seed/world/NBT/raw terrain",
+  "blocks": {
+    "dawnoftimebuilder:charred_spruce_beam": {
+      "axis_x": [
+        "true",
+        "false"
+      ],
+      "axis_y": [
+        "true",
+        "false"
+      ],
+      "axis_z": [
+        "true",
+        "false"
+      ],
+      "bottom": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "dawnoftimebuilder:dark_oak_beam": {
+      "axis_x": [
+        "true",
+        "false"
+      ],
+      "axis_y": [
+        "true",
+        "false"
+      ],
+      "axis_z": [
+        "true",
+        "false"
+      ],
+      "bottom": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "fishofthieves:potted_tropical_red_fern": {},
+    "fishofthieves:potted_white_plumeria": {},
+    "handcrafted:dark_oak_bench": {
+      "color": [
+        "none",
+        "white",
+        "orange",
+        "magenta",
+        "light_blue",
+        "yellow",
+        "lime",
+        "pink",
+        "gray",
+        "light_gray",
+        "cyan",
+        "purple",
+        "blue",
+        "brown",
+        "green",
+        "red",
+        "black"
+      ],
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "shape": [
+        "single",
+        "left",
+        "middle",
+        "right",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "mcwroofs:dark_oak_lower_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "mcwroofs:spruce_lower_roof": {
+      "facing": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ],
+      "half": [
+        "top",
+        "bottom"
+      ],
+      "shape": [
+        "straight",
+        "inner_left",
+        "inner_right",
+        "outer_left",
+        "outer_right"
+      ]
+    },
+    "minecraft:air": {},
+    "minecraft:dark_oak_planks": {},
+    "minecraft:dirt": {},
+    "minecraft:gray_terracotta": {},
+    "minecraft:lantern": {
+      "hanging": [
+        "true",
+        "false"
+      ],
+      "waterlogged": [
+        "true",
+        "false"
+      ]
+    },
+    "minecraft:mossy_stone_bricks": {},
+    "minecraft:spruce_planks": {},
+    "minecraft:stripped_dark_oak_log": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "minecraft:stripped_spruce_wood": {
+      "axis": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "regions_unexplored:aster": {},
+    "regions_unexplored:blue_lupine": {},
+    "regions_unexplored:cherry_shrub": {
+      "half": [
+        "upper",
+        "lower"
+      ]
+    },
+    "regions_unexplored:lavender_wisteria_shrub": {
+      "half": [
+        "upper",
+        "lower"
+      ]
+    },
+    "regions_unexplored:pink_lupine": {},
+    "regions_unexplored:pink_magnolia_shrub": {
+      "half": [
+        "upper",
+        "lower"
+      ]
+    },
+    "regions_unexplored:potted_blue_lupine": {},
+    "regions_unexplored:potted_pink_lupine": {},
+    "regions_unexplored:purple_lupine": {},
+    "regions_unexplored:salmon_wisteria_shrub": {
+      "half": [
+        "upper",
+        "lower"
+      ]
+    }
+  }
+}

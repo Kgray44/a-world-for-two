@@ -1,0 +1,356 @@
+[
+  {
+    "id": "awft_rosewater_greetings_0",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Welcome to Rosewater. Your presence has been entered under Pleasant Interruptions."
+  },
+  {
+    "id": "awft_rosewater_greetings_1",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Do come in. The corridor has been practicing its grandeur."
+  },
+  {
+    "id": "awft_rosewater_greetings_2",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A pleasure. Please regard the cushion with the appropriate respect."
+  },
+  {
+    "id": "awft_rosewater_greetings_3",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "You arrive at an excellent hour: just after the ceremonial dusting."
+  },
+  {
+    "id": "awft_rosewater_jokes_0",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The royal budget is balanced. It leans equally toward two alarming expenses."
+  },
+  {
+    "id": "awft_rosewater_jokes_1",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The guard interrogated a topiary. It maintained a suspiciously leafy silence."
+  },
+  {
+    "id": "awft_rosewater_jokes_2",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "We requested a modest staircase. The architect heard an invitation to history."
+  },
+  {
+    "id": "awft_rosewater_jokes_3",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The library has a book on patience. It is overdue."
+  },
+  {
+    "id": "awft_rosewater_contextual_0",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Another construction project? I shall notify the treasury's fainting couch."
+  },
+  {
+    "id": "awft_rosewater_contextual_1",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The west curtain was measured twice and complimented three times."
+  },
+  {
+    "id": "awft_rosewater_contextual_2",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A fairy tale belongs on a shelf until its author supplies evidence."
+  },
+  {
+    "id": "awft_rosewater_contextual_3",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Please distinguish a royal rumor from a royal announcement. The hats are different."
+  },
+  {
+    "id": "awft_rosewater_goodbyes_0",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "May your afternoon require very little paperwork."
+  },
+  {
+    "id": "awft_rosewater_goodbyes_1",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Your departure has been approved with sincere regret."
+  },
+  {
+    "id": "awft_rosewater_weather_0",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The rain has arrived without an appointment."
+  },
+  {
+    "id": "awft_rosewater_weather_1",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A thunderstorm. How magnificent. How inconsiderate of the windows."
+  },
+  {
+    "id": "awft_rosewater_weather_2",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The sunshine is most agreeable. I shall have it thanked."
+  },
+  {
+    "id": "awft_rosewater_nearby_player_0",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A visitor approaches. Everyone appear naturally magnificent."
+  },
+  {
+    "id": "awft_rosewater_nearby_player_1",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Please do not encourage the guard's goose investigation."
+  },
+  {
+    "id": "awft_rosewater_nighttime_0",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The castle is asleep. The accounts, tragically, remain awake."
+  },
+  {
+    "id": "awft_rosewater_nighttime_1",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The moon has excellent posture this evening."
+  },
+  {
+    "id": "awft_rosewater_tavern_0",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The kitchen calls it rustic. The steward calls it an unbudgeted crumb."
+  },
+  {
+    "id": "awft_rosewater_catchphrases_0",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Most irregular. Delightful, but irregular."
+  },
+  {
+    "id": "awft_rosewater_catchphrases_1",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "For the dignity of the household."
+  },
+  {
+    "id": "awft_rosewater_starters_0",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Are you here for history, hospitality, or a remarkably specific complaint?"
+  },
+  {
+    "id": "awft_rosewater_starters_1",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Have you heard the library's latest improbable tale?"
+  },
+  {
+    "id": "awft_rosewater_animals_0",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The royal cat has annexed a chair. Diplomacy has failed."
+  },
+  {
+    "id": "awft_rosewater_animals_1",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_rosewater"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The frogs' evening chorus has declined our volume request."
+  }
+]

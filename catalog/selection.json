@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-candidate.49",
+  "version": "0.1.0-candidate.65",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
@@ -1041,6 +1041,27 @@
       "side": "both",
       "world_sensitive": true,
       "reason": "Actual supported cable backend for the already pinned Ziplines Rezipped1.5.3 cliff-to-pirate-town ride; native compatibility, ride clearance and persistence remain unverified."
+    },
+    {
+      "request": "adorable-hamster-pets",
+      "project": "adorable-hamster-pets",
+      "version": "LyCV3JSL",
+      "allow_prerelease": true,
+      "side": "both",
+      "reason": "Owner-requested pets; reviewed 3.7.0 beta exception, exact native dependencies and safe cozy defaults in proposals/cozy-pets. Runtime and multiplayer qualification pending."
+    },
+    {
+      "request": "aquarius-libs",
+      "project": "aquarius-libs",
+      "version": "sPrpmle3",
+      "side": "both",
+      "reason": "Explicit author-required dependency for Animal Garden Sugar Glider; absent from upstream version metadata. Exact hash and native API reviewed; runtime pending."
+    },
+    {
+      "project": "patchouli",
+      "version": "BIogJv2D",
+      "side": "both",
+      "reason": "Required by the exact Adorable Hamster Pets native NeoForge descriptor: Patchouli >= 1.21.1-93-NEOFORGE; upstream Modrinth dependency metadata is empty."
     }
   ],
   "artifacts": [
@@ -1200,15 +1221,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.35",
-      "version": "0.6.35",
+      "version_id": "0.6.51",
+      "version": "0.6.51",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.35.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.35.jar",
-      "size": 638458,
+      "filename": "awft-control-bridge-0.6.51.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.51.jar",
+      "size": 725738,
       "hashes": {
-        "sha256": "b0363a8c17283c63d694e4642f23e52aa79a5fe132c3f1ed86ab09bee108930a"
+        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
       },
       "side": "both",
       "kind": "mod",
@@ -1394,6 +1415,121 @@
       "validation": {
         "metadata": "pass",
         "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "awft:living-world",
+      "slug": "awft-living-world",
+      "name": "A World for Two Living World",
+      "version_id": "0.2.0",
+      "version": "0.2.0",
+      "provider": "local-build",
+      "release_type": "candidate",
+      "filename": "awft-living-world-0.2.0.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-living-world-0.2.0.jar",
+      "size": 70852,
+      "hashes": {
+        "sha256": "093b7a487e664c7ef7a8e73c2fb2d2e4dca3f2da17944dd678c0e4dabcd31a70",
+        "sha512": "0e69a253bb1b3c168852107c174d9d74f9a6b8bba824f952616d391975d73bd5b1fc0de574e807d024e11f368f81dc7dffdff821b409155c8e5cfae93bc869dd"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "project_id": "curseforge:1638757",
+          "version_id": "curseforge:9064041",
+          "dependency_type": "required"
+        },
+        {
+          "project_id": "l9oZCCPS",
+          "version_id": "bGNaqTaL",
+          "dependency_type": "required"
+        }
+      ],
+      "license": {
+        "id": "MIT"
+      },
+      "source": "https://github.com/Kgray44/a-world-for-two",
+      "selection_reason": "Pinned exact private integration candidate; source and Java API checks passed; native startup and gameplay qualification pending. Owned artifact URL is the existing local-build convention and is NOT published; use sealed local bytes only.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "curseforge:1638757",
+      "slug": "chatting-villagers",
+      "name": "Chatting Villagers",
+      "version_id": "curseforge:9064041",
+      "version": "1.1.0",
+      "provider": "curseforge",
+      "release_type": "release",
+      "filename": "chattingvillagers-neoforge-1.21.1-1.1.0.jar",
+      "url": "https://mediafilez.forgecdn.net/files/9064/41/chattingvillagers-neoforge-1.21.1-1.1.0.jar",
+      "size": 316142,
+      "hashes": {
+        "sha256": "a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a",
+        "sha512": "79ec018d408c02f7e76aa19ec0d1623b39f7ea7ecbfeb86f2da8bb0ff51379b4d321daae0f3919e500e14b2c01807674ea4a1d21d231e2997be9e744c7d3d4c7"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "MIT"
+      },
+      "source": "https://www.curseforge.com/minecraft/mc-mods/chatting-villagers/files/9064041",
+      "selection_reason": "Pinned exact private integration candidate; source and Java API checks passed; native startup and gameplay qualification pending.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
+        "runtime": "not run"
+      },
+      "curseforge_project": 1638757,
+      "curseforge_file": 9064041
+    },
+    {
+      "project_id": "l9oZCCPS",
+      "slug": "smart-villagers-ai",
+      "name": "Smart Villagers AI",
+      "version_id": "bGNaqTaL",
+      "version": "2.0.0+neoforge-1.21.1",
+      "provider": "modrinth",
+      "release_type": "release",
+      "filename": "smartvillagers-neoforge-1.21.1-2.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/l9oZCCPS/versions/bGNaqTaL/smartvillagers-neoforge-1.21.1-2.0.0.jar",
+      "size": 285498,
+      "hashes": {
+        "sha256": "bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630",
+        "sha512": "196e5da485353e84d1f316bac60be9aded75eef3483d9d16e40daf9db4e4611ef6a08ac2bfc502b60e3874e3531cd90506dd14325ccd0c1309e526902af0710d"
+      },
+      "side": "both",
+      "kind": "mod",
+      "request": null,
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "license": {
+        "id": "Apache-2.0"
+      },
+      "source": "https://github.com/MeherBenSalem/CivilizationAI",
+      "selection_reason": "Pinned exact private integration candidate; source and Java API checks passed; native startup and gameplay qualification pending.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pass",
         "runtime": "not run"
       }
     }

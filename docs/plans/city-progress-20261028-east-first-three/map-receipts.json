@@ -1,0 +1,329 @@
+[
+  {
+    "addition": 1,
+    "building": "east-coal",
+    "image": "east-addition-01-overhead.png",
+    "image_sha256": "1ab45e84fb6816487384794857ce3a2d3c0c665c9d32b67e40004c63ac8893c3",
+    "actual_new_west_buildings": 36,
+    "actual_refined_old_buildings": 15,
+    "actual_new_east_buildings": 1,
+    "current_native_proof": {
+      "path": "dashboard/settlement/settlement-result-5f1b3eb6-e3a6-4883-ae51-9aa8bde3d0e7.json",
+      "sha256": "c861c7c543a72f044970307109ce5415ac2374c4aa11c8e17008e5416ca29672",
+      "plan_sha256": "6768791af4173ca871f7b2b2e073fb7435c00653f368287dec0028c38c32daa6",
+      "finished": "2026-10-28T21:48:23.802354900Z"
+    },
+    "prior_west_proofs": [
+      {
+        "path": "dashboard/settlement/settlement-result-69379a20-ee53-4c29-84db-e62bc2f17a0a.json",
+        "sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-1fba1579-2f30-4c47-9729-70806895e8ed.json",
+        "sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-5725ed00-a28b-4a9a-81b4-1604f76de730.json",
+        "sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-896c735b-cea2-4218-bc89-aa4b66ab6a60.json",
+        "sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-aa3f1e48-5fbf-425a-9c18-03cafc059ff4.json",
+        "sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-3cf0e963-1674-41c4-85a1-1acdddde4287.json",
+        "sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-c215d2b7-bf7e-4c85-906d-0f4e8a578eb8.json",
+        "sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-b324ade3-96b3-4d88-91ae-e106976a5bb1.json",
+        "sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-d3ace405-af63-4e06-9621-76ad31928239.json",
+        "sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-8d214b85-c3be-4f7b-a4cb-eaf4c0821fbd.json",
+        "sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-e55ad843-de05-4d12-89b3-35b3ef83593a.json",
+        "sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z"
+      }
+    ],
+    "refinement_proofs": [
+      {
+        "path": "dashboard/settlement/settlement-result-ed62ebfd-dfcb-4629-bb3d-9259cadfa0f2.json",
+        "sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-2588bd19-c6f6-4fda-a460-6ec8a9086b84.json",
+        "sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-131b04d9-139e-4d26-abb5-549abf72571c.json",
+        "sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z"
+      }
+    ],
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "approved_future_layout_sha256": "6f24640d9efefae3340be80d34bcd0e4788f2ded695aefe03d1d6815761a12a4",
+    "old_E_roof_cells_subtracted": 0,
+    "source_plans_displayed_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0
+  },
+  {
+    "addition": 2,
+    "building": "shoal-warden",
+    "image": "east-addition-02-overhead.png",
+    "image_sha256": "a16671c7a521112c1880cf0be900be980bff7c77dbab52d0715272db4738912a",
+    "actual_new_west_buildings": 36,
+    "actual_refined_old_buildings": 15,
+    "actual_new_east_buildings": 2,
+    "current_native_proof": {
+      "path": "dashboard/settlement/settlement-result-bf46b935-fcc2-494a-a3ae-1c247c2fb1c5.json",
+      "sha256": "3ebd0884e113c92f85766d110e689a6130922525fc79b2fe2fb8bd5e091e0e8a",
+      "plan_sha256": "d2c354df941c8974db5e4240a85838f6db30149787b2469277f07a53972c9d97",
+      "finished": "2026-10-28T21:48:30.652260900Z"
+    },
+    "prior_west_proofs": [
+      {
+        "path": "dashboard/settlement/settlement-result-69379a20-ee53-4c29-84db-e62bc2f17a0a.json",
+        "sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-1fba1579-2f30-4c47-9729-70806895e8ed.json",
+        "sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-5725ed00-a28b-4a9a-81b4-1604f76de730.json",
+        "sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-896c735b-cea2-4218-bc89-aa4b66ab6a60.json",
+        "sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-aa3f1e48-5fbf-425a-9c18-03cafc059ff4.json",
+        "sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-3cf0e963-1674-41c4-85a1-1acdddde4287.json",
+        "sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-c215d2b7-bf7e-4c85-906d-0f4e8a578eb8.json",
+        "sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-b324ade3-96b3-4d88-91ae-e106976a5bb1.json",
+        "sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-d3ace405-af63-4e06-9621-76ad31928239.json",
+        "sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-8d214b85-c3be-4f7b-a4cb-eaf4c0821fbd.json",
+        "sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-e55ad843-de05-4d12-89b3-35b3ef83593a.json",
+        "sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z"
+      }
+    ],
+    "refinement_proofs": [
+      {
+        "path": "dashboard/settlement/settlement-result-ed62ebfd-dfcb-4629-bb3d-9259cadfa0f2.json",
+        "sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-2588bd19-c6f6-4fda-a460-6ec8a9086b84.json",
+        "sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-131b04d9-139e-4d26-abb5-549abf72571c.json",
+        "sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z"
+      }
+    ],
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "approved_future_layout_sha256": "6f24640d9efefae3340be80d34bcd0e4788f2ded695aefe03d1d6815761a12a4",
+    "old_E_roof_cells_subtracted": 0,
+    "source_plans_displayed_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0
+  },
+  {
+    "addition": 3,
+    "building": "thin-sail",
+    "image": "east-addition-03-overhead.png",
+    "image_sha256": "f958d428f11be71730590b845bd6453df2c29fbd10f65729267c6bc333b9cbbd",
+    "actual_new_west_buildings": 36,
+    "actual_refined_old_buildings": 15,
+    "actual_new_east_buildings": 3,
+    "current_native_proof": {
+      "path": "dashboard/settlement/settlement-result-75f9e3c9-3876-4097-9363-4ea9c6ef32ad.json",
+      "sha256": "878c706b7232f7a19f845908cda87f3015606cb91d3dd670d6026df80d9d9558",
+      "plan_sha256": "b16cca5358f34fbc15939f18e17d6d45f91421af03d7da76eed1b96316b2d6e4",
+      "finished": "2026-10-28T21:48:34.351841300Z"
+    },
+    "prior_west_proofs": [
+      {
+        "path": "dashboard/settlement/settlement-result-69379a20-ee53-4c29-84db-e62bc2f17a0a.json",
+        "sha256": "a41fedfa63fce807095e80dc90cf76910e6abee51fb578c744216059f1c0dc16",
+        "plan_sha256": "aa52e59efdeae78e438b896f0a4333f1443a70deae42f64e001dc2f1fd6c24f1",
+        "finished": "2026-10-28T17:46:57.402879Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-1fba1579-2f30-4c47-9729-70806895e8ed.json",
+        "sha256": "082e108b80887fba125052a235051c0078c696738b5897b5ea0349e9a60d1dff",
+        "plan_sha256": "4f2d532f3a1f3b1a49a3bead6a008ced33ba7d847f60079eba418dd15adc99fb",
+        "finished": "2026-10-28T17:47:06.053073700Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-5725ed00-a28b-4a9a-81b4-1604f76de730.json",
+        "sha256": "1e88999c9148509c010db100845b911d03451595236d67b12447252de869882b",
+        "plan_sha256": "75abef39ce2d457dd5a01f71f4380719012336a9ec31ff780f8fad22c9e6260e",
+        "finished": "2026-10-28T18:47:44.366930300Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-896c735b-cea2-4218-bc89-aa4b66ab6a60.json",
+        "sha256": "5735b61ec6fe127e5bc336a5b3c9973a0aa504d7560a76145d655bc808a83e1f",
+        "plan_sha256": "21f594d32e36172cd2825c332f7311cfb61f8e87d9faacfc8cd247ff7f141d80",
+        "finished": "2026-10-28T18:47:50.363850200Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-aa3f1e48-5fbf-425a-9c18-03cafc059ff4.json",
+        "sha256": "9ac1c17c5da8581c60279465772d74124a95f6bea7e44aaf916d1c09283be40c",
+        "plan_sha256": "87e90165d59cfc118095b707d6e8f1b407a8b87cc47705b28aa65e4ce190e50b",
+        "finished": "2026-10-28T18:47:54.204529900Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-3cf0e963-1674-41c4-85a1-1acdddde4287.json",
+        "sha256": "e65dde0fbc63fc3de5515e8a3903ee3893c02ad402175f6b1a46bec738a12b9f",
+        "plan_sha256": "8cc9322343d9b58cb68dce57bb79eb1b6c19a8589062585996fdc97d5c34c817",
+        "finished": "2026-10-28T18:48:00.102243100Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-c215d2b7-bf7e-4c85-906d-0f4e8a578eb8.json",
+        "sha256": "e4c2fdd04c308592372bf8667dfd38fabea3eddfd7156ea56cb657c49d7b005b",
+        "plan_sha256": "9fd1882bef1fc8c2920141df812d1b87ee6db6cdbce4fbc4dfee57a70174a01a",
+        "finished": "2026-10-28T18:48:06.564802500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-b324ade3-96b3-4d88-91ae-e106976a5bb1.json",
+        "sha256": "17d52bda711f9d526d059673bb6f60689bce61d42272f5440848d793806ada27",
+        "plan_sha256": "72526033bd9605efef9194cccded9ddbd3ff900fc8027d22839b52cf7c747025",
+        "finished": "2026-10-28T18:48:11.155313300Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-d3ace405-af63-4e06-9621-76ad31928239.json",
+        "sha256": "29c9f32f0806b3991546223923cdb9fc53019651507e51c786074733ec27b923",
+        "plan_sha256": "756f1cbc2bbe4e245237b0ec069ad8658815fdd02cb6b5d12e48cf9db9edb1eb",
+        "finished": "2026-10-28T19:34:38.830868500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-8d214b85-c3be-4f7b-a4cb-eaf4c0821fbd.json",
+        "sha256": "5dd4f2b9c0d6a1e2c0dfda3f375fb929f33a6fda880e54024af934072368174c",
+        "plan_sha256": "8b54e397f3a402695e8073dfc22523bcf90b346928acf50f25615368ca3206b9",
+        "finished": "2026-10-28T19:34:52.175705600Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-e55ad843-de05-4d12-89b3-35b3ef83593a.json",
+        "sha256": "7a4f9305a377973525d527b17f7638ab55f1f13b5e9e1cd285840eac2fb4a684",
+        "plan_sha256": "bac52266e820888cef513d40cf4c7341bd1198da05127b355bea4ada51f3bd1f",
+        "finished": "2026-10-28T20:52:25.086631700Z"
+      }
+    ],
+    "refinement_proofs": [
+      {
+        "path": "dashboard/settlement/settlement-result-ed62ebfd-dfcb-4629-bb3d-9259cadfa0f2.json",
+        "sha256": "8f012c66ee1c97840722a57759cad4af487d9810fc9240f20c242da392483899",
+        "plan_sha256": "161127a6179182c1a211430c951181c321f18a2adda3c90e5ac77ffb0df8d761",
+        "finished": "2026-10-28T20:26:40.595505100Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-2588bd19-c6f6-4fda-a460-6ec8a9086b84.json",
+        "sha256": "22ba4aa91e1c486a3c649eb4c61e1f22b78d496ea77b3e7135ae006080619cec",
+        "plan_sha256": "0ebca13b58757159e9aba1556a97199046d8ffb62d3c2ab6873dff08135b9d6f",
+        "finished": "2026-10-28T20:26:52.596420500Z"
+      },
+      {
+        "path": "dashboard/settlement/settlement-result-131b04d9-139e-4d26-abb5-549abf72571c.json",
+        "sha256": "66618328ffab17123a814ff3ca67d5ce9ff05aee9e200ea195c0b9abd8c45a14",
+        "plan_sha256": "de25177ab6fee3c9408a7418c2bd7c3fb09c06c2c013c72f0f192d6c40c7dffd",
+        "finished": "2026-10-28T20:27:01.243523800Z"
+      }
+    ],
+    "baseline_coast_sha256": "7805a8fcc0f514cb26b222058474a2efa9f821124ee64cf52ca8ce4c3e66e2f2",
+    "approved_future_layout_sha256": "6f24640d9efefae3340be80d34bcd0e4788f2ded695aefe03d1d6815761a12a4",
+    "old_E_roof_cells_subtracted": 0,
+    "source_plans_displayed_as_current": false,
+    "artistic_acceptance": false,
+    "world_writes": 0
+  }
+]

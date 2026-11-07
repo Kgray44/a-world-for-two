@@ -1,0 +1,54 @@
+{
+  "target_version": "0.6.59",
+  "required_base": "Qualified private0.6.58 with canopy classes preserved",
+  "actual57_coverage": {
+    "opened": 390,
+    "distinct_classes": 10,
+    "sole_uncovered": "com.simibubi.create.foundation.pack.DynamicPack",
+    "private_header_witness_sha256": "a6610f1fba2b72e64c10f94d42631af183b21e5f2edbc63cbfe9b345dc4627e3",
+    "tacz_index": 248,
+    "create_index": 249,
+    "cdp_indices": [
+      250,
+      251
+    ],
+    "cdp_native_traversal_pending": true
+  },
+  "native_producer": {
+    "mod_id": "create",
+    "jar": "create-1.21.1-6.0.10.jar",
+    "bytes": 19123767,
+    "sha256": "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a",
+    "class": "com.simibubi.create.foundation.pack.DynamicPack",
+    "class_bytes": 10226,
+    "class_sha256": "db86ed4b328d60434ef23c35b87766a5acc456d50209b04f317967da04e40efd",
+    "fields": [
+      "files:Map",
+      "packType:PackType"
+    ],
+    "native_methods": [
+      "put(ResourceLocation,IoSupplier)",
+      "getResource(PackType,ResourceLocation)",
+      "listResources(PackType,String,String,ResourceOutput)",
+      "getNamespaces(PackType)",
+      "getMetadataSection(MetadataSectionSerializer)"
+    ]
+  },
+  "empty_query_quirk": "Native base is type/namespace/; list query appends prefix plus another slash. Empty prefix therefore queries type/namespace//.",
+  "complete_custody": "Original full map; native nonempty directory lists for nested IDs; native direct get for namespace-root files; complete original-byte hashing; repeated same-accumulator byte stability; actual synthetic metadata; unchanged effective stacks.",
+  "unknown_provider_refusal_preserved": true,
+  "aggregate_limits_unchanged": true,
+  "production_overlay_files": [
+    "CreateDynamicPackCustody.java",
+    "LithostitchedSeedgenResources.java"
+  ],
+  "do_not_modify": [
+    "GeneratedServerPackCustody.java",
+    "DH yield classes",
+    "two0.6.58 canopy classes"
+  ],
+  "compiled": false,
+  "fixture_run": false,
+  "installed": false,
+  "native_runtime_touched": false
+}

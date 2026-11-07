@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "worldfortwo.living.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AmbientContextMixin",
+    "AmbientOverlapMixin",
+    "CharacterSelectionMixin",
+    "PersonaMixin",
+    "ConversationMixin",
+    "PendingReplyMixin",
+    "ReplyTaskMixin",
+    "MemoryMixin",
+    "AmbientDialogueMixin",
+    "BubbleMixin",
+    "ProviderConfigMixin",
+    "NativeTransportMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

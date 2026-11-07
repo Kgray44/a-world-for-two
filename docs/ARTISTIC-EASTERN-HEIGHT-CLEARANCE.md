@@ -1,0 +1,13 @@
+# Eastern room-height clearance
+
+This additive source replaces four prospective compound packets after a separately reviewed five-room allocation correction. It leaves the frozen38 packet history and the independent35-point Keel packet unchanged. It neither moves rooms nor supplies old inventories or BE tags.
+
+Worn Book and Lampblack retain their neighboring rooms at72 while the revised loft rooms move to73. Those preserved rooms become actual recessed rooms with ordinary one-riser connections to the raised loft, rather than having their beds or counters buried by a new floor. Navy Blue similarly preserves Turnstone's room at68 beside its raised69 loft. Its existing annex footprint gains a real ground room and upper68 room. Keel Store has a complete69 upper floor and a genuine five-riser main stair. The approved ground footprints remain unchanged.
+
+The exact floor map records the real floor height of each column. Main flights cannot invent an upper landing on a bed or cupboard in a lower room. Existing lower-room floor and head spaces are protected before main stair planning. All retained BE and functional workstation goals are restored for the final whole-building circulation check. Warm ceiling ribs follow the stepped floor undersides, and preserved wall lights receive actual rooted rails or backing.
+
+All four source models pass the complete material rule, fixed-state identity, literal walking/body checks, rooted geometry and final furnished-object checks. The packets contain seventeen masses,37 furnished floor zones and121 retained BE positions. Floor-zone counts include the physical split levels; they do not claim extra complete storeys. Two small original fixtures test actual one/five-riser access and refuse a false landing above a lower-room barrel.
+
+Actual stopped-archive before/support fields remain separate from prospective post-move architecture. The revised runtime catalogue, absence of prior move intent, genuine conserved room custody, authorized shell retirement, fresh current native preimages, normal joins and full retained inventory checks are still required. Actual in-game views and ordinary use remain pending. Source passes are not native construction or owner artistic acceptance.
+
+The separate below-plinth audit reads4736 perimeter profiles. It proposes only eight ordinary AIR/soft-cell piers at62, preserving all fluids, BEs and original room source fields.120 profiles remain explicitly held for water or unqualified modded support. The already reviewed pinned Create zinc factory is recorded narrowly; limestone, scoria and other blocks do not inherit that proof. The audit does not authorize a broad platform or an open-water building.

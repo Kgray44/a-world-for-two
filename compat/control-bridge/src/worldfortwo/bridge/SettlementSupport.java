@@ -43,6 +43,8 @@ public final class SettlementSupport {
     private JsonObject plan;
     private List<BlockState> palette;
     private String operation="idle";
+    private LiveOrdinaryPolicy livePolicy;
+    private boolean exactNativeTags;
     private int cursor, phase, centerX, centerZ, radius, step, columns, failures;
     private int settlePass,settleChanges,neighborWait;
     private final List<Integer> settlePassChanges=new ArrayList<>();
@@ -190,12 +192,18 @@ public final class SettlementSupport {
     }
     private void admit(MinecraftServer server,String mode,String expected)throws Exception {
         if(busy() || !expected.matches("[a-f0-9]{64}"))throw new IllegalStateException("Another operation or shared chunk cleanup is active, or invalid hash");
-        if(!server.getPlayerList().getPlayers().isEmpty())throw new IllegalStateException("Construction needs an empty server");
         Path file=directory.resolve("plan.json");
+        if(!server.getPlayerList().getPlayers().isEmpty() && Files.size(file)>65536L)throw new IllegalStateException("Live source JSON exceeds64KiB bound");
         if(Files.isSymbolicLink(file) || Files.size(file)>MAX_PLAN_BYTES)throw new IllegalStateException("Plan exceeds bound or is linked");
         byte[] raw=Files.readAllBytes(file);
         if(!sha(raw).equals(expected))throw new IllegalStateException("Exact plan hash differs");
         JsonObject candidate=JsonParser.parseString(new String(raw,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+        boolean wantsLive=candidate.has("live_ordinary") && candidate.get("live_ordinary").getAsBoolean();
+        JsonPrimitive exactFlag=candidate.has("exact_native_tags")?candidate.getAsJsonPrimitive("exact_native_tags"):null;
+        if(exactFlag!=null&&!exactFlag.isBoolean())throw new IllegalStateException("Exact native tags requires a literal boolean opt-in");
+        boolean exactTags=exactFlag!=null&&exactFlag.getAsBoolean();
+        if(exactTags&&!mode.equals("verify"))throw new IllegalStateException("Exact native full-tag mode is verification only");
+        if(!server.getPlayerList().getPlayers().isEmpty() && !wantsLive)throw new IllegalStateException("Ordinary offline construction still requires empty server");
         if(mode.equals("place") && candidate.has("construction_forbidden") && candidate.get("construction_forbidden").getAsBoolean())
             throw new IllegalStateException("A native verification-only export cannot replay geometry or inventories");
         if(!candidate.get("seed").getAsString().equals(Long.toString(server.overworld().getSeed())))throw new IllegalStateException("World seed differs");
@@ -223,6 +231,12 @@ public final class SettlementSupport {
             String nbt=row.get("nbt").getAsString();
             if(nbt.length()>16384)throw new IllegalStateException("Block entity data exceeds bound");
             TagParser.parseTag(nbt);
+            if(exactTags){
+                JsonElement type=row.get("native_class");
+                if(type==null||!type.isJsonPrimitive()||!type.getAsJsonPrimitive().isString())throw new IllegalStateException("Exact native class string required for every full-tag row");
+                String name=type.getAsString();
+                if(name.length()>256||!name.matches("[A-Za-z_$][A-Za-z0-9_$]*(?:\\.[A-Za-z_$][A-Za-z0-9_$]*)+"))throw new IllegalStateException("Bounded exact native class name required");
+            }
         }
         JsonArray commands=candidate.getAsJsonArray("commands");
         if(commands.size()>256)throw new IllegalStateException("Entity/action bound exceeded");
@@ -232,9 +246,10 @@ public final class SettlementSupport {
             var parsed=server.getCommands().getDispatcher().parse(command,server.createCommandSourceStack());
             if(!parsed.getExceptions().isEmpty() || parsed.getReader().canRead())throw new IllegalStateException("Native command did not parse: "+command);
         }
-        plan=candidate;palette=states;start(mode);report.put("plan_sha256",expected);report.put("blocks",blocks.size());
+        LiveOrdinaryPolicy checkedLive=wantsLive?LiveOrdinaryPolicy.admit(server,directory,mode,candidate,states):null;
+        plan=candidate;palette=states;start(mode);livePolicy=checkedLive;exactNativeTags=exactTags;report.put("live_ordinary",checkedLive!=null);report.put("exact_native_tags",exactTags);report.put("exact_native_tag_rows",exactTags?tags.size():0);report.put("plan_sha256",expected);report.put("blocks",blocks.size());
     }
-    private void start(String mode){operation=mode;cursor=phase=failures=0;pending=null;ready=null;neighborWait=settlePass=settleChanges=0;settlePassChanges.clear();settleSkippedBlockEntities.clear();mapChunks.clear();mapWorld=null;samples.clear();report.clear();report.put("operation",mode);report.put("started",Instant.now().toString());report.put("status","running");}
+    private void start(String mode){livePolicy=null;exactNativeTags=false;operation=mode;cursor=phase=failures=0;pending=null;ready=null;neighborWait=settlePass=settleChanges=0;settlePassChanges.clear();settleSkippedBlockEntities.clear();mapChunks.clear();mapWorld=null;samples.clear();report.clear();report.put("operation",mode);report.put("started",Instant.now().toString());report.put("status","running");}
     private void finish(String status){
         try{releaseTicket();report.remove("ticket_cleanup_error");}
         catch(Exception error){report.put("ticket_cleanup_error",error.toString());}
@@ -246,7 +261,7 @@ public final class SettlementSupport {
         report.put("pending_shared_chunk_futures",neighborhood.size());
         try {if(operation.equals("survey")||operation.equals("noise"))write(operation+".json",Map.of("report",new LinkedHashMap<>(report),"samples",samples));NativeJournal.terminal(directory,"settlement",report);NativeJournal.progress(directory,"status.json",report);}
         catch(Exception error){System.err.println("AWFT settlement journal: "+error);}
-        operation=cleanup?"cleanup_required":"idle";ready=null;
+        operation=cleanup?"cleanup_required":"idle";ready=null;if(!cleanup)livePolicy=null;
     }
     @SuppressWarnings({"rawtypes","unchecked"})
     private static List<String> serializedValues(Property property){
@@ -260,6 +275,7 @@ public final class SettlementSupport {
     }
     private ChunkAccess chunk(ServerLevel level,int x,int z){
         int cx=Math.floorDiv(x,16),cz=Math.floorDiv(z,16);
+        if(livePolicy!=null){if(!fullNeighborhood(level,cx,cz))throw new LiveOrdinaryPolicy.Conflict("Live target neighborhood is not already FULL; no native queue or worldgen");return level.getChunkSource().getChunkNow(cx,cz);}
         if(ready!=null && ready.getPos().x==cx && ready.getPos().z==cz && ticketLevel==level
                 && ticketPos!=null && ticketPos.x==cx && ticketPos.z==cz && fullNeighborhood(level,cx,cz))return ready;
         ready=null;
@@ -298,11 +314,12 @@ public final class SettlementSupport {
             return;
         }
         if(operation.equals("idle"))return;
-        if(!server.getPlayerList().getPlayers().isEmpty()){finish("paused; player joined, explicit resume/restart required");return;}
+        if(!server.getPlayerList().getPlayers().isEmpty() && livePolicy==null){finish("paused; player joined, explicit resume/restart required");return;}
         long begin=System.nanoTime();int work=0;
         try{
             ServerLevel level=server.overworld();
-            while(work++<192 && System.nanoTime()-begin<4_000_000L){
+            if(livePolicy!=null)livePolicy.current();
+            while(work++<(livePolicy!=null?16:192) && System.nanoTime()-begin<(livePolicy!=null?1_000_000L:4_000_000L)){
                 if(operation.equals("noise")||operation.equals("survey")){
                     if(cursor>=columns*columns){finish("complete");break;}
                     int x=centerX-radius+(cursor%columns)*step,z=centerZ-radius+(cursor/columns)*step,y;
@@ -336,7 +353,9 @@ public final class SettlementSupport {
                     JsonArray blocks=plan.getAsJsonArray("blocks");
                     if(operation.equals("map")){
                         if(cursor>=blocks.size()){report.put("queued_chunks",mapChunks.size());finish("existing construction chunks queued through squaremap's native update mechanism");break;}
-                        JsonArray row=blocks.get(cursor++).getAsJsonArray();int cx=row.get(0).getAsInt()>>4,cz=row.get(2).getAsInt()>>4;
+                        JsonArray row=blocks.get(cursor).getAsJsonArray();int cx=row.get(0).getAsInt()>>4,cz=row.get(2).getAsInt()>>4;
+                        if(livePolicy!=null)livePolicy.target(level,new BlockPos(row.get(0).getAsInt(),row.get(1).getAsInt(),row.get(2).getAsInt()),palette.get(row.get(3).getAsInt()),operation);
+                        cursor++;
                         if(mapChunks.add(ChunkPos.asLong(cx,cz))){
                             if(mapWorld==null){
                                 Object api=Class.forName("xyz.jpenilla.squaremap.api.SquaremapProvider").getMethod("get").invoke(null);
@@ -355,6 +374,7 @@ public final class SettlementSupport {
                         JsonArray row=blocks.get(cursor).getAsJsonArray();BlockPos pos=new BlockPos(row.get(0).getAsInt(),row.get(1).getAsInt(),row.get(2).getAsInt());
                         ChunkAccess chunk=chunk(level,pos.getX(),pos.getZ());if(chunk==null)break;
                         BlockState expected=palette.get(row.get(3).getAsInt());
+                        if(livePolicy!=null)livePolicy.target(level,pos,expected,operation);
                         if(operation.equals("place"))level.setBlock(pos,expected,2|16);
                         else if(operation.equals("settle")){
                             BlockState current=level.getBlockState(pos);
@@ -393,7 +413,14 @@ public final class SettlementSupport {
                         var tag=TagParser.parseTag(row.get("nbt").getAsString());
                         if(operation.equals("verify")){
                             var saved=entity.saveWithFullMetadata(level.registryAccess());
-                            if(tag.contains("Items") && !net.minecraft.nbt.NbtUtils.compareNbt(tag.get("Items"),saved.get("Items"),true)){
+                            if(exactNativeTags){
+                                // One real loaded native batch: no separate inspection
+                                // after ticket release, no storage-envelope/default
+                                // normalization, filtering, setters or item getters.
+                                if(entity.isRemoved()||!entity.getClass().getName().equals(row.get("native_class").getAsString())||!saved.equals(tag)){
+                                    failures++;if(failures<=30)System.err.println("AWFT settlement exact native class/full typed tag differs at "+pos);
+                                }
+                            }else if(tag.contains("Items") && !net.minecraft.nbt.NbtUtils.compareNbt(tag.get("Items"),saved.get("Items"),true)){
                                 failures++;System.err.println("AWFT settlement inventory verification differs at "+pos);
                             }
                         }else{entity.loadWithComponents(tag,level.registryAccess());entity.setChanged();}
@@ -422,8 +449,10 @@ public final class SettlementSupport {
             }
             report.put("cursor",cursor);report.put("phase",phase);report.put("failures",failures);
             double ms=(System.nanoTime()-begin)/1_000_000.0;
+            if(livePolicy!=null && ms>1.0 && !operation.equals("idle")){report.put("live_budget_overrun_ms",ms);finish("paused; single native live work exceeded1ms; prior placements retained, no automatic replay");return;}
             report.put("last_work_ms",ms);report.put("max_work_ms",Math.max(ms,((Number)report.getOrDefault("max_work_ms",0)).doubleValue()));
             if(System.nanoTime()>nextWrite){NativeJournal.progress(directory,"status.json",report);nextWrite=System.nanoTime()+5_000_000_000L;}
+        }catch(LiveOrdinaryPolicy.Conflict conflict){report.put("live_conflict",conflict.getMessage());finish("paused; actual live conflict, existing work retained; explicit new admission required");
         }catch(Exception error){report.put("error",error.toString());finish("failed; partial world and exact plan preserved, use pre-construction backup for rollback");}
     }
 

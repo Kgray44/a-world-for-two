@@ -1,0 +1,46 @@
+{
+  "scope": "Two exact native providers; all unknown implementations still refuse",
+  "tacz": {
+    "mod_id": "tacz",
+    "jar": "tacz-neoforge-1.21.1-1.1.8-hotfix-r7.jar",
+    "bytes": 57247579,
+    "sha256": "fa3a09f15265a4065a566960a8deab315f6c601a5f9a542840b362d455dd5470",
+    "class": "com.tacz.guns.resource.GunPackLoader$1",
+    "class_bytes": 1953,
+    "class_sha256": "7f89daa15ca67c03b087eee47bab9197541f7feb9bf2b377db8df7fbb727d4cb",
+    "parent_class": "com.tacz.guns.resource.DelegatingPackResources",
+    "parent_bytes": 8443,
+    "parent_sha256": "a6d18d66b7f25f41e6fab7cd4956d4afb750f4254557f12dcbdbc286a3f15bf3",
+    "native_api": "getChildren() immutable ordered Path/File children; getResource first readable namespace candidate; synthetic PackMetadataSection"
+  },
+  "cdp": {
+    "mod_id": "create_dragons_plus",
+    "jar": "CreateDragonsPlus-1.11.9.jar",
+    "bytes": 1085674,
+    "sha256": "37f05a6775bbe811fe8c2833fa6289a1c704d0b25bdd5f239d343a5c6f62ed8a",
+    "class": "plus.dragons.createdragonsplus.data.runtime.RuntimePackResources",
+    "class_bytes": 14620,
+    "class_sha256": "05098526debde24c618391bd8c1eeaa3b285eeff290371aeedfc0602d532a244",
+    "native_fields": [
+      "resources:Map",
+      "file:IModFile",
+      "type:PackType"
+    ],
+    "native_api": "getNamespaces/listResources/getResource backed by same native Path map; synthetic PackMetadataSection; addDataProvider joins its native generation future",
+    "namespace_quirk": "All map keys are relativized to the data root, including icons/root metadata; literal .. is preserved. Native mod-file/path prefix semantics determine logical resources."
+  },
+  "metadata_api": "PackMetadataSection.TYPE.toJson(actualSection)",
+  "headers": "Every actual opened pack index/id/class logged before provider traversal; not a static inventory claim",
+  "bounds_unchanged": {
+    "packs": 512,
+    "entries": 262144,
+    "visits": 1048576,
+    "aggregate_resource_bytes": 536870912,
+    "one_resource_bytes": 33554432,
+    "seconds": 60
+  },
+  "raw_members_preserved": true,
+  "native_override_stacks_preserved": true,
+  "unknown_provider_refusal": true,
+  "native_runtime_tested": false
+}

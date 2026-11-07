@@ -29,8 +29,8 @@ BOUNDS=(1217,-1296,1392,-1120)
 MAX_OUTPUT=64*MIB
 MAX_SECONDS=150
 OVERLAYS=(
- ('seabird','staging/seabird-tortuga-retrofit-1793196434552931800/seabird-new-composite-VERIFY-ONLY.json','059b7bfb8142d8fb5c3175c19312fa7c5707afa3d0d22de5d13ea0179b706d67'),
- ('density','staging/eastern-tortuga-density-1793200403515761500/cluster-complete-after-VERIFY-ONLY.json','8dbdf6398083212251d7fe3e6b371cb3034154e80808a6a06194de5fb970c1e6'),
+ ('seabird','staging/seabird-tortuga-retrofit-1793196434552931800/seabird-shell-PROPOSAL.json','f2122e0cc6e29948867ad53039d9d2820a1d63e5f120b63ea2aba6a82e1a42f0',321),
+ ('density','staging/eastern-tortuga-density-1793200403515761500/cluster-density-PROPOSAL.json','8a647689c571e48de0e666f279e3903220c84f962b0df4c400865bc9f7dd1c8b',1808),
 )
 PRIVATE_ANCHORS={(1296,65,-1250),(1296,65,-1249),(1300,65,-1255)}
 VOID={'minecraft:air','minecraft:cave_air','minecraft:void_air'}
@@ -38,6 +38,11 @@ VOID={'minecraft:air','minecraft:cave_air','minecraft:void_air'}
 
 def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
 def in_study(q):return BOUNDS[0]<=q[0]<=BOUNDS[2] and BOUNDS[1]<=q[2]<=BOUNDS[3]
+
+
+def apply_authored_delta(expected,delta,exact_count):
+    if len(delta)!=exact_count:raise UserError('Only exact actually authored DELTA targets confer source ownership; read-only full context is excluded')
+    expected.update(delta)
 
 
 def classify_current(expected,actual,is_be,private=False):
@@ -71,8 +76,9 @@ def before_sources(home):
             if q in expected and expected[q]!=s:raise UserError('Original source ownership is ambiguous')
             expected[q]=s;original[q]=s
         refs.append({'id':batch,'path':rel+'/'+name,'sha256':sha,'original_before_sha256':prior_sha})
-    for label,rel,sha in OVERLAYS:
-        doc=checked(home/rel,sha,2*MIB);expected.update(flatten(doc));refs.append({'id':label,'path':rel,'sha256':sha})
+    for label,rel,sha,count in OVERLAYS:
+        doc=checked(home/rel,sha,2*MIB);apply_authored_delta(expected,flatten(doc),count)
+        refs.append({'id':label,'path':rel,'sha256':sha,'authored_delta_cells':count,'full_VERIFY_ONLY_context_never_confers_authorship':True})
     # This is the exact newly native-placed infill room, not an old-grid proxy.
     houses.append({'id':'density/bent-needle','name':'The Bent Needle','batch':'native48-density',
         'main_footprint':[[x,z] for x in range(1255,1260) for z in range(-1212,-1204)],'floor_y':64,'storeys':2})

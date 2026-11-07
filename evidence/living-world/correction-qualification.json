@@ -1,0 +1,126 @@
+{
+  "recorded_at_utc": "2026-10-28T22:26:10Z",
+  "source_commit": "d8bf5b4c9520439d9fdffcc1a888cd3011f706dc",
+  "status": "CORRECTED_SOURCE_CANDIDATE_NATIVE_ACCEPTANCE_OPEN",
+  "supersedes": {
+    "receipt": "evidence/living-world/qualification.json",
+    "source_commit": "b59c8b3a9532a46ff3ad2dfa2754d6c11471512a",
+    "adapter_sha256": "4ceca0abca64b4d8468d3fc070d81c4ba95b24ce2ce73a1ff9b4723fffbd9b68",
+    "status": "HELD_HISTORICAL_SOURCE_DEFECTS",
+    "historical_receipt_preserved": true
+  },
+  "corrections": [
+    "Supply the upstream conversation-count gate for configured dynamic exchanges.",
+    "Admit shared ambient bubbles against atomic present-observer rate and simultaneous-display budgets, including bubbles-only output.",
+    "Re-evaluate retained native and preview history under current topic and secret policies; zero preview context means no history.",
+    "Bind delayed replies to the original player session, loaded entity and configuration; reject stale delivery before display or memory.",
+    "Recheck original request consent and configuration after provider completion.",
+    "Settle dropped queued work and replies awaiting the server executor during shutdown; retain capacity until the original provider future completes, independently of logical deadlines.",
+    "Run the portable pure-JVM checks with explicit Java 21 and include Character Studio frontend checks in CI."
+  ],
+  "focused_python_jvm": {
+    "command": "python -m unittest tests.test_characters tests.test_character_integration tests.test_living_world_upstream tests.test_living_world_java tests.test_living_world_delivery tests.test_ambient_budget_java -q",
+    "total": 49,
+    "registry": 32,
+    "http_backup_atlas": 5,
+    "upstream_export": 7,
+    "actual_jvm_core_provider_request_slots": 3,
+    "actual_jvm_delivery_identity": 1,
+    "actual_jvm_ambient_budget": 1,
+    "seconds": 10.846,
+    "result": "pass",
+    "tier": "Actual Python, loopback HTTP and pure/API JVM checks; synthetic provider/session inputs; no Minecraft gameplay or external-provider request."
+  },
+  "javascript": {
+    "command": "node --test tests/session.test.mjs tests/polling.test.mjs tests/characters.test.mjs tests/atlas-characters.test.mjs",
+    "total": 23,
+    "result": "pass",
+    "app_and_characters_syntax": "pass"
+  },
+  "canonical_pack_validation": {
+    "command": "python -m tools.pack validate",
+    "errors": [],
+    "mods": 208,
+    "tier": "manifest integrity",
+    "canonical_pack_changed": false
+  },
+  "full_python": {
+    "command": "python -m unittest discover -s tests -v",
+    "total": 1143,
+    "errors": 3,
+    "skipped": 1,
+    "seconds": 88.705,
+    "status": "failed",
+    "error_modules": [
+      "test_artistic_tortuga_inner_west_sprint",
+      "test_artistic_tortuga_west15_shells",
+      "test_artistic_tortuga_western_spit"
+    ],
+    "cause": "The unchanged base imports absent tools/artistic_tortuga_coast_batches.py and tools/artistic_tortuga_west_approved_blocks.py. Corresponding construction tests and dependency files are unchanged from 3d337e4; no dirty main-lane files were copied and no checks were weakened.",
+    "skip": "Host lacks symlink creation privilege for an existing fixture.",
+    "retained_private_log": ".local/living-world/correction-full-suite-r1.log",
+    "private_log_sha256": "da9a91ff93fc091ab4ccfcfd1f0fe5a8e8e56b9bb8876dbee07d1ccac6bbb961",
+    "scope_note": "The later Java compiler-path portability adjustment and CI configuration were followed by a passing 49-test focused run; application and native source did not change after the full run."
+  },
+  "native_build": {
+    "source_commit": "d8bf5b4c9520439d9fdffcc1a888cd3011f706dc",
+    "private_artifact": ".local/living-world/awft-living-world-d8bf5b4.jar",
+    "bytes": 53207,
+    "sha256": "75fe24c46dbb703f74c980cc231588d1a9ac855a72740668c4b25b3807959aea",
+    "compiler": "Java 21.0.10",
+    "tier": "Compilation against existing Minecraft/NeoForge and exact pinned author APIs; not native Mixin application or gameplay.",
+    "inputs": {
+      "smartvillagers-neoforge-1.21.1-2.0.0.jar": "bbfbfacd7210def810dacf36352cc55f2b3169db5fa7befd90888dd9a74c1630",
+      "chattingvillagers-neoforge-1.21.1-1.1.0.jar": "a93084403db82eea6ec5069424aca0cedbf8c9592e41d4ab3658299ba34afd5a"
+    },
+    "repeat_build_same_hash": true,
+    "downloaded_jars_committed": false
+  },
+  "ambient_boundaries": {
+    "emission_limit_per_present_observer_per_minute": 3,
+    "simultaneous_limit_per_present_observer": 2,
+    "disjoint_audiences_independent": true,
+    "shared_bubble_suppressed_for_present_opted_out_observer": true,
+    "later_arrivals_and_modified_client_visibility": "not guaranteed by emission-time accounting; assess in native multiplayer tests"
+  },
+  "browser": {
+    "new_browser_run_for_this_correction": false,
+    "historical_receipt": "evidence/living-world/qualification.json",
+    "note": "Existing actual desktop/mobile captures and saved scripted preview observations remain preserved at their original source checkpoint; no current-build game claim."
+  },
+  "ci": {
+    "current_push_result": "pending",
+    "previous_run": 40776960802,
+    "previous_source": "b59c8b3a9532a46ff3ad2dfa2754d6c11471512a",
+    "previous_conclusion": "failure from the same three inherited missing-module imports"
+  },
+  "storage_guard": {
+    "observed_at_utc": "2026-10-28T22:25:44.6803028Z",
+    "c_free_bytes": 120557047808,
+    "d_free_bytes": 282712817664,
+    "estimated_c_bytes": 33554432,
+    "estimated_d_bytes": 0,
+    "reserve_bytes_each": 32212254720,
+    "allowed": true,
+    "coverage": "Instruction and monitoring, not an operating-system quota; unrelated applications and pre-existing writers are not constrained."
+  },
+  "owner_test_assignment": "The user selected the main development lane to coordinate and run native in-game tests. This lane does not start a competing Minecraft runtime or take EULA/account actions.",
+  "remaining_native_acceptance": [
+    "Exact-candidate Mixin application and real startup/coexistence",
+    "Actual named entity UUIDs and measured district geometry",
+    "Edit, save, apply acknowledgement, in-game response and normal restart persistence",
+    "Two real players, synchronized bubbles and simultaneous different-NPC conversations",
+    "Trading, jobs, movement, crowded-area CPU/RSS/MSPT and response/network measurements",
+    "Disable or change policy, revoke consent, disconnect/relogin, teleport and unload while requests or delayed replies are pending",
+    "Actual opted-in external provider response, provider failure and timeout",
+    "Main-lane review, source omission resolution, integration and publication decisions"
+  ],
+  "invariants": {
+    "eula_accepted_by_this_lane": false,
+    "player_accounts_authenticated": false,
+    "minecraft_runtime_started_for_this_correction": false,
+    "official_server_changed_or_restarted": false,
+    "permanent_or_construction_save_modified": false,
+    "published_channel_changed": false
+  }
+}

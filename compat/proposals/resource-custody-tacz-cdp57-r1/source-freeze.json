@@ -1,0 +1,32 @@
+{
+  "schema": "awft-source-freeze:1",
+  "version": "0.6.57",
+  "files": {
+    "GeneratedPackProbe.java": {
+      "bytes": 8856,
+      "sha256": "e64f64834ae2542c34ad3998894dab510697d8ad886db32912643d34cafc6ba8"
+    },
+    "GeneratedServerPackCustody.java": {
+      "bytes": 14682,
+      "sha256": "dd1e23b00fed18b9075db0daca4bbe7314cfdbcdfc7ad851ac687b92f3532016"
+    },
+    "integration.diff": {
+      "bytes": 12117,
+      "sha256": "2aac103a84f3e0c0a053837dd81a714e705b8082038c861dcee1476adf0ab4fe"
+    },
+    "LithostitchedSeedgenResources.java": {
+      "bytes": 34875,
+      "sha256": "5f3cd2b8cf4e8f0f21ce89054b603ed18831c92725fedd120f2b79e23af69133"
+    },
+    "native-api-proof.json": {
+      "bytes": 2221,
+      "sha256": "42bc3477258b107dfb7b1b32364cba54859cfe81985baa03232f7539609db646"
+    },
+    "README.md": {
+      "bytes": 3324,
+      "sha256": "c1bc8c97588c4574692aeadbc9a5310e3881388bf1e5dcc381cd6d5bed4f43b4"
+    }
+  },
+  "base_artifact_sha256": "55a52a32d94cb2d23175b6aea79ad72a357e4d4677ec2e43295c9d986aff5e74",
+  "scope": "Isolated proposal/private build only; no active Source/runtime/config/Git changes"
+}

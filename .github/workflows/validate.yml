@@ -15,9 +15,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
       - run: python -m pip install -e .
+      - run: node --check control_room/static/characters.js
+      - run: node --test tests/characters.test.mjs tests/atlas-characters.test.mjs
       - run: python -m unittest discover -s tests -v
       - run: python -m tools.pack validate
       - run: node --check control_room/static/app.js
       - run: node --check control_room/static/atlas.js
-      - run: node --test tests/session.test.mjs
+      - run: node --test tests/session.test.mjs tests/polling.test.mjs

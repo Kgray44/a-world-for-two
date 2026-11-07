@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "worldfortwo.bridge.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "plugin": "worldfortwo.bridge.CdpRuntimeCacheWritePlugin",
+  "mixins": ["CdpRuntimeCacheWriteMixin"],
+  "injectors": {"defaultRequire": 1}
+}

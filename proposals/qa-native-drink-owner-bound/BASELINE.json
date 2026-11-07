@@ -1,0 +1,26 @@
+{
+  "format": "awft-drink-owner-bound-baseline:1",
+  "actual_QA10": {
+    "filename": "awft-settlement-qa-0.1.10.jar",
+    "bytes": 46426,
+    "sha256": "4b1378208634bccc7bd54ac5040fb6114fb721d28afe4942a2fe31848e6b2869"
+  },
+  "frozen_source": "proposals/qa-native-drink-capture",
+  "baseline_source_sha256": {
+    "BASELINE.json": "ab6eea3b37321c4f552be9e6b95e988943d759bd130fc383392693b59b491891",
+    "build.py": "0a6d4fc2429cb0a8b36aa90eb127baf3f0dc1c181e55d7321ca2dbfea087cf91",
+    "README.md": "5243c51bd66205709fa0daf1b2460a3defa0b6ac8c989f8befe4f18e449423ba",
+    "compat/qa-client/README.md": "3953bbd2dccaf62bc799dcf32f217121be26b38073166eb682bbeabe7e40527e",
+    "compat/qa-client/probes/MapCaptureGateProbe.java": "85f5298cb84d98e93fef0c13cf3190f66baf3f9ad3cbb86e533a932952f04fce",
+    "compat/qa-client/resources/META-INF/neoforge.mods.toml": "1e74be8d96c4d79c4b795d9082ad344c9c76b0ffb16112d70f35323832193265",
+    "compat/qa-client/src/worldfortwo/qa/MapCaptureGate.java": "359a076e3b7410e19114f750b3918d1a57bc5803da8cad2af984f714411dcf01",
+    "compat/qa-client/src/worldfortwo/qa/NativeDrinkCapture.java": "019b3127748088fdcbf4ced296f71be61089b5c2dca4c5c61b13eaa63451365e",
+    "compat/qa-client/src/worldfortwo/qa/NativeXaeroView.java": "fc93fe077e8f0d68e7a5c3084b25768888b5b57a0005880a375b88b9f55dbe7a",
+    "compat/qa-client/src/worldfortwo/qa/NpcClientSnapshot.java": "da7e1b1aa287ba10ee10d97b1bc00a04be5e004c48879c5f3aef73b424f71a8b",
+    "compat/qa-client/src/worldfortwo/qa/SettlementCapture.java": "82d373d2ff72bbfe996091e22391b56b1b056b25638169b32bc9a65c0b31921c"
+  },
+  "native_failure": "Root61 capture-on-native-drink rejected38452B regular owner marker under incorrectly shared4096B limit.",
+  "source_only": true,
+  "built": false,
+  "installed": false
+}

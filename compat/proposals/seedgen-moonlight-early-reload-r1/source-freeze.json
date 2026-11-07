@@ -1,0 +1,56 @@
+{
+  "format": "awft-source-freeze:1",
+  "created": "2026-10-30T05:36:03.710795+00:00",
+  "proposal_only": true,
+  "source_files": {
+    "MoonlightEarlyReloadOrderProbe.java": {
+      "bytes": 1382,
+      "sha256": "25f67a6f59d041417d9067d0563f1340539ef326152f18965a8d3c2a0825854c"
+    },
+    "MoonlightSeedgenEarlyReload.java": {
+      "bytes": 9271,
+      "sha256": "654ee826e3199dd4175a5dfa2f119830199da6c9a152ec5772e32e184a8ae42e"
+    },
+    "native-api-proof.json": {
+      "bytes": 6836,
+      "sha256": "ce42b2a4a021116c8fe39ed4bdda83116af78f34a054e6a3fa26df978be1b1ed"
+    },
+    "probe.py": {
+      "bytes": 8088,
+      "sha256": "fbd0b5069197a3ff0b5a3256d99d1af7c10edaff856ee8eeeb25186ab0e69e96"
+    },
+    "README.md": {
+      "bytes": 4287,
+      "sha256": "4d9208c68b2a0c11165b566cbdb3af3ad17b3bd5731da3266d7bda5bcfc3ab26"
+    },
+    "SeedgenMoonlightEarlyReloadMixin.java": {
+      "bytes": 1673,
+      "sha256": "ec6865f4185a09d5c246cbc4a18dbe251ebc4192f3150614e001147a632e237d"
+    }
+  },
+  "files_bytes_total": 31537,
+  "active_custody_input": {
+    "path": "compat/control-bridge/src/worldfortwo/bridge/MoonlightCachePackCustody.java",
+    "sha256": "81ee382697909288181b33d8590d495a1bf7c61f25b289a91763c5c044adb2e9"
+  },
+  "offline_verification": {
+    "receipt": "D:\\A World for Two\\staging\\world-tests\\20261027T053650Z-artistic\\staging\\moonlight-early-reload-offline-1793338535043346300\\result.json",
+    "sha256": "a508bcf08dc0d53dbe40131e50c7d31ac2da8f4e8e89c213e400bb690a8a1081",
+    "compile_passed": true,
+    "identity_fixture_passed": true,
+    "native_reload_or_game_executed": false
+  },
+  "reserve_guard": {
+    "utc": "2026-10-30T05:36:03.5315192Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 126496759808,
+    "dFreeBytes": 581210120192,
+    "estimatedCBytes": 131072,
+    "estimatedDBytes": 0,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "active_source_runtime_config_git_mutations": 0,
+  "upstream_source_assets_or_jars_copied": 0,
+  "native_parity_generation_visual_and_performance_qualification": "PENDING"
+}

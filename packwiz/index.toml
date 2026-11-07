@@ -6,6 +6,16 @@ hash = "e65a570c1da4ece0203bbdb0f39ca16827ab10d4b17401f5fbd60acc5df18bec"
 metafile = false
 
 [[files]]
+file = "config/adorablehamsterpets/main.toml"
+hash = "75f41680625bed6cb0e987e2d66674ce377abedbfde6bb95885b7534bc9651d9"
+metafile = false
+
+[[files]]
+file = "config/adorablehamsterpets/worldgen.toml"
+hash = "c747fe473265e2c5a43d67d610d4d89e16151ceb79bb0945233d07e614081007"
+metafile = false
+
+[[files]]
 file = "config/advancedweather-common.json"
 hash = "89f72e630a32f03f67e4939eed69c7582f06df52dc774facba758aac747b18f4"
 metafile = false
@@ -21,6 +31,31 @@ hash = "8e1535395e284dfa322bb86ca564df5b46f73763ef9df5f34d5bc2cf1dcd7964"
 metafile = false
 
 [[files]]
+file = "config/chattingvillagers.json"
+hash = "60c021043491484f758e611ba5f9ce4bd7af2e18997b439770d0563966719de4"
+metafile = false
+
+[[files]]
+file = "config/chattingvillagers/dialogue/en_us/awft_engineering.json"
+hash = "ce0ac575c2fb6596513b84a24996a6faa1dbf7fea75a6d58b53140eaf80d3da6"
+metafile = false
+
+[[files]]
+file = "config/chattingvillagers/dialogue/en_us/awft_homestead.json"
+hash = "fae4409d0c9120fe2b04f89e88ad0da818bb85d2c62f68db28f087c3be281480"
+metafile = false
+
+[[files]]
+file = "config/chattingvillagers/dialogue/en_us/awft_rosewater.json"
+hash = "a6acc791fd31d83e891c73c09f1cfe7c3b028857d66dffc6ec1565b4d13a8fc3"
+metafile = false
+
+[[files]]
+file = "config/chattingvillagers/dialogue/en_us/awft_tortuga.json"
+hash = "163d3b5ed80b64e5c1c5817d84d56e00160ca95cdf22d82198f1e5775baba33f"
+metafile = false
+
+[[files]]
 file = "config/cinematic-client.toml"
 hash = "39c6fe532c7be29481c14bf96b2e1884f31fff62bdf1ad6f123866163ee4a95b"
 metafile = false
@@ -33,6 +68,11 @@ metafile = false
 [[files]]
 file = "config/connectiblechains.json"
 hash = "99176d18c26709e34457f840f92a024d70e65f34e6a7b6bd9320d4efe7e3f003"
+metafile = false
+
+[[files]]
+file = "config/create-server.toml"
+hash = "d4afff7e14cf736b3fda66527a2caa117b65acc332f99f94535fd0dd4fa1c82d"
 metafile = false
 
 [[files]]
@@ -93,6 +133,16 @@ metafile = false
 [[files]]
 file = "config/openpartiesandclaims-server.toml"
 hash = "26ed1a05613edb04aa80264e27686df4dab1bba31c3d6a8048061b576090ce65"
+metafile = false
+
+[[files]]
+file = "config/paxi/datapacks/awft-cozy-pets/data/animalgarden_sugarglider/neoforge/biome_modifier/spawn_sugarglider.json"
+hash = "cad35ad2b9a47c63319b335fb3b5852c8faf8e1b8842b1c2297eed5a1d046528"
+metafile = false
+
+[[files]]
+file = "config/paxi/datapacks/awft-cozy-pets/pack.mcmeta"
+hash = "5a82aa814458dceafc116f66ba021e6e07c28d47716833efefa2cd20dd1ea4ba"
 metafile = false
 
 [[files]]
@@ -198,6 +248,11 @@ metafile = false
 [[files]]
 file = "config/paxi/datapacks/awft-integration/data/castleshift/worldgen/structure_set/castle.json"
 hash = "a955f68fc5a2537c8898de25659558556fbe37eebedc01bfb54f95e6336a5660"
+metafile = false
+
+[[files]]
+file = "config/paxi/datapacks/awft-integration/data/create/tags/item/chain_rideable.json"
+hash = "9485e76df01c4e319f39dfc84a36c3cd48b188c1dc8fe52f60c5225866e6972f"
 metafile = false
 
 [[files]]
@@ -361,6 +416,11 @@ hash = "d19df38b17ff4351052c8e030be0f423b1ae7a065ccf562b8c61c9bf1127c993"
 metafile = false
 
 [[files]]
+file = "config/paxi/datapacks/awft-integration/data/zipline/tags/item/attachment.json"
+hash = "9485e76df01c4e319f39dfc84a36c3cd48b188c1dc8fe52f60c5225866e6972f"
+metafile = false
+
+[[files]]
 file = "config/paxi/datapacks/awft-integration/pack.mcmeta"
 hash = "cebb30e14537066b7249490b8bcd4a446466882c471ac58adef5330e4951f460"
 metafile = false
@@ -396,6 +456,11 @@ hash = "7dba5a9819dda027143c12a320c5cfc855660eeffa62c21ea12b123f772adaa2"
 metafile = false
 
 [[files]]
+file = "config/smartvillagers/config.toml"
+hash = "f21d31d248f982f5e0b76ed5f9db2e468e0e6bde5965098ee069a3b3a70c5d80"
+metafile = false
+
+[[files]]
 file = "config/tectonic.json"
 hash = "9ca01c0e5f109c517d2ebc025d933ca30c7c9f5010019b67527b061ecb8869d5"
 metafile = false
@@ -413,6 +478,11 @@ metafile = false
 [[files]]
 file = "mods/3dskinlayers.pw.toml"
 hash = "7e40a4d1d2e83d905a8e5ce6638df0c432e0d171398b1cee5ca6797583cd8d81"
+metafile = true
+
+[[files]]
+file = "mods/adorable-hamster-pets.pw.toml"
+hash = "9ac04d8ae8a73bc9dbc90271db0a526d93ccf5b6a2d297bda0d7b028335441fe"
 metafile = true
 
 [[files]]
@@ -456,6 +526,11 @@ hash = "a451059980692af80ab2dbafccf61d648c5d00df535cee73188b912cf1664cd3"
 metafile = true
 
 [[files]]
+file = "mods/aquarius-libs.pw.toml"
+hash = "d3fb7327eb18a285a00dd8ed8f6f0ab42d1383ac4910042f884d978368de6936"
+metafile = true
+
+[[files]]
 file = "mods/archaeology-ruins.pw.toml"
 hash = "788048e2d442ecb06dd5046ee61696ff72f97749ce85415c3943d87b13ea4e3f"
 metafile = true
@@ -482,7 +557,12 @@ metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "43db82b9466349304b0924ad2646f52743f3f17fcc8f59a758a3cff20a7d6316"
+hash = "3858318f0d3712b91d49df07169756b5dfe5dbcef9ccd099a888439d0b96a92f"
+metafile = true
+
+[[files]]
+file = "mods/awft-living-world.pw.toml"
+hash = "702a18e4c1f87ca5c203d9b8e02f99c0dd88aab986831ba981ae7bfb96d5cf22"
 metafile = true
 
 [[files]]
@@ -538,6 +618,11 @@ metafile = true
 [[files]]
 file = "mods/castle-shift.pw.toml"
 hash = "1b5825453ee9084adec261c66fd419871d87589d25d4025c40d7cd9f4f4f98cb"
+metafile = true
+
+[[files]]
+file = "mods/chatting-villagers.pw.toml"
+hash = "89bb9bfe6de40dd9ff93556ad4c078efec90126089c9a686cdac44699c2a2dea"
 metafile = true
 
 [[files]]
@@ -1091,6 +1176,11 @@ hash = "8978b79ee7682af4619775c3003db32b07d9abef8952ddbb0ca9230bb61bc5b5"
 metafile = true
 
 [[files]]
+file = "mods/patchouli.pw.toml"
+hash = "bf69f4953eb16f1a28316df6e9b20beab4b326acef6b1593c0feef18de4912f9"
+metafile = true
+
+[[files]]
 file = "mods/paxi.pw.toml"
 hash = "1fb6cc3f440365cfeeb6e32e4d9517315eb2a8575703ea980d9bacfea2b23ce0"
 metafile = true
@@ -1223,6 +1313,11 @@ metafile = true
 [[files]]
 file = "mods/small-ships.pw.toml"
 hash = "7e81efd80de61fb3bb1ad176f1d6c232ca7ec7369c17bfd3ad4b4b003a61ac70"
+metafile = true
+
+[[files]]
+file = "mods/smart-villagers-ai.pw.toml"
+hash = "673b3e5b128157d327682f378afead7556b53095ce01de4c1ecd25b570fa74a8"
 metafile = true
 
 [[files]]

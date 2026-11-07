@@ -1,0 +1,75 @@
+--- 57/TreeGrowthScope.java
++++ 58/TreeGrowthScope.java
+@@ -5,6 +5,7 @@
+ import net.minecraft.tags.BlockTags;
+ import net.minecraft.world.level.Level;
+ import net.minecraft.world.level.block.LeavesBlock;
++import net.minecraft.world.level.block.SaplingBlock;
+ import net.minecraft.world.level.block.state.BlockState;
+ import net.minecraft.world.level.block.state.properties.Property;
+ import net.minecraft.world.phys.AABB;
+@@ -38,6 +39,9 @@
+     final boolean allowNativeNest;
+     final Set<BlockPos> approvedNativeFoliage;
+     final Set<BlockState> approvedNaturalTreeOutputs;
++    final BlockPos ownedPreplantedRoot;
++    final BlockState ownedPreplantedOriginal;
++    final Set<BlockState> ownedPreplantedOutputs;
+     final LinkedHashSet<BlockPos> attempted=new LinkedHashSet<>();
+     final Map<BlockPos,BlockState> lastExpected=new HashMap<>();
+     int reads,writes;
+@@ -67,6 +71,26 @@
+     }
+     /** Explicit dense-root opt-in only; legacy constructors retain leaf-only behavior. */
+     TreeGrowthScope(ServerLevel level,Map<BlockPos,BlockState> before,AABB writeBounds,Set<Long> protectedColumns,int soilY,boolean allowNativeNest,Set<BlockPos> approvedNativeFoliage,Set<BlockState> approvedNaturalTreeOutputs){
++        this(level,before,writeBounds,protectedColumns,soilY,allowNativeNest,approvedNativeFoliage,approvedNaturalTreeOutputs,null,null,Set.of());
++    }
++    /** Only one exact reviewed pre-existing sapling root; every legacy call keeps no permission. */
++    TreeGrowthScope(ServerLevel level,Map<BlockPos,BlockState> before,AABB writeBounds,Set<Long> protectedColumns,int soilY,boolean allowNativeNest,Set<BlockPos> approvedNativeFoliage,Set<BlockState> approvedNaturalTreeOutputs,BlockPos ownedRoot,BlockState ownedOriginal,Set<BlockState> ownedOutputs){
++        if(ownedRoot==null){
++            if(ownedOriginal!=null||!ownedOutputs.isEmpty())throw new IllegalStateException("No output permission without an exact owned preplanted root");
++        }else{
++            if(ownedOriginal==null||!ownedOriginal.equals(before.get(ownedRoot))||!(ownedOriginal.getBlock()instanceof SaplingBlock)
++                ||!ownedOriginal.hasProperty(SaplingBlock.STAGE)||ownedOriginal.hasBlockEntity()||!ownedOriginal.getFluidState().isEmpty()||ownedOriginal.is(BlockTags.LOGS)
++                ||!writeBounds.contains(ownedRoot.getX()+.5,ownedRoot.getY()+.5,ownedRoot.getZ()+.5)
++                ||protectedColumns.contains(column(ownedRoot.getX(),ownedRoot.getZ()))||ownedOutputs.isEmpty()||ownedOutputs.size()>260)
++                throw new IllegalStateException("Exact captured unprotected native sapling root and finite outputs required");
++            for(BlockState output:ownedOutputs){
++                boolean ownStage=output.equals(ownedOriginal.setValue(SaplingBlock.STAGE,0))||output.equals(ownedOriginal.setValue(SaplingBlock.STAGE,1));
++                if(output.hasBlockEntity()||!output.getFluidState().isEmpty()
++                    ||!(output.isAir()||ownStage||output.is(BlockTags.LOGS)||output.getBlock()instanceof LeavesBlock&&output.is(BlockTags.LEAVES)))
++                    throw new IllegalStateException("No arbitrary block, BE or fluid is an owned-root tree output");
++            }
++        }
++        this.ownedPreplantedRoot=ownedRoot==null?null:ownedRoot.immutable();this.ownedPreplantedOriginal=ownedOriginal;this.ownedPreplantedOutputs=snapshotSet(ownedOutputs);
+         if(approvedNativeFoliage.size()>65536)throw new IllegalStateException("Finite exact native foliage overlap required");
+         if(approvedNaturalTreeOutputs.size()>256)throw new IllegalStateException("Finite descriptor-qualified tree output set required");
+         this.approvedNaturalTreeOutputs=snapshotSet(approvedNaturalTreeOutputs);
+@@ -97,6 +121,10 @@
+             boolean oldBE,boolean oldFluid,boolean exactQualifiedOutput,boolean newBE,boolean newFluid){
+         return enabled&&approved&&oldLeaves&&!oldPersistent&&!oldLog&&!oldBE&&!oldFluid&&exactQualifiedOutput&&!newBE&&!newFluid;
+     }
++    static boolean ownedPreplantedPermission(boolean enabled,boolean exactPosition,boolean exactOriginal,boolean originalSapling,
++            boolean originalLog,boolean originalBE,boolean originalFluid,boolean qualifiedOutput,boolean desiredBE,boolean desiredFluid){
++        return enabled&&exactPosition&&exactOriginal&&originalSapling&&!originalLog&&!originalBE&&!originalFluid&&qualifiedOutput&&!desiredBE&&!desiredFluid;
++    }
+     @SuppressWarnings({"rawtypes","unchecked"}) private static String diagnosticState(BlockState state){
+         if(state==null)return "UNKNOWN";
+         StringJoiner props=new StringJoiner(",");
+@@ -124,11 +152,15 @@
+             original.getBlock()instanceof LeavesBlock&&original.is(BlockTags.LEAVES),
+             !original.hasProperty(LeavesBlock.PERSISTENT)||original.getValue(LeavesBlock.PERSISTENT),original.is(BlockTags.LOGS),
+             original.hasBlockEntity(),!original.getFluidState().isEmpty(),scope.approvedNaturalTreeOutputs.contains(desired),desired.hasBlockEntity(),!desired.getFluidState().isEmpty());
++        boolean ownedRootAllowed=ownedPreplantedPermission(scope.ownedPreplantedRoot!=null,
++            position.equals(scope.ownedPreplantedRoot),original.equals(scope.ownedPreplantedOriginal),original.getBlock()instanceof SaplingBlock,
++            original.is(BlockTags.LOGS),original.hasBlockEntity(),!original.getFluidState().isEmpty(),scope.ownedPreplantedOutputs.contains(desired),
++            desired.hasBlockEntity(),!desired.getFluidState().isEmpty());
+         // A new mode never broadens old persistent-leaf permission accidentally.
+         boolean canopyAllowed=scope.approvedNaturalTreeOutputs.isEmpty()?nativeFoliageOnly:naturalCanopy;
+         if(original.hasBlockEntity()||(level.getBlockEntity(position)!=null&&!scope.attempted.contains(position))||!original.getFluidState().isEmpty()
+             ||original.getBlock() instanceof LeavesBlock&&!canopyAllowed||original.is(BlockTags.LOGS)
+-            ||!(canopyAllowed||original.isAir()||SOFT.contains(id)||(position.getY()<=scope.soilY&&original.is(BlockTags.DIRT))))
++            ||!(ownedRootAllowed||canopyAllowed||original.isAir()||SOFT.contains(id)||(position.getY()<=scope.soilY&&original.is(BlockTags.DIRT))))
+             throw denied(scope,"Preserve existing tree, fluid, structure or furnishing: "+position+" original="+diagnosticState(original)+" desired="+diagnosticState(desired));
+         try{TreeBeeAudit.desired(original,desired,scope.allowNativeNest);}
+         catch(Throwable beeRefusal){

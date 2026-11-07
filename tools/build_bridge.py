@@ -9,9 +9,19 @@ from pathlib import Path
 
 from control_room.common import REPO, UserError, digest
 
-BRIDGE_VERSION = '0.6.35'
+BRIDGE_VERSION = '0.6.51'
+
+
+def validate_runtime_identity(source, candidate, bridge):
+    """Reject a compiled parent whose helper authorities name an older pack."""
+    import re
+    authorities = re.findall(r'new\s+\w+\(\s*"(0\.1\.0-candidate\.\d+)"\s*,\s*"([0-9.]+)"', source)
+    if len(authorities) != 13 or any(pair != (candidate, bridge) for pair in authorities):
+        raise UserError('All thirteen native helper authorities must match the candidate and bridge metadata')
 
 def build(home, destination, storage):
+    from .candidate import VERSION
+    validate_runtime_identity((REPO/'compat/control-bridge/src/worldfortwo/bridge/ControlBridge.java').read_text(encoding='utf8'), VERSION, BRIDGE_VERSION)
     storage.reserve(16 * 1024 * 1024, destination)
     if destination.exists():
         raise UserError("Bridge output already exists; use a fresh owned build directory")

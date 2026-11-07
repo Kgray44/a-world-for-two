@@ -1,0 +1,41 @@
+{
+  "format": "awft-source-freeze:1",
+  "at": "2026-10-30T15:54:22.536503+00:00",
+  "state": "SOURCE_ONLY_JAVA_BUILD_HELD_UNTIL_CLIENT_CLOSED",
+  "base63_resource_sha256": "b18146159802f201e9b076023e34a8871a238fade62574d0c982c93d74feae04",
+  "base63_jar_sha256": "f3d40567e253efe64a3f820f660c5b4aae1bec7c8a1283573c701addb779ce83",
+  "runtime_source_target": "compat/control-bridge/src/worldfortwo/bridge/LithostitchedSeedgenResources.java",
+  "changed_existing_lines": [
+    43,
+    44,
+    423,
+    595
+  ],
+  "unchanged_existing_line_positions": true,
+  "static_source_scope_checks": "PASS",
+  "files": {
+    "integration.diff": {
+      "bytes": 2832,
+      "sha256": "c67500b4cbf2df3cd45196849742323d0fcfb7078ddb9079618b73d6444afded"
+    },
+    "LithostitchedSeedgenResources.java": {
+      "bytes": 48529,
+      "sha256": "9434b2205553ca0dc4777bfa5641b233bf7bf551409eed3617fe500c8dc005a9"
+    },
+    "NativeHashWorkBudgetProbe.java": {
+      "bytes": 7724,
+      "sha256": "2940cd68490fa07c8fa663d194e2f3accc4d7c72d18cca7174827665dc44e5df"
+    },
+    "README.md": {
+      "bytes": 3353,
+      "sha256": "90fb436346bf6717f7169958a1a113986904a69ca67ce1f25a35131e353a2408"
+    },
+    "work-budget-proof.json": {
+      "bytes": 5960,
+      "sha256": "4cfc2ec3e8d3b8c94596fb135da044a769d0fce88a2a3b421bace44c9b9852e3"
+    }
+  },
+  "Java_build_runs": 0,
+  "Native_runtime_world_install_actions": 0,
+  "actual64_full_resource_parity_generation_or_rendering_qualified": false
+}

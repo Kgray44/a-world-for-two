@@ -64,11 +64,20 @@ class ForestUnderstoryTests(unittest.TestCase):
 
     def test_adapter_has_every_direct_field_read_by_the_real_native_admission(self):
         source = Path(__file__).resolve().parents[1]/'compat/control-bridge/src/worldfortwo/bridge/SettlementSupport.java'
-        required = set(re.findall(r'candidate\.get(?:AsJsonArray)?\("([^\"]+)"\)', source.read_text(encoding='utf-8')))
+        native = source.read_text(encoding='utf-8')
+        required = set(re.findall(r'candidate\.get(?:AsJsonArray)?\("([^\"]+)"\)', native))
+        # This opt-in is read only after has(...); ordinary plant plans must
+        # remain offline rather than silently inherit the new live authority.
+        self.assertIn('candidate.has("live_ordinary") && candidate.get("live_ordinary").getAsBoolean()', native)
+        required -= {'live_ordinary'}
         doc = plants.settlement_plan({'seed': 'fixture', 'world_path': 'fixture-world'}, {'sha256': 'a'*64},
             {(10, 66, 20): 'minecraft:fern'}, 'fixture generic native plan')
         self.assertIn('bounds', required)
+        self.assertTrue({'seed', 'world_path', 'backup_sha256', 'palette', 'blocks',
+                         'bounds', 'block_entities', 'commands'} <= required)
         self.assertTrue(required <= doc.keys(), required-doc.keys())
+        self.assertNotIn('live_ordinary', doc)
+        self.assertNotIn('live_policy_sha256', doc)
         self.assertEqual(doc['bounds'], [10, 20, 10, 20])
         self.assertTrue(doc['construction_forbidden'])
 

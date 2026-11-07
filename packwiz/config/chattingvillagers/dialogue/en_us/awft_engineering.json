@@ -1,0 +1,356 @@
+[
+  {
+    "id": "awft_engineering_greetings_0",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Welcome! If anything whistles, admire it from over there."
+  },
+  {
+    "id": "awft_engineering_greetings_1",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Excellent timing. We were about to define success."
+  },
+  {
+    "id": "awft_engineering_greetings_2",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Hard hat on, confidence slightly reduced, in you come."
+  },
+  {
+    "id": "awft_engineering_greetings_3",
+    "type": "solo",
+    "category": "awft_greetings",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Mind the lever. It has strong opinions."
+  },
+  {
+    "id": "awft_engineering_jokes_0",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The prototype works perfectly when nobody expects it to."
+  },
+  {
+    "id": "awft_engineering_jokes_1",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "We made the train quieter. Now it sneaks up on the timetable."
+  },
+  {
+    "id": "awft_engineering_jokes_2",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A gear is just a wheel with excellent boundaries."
+  },
+  {
+    "id": "awft_engineering_jokes_3",
+    "type": "solo",
+    "category": "awft_jokes",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "It's not a breakdown. It's an unscheduled demonstration of gravity."
+  },
+  {
+    "id": "awft_engineering_contextual_0",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Create contraptions reward careful design. And bolts. So many bolts."
+  },
+  {
+    "id": "awft_engineering_contextual_1",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "KG calls it an improvement. I've moved the tea to a safer postcode."
+  },
+  {
+    "id": "awft_engineering_contextual_2",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The mechanism needs one final adjustment. That sentence has a long history here."
+  },
+  {
+    "id": "awft_engineering_contextual_3",
+    "type": "solo",
+    "category": "awft_contextual",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Please report smoke by color and enthusiasm, then stand clear."
+  },
+  {
+    "id": "awft_engineering_goodbyes_0",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Safe travels. If the bridge moves, please let it finish."
+  },
+  {
+    "id": "awft_engineering_goodbyes_1",
+    "type": "solo",
+    "category": "awft_goodbyes",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Come back after the test. We'll have a new definition of sturdy."
+  },
+  {
+    "id": "awft_engineering_weather_0",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Rain means a chance to test the roof's theoretical waterproofing."
+  },
+  {
+    "id": "awft_engineering_weather_1",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Thunder? I hope so. Our machine isn't supposed to do that."
+  },
+  {
+    "id": "awft_engineering_weather_2",
+    "type": "solo",
+    "category": "awft_weather",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ],
+      "weather": [
+        "rain",
+        "thunder"
+      ]
+    },
+    "weight": 1.0,
+    "text": "A stiff breeze. Excellent. Free engineering feedback."
+  },
+  {
+    "id": "awft_engineering_nearby_player_0",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "An observer! Splendid. We need someone to remember what it looked like before."
+  },
+  {
+    "id": "awft_engineering_nearby_player_1",
+    "type": "solo",
+    "category": "awft_nearby_player",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Please keep loose sleeves, loose plans and loose optimism clear of the gears."
+  },
+  {
+    "id": "awft_engineering_nighttime_0",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "After dark, all the unexplained lights look more intentional."
+  },
+  {
+    "id": "awft_engineering_nighttime_1",
+    "type": "solo",
+    "category": "awft_nighttime",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ],
+      "timeOfDay": [
+        "night"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The night shift is me, a lantern, and three unresolved clunks."
+  },
+  {
+    "id": "awft_engineering_tavern_0",
+    "type": "solo",
+    "category": "awft_tavern",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The tavern's a useful test environment. The chairs already expect the unexpected."
+  },
+  {
+    "id": "awft_engineering_catchphrases_0",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Within acceptable levels of surprising."
+  },
+  {
+    "id": "awft_engineering_catchphrases_1",
+    "type": "solo",
+    "category": "awft_catchphrases",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Measure twice. Stand back once."
+  },
+  {
+    "id": "awft_engineering_starters_0",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Would you like the explanation or the reassuring explanation?"
+  },
+  {
+    "id": "awft_engineering_starters_1",
+    "type": "solo",
+    "category": "awft_starters",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "What should our next contraption do, ideally?"
+  },
+  {
+    "id": "awft_engineering_animals_0",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "The workshop cat has passed inspection. The inspector was the workshop cat."
+  },
+  {
+    "id": "awft_engineering_animals_1",
+    "type": "solo",
+    "category": "awft_animals",
+    "conditions": {
+      "state": [
+        "awft_district_engineering"
+      ]
+    },
+    "weight": 1.0,
+    "text": "Do not put a saddle on the machine. The sheep has already suggested it."
+  }
+]

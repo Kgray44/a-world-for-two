@@ -184,9 +184,12 @@ class Server:
                                                 "state": self.state, "warning": self.warning})
 
     def start(self, notify=lambda _: None):
-        with self.layout.mutation, self._lock:
-            if self.running():
-                raise UserError("The server is already running")
+        # Keep the complete mutation lease, but do not hold the status lock
+        # while integrity scans, reserve checks or the Java probe are running.
+        with self.layout.mutation:
+            with self._lock:
+                if self.running():
+                    raise UserError("The server is already running")
             eula = self.layout.server / "eula.txt"
             if not eula.exists() or properties(eula.read_text()).get("eula") != "true":
                 raise UserError("The owner must read and accept Minecraft's EULA in Setup before the first start")
@@ -227,26 +230,34 @@ class Server:
             command = [java, f"-Xms{settings['initial_heap_gib']}G", f"-Xmx{settings['heap_gib']}G",
                        "-XX:+UseG1GC", "-Xlog:gc*:file=../logs/gc.log:time,level,tags:filecount=3,filesize=5M",
                        "@" + str(args), "nogui"]
-            self._logger = logging.getLogger("awft-server-" + str(self.layout.home))
-            self._logger.setLevel(logging.INFO)
-            if not self._logger.handlers:
-                handler = logging.handlers.RotatingFileHandler(self.layout.logs / "console.log", maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8")
-                self._logger.addHandler(handler)
-            self.process = subprocess.Popen(command, cwd=self.layout.server, stdin=subprocess.PIPE,
-                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
-                bufsize=1, creationflags=(subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW) if os.name == "nt" else 0)
-            proc = psutil.Process(self.process.pid)
-            self.identity = {"pid": proc.pid, "created": proc.create_time(), "command": command,
-                             "cwd": str(self.layout.server), "at": utcnow()}
-            write_json(self.owner_path, self.identity)
-            self.started = time.time()
-            self.state = "starting"
-            self.warning = None
-            self.tick.update(tps=None, mspt=None, at=None)
-            self._reader_thread = threading.Thread(target=self._reader, args=(self.process,), daemon=True)
-            self._reader_thread.start()
+            with self._lock:
+                # A process/identity can change while the read-only preflight
+                # is in progress. Never create a second child over that owner.
+                if self.running():
+                    raise UserError("The server is already running")
+                self._logger = logging.getLogger("awft-server-" + str(self.layout.home))
+                self._logger.setLevel(logging.INFO)
+                if not self._logger.handlers:
+                    handler = logging.handlers.RotatingFileHandler(self.layout.logs / "console.log", maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8")
+                    self._logger.addHandler(handler)
+                from .character_secrets import server_environment
+                self.process = subprocess.Popen(command, cwd=self.layout.server, stdin=subprocess.PIPE,
+                    env=server_environment(self.layout),
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
+                    bufsize=1, creationflags=(subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW) if os.name == "nt" else 0)
+                proc = psutil.Process(self.process.pid)
+                self.identity = {"pid": proc.pid, "created": proc.create_time(), "command": command,
+                                 "cwd": str(self.layout.server), "at": utcnow()}
+                write_json(self.owner_path, self.identity)
+                self.started = time.time()
+                self.state = "starting"
+                self.warning = None
+                self.tick.update(tps=None, mspt=None, at=None)
+                self._reader_thread = threading.Thread(target=self._reader, args=(self.process,), daemon=True)
+                self._reader_thread.start()
+                result = {"state": self.state, "pid": proc.pid}
             notify("Java started; waiting for NeoForge to report readiness")
-            return {"state": self.state, "pid": proc.pid}
+            return result
 
     def wait_ready(self, timeout=360):
         """Require actual readiness for an owned start; leave a slow live JVM alone."""
@@ -325,10 +336,9 @@ class Server:
         patterns += [r"awftharborcraft (status|cancel)",
                      r"awftharborcraft (inspect|create) artistic-harbor-craft-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftmill (status|cancel)",
-                     r"awftmill (inspect|commission) mill-commission-[a-f0-9]{16} [a-f0-9]{64}",
                      r"awftattractions (status|cancel)",
                      r"awftattractions (inspect|admit) [a-z0-9-]{1,80} [a-f0-9]{64}"]
-        if command.startswith(('awftengine repair-radio ', 'awftbridgeglue ', 'awftimport ', 'awftfountain ', 'awfttrees ', 'awfttreepatch ', 'awftlife ', 'awftchains ', 'awftbridgetop ', 'awftmill resume ')):
+        if command.startswith(('awftengine repair-radio ', 'awftbridgeglue ', 'awftimport ', 'awftfountain ', 'awfttrees ', 'awfttreepatch ', 'awftrelocate ', 'awfttransport ', 'awftlife ', 'awftchains ', 'awftbridgetop ', 'awftmill inspect ', 'awftmill resume ', 'awfttavern ', 'aw ')) or command == 'aw':
             owner = read_json(self.layout.state / 'artistic-owner.json', {})
             settings = self.layout.settings()
             if (owner.get('format') != 'awft-artistic-stage:1'
@@ -346,16 +356,28 @@ class Server:
                          r"awfttrees (describe|grow) trees-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awfttreepatch (status|cancel)",
                          r"awfttreepatch (inspect|grow) treepatch-[a-f0-9]{16} [a-f0-9]{64}",
+                         r"awfttransport snapshot [a-z0-9_-]{1,32}",
+                         r"awftrelocate (status|cleanup)",
+                         r"awftrelocate (inspect|move|inspect-moved|inspect-quarantined|record-conserved) relocation-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awftlife (status|cancel)",
                          r"awftlife (inspect|seed) life-[a-f0-9]{16} [a-f0-9]{64}",
+                         r"awfttavern (status|inspect)",
+                         r"awfttavern (prepare-recovery|finish-recovery)",
+                         r"awfttavern initialize [a-f0-9]{64}",
+                         r"awfttavern restore-original [a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12} [a-f0-9]{64}",
+                         r"awfttavern reconstruct-missing [a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12} [a-f0-9]{64}",
+                         r"awfttavern (suspend|music) (true|false)",
+                         r"awfttavern resident [a-z][a-z0-9-]{1,48} (enabled (true|false)|recover)",
+                         r"awfttavern resident [a-z][a-z0-9-]{1,48} weight (sit|social|walk|bar|watch|window|group|return|drink) ([1-9]|1[0-2])",
                          r"awftchains (status|cancel)",
                          r"awftchains (create|prepare-create|inspect|verify-restart) chains-[a-f0-9]{16} [a-f0-9]{64}",
                          r"awftbridgetop (status|cancel)",
                          r"awftbridgetop inspect bridge-topside-inspection-[a-f0-9]{16} [a-f0-9]{64}",
-                         r"awftmill resume mill-commission-[a-f0-9]{16} [a-f0-9]{64}"]
+                         r"awftmill (inspect|resume) mill-resume-[a-f0-9]{16} [a-f0-9]{64}",
+                         r"aw", r"aw (set (clear|sunny)|auto)"]
         if not any(re.fullmatch(pattern, command) for pattern in patterns):
             raise UserError("This command is outside the safe console allowlist; use dedicated controls or the local server console")
-        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|settle|cancel)|awftengine (setup|commission|close|repair-radio|cancel)|awftharborcraft (create|cancel)|awftmill (commission|resume|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel)|awftimport (settle|cancel)|awftfountain (commission|reset|recover-gate|park-gate|cancel)|awfttrees (grow|cancel)|awfttreepatch (grow|cancel)|awftlife (seed|cancel)|awftchains (create|prepare-create|cancel)|awftbridgetop cancel)", command)
+        dangerous = re.match(r"(op |deop |kick |whitelist remove |gamerule |difficulty |chunky cancel|awftbuild (place|noise|survey|settle|cancel)|awftengine (setup|commission|close|repair-radio|cancel)|awftharborcraft (create|cancel)|awftmill (commission|resume|cancel)|awftattractions (admit|cancel)|awftbridgeglue (retire|cancel)|awftimport (settle|cancel)|awftfountain (commission|reset|recover-gate|park-gate|cancel)|awfttrees (grow|cancel)|awfttreepatch (grow|cancel)|awftrelocate (move|record-conserved|cleanup)|awftlife (seed|cancel)|awftchains (create|prepare-create|cancel)|awftbridgetop cancel|awfttavern (initialize|suspend|music|resident|restore-original|reconstruct-missing|prepare-recovery|finish-recovery)|aw (set|auto))", command)
         if dangerous and not confirmed:
             raise UserError("Confirm this player or world setting change first")
         self._write(command)

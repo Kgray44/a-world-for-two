@@ -1,0 +1,286 @@
+--- a/compat/control-bridge/src/worldfortwo/bridge/LithostitchedSeedgenResources.java
++++ b/compat/control-bridge/src/worldfortwo/bridge/LithostitchedSeedgenResources.java
+@@ -76,7 +76,7 @@
+                 out.resource(id.toString(),resource::open);
+             }
+         }
+-        for(var view:out.cachedViews)view.unchanged();
++        for(var view:out.cachedViews)view.unchanged();for(var view:out.memoryViews)view.unchanged();
+         return new Attestation(identities,HexFormat.of().formatHex(out.digest.digest()),out.entries,out.bytes);
+     }
+     /** The native listing is cross-checked against a strict finite root walk:
+@@ -98,10 +98,10 @@
+             // One exact native dynamic provider is inventoried through its own API.
+             var runtimeIds=YungLocatePackCustody.matches(pack)?YungLocatePackCustody.inventory(pack):null;
+             var moonlight=MoonlightCachePackCustody.matches(pack)?MoonlightCachePackCustody.inspect(pack):null;
+-            if(moonlight!=null)out.cachedViews.add(moonlight);
++            if(moonlight!=null)out.cachedViews.add(moonlight);var memory=MoonlightInMemoryPackCustody.matches(pack)?MoonlightInMemoryPackCustody.inspect(pack,out.deadline):null;if(memory!=null)out.memoryViews.add(memory);
+             // An unknown subclass could override any listed/read resource method.
+             if(type!=PathPackResources.class&&type!=VanillaPackResources.class&&type!=CompositePackResources.class
+-                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null)
++                    &&type!=FilePackResources.class&&type!=EmptyPackResources.class&&runtimeIds==null&&moonlight==null&&memory==null)
+                 throw new IOException("Unsupported actual PackResources implementation: "+type.getName()+" pack="+pack.packId());
+             // Check that a file-backed native pack is actually open, rather than
+             // allowing its logged failed-open path to masquerade as an empty pack.
+@@ -165,8 +165,8 @@
+                 for(var entry:directories.entrySet())for(String dir:entry.getValue())pack.listResources(PackType.SERVER_DATA,entry.getKey(),dir,collect);
+                 if(!ids.equals(nested))throw new IOException("Native file resource inventory is incomplete");
+                 ids.addAll(expected);
+-            }else if(moonlight!=null) {
+-                moonlightInventory(pack,moonlight,out,ids,rawNames);
++            }else if(moonlight!=null||memory!=null) {
++                if(moonlight!=null)moonlightInventory(pack,moonlight,out,ids,rawNames);else memoryInventory(pack,memory,out,ids);
+             }else if(runtimeIds!=null) {
+                 ids.addAll(runtimeIds);
+             }else if(type==EmptyPackResources.class) {
+@@ -190,7 +190,7 @@
+                 out.text("native-selected-readability");out.text(id.toString());out.number(parserRejected?1:0);out.number(source==null?0:1);
+                 out.resource(id.toString(),source);
+             }
+-            if(moonlight!=null)moonlight.unchanged();
++            if(moonlight!=null)moonlight.unchanged();if(memory!=null)memory.unchanged();
+             return new Inventory(ids,Map.copyOf(readable));
+         }catch(IOException failure){throw failure;}
+         catch(UncheckedIOException failure){throw failure.getCause();}
+@@ -400,7 +400,7 @@
+         }
+     }
+     private static final class Accumulator {
+-        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();
++        final ArrayList<MoonlightCachePackCustody.View> cachedViews=new ArrayList<>();final ArrayList<MoonlightInMemoryPackCustody.View> memoryViews=new ArrayList<>();
+         final MessageDigest digest=sha();final long deadline=System.nanoTime()+java.util.concurrent.TimeUnit.SECONDS.toNanos(60);long bytes;int entries,packs,visits;
+         void visit()throws IOException {
+             if(++visits>MAX_VISITS||System.nanoTime()-deadline>=0)throw new IOException("Native server-data inventory exceeded its finite traversal bound");
+@@ -427,5 +427,22 @@
+             number(size);digest.update(content.digest());
+         }
+     }
++    /** Exact native memory storage was independently cross-checked with list/get.
++     * Feed every original root and selected data byte into the SAME accumulator;
++     * effective manager stacks and both end-of-capture checks remain unchanged. */
++    private static void memoryInventory(PackResources pack,MoonlightInMemoryPackCustody.View view,
++            Accumulator out,TreeSet<ResourceLocation> ids)throws IOException {
++        out.text("moonlight-memory-map:1");out.text(PackType.SERVER_DATA.name());
++        out.number(view.hidden()?1:0);
++        out.text("native-PackMetadataSection");out.text("message.moonlight.runtime");
++        out.number(view.packFormat());out.number(0); // exact native supportedFormats.empty
++        out.number(view.rootNames().size());
++        for(String name:new TreeSet<>(view.rootNames())) {
++            var source=pack.getRootResource(name.split("/",-1));
++            if(source==null)throw new IOException("Native Moonlight memory root disappeared");
++            out.resource("moonlight-memory-root/"+name,source);
++        }
++        ids.addAll(view.ids());view.unchanged();
++    }
+     private static MessageDigest sha(){try{return MessageDigest.getInstance("SHA-256");}catch(NoSuchAlgorithmException impossible){throw new AssertionError(impossible);}}
+ }
+--- /dev/null
++++ b/compat/control-bridge/src/worldfortwo/bridge/MoonlightInMemoryPackCustody.java
+@@ -0,0 +1,207 @@
++package worldfortwo.bridge;
++
++import java.io.IOException;
++import java.io.InputStream;
++import java.io.UncheckedIOException;
++import java.lang.invoke.MethodHandle;
++import java.lang.invoke.MethodHandles;
++import java.nio.file.Files;
++import java.nio.file.LinkOption;
++import java.nio.file.Path;
++import java.nio.file.attribute.BasicFileAttributes;
++import java.security.MessageDigest;
++import java.util.HashSet;
++import java.util.HexFormat;
++import java.util.Map;
++import java.util.Objects;
++import java.util.Set;
++import java.util.TreeMap;
++import java.util.TreeSet;
++import java.util.concurrent.ConcurrentHashMap;
++import net.minecraft.SharedConstants;
++import net.minecraft.network.chat.Component;
++import net.minecraft.resources.ResourceLocation;
++import net.minecraft.server.packs.PackResources;
++import net.minecraft.server.packs.PackType;
++import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
++import net.minecraft.server.packs.resources.IoSupplier;
++import net.neoforged.fml.ModList;
++
++/** Exact read-only custody of the observed Amendments2.2.2 generated server pack.
++ * Raw native maps and namespace/trie/list/get/root APIs must agree. Never invokes
++ * generation, adds resources, substitutes a pack or closes the original provider.
++ */
++final class MoonlightInMemoryPackCustody {
++    static final String TYPE="net.mehvahdjukaar.moonlight.api.resources.pack.InMemoryPackResources";
++    static final String PACK="amendments:generated_server_pack";
++    private static final String TRIE="net.mehvahdjukaar.moonlight.api.misc.ResourceLocationSearchTrie";
++    private static final String AMENDMENTS_SHA="9c48c7c6ec4f743a4eb4c8e80473c7204e6632287b2c5bfeb370be27482618dc";
++    private static final int MAX_ENTRIES=65536,MAX_ROOTS=4096,MAX_NAMESPACES=4096,MAX_TEXT=4096;
++    private static final long MAX_RESOURCE=32L*1024*1024,MAX_RAW_BYTES=64L*1024*1024,MAX_NATIVE_BYTES=192L*1024*1024;
++    record Stamp(int bytes,String sha256){}
++    private record Snapshot(Map<ResourceLocation,Stamp> resources,Map<String,Stamp> roots,
++                            Set<String> namespaces,boolean hidden,int packFormat){}
++    private MoonlightInMemoryPackCustody(){}
++    static boolean matches(PackResources pack){return pack.getClass().getName().equals(TYPE);}
++
++    static View inspect(PackResources pack,long deadline)throws IOException {
++        var mods=ModList.get();
++        if(!mods.getModContainerById("moonlight").orElseThrow().getModInfo().getVersion().toString().equals("1.21.1-3.7.2")
++                ||!mods.getModContainerById("amendments").orElseThrow().getModInfo().getVersion().toString().equals("1.21-2.2.2"))
++            throw new IOException("Exact Moonlight3.7.2/Amendments2.2.2 providers required");
++        return inspect(pack,mods.getModFileById("moonlight").getFile().getFilePath(),
++            mods.getModFileById("amendments").getFile().getFilePath(),deadline);
++    }
++    /** Exact-artifact offline fixture path; not a runtime path override. */
++    static View inspect(PackResources pack,Path moonlight,Path amendments,long deadline)throws IOException {
++        if(!matches(pack)||!PACK.equals(pack.packId()))throw new IOException("Unreviewed Moonlight memory class/pack identity");
++        artifact(moonlight,2299162,MoonlightCachePackCustody.JAR_SHA);
++        artifact(amendments,1187127,AMENDMENTS_SHA);
++        Class<?> type=pack.getClass();
++        pin(type,11654,"5c90d2b2db7661e9c04be3f5d6c35441235e9c3dc0af24a08622b51ea1aa3b06");
++        try {
++            Class<?> trie=Class.forName(TRIE,false,type.getClassLoader());
++            pin(trie,2857,"c0ca41f03ea10925bbfb88d0675fe760ba067a36f53a17ad3ef212e18e44d843");
++            var view=new View(pack,deadline,get(type,"resources",Map.class),get(type,"rootResources",Map.class),
++                get(type,"namespaces",Set.class),get(type,"packType",PackType.class),get(type,"searchTrie",trie),
++                get(type,"hidden",boolean.class),get(type,"metadata",PackMetadataSection.class));
++            view.initial=view.snapshot();view.verifyNativeAPIs();view.unchanged();return view;
++        }catch(IOException failure){throw failure;}
++        catch(VirtualMachineError|ThreadDeath failure){throw failure;}
++        catch(Throwable failure){throw new IOException("Exact native Moonlight memory custody failed",failure);}
++    }
++
++    static final class View {
++        final PackResources pack;final long deadline;
++        final MethodHandle resources,roots,namespaces,kind,trie,hidden,metadata;
++        final Object resourceMap,rootMap,namespaceSet,searchTrie;
++        Snapshot initial;long nativeBytes;
++        View(PackResources pack,long deadline,MethodHandle resources,MethodHandle roots,MethodHandle namespaces,
++             MethodHandle kind,MethodHandle trie,MethodHandle hidden,MethodHandle metadata)throws Throwable {
++            this.pack=pack;this.deadline=deadline;this.resources=resources;this.roots=roots;this.namespaces=namespaces;
++            this.kind=kind;this.trie=trie;this.hidden=hidden;this.metadata=metadata;
++            resourceMap=resources.invoke(pack);rootMap=roots.invoke(pack);namespaceSet=namespaces.invoke(pack);searchTrie=trie.invoke(pack);
++            if(resourceMap==null||resourceMap.getClass()!=ConcurrentHashMap.class||rootMap==null||rootMap.getClass()!=ConcurrentHashMap.class
++                    ||namespaceSet==null||namespaceSet.getClass()!=HashSet.class||searchTrie==null||!searchTrie.getClass().getName().equals(TRIE))
++                throw new IOException("Pinned Moonlight native memory storage topology differs");
++        }
++        Set<ResourceLocation> ids(){return initial.resources.keySet();}
++        Set<String> rootNames(){return initial.roots.keySet();}
++        boolean hidden(){return initial.hidden;}
++        int packFormat(){return initial.packFormat;}
++        void unchanged()throws IOException {
++            try {
++                if(resourceMap!=resources.invoke(pack)||rootMap!=roots.invoke(pack)||namespaceSet!=namespaces.invoke(pack)
++                        ||searchTrie!=trie.invoke(pack)||!initial.equals(snapshot()))
++                    throw new IOException("Native Moonlight memory keys,bytes,namespaces or metadata changed during attestation");
++            }catch(IOException failure){throw failure;}
++            catch(VirtualMachineError|ThreadDeath failure){throw failure;}
++            catch(Throwable failure){throw new IOException("Native Moonlight memory custody became unavailable",failure);}
++        }
++        private Snapshot snapshot()throws Throwable {
++            alive();
++            if(kind.invoke(pack)!=PackType.SERVER_DATA)throw new IOException("Moonlight memory provider is not SERVER_DATA");
++            Map<?,?> data=(Map<?,?>)resourceMap,root=(Map<?,?>)rootMap;
++            if(data.size()>MAX_ENTRIES||root.size()>MAX_ROOTS)throw new IOException("Bounded Moonlight memory resource count exceeded");
++            var ns=new TreeSet<String>();
++            Set<?> actual=(Set<?>)namespaceSet;
++            if(actual.size()>MAX_NAMESPACES)throw new IOException("Bounded Moonlight memory namespaces exceeded");
++            for(Object value:actual) {
++                if(!(value instanceof String name)||!ResourceLocation.isValidNamespace(name)||!ns.add(name))
++                    throw new IOException("Invalid native Moonlight memory namespace");
++            }
++            long bytes=0;int visits=0;var ids=new TreeMap<ResourceLocation,Stamp>();
++            for(var entry:data.entrySet()) {
++                alive();if(++visits>MAX_ENTRIES||!(entry.getKey()instanceof ResourceLocation id)||!(entry.getValue()instanceof byte[] raw)
++                        ||raw.length>MAX_RESOURCE||(bytes+=raw.length)>MAX_RAW_BYTES||!ns.contains(id.getNamespace())
++                        ||ids.put(id,new Stamp(raw.length,hash(raw)))!=null)
++                    throw new IOException("Bounded exact Moonlight memory data map required");
++            }
++            visits=0;var rootIds=new TreeMap<String,Stamp>();
++            for(var entry:root.entrySet()) {
++                alive();if(++visits>MAX_ROOTS||!(entry.getKey()instanceof String name)||name.length()>MAX_TEXT
++                        ||!(entry.getValue()instanceof byte[] raw)||raw.length>MAX_RESOURCE||(bytes+=raw.length)>MAX_RAW_BYTES
++                        ||rootIds.put(name,new Stamp(raw.length,hash(raw)))!=null)
++                    throw new IOException("Bounded exact Moonlight memory root map required");
++            }
++            if(ids.size()!=data.size()||rootIds.size()!=root.size())throw new IOException("Moonlight memory map changed while enumerating");
++            Object value=metadata.invoke(pack);
++            if(!(value instanceof PackMetadataSection meta)||value.getClass()!=PackMetadataSection.class
++                    ||pack.getMetadataSection(PackMetadataSection.TYPE)!=value
++                    ||!meta.description().equals(Component.translatable("message.moonlight.runtime"))
++                    ||meta.packFormat()!=SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA)
++                    ||meta.supportedFormats().isPresent())
++                throw new IOException("Pinned Moonlight native metadata object differs");
++            return new Snapshot(Map.copyOf(ids),Map.copyOf(rootIds),Set.copyOf(ns),(boolean)hidden.invoke(pack),meta.packFormat());
++        }
++        private void verifyNativeAPIs()throws IOException {
++            if(!new TreeSet<>(pack.getNamespaces(PackType.SERVER_DATA)).equals(initial.namespaces))
++                throw new IOException("Native Moonlight namespace API disagrees with its original map");
++            var listed=new TreeSet<ResourceLocation>();int[] visits={0};
++            try {
++                for(String ns:new TreeSet<>(initial.namespaces))pack.listResources(PackType.SERVER_DATA,ns,"",(id,supplier)->{
++                    try {
++                        alive();Stamp expected=initial.resources.get(id);
++                        // The pinned native addResource replaces the map value
++                        // but may insert this ID in the trie again. Validate
++                        // EVERY emitted supplier; only then collect unique IDs.
++                        if(++visits[0]>MAX_ENTRIES||expected==null||!expected.equals(read(supplier)))
++                            throw new IOException("Native Moonlight list API is unbounded,partial or byte-inconsistent");
++                        listed.add(id);
++                    }catch(IOException failure){throw new UncheckedIOException(failure);}
++                });
++            }catch(UncheckedIOException failure){throw failure.getCause();}
++            if(!listed.equals(initial.resources.keySet()))throw new IOException("Native Moonlight search trie omits raw memory resources");
++            for(var entry:initial.resources.entrySet())
++                if(!entry.getValue().equals(read(pack.getResource(PackType.SERVER_DATA,entry.getKey()))))
++                    throw new IOException("Native Moonlight selected API disagrees with original bytes");
++            for(var entry:initial.roots.entrySet())
++                if(!entry.getValue().equals(read(pack.getRootResource(entry.getKey().split("/",-1)))))
++                    throw new IOException("Native Moonlight root API disagrees with original bytes");
++            // The native metadata object exists independently of root bytes.
++            // Its genuinely absent pack.mcmeta must agree with the measured map.
++            if(!initial.roots.containsKey("pack.mcmeta")&&pack.getRootResource("pack.mcmeta")!=null)
++                throw new IOException("Undisclosed Moonlight memory root metadata bytes");
++        }
++        private Stamp read(IoSupplier<InputStream> supplier)throws IOException {
++            if(supplier==null)throw new IOException("Enumerated native Moonlight memory resource unavailable");
++            MessageDigest digest=digest();int bytes=0;byte[] buffer=new byte[8192];
++            try(InputStream input=supplier.get()) {
++                if(input==null)throw new IOException("Native Moonlight memory supplier returned null");
++                for(int n;(n=input.read(buffer))!=-1;) {
++                    alive();bytes+=n;nativeBytes+=n;
++                    if(bytes>MAX_RESOURCE||nativeBytes>MAX_NATIVE_BYTES)throw new IOException("Bounded native Moonlight memory reads exceeded");
++                    digest.update(buffer,0,n);
++                }
++            }
++            return new Stamp(bytes,HexFormat.of().formatHex(digest.digest()));
++        }
++        private void alive()throws IOException {
++            if(System.nanoTime()-deadline>=0)throw new IOException("Existing resource attestation deadline exceeded during Moonlight memory custody");
++        }
++    }
++    private static MethodHandle get(Class<?> type,String field,Class<?> value)throws ReflectiveOperationException {
++        return MethodHandles.privateLookupIn(type,MethodHandles.lookup()).findGetter(type,field,value);
++    }
++    private static void artifact(Path jar,int bytes,String sha)throws IOException {
++        var before=Files.readAttributes(jar,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);
++        if(!before.isRegularFile()||before.isSymbolicLink()||before.size()!=bytes)throw new IOException("Pinned ordinary memory provider artifact required");
++        try(InputStream input=Files.newInputStream(jar)){if(!sha.equals(hash(input,bytes)))throw new IOException("Pinned native memory provider artifact differs");}
++        var after=Files.readAttributes(jar,BasicFileAttributes.class,LinkOption.NOFOLLOW_LINKS);
++        if(!after.isRegularFile()||after.isSymbolicLink()||after.size()!=before.size()
++                ||!Objects.equals(after.fileKey(),before.fileKey())||!after.lastModifiedTime().equals(before.lastModifiedTime()))
++            throw new IOException("Native memory provider artifact changed during custody");
++    }
++    private static void pin(Class<?> type,int bytes,String sha)throws IOException {
++        try(InputStream input=type.getResourceAsStream("/"+type.getName().replace('.','/')+".class")) {
++            if(input==null||!sha.equals(hash(input,bytes)))throw new IOException("Pinned native memory provider class differs");
++        }
++    }
++    private static String hash(InputStream input,int exact)throws IOException {
++        MessageDigest digest=digest();int bytes=0;byte[] buffer=new byte[8192];
++        for(int n;(n=input.read(buffer))!=-1;){bytes+=n;if(bytes>exact)throw new IOException("Native memory artifact bound exceeded");digest.update(buffer,0,n);}
++        if(bytes!=exact)throw new IOException("Native memory artifact truncated");return HexFormat.of().formatHex(digest.digest());
++    }
++    private static String hash(byte[] bytes){return HexFormat.of().formatHex(digest().digest(bytes));}
++    private static MessageDigest digest(){try{return MessageDigest.getInstance("SHA-256");}catch(java.security.NoSuchAlgorithmException impossible){throw new AssertionError(impossible);}}
++}

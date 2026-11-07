@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "status": "PENDING_MASTER_RUNTIME_WINDOW",
+  "world_write_authority": "NONE",
+  "candidate": null,
+  "pack_sha256": null,
+  "cases": [
+    {
+      "id": "matching-startup-and-config",
+      "status": "NOT_RUN",
+      "steps": ["Record exact matching server/client pins and installed payload hashes", "Verify adorablehamsterpets, animalgarden_sugarglider, aquarius_libs and patchouli in native registry/startup", "Verify effective server main/worldgen config and sync; no missing-dependency, config, mixin or packet errors", "Confirm Paxi loaded the exact native glider modifier replacement with one spawn entry, weight2/group1"]
+    },
+    {
+      "id": "pets-and-animation-compatibility",
+      "status": "NOT_RUN",
+      "steps": ["Use real pets in the qualified habitat with existing Critters and Companions, Naturalist, cats, Doggy Talents and current normal animal AI", "Observe tame/breed/follow/sit/wander, daytime hamster bed sleep, grooming and shoulder idle", "Observe glider climb and actual glide between branches and accessible elevated shelter; inspect wall/roof/door containment", "Check pickup/petting/mount/dismount with Smooth Player Animations and Cinematic Interactions; no optional animation mod is required or added", "Check ordinary walking, workstation and inventory input/animation with pets on and off shoulders"]
+    },
+    {
+      "id": "safe-mechanics-and-breeding",
+      "status": "NOT_RUN",
+      "steps": ["Press the actual throw key with a mounted pet and confirm server refuses without entity/projectile loss", "Verify own-hamster accidental hit protection and normal owner-authorized recovery, not generic invulnerability", "Verify fever, crop snacking, theft and hide-and-seek remain disabled", "Breed only the bounded consenting-owner test pair: one baby, inherited owner, cooldown and configured per-player limit; retain every resulting pet in the count", "No kill/destructive pet recovery test in an official save: only master-authorized disposable test pets/window, with exact before/after UUID and bed-link receipts"]
+    },
+    {
+      "id": "two-real-players-and-restart",
+      "status": "NOT_RUN_OWNER_PARTICIPATION_REQUIRED",
+      "steps": ["KG and Sera tame distinct pets through normal gameplay; verify each owner, other-player interaction limits, name and behavior", "Record UUIDs, owner UUIDs, age/variant, beds/home/behavior, inventories and nearby counts", "Exercise ordinary disconnect/reconnect and owner travel/teleport rescue without losing or duplicating pets", "Normal save/stop/start in the master window; compare identities/data/counts and bed/home links afterward", "If native bed recovery occurs, reconcile its observed new UUID with the existing managed slot before any new admission"]
+    },
+    {
+      "id": "measured-performance",
+      "status": "NOT_RUN",
+      "steps": ["Use the same candidate/config, observation duration, loaded area and player activity for paired baseline and pet measurements", "Measure loaded/ticking entities by type, loaded chunks, server CPU/RAM/GC and real mean/p95 MSPT/TPS with current native performance tooling", "Compare at four initial pets, then at most eight managed pets only if the master admits that ramp", "Observe natural spawn samples in the actual forest/plains biome pool; weight is not a promised density or cap", "Keep client frame-time/animation observations separate from server performance; retain spikes/failures and tune only from measured causes", "No permanent chunk loaders, automatic respawn/refill, NoAI conversion or entity culling to manufacture a pass"]
+    },
+    {
+      "id": "life-and-permanent-integration",
+      "status": "NOT_PLACED",
+      "steps": ["Master fits and verifies the homestead hamster habitat and south-shore glider sanctuary around preserved existing terrain, paths and structures", "Verify exact body/flight/support/BE states and eye-level visual quality before admitting real entities", "Admit two real hamsters and two real gliders with stable managed slot records; owners tame/link beds normally", "Record world/save/checkpoint identity, actual entity UUIDs and counts, native restart and visual receipts", "Official permanent-world integration remains separate until the master completes its controlled promotion; never replace or relabel the save"]
+    }
+  ],
+  "boundary": "Existing glider installed hashes/startup listing and static dependency/config checks are separate receipts. All requested actual gameplay, mixed-mod, multiplayer, performance and permanent-world tests above remain unperformed by the pets specialist."
+}

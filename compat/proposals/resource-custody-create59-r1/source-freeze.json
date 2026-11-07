@@ -1,0 +1,38 @@
+{
+  "schema": "awft-source-freeze:1",
+  "state": "SOURCE_READY_BUILD_HELD_FOR_MEMORY",
+  "version": "0.6.59",
+  "files": {
+    "actual-provider-coverage.json": {
+      "bytes": 1255,
+      "sha256": "5e3ef722c8cec2ca7702cc76d6007063fc6bb3ada3b3a18a587bc54572c5f987"
+    },
+    "CreateDynamicPackCustody.java": {
+      "bytes": 9725,
+      "sha256": "cc635f37517090fd0e3dd461d272462fdd70f025955e11af6b590c47a3c12c3a"
+    },
+    "CreateDynamicPackProbe.java": {
+      "bytes": 6585,
+      "sha256": "166991bbd6251f4a058fa89afcb84bcca2aa2b460faa5f0f243850948e9df9a2"
+    },
+    "integration.diff": {
+      "bytes": 8192,
+      "sha256": "bdb839dfd3a0e41afc10b36690f5d42b239f4df5697f3d8b4617e52d54839c0e"
+    },
+    "LithostitchedSeedgenResources.java": {
+      "bytes": 36608,
+      "sha256": "dac59e50037285a3c8e94bb1abf9e50fa34f5d6bf387264265f940f1f29f3d33"
+    },
+    "native-api-proof.json": {
+      "bytes": 2106,
+      "sha256": "21d4185dc3ffc0af315555395a2571909d82c52e2f1cac08bafda34b04fe41c0"
+    },
+    "README.md": {
+      "bytes": 3052,
+      "sha256": "8d14ef159ba989d8d3bcbda4bfa7aa98b05d183b86e44b72c4a44ac0d124a4ae"
+    }
+  },
+  "base_resource_source_sha256": "5f3cd2b8cf4e8f0f21ce89054b603ed18831c92725fedd120f2b79e23af69133",
+  "build_requires_parent_memory_window": true,
+  "no_native_actions": true
+}

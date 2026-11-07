@@ -1,0 +1,31 @@
+--- sealed63/LithostitchedSeedgenResources.java
++++ proposal64/LithostitchedSeedgenResources.java
+@@ -40,8 +40,8 @@
+ /** Original bounded byte attestation. No JSON normalization, registry edit or pack close. */
+ public final class LithostitchedSeedgenResources {
+     private static final int MAX_PACKS=512,MAX_ENTRIES=262144,MAX_TEXT=4096,MAX_VISITS=1048576,MAX_HASH_VISITS=MAX_VISITS;
+-    private static final long MAX_BYTES=512L*1024*1024,MAX_RESOURCE=32L*1024*1024;
+-    public record Attestation(List<String> orderedPacks,String sha256,int entries,long bytes) { // entries is the legacy ABI name for hash visits, not distinct IDs.
++    private static final long MAX_HASH_WORK_BYTES=2L*1024*1024*1024,MAX_RESOURCE=32L*1024*1024;
++    public record Attestation(List<String> orderedPacks,String sha256,int entries,long bytes) { // entries and bytes retain their legacy ABI names for hash visits and cumulative streamed payload hash work; neither is logical retained size.
+         public Attestation {orderedPacks=List.copyOf(orderedPacks);}
+     }
+     private LithostitchedSeedgenResources(){}
+@@ -420,7 +420,7 @@
+                 for(int n;(n=stream.read(buffer))!=-1;) {
+                     size+=n;bytes+=n;
+                     if(System.nanoTime()-deadline>=0)throw counterFailure(this,"Native server-data attestation exceeded its finite deadline","<text-or-read>");
+-                    if(size>MAX_RESOURCE||bytes>MAX_BYTES)throw counterFailure(this,"Bounded complete server-data byte attestation exceeded; resourceBytes="+size+" resourceLimit="+MAX_RESOURCE,identity);
++                    if(size>MAX_RESOURCE||bytes>MAX_HASH_WORK_BYTES)throw counterFailure(this,(size>MAX_RESOURCE?"Bounded server-data per-resource size exceeded":"Bounded cumulative server-data hash-read work exceeded")+"; resourceBytes="+size+" resourceLimit="+MAX_RESOURCE,identity);
+                     content.update(buffer,0,n);
+                 }
+             }
+@@ -592,7 +592,7 @@
+         return "phase="+out.phase+" hashVisits="+out.entries+" hashVisitLimit="+MAX_HASH_VISITS
+             +" distinctIdsAtCompletedPackBoundary="+out.distinctIds+" distinctLimit="+MAX_ENTRIES
+             +" currentRootIds="+out.rootIds+" traversalVisits="+out.visits+" traversalLimit="+MAX_VISITS
+-            +" bytes="+out.bytes+" byteLimit="+MAX_BYTES+" openedIndex="+out.openedIndex+" pack="+boundedDiagnostic(out.packContext);
++            +" hashReadWorkBytes="+out.bytes+" hashReadWorkLimit="+MAX_HASH_WORK_BYTES+" inventoryCalls="+out.packs+" inventoryLimit="+MAX_PACKS+" openedIndex="+out.openedIndex+" pack="+boundedDiagnostic(out.packContext);
+     }
+     private static String boundedDiagnostic(String value) {
+         if(value==null)return "null";return value.length()>256?value.substring(0,256)+"...":value;

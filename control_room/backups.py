@@ -24,8 +24,32 @@ class Backups:
         self._schedule_started = time.time()
 
     def list(self):
-        return [dict(read_json(path), id=path.stem) for path in sorted(self.layout.backups.glob("*.json"), reverse=True)
-                if not path.name.endswith(".failure.json")]
+        rows = []
+        for path in sorted(self.layout.backups.glob("*.json"), reverse=True):
+            if path.name.endswith((".failure.json", ".verification.json")):
+                continue
+            row = dict(read_json(path), id=path.stem)
+            row["creation_integrity"] = row.get("integrity")
+            check_path = path.with_suffix(".verification.json")
+            try:
+                if check_path.exists() and check_path.stat().st_size > 16 * 1024:
+                    raise ValueError("Oversized verification record")
+                check = read_json(check_path)
+                if check is not None:
+                    row["checked_at"] = check.get("checked_at")
+                    row["integrity"] = check.get("status") if check.get("status") in ("verified", "failed") else "unknown"
+                    if (check.get("expected_sha256") != row.get("sha256") or
+                            check.get("archive_signature") != self._archive_signature(path.with_suffix(".zip"))):
+                        row["integrity"] = "unknown"
+            except (OSError, ValueError, AttributeError):
+                row["integrity"] = "unknown"
+            rows.append(row)
+        return rows
+
+    @staticmethod
+    def _archive_signature(path):
+        info = path.stat()
+        return [info.st_size, info.st_mtime_ns, info.st_ctime_ns, info.st_ino, info.st_dev]
 
     def _unlocked_world(self):
         for path in self.layout.world.rglob("session.lock"):
@@ -55,7 +79,8 @@ class Backups:
             partial = target.with_suffix(".zip.partial")
             roots = [self.layout.world, self.layout.server / "config", self.layout.server / "defaultconfigs"]
             single = [self.layout.server / "server.properties", self.layout.server / "whitelist.json",
-                      self.layout.server / "ops.json", self.layout.server / "installed.json", self.layout.home / "packwiz/active.json"]
+                      self.layout.server / "ops.json", self.layout.server / "installed.json", self.layout.home / "packwiz/active.json",
+                      self.layout.state / "characters/registry.json", self.layout.state / "characters/runtime.json"]
             files = [f for root in roots if root.exists() for f in root.rglob("*") if f.is_file()]
             files += [f for f in single if f.is_file()]
             if not any(f.name == "level.dat" for f in files):
@@ -122,7 +147,8 @@ class Backups:
                     raise UserError("Unsafe backup path")
                 if not (relative.startswith("world/") or relative.startswith("server/config/")
                         or relative.startswith("server/defaultconfigs/") or relative in
-                        {"server/server.properties", "server/whitelist.json", "server/ops.json", "server/installed.json", "packwiz/active.json"}):
+                        {"server/server.properties", "server/whitelist.json", "server/ops.json", "server/installed.json", "packwiz/active.json",
+                         "dashboard/characters/registry.json", "dashboard/characters/runtime.json"}):
                     raise UserError("Backup contains an unmanaged path")
                 if relative in expected:
                     raise UserError("Duplicate backup entry")
@@ -144,12 +170,42 @@ class Backups:
             return manifest, total
 
     def verify(self, ident, notify=lambda _: None):
-        path = self.path(ident)
-        receipt = read_json(path.with_suffix(".json"))
-        if not receipt or digest(path) != receipt["sha256"]:
-            raise UserError("Backup archive hash mismatch")
-        manifest, total = self.verify_archive(path)
-        return {"id": ident, "integrity": "verified", "source_bytes": total, "files": len(manifest["files"])}
+        with self.layout.mutation:
+            path = self.path(ident)
+            receipt = read_json(path.with_suffix(".json"))
+            if (not isinstance(receipt, dict) or not isinstance(receipt.get("sha256"), str)
+                    or not re.fullmatch(r"[a-f0-9]{64}", receipt["sha256"])):
+                raise UserError("Backup has no valid original integrity receipt")
+            check_path = path.with_suffix(".verification.json")
+            # A small separate ledger preserves the original creation receipt exactly.
+            # Persist unknown before reading: interrupted checks and failed result writes
+            # must not leave a previously green verification looking current.
+            self.storage.reserve(16 * 1024, check_path)
+            check = {"format": 1, "checked_at": utcnow(), "status": "unknown",
+                     "expected_sha256": receipt["sha256"], "archive_signature": None}
+            def record():
+                try:
+                    self.storage.checkpoint(16 * 1024, check_path)
+                    write_json(check_path, check)
+                except Exception as exc:
+                    raise UserError("Backup verification result could not be recorded; no new verification is confirmed") from exc
+            record()
+            before = None
+            try:
+                before = self._archive_signature(path)
+                if digest(path) != receipt["sha256"]:
+                    raise UserError("Backup archive hash mismatch")
+                manifest, total = self.verify_archive(path)
+                if before != self._archive_signature(path):
+                    raise UserError("Backup changed during verification; check it again before restoring")
+            except Exception:
+                check.update(status="failed", checked_at=utcnow(), archive_signature=before)
+                record()
+                raise
+            check.update(status="verified", checked_at=utcnow(), archive_signature=before)
+            record()
+            return {"id": ident, "integrity": "verified", "checked_at": check["checked_at"],
+                    "source_bytes": total, "files": len(manifest["files"])}
 
     def path(self, ident):
         if not re.fullmatch(r"[0-9]{8}T[0-9]{6}Z-[a-f0-9]{6}", ident):
@@ -197,6 +253,14 @@ class Backups:
                     if target.exists():
                         os.replace(target, safety / group)
                     os.replace(source, target)
+            character_source = stage / 'dashboard/characters'
+            if character_source.exists():
+                character_target = self.layout.state / 'characters'
+                # Preserve current profiles/history and telemetry before restoring saved profiles.
+                if character_target.exists():
+                    os.replace(character_target, safety / 'characters')
+                character_target.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(character_source, character_target)
             write_json(safety / "receipt.json", {"restored_from": ident, "at": utcnow(),
                        "note": "Pre-restore world and configs preserved. Original properties and release metadata are retained in the staged snapshot for explicit reconciliation."})
             notify("World restored; prior world preserved at " + str(safety))

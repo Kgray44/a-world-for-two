@@ -1,0 +1,13 @@
+# Source63: resource hash-visit counter
+
+Native62 completed all390 opened SERVER_DATA inventories, then failed at effective override-stack hashing (`capture:76`, `Accumulator.resource:415`). The old counter counts repeated hashes of raw, selected, inherited/composite and effective resources; it is not the262,144 distinct-ID inventory.
+
+This proposal gives repeated hashing its own finite1,048,576-visit budget, using the existing MAX_VISITS value. Every distinct/root262,144 guard remains. The512MiB aggregate,32MiB/resource,60-second deadline,512packs and depth16 are unchanged. No resources/providers/overrides/bytes are dropped or normalized. Diagnostic fields do not enter the fingerprint. `Attestation.entries` keeps its existing ABI and still means hash visits.
+
+The pinned static census covers201 client JARs and84 nested JARs:58,963 raw data files,58,961 valid IDs summed per archive,57,683 unique IDs,95,161,286 raw data bytes. Vanilla extra has6,796 data files. These are static support, not the selected390-pack topology or an exact final Native hash count. QA11 is measured directly, with no claim that its identity came from the public lock. Generated/CDP/Create/TaCZ resources still require actual full Native attestation.
+
+Only `LithostitchedSeedgenResources.java` is a runtime source change. Apply to the exact sealed62 private mirror at `compat/control-bridge/src/worldfortwo/bridge/LithostitchedSeedgenResources.java`; change the13 ControlBridge authority/version literals and manifest/TOML/builder identity to0.6.63 during a separately authorized private build. Preserve all unrelated62 class bytes, including CDP monitor, native canopy permissions and DH queue fix. The only allowed changed classes are ControlBridge, LithostitchedSeedgenResources and its Accumulator. No classes are added or removed.
+
+Java/build is HELD while the actual client is open. After Root confirms closure, qualify with the existing private builder, ReserveGuard C64MiB/D512MiB, real RAM>=1.5GiB, Java21 heap<=256MiB/2processors and no client Java by owned CWD. Compile the focused probe against the candidate; run with the candidate JAR first and the proven59 runtime CP (Guava32.1.2 first), not the old compiler CP. The probe must pass hash262145 while still refusing distinct262145; unchanged byte/time/traversal checks and digest feed are also checked. Then run the existing27-check ResourceCustody43Probe. No actual game/world starts are part of offline qualification.
+
+All failed62 Native receipts and frozen62 bytes remain unchanged. No full Native parity, generation or DH rendering success is claimed. Reserve checks are monitoring instructions; they do not constrain external writers.

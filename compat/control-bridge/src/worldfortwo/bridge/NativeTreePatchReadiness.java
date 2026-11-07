@@ -15,6 +15,10 @@ import java.util.concurrent.CompletableFuture;
  * create=false on a later load is never substituted for this proof.
  */
 public final class NativeTreePatchReadiness {
+    // Cumulative decoded work is not resident tag memory: each completed tag
+    // is validated and discarded. The unchanged four pending reads admit at
+    // most four validated 4MiB tags in their window (16MiB), not 1GiB retained.
+    private static final long MAX_PROCESSED_NBT_BYTES=1024L*1024*1024;
     private final ServerLevel level;
     private final List<ChunkPos> order;
     private final Map<ChunkPos,CompletableFuture<Optional<CompoundTag>>> pending=new LinkedHashMap<>();
@@ -60,7 +64,7 @@ public final class NativeTreePatchReadiness {
             var row=it.next();if(!row.getValue().isDone())continue;it.remove();
             Optional<CompoundTag> value=row.getValue().join();if(value.isEmpty())throw new IllegalStateException("UNKNOWN: current persisted patch halo column absent: "+row.getKey());
             Map<String,Object> fact=validate(row.getKey(),value.get());nbtBytes+=((Number)fact.get("nbt_heap_bytes")).longValue();
-            if(nbtBytes>128L*1024*1024)throw new IllegalStateException("Current persisted patch scan exceeds128MiB cumulative NBT heap-size bound");
+            if(nbtBytes>MAX_PROCESSED_NBT_BYTES)throw new IllegalStateException("Current persisted patch scan exceeds1GiB cumulative processed-NBT bound; pending tag window remains16MiB");
             facts.add(fact);completed++;
         }
         while(pending.size()<4&&cursor<order.size()){
@@ -77,5 +81,7 @@ public final class NativeTreePatchReadiness {
     public boolean drained(){return drainCompleted(pending);}
     public int pending(){return pending.size();}
     public Map<String,Object> report(){return Map.of("halo",halo,"completed",completed,"pending",pending.size(),
-        "nbt_heap_bytes_processed",nbtBytes,"current_persisted_FULL_before_any_ticket",ready,"facts",List.copyOf(facts));}
+        "nbt_heap_bytes_processed",nbtBytes,"cumulative_processed_nbt_limit_bytes",MAX_PROCESSED_NBT_BYTES,
+        "pending_validated_tag_window_limit_bytes",16L*1024*1024,
+        "current_persisted_FULL_before_any_ticket",ready,"facts",List.copyOf(facts));}
 }

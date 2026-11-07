@@ -1,0 +1,38 @@
+{
+  "format": "awft-source-freeze:1",
+  "state": "SOURCE_ONLY_JAVA_AND_BUILD_HELD_UNTIL_CLIENT_CLOSED",
+  "at": "2026-10-30T12:35:34.478205+00:00",
+  "base61_resource_sha256": "dac59e50037285a3c8e94bb1abf9e50fa34f5d6bf387264265f940f1f29f3d33",
+  "base61_jar_sha256": "6998d96b1226c68004ddc28a0827e8bfe99562eba2af1e0a68de93b01c513b12",
+  "old_source_lines_changed": [
+    87,
+    120,
+    141
+  ],
+  "all_other_existing_line_positions_preserved": true,
+  "files": {
+    "integration.diff": {
+      "bytes": 11549,
+      "sha256": "5d31000393f8c7796454ea7d06cc9a600efe0644d6e627b8c9eadc812f8edd6d"
+    },
+    "LithostitchedSeedgenResources.java": {
+      "bytes": 45497,
+      "sha256": "bf30cd567b1db3d3487b57a5021da35dd1a35b48851fcee5491db65182ce5f97"
+    },
+    "native-api-proof.json": {
+      "bytes": 1838,
+      "sha256": "31061752ed04e718350e6e8efd61c1edf42f1436ca1317acd1876e1be69ca2ae"
+    },
+    "NativeTectonicEmptyOverlayProbe.java": {
+      "bytes": 6371,
+      "sha256": "6f8494b3e5e191f788fdaa5f131a667e68c8df91c3e94377351d442a66e5f35d"
+    },
+    "README.md": {
+      "bytes": 1450,
+      "sha256": "b4d2777ab03e9037c0799ebc544a66d943495569230f00205ed3808fc933c7c0"
+    }
+  },
+  "Java_or_build_runs": 0,
+  "runtime_or_world_actions": 0,
+  "actual62_custody_parity_rendering_qualified": false
+}

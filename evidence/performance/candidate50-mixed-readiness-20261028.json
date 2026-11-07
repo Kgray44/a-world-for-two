@@ -1,0 +1,271 @@
+{
+  "format": "awft-sanitized-passive-performance-evidence:1",
+  "recorded_at": "2026-10-28T18:45:37.873237+00:00",
+  "candidate": "0.1.0-candidate.50",
+  "pack_sha256": "052a736c2b9445454eb3ea8490734ab4730e2b34c190cfe31f6c6ed418ab07c9",
+  "bridge_sha256": "13d1b1ff7c2405fadb750d57aa2d58231496f560fd4880c0a7153265be164aac",
+  "scope": "One master-authorized120s passive server-only mixed construction/readiness slice. Not clean idle, completed-town, comparative graphics, multiplayer, or gameplay acceptance.",
+  "native_game_actions_by_recorder": 0,
+  "collection_elapsed_seconds": 120.0,
+  "observed_row_bounds": [
+    "2026-10-28T18:41:18.604020+00:00",
+    "2026-10-28T18:43:17.058102+00:00"
+  ],
+  "native_timestamp_bounds": [
+    "2026-10-28T18:41:15.717823200Z",
+    "2026-10-28T18:43:16.354723800Z"
+  ],
+  "boundary_window_note": "Native snapshots summarize prior roughly5s windows; the first native interval precedes the first host poll. No per-tick distribution is available.",
+  "host_rows": 113,
+  "native_server_snapshots": 25,
+  "native_client_snapshots": 0,
+  "master_server_process_preserved": true,
+  "source_result_sha256": "a2ec3b20e393c0cae0cd25263036517ac8984812b14872e138dbe6eea543b457",
+  "source_samples_sha256": "652b9f63ba9c96b1e507cf3055f86bba06e24460fd9ff4fde5700daece8015ca",
+  "sample_bytes": 235452,
+  "capture_errors": [],
+  "configuration_hashes_unchanged": true,
+  "configuration_hashes_complete": true,
+  "measurements": {
+    "native_server_snapshots": 25,
+    "native_client_snapshots": 0,
+    "sampled_window_mean_mspt": {
+      "samples": 25,
+      "min": 2.036358,
+      "mean": 2.390098405940594,
+      "p50": 2.379021782178218,
+      "p95": 2.627602,
+      "max": 3.294938613861386
+    },
+    "sampled_tps_estimates": {
+      "samples": 25,
+      "min": 19.946583846322902,
+      "mean": 20.001255161852313,
+      "p50": 19.994801351648572,
+      "p95": 20.040568062402283,
+      "max": 20.043673775992378
+    },
+    "focused_gameplay_client_snapshots": 0,
+    "sampled_focused_gameplay_fps": {
+      "samples": 0
+    },
+    "gc_collector_elapsed_delta_ms": 0,
+    "tick_spike_observations": {
+      "windows": 0,
+      "max_work_ms": null,
+      "over_50ms": null,
+      "over_100ms": null,
+      "max_start_gap_ms": null
+    },
+    "sampled_client_frame_windows": {
+      "windows": 0,
+      "worst_retained_frame_ms": null,
+      "worst_window_p95_ms": null,
+      "global_frame_percentiles": "Unavailable; retained window aggregates cannot establish them"
+    },
+    "all_client_states_worst_retained_frame_ms": null,
+    "host_physical_available_bytes": {
+      "samples": 113,
+      "min": 2695761920,
+      "mean": 3139626736.141593,
+      "p50": 3147857920,
+      "p95": 3382775808,
+      "max": 3447185408
+    },
+    "windows_commit_headroom_bytes": {
+      "samples": 113,
+      "min": 10244313088,
+      "mean": 11132687677.168142,
+      "p50": 11194892288,
+      "p95": 11499913216,
+      "max": 11578167296
+    },
+    "boundary": "Only observed snapshots/windows. Missing intervals, unfocused/menu frames and unperformed workloads remain unqualified. No gameplay acceptance inferred."
+  },
+  "server_rss_bytes": {
+    "samples": 25,
+    "min": 4154048512,
+    "mean": 4154781859.84,
+    "p50": 4154675200,
+    "p95": 4155396096,
+    "max": 4155445248
+  },
+  "server_heap_used_bytes": {
+    "samples": 25,
+    "min": 1723315808,
+    "mean": 1808040748.8,
+    "p50": 1807201888,
+    "p95": 1891087968,
+    "max": 1895282272
+  },
+  "server_heap_max_bytes": [
+    8589934592
+  ],
+  "actual_population": {
+    "players": [
+      0
+    ],
+    "loaded_chunk_holders": [
+      841
+    ],
+    "loaded_entities": [
+      30
+    ]
+  },
+  "server_cpu_interval": {
+    "cpu_seconds_delta": 32.609375,
+    "poll_wall_span_seconds": 118.45408177375793,
+    "logical_cpu_count": 16,
+    "approximate_one_core_percent": 27.52912733077655,
+    "approximate_whole_host_percent": 1.7205704581735344,
+    "scope": "OS CPU-time deltas over poll timestamps; not a main-thread or per-core peak profiler"
+  },
+  "host_cpu_percent": {
+    "samples": 113,
+    "min": 11.29375,
+    "mean": 39.737278761061944,
+    "p50": 37.668749999999996,
+    "p95": 74.4875,
+    "max": 83.5625
+  },
+  "paging_and_disk": {
+    "pages_input_per_second": {
+      "samples": 113,
+      "min": 0.0,
+      "mean": 268.96331464682527,
+      "p50": 69.99189277005435,
+      "p95": 1387.9452005884887,
+      "max": 3109.7578197369835
+    },
+    "page_read_operations_per_second": {
+      "samples": 113,
+      "min": 0.0,
+      "mean": 32.21916082919763,
+      "p50": 9.124202627637642,
+      "p95": 130.159656470772,
+      "max": 565.9048974086973
+    },
+    "disk_seconds_per_transfer_host": {
+      "samples": 113,
+      "min": 3.7556111111111113e-05,
+      "mean": 0.0008001590397760805,
+      "p50": 0.00024430243902439025,
+      "p95": 0.0017831820895522388,
+      "max": 0.02855229058614565
+    }
+  },
+  "paging_scope": "Host page-ins include file-backed pages; disk values are sampled host-average transfer latency, not worst individual I/O. Neither proves pagefile thrashing or attributes a stall.",
+  "gpu_scope": "Shared whole GPU with Minecraft client closed; no game GPU/FPS attribution",
+  "gpu_query_samples": 23,
+  "gpu_adapter0": {
+    "utilization_percent": {
+      "samples": 23,
+      "min": 0.0,
+      "mean": 2.8260869565217392,
+      "p50": 0.0,
+      "p95": 12.0,
+      "max": 13.0
+    },
+    "vram_mib": {
+      "samples": 23,
+      "min": 1961.0,
+      "mean": 1963.0434782608695,
+      "p50": 1961.0,
+      "p95": 1965.0,
+      "max": 1972.0
+    },
+    "temperature_c": {
+      "samples": 23,
+      "min": 50.41,
+      "mean": 52.04869565217392,
+      "p50": 52.34,
+      "p95": 53.25,
+      "max": 53.81
+    },
+    "power_watts": {
+      "samples": 23,
+      "min": 9.86,
+      "mean": 10.82913043478261,
+      "p50": 10.11,
+      "p95": 13.51,
+      "max": 13.93
+    }
+  },
+  "directory_observations": [
+    {
+      "at": "2026-10-28T18:41:18.604020+00:00",
+      "sizes": {
+        "construction_world": {
+          "complete": true,
+          "logical_bytes_including_wal": 275273165,
+          "entries": 314
+        },
+        "overworld_data_including_lod": {
+          "complete": true,
+          "logical_bytes_including_wal": 158025284,
+          "entries": 51
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T18:41:49.321534+00:00",
+      "sizes": {
+        "construction_world": {
+          "complete": true,
+          "logical_bytes_including_wal": 275273165,
+          "entries": 314
+        },
+        "overworld_data_including_lod": {
+          "complete": true,
+          "logical_bytes_including_wal": 158025284,
+          "entries": 51
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T18:42:20.036865+00:00",
+      "sizes": {
+        "construction_world": {
+          "complete": true,
+          "logical_bytes_including_wal": 275273165,
+          "entries": 314
+        },
+        "overworld_data_including_lod": {
+          "complete": true,
+          "logical_bytes_including_wal": 158025284,
+          "entries": 51
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T18:42:50.699888+00:00",
+      "sizes": {
+        "construction_world": {
+          "complete": true,
+          "logical_bytes_including_wal": 275273145,
+          "entries": 314
+        },
+        "overworld_data_including_lod": {
+          "complete": true,
+          "logical_bytes_including_wal": 158025358,
+          "entries": 51
+        }
+      }
+    }
+  ],
+  "directory_scope": "Bounded non-atomic logical-byte inventories include other data files. The74byte Overworld data-folder increase cannot be attributed to LOD cache growth. Exact per-LOD-file growth remains unavailable for this slice.",
+  "minimum_drive_free_bytes": {
+    "C": 118114476032,
+    "D": 284410388480
+  },
+  "reserve_scope": "Both drives remained above30GiB during owned recording. This monitoring did not constrain master game writes, external applications or pre-existing writers.",
+  "unavailable": [
+    "Individual tick spikes/percentiles before queued51helper",
+    "Client FPS/frametimes",
+    "Chunk generation/load event spans",
+    "Current populated-city/forest/Create/train/ship/fast-terrain workloads",
+    "Controlled shader/DH configuration comparisons",
+    "Sera client measurements and current two-player acceptance",
+    "Exact per-LOD-file growth"
+  ]
+}
