@@ -96,6 +96,12 @@
       ],
       "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
       "scope": "Fresh prior manifest installation followed by final retained-runtime/repair update using exact local manifest; all author/GitHub downloads and final file hashes checked. Public channel and native import remain unverified."
+    },
+    "optional_cli_behavior": {
+      "installer": "packwiz-installer v0.5.14",
+      "cause": "CLIHandler.showOptions unconditionally sets every optionValue to true; CLI option choosing is unimplemented. Headless results do not prove default=false GUI selection.",
+      "source": "https://github.com/packwiz/packwiz-installer/blob/v0.5.14/src/main/kotlin/link/infra/packwiz/installer/ui/cli/CLIHandler.kt",
+      "action": "Use normal Prism GUI optional selection to keep Essential off; owned managed clients and server already exclude optional default-false files."
     }
   },
   "graphics": {
@@ -134,5 +140,39 @@
     "native_enabled_jars": 212,
     "native_errors": 0,
     "native_warnings": 0
+  },
+  "world_file_audit": {
+    "scope": "Offline final reconciled clone compared with all 1,303 original world-file hashes; preservation evidence only, not behavior or visual acceptance.",
+    "original_world_files": 1303,
+    "identical_files": 1284,
+    "changed_files": 13,
+    "missing_cache_sidecars": {
+      "empty_dh_wal": 3,
+      "dh_shared_memory": 3
+    },
+    "dh_database_files": "All three original active-world database files byte-identical; empty WAL and shared-memory sidecars removed during normal shutdown.",
+    "sublevel_files": 41,
+    "sublevel_files_byte_identical": 41,
+    "npc_record_files": 45,
+    "npc_record_files_byte_identical": 45,
+    "point_of_interest_files": 61,
+    "point_of_interest_files_byte_identical": 61,
+    "playerdata_and_old_files": 6,
+    "playerdata_and_old_files_byte_identical": 6,
+    "inactive_world": "All original AWorldForTwo files byte-identical.",
+    "other_dimensions": "Original Nether and End contain data files but no terrain-region files; no custom-dimension terrain files were present. No non-overworld terrain-preservation claim.",
+    "small_nbt_changes": "World time/last-played/trader delay, mod list, generated/fragmentum_layer datapack addition, weather evolution/ticks, raid ticks, global clock and synthetic claim-owner confirmedActivity timestamps only. No original enabled datapack removed.",
+    "changed_regions": "One terrain region and one entity region changed during the server run; existing section-state and UUID/type audits cover these separately.",
+    "raw_evidence": "Private detailed hash and NBT-field receipts retained with the verified backup; no player identifiers or raw world content published.",
+    "changed_region_detail": {
+      "terrain_chunks": 1024,
+      "block_entities": 4787,
+      "missing_block_entities": 0,
+      "changed_block_entity_fields": 0,
+      "terrain_difference": "49 LastUpdate timestamps and block-entity list ordering in two chunks only; per-position saved block-entity data identical.",
+      "entity_chunks": 317,
+      "entities": 729,
+      "entity_difference": "Attribute-list ordering on 25 entities; per-attribute-ID values identical. No changed saved entity fields beyond list ordering."
+    }
   }
 }
