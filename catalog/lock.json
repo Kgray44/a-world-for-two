@@ -6,8 +6,8 @@
   "neoforge": "21.1.262",
   "java": 21,
   "generated": "2026-11-07T01:53:05.732216+00:00",
-  "release_status": "staging",
-  "validation": "Unpublished stable-release build; graphics, multiplayer and final activation qualification pending",
+  "release_status": "qualified",
+  "validation": "Owner-approved KG copied-world play, dedicated startup, feature smoke and verified restore; dedicated player join and two-player sync unverified",
   "mods": [
     {
       "project_id": "zV5r3pPn",

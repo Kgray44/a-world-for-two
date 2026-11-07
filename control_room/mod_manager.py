@@ -40,7 +40,14 @@ def runtime_acceptance_passes(proposal, receipt):
         and pack_hash == '17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c'
         and receipt.get('owner_approval') == '0.2.0 KG-only production and public Latest'
         and checks.get('two_player_sync') == 'unverified'
-        and checks.get('kg_staging_join') == 'pass'
+        and (
+            checks.get('kg_staging_join') == 'pass'
+            or (
+                checks.get('kg_staging_join') == 'unverified'
+                and checks.get('kg_copied_world_play') == 'pass'
+                and receipt.get('owner_release_direction') == 'Release 0.2.0 without a repeat KG join'
+            )
+        )
     )
 
 

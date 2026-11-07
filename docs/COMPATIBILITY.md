@@ -6,7 +6,7 @@ Current lock: **0.2.0**, Minecraft 1.21.1, NeoForge 21.1.262, Java 21.
 
 Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.2.0, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.
 
-Lock SHA-256: `17bc018018aa49d79237dea558a2fe54acb233a9894a2a71193db66aee9f84b4`. Pack SHA-256: `17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c`.
+Lock SHA-256: `ed5e918be6fb1111e7232ca450824f568716d44bfc1a502aea1544018bc5ba9a`. Pack SHA-256: `17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c`.
 
 ## Recorded runtime scope
 

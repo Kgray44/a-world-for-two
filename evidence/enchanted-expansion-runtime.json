@@ -1,7 +1,7 @@
 {
   "format": "awft-enchanted-expansion:1",
   "version": "0.2.0",
-  "release_status": "unpublished; not qualified for latest promotion",
+  "release_status": "qualified under owner-approved KG scope",
   "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
   "runtime_baseline": {
     "bridge": "0.6.64",
@@ -16,7 +16,8 @@
     "archive_and_full_restore_hashes": "pass",
     "production_files_changed_at_preservation_checkpoint": 0,
     "production_files_changed_at_final_checkpoint": 0,
-    "clean_production_save_boundary_before_activation": "Still required at rollout; original source log did not establish a clean stop. Archive was byte-consistent offline and its independent restore started/saved/shut down successfully."
+    "clean_production_save_boundary_before_activation": "Separate production cutover archive taken after native clean shutdown and independently restored with all 1612 managed files hash-verified.",
+    "clean_cutover_sha256": "aa17ab72aa15484477020af5445d2a2129a8a23576085a465715b82d5313dd9d"
   },
   "production_baseline_stage": {
     "at": "2026-11-07T01:35:26.584718+00:00",
@@ -247,5 +248,12 @@
       "missing_files": 0,
       "boundary": "Current production matched the archived byte hashes. This recheck does not prove the archive was taken at a clean stop."
     }
+  },
+  "owner_acceptance": {
+    "copied_world_kg_play": "pass",
+    "dedicated_startup": "pass",
+    "dedicated_kg_join": "unverified",
+    "two_player_sync": "unverified",
+    "scope": "Owner approved production and public Latest with KG-only evidence and directed completion without another join. The unattended staging attempt did not establish a player connection."
   }
 }

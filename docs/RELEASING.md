@@ -8,9 +8,11 @@ must satisfy its exact acceptance gates; pending tests stay pending in the docum
 3. Validate Python/JavaScript, exact JAR dependencies and the complete Packwiz hash chain.
 4. Qualify the exact candidate: dedicated/client startup, relevant feature tests,
    backup/restore, graphics/worldgen and real remote two-player synchronization.
-   For 0.2.0 only, the owner approved an authenticated KG staging join on
+   For 0.2.0 only, the owner approved KG-only acceptance on
    manifest `17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c`.
-   Record two-player sync as unverified and retain the other acceptance checks.
+   The owner directed release without a repeat KG join, using the completed
+   copied-world play test. Record the dedicated KG join and two-player sync
+   as unverified and retain the other acceptance checks.
 5. Run `python -m tools.prism_export`. Verify portable `instance.cfg`, `mmc-pack.json`,
    pinned bootstrap/full-installer chain and project configuration. Exclude credentials,
    worlds, host Java paths and unauthorized third-party redistribution.

@@ -6739,13 +6739,13 @@
   ],
   "source_lock": {
     "path": "catalog/lock.json",
-    "sha256": "17bc018018aa49d79237dea558a2fe54acb233a9894a2a71193db66aee9f84b4",
+    "sha256": "ed5e918be6fb1111e7232ca450824f568716d44bfc1a502aea1544018bc5ba9a",
     "pack_path": "packwiz/pack.toml",
     "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
     "minecraft": "1.21.1",
     "neoforge": "21.1.262",
     "java": 21,
-    "release_status": "staging"
+    "release_status": "qualified"
   },
   "resolved_files": [
     {
