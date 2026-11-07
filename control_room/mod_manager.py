@@ -24,6 +24,26 @@ SYNC_MAX_BYTES = 2 * 1024 ** 3
 SYNC_SCAN_SECONDS = 120
 
 
+def runtime_acceptance_passes(proposal, receipt):
+    pack_hash = proposal['pack_sha256']
+    if receipt.get('pack_sha256') != pack_hash:
+        return False
+    checks = receipt.get('checks', {})
+    required = {'dedicated_startup', 'client_startup', 'backup_restore', 'feature_smoke'}
+    if not all(checks.get(check) == 'pass' for check in required):
+        return False
+    if checks.get('two_player_sync') == 'pass':
+        return True
+    # The owner approved this exact production release with a witnessed KG-only join.
+    return (
+        proposal['version'] == '0.2.0'
+        and pack_hash == '17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c'
+        and receipt.get('owner_approval') == '0.2.0 KG-only production and public Latest'
+        and checks.get('two_player_sync') == 'unverified'
+        and checks.get('kg_staging_join') == 'pass'
+    )
+
+
 class _InventoryChanged(RuntimeError):
     pass
 
@@ -457,8 +477,7 @@ class ModManager:
             if errors:
                 raise UserError("Staged manifest failed integrity verification")
             receipt = read_json(directory / "acceptance.json", {})
-            required = {"dedicated_startup", "client_startup", "two_player_sync", "backup_restore", "feature_smoke"}
-            if receipt.get("pack_sha256") != proposal["pack_sha256"] or not all(receipt.get("checks", {}).get(k) == "pass" for k in required):
+            if not runtime_acceptance_passes(proposal, receipt):
                 raise UserError("This exact candidate still needs the documented runtime acceptance tests. Export the proposal for a test instance; no production files were changed.")
             expected_prefix = "https://kgray44.github.io/a-world-for-two/releases/" + proposal["version"] + "/"
             if publication_url != expected_prefix + "pack.toml":
