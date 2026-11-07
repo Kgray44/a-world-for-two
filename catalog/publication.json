@@ -1,6 +1,6 @@
 {
   "format": "awft-publication:1",
-  "stable": null,
+  "stable": "0.2.0",
   "snapshots": [
     {
       "version": "0.1.0-candidate.23",

@@ -38,10 +38,6 @@ def approved_catalog(path):
     data=json.loads(path.read_text(encoding='utf-8-sig'))
     if set(data)!={'format','stable','snapshots'} or data['format']!='awft-publication:1':
         raise UserError('Unsupported publication catalog')
-    # Stable activation needs its own qualification flow. This publisher cannot
-    # turn a candidate into a root update channel by changing a JSON string.
-    if data['stable'] is not None:
-        raise UserError('Root stable publication is disabled; stable must remain null')
     rows=data['snapshots']
     if not isinstance(rows,list) or not 1<=len(rows)<=MAX_SNAPSHOTS:
         raise UserError('Approve between one and sixteen immutable snapshots')
@@ -64,6 +60,9 @@ def approved_catalog(path):
             raise UserError('Snapshot needs an exact lowercase SHA-256')
         if row['status'] not in ('prerelease','qualified'):
             raise UserError('Unknown approved snapshot status')
+    if data['stable'] is not None and not any(
+            row['version']==data['stable'] and row['status']=='qualified' for row in rows):
+        raise UserError('Stable must select an approved qualified snapshot')
     return data
 
 
@@ -229,10 +228,10 @@ def validate_snapshot(directory,row):
     return lock,len(expected)
 
 
-def reserve_local(output,count):
+def reserve_local(output,count,stable=False):
     if os.name!='nt':return
     # Archive, extracted staging and public copy are each separately capped.
-    total=count*3*MAX_SNAPSHOT_BYTES+2*1024**2
+    total=(count*3+int(stable))*MAX_SNAPSHOT_BYTES+2*1024**2
     drive=output.resolve().drive.casefold()
     c=2*1024**2+(total if drive=='c:' else 0);d=total if drive=='d:' else 0
     if drive not in ('c:','d:'):raise UserError('Use a reviewed C: or D: output on this Windows host')
@@ -245,16 +244,18 @@ def reserve_local(output,count):
         raise UserError('Host storage reserve refused publication build')
 
 
-def index_html(rows):
+def index_html(rows,stable=None):
     entries=''.join('<tr><td>'+html.escape(row['version'])+'</td><td>'+html.escape(row['status'])+
         '</td><td><a href="releases/'+html.escape(row['version'],quote=True)+'/pack.toml">Packwiz manifest</a> · '+
         '<a href="releases/'+html.escape(row['version'],quote=True)+'/lock.json">Exact lock</a></td><td><code>'+
         row['pack_sha256']+'</code></td></tr>' for row in rows)
+    channel=('<a href="pack.toml">Stable Packwiz channel</a> · '+html.escape(stable)
+             if stable else 'No stable Packwiz channel is published.')
     return ('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">'
         '<title>A World for Two — approved snapshots</title><style>body{font:17px system-ui;max-width:1100px;margin:3rem auto;padding:0 1rem;line-height:1.6;color:#20382d;background:#fffaf0}'
         'table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:.7rem;border-bottom:1px solid #b9c4b6}code{overflow-wrap:anywhere;font-size:.8em}a{color:#225f49}</style>'
         '<h1>A World for Two</h1><p>Reviewed, immutable Packwiz snapshots. Experimental candidates may still require fresh Prism import, public-download, graphics and multiplayer qualification.</p>'
-        '<p><strong>No stable root update channel is published.</strong> Source CI does not activate a playable update. Each listed snapshot comes from its approved Git tag and exact hash.</p>'
+        '<p>'+channel+'</p><p>Source CI does not activate a playable update. Each snapshot comes from its approved Git tag and exact hash.</p>'
         '<table><thead><tr><th>Version</th><th>Status</th><th>Files</th><th>Pack SHA-256</th></tr></thead><tbody>'+entries+'</tbody></table>'
         '<p><a href="https://github.com/Kgray44/a-world-for-two/releases">Release downloads</a> · '
         '<a href="https://github.com/Kgray44/a-world-for-two/blob/main/docs/INSTALL.md">Install guide</a> · '
@@ -270,17 +271,20 @@ def build(repo=REPO,catalog=None,output=None):
     # Resolve every tag before creating any public output. Archive immutable
     # commit IDs after resolution so a concurrently moved tag cannot win a race.
     resolved=[(row,git_commit(repo,row['git_tag'])) for row in approval['snapshots']]
-    reserve_local(output,len(resolved))
+    stable=approval['stable']
+    reserve_local(output,len(resolved),stable is not None)
     output.parent.mkdir(parents=True,exist_ok=True)
     work=output.parent/('.awft-publication-'+uuid.uuid4().hex);work.mkdir()
     stage=work/'public';stage.mkdir();rows=[]
     try:
         for number,(row,commit) in enumerate(resolved):
             # Recheck per bounded writer; this also covers long multi-tag runs.
-            reserve_local(output,len(resolved))
+            reserve_local(output,len(resolved),stable is not None)
             archive=work/(str(number)+'.tar');archive_bytes=archive_tag(repo,commit,archive)
             extracted=work/str(number);payload_bytes=extract_tag(archive,extracted)
-            _,files=validate_snapshot(extracted,row)
+            lock,files=validate_snapshot(extracted,row)
+            if row['version']==stable and lock.get('release_status')!='qualified':
+                raise UserError('The stable tag must carry a qualified release lock')
             import tomllib
             members,exclusion_proofs=snapshot_payload(extracted/'packwiz',
                 tomllib.loads((extracted/'packwiz/index.toml').read_text()),row)
@@ -292,15 +296,16 @@ def build(repo=REPO,catalog=None,output=None):
             shutil.copyfile(extracted/'catalog/lock.json',destination/'lock.json')
             rows.append(row|{'git_commit':commit,'files':files,'archive_bytes':archive_bytes,'payload_bytes':payload_bytes,
                              'tagged_metadata_exclusions_verified':exclusion_proofs})
-        if (stage/'pack.toml').exists() or (stage/'index.toml').exists():raise UserError('Stable root manifest must remain absent')
-        (stage/'index.html').write_text(index_html(rows),encoding='utf-8')
+        if stable is not None:
+            shutil.copytree(stage/'releases'/stable,stage,dirs_exist_ok=True)
+        (stage/'index.html').write_text(index_html(rows,stable),encoding='utf-8')
         (stage/'.nojekyll').touch()
-        write_json(stage/'publication.json',{'format':'awft-publication:1','stable':None,
+        write_json(stage/'publication.json',{'format':'awft-publication:1','stable':stable,
                    'snapshots':[{k:row[k] for k in ('version','git_tag','git_commit','pack_sha256','status')} for row in rows]})
         if output.exists():raise UserError('Publication output appeared during packaging; preserve it and choose another path')
         stage.rename(output)
         receipt={'at':utcnow(),'output':str(output),'staging_retained':str(work),'snapshots':rows,
-                 'stable_root_manifest':'absent','status':'Built approved static snapshots; no deployment performed'}
+                 'stable_root_manifest':stable or 'absent','status':'Built approved static snapshots; no deployment performed'}
         write_json(work/'receipt.json',receipt)
         return receipt
     except Exception as error:
