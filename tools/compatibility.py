@@ -9,6 +9,8 @@ from pathlib import Path
 from control_room.common import REPO, UserError, read_json, write_json, atomic_write, digest
 
 DECISIONS = {
+    "inventory-expanded": ("Unresolved, with investigation details", "Isolated official beta 0.2.1 (jbtTDJbh) downloaded and hash-verified. Actual JAR requires NeoForge >=21.1.264 on both sides; the retained pack uses 21.1.262. Earlier inspected 0.2.0 and 1.0.6 JARs have the same minimum. A separate NeoForge 21.1.264 sandbox passed static dependency checks and real server startup/save/shutdown with a fresh world and no copied players. The active loader remains unchanged. Client inventory behavior, Curios/backpacks, reconnect and removal recovery remain untested, so the beta stays isolated.", None),
+    "loconautics": ("Unresolved, with investigation details", "No verified public native 1.21.1 release found in the November 6 investigation. Ferronautics author's page identifies Loconautics as its intended successor; that is not a downloadable release or compatibility proof. No substitute or railway-world change installed.", None),
     "chocapic13-shaders": ("Unresolved, with investigation details", "The original author’s V9 and V9.1 beta files are legacy OptiFine-era releases without established Iris/DH support. The official CurseForge download refused automated retrieval (HTTP 403), and no authorized API key is present. An unchanged author download and native client test are required; Bliss is documented as a derivative, not substituted for the requested original.", None),
     "pastel-shaders": ("Unresolved, with investigation details", "The author’s 1.200 release offers pastel color schemes and a cozy style, but its published version list stops at 1.21 and this exact build’s DH support is unverified. Retained for investigation; Bliss, BSL and Solas provide the initial cozy choices.", None),
     "dairatz": ("Incompatible, with evidence", "The author publishes Fabric 0.4-beta for Minecraft 1.21.1. Native NeoForge 1.1.1 requires Minecraft 1.21.11 and NeoForge 21.11.42, not this 1.21.1 / 21.1 stack. Official release JAR descriptors and source properties were inspected. No matching native backport is available; Fairy Tales supplies complementary abilities but is not represented as Dairatz tameable fairies.", None),
@@ -201,7 +203,7 @@ def build_inventory(root=REPO):
     if "chocapic13-shaders" in rows:
         rows["chocapic13-shaders"]["reason"] += " The owner explicitly deferred Chocapic; it remains pending and absent from the active lock."
     experiments = read_json(root/"catalog/experiments.json", {})
-    for label in ("pirates_n_ships", "blackpowder", "explorers_friend"):
+    for label in ("pirates_n_ships", "blackpowder", "explorers_friend", "inventory_expanded"):
         mod = experiments.get(label)
         if not mod:
             continue

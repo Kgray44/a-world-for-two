@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-candidate.65",
+  "version": "0.2.0",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
@@ -1062,6 +1062,68 @@
       "version": "BIogJv2D",
       "side": "both",
       "reason": "Required by the exact Adorable Hamster Pets native NeoForge descriptor: Patchouli >= 1.21.1-93-NEOFORGE; upstream Modrinth dependency metadata is empty."
+    },
+    {
+      "request": "ancient-remnants",
+      "project": "qYtXvlBc",
+      "version": "R7lHZHzN",
+      "kind": "mod",
+      "side": "both"
+    },
+    {
+      "request": "fragmentum",
+      "project": "49C5QgTK",
+      "version": "kCXNhuIV",
+      "kind": "mod",
+      "side": "both"
+    },
+    {
+      "request": "decocraft",
+      "project": "IZJSgKZe",
+      "version": "Z8xm2POI",
+      "kind": "mod",
+      "side": "both"
+    },
+    {
+      "request": "astikorcarts-redux",
+      "project": "mnLFouB0",
+      "version": "JtPCk233",
+      "kind": "mod",
+      "side": "both"
+    },
+    {
+      "request": "stylista",
+      "project": "Y7dBqGlW",
+      "version": "QSlyhOZA",
+      "kind": "resourcepack",
+      "side": "client"
+    },
+    {
+      "request": "roundista",
+      "project": "R4g9Nf07",
+      "version": "k9qKuU9l",
+      "kind": "resourcepack",
+      "side": "client"
+    },
+    {
+      "request": "nautilus3d",
+      "project": "1MyOrwfu",
+      "version": "BYoL3YKt",
+      "kind": "resourcepack",
+      "side": "client"
+    },
+    {
+      "request": "diorama",
+      "project": "kwpTgbCk",
+      "version": "1FG2KJOU",
+      "kind": "mod",
+      "side": "client"
+    },
+    {
+      "project": "Epm6R3P2",
+      "version": "QyvBBoEd",
+      "request": "easy-npc-core",
+      "side": "both"
     }
   ],
   "artifacts": [
@@ -1221,15 +1283,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.51",
-      "version": "0.6.51",
+      "version_id": "0.6.64",
+      "version": "0.6.64",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.51.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.51.jar",
-      "size": 725738,
+      "filename": "awft-control-bridge-0.6.64.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.64.jar",
+      "size": 793142,
       "hashes": {
-        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
+        "sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20"
       },
       "side": "both",
       "kind": "mod",
@@ -1242,7 +1304,7 @@
         "id": "MIT"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
-      "selection_reason": "Exact owned server bridge: measured tick/JVM telemetry and lifecycle-safe Chunky listener setup.",
+      "selection_reason": "Preserve exact installed production bridge 0.6.64 and bounded DH resource attestation repairs. Historical native64 evidence is not new-pack qualification.",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",
@@ -1532,6 +1594,106 @@
         "jar": "pass",
         "runtime": "not run"
       }
+    },
+    {
+      "project_id": "github:SenDeliver/create-octo-arms",
+      "slug": "create-octo-arms",
+      "request": "create-octo-arms",
+      "name": "Create: Octo Arms",
+      "version_id": "v1.6.0+mc1.21.1",
+      "version": "1.6.0",
+      "filename": "octo-arms-1.6.0+mc1.21.1.jar",
+      "url": "https://github.com/SenDeliver/create-octo-arms/releases/download/v1.6.0%2Bmc1.21.1/octo-arms-1.6.0%2Bmc1.21.1.jar",
+      "hashes": {
+        "sha256": "c81d53ee12277a8ac8031574d0b5e8aa6fb5dc1632f3ce5628718eaabf8362cc"
+      },
+      "size": 320941,
+      "side": "both",
+      "kind": "mod",
+      "provider": "github",
+      "dependencies": [
+        {
+          "project_id": "LNytGWDc",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[6.0.10,6.1)"
+        },
+        {
+          "project_id": "T9PomCSv",
+          "version_id": null,
+          "dependency_type": "optional",
+          "version_range": "[2.0.5,2.1)"
+        }
+      ],
+      "license": {
+        "id": "MIT",
+        "name": "MIT",
+        "url": "https://github.com/SenDeliver/create-octo-arms/blob/master/LICENSE"
+      },
+      "source": "https://github.com/SenDeliver/create-octo-arms/releases/tag/v1.6.0%2Bmc1.21.1",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "selection_reason": "Author release; keep existing Create 6.0.10 and Sable 2.0.6. Native JAR constraints and staging runtime gates apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "awft-tavern",
+      "slug": "awft-tavern",
+      "request": "drowned-rose-tavern",
+      "name": "A World for Two: Drowned Rose",
+      "version": "0.1.14",
+      "version_id": "0.1.14",
+      "filename": "awft-tavern-0.1.14.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-tavern-0.1.14.jar",
+      "size": 112495,
+      "hashes": {
+        "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"
+      },
+      "provider": "local",
+      "kind": "mod",
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "world_sensitive": true,
+      "source": "proposals/drowned-rose",
+      "license": {
+        "id": "MIT",
+        "name": "MIT",
+        "url": null
+      },
+      "dependencies": [
+        {
+          "project_id": "Epm6R3P2",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[7.17.1,7.17.2)"
+        },
+        {
+          "project_id": "TaSmHw8V",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[0.8.0+1.21.1]"
+        },
+        {
+          "project_id": "pJmCFF0p",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[4.0.3,4.0.4)"
+        }
+      ],
+      "selection_reason": "Preserve exact installed production 45-patron Tavern 0.1.14, including pose/micro-motion and bounded Windows status publication repair. Existing server configuration retained; no new NPC spawning or player data conversion authorized.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
     }
   ],
   "repairs": [
@@ -1722,6 +1884,89 @@
         "upstream_source": "https://github.com/Antop90fr1/AdvancedWeather1.21.1",
         "source_commit_inspected": "50fe9990e03ac24638343703792797f8991b5266",
         "license": "MIT; original work by Antopfr. Embedded libraries retain their own licenses."
+      }
+    },
+    {
+      "project_id": "kwpTgbCk",
+      "slug": "diorama-map",
+      "name": "Diorama",
+      "version_id": "0.7.0+awft.1-neoforge-1.21.1",
+      "version": "0.7.0+awft.1-neoforge-1.21.1",
+      "release_type": "release",
+      "filename": "diorama-0.7.0+awft.1-neoforge-1.21.1.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/diorama-0.7.0+awft.1-neoforge-1.21.1.jar",
+      "hashes": {
+        "sha256": "1d0cd42832e2fd57551851c2334bf837c93e0e0bc6f73bd1979ac768bb6d4584"
+      },
+      "size": 925546,
+      "side": "client",
+      "kind": "mod",
+      "request": "diorama",
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "MIT",
+        "name": "MIT License",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/diorama-map",
+      "selection_reason": "MIT native-model call repair of exact official 0.7.0. Copied-world color bake passed with no legacy-model API warnings; full rendered-map and multiplayer acceptance pending.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      },
+      "provider": "local-patch",
+      "upstream_artifact": {
+        "project_id": "kwpTgbCk",
+        "slug": "diorama-map",
+        "name": "Diorama",
+        "version_id": "1FG2KJOU",
+        "version": "0.7.0+neoforge-1.21.1",
+        "release_type": "release",
+        "filename": "diorama-0.7.0+neoforge-1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/kwpTgbCk/versions/1FG2KJOU/diorama-0.7.0%2Bneoforge-1.21.1.jar",
+        "hashes": {
+          "sha1": "dc671a8422ce0fcaaf4ae148fb38728f59629289",
+          "sha512": "e19c3f4a97eb5ed1941beeabb500fa8fda2d5602ede6ff6d6d5c77bb670b4ae686fc4d4b574434f638bdab8007b75531c87e2e07789fb003e75813c925e9a772"
+        },
+        "size": 924656,
+        "side": "client",
+        "kind": "mod",
+        "request": "diorama",
+        "world_sensitive": false,
+        "optional": false,
+        "default": true,
+        "dependencies": [],
+        "upstream_dependencies": [],
+        "metadata_exceptions": [],
+        "license": {
+          "id": "MIT",
+          "name": "MIT License",
+          "url": null
+        },
+        "source": "https://modrinth.com/mod/diorama-map",
+        "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+        "status": "Integrated but awaiting runtime validation",
+        "validation": {
+          "metadata": "pass",
+          "jar": "pending",
+          "runtime": "not run"
+        }
+      },
+      "repair": {
+        "source": "compat/diorama",
+        "upstream_sha512": "e19c3f4a97eb5ed1941beeabb500fa8fda2d5602ede6ff6d6d5c77bb670b4ae686fc4d4b574434f638bdab8007b75531c87e2e07789fb003e75813c925e9a772",
+        "changed_entries": [
+          "dev/diorama/bake/BlockLooks.class",
+          "dev/diorama/bake/BlockLooks$LegacyPart.class",
+          "META-INF/neoforge.mods.toml"
+        ]
       }
     }
   ]

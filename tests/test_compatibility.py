@@ -49,7 +49,7 @@ class CompatibilityGenerationTests(unittest.TestCase):
             original_markdown = (root/'docs/COMPATIBILITY.md').read_bytes()
             self.assertEqual(len(first['resolved_files']), len(lock['mods']))
             self.assertEqual(first['counts']['enabled_mod_entries'], 2)
-            self.assertEqual(len(first['isolated_candidates']), 3)
+            self.assertEqual(len(first['isolated_candidates']), 4)
             self.assertEqual(len(first['runtime_evidence']), 5)
             self.assertEqual(first['evidence_rejections'], [])
             self.assertTrue(all(entry['candidate'] == 'fixture.0' and entry['claim'].startswith('Synthetic test observation')
@@ -107,13 +107,13 @@ class CompatibilityGenerationTests(unittest.TestCase):
         for resolved, source in zip(data['resolved_files'], lock['mods']):
             for key in ('project_id', 'version_id', 'version', 'filename', 'hashes', 'side', 'optional', 'default'):
                 self.assertEqual(resolved.get(key), source.get(key), (source['slug'], key))
-        self.assertEqual(data['counts']['enabled_mod_entries'], 204)
-        self.assertEqual(len(data['requests']), 229)
+        self.assertEqual(data['counts']['enabled_mod_entries'], 212)
+        self.assertEqual(len(data['requests']), 241)
         chains = next(v for v in data['resolved_files'] if v['slug'] == 'reconnectible-chains')
         self.assertEqual(chains['version_id'], 'e4yVoAvP')
         self.assertEqual(chains['side'], 'both')
         self.assertEqual(chains['hashes']['sha256'], '70d9f048e6f358c83b2d35f8a69000ec7827023efcc6d3b75346b4e34238bbd0')
-        self.assertEqual(len(data['isolated_candidates']), 3)
+        self.assertEqual(len(data['isolated_candidates']), 4)
 
     def test_lock_drift_is_refused_before_a_mixed_snapshot_is_published(self):
         with tempfile.TemporaryDirectory(prefix='awft-compatibility-') as folder:

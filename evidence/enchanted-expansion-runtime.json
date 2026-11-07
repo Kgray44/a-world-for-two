@@ -1,0 +1,138 @@
+{
+  "format": "awft-enchanted-expansion:1",
+  "version": "0.2.0",
+  "release_status": "unpublished; not qualified for latest promotion",
+  "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
+  "runtime_baseline": {
+    "bridge": "0.6.64",
+    "tavern": "0.1.14",
+    "easy_npc": "7.17.1",
+    "neoforge": "21.1.262",
+    "qa_helper_excluded": true
+  },
+  "backup": {
+    "sha256": "b386af448af3e1d2806d72799315cd6d559b6f79ec64515ba48d3e44b004b7f7",
+    "files_verified": 5517,
+    "archive_and_full_restore_hashes": "pass",
+    "production_files_changed_at_preservation_checkpoint": 0,
+    "production_files_changed_at_final_checkpoint": 0,
+    "clean_production_save_boundary_before_activation": "Still required at rollout; original source log did not establish a clean stop. Archive was byte-consistent offline and its independent restore started/saved/shut down successfully."
+  },
+  "production_baseline_stage": {
+    "at": "2026-11-07T01:35:26.584718+00:00",
+    "startup": true,
+    "exit_code": 0,
+    "seconds": 95.28099999998813,
+    "commands_sent": 2
+  },
+  "overworld_preservation": {
+    "version": "0.2.0",
+    "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
+    "initial_entity_uuids": 7446,
+    "retained_entity_uuids": 7446,
+    "missing_initial_entities": 0,
+    "changed_entity_types": 0,
+    "easy_npc_before": 44,
+    "easy_npc_after": 44,
+    "playerdata_files": 3,
+    "changed_playerdata_files": 0,
+    "original_chunks_compared": 42557,
+    "chunks_with_different_section_block_states": 0,
+    "boundary": "Actual independent restore before/after startup/save/shutdown. Partial final-sector padding only was padded after all actual record lengths were verified within original bytes. Section-state equality is not visual, machine, behavior or multiplayer acceptance.",
+    "dimension": "minecraft:overworld"
+  },
+  "earlier_component_tests": {
+    "scope": "Repository-lock staging before private bridge/Tavern/Easy NPC reconciliation; not full-production preservation qualification",
+    "ancient_remnants_natural_structure": {
+      "id": "ancient_remnants:oakwood_monument",
+      "chunk": [
+        983,
+        904
+      ],
+      "saved_pieces": 8
+    },
+    "decocraft_decor_and_octopus_rig_block_after_restart": "pass",
+    "cart_registration_and_saved_entities": [
+      "hand_cart",
+      "supply_cart",
+      "animal_cart"
+    ],
+    "cart_motion_storage_and_live_multiplayer": "not run"
+  },
+  "diorama_repair": {
+    "at": "2026-11-07T00:16:20.308292+00:00",
+    "patched_file": "diorama-0.7.0+awft.1-neoforge-1.21.1.jar",
+    "block_states_baked": 939699,
+    "bake_ms": 64619,
+    "legacy_model_api_warnings": 0,
+    "verify_or_abstract_method_errors": 0,
+    "in_world": true,
+    "scope": "Actual singleplayer copied-world initialization and native color bake. No rendered-map visual or multiplayer acceptance. Test client terminated after capture because reliable desktop close was unavailable; not a clean shutdown claim."
+  },
+  "inventory_expanded": {
+    "active": false,
+    "version": "0.2.1",
+    "experimental_neoforge": "21.1.264",
+    "initial_sandbox_server": {
+      "at": "2026-11-07T00:18:31.166723+00:00",
+      "startup": true,
+      "exit_code": 0,
+      "seconds": 92.40600000001723,
+      "commands_sent": 2
+    },
+    "scope": "Fresh world, no players copied; initial repository mod set. Inventory client, persistence/removal and multiplayer integrity untested."
+  },
+  "fresh_install": {
+    "first_manifest": "all 216 client hashes verified after author downloads; final retained-runtime update checked separately",
+    "native_prism_import": "unverified",
+    "final_update": {
+      "at": "2026-11-07T01:49:10.649035+00:00",
+      "exit_code": 0,
+      "seconds": 13.937000000005355,
+      "checked_files": 218,
+      "hash_errors": [],
+      "extra_mod_jars": [
+        "Essential_1-5-1_neoforge_1-21-1.jar"
+      ],
+      "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
+      "scope": "Fresh prior manifest installation followed by final retained-runtime/repair update using exact local manifest; all author/GitHub downloads and final file hashes checked. Public channel and native import remain unverified."
+    }
+  },
+  "graphics": {
+    "bsl_enchanted_6g": {
+      "at": "2026-11-07T01:32:46.950268+00:00",
+      "shader": "BSL 10.1.8",
+      "pipeline_created": true,
+      "heap_max_bytes": 6442450944,
+      "heap_used_bytes": 6338400896,
+      "fps_snapshot": 6,
+      "acceptance": "FAIL: current 6 GiB client is under heap pressure and has severe frame stalls. Attempted 8 GiB setting was not applied by cached launcher instance. Not a controlled benchmark.",
+      "client_shutdown": "Owned disposable client terminated after log capture; no clean exit claim",
+      "modset_scope": "Initial repository baseline before bridge64/Tavern/Easy NPC reconciliation; component diagnostic only"
+    },
+    "8g_test": "Actual 8 GiB heap reached first-launch accessibility onboarding; desktop testing stopped by physical Escape. World/render acceptance pending.",
+    "soft_rounded_runtime": "not run",
+    "public_benchmark_claim": "none"
+  },
+  "open_gates": [
+    "Native fresh Prism import and final manifest download",
+    "Stable in-world memory/frame-time behavior",
+    "Both presets rendered with BSL and DH, including city/interior/model overlap checks",
+    "Octo Arms movement/backtank/ship interactions and cart transport/storage",
+    "Current Create/ship/backpack/NPC gameplay regression checks",
+    "Two-player acceptance; only KG available",
+    "Coordinated production activation and final stable publication"
+  ],
+  "automated_verification": {
+    "python": "3.12.10",
+    "java": "21.0.10",
+    "unittest_total": 1454,
+    "unittest_skipped": 2,
+    "unittest_result": "pass",
+    "packwiz": "pass",
+    "app_js_syntax": "pass",
+    "native_enabled_jars": 212,
+    "native_errors": 0,
+    "native_warnings": 0
+  }
+}

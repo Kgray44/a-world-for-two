@@ -107,7 +107,7 @@ class PirateModpackInclusionTests(unittest.TestCase):
         with zipfile.ZipFile(result,'w') as archive:
             archive.writestr('instance.cfg','PreLaunchCommand='+prelaunch.replace('"','\\"')+'\nMaxMemAlloc=6144\nOverrideJavaLocation=false\n')
             archive.writestr('mmc-pack.json',json.dumps({'components':[{'uid':'net.neoforged','version':'21.1.262'}]}))
-            for name in ('INSTALL.txt','CONNECT.txt','.minecraft/options.txt','.minecraft/awft-tools/LICENSE.txt'):
+            for name in ('INSTALL.txt','CONNECT.txt','GRAPHICS.txt','.minecraft/options.txt','.minecraft/awft-tools/LICENSE.txt'):
                 archive.writestr(name,'synthetic fixture')
             archive.writestr('.minecraft/servers.dat',export.server_list())
             for pin in tools:archive.writestr('.minecraft/awft-tools/'+pin['filename'],pin['fixture'])

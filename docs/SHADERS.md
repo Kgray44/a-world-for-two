@@ -1,5 +1,8 @@
 # Shader choices
 
+The 0.2.0 expansion's alternative LabPBR packs, saved BSL material settings and
+selection workflow are in [Enchanted Expansion](ENCHANTED-EXPANSION.md).
+
 Only one shader renders at a time. All are client files; intended cost and appearance
 describe author goals, not measured rankings. Author ZIPs are kept unchanged.
 

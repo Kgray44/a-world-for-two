@@ -82,7 +82,7 @@ def verify_archive(path,prelaunch,pins,artwork,pirate):
         names=archive.namelist()
         if archive.testzip() or len(names)!=len(set(names)):
             raise UserError('Export ZIP CRC or duplicate-entry validation failed')
-        allowed={'instance.cfg','mmc-pack.json','INSTALL.txt','CONNECT.txt','awft-export.json',PIRATE_NOTICE,
+        allowed={'instance.cfg','mmc-pack.json','INSTALL.txt','CONNECT.txt','GRAPHICS.txt','awft-export.json',PIRATE_NOTICE,
                  '.minecraft/options.txt','.minecraft/config/iris.properties','.minecraft/servers.dat',
                  '.minecraft/awft-tools/LICENSE.txt','.minecraft/mods/'+pirate['filename']}
         allowed.update('.minecraft/awft-tools/'+pin['filename'] for pin in pins)
@@ -186,9 +186,11 @@ def build(home,url=None,revision=1):
     with zipfile.ZipFile(path,'x',zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
         archive.writestr('instance.cfg',cfg)
         archive.writestr('mmc-pack.json',json.dumps(components,indent=2)+'\n')
-        archive.writestr('.minecraft/options.txt','renderDistance:8\nsimulationDistance:5\nmaxFps:60\nenableVsync:true\n')
+        from .graphics_preset import fresh_options
+        archive.writestr('.minecraft/options.txt',fresh_options(lock))
         archive.writestr('.minecraft/config/iris.properties','enableShaders=false\n')
         archive.writestr('.minecraft/servers.dat',server_list())
+        archive.write(REPO/'docs/ENCHANTED-EXPANSION.md','GRAPHICS.txt')
         archive.write(pirate_file,'.minecraft/mods/'+pirate['filename'])
         archive.write(notice,PIRATE_NOTICE)
         for pin in tools:archive.write(layout.caches/pin['filename'],'.minecraft/awft-tools/'+pin['filename'])
@@ -207,7 +209,7 @@ def build(home,url=None,revision=1):
             '6. Ask the host to whitelist your exact Java username. See CONNECT.txt for address details.\n\n'
             'This version checks the immutable manifest on each launch:\n'+url+'\n\n'
             'The host must publish that exact manifest and its dependencies before first installation can work.\n'
-            'This development candidate still requires fresh native Prism import/download qualification.\n'
+            'Fresh native Prism import/download qualification is recorded separately from archive checks.\n'
             'No account, world, logs or LOD databases are included. Choose shaders in Video Settings after baseline startup.\n'
             'Hosting documentation: https://github.com/Kgray44/a-world-for-two/blob/main/docs/INSTALL.md\n')
         archive.writestr('CONNECT.txt',
@@ -218,19 +220,19 @@ def build(home,url=None,revision=1):
             'The host must have the server and the linked Playit game tunnel running.\n'
             'Use your own licensed Minecraft Java account and ask the host to whitelist your exact username.\n'
             'Edit or add servers normally if the host gives you a new address.\n'
-            'This candidate still requires fresh native Prism import/download and remote two-player qualification.\n')
+            'Use the host\'s matching release; native import and remote two-player qualification are recorded separately.\n')
         archive.write(REPO/'docs/UPDATER-LICENSE.txt','.minecraft/awft-tools/LICENSE.txt')
         archive.writestr('awft-export.json',json.dumps({'format':'awft-prism-export:1','version':lock['version'],
             'pack_sha256':digest(REPO/'packwiz/pack.toml'),'pack_url':url,'original_artwork_sha256':artwork['sha256'],
             'modpack_bundled_artifacts':[included],
-            'status':'candidate; fresh import and public download qualification pending'}))
+            'status':'qualified release' if lock.get('release_status')=='qualified' else 'unpublished; fresh import and public download qualification pending'}))
     checks=verify_archive(path,prelaunch,tools,artwork,pirate)
     report={'at':utcnow(),'version':lock['version'],'export_revision':revision,'pack_sha256':digest(REPO/'packwiz/pack.toml'),
         'path':str(path),'size':path.stat().st_size,'sha256':digest(path),'guard':reserve,
         'original_artwork_sha256':artwork['sha256'],'public_server':PUBLIC_SERVER,'updater_url':url,
         'modpack_bundled_artifacts':[included],
         'checks':checks|{'fresh_prism_import':'pending','public_updater_install':'pending','client_startup':'pending'},
-        'boundary':'Candidate artifact; not a published or qualified release.'}
+        'boundary':'Archive checks only; publication and gameplay qualification are recorded separately.'}
     write_json(path.with_suffix('.json'),report)
     atomic_write(path.with_suffix('.sha256'),report['sha256']+'  '+path.name+'\n')
     print(json.dumps(report),flush=True)

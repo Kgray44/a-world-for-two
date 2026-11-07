@@ -100,5 +100,42 @@
       "jar": "pending",
       "runtime": "not run"
     }
+  },
+  "inventory_expanded": {
+    "project_id": "kcgUksbd",
+    "slug": "inventory-expanded",
+    "name": "Inventory Expanded",
+    "version_id": "jbtTDJbh",
+    "version": "0.2.1",
+    "release_type": "beta",
+    "filename": "inventory-expanded-neoforge-beta-0.2.1.jar",
+    "url": "https://cdn.modrinth.com/data/kcgUksbd/versions/jbtTDJbh/inventory-expanded-neoforge-beta-0.2.1.jar",
+    "hashes": {
+      "sha1": "729042ac260c5710c187e432fea8cebb57525900",
+      "sha512": "2ae6ef9499ba8b5e1a2e4fc8fd1afbc2d3782083bcbb1b22a0a393ed8d068a400a4b41ac53ba9d8a1451a69b749ff77cbaa5792d435729f1780382df3ee1b325"
+    },
+    "size": 5293101,
+    "side": "both",
+    "kind": "mod",
+    "request": "inventory-expanded",
+    "world_sensitive": true,
+    "optional": false,
+    "default": true,
+    "dependencies": [],
+    "upstream_dependencies": [],
+    "metadata_exceptions": [],
+    "license": {
+      "id": "LicenseRef-All-Rights-Reserved",
+      "name": "",
+      "url": null
+    },
+    "source": "https://modrinth.com/mod/inventory-expanded",
+    "selection_reason": "Isolated beta only. Requires server and client; real-player inventory integrity, Curios/backpack compatibility and removal recovery remain untested.",
+    "status": "Integrated but awaiting runtime validation",
+    "validation": {
+      "metadata": "pass",
+      "jar": "pending",
+      "runtime": "not run"
+    }
   }
 }

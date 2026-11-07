@@ -68,11 +68,8 @@ def prepare(home, player="KG", server_port=None):
         atomic_write(minecraft / relative, raw)
     write_json(instance / 'awft-menu.json', {'at': utcnow(), 'background_sha256': menu.current()['sha256'], 'status': 'installed; client visual validation pending'})
     # These are native vanilla 1.21.1 option names. Shaders remain off for startup.
-    fresh = next((m["filename"] for m in lock["mods"] if m["kind"] == "resourcepack"), None)
-    import json
-    options = "renderDistance:8\nsimulationDistance:5\nmaxFps:60\nenableVsync:true\n"
-    if fresh:
-        options += "resourcePacks:" + json.dumps(["vanilla", "file/" + fresh]) + "\n"
+    from .graphics_preset import fresh_options
+    options = fresh_options(lock)
     atomic_write(minecraft / "options.txt", options)
     components = {"formatVersion": 1, "components": [
         {"uid": "org.lwjgl3", "version": "3.3.3", "dependencyOnly": True},

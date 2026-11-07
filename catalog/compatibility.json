@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-29T15:05:46.151427+00:00",
+  "generated": "2026-11-07T01:53:05.732216+00:00",
   "generation_basis": "Source lock timestamp; unchanged inputs produce identical reports",
-  "pack_version": "0.1.0-candidate.65",
+  "pack_version": "0.2.0",
   "requests": [
     {
       "id": "farmers-delight",
@@ -674,7 +674,7 @@
       "status": "Alternative selected",
       "version": "0.6.3-neoforge-21.1",
       "side": null,
-      "project_id": "NTi7d3Xc",
+      "project_id": null,
       "reason": "Regions Unexplored is the selected block/biome expansion. Adding another broad biome pool before distribution/spawn testing risks excessive overlap.",
       "source": "https://modrinth.com/mod/regions-unexplored",
       "runtime": "not run",
@@ -701,7 +701,7 @@
       "status": "Alternative selected",
       "version": "0.6.3-neoforge-21.1",
       "side": null,
-      "project_id": "WBvnqHfV",
+      "project_id": null,
       "reason": "Regions Unexplored is selected for the first terrain comparison; this compatible alternative remains documented.",
       "source": "https://modrinth.com/mod/regions-unexplored",
       "runtime": "not run",
@@ -1241,7 +1241,7 @@
       "status": "Alternative selected",
       "version": "0.18.28",
       "side": null,
-      "project_id": "zPR191Ph",
+      "project_id": null,
       "reason": "Original project has no NeoForge 1.21.1 file in the captured metadata. Cinematic Interactions is the selected workstation animation system.",
       "source": "https://github.com/dcvke/CinematicInteractions/releases/tag/v0.18.28-neoforge-1.21.1-beta",
       "runtime": "not run",
@@ -1298,9 +1298,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "HGckQa6S",
+      "project_id": null,
       "reason": "Exact-name research found a Flame torch resource pack and several unrelated particle/content projects. The intended project is ambiguous, so no unrelated substitute is silently installed.",
-      "source": "https://modrinth.com/project/HGckQa6S",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -1312,7 +1312,7 @@
       "status": "Alternative selected",
       "version": "1.6.0-neoforge+mc1.21.1",
       "side": null,
-      "project_id": "vBxRFGLR",
+      "project_id": null,
       "reason": "Kaleidoscope Cookery is integrated. The separately named Kaleidoscope is a deprecated client color/fog mod migrated to Fuzz, not a cooking system; it has no matching NeoForge 1.21.1 file.",
       "source": "https://modrinth.com/mod/kaleidoscope-cookery",
       "runtime": "not run",
@@ -1694,7 +1694,7 @@
       "status": "Alternative selected",
       "version": "3.3.3-1.21.1",
       "side": null,
-      "project_id": "fxxUqruK",
+      "project_id": null,
       "reason": "Distant Horizons + SeedGen explicitly replaces Voxy under the owner's addendum. No active dependency or profile includes it.",
       "source": "https://modrinth.com/mod/distanthorizons",
       "runtime": "not run",
@@ -1721,7 +1721,7 @@
       "status": "Alternative selected",
       "version": "3.3.3-1.21.1",
       "side": null,
-      "project_id": "Ap78bKTp",
+      "project_id": null,
       "reason": "Superseded by the owner's definitive Distant Horizons decision. Roxy is not installed or required.",
       "source": "https://modrinth.com/mod/distanthorizons",
       "runtime": "not run",
@@ -1775,7 +1775,7 @@
       "status": "Alternative selected",
       "version": "3.3.3-1.21.1",
       "side": null,
-      "project_id": "lKiXKLvv",
+      "project_id": null,
       "reason": "The selected DH/SeedGen server-client architecture supplies distant terrain; a separate Voxy transport is not installed.",
       "source": "https://modrinth.com/mod/distanthorizons",
       "runtime": "not run",
@@ -1982,9 +1982,9 @@
       "status": "Incompatible, with evidence",
       "version": null,
       "side": null,
-      "project_id": "VSNURh3q",
+      "project_id": null,
       "reason": "Official C2ME is Fabric. DH SeedGen's author additionally documents device-dependent C2ME/noise-optimizer incompatibility. Connector forks are excluded from this NeoForge candidate.",
-      "source": "https://modrinth.com/project/VSNURh3q",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -1996,9 +1996,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "4WWQxlQP",
+      "project_id": null,
       "reason": "NeoForge 1.21.1 releases exist. Excluded pending a measured A/B run with the mandatory optimizers and weather/SeedGen; no unsupported improvement claim is made.",
-      "source": "https://modrinth.com/project/4WWQxlQP",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2010,9 +2010,9 @@
       "status": "Incompatible, with evidence",
       "version": null,
       "side": null,
-      "project_id": "Ps1zyz6x",
+      "project_id": null,
       "reason": "Sable 2.0.6's actual neoforge.mods.toml declares ScalableLux incompatible. It is excluded.",
-      "source": "https://modrinth.com/project/Ps1zyz6x",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2024,9 +2024,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "r0v8vy1s",
+      "project_id": null,
       "reason": "A matching NeoForge file exists; redstone behavior with Create and actual tick improvements need an isolated A/B test before inclusion.",
-      "source": "https://modrinth.com/project/r0v8vy1s",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2038,9 +2038,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "roccmqou",
+      "project_id": null,
       "reason": "Matching NeoForge file found. Recipe-heavy Create/cooking interactions and actual benefit are unmeasured; retained as a benchmark candidate.",
-      "source": "https://modrinth.com/project/roccmqou",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2261,7 +2261,7 @@
       "status": "Alternative selected",
       "version": "10.1.0.9",
       "side": null,
-      "project_id": "sTnFU4hH",
+      "project_id": null,
       "reason": "Serene Seasons is explicitly selected in the addendum; Advanced Weather includes season integration.",
       "source": "https://modrinth.com/mod/serene-seasons",
       "runtime": "not run",
@@ -2474,9 +2474,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "rcTfTZr3",
+      "project_id": null,
       "reason": "The original is Fabric; a NeoForge beta port (pf-neoforge) exists. AmbientSounds and Sound Physics are selected while audio overlap and beta stability remain unmeasured.",
-      "source": "https://modrinth.com/project/rcTfTZr3",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2580,9 +2580,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "nrikgvxm",
+      "project_id": null,
       "reason": "Compatible loader file exists but Advanced Weather already provides custom precipitation. Do not enable a second particle/weather renderer without an overlap and storm-cost test.",
-      "source": "https://modrinth.com/project/nrikgvxm",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -2718,7 +2718,7 @@
       "status": "Alternative selected",
       "version": "1.1.0+1.21.1",
       "side": null,
-      "project_id": "MPCX6s5C",
+      "project_id": null,
       "reason": "Smooth Player Animations is selected; its author lists NEA compatibility. Additional override/rendering tests are required before adding a second animation controller.",
       "source": "https://modrinth.com/mod/smoothplayeranimations",
       "runtime": "not run",
@@ -2880,9 +2880,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "JrIYhb1P",
+      "project_id": null,
       "reason": "The exact requested Cosmetic Armor Reworked must be distinguished from the unrelated Fabric Cosmetic Armor and unofficial forks. Not substituted silently.",
-      "source": "https://modrinth.com/project/JrIYhb1P",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3138,7 +3138,7 @@
       "status": "Alternative selected",
       "version": "0.1.2+awft.3",
       "side": null,
-      "project_id": "WuGVWUF2",
+      "project_id": null,
       "reason": "Owner excluded Fog from defaults. Preserve DH/shader fog and evaluate Advanced Weather's native effects first.",
       "source": "https://modrinth.com/mod/advanced-weather",
       "runtime": "not run",
@@ -3164,9 +3164,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "jYouLOe1",
+      "project_id": null,
       "reason": "Optional only after measured shader/DH/weather tests demonstrate an improvement; excluded from defaults.",
-      "source": "https://modrinth.com/project/jYouLOe1",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3302,7 +3302,7 @@
       "status": "Unresolved, with investigation details",
       "version": "1.21.1-1.2.1",
       "side": null,
-      "project_id": "efSTEGLV",
+      "project_id": null,
       "reason": "A NeoForge release supports MIDI, but a third default instrument system is not enabled before checking overlap. Music Maker is preferred for piano; Immersive Melodies remains portable music.",
       "source": "https://modrinth.com/mod/music-maker-mod",
       "runtime": "not run",
@@ -3422,7 +3422,7 @@
       "status": "Alternative selected",
       "version": "1.70.2-1.21.1",
       "side": null,
-      "project_id": "KQZSjctJ",
+      "project_id": null,
       "reason": "Prefer the selected melee system's combat scythes and a distinct farming scythe if verified; avoid a duplicate combat arsenal.",
       "source": "https://modrinth.com/mod/simply-swords",
       "runtime": "not run",
@@ -3449,7 +3449,7 @@
       "status": "Alternative selected",
       "version": "1.70.2-1.21.1",
       "side": null,
-      "project_id": "Ol439igP",
+      "project_id": null,
       "reason": "Simply Swords + Better Combat is the requested primary weapon combination. Avoid adding a second broad arsenal.",
       "source": "https://modrinth.com/mod/simply-swords",
       "runtime": "not run",
@@ -3507,9 +3507,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "lkwjObIy",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/lkwjObIy",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3521,9 +3521,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "uetGbPKW",
+      "project_id": null,
       "reason": "Available files are alpha. Inventory ownership must be proven configurable before combining physical corpses with the one selected grave system; inventory safety takes priority.",
-      "source": "https://modrinth.com/project/uetGbPKW",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3690,9 +3690,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "vYSi4UOX",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/vYSi4UOX",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3873,9 +3873,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "1kmgQF26",
+      "project_id": null,
       "reason": "NeoForge port found. Excluded until its roaming AI is checked against Doggy Talents Next and Cozy's Improved Cats ownership, teleportation and recovery.",
-      "source": "https://modrinth.com/project/1kmgQF26",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3918,9 +3918,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "XVZogNXg",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/XVZogNXg",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -3963,7 +3963,7 @@
       "status": "Alternative selected",
       "version": "1.2.0",
       "side": null,
-      "project_id": "tNai0h2Y",
+      "project_id": null,
       "reason": "Excluded by atmosphere preference: nightmares, bedbugs and penalties overlap the peaceful sleep design. Use the selected bed system, Comforts and Sleep Through The Night.",
       "source": "https://modrinth.com/mod/sleep-through-the-night",
       "runtime": "not run",
@@ -4252,9 +4252,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "87F3C8QL",
+      "project_id": null,
       "reason": "Exact-name Modrinth result is a chicken-coop mod with no matching NeoForge file; it does not establish the intended life-cycle project. No competing AI controller is installed.",
-      "source": "https://modrinth.com/project/87F3C8QL",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -4266,9 +4266,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "yFwACx6Z",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/yFwACx6Z",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -4539,7 +4539,7 @@
       "status": "Alternative selected",
       "version": "0.1.7.4",
       "side": null,
-      "project_id": "tK1VK6Oq",
+      "project_id": null,
       "reason": "Hypertubes handles players and Overpressure handles pneumatic items; Create's native vertical and diagonal Chutes remain available. No third item network is enabled before a distinct gameplay requirement and measured benefit are established.",
       "source": "https://www.curseforge.com/minecraft/mc-mods/create-overpressure/files/9196247",
       "runtime": "not run",
@@ -4595,9 +4595,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "M1DHa9hR",
+      "project_id": null,
       "reason": "Retained as a potential building convenience. Exact native loader/Create version and interaction with the selected pneumatic system need verification before inclusion.",
-      "source": "https://modrinth.com/project/M1DHa9hR",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -4979,9 +4979,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "8a1Ksvnk",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/8a1Ksvnk",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -5021,9 +5021,9 @@
       "status": "Unresolved, with investigation details",
       "version": null,
       "side": null,
-      "project_id": "o8eM9Cnp",
-      "reason": "Matching NeoForge 1.21.1 files found; dependency, integration and runtime review pending.",
-      "source": "https://modrinth.com/project/o8eM9Cnp",
+      "project_id": null,
+      "reason": "No verified matching file selected. Exact project identity, loader support or overlap investigation remains in progress.",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -5133,17 +5133,6 @@
         "metadata": "pass",
         "jar": "pending",
         "runtime": "not run"
-      },
-      "runtime_observation": {
-        "note": "Pinned native parser accepted the configured intro. Final-settlement camera path and client playback remain separate.",
-        "evidence_source": "evidence/runtime/cinematic-native-parser.json",
-        "evidence_sha256": "1a22dc28806a74f139ef67378e83ae8fea572634e86ef80583aeed428879ab34",
-        "observed_version": "1.0.0-alpha.1+neoforge-1.21.1",
-        "observed_file_hash": {
-          "sha512": "05e2c3c510a64642d1e5d35a8fd430c0d3ab38b985f3453611d06b1f2e74241e7f43b6e99bc20e64ae03e1b634c517aae0aa84681f1fa1537defdf15a20d9228"
-        },
-        "current_file_matches_observed_pin": true,
-        "evidence_scope": "Limited prior-candidate observation; no lock runtime gate is promoted"
       }
     },
     {
@@ -5341,9 +5330,9 @@
       "status": "Incompatible, with evidence",
       "version": null,
       "side": null,
-      "project_id": "A59AYZTC",
+      "project_id": null,
       "reason": "The author publishes Fabric 0.4-beta for Minecraft 1.21.1. Native NeoForge 1.1.1 requires Minecraft 1.21.11 and NeoForge 21.11.42, not this 1.21.1 / 21.1 stack. Official release JAR descriptors and source properties were inspected. No matching native backport is available; Fairy Tales supplies complementary abilities but is not represented as Dairatz tameable fairies.",
-      "source": "https://modrinth.com/project/A59AYZTC",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -6099,7 +6088,7 @@
       "side": null,
       "project_id": null,
       "reason": "The original author’s V9 and V9.1 beta files are legacy OptiFine-era releases without established Iris/DH support. The official CurseForge download refused automated retrieval (HTTP 403), and no authorized API key is present. An unchanged author download and native client test are required; Bliss is documented as a derivative, not substituted for the requested original. The owner explicitly deferred Chocapic; it remains pending and absent from the active lock.",
-      "source": "https://www.curseforge.com/minecraft/shaders/chocapic13-shaders/files/3059792",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -6206,7 +6195,7 @@
       "side": null,
       "project_id": null,
       "reason": "The author’s 1.200 release offers pastel color schemes and a cozy style, but its published version list stops at 1.21 and this exact build’s DH support is unverified. Retained for investigation; Bliss, BSL and Solas provide the initial cozy choices.",
-      "source": "https://modrinth.com/shader/pastel-shaders",
+      "source": null,
       "runtime": "not run",
       "selected_by_default": false,
       "optional": false
@@ -6399,17 +6388,364 @@
         "jar": "pending",
         "runtime": "not run"
       }
+    },
+    {
+      "id": "ancient-remnants",
+      "name": "Ancient Remnants: Monoliths",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "1.5.2",
+      "side": "both",
+      "project_id": "qYtXvlBc",
+      "reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "source": "https://modrinth.com/mod/ancient-remnants",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "qYtXvlBc",
+        "version_id": "R7lHZHzN",
+        "filename": "ancient_remnants-1.5.2+1.21.1-neoforge.jar",
+        "hashes": {
+          "sha1": "febbd4abcd8dc099f105802f6edb5bbaef0e79d6",
+          "sha512": "1ae2aca9e499883cc23e6c9c274fe76cbb436ae00607166413cefb7f475ab0173c842f6c08aa51af9a78ca275d1a977fe8d8510557837a7c2c6264135277d6d6"
+        },
+        "size": 9637271,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "create-octo-arms",
+      "name": "Create: Octo Arms",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "1.6.0",
+      "side": "both",
+      "project_id": "github:SenDeliver/create-octo-arms",
+      "reason": "Author release; keep existing Create 6.0.10 and Sable 2.0.6. Native JAR constraints and staging runtime gates apply.",
+      "source": "https://github.com/SenDeliver/create-octo-arms/releases/tag/v1.6.0%2Bmc1.21.1",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "github:SenDeliver/create-octo-arms",
+        "version_id": "v1.6.0+mc1.21.1",
+        "filename": "octo-arms-1.6.0+mc1.21.1.jar",
+        "hashes": {
+          "sha256": "c81d53ee12277a8ac8031574d0b5e8aa6fb5dc1632f3ce5628718eaabf8362cc"
+        },
+        "size": 320941,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "decocraft",
+      "name": "DecoCraft",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "decocraft-3.0.11-1.21.1-neoforge",
+      "side": "both",
+      "project_id": "IZJSgKZe",
+      "reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "source": "https://modrinth.com/mod/decocraft",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "IZJSgKZe",
+        "version_id": "Z8xm2POI",
+        "filename": "decocraft-3.0.11-1.21.1-neoforge.jar",
+        "hashes": {
+          "sha1": "6704940aa352d1acf3cf9362e5ef8dd4e65b563c",
+          "sha512": "0d7c71592760a95113d38d5d8f4bd7b247ab0e9e0c8b4230ed0f3a9170ba08c70f8b0b17eea9794e8faa46a7c94461a01a72fcc2574eb751aec5540f04f6ffb5"
+        },
+        "size": 93170262,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "astikorcarts-redux",
+      "name": "AstikorCarts Redux",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "1.2.4",
+      "side": "both",
+      "project_id": "mnLFouB0",
+      "reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "source": "https://modrinth.com/mod/astikorcarts-redux",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "mnLFouB0",
+        "version_id": "JtPCk233",
+        "filename": "astikorcartsredux-1.2.4.jar",
+        "hashes": {
+          "sha512": "d6ecf33be5065cffdd449167396f538bd89bfd8a38d86957bab1551869aebd1c0263504eb06e27d3adb9d7f25698fe9f61bd64f1490c0f6fb8d1c62fb9f5aa25",
+          "sha1": "aaede46046d3989a5f58ccf00466e186119f54bd"
+        },
+        "size": 576717,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "diorama",
+      "name": "Diorama",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "0.7.0+awft.1-neoforge-1.21.1",
+      "side": "client",
+      "project_id": "kwpTgbCk",
+      "reason": "MIT native-model call repair of exact official 0.7.0. Copied-world color bake passed with no legacy-model API warnings; full rendered-map and multiplayer acceptance pending.",
+      "source": "https://modrinth.com/mod/diorama-map",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "kwpTgbCk",
+        "version_id": "0.7.0+awft.1-neoforge-1.21.1",
+        "filename": "diorama-0.7.0+awft.1-neoforge-1.21.1.jar",
+        "hashes": {
+          "sha256": "1d0cd42832e2fd57551851c2334bf837c93e0e0bc6f73bd1979ac768bb6d4584"
+        },
+        "size": 925546,
+        "side": "client",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "inventory-expanded",
+      "name": "Inventory Expanded",
+      "group": "enchanted-expansion",
+      "status": "Unresolved, with investigation details",
+      "version": null,
+      "side": null,
+      "project_id": "kcgUksbd",
+      "reason": "Isolated official beta 0.2.1 (jbtTDJbh) downloaded and hash-verified. Actual JAR requires NeoForge >=21.1.264 on both sides; the retained pack uses 21.1.262. Earlier inspected 0.2.0 and 1.0.6 JARs have the same minimum. A separate NeoForge 21.1.264 sandbox passed static dependency checks and real server startup/save/shutdown with a fresh world and no copied players. The active loader remains unchanged. Client inventory behavior, Curios/backpacks, reconnect and removal recovery remain untested, so the beta stays isolated.",
+      "source": "https://modrinth.com/project/kcgUksbd",
+      "runtime": "not run",
+      "selected_by_default": false,
+      "optional": false,
+      "investigated_artifact": {
+        "project_id": "kcgUksbd",
+        "version": "0.2.1",
+        "version_id": "jbtTDJbh",
+        "filename": "inventory-expanded-neoforge-beta-0.2.1.jar",
+        "hashes": {
+          "sha1": "729042ac260c5710c187e432fea8cebb57525900",
+          "sha512": "2ae6ef9499ba8b5e1a2e4fc8fd1afbc2d3782083bcbb1b22a0a393ed8d068a400a4b41ac53ba9d8a1451a69b749ff77cbaa5792d435729f1780382df3ee1b325"
+        },
+        "side": "both",
+        "source": "https://modrinth.com/mod/inventory-expanded"
+      }
+    },
+    {
+      "id": "loconautics",
+      "name": "Loconautics",
+      "group": "enchanted-expansion",
+      "status": "Unresolved, with investigation details",
+      "version": null,
+      "side": null,
+      "project_id": null,
+      "reason": "No verified public native 1.21.1 release found in the November 6 investigation. Ferronautics author's page identifies Loconautics as its intended successor; that is not a downloadable release or compatibility proof. No substitute or railway-world change installed.",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ferronautics",
+      "runtime": "not run",
+      "selected_by_default": false,
+      "optional": false
+    },
+    {
+      "id": "stylista",
+      "name": "Stylista LabPBR 128x",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "26",
+      "side": "client",
+      "project_id": "Y7dBqGlW",
+      "reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "source": "https://modrinth.com/resourcepack/stylista",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "Y7dBqGlW",
+        "version_id": "QSlyhOZA",
+        "filename": "Stylista 128x A26.zip",
+        "hashes": {
+          "sha512": "d49895d3ac5bce7b0f3d48a3efe0680ab8491b79bfb564b16a7960f7d0e1bb6fa838ed4b10110917ad9f3f01af86aefa2d5f32ca56549a28836ae34406c71d14",
+          "sha1": "3661e972a37fefccd1b31c42a4f7df942ecd34b4"
+        },
+        "size": 15678034,
+        "side": "client",
+        "kind": "resourcepack"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "roundista",
+      "name": "Roundista LabPBR 128x",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "32",
+      "side": "client",
+      "project_id": "R4g9Nf07",
+      "reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "source": "https://modrinth.com/resourcepack/roundista",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "R4g9Nf07",
+        "version_id": "k9qKuU9l",
+        "filename": "Roundista 128x R32.zip",
+        "hashes": {
+          "sha512": "98560f3b010b59f08952828268bf9691393c5022c4b19fbb5ea4d48fd0dc3cf83b4934b5bc6755d173c4d0bd11a050ee386971c7a015904e54422918dfd998d6",
+          "sha1": "8f2cf4e6f3211686a767951b357966eb7fd71533"
+        },
+        "size": 12511089,
+        "side": "client",
+        "kind": "resourcepack"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "nautilus3d",
+      "name": "Nautilus 3D",
+      "group": "enchanted-expansion",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "V2.2",
+      "side": "client",
+      "project_id": "1MyOrwfu",
+      "reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "source": "https://modrinth.com/resourcepack/nautilus3d",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "1MyOrwfu",
+        "version_id": "BYoL3YKt",
+        "filename": "Nautilus3D-V2.2.zip",
+        "hashes": {
+          "sha512": "14dccc63880e6943c313b19b2df21cf1bc46cd31bb50a5334acab9ff93c87801e6a6686310aced9a409af06b84ed1f1e4c293de08f57b3174fc0a836bc948834",
+          "sha1": "33887c97d1571485002fc44ff6f62c59791baf07"
+        },
+        "size": 5598247,
+        "side": "client",
+        "kind": "resourcepack"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "easy-npc-core",
+      "name": "Easy NPC: Core (retained production dependency)",
+      "group": "existing-world",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "7.17.1",
+      "side": "both",
+      "project_id": "Epm6R3P2",
+      "reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "source": "https://modrinth.com/mod/easy-npc-core",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "Epm6R3P2",
+        "version_id": "QyvBBoEd",
+        "filename": "easy_npc-neoforge-1.21.1-7.17.1.jar",
+        "hashes": {
+          "sha1": "dbe3e7ff4b0a48e63fe8a28a2330180d77194d39",
+          "sha512": "e3f93183a92de47ba0c2ed5bdab8f31a4c1df0c2a29c93c1815c2a50df7ff5a609c8de6aad84e593b3291115f5d184bc75d4b3b8e03c0ac8e02508eff52b8a3e"
+        },
+        "size": 3038455,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "id": "drowned-rose-tavern",
+      "name": "Drowned Rose 45-patron runtime (retained)",
+      "group": "existing-world",
+      "status": "Integrated but awaiting runtime validation",
+      "version": "0.1.14",
+      "side": "both",
+      "project_id": "awft-tavern",
+      "reason": "Preserve exact installed production 45-patron Tavern 0.1.14, including pose/micro-motion and bounded Windows status publication repair. Existing server configuration retained; no new NPC spawning or player data conversion authorized.",
+      "source": "proposals/drowned-rose",
+      "runtime": "not run",
+      "selected_by_default": true,
+      "optional": false,
+      "file_pin": {
+        "project_id": "awft-tavern",
+        "version_id": "0.1.14",
+        "filename": "awft-tavern-0.1.14.jar",
+        "hashes": {
+          "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"
+        },
+        "size": 112495,
+        "side": "both",
+        "kind": "mod"
+      },
+      "lock_validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
     }
   ],
   "source_lock": {
     "path": "catalog/lock.json",
-    "sha256": "699d6dee928c0bb2ebc83a97f0bd3f1e7f438ed59463d08c7e7a0113fa555a47",
+    "sha256": "17bc018018aa49d79237dea558a2fe54acb233a9894a2a71193db66aee9f84b4",
     "pack_path": "packwiz/pack.toml",
-    "pack_sha256": "671e05a321e64651f64b40a29be2ae32e7b76ca54bd1b25b5e11aaf8c8706a28",
+    "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
     "minecraft": "1.21.1",
     "neoforge": "21.1.262",
     "java": 21,
-    "release_status": "candidate"
+    "release_status": "staging"
   },
   "resolved_files": [
     {
@@ -6568,15 +6904,15 @@
       "name": "A World for Two Control Bridge",
       "request": null,
       "kind": "mod",
-      "version": "0.6.51",
-      "version_id": "0.6.51",
-      "filename": "awft-control-bridge-0.6.51.jar",
-      "size": 725738,
+      "version": "0.6.64",
+      "version_id": "0.6.64",
+      "filename": "awft-control-bridge-0.6.64.jar",
+      "size": 793142,
       "side": "both",
       "optional": false,
       "default": true,
       "hashes": {
-        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
+        "sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
       "status": "Integrated but awaiting runtime validation",
@@ -11758,34 +12094,297 @@
         "jar": "pending",
         "runtime": "not run"
       }
+    },
+    {
+      "project_id": "qYtXvlBc",
+      "slug": "ancient-remnants",
+      "name": "Ancient Remnants: Monoliths",
+      "request": "ancient-remnants",
+      "kind": "mod",
+      "version": "1.5.2",
+      "version_id": "R7lHZHzN",
+      "filename": "ancient_remnants-1.5.2+1.21.1-neoforge.jar",
+      "size": 9637271,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha1": "febbd4abcd8dc099f105802f6edb5bbaef0e79d6",
+        "sha512": "1ae2aca9e499883cc23e6c9c274fe76cbb436ae00607166413cefb7f475ab0173c842f6c08aa51af9a78ca275d1a977fe8d8510557837a7c2c6264135277d6d6"
+      },
+      "source": "https://modrinth.com/mod/ancient-remnants",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "49C5QgTK",
+      "slug": "fragmentum",
+      "name": "Fragmentum",
+      "request": "fragmentum",
+      "kind": "mod",
+      "version": "5.4.0",
+      "version_id": "kCXNhuIV",
+      "filename": "fragmentum-5.4.0+1.21.1-neoforge.jar",
+      "size": 7815344,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "426b3a7f2085266ae231d7ef81092baabb0409bbf222b9220472dd3ba482840a0850047aabc4b59d20fd65170ec9920559d29df6527d8119ecf02c69cfa78e53",
+        "sha1": "711f46b591cbee203e68cf023277dae9060725f8"
+      },
+      "source": "https://modrinth.com/mod/fragmentum",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "IZJSgKZe",
+      "slug": "decocraft",
+      "name": "Decocraft",
+      "request": "decocraft",
+      "kind": "mod",
+      "version": "decocraft-3.0.11-1.21.1-neoforge",
+      "version_id": "Z8xm2POI",
+      "filename": "decocraft-3.0.11-1.21.1-neoforge.jar",
+      "size": 93170262,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha1": "6704940aa352d1acf3cf9362e5ef8dd4e65b563c",
+        "sha512": "0d7c71592760a95113d38d5d8f4bd7b247ab0e9e0c8b4230ed0f3a9170ba08c70f8b0b17eea9794e8faa46a7c94461a01a72fcc2574eb751aec5540f04f6ffb5"
+      },
+      "source": "https://modrinth.com/mod/decocraft",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "mnLFouB0",
+      "slug": "astikorcarts-redux",
+      "name": "AstikorCarts Redux",
+      "request": "astikorcarts-redux",
+      "kind": "mod",
+      "version": "1.2.4",
+      "version_id": "JtPCk233",
+      "filename": "astikorcartsredux-1.2.4.jar",
+      "size": 576717,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "d6ecf33be5065cffdd449167396f538bd89bfd8a38d86957bab1551869aebd1c0263504eb06e27d3adb9d7f25698fe9f61bd64f1490c0f6fb8d1c62fb9f5aa25",
+        "sha1": "aaede46046d3989a5f58ccf00466e186119f54bd"
+      },
+      "source": "https://modrinth.com/mod/astikorcarts-redux",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "Y7dBqGlW",
+      "slug": "stylista",
+      "name": "Stylista - LabPBR",
+      "request": "stylista",
+      "kind": "resourcepack",
+      "version": "26",
+      "version_id": "QSlyhOZA",
+      "filename": "Stylista 128x A26.zip",
+      "size": 15678034,
+      "side": "client",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "d49895d3ac5bce7b0f3d48a3efe0680ab8491b79bfb564b16a7960f7d0e1bb6fa838ed4b10110917ad9f3f01af86aefa2d5f32ca56549a28836ae34406c71d14",
+        "sha1": "3661e972a37fefccd1b31c42a4f7df942ecd34b4"
+      },
+      "source": "https://modrinth.com/resourcepack/stylista",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "R4g9Nf07",
+      "slug": "roundista",
+      "name": "Roundista - LabPBR",
+      "request": "roundista",
+      "kind": "resourcepack",
+      "version": "32",
+      "version_id": "k9qKuU9l",
+      "filename": "Roundista 128x R32.zip",
+      "size": 12511089,
+      "side": "client",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "98560f3b010b59f08952828268bf9691393c5022c4b19fbb5ea4d48fd0dc3cf83b4934b5bc6755d173c4d0bd11a050ee386971c7a015904e54422918dfd998d6",
+        "sha1": "8f2cf4e6f3211686a767951b357966eb7fd71533"
+      },
+      "source": "https://modrinth.com/resourcepack/roundista",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "1MyOrwfu",
+      "slug": "nautilus3d",
+      "name": "Nautilus 3D",
+      "request": "nautilus3d",
+      "kind": "resourcepack",
+      "version": "V2.2",
+      "version_id": "BYoL3YKt",
+      "filename": "Nautilus3D-V2.2.zip",
+      "size": 5598247,
+      "side": "client",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha512": "14dccc63880e6943c313b19b2df21cf1bc46cd31bb50a5334acab9ff93c87801e6a6686310aced9a409af06b84ed1f1e4c293de08f57b3174fc0a836bc948834",
+        "sha1": "33887c97d1571485002fc44ff6f62c59791baf07"
+      },
+      "source": "https://modrinth.com/resourcepack/nautilus3d",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "kwpTgbCk",
+      "slug": "diorama-map",
+      "name": "Diorama",
+      "request": "diorama",
+      "kind": "mod",
+      "version": "0.7.0+awft.1-neoforge-1.21.1",
+      "version_id": "0.7.0+awft.1-neoforge-1.21.1",
+      "filename": "diorama-0.7.0+awft.1-neoforge-1.21.1.jar",
+      "size": 925546,
+      "side": "client",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha256": "1d0cd42832e2fd57551851c2334bf837c93e0e0bc6f73bd1979ac768bb6d4584"
+      },
+      "source": "https://modrinth.com/mod/diorama-map",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "github:SenDeliver/create-octo-arms",
+      "slug": "create-octo-arms",
+      "name": "Create: Octo Arms",
+      "request": "create-octo-arms",
+      "kind": "mod",
+      "version": "1.6.0",
+      "version_id": "v1.6.0+mc1.21.1",
+      "filename": "octo-arms-1.6.0+mc1.21.1.jar",
+      "size": 320941,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha256": "c81d53ee12277a8ac8031574d0b5e8aa6fb5dc1632f3ce5628718eaabf8362cc"
+      },
+      "source": "https://github.com/SenDeliver/create-octo-arms/releases/tag/v1.6.0%2Bmc1.21.1",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "Epm6R3P2",
+      "slug": "easy-npc-core",
+      "name": "Easy NPC: Core",
+      "request": "easy-npc-core",
+      "kind": "mod",
+      "version": "7.17.1",
+      "version_id": "QyvBBoEd",
+      "filename": "easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "size": 3038455,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha1": "dbe3e7ff4b0a48e63fe8a28a2330180d77194d39",
+        "sha512": "e3f93183a92de47ba0c2ed5bdab8f31a4c1df0c2a29c93c1815c2a50df7ff5a609c8de6aad84e593b3291115f5d184bc75d4b3b8e03c0ac8e02508eff52b8a3e"
+      },
+      "source": "https://modrinth.com/mod/easy-npc-core",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "awft-tavern",
+      "slug": "awft-tavern",
+      "name": "A World for Two: Drowned Rose",
+      "request": "drowned-rose-tavern",
+      "kind": "mod",
+      "version": "0.1.14",
+      "version_id": "0.1.14",
+      "filename": "awft-tavern-0.1.14.jar",
+      "size": 112495,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"
+      },
+      "source": "proposals/drowned-rose",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
     }
   ],
   "counts": {
-    "requested_candidates": 229,
-    "resolved_files": 214,
-    "mod_entries_including_optional": 205,
-    "enabled_mod_entries": 204,
+    "requested_candidates": 241,
+    "resolved_files": 225,
+    "mod_entries_including_optional": 213,
+    "enabled_mod_entries": 212,
     "shader_packs": 8,
-    "resource_packs": 1,
+    "resource_packs": 4,
     "decision_statuses": {
-      "Integrated but awaiting runtime validation": 163,
+      "Integrated but awaiting runtime validation": 173,
       "Alternative selected": 21,
-      "Unresolved, with investigation details": 41,
+      "Unresolved, with investigation details": 43,
       "Incompatible, with evidence": 3,
       "Experimental native map validation pending": 1
     }
   },
-  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.1.0-candidate.65, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
+  "evidence_boundary": "Candidate metadata, exact file hashes and static checks are distinct from runtime evidence. Earlier licensed startup and owner observations retain their original candidate/pack scope; they do not qualify 0.2.0, every feature, remote synchronization, shader combinations or two-player multiplayer. The lock retains its runtime gates. Construction, mechanism commissioning, persistence and visual acceptance are separate.",
   "runtime_evidence": [
-    {
-      "source": "evidence/runtime/client-startup-initial.json",
-      "source_sha256": "210d7712cb6441a18943f104e91b3e0583a3ea8f612b5dad07550104f9be7ce3",
-      "at": "2026-10-26T19:04:36.307627+00:00",
-      "candidate": null,
-      "pack_sha256": "8eaa55f126b31c0e3f1cb8ee86536da64c83a9ffa64af799e66d873324f4fd80",
-      "claim": "Earlier licensed Prism client reached the owner-confirmed Minecraft main menu; native renderer initialization was recorded.",
-      "boundary": "This earlier pack startup is not current-candidate gameplay, shader, FPS or two-player acceptance."
-    },
     {
       "source": "evidence/runtime/owner-crafting-table-confirmation.json",
       "source_sha256": "4f0e344440be6c4431adf502636bafb888a5253108341a32f4f0d366c1d8946d",
@@ -11805,15 +12404,6 @@
       "boundary": "Fresh client agreement, active generation fidelity and MapHorizons-to-Xaero map population remain unverified."
     },
     {
-      "source": "evidence/runtime/cinematic-native-parser.json",
-      "source_sha256": "1a22dc28806a74f139ef67378e83ae8fea572634e86ef80583aeed428879ab34",
-      "at": "2026-10-26T21:21:04.284963+00:00",
-      "candidate": null,
-      "pack_sha256": null,
-      "claim": "The pinned Lumiera parser accepted the configured intro in a vanilla-registry bootstrap.",
-      "boundary": "Parser proof only; not native cinematic playback, multiplayer or a cinematic of the final settlement."
-    },
-    {
       "source": "evidence/runtime/permanent-settlement-construction.json",
       "source_sha256": "996ea225d2339cb4d755a4a660ff6b8531b30839f5438c2907c188afe8ef7b03",
       "at": "2026-10-27T02:13:20.963875+00:00",
@@ -11823,7 +12413,20 @@
       "boundary": "Block/state/inventory and native power evidence only; control cycles, later expansions, artistic quality and full mod-function acceptance remain separate."
     }
   ],
-  "evidence_rejections": [],
+  "evidence_rejections": [
+    {
+      "source": "evidence/runtime/client-startup-initial.json",
+      "expected_sha256": "210d7712cb6441a18943f104e91b3e0583a3ea8f612b5dad07550104f9be7ce3",
+      "actual_sha256": null,
+      "reason": "Missing or changed immutable receipt; observation omitted pending review"
+    },
+    {
+      "source": "evidence/runtime/cinematic-native-parser.json",
+      "expected_sha256": "1a22dc28806a74f139ef67378e83ae8fea572634e86ef80583aeed428879ab34",
+      "actual_sha256": null,
+      "reason": "Missing or changed immutable receipt; observation omitted pending review"
+    }
+  ],
   "isolated_candidates": [
     {
       "project_id": "github:Richard-Sen27/pirates-n-ships",
@@ -11896,6 +12499,32 @@
       "status": "Unresolved, with investigation details",
       "validation": {
         "metadata": "reviewed",
+        "jar": "pending",
+        "runtime": "not run"
+      },
+      "active_in_lock": false
+    },
+    {
+      "project_id": "kcgUksbd",
+      "slug": "inventory-expanded",
+      "name": "Inventory Expanded",
+      "request": "inventory-expanded",
+      "kind": "mod",
+      "version": "0.2.1",
+      "version_id": "jbtTDJbh",
+      "filename": "inventory-expanded-neoforge-beta-0.2.1.jar",
+      "size": 5293101,
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "hashes": {
+        "sha1": "729042ac260c5710c187e432fea8cebb57525900",
+        "sha512": "2ae6ef9499ba8b5e1a2e4fc8fd1afbc2d3782083bcbb1b22a0a393ed8d068a400a4b41ac53ba9d8a1451a69b749ff77cbaa5792d435729f1780382df3ee1b325"
+      },
+      "source": "https://modrinth.com/mod/inventory-expanded",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
         "jar": "pending",
         "runtime": "not run"
       },

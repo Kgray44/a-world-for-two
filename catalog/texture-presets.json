@@ -1,0 +1,30 @@
+{
+  "format": 1,
+  "presets": {
+    "enchanted-fantasy": {
+      "name": "Enchanted Fantasy",
+      "base": "stylista",
+      "overlay": "nautilus3d"
+    },
+    "soft-rounded": {
+      "name": "Soft & Rounded",
+      "base": "roundista",
+      "overlay": "nautilus3d"
+    }
+  },
+  "shader": "bsl-shaders",
+  "validation": "Pinned author archives; native rendering, PBR/model overlap and performance acceptance pending",
+  "bsl_settings": {
+    "ADVANCED_MATERIALS": "true",
+    "MATERIAL_FORMAT": "1",
+    "PARALLAX": "true",
+    "PARALLAX_DEPTH": "0.10",
+    "PARALLAX_QUALITY": "32",
+    "PARALLAX_DISTANCE": "32",
+    "REFLECTION": "1",
+    "SPECULAR_HIGHLIGHT": "1",
+    "AO": "true",
+    "SHADOW_FILTER": "true",
+    "BLOOM_STRENGTH": "0.50"
+  }
+}

@@ -47,6 +47,16 @@
         "sha256": "e86f5d78ed310465bd1ecf79823abcbc58782699b068ac776f4c5e226d994a8f"
       },
       "evidence": "Official Maven HEAD and sha256 read 2026-10-26"
+    },
+    "21.1.264": {
+      "version": "21.1.264",
+      "filename": "neoforge-21.1.264-installer.jar",
+      "url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.264/neoforge-21.1.264-installer.jar",
+      "size": 6992411,
+      "hashes": {
+        "sha256": "d7c035dd5436a7c524dfbad6df191b0ef34179fd3edfee9dc99262af3b80239b"
+      },
+      "evidence": "Official Maven HEAD size and published sha256 verified 2026-11-06; isolated Inventory Expanded experiment only. Active loader remains 21.1.262."
     }
   }
 }

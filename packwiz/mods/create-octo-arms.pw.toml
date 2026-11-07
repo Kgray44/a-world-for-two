@@ -1,0 +1,8 @@
+name = "Create: Octo Arms"
+filename = "octo-arms-1.6.0+mc1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/SenDeliver/create-octo-arms/releases/download/v1.6.0%2Bmc1.21.1/octo-arms-1.6.0%2Bmc1.21.1.jar"
+hash-format = "sha256"
+hash = "c81d53ee12277a8ac8031574d0b5e8aa6fb5dc1632f3ce5628718eaabf8362cc"
