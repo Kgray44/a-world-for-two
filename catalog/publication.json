@@ -41,6 +41,12 @@
       "git_tag": "awft-0.1.0-candidate.65",
       "pack_sha256": "e74331274b5b99b055e8e9ad2914d314c4476f36a6b4044eb5c89b18d6db268e",
       "status": "prerelease"
+    },
+    {
+      "version": "0.2.0",
+      "git_tag": "awft-0.2.0",
+      "pack_sha256": "17d52a3b408dcdff8ae46d53412f0f3427a86547e1af7a6a978e807237384b3c",
+      "status": "qualified"
     }
   ]
 }
