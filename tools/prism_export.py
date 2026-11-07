@@ -75,17 +75,20 @@ def server_list():
     return b'\x0a\x00\x00\x09'+text('servers')+b'\x0a'+struct.pack('>i',len(entries))+b''.join(entries)+b'\x00'
 
 
-def verify_archive(path,prelaunch,pins,artwork,pirate):
+def verify_archive(path,prelaunch,pins,artwork,pirate,materials=None):
     """Static custody/layout checks; this does not launch or import Prism."""
     import hashlib
     with zipfile.ZipFile(path) as archive:
         names=archive.namelist()
         if archive.testzip() or len(names)!=len(set(names)):
             raise UserError('Export ZIP CRC or duplicate-entry validation failed')
-        allowed={'instance.cfg','mmc-pack.json','INSTALL.txt','CONNECT.txt','awft-export.json',PIRATE_NOTICE,
+        allowed={'instance.cfg','mmc-pack.json','INSTALL.txt','CONNECT.txt','GRAPHICS.txt','awft-export.json',PIRATE_NOTICE,
                  '.minecraft/options.txt','.minecraft/config/iris.properties','.minecraft/servers.dat',
+                 '.minecraft/diorama/config.json',
                  '.minecraft/awft-tools/LICENSE.txt','.minecraft/mods/'+pirate['filename']}
         allowed.update('.minecraft/awft-tools/'+pin['filename'] for pin in pins)
+        if materials:
+            allowed.add('.minecraft/shaderpacks/'+materials[0])
         allowed.update('.minecraft/'+file.relative_to(REPO/'packwiz').as_posix()
                        for file in (REPO/'packwiz/config').rglob('*') if file.is_file())
         if set(names)!=allowed or any(name.startswith('/') or '..' in name.split('/') or '\\' in name for name in names):
@@ -99,8 +102,12 @@ def verify_archive(path,prelaunch,pins,artwork,pirate):
                 or arguments[3:6]!=['--bootstrap-no-update','--bootstrap-main-jar','$INST_MC_DIR/awft-tools/'+pins[1]['filename']]
                 or arguments[6:8]!=['-s','client'] or len(arguments)!=9):
             raise UserError('Unexpected portable pre-launch argument structure')
-        if 'MaxMemAlloc=6144\n' not in config or 'OverrideJavaLocation=false\n' not in config:
+        if 'MaxMemAlloc=12288\n' not in config or 'OverrideJavaLocation=false\n' not in config:
             raise UserError('Portable client memory/Java settings changed')
+        if json.loads(archive.read('.minecraft/diorama/config.json')).get('minimap') is not False:
+            raise UserError('Fresh export must keep the overlapping Diorama HUD hidden')
+        if materials and archive.read('.minecraft/shaderpacks/'+materials[0]).decode() != materials[1]:
+            raise UserError('Fresh BSL material preferences changed inside the archive')
         components=json.loads(archive.read('mmc-pack.json'))['components']
         if not any(c.get('uid')=='net.neoforged' and c.get('version')=='21.1.262' for c in components):
             raise UserError('Portable NeoForge component does not match the pinned version')
@@ -146,7 +153,12 @@ def build(home,url=None,revision=1):
     pirate=approved_pirate(lock)
     errors=validate_pack(REPO/'packwiz',lock)
     if errors:raise UserError('Pack integrity failed: '+'; '.join(errors))
-    url=url or 'https://kgray44.github.io/a-world-for-two/releases/'+lock['version']+'/pack.toml'
+    stable_url='https://kgray44.github.io/a-world-for-two/pack.toml'
+    version_url='https://kgray44.github.io/a-world-for-two/releases/'+lock['version']+'/pack.toml'
+    qualified=lock.get('release_status')=='qualified'
+    url=url or (stable_url if qualified else version_url)
+    if url==stable_url and not qualified:
+        raise UserError('Only qualified exports can use the stable update channel')
     if '/releases/' in url and url!='https://kgray44.github.io/a-world-for-two/releases/'+lock['version']+'/pack.toml':
         raise UserError('The immutable updater channel must match this exact candidate version')
     prelaunch=command(url);pins=read_json(REPO/'catalog/tools.lock.json')
@@ -176,19 +188,24 @@ def build(home,url=None,revision=1):
     if path.exists():raise UserError('Preserve the existing immutable export and use a new version')
     path.parent.mkdir(parents=True,exist_ok=True)
     cfg=('[General]\nInstanceType=OneSix\nname=A World for Two\nOverrideMemory=true\n'
-        'MinMemAlloc=1024\nMaxMemAlloc=6144\nOverrideJavaLocation=false\nOverrideCommands=true\n'
+        'MinMemAlloc=1024\nMaxMemAlloc=12288\nOverrideJavaLocation=false\nOverrideCommands=true\n'
         'PreLaunchCommand='+prelaunch.replace('"','\\"')+'\nWrapperCommand=\nPostExitCommand=\nOverrideWindow=true\n'
         'MinecraftWinWidth=1280\nMinecraftWinHeight=800\n')
     components={'formatVersion':1,'components':[
         {'uid':'org.lwjgl3','version':'3.3.3','dependencyOnly':True},
         {'uid':'net.minecraft','version':'1.21.1','important':True},
         {'uid':'net.neoforged','version':lock['neoforge']}]}
+    from .graphics_preset import fresh_options, fresh_diorama_settings, fresh_material_options
+    materials = fresh_material_options(lock)
     with zipfile.ZipFile(path,'x',zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
         archive.writestr('instance.cfg',cfg)
         archive.writestr('mmc-pack.json',json.dumps(components,indent=2)+'\n')
-        archive.writestr('.minecraft/options.txt','renderDistance:8\nsimulationDistance:5\nmaxFps:60\nenableVsync:true\n')
+        archive.writestr('.minecraft/options.txt',fresh_options(lock))
+        archive.writestr('.minecraft/diorama/config.json',fresh_diorama_settings())
+        archive.writestr('.minecraft/shaderpacks/'+materials[0],materials[1])
         archive.writestr('.minecraft/config/iris.properties','enableShaders=false\n')
         archive.writestr('.minecraft/servers.dat',server_list())
+        archive.write(REPO/'docs/ENCHANTED-EXPANSION.md','GRAPHICS.txt')
         archive.write(pirate_file,'.minecraft/mods/'+pirate['filename'])
         archive.write(notice,PIRATE_NOTICE)
         for pin in tools:archive.write(layout.caches/pin['filename'],'.minecraft/awft-tools/'+pin['filename'])
@@ -198,16 +215,18 @@ def build(home,url=None,revision=1):
             'A World for Two '+lock['version']+' - portable Prism client\n\n'
             '1. In Prism Launcher choose Add Instance, then Import from ZIP, and select this ZIP.\n'
             '2. Sign into your own licensed Minecraft Java account and select Java 21.\n'
-            '3. Launch the instance. Maximum client heap is 6 GiB; shaders initially stay off.\n'
+            '3. Launch the instance. Maximum client heap is 12 GiB for the 32 GiB KG host; shaders initially stay off.\n'
+            '   This expanded graphics build needs more than the previous 6/8 GiB settings.\n'
             '4. Leave the pinned Packwiz pre-launch command enabled. It downloads exact client files.\n'
             '   One unchanged Let\'s Forge Pirates JAR is included under its author\'s modpack grant.\n'
             '   Read MODPACK-NOTICES/LETS-FORGE-PIRATES.md for attribution and the narrow permission.\n'
             '5. Choose Join Our World, then the Public server entry when joining from another computer.\n'
             '   The KG local entry is only for Minecraft on the dedicated server computer itself.\n'
             '6. Ask the host to whitelist your exact Java username. See CONNECT.txt for address details.\n\n'
-            'This version checks the immutable manifest on each launch:\n'+url+'\n\n'
-            'The host must publish that exact manifest and its dependencies before first installation can work.\n'
-            'This development candidate still requires fresh native Prism import/download qualification.\n'
+            'Packwiz checks this address on each launch:\n'+url+'\n\n'
+            + ('Keep this Prism instance. Press Play to install approved modpack updates automatically.\n'
+               if url==stable_url else 'This preview follows the pinned release at that address.\n') +
+            'Fresh native Prism import/download qualification is recorded separately from archive checks.\n'
             'No account, world, logs or LOD databases are included. Choose shaders in Video Settings after baseline startup.\n'
             'Hosting documentation: https://github.com/Kgray44/a-world-for-two/blob/main/docs/INSTALL.md\n')
         archive.writestr('CONNECT.txt',
@@ -218,19 +237,19 @@ def build(home,url=None,revision=1):
             'The host must have the server and the linked Playit game tunnel running.\n'
             'Use your own licensed Minecraft Java account and ask the host to whitelist your exact username.\n'
             'Edit or add servers normally if the host gives you a new address.\n'
-            'This candidate still requires fresh native Prism import/download and remote two-player qualification.\n')
+            'Use the host\'s matching release; native import and remote two-player qualification are recorded separately.\n')
         archive.write(REPO/'docs/UPDATER-LICENSE.txt','.minecraft/awft-tools/LICENSE.txt')
         archive.writestr('awft-export.json',json.dumps({'format':'awft-prism-export:1','version':lock['version'],
             'pack_sha256':digest(REPO/'packwiz/pack.toml'),'pack_url':url,'original_artwork_sha256':artwork['sha256'],
             'modpack_bundled_artifacts':[included],
-            'status':'candidate; fresh import and public download qualification pending'}))
-    checks=verify_archive(path,prelaunch,tools,artwork,pirate)
+            'status':'qualified release' if lock.get('release_status')=='qualified' else 'unpublished; fresh import and public download qualification pending'}))
+    checks=verify_archive(path,prelaunch,tools,artwork,pirate,materials)
     report={'at':utcnow(),'version':lock['version'],'export_revision':revision,'pack_sha256':digest(REPO/'packwiz/pack.toml'),
         'path':str(path),'size':path.stat().st_size,'sha256':digest(path),'guard':reserve,
         'original_artwork_sha256':artwork['sha256'],'public_server':PUBLIC_SERVER,'updater_url':url,
         'modpack_bundled_artifacts':[included],
         'checks':checks|{'fresh_prism_import':'pending','public_updater_install':'pending','client_startup':'pending'},
-        'boundary':'Candidate artifact; not a published or qualified release.'}
+        'boundary':'Archive checks only; publication and gameplay qualification are recorded separately.'}
     write_json(path.with_suffix('.json'),report)
     atomic_write(path.with_suffix('.sha256'),report['sha256']+'  '+path.name+'\n')
     print(json.dumps(report),flush=True)
@@ -240,6 +259,6 @@ def build(home,url=None,revision=1):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--home',type=Path,default=Path(r'D:\A World for Two'))
-    parser.add_argument('--pack-url',default=None,help='Defaults to this exact version\'s immutable public Packwiz channel')
+    parser.add_argument('--pack-url',default=None,help='Defaults to the stable channel for a qualified release and the versioned URL for a preview')
     parser.add_argument('--revision',type=int,default=1)
     args=parser.parse_args();build(args.home,args.pack_url,args.revision)

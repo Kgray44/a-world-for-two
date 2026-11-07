@@ -105,11 +105,12 @@ class PirateModpackInclusionTests(unittest.TestCase):
         prelaunch=export.command('https://kgray44.github.io/a-world-for-two/releases/0.1.0-candidate.23/pack.toml')
         result=io.BytesIO()
         with zipfile.ZipFile(result,'w') as archive:
-            archive.writestr('instance.cfg','PreLaunchCommand='+prelaunch.replace('"','\\"')+'\nMaxMemAlloc=6144\nOverrideJavaLocation=false\n')
+            archive.writestr('instance.cfg','PreLaunchCommand='+prelaunch.replace('"','\\"')+'\nMaxMemAlloc=12288\nOverrideJavaLocation=false\n')
             archive.writestr('mmc-pack.json',json.dumps({'components':[{'uid':'net.neoforged','version':'21.1.262'}]}))
-            for name in ('INSTALL.txt','CONNECT.txt','.minecraft/options.txt','.minecraft/awft-tools/LICENSE.txt'):
+            for name in ('INSTALL.txt','CONNECT.txt','GRAPHICS.txt','.minecraft/options.txt','.minecraft/awft-tools/LICENSE.txt'):
                 archive.writestr(name,'synthetic fixture')
             archive.writestr('.minecraft/servers.dat',export.server_list())
+            archive.writestr('.minecraft/diorama/config.json','{"minimap":false}\n')
             for pin in tools:archive.writestr('.minecraft/awft-tools/'+pin['filename'],pin['fixture'])
             for name,raw in files.items():archive.writestr('.minecraft/'+name,raw)
             archive.writestr('.minecraft/mods/'+self.pin['filename'],self.raw if jar is None else jar)

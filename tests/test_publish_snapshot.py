@@ -27,16 +27,17 @@ class PublicationTests(unittest.TestCase):
     def git(self,*args):
         return subprocess.run(['git','-C',str(self.repo),*args],check=True,capture_output=True,text=True).stdout.strip()
 
-    def snapshot(self,number,text='reviewed configuration',mods=()):
-        version='0.1.0-candidate.'+str(number)
-        lock={'version':version,'minecraft':'1.21.1','neoforge':'21.1.262','java':21,'mods':list(mods)}
+    def snapshot(self,number,text='reviewed configuration',mods=(),qualified=False):
+        version=f'0.1.{number}' if qualified else f'0.1.0-candidate.{number}'
+        lock={'version':version,'minecraft':'1.21.1','neoforge':'21.1.262','java':21,'mods':list(mods),
+              'release_status':'qualified' if qualified else 'staging'}
         config=self.repo/'packwiz/config/example.toml';config.parent.mkdir(parents=True,exist_ok=True)
         config.write_text('description = '+json.dumps(text)+'\n')
         write_json(self.repo/'catalog/lock.json',lock)
         sha=generate_pack(self.repo/'packwiz',lock)
         self.git('add','packwiz','catalog/lock.json');self.git('commit','-qm','Fixture '+version)
         tag='awft-'+version;self.git('tag',tag)
-        return {'version':version,'git_tag':tag,'pack_sha256':sha,'status':'prerelease'}
+        return {'version':version,'git_tag':tag,'pack_sha256':sha,'status':'qualified' if qualified else 'prerelease'}
 
     def catalog(self,rows,stable=None):
         target=self.repo/'catalog/publication.json'
@@ -95,7 +96,26 @@ class PublicationTests(unittest.TestCase):
 
     def test_stable_field_cannot_promote_a_prerelease_to_root(self):
         row=self.snapshot(1)
-        with self.assertRaisesRegex(UserError,'stable must remain null'):
+        with self.assertRaisesRegex(UserError,'Stable must select an approved qualified snapshot'):
+            build(self.repo,self.catalog([row],stable=row['version']),self.base/'public')
+
+    def test_stable_channel_copies_only_selected_qualified_payload(self):
+        first=self.snapshot(1,'old release',qualified=True)
+        second=self.snapshot(2,'new release',qualified=True)
+        candidate=self.snapshot(3,'experimental candidate')
+        for selected in (first,second):
+            output=self.base/selected['version']
+            build(self.repo,self.catalog([first,second,candidate],stable=selected['version']),output)
+            target=output/'releases'/selected['version']
+            for file in target.rglob('*'):
+                if file.is_file():
+                    self.assertEqual((output/file.relative_to(target)).read_bytes(),file.read_bytes())
+            self.assertEqual(json.loads((output/'publication.json').read_text())['stable'],selected['version'])
+            self.assertEqual(digest(output/'releases'/first['version']/'pack.toml'),first['pack_sha256'])
+
+    def test_stable_requires_a_qualified_tagged_lock(self):
+        row=self.snapshot(1)|{'status':'qualified'}
+        with self.assertRaisesRegex(UserError,'stable tag must carry a qualified release lock'):
             build(self.repo,self.catalog([row],stable=row['version']),self.base/'public')
 
     def test_index_drift_inside_an_approved_pack_is_refused(self):

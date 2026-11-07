@@ -131,6 +131,11 @@ hash = "93429ee5ea929edd0bff642a2db0717bdf863472073a07e7765d71de9e9079b3"
 metafile = false
 
 [[files]]
+file = "config/obscuria/ancient_remnants-common.toml"
+hash = "b041afcc631c0eb78e7bfe91bcf0dbb51ded7c2136a7b902a1523546184e74b4"
+metafile = false
+
+[[files]]
 file = "config/openpartiesandclaims-server.toml"
 hash = "26ed1a05613edb04aa80264e27686df4dab1bba31c3d6a8048061b576090ce65"
 metafile = false
@@ -511,6 +516,11 @@ hash = "f7c70a5658c558e60027603cf08e3588d44ecd6e4fd87ee52642f3d6f7653ee4"
 metafile = true
 
 [[files]]
+file = "mods/ancient-remnants.pw.toml"
+hash = "60bce66226addedc8ac070a1fa25ffab416404cb147a31c0285407d7a942be61"
+metafile = true
+
+[[files]]
 file = "mods/ancient-structures.pw.toml"
 hash = "625154942e5757f1f5319a62e24c735709b0b67141f50b321bcb63c658aea418"
 metafile = true
@@ -546,6 +556,11 @@ hash = "97f7ceb52bd6fdd7bfbd3c10a202a8c78dd188eddf07095d726a3752ec869995"
 metafile = true
 
 [[files]]
+file = "mods/astikorcarts-redux.pw.toml"
+hash = "ddfe88e7958cc467953995e447e5411bb6e3068625bb53618144c63f88294dc6"
+metafile = true
+
+[[files]]
 file = "mods/athena-ctm.pw.toml"
 hash = "0a0102812c02bc6ab4479a3e7166d28d986945665162f33eed2dc3080c96bf51"
 metafile = true
@@ -557,12 +572,17 @@ metafile = true
 
 [[files]]
 file = "mods/awft-control-bridge.pw.toml"
-hash = "3858318f0d3712b91d49df07169756b5dfe5dbcef9ccd099a888439d0b96a92f"
+hash = "8c62fc23509b576a3495aea5bbfdbbacd7712ba9b6a38424a6c8deab96e2791b"
 metafile = true
 
 [[files]]
 file = "mods/awft-living-world.pw.toml"
 hash = "702a18e4c1f87ca5c203d9b8e02f99c0dd88aab986831ba981ae7bfb96d5cf22"
+metafile = true
+
+[[files]]
+file = "mods/awft-tavern.pw.toml"
+hash = "1b522b755fa5d53a0729e8c60286a6e5d11f8311f302c8e0924f9f106ead0df5"
 metafile = true
 
 [[files]]
@@ -711,6 +731,11 @@ hash = "99b23d072e29c45e9235d721156caf07fd22b18f91019b058aaad253db41ce49"
 metafile = true
 
 [[files]]
+file = "mods/create-octo-arms.pw.toml"
+hash = "5f1e8a9fd5e53305cab4abf775f79c92dc12ee075078670e189d6eb5f69d4ce8"
+metafile = true
+
+[[files]]
 file = "mods/create-ornithopter-glider.pw.toml"
 hash = "7d92d1e28e718f3c0548ddf2f348412acce22c88c4b61e500122ba11d52a599c"
 metafile = true
@@ -771,6 +796,16 @@ hash = "122857066e64f61f2885227e786128fa293b67bb6d03db9c89efd1bdc033928c"
 metafile = true
 
 [[files]]
+file = "mods/decocraft.pw.toml"
+hash = "2484a46ddaca9ae1a67d6a330e9365c345080493c9ce3f11cd6e0ea9f9cf7075"
+metafile = true
+
+[[files]]
+file = "mods/diorama-map.pw.toml"
+hash = "e47f1368a77bb14c421e0eefed1a4dfc9f645b97b3455b9e6819581d529c2e66"
+metafile = true
+
+[[files]]
 file = "mods/distant-horizons-seedgen.pw.toml"
 hash = "110b22d57836245ed8f7c0fb38669f720f30289dd11089c101f01893d750bf1d"
 metafile = true
@@ -798,6 +833,11 @@ metafile = true
 [[files]]
 file = "mods/dynamic-fps.pw.toml"
 hash = "67241a713fbf873928f39f4f7bc7661cb4f2fdcc70a8fe41cdaee8df1faee024"
+metafile = true
+
+[[files]]
+file = "mods/easy-npc-core.pw.toml"
+hash = "1c9f7e4b7829aa906c339fcdc01f151bea6768345b2f62900b4159c23e3c7579"
 metafile = true
 
 [[files]]
@@ -893,6 +933,11 @@ metafile = true
 [[files]]
 file = "mods/fish-of-thieves.pw.toml"
 hash = "db8aae688374c9d584337e8406cc53a2b2af0b76367b16b81cfad4a62ca2c83d"
+metafile = true
+
+[[files]]
+file = "mods/fragmentum.pw.toml"
+hash = "25fb9c77fa88ca562f092564a0e8804191d8018b0bbe422aca690a4f239338ec"
 metafile = true
 
 [[files]]
@@ -1503,6 +1548,21 @@ metafile = true
 [[files]]
 file = "resourcepacks/fresh-animations.pw.toml"
 hash = "3763920ceab65324c0fa5179f62a14eba09922a64cd03e68caeb28e24e706e2d"
+metafile = true
+
+[[files]]
+file = "resourcepacks/nautilus3d.pw.toml"
+hash = "d0105faf681d6a1c2024a7e94d10642f23dfbbf3558933a438d698da21786ad0"
+metafile = true
+
+[[files]]
+file = "resourcepacks/roundista.pw.toml"
+hash = "fea4445f9d169f262c1aab49939b817cf5bae0ee7287950e053792d1c95b64f8"
+metafile = true
+
+[[files]]
+file = "resourcepacks/stylista.pw.toml"
+hash = "0d636c00065f630f90f7ca2e9cdf3bdad85e8c3d7f1d027e3613ccbf10d03dd0"
 metafile = true
 
 [[files]]

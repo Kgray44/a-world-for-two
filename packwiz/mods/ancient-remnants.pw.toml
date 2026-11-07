@@ -1,0 +1,12 @@
+name = "Ancient Remnants: Monoliths"
+filename = "ancient_remnants-1.5.2+1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/qYtXvlBc/versions/R7lHZHzN/ancient_remnants-1.5.2%2B1.21.1-neoforge.jar"
+hash-format = "sha512"
+hash = "1ae2aca9e499883cc23e6c9c274fe76cbb436ae00607166413cefb7f475ab0173c842f6c08aa51af9a78ca275d1a977fe8d8510557837a7c2c6264135277d6d6"
+
+[update.modrinth]
+mod-id = "qYtXvlBc"
+version = "R7lHZHzN"

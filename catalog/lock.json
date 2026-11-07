@@ -1,13 +1,13 @@
 {
   "format": 1,
   "name": "A World for Two",
-  "version": "0.1.0-candidate.65",
+  "version": "0.2.0",
   "minecraft": "1.21.1",
   "neoforge": "21.1.262",
   "java": 21,
-  "generated": "2026-10-29T15:05:46.151427+00:00",
-  "release_status": "candidate",
-  "validation": "Explicitly reviewed helper/mapping changes and optional exact zipline cable addition only; native restart and integration checks pending",
+  "generated": "2026-11-07T01:53:05.732216+00:00",
+  "release_status": "qualified",
+  "validation": "Owner-approved KG copied-world play, dedicated startup, feature smoke and verified restore; dedicated player join and two-player sync unverified",
   "mods": [
     {
       "project_id": "zV5r3pPn",
@@ -277,15 +277,15 @@
       "project_id": "awft:control-bridge",
       "slug": "awft-control-bridge",
       "name": "A World for Two Control Bridge",
-      "version_id": "0.6.51",
-      "version": "0.6.51",
+      "version_id": "0.6.64",
+      "version": "0.6.64",
       "provider": "local-build",
       "release_type": "candidate",
-      "filename": "awft-control-bridge-0.6.51.jar",
-      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.51.jar",
-      "size": 725738,
+      "filename": "awft-control-bridge-0.6.64.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-control-bridge-0.6.64.jar",
+      "size": 793142,
       "hashes": {
-        "sha256": "ed7a1a0506a6c377bcb0a9a8afd853a4fbfec92a7d2311e040100ade5ca0a632"
+        "sha256": "c3d5526d29bba3e74b8533a9a4e8a29dc4ea22246c9b0568967d8ada339dff20"
       },
       "side": "both",
       "kind": "mod",
@@ -298,7 +298,7 @@
         "id": "MIT"
       },
       "source": "https://github.com/Kgray44/a-world-for-two",
-      "selection_reason": "Exact owned server bridge: measured tick/JVM telemetry and lifecycle-safe Chunky listener setup.",
+      "selection_reason": "Preserve exact installed production bridge 0.6.64 and bounded DH resource attestation repairs. Historical native64 evidence is not new-pack qualification.",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",
@@ -9893,6 +9893,551 @@
       },
       "source": "https://modrinth.com/mod/patchouli",
       "selection_reason": "Required by the exact Adorable Hamster Pets native NeoForge descriptor: Patchouli >= 1.21.1-93-NEOFORGE; upstream Modrinth dependency metadata is empty.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "qYtXvlBc",
+      "slug": "ancient-remnants",
+      "name": "Ancient Remnants: Monoliths",
+      "version_id": "R7lHZHzN",
+      "version": "1.5.2",
+      "release_type": "release",
+      "filename": "ancient_remnants-1.5.2+1.21.1-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/qYtXvlBc/versions/R7lHZHzN/ancient_remnants-1.5.2%2B1.21.1-neoforge.jar",
+      "hashes": {
+        "sha1": "febbd4abcd8dc099f105802f6edb5bbaef0e79d6",
+        "sha512": "1ae2aca9e499883cc23e6c9c274fe76cbb436ae00607166413cefb7f475ab0173c842f6c08aa51af9a78ca275d1a977fe8d8510557837a7c2c6264135277d6d6"
+      },
+      "size": 9637271,
+      "side": "both",
+      "kind": "mod",
+      "request": "ancient-remnants",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "49C5QgTK",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "upstream_dependencies": [
+        {
+          "version_id": null,
+          "project_id": "49C5QgTK",
+          "file_name": null,
+          "dependency_type": "required"
+        }
+      ],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LicenseRef-Obscuria-Modding-License",
+        "name": "",
+        "url": "https://obscurialithium.github.io/license/"
+      },
+      "source": "https://modrinth.com/mod/ancient-remnants",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "49C5QgTK",
+      "slug": "fragmentum",
+      "name": "Fragmentum",
+      "version_id": "kCXNhuIV",
+      "version": "5.4.0",
+      "release_type": "release",
+      "filename": "fragmentum-5.4.0+1.21.1-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/49C5QgTK/versions/kCXNhuIV/fragmentum-5.4.0%2B1.21.1-neoforge.jar",
+      "hashes": {
+        "sha512": "426b3a7f2085266ae231d7ef81092baabb0409bbf222b9220472dd3ba482840a0850047aabc4b59d20fd65170ec9920559d29df6527d8119ecf02c69cfa78e53",
+        "sha1": "711f46b591cbee203e68cf023277dae9060725f8"
+      },
+      "size": 7815344,
+      "side": "both",
+      "kind": "mod",
+      "request": "fragmentum",
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LicenseRef-Obscuria-Ecosystem",
+        "name": "",
+        "url": "https://obscurialithium.github.io/license/"
+      },
+      "source": "https://modrinth.com/mod/fragmentum",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "IZJSgKZe",
+      "slug": "decocraft",
+      "name": "Decocraft",
+      "version_id": "Z8xm2POI",
+      "version": "decocraft-3.0.11-1.21.1-neoforge",
+      "release_type": "release",
+      "filename": "decocraft-3.0.11-1.21.1-neoforge.jar",
+      "url": "https://cdn.modrinth.com/data/IZJSgKZe/versions/Z8xm2POI/decocraft-3.0.11-1.21.1-neoforge.jar",
+      "hashes": {
+        "sha1": "6704940aa352d1acf3cf9362e5ef8dd4e65b563c",
+        "sha512": "0d7c71592760a95113d38d5d8f4bd7b247ab0e9e0c8b4230ed0f3a9170ba08c70f8b0b17eea9794e8faa46a7c94461a01a72fcc2574eb751aec5540f04f6ffb5"
+      },
+      "size": 93170262,
+      "side": "both",
+      "kind": "mod",
+      "request": "decocraft",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LicenseRef-All-Rights-Reserved",
+        "name": "",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/decocraft",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "mnLFouB0",
+      "slug": "astikorcarts-redux",
+      "name": "AstikorCarts Redux",
+      "version_id": "JtPCk233",
+      "version": "1.2.4",
+      "release_type": "release",
+      "filename": "astikorcartsredux-1.2.4.jar",
+      "url": "https://cdn.modrinth.com/data/mnLFouB0/versions/JtPCk233/astikorcartsredux-1.2.4.jar",
+      "hashes": {
+        "sha512": "d6ecf33be5065cffdd449167396f538bd89bfd8a38d86957bab1551869aebd1c0263504eb06e27d3adb9d7f25698fe9f61bd64f1490c0f6fb8d1c62fb9f5aa25",
+        "sha1": "aaede46046d3989a5f58ccf00466e186119f54bd"
+      },
+      "size": 576717,
+      "side": "both",
+      "kind": "mod",
+      "request": "astikorcarts-redux",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "MIT",
+        "name": "MIT License",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/astikorcarts-redux",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "Y7dBqGlW",
+      "slug": "stylista",
+      "name": "Stylista - LabPBR",
+      "version_id": "QSlyhOZA",
+      "version": "26",
+      "release_type": "alpha",
+      "filename": "Stylista 128x A26.zip",
+      "url": "https://cdn.modrinth.com/data/Y7dBqGlW/versions/QSlyhOZA/Stylista%20128x%20A26.zip",
+      "hashes": {
+        "sha512": "d49895d3ac5bce7b0f3d48a3efe0680ab8491b79bfb564b16a7960f7d0e1bb6fa838ed4b10110917ad9f3f01af86aefa2d5f32ca56549a28836ae34406c71d14",
+        "sha1": "3661e972a37fefccd1b31c42a4f7df942ecd34b4"
+      },
+      "size": 15678034,
+      "side": "client",
+      "kind": "resourcepack",
+      "request": "stylista",
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LicenseRef-All-Rights-Reserved",
+        "name": "",
+        "url": null
+      },
+      "source": "https://modrinth.com/resourcepack/stylista",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "R4g9Nf07",
+      "slug": "roundista",
+      "name": "Roundista - LabPBR",
+      "version_id": "k9qKuU9l",
+      "version": "32",
+      "release_type": "release",
+      "filename": "Roundista 128x R32.zip",
+      "url": "https://cdn.modrinth.com/data/R4g9Nf07/versions/k9qKuU9l/Roundista%20128x%20R32.zip",
+      "hashes": {
+        "sha512": "98560f3b010b59f08952828268bf9691393c5022c4b19fbb5ea4d48fd0dc3cf83b4934b5bc6755d173c4d0bd11a050ee386971c7a015904e54422918dfd998d6",
+        "sha1": "8f2cf4e6f3211686a767951b357966eb7fd71533"
+      },
+      "size": 12511089,
+      "side": "client",
+      "kind": "resourcepack",
+      "request": "roundista",
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "LicenseRef-All-Rights-Reserved",
+        "name": "",
+        "url": null
+      },
+      "source": "https://modrinth.com/resourcepack/roundista",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "1MyOrwfu",
+      "slug": "nautilus3d",
+      "name": "Nautilus 3D",
+      "version_id": "BYoL3YKt",
+      "version": "V2.2",
+      "release_type": "release",
+      "filename": "Nautilus3D-V2.2.zip",
+      "url": "https://cdn.modrinth.com/data/1MyOrwfu/versions/BYoL3YKt/Nautilus3D-V2.2.zip",
+      "hashes": {
+        "sha512": "14dccc63880e6943c313b19b2df21cf1bc46cd31bb50a5334acab9ff93c87801e6a6686310aced9a409af06b84ed1f1e4c293de08f57b3174fc0a836bc948834",
+        "sha1": "33887c97d1571485002fc44ff6f62c59791baf07"
+      },
+      "size": 5598247,
+      "side": "client",
+      "kind": "resourcepack",
+      "request": "nautilus3d",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "BVzZfTc1",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "4I1XuqiY",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "upstream_dependencies": [
+        {
+          "version_id": null,
+          "project_id": "BVzZfTc1",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "4I1XuqiY",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "AGPL-3.0-only",
+        "name": "GNU Affero General Public License v3.0 only",
+        "url": null
+      },
+      "source": "https://modrinth.com/resourcepack/nautilus3d",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "kwpTgbCk",
+      "slug": "diorama-map",
+      "name": "Diorama",
+      "version_id": "0.7.0+awft.1-neoforge-1.21.1",
+      "version": "0.7.0+awft.1-neoforge-1.21.1",
+      "release_type": "release",
+      "filename": "diorama-0.7.0+awft.1-neoforge-1.21.1.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/diorama-0.7.0+awft.1-neoforge-1.21.1.jar",
+      "hashes": {
+        "sha256": "1d0cd42832e2fd57551851c2334bf837c93e0e0bc6f73bd1979ac768bb6d4584"
+      },
+      "size": 925546,
+      "side": "client",
+      "kind": "mod",
+      "request": "diorama",
+      "world_sensitive": false,
+      "optional": false,
+      "default": true,
+      "dependencies": [],
+      "upstream_dependencies": [],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "MIT",
+        "name": "MIT License",
+        "url": null
+      },
+      "source": "https://modrinth.com/mod/diorama-map",
+      "selection_reason": "MIT native-model call repair of exact official 0.7.0. Copied-world color bake passed with no legacy-model API warnings; full rendered-map and multiplayer acceptance pending.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      },
+      "provider": "local-patch",
+      "upstream_artifact": {
+        "project_id": "kwpTgbCk",
+        "slug": "diorama-map",
+        "name": "Diorama",
+        "version_id": "1FG2KJOU",
+        "version": "0.7.0+neoforge-1.21.1",
+        "release_type": "release",
+        "filename": "diorama-0.7.0+neoforge-1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/kwpTgbCk/versions/1FG2KJOU/diorama-0.7.0%2Bneoforge-1.21.1.jar",
+        "hashes": {
+          "sha1": "dc671a8422ce0fcaaf4ae148fb38728f59629289",
+          "sha512": "e19c3f4a97eb5ed1941beeabb500fa8fda2d5602ede6ff6d6d5c77bb670b4ae686fc4d4b574434f638bdab8007b75531c87e2e07789fb003e75813c925e9a772"
+        },
+        "size": 924656,
+        "side": "client",
+        "kind": "mod",
+        "request": "diorama",
+        "world_sensitive": false,
+        "optional": false,
+        "default": true,
+        "dependencies": [],
+        "upstream_dependencies": [],
+        "metadata_exceptions": [],
+        "license": {
+          "id": "MIT",
+          "name": "MIT License",
+          "url": null
+        },
+        "source": "https://modrinth.com/mod/diorama-map",
+        "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+        "status": "Integrated but awaiting runtime validation",
+        "validation": {
+          "metadata": "pass",
+          "jar": "pending",
+          "runtime": "not run"
+        }
+      },
+      "repair": {
+        "source": "compat/diorama",
+        "upstream_sha512": "e19c3f4a97eb5ed1941beeabb500fa8fda2d5602ede6ff6d6d5c77bb670b4ae686fc4d4b574434f638bdab8007b75531c87e2e07789fb003e75813c925e9a772",
+        "changed_entries": [
+          "dev/diorama/bake/BlockLooks.class",
+          "dev/diorama/bake/BlockLooks$LegacyPart.class",
+          "META-INF/neoforge.mods.toml"
+        ]
+      }
+    },
+    {
+      "project_id": "github:SenDeliver/create-octo-arms",
+      "slug": "create-octo-arms",
+      "request": "create-octo-arms",
+      "name": "Create: Octo Arms",
+      "version_id": "v1.6.0+mc1.21.1",
+      "version": "1.6.0",
+      "filename": "octo-arms-1.6.0+mc1.21.1.jar",
+      "url": "https://github.com/SenDeliver/create-octo-arms/releases/download/v1.6.0%2Bmc1.21.1/octo-arms-1.6.0%2Bmc1.21.1.jar",
+      "hashes": {
+        "sha256": "c81d53ee12277a8ac8031574d0b5e8aa6fb5dc1632f3ce5628718eaabf8362cc"
+      },
+      "size": 320941,
+      "side": "both",
+      "kind": "mod",
+      "provider": "github",
+      "dependencies": [
+        {
+          "project_id": "LNytGWDc",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[6.0.10,6.1)"
+        },
+        {
+          "project_id": "T9PomCSv",
+          "version_id": null,
+          "dependency_type": "optional",
+          "version_range": "[2.0.5,2.1)"
+        }
+      ],
+      "license": {
+        "id": "MIT",
+        "name": "MIT",
+        "url": "https://github.com/SenDeliver/create-octo-arms/blob/master/LICENSE"
+      },
+      "source": "https://github.com/SenDeliver/create-octo-arms/releases/tag/v1.6.0%2Bmc1.21.1",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "selection_reason": "Author release; keep existing Create 6.0.10 and Sable 2.0.6. Native JAR constraints and staging runtime gates apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "Epm6R3P2",
+      "slug": "easy-npc-core",
+      "name": "Easy NPC: Core",
+      "version_id": "QyvBBoEd",
+      "version": "7.17.1",
+      "release_type": "release",
+      "filename": "easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "url": "https://cdn.modrinth.com/data/Epm6R3P2/versions/QyvBBoEd/easy_npc-neoforge-1.21.1-7.17.1.jar",
+      "hashes": {
+        "sha1": "dbe3e7ff4b0a48e63fe8a28a2330180d77194d39",
+        "sha512": "e3f93183a92de47ba0c2ed5bdab8f31a4c1df0c2a29c93c1815c2a50df7ff5a609c8de6aad84e593b3291115f5d184bc75d4b3b8e03c0ac8e02508eff52b8a3e"
+      },
+      "size": 3038455,
+      "side": "both",
+      "kind": "mod",
+      "request": "easy-npc-core",
+      "world_sensitive": true,
+      "optional": false,
+      "default": true,
+      "dependencies": [
+        {
+          "version_id": null,
+          "project_id": "ngLoLP1P",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "y4JF3gXL",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "upstream_dependencies": [
+        {
+          "version_id": null,
+          "project_id": "ngLoLP1P",
+          "file_name": null,
+          "dependency_type": "optional"
+        },
+        {
+          "version_id": null,
+          "project_id": "y4JF3gXL",
+          "file_name": null,
+          "dependency_type": "optional"
+        }
+      ],
+      "metadata_exceptions": [],
+      "license": {
+        "id": "MIT",
+        "name": "MIT License",
+        "url": "https://github.com/MarkusBordihn/BOs-Easy-NPC/blob/1.18.2/LICENSE.md"
+      },
+      "source": "https://modrinth.com/mod/easy-npc-core",
+      "selection_reason": "Exact release reviewed for this candidate; JAR constraints and runtime gates still apply.",
+      "status": "Integrated but awaiting runtime validation",
+      "validation": {
+        "metadata": "pass",
+        "jar": "pending",
+        "runtime": "not run"
+      }
+    },
+    {
+      "project_id": "awft-tavern",
+      "slug": "awft-tavern",
+      "request": "drowned-rose-tavern",
+      "name": "A World for Two: Drowned Rose",
+      "version": "0.1.14",
+      "version_id": "0.1.14",
+      "filename": "awft-tavern-0.1.14.jar",
+      "url": "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/awft-tavern-0.1.14.jar",
+      "size": 112495,
+      "hashes": {
+        "sha256": "82c0bbe1bedae4736880b9aba34c10b0b6f4136167be959c9a078181492c2854"
+      },
+      "provider": "local",
+      "kind": "mod",
+      "side": "both",
+      "optional": false,
+      "default": true,
+      "world_sensitive": true,
+      "source": "proposals/drowned-rose",
+      "license": {
+        "id": "MIT",
+        "name": "MIT",
+        "url": null
+      },
+      "dependencies": [
+        {
+          "project_id": "Epm6R3P2",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[7.17.1,7.17.2)"
+        },
+        {
+          "project_id": "TaSmHw8V",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[0.8.0+1.21.1]"
+        },
+        {
+          "project_id": "pJmCFF0p",
+          "version_id": null,
+          "dependency_type": "required",
+          "version_range": "[4.0.3,4.0.4)"
+        }
+      ],
+      "selection_reason": "Preserve exact installed production 45-patron Tavern 0.1.14, including pose/micro-motion and bounded Windows status publication repair. Existing server configuration retained; no new NPC spawning or player data conversion authorized.",
       "status": "Integrated but awaiting runtime validation",
       "validation": {
         "metadata": "pass",

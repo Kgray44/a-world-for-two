@@ -1,0 +1,12 @@
+name = "Roundista - LabPBR"
+filename = "Roundista 128x R32.zip"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/R4g9Nf07/versions/k9qKuU9l/Roundista%20128x%20R32.zip"
+hash-format = "sha512"
+hash = "98560f3b010b59f08952828268bf9691393c5022c4b19fbb5ea4d48fd0dc3cf83b4934b5bc6755d173c4d0bd11a050ee386971c7a015904e54422918dfd998d6"
+
+[update.modrinth]
+mod-id = "R4g9Nf07"
+version = "k9qKuU9l"

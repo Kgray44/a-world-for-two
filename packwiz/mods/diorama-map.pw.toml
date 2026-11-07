@@ -1,0 +1,8 @@
+name = "Diorama"
+filename = "diorama-0.7.0+awft.1-neoforge-1.21.1.jar"
+side = "client"
+
+[download]
+url = "https://github.com/Kgray44/a-world-for-two/releases/download/compat-0.1.0/diorama-0.7.0+awft.1-neoforge-1.21.1.jar"
+hash-format = "sha256"
+hash = "1d0cd42832e2fd57551851c2334bf837c93e0e0bc6f73bd1979ac768bb6d4584"

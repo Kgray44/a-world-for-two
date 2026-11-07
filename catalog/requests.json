@@ -1147,6 +1147,66 @@
       "aquarius-libs",
       "Aquarius Libs (required Sugar Glider dependency)",
       "dependency"
+    ],
+    [
+      "ancient-remnants",
+      "Ancient Remnants: Monoliths",
+      "enchanted-expansion"
+    ],
+    [
+      "create-octo-arms",
+      "Create: Octo Arms",
+      "enchanted-expansion"
+    ],
+    [
+      "decocraft",
+      "DecoCraft",
+      "enchanted-expansion"
+    ],
+    [
+      "astikorcarts-redux",
+      "AstikorCarts Redux",
+      "enchanted-expansion"
+    ],
+    [
+      "diorama",
+      "Diorama",
+      "enchanted-expansion"
+    ],
+    [
+      "inventory-expanded",
+      "Inventory Expanded",
+      "enchanted-expansion"
+    ],
+    [
+      "loconautics",
+      "Loconautics",
+      "enchanted-expansion"
+    ],
+    [
+      "stylista",
+      "Stylista LabPBR 128x",
+      "enchanted-expansion"
+    ],
+    [
+      "roundista",
+      "Roundista LabPBR 128x",
+      "enchanted-expansion"
+    ],
+    [
+      "nautilus3d",
+      "Nautilus 3D",
+      "enchanted-expansion"
+    ],
+    [
+      "easy-npc-core",
+      "Easy NPC: Core (retained production dependency)",
+      "existing-world"
+    ],
+    [
+      "drowned-rose-tavern",
+      "Drowned Rose 45-patron runtime (retained)",
+      "existing-world"
     ]
   ]
 }

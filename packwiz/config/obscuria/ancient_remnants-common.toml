@@ -1,0 +1,25 @@
+# Sparse exploration preset. New chunks only; upstream biome eligibility and progression retained.
+hunter_monolith_placement_spacing = 128
+hunter_monolith_placement_separation = 32
+hunter_monolith_biomes = ["minecraft:badlands"]
+
+warrior_monolith_placement_spacing = 128
+warrior_monolith_placement_separation = 32
+warrior_monolith_biomes = ["minecraft:ice_spikes"]
+
+sentinel_monolith_placement_spacing = 128
+sentinel_monolith_placement_separation = 32
+sentinel_monolith_biomes = ["minecraft:deep_frozen_ocean"]
+
+cherry_monument_placement_spacing = 128
+cherry_monument_placement_separation = 32
+cherry_monument_biomes = ["minecraft:cherry_grove"]
+
+oakwood_monument_placement_spacing = 128
+oakwood_monument_placement_separation = 32
+oakwood_monument_biomes = ["#minecraft:is_forest"]
+
+coniferous_monument_placement_spacing = 128
+coniferous_monument_placement_separation = 32
+coniferous_monument_biomes = ["#minecraft:is_taiga"]
+
