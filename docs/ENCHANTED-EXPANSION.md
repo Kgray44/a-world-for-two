@@ -83,14 +83,18 @@ Without `--bsl-materials`, existing shader settings are preserved. That explicit
 flag selects pinned BSL and saves restrained LabPBR settings, backing up both
 the Iris choice and BSL material options while retaining unrelated values. The
 same material profile serves both bases; a material difference requiring two
-separate shader profiles has not been demonstrated. The selector does not modify
+separate shader profiles has not been demonstrated. Fresh exports include these BSL
+material preferences as a sidecar, with shaders initially off; selecting BSL
+activates them. Existing installations retain their own settings. The selector does not modify
 an open client, download assets, or certify rendered results.
 To restore preferences, close Minecraft and copy the exact `previous` file in
 `awft-texture-preset.json` back to `.minecraft/options.txt`.
 
 In BSL's shader options, start with Medium, enable Advanced Materials and select
-LabPBR (`MATERIAL_FORMAT=1`). Start parallax at depth 0.10, quality 32 and distance
-32; reduce/disable it on thin model geometry if gaps or shimmer appear. Keep
+LabPBR (`MATERIAL_FORMAT=1`). The owner selected parallax depth 0.50 after
+observing much clearer relief, with quality 64 and distance 64. Self-shadow samples 16, angle 4.0 and strength
+32 reproduce the settings the owner preferred during the Roundista test.
+Keep the selected depth and inspect thin model geometry for gaps or shimmer. Keep
 normal/specular effects restrained, soft shadows and AO; measure before raising
 quality. Preserve the established DH settings and caches. These are test starting
 values, not measured optimized profiles. A separate shader profile is not claimed
@@ -105,7 +109,10 @@ Diorama preserves Xaero and Control Room Atlas. Fresh owned clients bind its map
 to F8, waypoint creation to F9 and waypoint list to F10. Existing clients can set
 these in Controls > Diorama without changing other bindings. Use Diorama's Xaero
 waypoint import when desired; this is not continuous bidirectional synchronization.
-Hide one minimap overlay if the two compete for screen space.
+Fresh imports keep Xaero's established minimap visible and hide Diorama's HUD
+overlay through `diorama/config.json` (`minimap=false`). Diorama's F8 3D map remains
+available. Existing users can turn off Diorama's Minimap in its settings; managed
+updates do not replace their personal map settings.
 
 ## World and deployment
 
@@ -165,8 +172,26 @@ normal managed server and owned test-client defaults.
 
 A 6 GiB Enchanted Fantasy/BSL run created its world render pipeline but reached
 heap pressure and severe frame stalls. A fresh instance confirmed an actual
-8 GiB heap, then stopped at accessibility onboarding; desktop testing was stopped
-with Escape before world/render qualification. Neither result is a controlled
-benchmark. Soft & Rounded with BSL/DH and dense-city/interior visual acceptance
-remain open. The source build is 0.2.0, but no stable/latest publication or
-production activation is claimed.
+8 GiB heap initially stopped at onboarding. A later run reached the copied world
+with BSL after moving the owned instance out of a Prism registration junction;
+the retained bridge's archive-origin guard rejects that junction layout. The
+owner confirmed that the new resource packs were not enabled during its FPS
+observations. Enabling Nautilus and Roundista then froze resource reload. Live
+GC telemetry subsequently showed an almost-full heap and repeated full-GC pauses
+of more than one second. The next isolated KG test and fresh export use a 12 GiB
+maximum heap for the 32 GiB host; this is a test starting point, not proven graphics
+qualification or a controlled benchmark. Both presets with BSL/DH and dense-city/
+interior visual acceptance remain open. The source build is 0.2.0, but no stable/
+latest publication or production activation is claimed.
+
+The later 12 GiB owner test confirmed one visible minimap, responsive movement,
+roughly 30 FPS during part of manual play and improved Roundista depth after
+parallax/self-shadow tuning. These were uncontrolled observations. Stylista grass
+and oak still appeared flat after switching back and reloading Iris; this is an
+open visual failure, despite the archive containing their 128x height maps. The
+private observer captured both periods and normal final world-save/shutdown logs.
+A native material probe confirmed that Iris built 128x normal atlas entries
+for Stylista grass, oak and stone bricks. Grass and oak still appeared flat to
+the owner after an Iris reload. The owner directed that this visual issue stay
+open. Both presets retain the selected 0.50 parallax depth. The separate
+production acceptance workflow requires a matching two-player sync receipt.

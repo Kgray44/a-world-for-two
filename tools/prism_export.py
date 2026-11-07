@@ -75,7 +75,7 @@ def server_list():
     return b'\x0a\x00\x00\x09'+text('servers')+b'\x0a'+struct.pack('>i',len(entries))+b''.join(entries)+b'\x00'
 
 
-def verify_archive(path,prelaunch,pins,artwork,pirate):
+def verify_archive(path,prelaunch,pins,artwork,pirate,materials=None):
     """Static custody/layout checks; this does not launch or import Prism."""
     import hashlib
     with zipfile.ZipFile(path) as archive:
@@ -84,8 +84,11 @@ def verify_archive(path,prelaunch,pins,artwork,pirate):
             raise UserError('Export ZIP CRC or duplicate-entry validation failed')
         allowed={'instance.cfg','mmc-pack.json','INSTALL.txt','CONNECT.txt','GRAPHICS.txt','awft-export.json',PIRATE_NOTICE,
                  '.minecraft/options.txt','.minecraft/config/iris.properties','.minecraft/servers.dat',
+                 '.minecraft/diorama/config.json',
                  '.minecraft/awft-tools/LICENSE.txt','.minecraft/mods/'+pirate['filename']}
         allowed.update('.minecraft/awft-tools/'+pin['filename'] for pin in pins)
+        if materials:
+            allowed.add('.minecraft/shaderpacks/'+materials[0])
         allowed.update('.minecraft/'+file.relative_to(REPO/'packwiz').as_posix()
                        for file in (REPO/'packwiz/config').rglob('*') if file.is_file())
         if set(names)!=allowed or any(name.startswith('/') or '..' in name.split('/') or '\\' in name for name in names):
@@ -99,8 +102,12 @@ def verify_archive(path,prelaunch,pins,artwork,pirate):
                 or arguments[3:6]!=['--bootstrap-no-update','--bootstrap-main-jar','$INST_MC_DIR/awft-tools/'+pins[1]['filename']]
                 or arguments[6:8]!=['-s','client'] or len(arguments)!=9):
             raise UserError('Unexpected portable pre-launch argument structure')
-        if 'MaxMemAlloc=6144\n' not in config or 'OverrideJavaLocation=false\n' not in config:
+        if 'MaxMemAlloc=12288\n' not in config or 'OverrideJavaLocation=false\n' not in config:
             raise UserError('Portable client memory/Java settings changed')
+        if json.loads(archive.read('.minecraft/diorama/config.json')).get('minimap') is not False:
+            raise UserError('Fresh export must keep the overlapping Diorama HUD hidden')
+        if materials and archive.read('.minecraft/shaderpacks/'+materials[0]).decode() != materials[1]:
+            raise UserError('Fresh BSL material preferences changed inside the archive')
         components=json.loads(archive.read('mmc-pack.json'))['components']
         if not any(c.get('uid')=='net.neoforged' and c.get('version')=='21.1.262' for c in components):
             raise UserError('Portable NeoForge component does not match the pinned version')
@@ -176,18 +183,21 @@ def build(home,url=None,revision=1):
     if path.exists():raise UserError('Preserve the existing immutable export and use a new version')
     path.parent.mkdir(parents=True,exist_ok=True)
     cfg=('[General]\nInstanceType=OneSix\nname=A World for Two\nOverrideMemory=true\n'
-        'MinMemAlloc=1024\nMaxMemAlloc=6144\nOverrideJavaLocation=false\nOverrideCommands=true\n'
+        'MinMemAlloc=1024\nMaxMemAlloc=12288\nOverrideJavaLocation=false\nOverrideCommands=true\n'
         'PreLaunchCommand='+prelaunch.replace('"','\\"')+'\nWrapperCommand=\nPostExitCommand=\nOverrideWindow=true\n'
         'MinecraftWinWidth=1280\nMinecraftWinHeight=800\n')
     components={'formatVersion':1,'components':[
         {'uid':'org.lwjgl3','version':'3.3.3','dependencyOnly':True},
         {'uid':'net.minecraft','version':'1.21.1','important':True},
         {'uid':'net.neoforged','version':lock['neoforge']}]}
+    from .graphics_preset import fresh_options, fresh_diorama_settings, fresh_material_options
+    materials = fresh_material_options(lock)
     with zipfile.ZipFile(path,'x',zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
         archive.writestr('instance.cfg',cfg)
         archive.writestr('mmc-pack.json',json.dumps(components,indent=2)+'\n')
-        from .graphics_preset import fresh_options
         archive.writestr('.minecraft/options.txt',fresh_options(lock))
+        archive.writestr('.minecraft/diorama/config.json',fresh_diorama_settings())
+        archive.writestr('.minecraft/shaderpacks/'+materials[0],materials[1])
         archive.writestr('.minecraft/config/iris.properties','enableShaders=false\n')
         archive.writestr('.minecraft/servers.dat',server_list())
         archive.write(REPO/'docs/ENCHANTED-EXPANSION.md','GRAPHICS.txt')
@@ -200,7 +210,8 @@ def build(home,url=None,revision=1):
             'A World for Two '+lock['version']+' - portable Prism client\n\n'
             '1. In Prism Launcher choose Add Instance, then Import from ZIP, and select this ZIP.\n'
             '2. Sign into your own licensed Minecraft Java account and select Java 21.\n'
-            '3. Launch the instance. Maximum client heap is 6 GiB; shaders initially stay off.\n'
+            '3. Launch the instance. Maximum client heap is 12 GiB for the 32 GiB KG host; shaders initially stay off.\n'
+            '   This expanded graphics build needs more than the previous 6/8 GiB settings.\n'
             '4. Leave the pinned Packwiz pre-launch command enabled. It downloads exact client files.\n'
             '   One unchanged Let\'s Forge Pirates JAR is included under its author\'s modpack grant.\n'
             '   Read MODPACK-NOTICES/LETS-FORGE-PIRATES.md for attribution and the narrow permission.\n'
@@ -226,7 +237,7 @@ def build(home,url=None,revision=1):
             'pack_sha256':digest(REPO/'packwiz/pack.toml'),'pack_url':url,'original_artwork_sha256':artwork['sha256'],
             'modpack_bundled_artifacts':[included],
             'status':'qualified release' if lock.get('release_status')=='qualified' else 'unpublished; fresh import and public download qualification pending'}))
-    checks=verify_archive(path,prelaunch,tools,artwork,pirate)
+    checks=verify_archive(path,prelaunch,tools,artwork,pirate,materials)
     report={'at':utcnow(),'version':lock['version'],'export_revision':revision,'pack_sha256':digest(REPO/'packwiz/pack.toml'),
         'path':str(path),'size':path.stat().st_size,'sha256':digest(path),'guard':reserve,
         'original_artwork_sha256':artwork['sha256'],'public_server':PUBLIC_SERVER,'updater_url':url,

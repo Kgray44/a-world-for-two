@@ -116,9 +116,76 @@
       "client_shutdown": "Owned disposable client terminated after log capture; no clean exit claim",
       "modset_scope": "Initial repository baseline before bridge64/Tavern/Easy NPC reconciliation; component diagnostic only"
     },
-    "8g_test": "Actual 8 GiB heap reached first-launch accessibility onboarding; desktop testing stopped by physical Escape. World/render acceptance pending.",
-    "soft_rounded_runtime": "not run",
-    "public_benchmark_claim": "none"
+    "8g_test": "Reached the copied world after moving the owned instance into the physical Prism instance directory. Initial FPS observations excluded all new resource packs; subsequent Nautilus/Roundista reload froze under full-GC pressure. Failed graphics qualification.",
+    "soft_rounded_runtime": "Owner observed improved in-world relief with BSL at depth 0.50 and quality 64; controlled graphics/performance qualification remains open.",
+    "public_benchmark_claim": "none",
+    "8g_runtime_diagnostic": {
+      "heap_max_bytes": 8589934592,
+      "resource_manager_log": "Initial 21:16:22 reload contained none of Stylista, Roundista, Nautilus or Fresh Animations. Later 21:21:45 reload included Nautilus, Roundista and Fresh Animations.",
+      "owner_observation": "Reported 1-5 FPS with low GPU use, recovery to about 50 FPS with higher GPU use, then a multi-minute freeze when enabling new packs; owner closed the test client.",
+      "recovery_observation": {
+        "scope": "12 uncontrolled live samples during manual play; not an equivalent-scene benchmark",
+        "fps_sample_range": [
+          15,
+          49
+        ],
+        "gpu_utilization_percent_range": [
+          27,
+          100
+        ],
+        "gpu_used_mib_range": [
+          3482,
+          4123
+        ]
+      },
+      "gc_during_recovery": {
+        "recording_seconds": 60,
+        "collections": 83,
+        "total_pause_ms": 700.0462,
+        "longest_pause_ms": 32.8116
+      },
+      "gc_during_freeze": {
+        "method": "Live jstat -gcutil, five consecutive samples",
+        "old_generation_percent_range": [
+          99.65,
+          99.84
+        ],
+        "full_gc_count_first": 201,
+        "full_gc_count_last": 205,
+        "full_gc_seconds_first": 216.109,
+        "full_gc_seconds_last": 220.683,
+        "interpretation": "Sustained heap exhaustion with repeated full-GC pauses of more than one second. Different interval from the recovered-period JFR."
+      },
+      "histogram_during_freeze": {
+        "baked_quad_instances": 22813714,
+        "baked_quad_bytes": 1095058272,
+        "int_array_bytes": 2568652568,
+        "boundary": "All-object class histogram during failed resource reload; does not identify a unique retaining owner or prove all arrays belong to models."
+      },
+      "shutdown": "Owned monitor observed client exit; game log confirms all chunks and dimensions saved before renderer shutdown.",
+      "next_test": "12 GiB heap, Xaero HUD retained and Diorama minimap hidden; no 12 GiB runtime acceptance claim yet."
+    },
+    "12g_owner_test": {
+      "maximum_heap_bytes": 12884901888,
+      "scope": "Manual copied-world tests with Stylista and Roundista, Nautilus and BSL; uncontrolled scenes and live shader changes, not a comparative benchmark.",
+      "owner_observations": [
+        "One Xaero HUD and responsive movement.",
+        "Roughly 30 FPS during part of manual play.",
+        "Roundista relief improved at depth 0.50 and quality 64, with preferred self-shadow samples 16, angle 4.0 and strength 32.",
+        "Stylista grass and oak appeared flat after switching back and reloading Iris. The owner directed the issue to remain open."
+      ],
+      "stylista_probe": {
+        "sprites_checked": 6,
+        "albedo_and_normal_provider": "Stylista 128x A26.zip",
+        "normal_atlas_entries_present": 6,
+        "dimensions": [
+          128,
+          128
+        ],
+        "boundary": "Resource and atlas evidence only; the one-shot probe does not establish visual acceptance."
+      },
+      "shutdown": "Manual test and the subsequent test-only probe each exited through Minecraft with all dimensions saved. The probe is excluded from release artifacts."
+    }
   },
   "open_gates": [
     "Native fresh Prism import and final manifest download",
@@ -173,6 +240,12 @@
       "entity_chunks": 317,
       "entities": 729,
       "entity_difference": "Attribute-list ordering on 25 entities; per-attribute-ID values identical. No changed saved entity fields beyond list ordering."
+    },
+    "production_recheck": {
+      "archived_files": 5517,
+      "changed_files": 0,
+      "missing_files": 0,
+      "boundary": "Current production matched the archived byte hashes. This recheck does not prove the archive was taken at a clean stop."
     }
   }
 }

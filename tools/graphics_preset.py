@@ -51,6 +51,18 @@ def fresh_options(lock):
     return text
 
 
+def fresh_diorama_settings():
+    """Keep Xaero's established HUD; Diorama remains accessible with F8."""
+    return json.dumps({'minimap': False}, indent=2) + '\n'
+
+
+def fresh_material_options(lock):
+    """Seed a fresh client's BSL sidecar without enabling shaders or editing a user."""
+    config = read_json(REPO / 'catalog/texture-presets.json')
+    shader = next(m for m in lock['mods'] if m['slug'] == config['shader'])
+    return shader['filename'] + '.txt', material_text('', config['bsl_settings'])
+
+
 def material_text(text, settings):
     for key, value in settings.items():
         pattern = r'(?m)^' + re.escape(key) + r'=[^\r\n]*$'

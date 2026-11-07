@@ -68,15 +68,18 @@ def prepare(home, player="KG", server_port=None):
         atomic_write(minecraft / relative, raw)
     write_json(instance / 'awft-menu.json', {'at': utcnow(), 'background_sha256': menu.current()['sha256'], 'status': 'installed; client visual validation pending'})
     # These are native vanilla 1.21.1 option names. Shaders remain off for startup.
-    from .graphics_preset import fresh_options
+    from .graphics_preset import fresh_options, fresh_diorama_settings, fresh_material_options
     options = fresh_options(lock)
     atomic_write(minecraft / "options.txt", options)
+    atomic_write(minecraft / "diorama/config.json", fresh_diorama_settings())
+    material_name, material_options = fresh_material_options(lock)
+    atomic_write(minecraft / "shaderpacks" / material_name, material_options)
     components = {"formatVersion": 1, "components": [
         {"uid": "org.lwjgl3", "version": "3.3.3", "dependencyOnly": True},
         {"uid": "net.minecraft", "version": "1.21.1", "important": True},
         {"uid": "net.neoforged", "version": lock["neoforge"]}]}
     write_json(instance / "mmc-pack.json", components)
-    heap_mib=6144 if player=='KG' else 4096
+    heap_mib=12288
     atomic_write(instance / "instance.cfg", "[General]\nInstanceType=OneSix\nname=A World for Two - " + player + " client check\n"
         "OverrideMemory=true\nMinMemAlloc=1024\nMaxMemAlloc="+str(heap_mib)+"\n"
         "OverrideJavaLocation=true\nJavaPath=C:/Program Files/Java/jdk-21.0.10/bin/javaw.exe\n"

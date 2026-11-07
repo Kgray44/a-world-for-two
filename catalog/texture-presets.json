@@ -13,18 +13,22 @@
     }
   },
   "shader": "bsl-shaders",
-  "validation": "Pinned author archives; native rendering, PBR/model overlap and performance acceptance pending",
+  "validation": "The owner observed improved Roundista relief at depth 0.50 and quality 64. Stylista grass and oak still look flat. The owner directed that visual issue to remain open.",
   "bsl_settings": {
     "ADVANCED_MATERIALS": "true",
     "MATERIAL_FORMAT": "1",
     "PARALLAX": "true",
-    "PARALLAX_DEPTH": "0.10",
-    "PARALLAX_QUALITY": "32",
-    "PARALLAX_DISTANCE": "32",
+    "PARALLAX_DEPTH": "0.50",
+    "PARALLAX_QUALITY": "64",
+    "PARALLAX_DISTANCE": "64",
     "REFLECTION": "1",
     "SPECULAR_HIGHLIGHT": "1",
     "AO": "true",
     "SHADOW_FILTER": "true",
-    "BLOOM_STRENGTH": "0.50"
+    "BLOOM_STRENGTH": "0.50",
+    "SELF_SHADOW": "true",
+    "SELF_SHADOW_ANGLE": "4.0",
+    "SELF_SHADOW_QUALITY": "16",
+    "SELF_SHADOW_STRENGTH": "32"
   }
 }
