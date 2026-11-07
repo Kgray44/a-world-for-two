@@ -153,7 +153,12 @@ def build(home,url=None,revision=1):
     pirate=approved_pirate(lock)
     errors=validate_pack(REPO/'packwiz',lock)
     if errors:raise UserError('Pack integrity failed: '+'; '.join(errors))
-    url=url or 'https://kgray44.github.io/a-world-for-two/releases/'+lock['version']+'/pack.toml'
+    stable_url='https://kgray44.github.io/a-world-for-two/pack.toml'
+    version_url='https://kgray44.github.io/a-world-for-two/releases/'+lock['version']+'/pack.toml'
+    qualified=lock.get('release_status')=='qualified'
+    url=url or (stable_url if qualified else version_url)
+    if url==stable_url and not qualified:
+        raise UserError('Only qualified exports can use the stable update channel')
     if '/releases/' in url and url!='https://kgray44.github.io/a-world-for-two/releases/'+lock['version']+'/pack.toml':
         raise UserError('The immutable updater channel must match this exact candidate version')
     prelaunch=command(url);pins=read_json(REPO/'catalog/tools.lock.json')
@@ -218,8 +223,9 @@ def build(home,url=None,revision=1):
             '5. Choose Join Our World, then the Public server entry when joining from another computer.\n'
             '   The KG local entry is only for Minecraft on the dedicated server computer itself.\n'
             '6. Ask the host to whitelist your exact Java username. See CONNECT.txt for address details.\n\n'
-            'This version checks the immutable manifest on each launch:\n'+url+'\n\n'
-            'The host must publish that exact manifest and its dependencies before first installation can work.\n'
+            'Packwiz checks this address on each launch:\n'+url+'\n\n'
+            + ('Keep this Prism instance. Press Play to install approved modpack updates automatically.\n'
+               if url==stable_url else 'This preview follows the pinned release at that address.\n') +
             'Fresh native Prism import/download qualification is recorded separately from archive checks.\n'
             'No account, world, logs or LOD databases are included. Choose shaders in Video Settings after baseline startup.\n'
             'Hosting documentation: https://github.com/Kgray44/a-world-for-two/blob/main/docs/INSTALL.md\n')
@@ -253,6 +259,6 @@ def build(home,url=None,revision=1):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--home',type=Path,default=Path(r'D:\A World for Two'))
-    parser.add_argument('--pack-url',default=None,help='Defaults to this exact version\'s immutable public Packwiz channel')
+    parser.add_argument('--pack-url',default=None,help='Defaults to the stable channel for a qualified release and the versioned URL for a preview')
     parser.add_argument('--revision',type=int,default=1)
     args=parser.parse_args();build(args.home,args.pack_url,args.revision)

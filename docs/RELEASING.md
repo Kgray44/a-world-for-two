@@ -22,10 +22,12 @@ must satisfy its exact acceptance gates; pending tests stay pending in the docum
    distribution. Test a fresh native Prism import before a one-download/import claim.
 8. Publish an immutable tested tree at
    `https://kgray44.github.io/a-world-for-two/releases/<version>/pack.toml` and verify hashes.
-9. Stop and back up the server for coordinated activation. Have players relaunch
-   with the approved immutable Packwiz URL before joining the matching server.
-   Mod Manager checks acceptance and the public manifest hash. The Pages
-   publisher uses versioned URLs and leaves the root update alias disabled.
+9. Stop and back up production, then activate the verified immutable manifest.
+   Once the matching server is ready, set `stable` in `catalog/publication.json`
+   to that qualified version and dispatch the Pages workflow. Verify the root
+   Packwiz hash matches production before telling players to relaunch. Keep
+   the previous immutable snapshots available for rollback. A rollback must
+   coordinate the server and the stable channel in the same way.
 10. Publish the qualified release, update README/status, then retire obsolete disposable
     staging while retaining useful worlds, unique history and failed receipts.
 
