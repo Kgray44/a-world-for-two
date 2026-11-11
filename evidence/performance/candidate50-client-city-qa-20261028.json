@@ -1,0 +1,310 @@
+{
+  "format": "awft-sanitized-passive-performance-evidence:1",
+  "recorded_at": "2026-10-28T19:22:09.359211+00:00",
+  "candidate": "0.1.0-candidate.50",
+  "pack_sha256": "052a736c2b9445454eb3ea8490734ab4730e2b34c190cfe31f6c6ed418ab07c9",
+  "bridge_sha256": "13d1b1ff7c2405fadb750d57aa2d58231496f560fd4880c0a7153265be164aac",
+  "scope": "Master-authorized300s CITY visual-QA startup/menus/natural join/inspection; no focused gameplay samples, no controlled preset comparison.",
+  "native_game_actions_by_recorder": 0,
+  "collection_elapsed_seconds": 300.0,
+  "observed_row_bounds": [
+    "2026-10-28T18:57:46.833984+00:00",
+    "2026-10-28T19:02:45.682123+00:00"
+  ],
+  "native_server_snapshots": 59,
+  "native_client_snapshots": 49,
+  "host_rows": 271,
+  "source_result_sha256": "289e9cfe1aecef0c38c60a5ae3400c6ee74ee5a78125ebf28f2c5df5ddd09ee7",
+  "source_samples_sha256": "3160f34e2ecb91d5ac6cc716ab3b785e62b927de31514af3cda78d79a9f3522e",
+  "sample_bytes": 616323,
+  "capture_errors": [],
+  "configuration_hashes_unchanged": true,
+  "measurements": {
+    "native_server_snapshots": 59,
+    "native_client_snapshots": 49,
+    "sampled_window_mean_mspt": {
+      "samples": 59,
+      "min": 1.769050495049505,
+      "mean": 8.487662726783597,
+      "p50": 6.811747524752475,
+      "p95": 30.714381553398056,
+      "max": 35.7376914893617
+    },
+    "sampled_tps_estimates": {
+      "samples": 59,
+      "min": 9.678714715196007,
+      "mean": 19.893454770851275,
+      "p50": 19.997421132570743,
+      "p95": 21.447075914606085,
+      "max": 28.179528699580903
+    },
+    "focused_gameplay_client_snapshots": 0,
+    "sampled_focused_gameplay_fps": {
+      "samples": 0
+    },
+    "gc_collector_elapsed_delta_ms": 1668,
+    "tick_spike_observations": {
+      "windows": 0,
+      "max_work_ms": null,
+      "over_50ms": null,
+      "over_100ms": null,
+      "max_start_gap_ms": null
+    },
+    "sampled_client_frame_windows": {
+      "windows": 0,
+      "worst_retained_frame_ms": null,
+      "worst_window_p95_ms": null,
+      "global_frame_percentiles": "Unavailable; retained window aggregates cannot establish them"
+    },
+    "all_client_states_worst_retained_frame_ms": 36757.1693,
+    "host_physical_available_bytes": {
+      "samples": 271,
+      "min": 58716160,
+      "mean": 1217901148.5756457,
+      "p50": 1015246848,
+      "p95": 2902933504,
+      "max": 3244392448
+    },
+    "windows_commit_headroom_bytes": {
+      "samples": 271,
+      "min": 381718528,
+      "mean": 1803132474.5682657,
+      "p50": 1439514624,
+      "p95": 3398586368,
+      "max": 3991719936
+    },
+    "boundary": "Only observed snapshots/windows. Missing intervals, unfocused/menu frames and unperformed workloads remain unqualified. No gameplay acceptance inferred."
+  },
+  "client_states": [
+    {
+      "screen": "GenericMessageScreen",
+      "in_world": false,
+      "focused": true,
+      "snapshots": 12
+    },
+    {
+      "screen": "TitleScreen",
+      "in_world": false,
+      "focused": false,
+      "snapshots": 1
+    },
+    {
+      "screen": "ConnectScreen",
+      "in_world": false,
+      "focused": false,
+      "snapshots": 3
+    },
+    {
+      "screen": "ReceivingLevelScreen",
+      "in_world": true,
+      "focused": false,
+      "snapshots": 1
+    },
+    {
+      "screen": "PauseScreen",
+      "in_world": true,
+      "focused": false,
+      "snapshots": 31
+    },
+    {
+      "screen": "PauseScreen",
+      "in_world": true,
+      "focused": true,
+      "snapshots": 1
+    }
+  ],
+  "all_state_client_fps": {
+    "samples": 49,
+    "min": 0,
+    "mean": 30.73469387755102,
+    "p50": 34,
+    "p95": 58,
+    "max": 60
+  },
+  "client_frame_window_max_ms": {
+    "samples": 48,
+    "min": 28.9989,
+    "mean": 1478.6136583333334,
+    "p50": 108.3587,
+    "p95": 2139.5383,
+    "max": 36757.1693
+  },
+  "client_rss_bytes": {
+    "samples": 49,
+    "min": 6383763456,
+    "mean": 7286375068.734694,
+    "p50": 7154696192,
+    "p95": 7853187072,
+    "max": 7881764864
+  },
+  "client_heap_used_bytes": {
+    "samples": 49,
+    "min": 3560964096,
+    "mean": 5542085537.142858,
+    "p50": 5595429888,
+    "p95": 5957980816,
+    "max": 6006907672
+  },
+  "server_rss_bytes": {
+    "samples": 59,
+    "min": 2024595456,
+    "mean": 2733301065.762712,
+    "p50": 2857345024,
+    "p95": 3538935808,
+    "max": 3540062208
+  },
+  "server_heap_used_bytes": {
+    "samples": 59,
+    "min": 1427056056,
+    "mean": 1995173045.1525424,
+    "p50": 1752768456,
+    "p95": 2798113848,
+    "max": 2835862584
+  },
+  "server_players": [
+    0,
+    1
+  ],
+  "server_loaded_entities": [
+    30,
+    31,
+    90,
+    167,
+    168
+  ],
+  "host_cpu_percent": {
+    "samples": 271,
+    "min": 23.28125,
+    "mean": 71.81593634686348,
+    "p50": 73.59375,
+    "p95": 99.5,
+    "max": 100.0
+  },
+  "host_pages_input_per_second": {
+    "samples": 271,
+    "min": 110.22057696141944,
+    "mean": 9367.841136620244,
+    "p50": 5379.980792800493,
+    "p95": 29118.444401204084,
+    "max": 86076.1629229887
+  },
+  "shared_gpu_percent": {
+    "samples": 55,
+    "min": 0.0,
+    "mean": 7.781818181818182,
+    "p50": 6.0,
+    "p95": 25.0,
+    "max": 32.0
+  },
+  "file_observation_bounds": [
+    {
+      "at": "2026-10-28T18:57:46.833984+00:00",
+      "files": {
+        "server_overworld_db": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 157966336,
+          "modified_ns": 1793213303997917000
+        },
+        "server_overworld_wal": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 2393752,
+          "modified_ns": 1793213307977563900
+        },
+        "server_overworld_shm": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 32768,
+          "modified_ns": 1793212641332259400
+        },
+        "previously_existing_client_overworld_db": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 158396416,
+          "modified_ns": 1793203390760452500
+        },
+        "previously_existing_client_overworld_wal": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 0,
+          "modified_ns": 1793211945781119000
+        },
+        "previously_existing_client_overworld_shm": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 32768,
+          "modified_ns": 1793211945781119000
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T19:02:20.162937+00:00",
+      "files": {
+        "server_overworld_db": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 157966336,
+          "modified_ns": 1793213303997917000
+        },
+        "server_overworld_wal": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 3040592,
+          "modified_ns": 1793214127311043600
+        },
+        "server_overworld_shm": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 32768,
+          "modified_ns": 1793212641332259400
+        },
+        "previously_existing_client_overworld_db": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 158412800,
+          "modified_ns": 1793214082821643500
+        },
+        "previously_existing_client_overworld_wal": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 4148872,
+          "modified_ns": 1793214109383942300
+        },
+        "previously_existing_client_overworld_shm": {
+          "available": true,
+          "exists": true,
+          "logical_bytes": 32768,
+          "modified_ns": 1793214004497864700
+        }
+      }
+    }
+  ],
+  "file_metadata_scope": "Exact named DB/WAL/SHM logical sizes at non-atomic observations; previously existing client cache identity is disclosed, not an alternate terrain authority.",
+  "minimum_drive_free_bytes": {
+    "C": 98970767360,
+    "D": 284391432192
+  },
+  "strict_seedgen_result": {
+    "status": "refused",
+    "primary_cause": "Moonlight server-data cache is not initialized; never infer empty",
+    "provider": "net.mehvahdjukaar.moonlight.api.resources.pack.CachePathPackResources",
+    "selected_pack": "supplementaries:generated_pack",
+    "fallback": "Original strict SeedGen stands down; server DH terrain download retained",
+    "private_failure_receipt_sha256": "dad4d1053c9016aae0688dcb0e8838d03985da878c47e5909fa7852fc289a576",
+    "private_failure_log_sha256": "819a5977957fe8f97e314d09cfae05629a4ab533fe0a330b5c24de094aafd9a5",
+    "strict_parity_proved": false,
+    "secondary_fallback_errors": "damage_type registry access and subsequent vanilla worldgen parsing failures; not the primary modded-load cause"
+  },
+  "interpretation": "Physical and commit headroom became severely constrained during this combined run. A36.757s retained frame occurred; memory pressure, registry initialization, focus/menu state and loading overlap, so no single-cause or shader ranking is established.",
+  "unavailable": [
+    "Focused foreground gameplay performance",
+    "Individual tick-duration spikes before queued helper",
+    "Native chunk generation/load spans",
+    "Client GC pause attribution",
+    "Controlled balanced/higher-quality preset comparison",
+    "Completed settlement/LIFE/Create/train/ship/fast-terrain workloads",
+    "Sera FPS and real current two-player acceptance"
+  ],
+  "reserve_scope": "Both drives remained above30GiB for the owned recorder; the rule did not constrain game, pagefile or unrelated writers."
+}
