@@ -1,0 +1,65 @@
+--- a/packwiz/config/paxi/datapacks/awft-integration/data/castleshift/worldgen/structure_set/castle.json
++++ b/packwiz/config/paxi/datapacks/awft-integration/data/castleshift/worldgen/structure_set/castle.json
+@@ -7,7 +7,7 @@
+   ],
+   "placement": {
+     "type": "minecraft:random_spread",
+-    "spacing": 96,
++    "spacing": 92,
+     "separation": 32,
+     "salt": 194572831,
+     "exclusion_zone": {
+--- a/packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/adoberuins.json
++++ b/packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/adoberuins.json
+@@ -7,7 +7,7 @@
+   ],
+   "placement": {
+     "type": "minecraft:random_spread",
+-    "spacing": 80,
++    "spacing": 76,
+     "separation": 40,
+     "salt": 1108054183
+   }
+--- a/packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json
++++ b/packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json
+@@ -7,7 +7,7 @@
+   ],
+   "placement": {
+     "type": "minecraft:random_spread",
+-    "spacing": 80,
++    "spacing": 76,
+     "separation": 40,
+     "salt": 1027327534
+   }
+--- a/packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json
++++ b/packwiz/config/paxi/datapacks/awft-integration/data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json
+@@ -7,7 +7,7 @@
+   ],
+   "placement": {
+     "type": "minecraft:random_spread",
+-    "spacing": 80,
++    "spacing": 76,
+     "separation": 40,
+     "salt": 1067233915
+   }
+--- a/tools/worldgen_policy.py
++++ b/tools/worldgen_policy.py
+@@ -55,6 +55,18 @@
+             p['exclusion_zone'] = {'other_set': other, 'chunk_count': 16}
+     elif slug == 'castle-shift':
+         spacing, separation = 96, 32  # Preserve the original village exclusion.
++    # Reviewed optional future-terrain profile; preserves every other set.
++    moderate_future = {
++        ('castle-shift', 'castle'): (96, 32, 92),
++        ('archaeology-ruins', 'adoberuins'): (80, 40, 76),
++        ('archaeology-ruins', 'mudpotterruin'): (80, 40, 76),
++        ('archaeology-ruins', 'mudschoolruin'): (80, 40, 76),
++    }
++    if (slug, name) in moderate_future:
++        old_spacing, old_separation, proposed_spacing = moderate_future[slug, name]
++        if (spacing, separation) != (old_spacing, old_separation):
++            raise ValueError('Review changed baseline before applying future structure profile')
++        spacing = proposed_spacing
+     if not 0 <= separation < spacing <= 4096:
+         raise ValueError('Invalid reviewed structure spacing')
+     p.update(spacing=spacing, separation=separation)

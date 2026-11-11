@@ -1,0 +1,41 @@
+{
+  "format": "awft-offline-engine-spacing-api:1",
+  "tier": "OFFLINE_ENGINE_RNG_SPREAD_PRIMITIVES_NOT_FULL_PLACEMENT_OR_WORLD_GENERATION",
+  "invoked_native_methods": [
+    "WorldgenRandom.setLargeFeatureWithSalt",
+    "RandomSpreadType.evaluate"
+  ],
+  "full_placement_constructor": "NOT RUN; the original offline full-API attempt requires Minecraft Bootstrap",
+  "compile_exit_code": 0,
+  "reserve": {
+    "utc": "2026-10-28T18:51:15.1949667Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 118099124224,
+    "dFreeBytes": 284401999872,
+    "estimatedCBytes": 2097152,
+    "estimatedDBytes": 8388608,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "source_sha256": "4af06f55541626af38a4bfff0d4c6ab8ed00e910bdec5473f1c3a74ed058fe48",
+  "minecraft_srg_sha256": "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
+  "server_started": false,
+  "mods_loaded": false,
+  "worlds_opened": 0,
+  "heap_limit_mib": 192,
+  "cpu_count": 1,
+  "api_process_exit_code": 0,
+  "vector_count": 1440,
+  "expected_vectors": 1440,
+  "mismatch_count": 0,
+  "mismatches": [],
+  "vector_output_sha256": "f79c316c988cab641bc37f085ad602a71c294de2ceb4c4512b19431e8c8bc7e9",
+  "coverage": [
+    "six baseline/proposed spacing profiles",
+    "linear and triangular spread",
+    "five synthetic seeds including signed-long extremes",
+    "four salts including signed-int maximum",
+    "negative regions and world-border-scale chunk coordinates"
+  ],
+  "status": "PASS"
+}

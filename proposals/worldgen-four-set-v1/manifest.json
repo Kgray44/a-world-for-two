@@ -1,0 +1,146 @@
+{
+  "format": "awft-worldgen-four-set-v1",
+  "status": "PROPOSED_NOT_DEPLOYED",
+  "baseline_pack_version": "0.1.0-candidate.49",
+  "baseline_pack_sha256": "750dc6e324246300f45649f4d94093c4384576cbb9cce9d247bd8dfaeff55c6c",
+  "baseline_policy_sha256": "1f3e772f544f72e88bcb0c2659c1e867bc97f5f75a0e30aa13efbb9dfe7a8ea7",
+  "terrain_inputs_unchanged": {
+    "config/tectonic.json": "9ca01c0e5f109c517d2ebc025d933ca30c7c9f5010019b67527b061ecb8869d5",
+    "config/seedgen.json": "727f74d977d68e1b44b62532b9b713ce31fe5a1b032468c1adfc8ebe1f41e7ac",
+    "config/DistantHorizons.toml": "e65a570c1da4ece0203bbdb0f39ca16827ab10d4b17401f5fbd60acc5df18bec"
+  },
+  "changed_structure_sets": 4,
+  "preserved_baseline_sets": 41,
+  "biome_eligibility_updates": 0,
+  "source_artifacts": [
+    {
+      "slug": "archaeology-ruins",
+      "version": "1.0.0",
+      "size": 154587,
+      "sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "side": "both"
+    },
+    {
+      "slug": "castle-shift",
+      "version": "0.3.0",
+      "size": 167775,
+      "sha256": "382416b0cfcaf086a2ad3e76d7ad453cf5e0ae7078c5db85053d660ea62aefc4",
+      "side": "both"
+    }
+  ],
+  "changes": [
+    {
+      "resource": "data/archaeology_ruins/worldgen/structure_set/adoberuins.json",
+      "key": "archaeology_ruins:adoberuins",
+      "kind": "minor-site spacing",
+      "before_sha256": "a7813556d5371ac2d0c471236c5497b05c64bcba05fae1200a988e386f9880ce",
+      "after_sha256": "792e842cf5b3db98345e0b871f93babdef09381a1b6e3a04d0c683200ebf1b98",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1108054183
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 76,
+        "separation": 40,
+        "salt": 1108054183
+      }
+    },
+    {
+      "resource": "data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json",
+      "key": "archaeology_ruins:mudpotterruin",
+      "kind": "minor-site spacing",
+      "before_sha256": "bfee5a92a48f9664a60ae38897d0779e8587d4b323be5ffed725640c2acffedf",
+      "after_sha256": "1a72c6dce144ee2e3823246dd93c9e6fa4cc3a1960703072240d27931a118ddc",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1027327534
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 76,
+        "separation": 40,
+        "salt": 1027327534
+      }
+    },
+    {
+      "resource": "data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json",
+      "key": "archaeology_ruins:mudschoolruin",
+      "kind": "minor-site spacing",
+      "before_sha256": "25a3f7d813d0d4c2a5f27d9bc1b53a4482aba0f97b9c681d8ff56c0286f18d6f",
+      "after_sha256": "46900d289c1569e2ce052ceb74310e6c2f0cb91c7f1bcb0cf55c26440ce46b78",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1067233915
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 76,
+        "separation": 40,
+        "salt": 1067233915
+      }
+    },
+    {
+      "resource": "data/castleshift/worldgen/structure_set/castle.json",
+      "key": "castleshift:castle",
+      "kind": "minor-site spacing",
+      "before_sha256": "a955f68fc5a2537c8898de25659558556fbe37eebedc01bfb54f95e6336a5660",
+      "after_sha256": "64d4d3c8c9caa106605c3b6a77ffca3709fae853b77912f013b38086dac3a9af",
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 32,
+        "salt": 194572831,
+        "exclusion_zone": {
+          "other_set": "minecraft:villages",
+          "chunk_count": 10
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 92,
+        "separation": 32,
+        "salt": 194572831,
+        "exclusion_zone": {
+          "other_set": "minecraft:villages",
+          "chunk_count": 10
+        }
+      }
+    }
+  ],
+  "files": {
+    "data/archaeology_ruins/worldgen/structure_set/adoberuins.json": {
+      "sha256": "792e842cf5b3db98345e0b871f93babdef09381a1b6e3a04d0c683200ebf1b98",
+      "size": 232
+    },
+    "data/archaeology_ruins/worldgen/structure_set/mudpotterruin.json": {
+      "sha256": "1a72c6dce144ee2e3823246dd93c9e6fa4cc3a1960703072240d27931a118ddc",
+      "size": 235
+    },
+    "data/archaeology_ruins/worldgen/structure_set/mudschoolruin.json": {
+      "sha256": "46900d289c1569e2ce052ceb74310e6c2f0cb91c7f1bcb0cf55c26440ce46b78",
+      "size": 235
+    },
+    "data/castleshift/worldgen/structure_set/castle.json": {
+      "sha256": "64d4d3c8c9caa106605c3b6a77ffca3709fae853b77912f013b38086dac3a9af",
+      "size": 317
+    },
+    "pack.mcmeta": {
+      "sha256": "129714163cda6fe981dc77614eb14555d6c26c96e8eb355bf0b0be021afbcfa6",
+      "size": 134
+    }
+  },
+  "limits": [
+    "No worlds, level seed, dimension height, loot, templates or existing chunks are edited.",
+    "All nonselected landmark placements, separation, salts and exclusion radii are preserved.",
+    "Tag membership is eligibility, not proof of terrain fit or native generation.",
+    "Shared Packwiz manifests and live installations require master integration.",
+    "Native biome, structure, terrain, timing, restart and frontier checks remain required."
+  ]
+}

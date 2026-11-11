@@ -1,0 +1,14 @@
+{
+  "format": "awft-offline-api-failure-diagnosis:1",
+  "original_receipt": "offline-engine-grid-v1.json",
+  "result": "Offline full-placement API construction is not independently executable without Minecraft Bootstrap",
+  "observed_exception": "ExceptionInInitializerError at StructurePlacement.<clinit>; IllegalArgumentException: Not bootstrapped (called from registry ResourceKey[minecraft:root / minecraft:game_event])",
+  "original_probe_source": "compat/worldgen-qa/probes/RandomSpreadProbe.java",
+  "original_probe_source_sha256": "706fae38db35b3ea3b05eaacf6010374c22cfd97851530cc7a5e24b118c2cb27",
+  "native_world_generation_failure_proved": false,
+  "action": "Preserve the failed full-API probe and defer it to the authorized native test. A separately labelled primitive-only probe calls actual WorldgenRandom and RandomSpreadType methods without claiming the full placement/bootstrap or native-world result.",
+  "bootstrap_started": false,
+  "server_started": false,
+  "mods_loaded": false,
+  "worlds_opened": 0
+}

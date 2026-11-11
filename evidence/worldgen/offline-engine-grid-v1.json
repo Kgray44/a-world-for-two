@@ -1,0 +1,24 @@
+{
+  "format": "awft-offline-engine-spacing-api:1",
+  "tier": "OFFLINE_ENGINE_API_VECTORS_NOT_NATIVE_WORLD_GENERATION",
+  "compile_exit_code": 0,
+  "reserve": {
+    "utc": "2026-10-28T18:50:18.9669805Z",
+    "allowed": true,
+    "floorBytesEach": 32212254720,
+    "cFreeBytes": 118097960960,
+    "dFreeBytes": 284402053120,
+    "estimatedCBytes": 2097152,
+    "estimatedDBytes": 8388608,
+    "reason": "Both drives remain above reserve after estimated writes"
+  },
+  "source_sha256": "706fae38db35b3ea3b05eaacf6010374c22cfd97851530cc7a5e24b118c2cb27",
+  "minecraft_srg_sha256": "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
+  "server_started": false,
+  "mods_loaded": false,
+  "worlds_opened": 0,
+  "heap_limit_mib": 192,
+  "cpu_count": 1,
+  "api_process_exit_code": 1,
+  "status": "OFFLINE_API_EXECUTION_FAILED_PRESERVED"
+}

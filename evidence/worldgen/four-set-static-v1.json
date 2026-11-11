@@ -1,0 +1,6092 @@
+{
+  "artifacts": [
+    {
+      "slug": "minecraft-data",
+      "sha256": "24a5d2d162cfad2a1a574c4d552e99dc6c6303a49d1e68b43a7b638f3b0930fd",
+      "size": 6591051
+    },
+    {
+      "slug": "lets-do-farm-charm",
+      "version": "1.1.29",
+      "side": "both",
+      "sha256": "cf5e8db36245a2d0644df364151b2b19494b4620a1b82d9e3d20eb62c1253f5f",
+      "size": 3414667
+    },
+    {
+      "slug": "lets-do-vinery",
+      "version": "1.5.6",
+      "side": "both",
+      "sha256": "7e5e4e901a599a499bd510490ec12e72e8547e53b61790778fa7848852c451ec",
+      "size": 2570708
+    },
+    {
+      "slug": "ancient-structures",
+      "version": "0.1.2",
+      "side": "both",
+      "sha256": "84e8ecdaf722af08e5cc3d10d2197face227fe485c8d364585adfe8679484f61",
+      "size": 535556
+    },
+    {
+      "slug": "animal-garden-sugar-glider",
+      "version": "1.0.0-neoforge-1.21.1-21.1.214",
+      "side": "both",
+      "sha256": "02c6e69c86bdcc5afed238d5b87609e0e1827e9e38da6df14588eb33d8832760",
+      "size": 317381
+    },
+    {
+      "slug": "aquaculture",
+      "version": "2.7.21",
+      "side": "both",
+      "sha256": "45f00f9059838b2fecc988861111d8b3d4613a5f1b3688a8dbfa8655751b85bb",
+      "size": 605949
+    },
+    {
+      "slug": "archaeology-ruins",
+      "version": "1.0.0",
+      "side": "both",
+      "sha256": "94d3ba411cfafc1586b8bba2c972553fed15ee5e38e9c076c7b5721fb2781abf",
+      "size": 154587
+    },
+    {
+      "slug": "aztec-ruins",
+      "version": "1.0+mod",
+      "side": "both",
+      "sha256": "f73927a04552bfa2ce079c97de505cc4d420370669506dee2d6e332f96a6188e",
+      "size": 633759
+    },
+    {
+      "slug": "bluedude-dragons",
+      "version": "1.3.0-alpha",
+      "side": "both",
+      "sha256": "456cbab81fb3762cc2a981fa60eb545c22c9587602c8e4275b7d87e6f2f41e60",
+      "size": 21280474
+    },
+    {
+      "slug": "blueprint",
+      "version": "8.2.0",
+      "side": "both",
+      "sha256": "698b2e901e371202a583c1057fa50bb7b2415a359263b37dc8e62d3b73ea8a74",
+      "size": 1214507
+    },
+    {
+      "slug": "castle-shift",
+      "version": "0.3.0",
+      "side": "both",
+      "sha256": "382416b0cfcaf086a2ad3e76d7ad453cf5e0ae7078c5db85053d660ea62aefc4",
+      "size": 167775
+    },
+    {
+      "slug": "corail-tombstone",
+      "version": "neoforge-1.21.1-9.5.6",
+      "side": "both",
+      "sha256": "520e2a3cb5fb8001da20a23aaf39a7fd8fd937af962c2b43c55460099e30b23b",
+      "size": 2520705
+    },
+    {
+      "slug": "cozys-improved-cats",
+      "version": "2.1.0-Neoforge-1.21.1",
+      "side": "both",
+      "sha256": "a459cf81b1a0f9f33e1e9d0c141b162c99c9c71cacc774cb04f139ed92df54c1",
+      "size": 2154897
+    },
+    {
+      "slug": "critters-and-companions",
+      "version": "2.7.0",
+      "side": "both",
+      "sha256": "bc09d4e9996fae2c17092b3f58e2cc6ffe49d176e7cdf06495eeb4ac9a85b5dd",
+      "size": 2098079
+    },
+    {
+      "slug": "embers-castles-and-keeps",
+      "version": "1.0.9.1-1.21.1-neoforge",
+      "side": "both",
+      "sha256": "c910201a21a09a8e56be2c023922b8158876542fc5e2ef5b4ef6359a5656e0e1",
+      "size": 196816
+    },
+    {
+      "slug": "envelope",
+      "version": "0.8.0",
+      "side": "both",
+      "sha256": "1e0a53aa91c8eaf98e5769543b00a5db9a0fdbc418ae3d6980f68000d90aa169",
+      "size": 2538983
+    },
+    {
+      "slug": "epic-structures-jungle-temples",
+      "version": "1.0.2",
+      "side": "both",
+      "sha256": "2cbec91d588216260b146aaaa4087ed6b157e84949c6455c137e338573300fdb",
+      "size": 4221257
+    },
+    {
+      "slug": "fish-of-thieves",
+      "version": "21.1.3.0-neoforge",
+      "side": "both",
+      "sha256": "d70f9c27b7eba24a58a04824faa0e64ac7c49eabf916c3bc2ebeab2d40dc85a8",
+      "size": 1902440
+    },
+    {
+      "slug": "hybrid-api",
+      "version": "mc1.21.1-1.1.3-neoforge",
+      "side": "both",
+      "sha256": "c134b74c8d9b9a449fda88d3ef4ad652a2ed394b5693a7e440a008bd1a33c937",
+      "size": 688773
+    },
+    {
+      "slug": "hybrid-aquatic",
+      "version": "mc1.21.1-1.7.4-neoforge",
+      "side": "both",
+      "sha256": "5403d0e643c8aae3e7db08de41ebf28e0ef538f252a0f0ef5b6b4f74d9b1b80e",
+      "size": 7338389
+    },
+    {
+      "slug": "lithostitched",
+      "version": "1.8.1-neoforge-21.1",
+      "side": "both",
+      "sha256": "e0da669fa5facc61a09b9b7bae21b322993de1fcd1eb05787adffb7309598cca",
+      "size": 1023751
+    },
+    {
+      "slug": "mtr-moogs-temples-reimagined",
+      "version": "2.0.4",
+      "side": "both",
+      "sha256": "a0c2d78808ad101d4e8c12945ce3b1465cad61296751be6bc2f86074c9480335",
+      "size": 1709776
+    },
+    {
+      "slug": "naturalist",
+      "version": "2.0.7+1.21.1-neoforge",
+      "side": "both",
+      "sha256": "2740593710eba0a917f862e535f3e2ef06c39ccdd6441986da02f9dd4394f03a",
+      "size": 11347884
+    },
+    {
+      "slug": "philips-ruins",
+      "version": "1.21.1-2.0",
+      "side": "both",
+      "sha256": "8a0aaee82b287c22abf4a7ea79e88fdbbe717418a0fbd8e44d4bd86146db9a1a",
+      "size": 1365582
+    },
+    {
+      "slug": "regions-unexplored",
+      "version": "0.6.3-neoforge-21.1",
+      "side": "both",
+      "sha256": "e7f2edd7bab869c2e566b1b251ea54c6b95834205276bf3a302859d72d9d0c9b",
+      "size": 6641783
+    },
+    {
+      "slug": "ribbits",
+      "version": "4.1.6",
+      "side": "both",
+      "sha256": "794223f5a91b8b80a962754b5180ec3e2472db6941e9b6c1cdd49324df628389",
+      "size": 2215572
+    },
+    {
+      "slug": "serene-seasons",
+      "version": "10.1.0.9",
+      "side": "both",
+      "sha256": "ce8cf6bd31f70b794fe97d88b4cd2beb45f83387fe20c8dcf39c92121ccaa723",
+      "size": 163020
+    },
+    {
+      "slug": "supplementaries",
+      "version": "1.21.1-4.0.2",
+      "side": "both",
+      "sha256": "2c2e0c98e0cc21874d8b2130bc773a2a5a6cadd854b9c8163d0e1f32e2ddffb0",
+      "size": 13840377
+    },
+    {
+      "slug": "tectonic",
+      "version": "3.0.28-neoforge-21.1",
+      "side": "both",
+      "sha256": "cf188c70e7dd94f6e3a81cef9fe99f1151f13217809f7576aaedb0c3e6547ae1",
+      "size": 451757
+    },
+    {
+      "slug": "terralith",
+      "version": "2.6.2",
+      "side": "both",
+      "sha256": "d38bd304897731b42f6c013cdc07e082e74411e80c74aabcee385251beb3b546",
+      "size": 2814865
+    },
+    {
+      "slug": "towns-and-towers",
+      "version": "1.13.11",
+      "side": "both",
+      "sha256": "270fc0d1c99e54bc15f43d64bdaac60a90cb896efc357af624988e677136440f",
+      "size": 3553006
+    },
+    {
+      "slug": "treasure2",
+      "version": "5.0.4",
+      "side": "both",
+      "sha256": "e4fb3f0bba1fcbd33d1edb7523ea92235312cf505b5612a075ec782bf36828d5",
+      "size": 3537204
+    },
+    {
+      "slug": "treasures-of-the-dead",
+      "version": "0.9.0-1.21.1",
+      "side": "both",
+      "sha256": "be622317894d782c1ca520b212a433fe6605dfc88824a92dab23ef1f46e9494f",
+      "size": 1363278
+    },
+    {
+      "slug": "upgrade-aquatic",
+      "version": "7.0.2",
+      "side": "both",
+      "sha256": "436e05528d6f477375d84ef60ab7d91ca9f38682cb8ec0a9a8d1984526c4402f",
+      "size": 4924493
+    },
+    {
+      "slug": "waystones",
+      "version": "21.1.46+neoforge-1.21.1",
+      "side": "both",
+      "sha256": "ca76a4457160e8353b1f013a21ab377b264141f466d84ec8952a123058b8af78",
+      "size": 1223229
+    },
+    {
+      "slug": "when-dungeons-arise",
+      "version": "2.1.68",
+      "side": "both",
+      "sha256": "7eee1eca7e3b2c6c1bede055934f391ae2e8349ffe33e106f451176d2cfcf0e4",
+      "size": 11842679
+    },
+    {
+      "slug": "yungs-better-desert-temples",
+      "version": "1.21.1-NeoForge-4.1.5",
+      "side": "both",
+      "sha256": "2c3191ad447092cc7873a06e92f16bd3e2ff9dc31e93268b8893d06dd89e1fd6",
+      "size": 905839
+    },
+    {
+      "slug": "yungs-better-jungle-temples",
+      "version": "1.21.1-NeoForge-3.1.2",
+      "side": "both",
+      "sha256": "a0d57b78c7a1891796f342b1f09c214bc27bedf0a3a894f029dfdb2db9f813d0",
+      "size": 795839
+    },
+    {
+      "slug": "yungs-better-ocean-monuments",
+      "version": "1.21.1-NeoForge-4.1.2",
+      "side": "both",
+      "sha256": "cdcf8fe0e08c75261048d43c6ed4898972d23e096dd04a2524c136f06416ab02",
+      "size": 1025571
+    }
+  ],
+  "compatibility": {
+    "tier": "static pinned resource/biome-tag resolution; no native registration or terrain proof",
+    "structure_sets": [
+      {
+        "key": "ancientstructures:german_buildings",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 160,
+          "separation": 64,
+          "spread_type": "triangular",
+          "salt": 613
+        },
+        "members": [
+          {
+            "id": "ancientstructures:german_farm",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 10,
+              "terralith": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:windmill",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 10,
+              "terralith": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:lone_german_house",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 10,
+              "terralith": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:lone_german_farmer",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 10,
+              "terralith": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:ruined_german_village",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 10,
+              "terralith": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:lone_priest",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 10,
+              "terralith": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:german_town",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 10,
+              "terralith": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "ancientstructures:japanese_buildings",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 160,
+          "separation": 64,
+          "spread_type": "triangular",
+          "salt": 25449
+        },
+        "members": [
+          {
+            "id": "ancientstructures:japanese_pagoda",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "regions_unexplored": 6,
+              "terralith": 14
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:rengoku_house",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "regions_unexplored": 6,
+              "terralith": 14
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:japanese_temple",
+            "biome_count": 25,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "regions_unexplored": 6,
+              "terralith": 14
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "ancientstructures:mayan_buildings",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 160,
+          "separation": 64,
+          "spread_type": "triangular",
+          "salt": 9994513
+        },
+        "members": [
+          {
+            "id": "ancientstructures:mayan_temple",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:mayan_village",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:mayan_temple2",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:mayan_ruins",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:mayan_temple3",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:mayan_temple4",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:lone_school",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "ancientstructures:roman_buildings",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 160,
+          "separation": 64,
+          "spread_type": "triangular",
+          "salt": 583611589
+        },
+        "members": [
+          {
+            "id": "ancientstructures:roman_ruined_temple",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:roman_temple",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:roman_house",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:roman_bath",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "ancientstructures:roman_tombstone",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:adoberuins",
+        "source": "awft-worldgen-four-set-v1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 76,
+          "separation": 40,
+          "salt": 1108054183
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:adoberuins",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:mudblacksmithruin",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 1891367289
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:mudblacksmithruin",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:mudpotterruin",
+        "source": "awft-worldgen-four-set-v1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 76,
+          "separation": 40,
+          "salt": 1027327534
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:mudpotterruin",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:mudschoolruin",
+        "source": "awft-worldgen-four-set-v1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 76,
+          "separation": 40,
+          "salt": 1067233915
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:mudschoolruin",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:ocean_ruin",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 2134590717
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:ocean_ruin",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:ruined_desert_pyramid",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 96,
+          "separation": 48,
+          "salt": 93969674
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:ruined_desert_pyramid",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:ruined_ocean_monument",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 112,
+          "separation": 56,
+          "salt": 96247560
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:ruined_ocean_monument",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:ruinedjungletemple",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 96,
+          "separation": 48,
+          "salt": 1955198292
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:ruinedjungletemple",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:small_ocean_ruin",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 1664717944
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:small_ocean_ruin",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:smallmudruin",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 963026644
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:smallmudruin",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "archaeology_ruins:warm_ocean_ruin",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 40,
+          "salt": 1859338252
+        },
+        "members": [
+          {
+            "id": "archaeology_ruins:warm_ocean_ruin",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "bdd:deadly_nadder_nest/deadly_nadder_nest_birch",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 100000007,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:deadly_nadder_nest/deadly_nadder_nest_birch",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:deadly_nadder_nest/deadly_nadder_nest_cherry_grove",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 100000002,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:deadly_nadder_nest/deadly_nadder_nest_cherry_grove",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:deadly_nadder_nest/deadly_nadder_nest_desert",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 100000001,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:deadly_nadder_nest/deadly_nadder_nest_desert",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:deadly_nadder_nest/deadly_nadder_nest_jungle",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 100000003,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:deadly_nadder_nest/deadly_nadder_nest_jungle",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:deadly_nadder_nest/deadly_nadder_nest_plains",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 100000004,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:deadly_nadder_nest/deadly_nadder_nest_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:deadly_nadder_nest/deadly_nadder_nest_savanna",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 100000005,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:deadly_nadder_nest/deadly_nadder_nest_savanna",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:deadly_nadder_nest/deadly_nadder_nest_taiga",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 100000006,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:deadly_nadder_nest/deadly_nadder_nest_taiga",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:gronckle_nest/gronckle_nest_cherry_birch",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 200000007,
+          "spacing": 24,
+          "separation": 6,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:gronckle_nest/gronckle_nest_birch",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:gronckle_nest/gronckle_nest_cherry_desert",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 200000001,
+          "spacing": 24,
+          "separation": 6,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:gronckle_nest/gronckle_nest_desert",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:gronckle_nest/gronckle_nest_cherry_grove",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 200000002,
+          "spacing": 24,
+          "separation": 6,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:gronckle_nest/gronckle_nest_cherry_grove",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:gronckle_nest/gronckle_nest_cherry_jungle",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 200000003,
+          "spacing": 24,
+          "separation": 6,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:gronckle_nest/gronckle_nest_jungle",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:gronckle_nest/gronckle_nest_cherry_plains",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 200000004,
+          "spacing": 24,
+          "separation": 6,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:gronckle_nest/gronckle_nest_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:gronckle_nest/gronckle_nest_cherry_savanna",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 200000005,
+          "spacing": 24,
+          "separation": 6,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:gronckle_nest/gronckle_nest_savanna",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:gronckle_nest/gronckle_nest_cherry_taiga",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 200000006,
+          "spacing": 24,
+          "separation": 6,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:gronckle_nest/gronckle_nest_taiga",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_birch",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 300000007,
+          "spacing": 45,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_birch",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_cherry_grove",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 300000002,
+          "spacing": 45,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_cherry_grove",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_desert",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 300000001,
+          "spacing": 45,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_desert",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_jungle",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 300000003,
+          "spacing": 45,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_jungle",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_plains",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 300000004,
+          "spacing": 45,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_savanna",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 300000005,
+          "spacing": 45,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_savanna",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_taiga",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 300000006,
+          "spacing": 45,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:hideous_zippleback_nest/hideous_zippleback_nest_taiga",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:nightfury_nest/nightfury_nest_birch",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 500000007,
+          "spacing": 62,
+          "separation": 24,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:nightfury_nest/nightfury_nest_birch",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:nightfury_nest/nightfury_nest_cherry_grove",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 500000002,
+          "spacing": 62,
+          "separation": 24,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:nightfury_nest/nightfury_nest_cherry_grove",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:nightfury_nest/nightfury_nest_desert",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 500000001,
+          "spacing": 62,
+          "separation": 24,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:nightfury_nest/nightfury_nest_desert",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:nightfury_nest/nightfury_nest_jungle",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 1095588686,
+          "spacing": 62,
+          "separation": 24,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:nightfury_nest/nightfury_nest_jungle",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:nightfury_nest/nightfury_nest_plains",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 500000004,
+          "spacing": 62,
+          "separation": 24,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:nightfury_nest/nightfury_nest_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:nightfury_nest/nightfury_nest_savanna",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 500000005,
+          "spacing": 62,
+          "separation": 24,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:nightfury_nest/nightfury_nest_savanna",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:nightfury_nest/nightfury_nest_taiga",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 500000006,
+          "spacing": 62,
+          "separation": 24,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:nightfury_nest/nightfury_nest_taiga",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:terrible_terror_nest/terrible_terror_nest_birch",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 600000007,
+          "spacing": 25,
+          "separation": 10,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:terrible_terror_nest/terrible_terror_nest_birch",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:terrible_terror_nest/terrible_terror_nest_cherry_grove",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 600000002,
+          "spacing": 25,
+          "separation": 10,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:terrible_terror_nest/terrible_terror_nest_cherry_grove",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:terrible_terror_nest/terrible_terror_nest_desert",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 600000001,
+          "spacing": 25,
+          "separation": 10,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:terrible_terror_nest/terrible_terror_nest_desert",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:terrible_terror_nest/terrible_terror_nest_jungle",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 600000003,
+          "spacing": 25,
+          "separation": 10,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:terrible_terror_nest/terrible_terror_nest_jungle",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:terrible_terror_nest/terrible_terror_nest_plains",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 600000004,
+          "spacing": 34,
+          "separation": 8,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:terrible_terror_nest/terrible_terror_nest_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:terrible_terror_nest/terrible_terror_nest_savanna",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 600000005,
+          "spacing": 25,
+          "separation": 10,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:terrible_terror_nest/terrible_terror_nest_savanna",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "bdd:terrible_terror_nest/terrible_terror_nest_taiga",
+        "source": "bluedude-dragons",
+        "placement": {
+          "salt": 600000006,
+          "spacing": 25,
+          "separation": 10,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "bdd:terrible_terror_nest/terrible_terror_nest_taiga",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "betterdeserttemples:desert_temples",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "salt": 92746251,
+          "spacing": 80,
+          "separation": 40,
+          "exclusion_zone": {
+            "chunk_count": 6,
+            "other_set": "minecraft:villages"
+          },
+          "type": "betterdeserttemples:desert_temple"
+        },
+        "members": [
+          {
+            "id": "betterdeserttemples:desert_temple",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "betterjungletemples:jungle_temples",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "betterjungletemples:jungle_temple",
+          "salt": 996971851,
+          "spacing": 80,
+          "separation": 40,
+          "enhanced_exclusion_zone": {
+            "other_set": "#betterjungletemples:jungle_temple_avoid",
+            "chunk_count": 4
+          }
+        },
+        "members": [
+          {
+            "id": "betterjungletemples:jungle_temple",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 2,
+              "regions_unexplored": 4,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 128
+          }
+        ]
+      },
+      {
+        "key": "betteroceanmonuments:ocean_monument",
+        "source": "yungs-better-ocean-monuments",
+        "placement": {
+          "salt": 784827271,
+          "spacing": 50,
+          "separation": 20,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "betteroceanmonuments:ocean_monument",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "hybrid_aquatic": 3,
+              "minecraft": 4,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "castles_and_keeps:castles",
+        "source": "embers-castles-and-keeps",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 1205663304,
+          "spacing": 160,
+          "separation": 80
+        },
+        "members": [
+          {
+            "id": "castles_and_keeps:villager_keep",
+            "biome_count": 0,
+            "biome_namespaces": {},
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "castles_and_keeps:undead_castle",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "castles_and_keeps:desert_tower",
+        "source": "embers-castles-and-keeps",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 1205663303,
+          "spacing": 80,
+          "separation": 40
+        },
+        "members": [
+          {
+            "id": "castles_and_keeps:desert_tower",
+            "biome_count": 0,
+            "biome_namespaces": {},
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "castles_and_keeps:pillager_tower",
+        "source": "embers-castles-and-keeps",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 1205663302,
+          "spacing": 120,
+          "separation": 60
+        },
+        "members": [
+          {
+            "id": "castles_and_keeps:pillager_tower",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "castles_and_keeps:towers",
+        "source": "embers-castles-and-keeps",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 1205663300,
+          "spacing": 70,
+          "separation": 50
+        },
+        "members": [
+          {
+            "id": "castles_and_keeps:medium_tower",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "castles_and_keeps:small_abandoned_tower",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "castles_and_keeps:two_towers",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "castles_and_keeps:zombie_villager_tower",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "castleshift:castle",
+        "source": "awft-worldgen-four-set-v1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 92,
+          "separation": 32,
+          "salt": 194572831,
+          "exclusion_zone": {
+            "other_set": "minecraft:villages",
+            "chunk_count": 10
+          }
+        },
+        "members": [
+          {
+            "id": "castleshift:castle",
+            "biome_count": 24,
+            "biome_namespaces": {
+              "minecraft": 24
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 100
+          }
+        ]
+      },
+      {
+        "key": "dungeons_arise:major_structures",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "salt": 88371663,
+          "spacing": 128,
+          "separation": 64,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "dungeons_arise:bandit_village",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 1,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:ceryneian_hind",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:coliseum",
+            "biome_count": 17,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 9,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:heavenly_rider",
+            "biome_count": 51,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 16,
+              "regions_unexplored": 17,
+              "terralith": 17
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:heavenly_conqueror",
+            "biome_count": 51,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 16,
+              "regions_unexplored": 17,
+              "terralith": 17
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:illager_campsite",
+            "biome_count": 49,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 16,
+              "terralith": 27
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:illager_corsair",
+            "biome_count": 18,
+            "biome_namespaces": {
+              "hybrid_aquatic": 6,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 128
+          },
+          {
+            "id": "dungeons_arise:illager_fort",
+            "biome_count": 41,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 21
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:illager_galley",
+            "biome_count": 18,
+            "biome_namespaces": {
+              "hybrid_aquatic": 6,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:illager_windmill",
+            "biome_count": 17,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 9,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:merchant_campsite",
+            "biome_count": 17,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 9,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:monastery",
+            "biome_count": 52,
+            "biome_namespaces": {
+              "minecraft": 13,
+              "regions_unexplored": 15,
+              "terralith": 24
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:mushroom_house",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:mushroom_mines",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:mushroom_village",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:scorched_mines",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:small_blimp",
+            "biome_count": 86,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 20,
+              "regions_unexplored": 34,
+              "terralith": 31
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:typhon",
+            "biome_count": 18,
+            "biome_namespaces": {
+              "hybrid_aquatic": 6,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "OCEAN_FLOOR",
+            "max_distance_from_center": 104
+          },
+          {
+            "id": "dungeons_arise:undead_pirate_ship",
+            "biome_count": 18,
+            "biome_namespaces": {
+              "hybrid_aquatic": 6,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:greenwood_pub",
+            "biome_count": 33,
+            "biome_namespaces": {
+              "minecraft": 7,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:aviary",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:bandit_towers",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 1,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 100
+          },
+          {
+            "id": "dungeons_arise:foundry",
+            "biome_count": 81,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 20,
+              "regions_unexplored": 25,
+              "terralith": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 106
+          },
+          {
+            "id": "dungeons_arise:heavenly_challenger",
+            "biome_count": 51,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 16,
+              "regions_unexplored": 17,
+              "terralith": 17
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:thornborn_towers",
+            "biome_count": 32,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 104
+          },
+          {
+            "id": "dungeons_arise:infested_temple",
+            "biome_count": 63,
+            "biome_namespaces": {
+              "minecraft": 8,
+              "regions_unexplored": 21,
+              "terralith": 34
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 104
+          },
+          {
+            "id": "dungeons_arise:mining_complex",
+            "biome_count": 72,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 20,
+              "regions_unexplored": 25,
+              "terralith": 26
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "bury",
+            "height_projection": null,
+            "max_distance_from_center": 104
+          },
+          {
+            "id": "dungeons_arise:plague_asylum",
+            "biome_count": 51,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 14,
+              "terralith": 31
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "bury",
+            "height_projection": null,
+            "max_distance_from_center": 104
+          },
+          {
+            "id": "dungeons_arise:shiraz_palace",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:keep_kayra",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 5,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:mechanical_nest",
+            "biome_count": 34,
+            "biome_namespaces": {
+              "minecraft": 8,
+              "regions_unexplored": 14,
+              "terralith": 12
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 115
+          },
+          {
+            "id": "dungeons_arise:kisegi_sanctuary",
+            "biome_count": 36,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "regions_unexplored": 13,
+              "terralith": 18
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 104
+          }
+        ]
+      },
+      {
+        "key": "dungeons_arise:minor_structures",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "salt": 342415935,
+          "spacing": 112,
+          "separation": 56,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "dungeons_arise:fishing_hut",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:wishing_well",
+            "biome_count": 17,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 9,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:jungle_tree_house",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:bathhouse",
+            "biome_count": 58,
+            "biome_namespaces": {
+              "minecraft": 9,
+              "regions_unexplored": 23,
+              "terralith": 26
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:abandoned_temple",
+            "biome_count": 52,
+            "biome_namespaces": {
+              "minecraft": 13,
+              "regions_unexplored": 15,
+              "terralith": 24
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          },
+          {
+            "id": "dungeons_arise:lighthouse",
+            "biome_count": 20,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 11,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 114
+          }
+        ]
+      },
+      {
+        "key": "envelope:collapsed_mail_hub",
+        "source": "envelope",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 171245611,
+          "separation": 64,
+          "spacing": 128
+        },
+        "members": [
+          {
+            "id": "envelope:collapsed_mail_hub",
+            "biome_count": 217,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 53,
+              "regions_unexplored": 73,
+              "terralith": 90
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 64
+          }
+        ]
+      },
+      {
+        "key": "envelope:dovecote",
+        "source": "envelope",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 16149811,
+          "separation": 12,
+          "spacing": 32
+        },
+        "members": [
+          {
+            "id": "envelope:dovecote_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          },
+          {
+            "id": "envelope:dovecote_taiga",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          },
+          {
+            "id": "envelope:dovecote_savanna",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          },
+          {
+            "id": "envelope:dovecote_desert",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          }
+        ]
+      },
+      {
+        "key": "epic:epic_temple",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 3456234,
+          "locate_offset": [
+            0,
+            0,
+            0
+          ],
+          "spacing": 141,
+          "separation": 87,
+          "exclusion_zone": {
+            "other_set": "betterjungletemples:jungle_temples",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "epic:epic_temple",
+            "biome_count": 11,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "epic:epic_temple_large",
+            "biome_count": 11,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "epic:epic_temple_ruin",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 14357619,
+          "locate_offset": [
+            10,
+            0,
+            10
+          ],
+          "spacing": 80,
+          "separation": 32,
+          "exclusion_zone": {
+            "other_set": "epic:epic_temple",
+            "chunk_count": 12
+          }
+        },
+        "members": [
+          {
+            "id": "epic:epic_temple_ruin",
+            "biome_count": 11,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "fishofthieves:guardian_fruit_trees",
+        "source": "fish-of-thieves",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "frequency": 0.8,
+          "frequency_reduction_method": "legacy_type_3",
+          "salt": 91579157,
+          "separation": 16,
+          "spacing": 64
+        },
+        "members": [
+          {
+            "id": "fishofthieves:guardian_fruit_tree",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "hybrid_aquatic": 3,
+              "minecraft": 4,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "fishofthieves:seapost",
+        "source": "fish-of-thieves",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 8,
+            "other_set": "minecraft:ocean_monuments"
+          },
+          "frequency": 0.6,
+          "frequency_reduction_method": "legacy_type_3",
+          "salt": 26384127,
+          "separation": 32,
+          "spacing": 64
+        },
+        "members": [
+          {
+            "id": "fishofthieves:seapost",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "hybrid_aquatic:whale_falls",
+        "source": "hybrid-aquatic",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 16,
+          "separation": 3,
+          "salt": 1646207470,
+          "exclusion_zone": {
+            "other_set": "minecraft:ocean_monuments",
+            "chunk_count": 2
+          }
+        },
+        "members": [
+          {
+            "id": "hybrid_aquatic:whale_fall",
+            "biome_count": 14,
+            "biome_namespaces": {
+              "hybrid_aquatic": 8,
+              "minecraft": 4,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 32
+          }
+        ]
+      },
+      {
+        "key": "minecraft:ancient_cities",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 20083232,
+          "separation": 8,
+          "spacing": 24
+        },
+        "members": [
+          {
+            "id": "minecraft:ancient_city",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": null,
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "minecraft:buried_treasures",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "frequency": 0.01,
+          "frequency_reduction_method": "legacy_type_2",
+          "locate_offset": [
+            9,
+            0,
+            9
+          ],
+          "salt": 0,
+          "separation": 0,
+          "spacing": 1
+        },
+        "members": [
+          {
+            "id": "minecraft:buried_treasure",
+            "biome_count": 6,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 3,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:desert_pyramids",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 14357617,
+          "separation": 8,
+          "spacing": 32
+        },
+        "members": [
+          {
+            "id": "minecraft:desert_pyramid",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:end_cities",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 10387313,
+          "separation": 11,
+          "spacing": 20,
+          "spread_type": "triangular"
+        },
+        "members": [
+          {
+            "id": "minecraft:end_city",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:igloos",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 14357618,
+          "separation": 8,
+          "spacing": 32
+        },
+        "members": [
+          {
+            "id": "minecraft:igloo",
+            "biome_count": 19,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 13
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:jungle_temples",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 14357619,
+          "separation": 8,
+          "spacing": 32
+        },
+        "members": [
+          {
+            "id": "minecraft:jungle_pyramid",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 2,
+              "regions_unexplored": 4,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:mineshafts",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "frequency": 0.004,
+          "frequency_reduction_method": "legacy_type_3",
+          "salt": 0,
+          "separation": 0,
+          "spacing": 1
+        },
+        "members": [
+          {
+            "id": "minecraft:mineshaft",
+            "biome_count": 219,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "hybrid_aquatic": 7,
+              "minecraft": 49,
+              "regions_unexplored": 71,
+              "terralith": 91
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:mineshaft_mesa",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 1,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:nether_complexes",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 30084232,
+          "separation": 4,
+          "spacing": 27
+        },
+        "members": [
+          {
+            "id": "minecraft:fortress",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "regions_unexplored": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:bastion_remnant",
+            "biome_count": 7,
+            "biome_namespaces": {
+              "minecraft": 4,
+              "regions_unexplored": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "minecraft:nether_fossils",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 14357921,
+          "separation": 1,
+          "spacing": 2
+        },
+        "members": [
+          {
+            "id": "minecraft:nether_fossil",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:ocean_monuments",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 10387313,
+          "separation": 5,
+          "spacing": 32,
+          "spread_type": "triangular"
+        },
+        "members": [
+          {
+            "id": "minecraft:monument",
+            "biome_count": 13,
+            "biome_namespaces": {
+              "hybrid_aquatic": 3,
+              "minecraft": 4,
+              "regions_unexplored": 1,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:ocean_ruins",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 14357621,
+          "separation": 8,
+          "spacing": 20
+        },
+        "members": [
+          {
+            "id": "minecraft:ocean_ruin_cold",
+            "biome_count": 7,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "regions_unexplored": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:ocean_ruin_warm",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:pillager_outposts",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "minecraft:villages"
+          },
+          "frequency": 0.2,
+          "frequency_reduction_method": "legacy_type_1",
+          "salt": 165745296,
+          "separation": 8,
+          "spacing": 32
+        },
+        "members": [
+          {
+            "id": "minecraft:pillager_outpost",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "minecraft:ruined_portals",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 34222645,
+          "separation": 15,
+          "spacing": 40
+        },
+        "members": [
+          {
+            "id": "minecraft:ruined_portal",
+            "biome_count": 99,
+            "biome_namespaces": {
+              "hybrid_aquatic": 1,
+              "minecraft": 22,
+              "regions_unexplored": 41,
+              "terralith": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:ruined_portal_desert",
+            "biome_count": 7,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:ruined_portal_jungle",
+            "biome_count": 14,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 3,
+              "regions_unexplored": 5,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:ruined_portal_swamp",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 4,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:ruined_portal_mountain",
+            "biome_count": 47,
+            "biome_namespaces": {
+              "minecraft": 15,
+              "regions_unexplored": 9,
+              "terralith": 23
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:ruined_portal_ocean",
+            "biome_count": 23,
+            "biome_namespaces": {
+              "hybrid_aquatic": 11,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:ruined_portal_nether",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "regions_unexplored": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:shipwrecks",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 165745295,
+          "separation": 4,
+          "spacing": 24
+        },
+        "members": [
+          {
+            "id": "minecraft:shipwreck",
+            "biome_count": 18,
+            "biome_namespaces": {
+              "hybrid_aquatic": 6,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          },
+          {
+            "id": "minecraft:shipwreck_beached",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:strongholds",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:concentric_rings",
+          "count": 128,
+          "distance": 32,
+          "preferred_biomes": "#minecraft:stronghold_biased_to",
+          "salt": 0,
+          "spread": 3
+        },
+        "members": [
+          {
+            "id": "minecraft:stronghold",
+            "biome_count": 217,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 53,
+              "regions_unexplored": 73,
+              "terralith": 90
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "bury",
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:swamp_huts",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 14357620,
+          "separation": 8,
+          "spacing": 32
+        },
+        "members": [
+          {
+            "id": "minecraft:swamp_hut",
+            "biome_count": 6,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 3,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "minecraft:trail_ruins",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 83469867,
+          "separation": 8,
+          "spacing": 34
+        },
+        "members": [
+          {
+            "id": "minecraft:trail_ruins",
+            "biome_count": 21,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "terralith": 15
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "bury",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "minecraft:trial_chambers",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 94251327,
+          "separation": 12,
+          "spacing": 34
+        },
+        "members": [
+          {
+            "id": "minecraft:trial_chambers",
+            "biome_count": 212,
+            "biome_namespaces": {
+              "minecraft": 52,
+              "regions_unexplored": 71,
+              "terralith": 89
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "encapsulate",
+            "height_projection": null,
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "minecraft:villages",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 10387312,
+          "separation": 8,
+          "spacing": 34
+        },
+        "members": [
+          {
+            "id": "minecraft:village_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "minecraft:village_desert",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "minecraft:village_savanna",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "minecraft:village_snowy",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "minecraft:village_taiga",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "minecraft:woodland_mansions",
+        "source": "minecraft:1.21.1",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 10387319,
+          "separation": 20,
+          "spacing": 80,
+          "spread_type": "triangular"
+        },
+        "members": [
+          {
+            "id": "minecraft:mansion",
+            "biome_count": 6,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 3,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "mtr:badlands_temple",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "moogs_structures:advanced_random_spread",
+          "salt": 8859687364,
+          "spacing": 112,
+          "separation": 48
+        },
+        "members": [
+          {
+            "id": "mtr:badlands_temple",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "regions_unexplored": 1,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "mtr:desert_temple",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "moogs_structures:advanced_random_spread",
+          "salt": 225874987,
+          "spacing": 112,
+          "separation": 48,
+          "frequency": 0.8,
+          "exclusion_zone": {
+            "other_set": "betterdeserttemples:desert_temples",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "mtr:desert_temple",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 3,
+              "terralith": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "mtr:jungle_temple",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "moogs_structures:advanced_random_spread",
+          "salt": 154471789,
+          "spacing": 112,
+          "separation": 48,
+          "frequency": 0.6,
+          "exclusion_zone": {
+            "other_set": "betterjungletemples:jungle_temples",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "mtr:jungle_temple",
+            "biome_count": 12,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 3,
+              "regions_unexplored": 3,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "mtr:nether_temple",
+        "source": "mtr-moogs-temples-reimagined",
+        "placement": {
+          "type": "moogs_structures:advanced_random_spread",
+          "salt": 887364097,
+          "spacing": 150,
+          "separation": 40
+        },
+        "members": [
+          {
+            "id": "mtr:nether_temple",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "regions_unexplored": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "mtr:ocean_temple",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "moogs_structures:advanced_random_spread",
+          "salt": 231230495,
+          "spacing": 128,
+          "separation": 64,
+          "frequency": 0.5
+        },
+        "members": [
+          {
+            "id": "mtr:ocean_temple",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "mtr:stronghold",
+        "source": "mtr-moogs-temples-reimagined",
+        "placement": {
+          "type": "moogs_structures:conditional_concentric_rings",
+          "salt": 170159968,
+          "distance": 42,
+          "spread": 3,
+          "preferred_biomes": "#minecraft:stronghold_biased_to",
+          "modid": "mtr",
+          "vanilla_key": "stronghold",
+          "enabled_count": 128,
+          "disabled_count": 26,
+          "structure_id": "mtr:stronghold"
+        },
+        "members": [
+          {
+            "id": "mtr:stronghold",
+            "biome_count": 71,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 12,
+              "regions_unexplored": 23,
+              "terralith": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "encapsulate",
+            "height_projection": null,
+            "max_distance_from_center": 120
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:ancient_crypt",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 265792644,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:ancient_crypt",
+            "biome_count": 6,
+            "biome_namespaces": {
+              "minecraft": 6
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 100
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:ancient_dungeon",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 512345192,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:ancient_dungeon",
+            "biome_count": 217,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 53,
+              "regions_unexplored": 73,
+              "terralith": 90
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "bury",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:ancient_ruins",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 165916912,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:ancient_ruins",
+            "biome_count": 81,
+            "biome_namespaces": {
+              "minecraft": 23,
+              "regions_unexplored": 27,
+              "terralith": 31
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:ancient_towers",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 283426912,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:ancient_towers",
+            "biome_count": 81,
+            "biome_namespaces": {
+              "minecraft": 23,
+              "regions_unexplored": 27,
+              "terralith": 31
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:field_stone_ruins",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 558158731,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:field_stone_ruins",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 100
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:field_stone_ruins_rocks",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "minecraft:villages"
+          },
+          "salt": 144788412,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:field_stone_ruins_rocks",
+            "biome_count": 73,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 21,
+              "regions_unexplored": 25,
+              "terralith": 26
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 100
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:level_one_ruins",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 328134491,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:level_one_ruins",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:level_three_ruins",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 198312145,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:level_three_ruins",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:level_two_ruins",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 697518742,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:level_two_ruins",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "philipsruins:level_two_ruins_pool",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 8
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:lost_soul_city",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 121229911,
+          "spacing": 112,
+          "separation": 65
+        },
+        "members": [
+          {
+            "id": "philipsruins:lost_soul_city",
+            "biome_count": 97,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 31,
+              "regions_unexplored": 30,
+              "terralith": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:ocean_fortress_main",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 765385625,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:ocean_fortress",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 9
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:ocean_ruins",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 937485621,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:ocean_ruins",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 9
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:pumpkin_ruins",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 248791439,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:pumpkin_ruins",
+            "biome_count": 55,
+            "biome_namespaces": {
+              "minecraft": 12,
+              "regions_unexplored": 22,
+              "terralith": 21
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:rare_ruin",
+        "source": "philips-ruins",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 341891341,
+          "spacing": 360,
+          "separation": 130
+        },
+        "members": [
+          {
+            "id": "philipsruins:rare_ruin",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "philipsruins:underground_structures",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 641781942,
+          "spacing": 112,
+          "separation": 56
+        },
+        "members": [
+          {
+            "id": "philipsruins:lost_soul_dungeon",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "philipsruins:underground_structures",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "ribbits:ribbit_village",
+        "source": "ribbits",
+        "placement": {
+          "type": "yungsapi:enhanced_random_spread",
+          "salt": 2937541,
+          "spacing": 25,
+          "separation": 8,
+          "enhanced_exclusion_zone": {
+            "other_set": "#ribbits:village_avoid",
+            "chunk_count": 6
+          }
+        },
+        "members": [
+          {
+            "id": "ribbits:ribbit_village",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 5,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "ruinarium:aztec_jungle_ruins_1",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 32,
+          "salt": 273874299,
+          "exclusion_zone": {
+            "other_set": "ruinarium:aztecjungletemple",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "ruinarium:aztec_jungle_ruins_1",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          }
+        ]
+      },
+      {
+        "key": "ruinarium:aztec_jungle_ruins_2",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 32,
+          "salt": 716824314,
+          "exclusion_zone": {
+            "other_set": "ruinarium:aztecjungletemple",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "ruinarium:aztec_jungle_ruins_2",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          }
+        ]
+      },
+      {
+        "key": "ruinarium:aztec_savanna_ruins_1",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 32,
+          "salt": 912591128,
+          "exclusion_zone": {
+            "other_set": "ruinarium:aztecjungletemple",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "ruinarium:aztec_savanna_ruins_1",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          }
+        ]
+      },
+      {
+        "key": "ruinarium:aztec_savanna_ruins_2",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 80,
+          "separation": 32,
+          "salt": 1730372919,
+          "exclusion_zone": {
+            "other_set": "ruinarium:aztecjungletemple",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "ruinarium:aztec_savanna_ruins_2",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 1
+          }
+        ]
+      },
+      {
+        "key": "ruinarium:aztecjungletemple",
+        "source": "awft:baseline-integration",
+        "placement": {
+          "salt": 1,
+          "spacing": 128,
+          "separation": 64,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "other_set": "epic:epic_temple",
+            "chunk_count": 16
+          }
+        },
+        "members": [
+          {
+            "id": "ruinarium:aztecjungletemple",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "supplementaries:galleons",
+        "source": "supplementaries",
+        "placement": {
+          "type": "supplementaries:random_spread_with_exclusion",
+          "salt": 121047156,
+          "spacing": 31,
+          "separation": 19,
+          "exclusion_zones": [
+            {
+              "chunk_count": 16,
+              "other_set": "minecraft:villages"
+            },
+            {
+              "chunk_count": 5,
+              "other_set": "minecraft:ocean_monuments"
+            }
+          ]
+        },
+        "members": [
+          {
+            "id": "supplementaries:galleon",
+            "biome_count": 0,
+            "biome_namespaces": {},
+            "required_biome_references_unresolved": [
+              "#supplementaries:has_galleons"
+            ],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "supplementaries:road_signs",
+        "source": "supplementaries",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 431041526,
+          "spacing": 19,
+          "separation": 10,
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "minecraft:villages"
+          }
+        },
+        "members": [
+          {
+            "id": "supplementaries:road_sign",
+            "biome_count": 0,
+            "biome_namespaces": {},
+            "required_biome_references_unresolved": [
+              "#supplementaries:has_road_signs"
+            ],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": null
+          }
+        ]
+      },
+      {
+        "key": "terralith:mage",
+        "source": "terralith",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 2358902,
+          "spacing": 28,
+          "separation": 16
+        },
+        "members": [
+          {
+            "id": "terralith:mage_tower",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "terralith": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:mage_complex",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:mage_tower_summer",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:mage_tower_autumn",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:mage_tower_winter",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:mage_tower_spring",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "terralith:rare_dungeon",
+        "source": "terralith",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 1368854222,
+          "spacing": 36,
+          "separation": 28
+        },
+        "members": [
+          {
+            "id": "terralith:spire",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": null,
+            "max_distance_from_center": 128
+          }
+        ]
+      },
+      {
+        "key": "terralith:rare_village",
+        "source": "terralith",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 1798451114,
+          "exclusion_zone": {
+            "other_set": "minecraft:villages",
+            "chunk_count": 8
+          },
+          "spacing": 46,
+          "separation": 18
+        },
+        "members": [
+          {
+            "id": "terralith:fortified_village",
+            "biome_count": 7,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "terralith": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:fortified_desert_village",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "terralith:regular",
+        "source": "terralith",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 2358902,
+          "spacing": 27,
+          "separation": 15
+        },
+        "members": [
+          {
+            "id": "terralith:witch_hut",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:desert_outpost",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:valley_lodge",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:glacial_hut",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:igloo",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 16
+          }
+        ]
+      },
+      {
+        "key": "terralith:rubble",
+        "source": "terralith",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 920145,
+          "spacing": 26,
+          "separation": 20
+        },
+        "members": [
+          {
+            "id": "terralith:rubble_forest",
+            "biome_count": 15,
+            "biome_namespaces": {
+              "minecraft": 6,
+              "terralith": 9
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 16
+          },
+          {
+            "id": "terralith:rubble_taiga",
+            "biome_count": 15,
+            "biome_namespaces": {
+              "minecraft": 5,
+              "terralith": 10
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 16
+          },
+          {
+            "id": "terralith:rubble_jungle",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 16
+          },
+          {
+            "id": "terralith:rubble_mesa",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "terralith": 7
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 16
+          },
+          {
+            "id": "terralith:rubble_mountain",
+            "biome_count": 10,
+            "biome_namespaces": {
+              "minecraft": 3,
+              "terralith": 7
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 16
+          },
+          {
+            "id": "terralith:rubble_desert",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 16
+          }
+        ]
+      },
+      {
+        "key": "terralith:underground",
+        "source": "terralith",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 838677219,
+          "spacing": 11,
+          "separation": 3
+        },
+        "members": [
+          {
+            "id": "terralith:underground/oak_cabin",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:underground/giant_bee_hive",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "bury",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:underground/mining_outpost",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:underground/old_refinery",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "terralith:underground/sunken_tower",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "terralith:underground_dungeon",
+        "source": "terralith",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 1722690696,
+          "spacing": 9,
+          "separation": 6
+        },
+        "members": [
+          {
+            "id": "terralith:underground/frosted_dungeon",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_box",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "tombstone:abandoned_grave",
+        "source": "corail-tombstone",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "minecraft:villages"
+          },
+          "salt": 41375816,
+          "separation": 8,
+          "spacing": 32
+        },
+        "members": [
+          {
+            "id": "tombstone:abandoned_grave_land",
+            "biome_count": 217,
+            "biome_namespaces": {
+              "fishofthieves": 1,
+              "minecraft": 53,
+              "regions_unexplored": 73,
+              "terralith": 90
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "tombstone:abandoned_grave_ocean",
+            "biome_count": 18,
+            "biome_namespaces": {
+              "hybrid_aquatic": 6,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "towns_and_towers:other",
+        "source": "towns-and-towers",
+        "placement": {
+          "salt": 213742069,
+          "spacing": 32,
+          "separation": 16,
+          "type": "minecraft:random_spread"
+        },
+        "members": [
+          {
+            "id": "towns_and_towers:mimic_desert",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": null,
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:wreckage_ocean",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 4
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 116
+          }
+        ]
+      },
+      {
+        "key": "towns_and_towers:towers",
+        "source": "towns-and-towers",
+        "placement": {
+          "salt": 213742069,
+          "spacing": 48,
+          "separation": 12,
+          "frequency": 0.2,
+          "frequency_reduction_method": "legacy_type_1",
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "towns_and_towers:towns"
+          }
+        },
+        "members": [
+          {
+            "id": "towns_and_towers:pillager_outpost_badlands",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_beach",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_birch_forest",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_desert",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_flower_forest",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_forest",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_grove",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_jungle",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_meadow",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_mushroom_fields",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_ocean",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_old_growth_taiga",
+            "biome_count": 6,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_savanna",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_savanna_plateau",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_snowy_beach",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_snowy_plains",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_snowy_slopes",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_sparse_jungle",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_sunflower_plains",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_swamp",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_taiga",
+            "biome_count": 7,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_snowy_taiga",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:pillager_outpost_wooded_badlands",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_mediterranean",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_tudor",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_classic",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_oriental",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_swedish",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "regions_unexplored": 1,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_iberian",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "regions_unexplored": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_rustic",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "regions_unexplored": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:exclusives/pillager_outpost_nilotic",
+            "biome_count": 0,
+            "biome_namespaces": {},
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "towns_and_towers:towns",
+        "source": "towns-and-towers",
+        "placement": {
+          "salt": 213742069,
+          "spacing": 51,
+          "separation": 12,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 5,
+            "other_set": "minecraft:villages"
+          }
+        },
+        "members": [
+          {
+            "id": "towns_and_towers:village_badlands",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_beach",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:village_birch_forest",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_flower_forest",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_forest",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_snowy_slopes",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:village_jungle",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_meadow",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_mushroom_fields",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_ocean",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": null,
+            "height_projection": null,
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_old_growth_taiga",
+            "biome_count": 6,
+            "biome_namespaces": {
+              "minecraft": 2,
+              "regions_unexplored": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_grove",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:village_savanna_plateau",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "towns_and_towers:village_sunflower_plains",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_snowy_taiga",
+            "biome_count": 8,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_sparse_jungle",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_swamp",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 1,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:village_wooded_badlands",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 1,
+              "regions_unexplored": 2,
+              "terralith": 2
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_mediterranean",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_swedish",
+            "biome_count": 4,
+            "biome_namespaces": {
+              "regions_unexplored": 1,
+              "terralith": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_tudor",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_wandering_trader_camp",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_classic",
+            "biome_count": 2,
+            "biome_namespaces": {
+              "regions_unexplored": 1,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_rustic",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "regions_unexplored": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_iberian",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "regions_unexplored": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_nilotic",
+            "biome_count": 0,
+            "biome_namespaces": {},
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "towns_and_towers:exclusives/village_piglin",
+            "biome_count": 0,
+            "biome_namespaces": {},
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "treasure2:aquatic_treasures_set",
+        "source": "treasure2",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 40,
+          "separation": 35,
+          "salt": 345678
+        },
+        "members": [
+          {
+            "id": "treasure2:ruins/aquatic/ruins",
+            "biome_count": 18,
+            "biome_namespaces": {
+              "hybrid_aquatic": 6,
+              "minecraft": 9,
+              "regions_unexplored": 2,
+              "terralith": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "OCEAN_FLOOR_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "treasure2:terranean_treasures_set",
+        "source": "treasure2",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 25,
+          "separation": 15,
+          "salt": 2345678
+        },
+        "members": [
+          {
+            "id": "treasure2:surface/general",
+            "biome_count": 35,
+            "biome_namespaces": {
+              "minecraft": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "treasure2:surface/temperate",
+            "biome_count": 17,
+            "biome_namespaces": {
+              "minecraft": 17
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "treasure2:ruins/ruins",
+            "biome_count": 35,
+            "biome_namespaces": {
+              "minecraft": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "treasure2:ruins/desert/ruins",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "treasure2:dungeon/general",
+            "biome_count": 35,
+            "biome_namespaces": {
+              "minecraft": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 116
+          },
+          {
+            "id": "treasure2:wither_tree/wither_tree",
+            "biome_count": 35,
+            "biome_namespaces": {
+              "minecraft": 35
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "treasure2:wishing_well_set",
+        "source": "treasure2",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 50,
+          "separation": 35,
+          "salt": 1234567
+        },
+        "members": [
+          {
+            "id": "treasure2:well/wishing_well",
+            "biome_count": 34,
+            "biome_namespaces": {
+              "minecraft": 34
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "treasure2:well/desert/wishing_well",
+            "biome_count": 1,
+            "biome_namespaces": {
+              "minecraft": 1
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "treasure2:well/forest/wishing_well",
+            "biome_count": 9,
+            "biome_namespaces": {
+              "minecraft": 9
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          },
+          {
+            "id": "treasure2:well/jungle/wishing_well",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "treasures_of_the_dead:sea_fortress",
+        "source": "treasures-of-the-dead",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 167695242,
+          "spacing": 44,
+          "separation": 18,
+          "frequency": 0.35,
+          "frequency_reduction_method": "legacy_type_1"
+        },
+        "members": [
+          {
+            "id": "treasures_of_the_dead:sea_fortress",
+            "biome_count": 3,
+            "biome_namespaces": {
+              "minecraft": 3
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "none",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      },
+      {
+        "key": "treasures_of_the_dead:skull_merchant_house",
+        "source": "treasures-of-the-dead",
+        "placement": {
+          "type": "minecraft:random_spread",
+          "salt": 78753459881222,
+          "spacing": 34,
+          "separation": 11
+        },
+        "members": [
+          {
+            "id": "treasures_of_the_dead:skull_merchant_house",
+            "biome_count": 5,
+            "biome_namespaces": {
+              "minecraft": 5
+            },
+            "required_biome_references_unresolved": [],
+            "terrain_adaptation": "beard_thin",
+            "height_projection": "WORLD_SURFACE_WG",
+            "max_distance_from_center": 80
+          }
+        ]
+      }
+    ],
+    "unresolved_structure_references": [],
+    "unresolved_exclusion_targets": [],
+    "resource_shadowing": [
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:badlands",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:birch_forest",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:cherry_grove",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:dark_forest",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:deep_frozen_ocean",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:desert",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:dripstone_caves",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:eroded_badlands",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:flower_forest",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:forest",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:frozen_ocean",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:frozen_peaks",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:frozen_river",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:grove",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:ice_spikes",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:jagged_peaks",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:jungle",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:lush_caves",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:meadow",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:mushroom_fields",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:old_growth_birch_forest",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:old_growth_pine_taiga",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:old_growth_spruce_taiga",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:plains",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:savanna",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:savanna_plateau",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:snowy_plains",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:snowy_slopes",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:snowy_taiga",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:stony_peaks",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:stony_shore",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:sunflower_plains",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:swamp",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:taiga",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/biome",
+        "key": "minecraft:wooded_badlands",
+        "before": "minecraft:1.21.1",
+        "after": "terralith"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ancientstructures:german_buildings",
+        "before": "ancient-structures",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ancientstructures:japanese_buildings",
+        "before": "ancient-structures",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ancientstructures:mayan_buildings",
+        "before": "ancient-structures",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ancientstructures:roman_buildings",
+        "before": "ancient-structures",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:adoberuins",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:mudblacksmithruin",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:mudpotterruin",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:mudschoolruin",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:ocean_ruin",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:ruined_desert_pyramid",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:ruined_ocean_monument",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:ruinedjungletemple",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:small_ocean_ruin",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:smallmudruin",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:warm_ocean_ruin",
+        "before": "archaeology-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "betterdeserttemples:desert_temples",
+        "before": "yungs-better-desert-temples",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "betterjungletemples:jungle_temples",
+        "before": "yungs-better-jungle-temples",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "castleshift:castle",
+        "before": "castle-shift",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "dungeons_arise:major_structures",
+        "before": "when-dungeons-arise",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "dungeons_arise:minor_structures",
+        "before": "when-dungeons-arise",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "epic:epic_temple",
+        "before": "epic-structures-jungle-temples",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "epic:epic_temple_ruin",
+        "before": "epic-structures-jungle-temples",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "mtr:badlands_temple",
+        "before": "mtr-moogs-temples-reimagined",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "mtr:desert_temple",
+        "before": "mtr-moogs-temples-reimagined",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "mtr:jungle_temple",
+        "before": "mtr-moogs-temples-reimagined",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "mtr:ocean_temple",
+        "before": "mtr-moogs-temples-reimagined",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:ancient_crypt",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:ancient_dungeon",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:ancient_ruins",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:ancient_towers",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:field_stone_ruins",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:field_stone_ruins_rocks",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:level_one_ruins",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:level_three_ruins",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:level_two_ruins",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:lost_soul_city",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:ocean_fortress_main",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:ocean_ruins",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:pumpkin_ruins",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "philipsruins:underground_structures",
+        "before": "philips-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ruinarium:aztec_jungle_ruins_1",
+        "before": "aztec-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ruinarium:aztec_jungle_ruins_2",
+        "before": "aztec-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ruinarium:aztec_savanna_ruins_1",
+        "before": "aztec-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ruinarium:aztec_savanna_ruins_2",
+        "before": "aztec-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "ruinarium:aztecjungletemple",
+        "before": "aztec-ruins",
+        "after": "awft:baseline-integration"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:adoberuins",
+        "before": "awft:baseline-integration",
+        "after": "awft-worldgen-four-set-v1"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:mudpotterruin",
+        "before": "awft:baseline-integration",
+        "after": "awft-worldgen-four-set-v1"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "archaeology_ruins:mudschoolruin",
+        "before": "awft:baseline-integration",
+        "after": "awft-worldgen-four-set-v1"
+      },
+      {
+        "kind": "worldgen/structure_set",
+        "key": "castleshift:castle",
+        "before": "awft:baseline-integration",
+        "after": "awft-worldgen-four-set-v1"
+      }
+    ],
+    "boundary": "Runtime-generated packs, overlays, load order and registry hooks require native verification."
+  }
+}

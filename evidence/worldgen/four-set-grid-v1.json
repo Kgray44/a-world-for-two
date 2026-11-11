@@ -1,0 +1,6286 @@
+{
+  "format": "awft-worldgen-grid-comparison:1",
+  "tier": "SYNTHETIC_GRID_CANDIDATES_NOT_GENERATED_STRUCTURES",
+  "seed_sha256": "f0c15e37c5ac789abd9d1f04c696018c642d2abda9ed922842df91943dc91588",
+  "sampling": "Eight fixed nonoverlapping 512x512-chunk geometric windows, including negative coordinates.",
+  "omitted": [
+    "Biome and height eligibility",
+    "frequency-reduced/custom placements",
+    "exclusion-zone rejection",
+    "native registration hooks",
+    "actual pieces and terrain fit"
+  ],
+  "rows": [
+    {
+      "key": "ancientstructures:german_buildings",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 613
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 613
+      },
+      "baseline_candidates": 82,
+      "updated_candidates": 82,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 14,
+          "updated_candidates": 14,
+          "baseline_nearest": {
+            "min_chunks": 117.239,
+            "median_chunks": 132.095
+          },
+          "updated_nearest": {
+            "min_chunks": 117.239,
+            "median_chunks": 132.095
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 11,
+          "updated_candidates": 11,
+          "baseline_nearest": {
+            "min_chunks": 127.581,
+            "median_chunks": 145.124
+          },
+          "updated_nearest": {
+            "min_chunks": 127.581,
+            "median_chunks": 145.124
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 8,
+          "updated_candidates": 8,
+          "baseline_nearest": {
+            "min_chunks": 99.85,
+            "median_chunks": 143.846
+          },
+          "updated_nearest": {
+            "min_chunks": 99.85,
+            "median_chunks": 143.846
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 9,
+          "updated_candidates": 9,
+          "baseline_nearest": {
+            "min_chunks": 140.73,
+            "median_chunks": 156.08
+          },
+          "updated_nearest": {
+            "min_chunks": 140.73,
+            "median_chunks": 156.08
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 103.097,
+            "median_chunks": 119.086
+          },
+          "updated_nearest": {
+            "min_chunks": 103.097,
+            "median_chunks": 119.086
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 11,
+          "updated_candidates": 11,
+          "baseline_nearest": {
+            "min_chunks": 95.352,
+            "median_chunks": 138.6
+          },
+          "updated_nearest": {
+            "min_chunks": 95.352,
+            "median_chunks": 138.6
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 111.364,
+            "median_chunks": 139.014
+          },
+          "updated_nearest": {
+            "min_chunks": 111.364,
+            "median_chunks": 139.014
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 9,
+          "updated_candidates": 9,
+          "baseline_nearest": {
+            "min_chunks": 137.131,
+            "median_chunks": 150.562
+          },
+          "updated_nearest": {
+            "min_chunks": 137.131,
+            "median_chunks": 150.562
+          }
+        }
+      ]
+    },
+    {
+      "key": "ancientstructures:japanese_buildings",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 25449
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 25449
+      },
+      "baseline_candidates": 86,
+      "updated_candidates": 86,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 15,
+          "updated_candidates": 15,
+          "baseline_nearest": {
+            "min_chunks": 87.693,
+            "median_chunks": 132.439
+          },
+          "updated_nearest": {
+            "min_chunks": 87.693,
+            "median_chunks": 132.439
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 12,
+          "updated_candidates": 12,
+          "baseline_nearest": {
+            "min_chunks": 128.316,
+            "median_chunks": 134.766
+          },
+          "updated_nearest": {
+            "min_chunks": 128.316,
+            "median_chunks": 134.766
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 11,
+          "updated_candidates": 11,
+          "baseline_nearest": {
+            "min_chunks": 117.004,
+            "median_chunks": 125.256
+          },
+          "updated_nearest": {
+            "min_chunks": 117.004,
+            "median_chunks": 125.256
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 9,
+          "updated_candidates": 9,
+          "baseline_nearest": {
+            "min_chunks": 125.16,
+            "median_chunks": 136.33
+          },
+          "updated_nearest": {
+            "min_chunks": 125.16,
+            "median_chunks": 136.33
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 126.57,
+            "median_chunks": 138.183
+          },
+          "updated_nearest": {
+            "min_chunks": 126.57,
+            "median_chunks": 138.183
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 99.04,
+            "median_chunks": 145.149
+          },
+          "updated_nearest": {
+            "min_chunks": 99.04,
+            "median_chunks": 145.149
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 104.938,
+            "median_chunks": 147.213
+          },
+          "updated_nearest": {
+            "min_chunks": 104.938,
+            "median_chunks": 147.213
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 9,
+          "updated_candidates": 9,
+          "baseline_nearest": {
+            "min_chunks": 114.07,
+            "median_chunks": 155.029
+          },
+          "updated_nearest": {
+            "min_chunks": 114.07,
+            "median_chunks": 155.029
+          }
+        }
+      ]
+    },
+    {
+      "key": "ancientstructures:mayan_buildings",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 9994513
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 9994513
+      },
+      "baseline_candidates": 82,
+      "updated_candidates": 82,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 14,
+          "updated_candidates": 14,
+          "baseline_nearest": {
+            "min_chunks": 95.126,
+            "median_chunks": 138.246
+          },
+          "updated_nearest": {
+            "min_chunks": 95.126,
+            "median_chunks": 138.246
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 11,
+          "updated_candidates": 11,
+          "baseline_nearest": {
+            "min_chunks": 112.614,
+            "median_chunks": 130.863
+          },
+          "updated_nearest": {
+            "min_chunks": 112.614,
+            "median_chunks": 130.863
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 8,
+          "updated_candidates": 8,
+          "baseline_nearest": {
+            "min_chunks": 88.091,
+            "median_chunks": 115.514
+          },
+          "updated_nearest": {
+            "min_chunks": 88.091,
+            "median_chunks": 115.514
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 9,
+          "updated_candidates": 9,
+          "baseline_nearest": {
+            "min_chunks": 136.132,
+            "median_chunks": 139.0
+          },
+          "updated_nearest": {
+            "min_chunks": 136.132,
+            "median_chunks": 139.0
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 120.507,
+            "median_chunks": 131.034
+          },
+          "updated_nearest": {
+            "min_chunks": 120.507,
+            "median_chunks": 131.034
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 116.004,
+            "median_chunks": 135.34
+          },
+          "updated_nearest": {
+            "min_chunks": 116.004,
+            "median_chunks": 135.34
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 116.662,
+            "median_chunks": 141.439
+          },
+          "updated_nearest": {
+            "min_chunks": 116.662,
+            "median_chunks": 141.439
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 114.232,
+            "median_chunks": 145.0
+          },
+          "updated_nearest": {
+            "min_chunks": 114.232,
+            "median_chunks": 145.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "ancientstructures:roman_buildings",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 583611589
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 160,
+        "separation": 64,
+        "spread_type": "triangular",
+        "salt": 583611589
+      },
+      "baseline_candidates": 89,
+      "updated_candidates": 89,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 14,
+          "updated_candidates": 14,
+          "baseline_nearest": {
+            "min_chunks": 123.146,
+            "median_chunks": 135.155
+          },
+          "updated_nearest": {
+            "min_chunks": 123.146,
+            "median_chunks": 135.155
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 141.128,
+            "median_chunks": 154.483
+          },
+          "updated_nearest": {
+            "min_chunks": 141.128,
+            "median_chunks": 154.483
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 11,
+          "updated_candidates": 11,
+          "baseline_nearest": {
+            "min_chunks": 127.769,
+            "median_chunks": 138.004
+          },
+          "updated_nearest": {
+            "min_chunks": 127.769,
+            "median_chunks": 138.004
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 9,
+          "updated_candidates": 9,
+          "baseline_nearest": {
+            "min_chunks": 134.239,
+            "median_chunks": 144.9
+          },
+          "updated_nearest": {
+            "min_chunks": 134.239,
+            "median_chunks": 144.9
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 14,
+          "updated_candidates": 14,
+          "baseline_nearest": {
+            "min_chunks": 103.769,
+            "median_chunks": 125.144
+          },
+          "updated_nearest": {
+            "min_chunks": 103.769,
+            "median_chunks": 125.144
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 12,
+          "updated_candidates": 12,
+          "baseline_nearest": {
+            "min_chunks": 110.041,
+            "median_chunks": 131.004
+          },
+          "updated_nearest": {
+            "min_chunks": 110.041,
+            "median_chunks": 131.004
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 9,
+          "updated_candidates": 9,
+          "baseline_nearest": {
+            "min_chunks": 120.669,
+            "median_chunks": 144.586
+          },
+          "updated_nearest": {
+            "min_chunks": 120.669,
+            "median_chunks": 144.586
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 10,
+          "updated_candidates": 10,
+          "baseline_nearest": {
+            "min_chunks": 126.178,
+            "median_chunks": 132.91
+          },
+          "updated_nearest": {
+            "min_chunks": 126.178,
+            "median_chunks": 132.91
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:adoberuins",
+      "changed": true,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1108054183
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 76,
+        "separation": 40,
+        "salt": 1108054183
+      },
+      "baseline_candidates": 333,
+      "updated_candidates": 367,
+      "sampled_change_percent": 10.21,
+      "asymptotic_opportunity_change_percent": 10.803,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 38,
+          "updated_candidates": 48,
+          "baseline_nearest": {
+            "min_chunks": 46.573,
+            "median_chunks": 62.586
+          },
+          "updated_nearest": {
+            "min_chunks": 47.011,
+            "median_chunks": 62.29
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 51.624,
+            "median_chunks": 64.195
+          },
+          "updated_nearest": {
+            "min_chunks": 47.17,
+            "median_chunks": 62.645
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 42.107,
+            "median_chunks": 61.033
+          },
+          "updated_nearest": {
+            "min_chunks": 43.566,
+            "median_chunks": 59.034
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 48.374,
+            "median_chunks": 60.033
+          },
+          "updated_nearest": {
+            "min_chunks": 42.107,
+            "median_chunks": 60.208
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 38,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 45.277,
+            "median_chunks": 63.044
+          },
+          "updated_nearest": {
+            "min_chunks": 47.381,
+            "median_chunks": 61.895
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 42.297,
+            "median_chunks": 61.008
+          },
+          "updated_nearest": {
+            "min_chunks": 42.202,
+            "median_chunks": 60.671
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 45,
+          "updated_candidates": 48,
+          "baseline_nearest": {
+            "min_chunks": 47.011,
+            "median_chunks": 64.031
+          },
+          "updated_nearest": {
+            "min_chunks": 45.277,
+            "median_chunks": 62.369
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 48,
+          "baseline_nearest": {
+            "min_chunks": 49.729,
+            "median_chunks": 67.143
+          },
+          "updated_nearest": {
+            "min_chunks": 45.011,
+            "median_chunks": 58.521
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:mudblacksmithruin",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1891367289
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1891367289
+      },
+      "baseline_candidates": 334,
+      "updated_candidates": 334,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 46.84,
+            "median_chunks": 64.257
+          },
+          "updated_nearest": {
+            "min_chunks": 46.84,
+            "median_chunks": 64.257
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 47.127,
+            "median_chunks": 66.338
+          },
+          "updated_nearest": {
+            "min_chunks": 47.127,
+            "median_chunks": 66.338
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 46.872,
+            "median_chunks": 64.133
+          },
+          "updated_nearest": {
+            "min_chunks": 46.872,
+            "median_chunks": 64.133
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 53.46,
+            "median_chunks": 66.272
+          },
+          "updated_nearest": {
+            "min_chunks": 53.46,
+            "median_chunks": 66.272
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 44.643,
+            "median_chunks": 66.051
+          },
+          "updated_nearest": {
+            "min_chunks": 44.643,
+            "median_chunks": 66.051
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 51.039,
+            "median_chunks": 64.56
+          },
+          "updated_nearest": {
+            "min_chunks": 51.039,
+            "median_chunks": 64.56
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 47.539,
+            "median_chunks": 59.076
+          },
+          "updated_nearest": {
+            "min_chunks": 47.539,
+            "median_chunks": 59.076
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 51.088,
+            "median_chunks": 59.093
+          },
+          "updated_nearest": {
+            "min_chunks": 51.088,
+            "median_chunks": 59.093
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:mudpotterruin",
+      "changed": true,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1027327534
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 76,
+        "separation": 40,
+        "salt": 1027327534
+      },
+      "baseline_candidates": 330,
+      "updated_candidates": 366,
+      "sampled_change_percent": 10.909,
+      "asymptotic_opportunity_change_percent": 10.803,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 37,
+          "updated_candidates": 49,
+          "baseline_nearest": {
+            "min_chunks": 52.01,
+            "median_chunks": 69.354
+          },
+          "updated_nearest": {
+            "min_chunks": 44.922,
+            "median_chunks": 59.034
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 44.102,
+            "median_chunks": 65.146
+          },
+          "updated_nearest": {
+            "min_chunks": 51.245,
+            "median_chunks": 62.129
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 45.398,
+            "median_chunks": 59.211
+          },
+          "updated_nearest": {
+            "min_chunks": 44.407,
+            "median_chunks": 59.552
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 45.011,
+            "median_chunks": 65.008
+          },
+          "updated_nearest": {
+            "min_chunks": 45.398,
+            "median_chunks": 62.008
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 48,
+          "baseline_nearest": {
+            "min_chunks": 46.39,
+            "median_chunks": 65.889
+          },
+          "updated_nearest": {
+            "min_chunks": 47.381,
+            "median_chunks": 62.879
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 45,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 48.847,
+            "median_chunks": 65.031
+          },
+          "updated_nearest": {
+            "min_chunks": 44.553,
+            "median_chunks": 67.082
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 49.041,
+            "median_chunks": 64.622
+          },
+          "updated_nearest": {
+            "min_chunks": 46.098,
+            "median_chunks": 62.501
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 38,
+          "updated_candidates": 48,
+          "baseline_nearest": {
+            "min_chunks": 50.0,
+            "median_chunks": 63.856
+          },
+          "updated_nearest": {
+            "min_chunks": 43.0,
+            "median_chunks": 63.036
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:mudschoolruin",
+      "changed": true,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1067233915
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 76,
+        "separation": 40,
+        "salt": 1067233915
+      },
+      "baseline_candidates": 335,
+      "updated_candidates": 363,
+      "sampled_change_percent": 8.358,
+      "asymptotic_opportunity_change_percent": 10.803,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 50.01,
+            "median_chunks": 70.007
+          },
+          "updated_nearest": {
+            "min_chunks": 48.508,
+            "median_chunks": 63.506
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 45,
+          "baseline_nearest": {
+            "min_chunks": 51.352,
+            "median_chunks": 66.87
+          },
+          "updated_nearest": {
+            "min_chunks": 49.163,
+            "median_chunks": 61.984
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 45.891,
+            "median_chunks": 63.356
+          },
+          "updated_nearest": {
+            "min_chunks": 43.105,
+            "median_chunks": 66.098
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 41.11,
+            "median_chunks": 61.601
+          },
+          "updated_nearest": {
+            "min_chunks": 45.891,
+            "median_chunks": 62.394
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 44.181,
+            "median_chunks": 63.678
+          },
+          "updated_nearest": {
+            "min_chunks": 49.82,
+            "median_chunks": 65.765
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 45,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 49.659,
+            "median_chunks": 66.483
+          },
+          "updated_nearest": {
+            "min_chunks": 43.186,
+            "median_chunks": 65.62
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 51.245,
+            "median_chunks": 68.447
+          },
+          "updated_nearest": {
+            "min_chunks": 44.181,
+            "median_chunks": 61.364
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 37,
+          "updated_candidates": 48,
+          "baseline_nearest": {
+            "min_chunks": 44.407,
+            "median_chunks": 65.788
+          },
+          "updated_nearest": {
+            "min_chunks": 45.607,
+            "median_chunks": 64.63
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:ocean_ruin",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 2134590717
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 2134590717
+      },
+      "baseline_candidates": 326,
+      "updated_candidates": 326,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 49.254,
+            "median_chunks": 69.029
+          },
+          "updated_nearest": {
+            "min_chunks": 49.254,
+            "median_chunks": 69.029
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 48.847,
+            "median_chunks": 66.483
+          },
+          "updated_nearest": {
+            "min_chunks": 48.847,
+            "median_chunks": 66.483
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 45.1,
+            "median_chunks": 63.6
+          },
+          "updated_nearest": {
+            "min_chunks": 45.1,
+            "median_chunks": 63.6
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 52.202,
+            "median_chunks": 65.069
+          },
+          "updated_nearest": {
+            "min_chunks": 52.202,
+            "median_chunks": 65.069
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 47.043,
+            "median_chunks": 67.175
+          },
+          "updated_nearest": {
+            "min_chunks": 47.043,
+            "median_chunks": 67.175
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 50.249,
+            "median_chunks": 62.073
+          },
+          "updated_nearest": {
+            "min_chunks": 50.249,
+            "median_chunks": 62.073
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 49.0,
+            "median_chunks": 65.115
+          },
+          "updated_nearest": {
+            "min_chunks": 49.0,
+            "median_chunks": 65.115
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 46.011,
+            "median_chunks": 65.0
+          },
+          "updated_nearest": {
+            "min_chunks": 46.011,
+            "median_chunks": 65.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:ruinedjungletemple",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 48,
+        "salt": 1955198292
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 48,
+        "salt": 1955198292
+      },
+      "baseline_candidates": 232,
+      "updated_candidates": 232,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 25,
+          "updated_candidates": 25,
+          "baseline_nearest": {
+            "min_chunks": 51.352,
+            "median_chunks": 72.993
+          },
+          "updated_nearest": {
+            "min_chunks": 51.352,
+            "median_chunks": 72.993
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 28,
+          "updated_candidates": 28,
+          "baseline_nearest": {
+            "min_chunks": 59.682,
+            "median_chunks": 84.509
+          },
+          "updated_nearest": {
+            "min_chunks": 59.682,
+            "median_chunks": 84.509
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 29,
+          "updated_candidates": 29,
+          "baseline_nearest": {
+            "min_chunks": 60.033,
+            "median_chunks": 80.281
+          },
+          "updated_nearest": {
+            "min_chunks": 60.033,
+            "median_chunks": 80.281
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 29,
+          "updated_candidates": 29,
+          "baseline_nearest": {
+            "min_chunks": 61.392,
+            "median_chunks": 85.165
+          },
+          "updated_nearest": {
+            "min_chunks": 61.392,
+            "median_chunks": 85.165
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 31,
+          "updated_candidates": 31,
+          "baseline_nearest": {
+            "min_chunks": 61.008,
+            "median_chunks": 81.056
+          },
+          "updated_nearest": {
+            "min_chunks": 61.008,
+            "median_chunks": 81.056
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 32,
+          "updated_candidates": 32,
+          "baseline_nearest": {
+            "min_chunks": 62.394,
+            "median_chunks": 83.934
+          },
+          "updated_nearest": {
+            "min_chunks": 62.394,
+            "median_chunks": 83.934
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 32,
+          "updated_candidates": 32,
+          "baseline_nearest": {
+            "min_chunks": 54.332,
+            "median_chunks": 77.502
+          },
+          "updated_nearest": {
+            "min_chunks": 54.332,
+            "median_chunks": 77.502
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 26,
+          "updated_candidates": 26,
+          "baseline_nearest": {
+            "min_chunks": 71.568,
+            "median_chunks": 82.297
+          },
+          "updated_nearest": {
+            "min_chunks": 71.568,
+            "median_chunks": 82.297
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:ruined_desert_pyramid",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 48,
+        "salt": 93969674
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 48,
+        "salt": 93969674
+      },
+      "baseline_candidates": 227,
+      "updated_candidates": 227,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 25,
+          "updated_candidates": 25,
+          "baseline_nearest": {
+            "min_chunks": 65.46,
+            "median_chunks": 81.908
+          },
+          "updated_nearest": {
+            "min_chunks": 65.46,
+            "median_chunks": 81.908
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 29,
+          "updated_candidates": 29,
+          "baseline_nearest": {
+            "min_chunks": 57.14,
+            "median_chunks": 80.05
+          },
+          "updated_nearest": {
+            "min_chunks": 57.14,
+            "median_chunks": 80.05
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 29,
+          "updated_candidates": 29,
+          "baseline_nearest": {
+            "min_chunks": 56.321,
+            "median_chunks": 79.63
+          },
+          "updated_nearest": {
+            "min_chunks": 56.321,
+            "median_chunks": 79.63
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 31,
+          "updated_candidates": 31,
+          "baseline_nearest": {
+            "min_chunks": 62.65,
+            "median_chunks": 76.851
+          },
+          "updated_nearest": {
+            "min_chunks": 62.65,
+            "median_chunks": 76.851
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 30,
+          "updated_candidates": 30,
+          "baseline_nearest": {
+            "min_chunks": 55.579,
+            "median_chunks": 84.558
+          },
+          "updated_nearest": {
+            "min_chunks": 55.579,
+            "median_chunks": 84.558
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 30,
+          "updated_candidates": 30,
+          "baseline_nearest": {
+            "min_chunks": 61.033,
+            "median_chunks": 80.006
+          },
+          "updated_nearest": {
+            "min_chunks": 61.033,
+            "median_chunks": 80.006
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 28,
+          "updated_candidates": 28,
+          "baseline_nearest": {
+            "min_chunks": 57.079,
+            "median_chunks": 77.318
+          },
+          "updated_nearest": {
+            "min_chunks": 57.079,
+            "median_chunks": 77.318
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 25,
+          "updated_candidates": 25,
+          "baseline_nearest": {
+            "min_chunks": 57.009,
+            "median_chunks": 77.026
+          },
+          "updated_nearest": {
+            "min_chunks": 57.009,
+            "median_chunks": 77.026
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:ruined_ocean_monument",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 112,
+        "separation": 56,
+        "salt": 96247560
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 112,
+        "separation": 56,
+        "salt": 96247560
+      },
+      "baseline_candidates": 170,
+      "updated_candidates": 170,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 25,
+          "updated_candidates": 25,
+          "baseline_nearest": {
+            "min_chunks": 75.166,
+            "median_chunks": 95.336
+          },
+          "updated_nearest": {
+            "min_chunks": 75.166,
+            "median_chunks": 95.336
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 67.268,
+            "median_chunks": 91.241
+          },
+          "updated_nearest": {
+            "min_chunks": 67.268,
+            "median_chunks": 91.241
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 84.291,
+            "median_chunks": 96.574
+          },
+          "updated_nearest": {
+            "min_chunks": 84.291,
+            "median_chunks": 96.574
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 18,
+          "updated_candidates": 18,
+          "baseline_nearest": {
+            "min_chunks": 62.394,
+            "median_chunks": 93.622
+          },
+          "updated_nearest": {
+            "min_chunks": 62.394,
+            "median_chunks": 93.622
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 78.772,
+            "median_chunks": 95.818
+          },
+          "updated_nearest": {
+            "min_chunks": 78.772,
+            "median_chunks": 95.818
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 73.553,
+            "median_chunks": 98.127
+          },
+          "updated_nearest": {
+            "min_chunks": 73.553,
+            "median_chunks": 98.127
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 76.026,
+            "median_chunks": 93.536
+          },
+          "updated_nearest": {
+            "min_chunks": 76.026,
+            "median_chunks": 93.536
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 81.4,
+            "median_chunks": 92.925
+          },
+          "updated_nearest": {
+            "min_chunks": 81.4,
+            "median_chunks": 92.925
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:smallmudruin",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 963026644
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 963026644
+      },
+      "baseline_candidates": 337,
+      "updated_candidates": 337,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 37,
+          "updated_candidates": 37,
+          "baseline_nearest": {
+            "min_chunks": 46.271,
+            "median_chunks": 61.188
+          },
+          "updated_nearest": {
+            "min_chunks": 46.271,
+            "median_chunks": 61.188
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 49.163,
+            "median_chunks": 60.811
+          },
+          "updated_nearest": {
+            "min_chunks": 49.163,
+            "median_chunks": 60.811
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 44.553,
+            "median_chunks": 61.587
+          },
+          "updated_nearest": {
+            "min_chunks": 44.553,
+            "median_chunks": 61.587
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 46,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 50.961,
+            "median_chunks": 65.031
+          },
+          "updated_nearest": {
+            "min_chunks": 50.961,
+            "median_chunks": 65.031
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 49.244,
+            "median_chunks": 61.465
+          },
+          "updated_nearest": {
+            "min_chunks": 49.244,
+            "median_chunks": 61.465
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 45,
+          "updated_candidates": 45,
+          "baseline_nearest": {
+            "min_chunks": 46.174,
+            "median_chunks": 63.506
+          },
+          "updated_nearest": {
+            "min_chunks": 46.174,
+            "median_chunks": 63.506
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 47,
+          "updated_candidates": 47,
+          "baseline_nearest": {
+            "min_chunks": 42.012,
+            "median_chunks": 61.984
+          },
+          "updated_nearest": {
+            "min_chunks": 42.012,
+            "median_chunks": 61.984
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 38,
+          "updated_candidates": 38,
+          "baseline_nearest": {
+            "min_chunks": 48.01,
+            "median_chunks": 68.029
+          },
+          "updated_nearest": {
+            "min_chunks": 48.01,
+            "median_chunks": 68.029
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:small_ocean_ruin",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1664717944
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1664717944
+      },
+      "baseline_candidates": 330,
+      "updated_candidates": 330,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 37,
+          "updated_candidates": 37,
+          "baseline_nearest": {
+            "min_chunks": 54.231,
+            "median_chunks": 66.068
+          },
+          "updated_nearest": {
+            "min_chunks": 54.231,
+            "median_chunks": 66.068
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 50.22,
+            "median_chunks": 58.592
+          },
+          "updated_nearest": {
+            "min_chunks": 50.22,
+            "median_chunks": 58.592
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 46.011,
+            "median_chunks": 64.008
+          },
+          "updated_nearest": {
+            "min_chunks": 46.011,
+            "median_chunks": 64.008
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 49.649,
+            "median_chunks": 64.281
+          },
+          "updated_nearest": {
+            "min_chunks": 49.649,
+            "median_chunks": 64.281
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 54.589,
+            "median_chunks": 68.268
+          },
+          "updated_nearest": {
+            "min_chunks": 54.589,
+            "median_chunks": 68.268
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 48.01,
+            "median_chunks": 63.151
+          },
+          "updated_nearest": {
+            "min_chunks": 48.01,
+            "median_chunks": 63.151
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 49.497,
+            "median_chunks": 68.029
+          },
+          "updated_nearest": {
+            "min_chunks": 49.497,
+            "median_chunks": 68.029
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 52.345,
+            "median_chunks": 63.561
+          },
+          "updated_nearest": {
+            "min_chunks": 52.345,
+            "median_chunks": 63.561
+          }
+        }
+      ]
+    },
+    {
+      "key": "archaeology_ruins:warm_ocean_ruin",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1859338252
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 40,
+        "salt": 1859338252
+      },
+      "baseline_candidates": 331,
+      "updated_candidates": 331,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 50.16,
+            "median_chunks": 63.6
+          },
+          "updated_nearest": {
+            "min_chunks": 50.16,
+            "median_chunks": 63.6
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 50.961,
+            "median_chunks": 65.069
+          },
+          "updated_nearest": {
+            "min_chunks": 50.961,
+            "median_chunks": 65.069
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 47.096,
+            "median_chunks": 66.189
+          },
+          "updated_nearest": {
+            "min_chunks": 47.096,
+            "median_chunks": 66.189
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 46,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 44.598,
+            "median_chunks": 63.295
+          },
+          "updated_nearest": {
+            "min_chunks": 44.598,
+            "median_chunks": 63.295
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 47.518,
+            "median_chunks": 65.192
+          },
+          "updated_nearest": {
+            "min_chunks": 47.518,
+            "median_chunks": 65.192
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 51.865,
+            "median_chunks": 69.007
+          },
+          "updated_nearest": {
+            "min_chunks": 51.865,
+            "median_chunks": 69.007
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 46.098,
+            "median_chunks": 68.007
+          },
+          "updated_nearest": {
+            "min_chunks": 46.098,
+            "median_chunks": 68.007
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 46.098,
+            "median_chunks": 63.789
+          },
+          "updated_nearest": {
+            "min_chunks": 46.098,
+            "median_chunks": 63.789
+          }
+        }
+      ]
+    },
+    {
+      "key": "ruinarium:aztecjungletemple",
+      "changed": false,
+      "before": {
+        "salt": 1,
+        "spacing": 128,
+        "separation": 64,
+        "type": "minecraft:random_spread",
+        "exclusion_zone": {
+          "other_set": "epic:epic_temple",
+          "chunk_count": 16
+        }
+      },
+      "after": {
+        "salt": 1,
+        "spacing": 128,
+        "separation": 64,
+        "type": "minecraft:random_spread",
+        "exclusion_zone": {
+          "other_set": "epic:epic_temple",
+          "chunk_count": 16
+        }
+      },
+      "baseline_candidates": 128,
+      "updated_candidates": 128,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 87.664,
+            "median_chunks": 111.308
+          },
+          "updated_nearest": {
+            "min_chunks": 87.664,
+            "median_chunks": 111.308
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 99.639,
+            "median_chunks": 116.702
+          },
+          "updated_nearest": {
+            "min_chunks": 99.639,
+            "median_chunks": 116.702
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 80.623,
+            "median_chunks": 109.777
+          },
+          "updated_nearest": {
+            "min_chunks": 80.623,
+            "median_chunks": 109.777
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 69.635,
+            "median_chunks": 104.828
+          },
+          "updated_nearest": {
+            "min_chunks": 69.635,
+            "median_chunks": 104.828
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 87.361,
+            "median_chunks": 115.948
+          },
+          "updated_nearest": {
+            "min_chunks": 87.361,
+            "median_chunks": 115.948
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 69.065,
+            "median_chunks": 103.177
+          },
+          "updated_nearest": {
+            "min_chunks": 69.065,
+            "median_chunks": 103.177
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 88.955,
+            "median_chunks": 112.752
+          },
+          "updated_nearest": {
+            "min_chunks": 88.955,
+            "median_chunks": 112.752
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 78.518,
+            "median_chunks": 93.503
+          },
+          "updated_nearest": {
+            "min_chunks": 78.518,
+            "median_chunks": 93.503
+          }
+        }
+      ]
+    },
+    {
+      "key": "ruinarium:aztec_jungle_ruins_1",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 273874299,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 273874299,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "baseline_candidates": 333,
+      "updated_candidates": 333,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 38.471,
+            "median_chunks": 63.159
+          },
+          "updated_nearest": {
+            "min_chunks": 38.471,
+            "median_chunks": 63.159
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 40.025,
+            "median_chunks": 61.984
+          },
+          "updated_nearest": {
+            "min_chunks": 40.025,
+            "median_chunks": 61.984
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 41.773,
+            "median_chunks": 61.612
+          },
+          "updated_nearest": {
+            "min_chunks": 41.773,
+            "median_chunks": 61.612
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 46,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 41.195,
+            "median_chunks": 59.666
+          },
+          "updated_nearest": {
+            "min_chunks": 41.195,
+            "median_chunks": 59.666
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 36.497,
+            "median_chunks": 60.729
+          },
+          "updated_nearest": {
+            "min_chunks": 36.497,
+            "median_chunks": 60.729
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 37.121,
+            "median_chunks": 63.285
+          },
+          "updated_nearest": {
+            "min_chunks": 37.121,
+            "median_chunks": 63.285
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 38.91,
+            "median_chunks": 66.483
+          },
+          "updated_nearest": {
+            "min_chunks": 38.91,
+            "median_chunks": 66.483
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 49.01,
+            "median_chunks": 65.734
+          },
+          "updated_nearest": {
+            "min_chunks": 49.01,
+            "median_chunks": 65.734
+          }
+        }
+      ]
+    },
+    {
+      "key": "ruinarium:aztec_jungle_ruins_2",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 716824314,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 716824314,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "baseline_candidates": 330,
+      "updated_candidates": 330,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 34.482,
+            "median_chunks": 66.189
+          },
+          "updated_nearest": {
+            "min_chunks": 34.482,
+            "median_chunks": 66.189
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 39,
+          "updated_candidates": 39,
+          "baseline_nearest": {
+            "min_chunks": 49.031,
+            "median_chunks": 65.376
+          },
+          "updated_nearest": {
+            "min_chunks": 49.031,
+            "median_chunks": 65.376
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 40.025,
+            "median_chunks": 60.415
+          },
+          "updated_nearest": {
+            "min_chunks": 40.025,
+            "median_chunks": 60.415
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 45,
+          "updated_candidates": 45,
+          "baseline_nearest": {
+            "min_chunks": 41.773,
+            "median_chunks": 64.777
+          },
+          "updated_nearest": {
+            "min_chunks": 41.773,
+            "median_chunks": 64.777
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 38.21,
+            "median_chunks": 62.817
+          },
+          "updated_nearest": {
+            "min_chunks": 38.21,
+            "median_chunks": 62.817
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 39.357,
+            "median_chunks": 59.008
+          },
+          "updated_nearest": {
+            "min_chunks": 39.357,
+            "median_chunks": 59.008
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 48.847,
+            "median_chunks": 62.008
+          },
+          "updated_nearest": {
+            "min_chunks": 48.847,
+            "median_chunks": 62.008
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 38,
+          "updated_candidates": 38,
+          "baseline_nearest": {
+            "min_chunks": 52.086,
+            "median_chunks": 68.728
+          },
+          "updated_nearest": {
+            "min_chunks": 52.086,
+            "median_chunks": 68.728
+          }
+        }
+      ]
+    },
+    {
+      "key": "ruinarium:aztec_savanna_ruins_1",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 912591128,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 912591128,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "baseline_candidates": 336,
+      "updated_candidates": 336,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 38,
+          "updated_candidates": 38,
+          "baseline_nearest": {
+            "min_chunks": 36.125,
+            "median_chunks": 63.235
+          },
+          "updated_nearest": {
+            "min_chunks": 36.125,
+            "median_chunks": 63.235
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 42.426,
+            "median_chunks": 58.31
+          },
+          "updated_nearest": {
+            "min_chunks": 42.426,
+            "median_chunks": 58.31
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 45,
+          "updated_candidates": 45,
+          "baseline_nearest": {
+            "min_chunks": 38.897,
+            "median_chunks": 62.37
+          },
+          "updated_nearest": {
+            "min_chunks": 38.897,
+            "median_chunks": 62.37
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 46,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 41.11,
+            "median_chunks": 61.66
+          },
+          "updated_nearest": {
+            "min_chunks": 41.11,
+            "median_chunks": 61.66
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 45.277,
+            "median_chunks": 58.313
+          },
+          "updated_nearest": {
+            "min_chunks": 45.277,
+            "median_chunks": 58.313
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 45.793,
+            "median_chunks": 58.228
+          },
+          "updated_nearest": {
+            "min_chunks": 45.793,
+            "median_chunks": 58.228
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 42.19,
+            "median_chunks": 65.97
+          },
+          "updated_nearest": {
+            "min_chunks": 42.19,
+            "median_chunks": 65.97
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 39.623,
+            "median_chunks": 61.668
+          },
+          "updated_nearest": {
+            "min_chunks": 39.623,
+            "median_chunks": 61.668
+          }
+        }
+      ]
+    },
+    {
+      "key": "ruinarium:aztec_savanna_ruins_2",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 1730372919,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 80,
+        "separation": 32,
+        "salt": 1730372919,
+        "exclusion_zone": {
+          "other_set": "ruinarium:aztecjungletemple",
+          "chunk_count": 16
+        }
+      },
+      "baseline_candidates": 327,
+      "updated_candidates": 327,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 42.19,
+            "median_chunks": 62.147
+          },
+          "updated_nearest": {
+            "min_chunks": 42.19,
+            "median_chunks": 62.147
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 38.833,
+            "median_chunks": 59.506
+          },
+          "updated_nearest": {
+            "min_chunks": 38.833,
+            "median_chunks": 59.506
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 36.139,
+            "median_chunks": 60.437
+          },
+          "updated_nearest": {
+            "min_chunks": 36.139,
+            "median_chunks": 60.437
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 38.21,
+            "median_chunks": 61.608
+          },
+          "updated_nearest": {
+            "min_chunks": 38.21,
+            "median_chunks": 61.608
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 40.162,
+            "median_chunks": 59.666
+          },
+          "updated_nearest": {
+            "min_chunks": 40.162,
+            "median_chunks": 59.666
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 37.121,
+            "median_chunks": 62.65
+          },
+          "updated_nearest": {
+            "min_chunks": 37.121,
+            "median_chunks": 62.65
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 37.121,
+            "median_chunks": 62.721
+          },
+          "updated_nearest": {
+            "min_chunks": 37.121,
+            "median_chunks": 62.721
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 37,
+          "updated_candidates": 37,
+          "baseline_nearest": {
+            "min_chunks": 40.162,
+            "median_chunks": 63.285
+          },
+          "updated_nearest": {
+            "min_chunks": 40.162,
+            "median_chunks": 63.285
+          }
+        }
+      ]
+    },
+    {
+      "key": "castleshift:castle",
+      "changed": true,
+      "before": {
+        "type": "minecraft:random_spread",
+        "spacing": 96,
+        "separation": 32,
+        "salt": 194572831,
+        "exclusion_zone": {
+          "other_set": "minecraft:villages",
+          "chunk_count": 10
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "spacing": 92,
+        "separation": 32,
+        "salt": 194572831,
+        "exclusion_zone": {
+          "other_set": "minecraft:villages",
+          "chunk_count": 10
+        }
+      },
+      "baseline_candidates": 230,
+      "updated_candidates": 248,
+      "sampled_change_percent": 7.826,
+      "asymptotic_opportunity_change_percent": 8.885,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 25,
+          "updated_candidates": 30,
+          "baseline_nearest": {
+            "min_chunks": 53.46,
+            "median_chunks": 72.007
+          },
+          "updated_nearest": {
+            "min_chunks": 47.265,
+            "median_chunks": 66.483
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 28,
+          "updated_candidates": 30,
+          "baseline_nearest": {
+            "min_chunks": 50.01,
+            "median_chunks": 72.662
+          },
+          "updated_nearest": {
+            "min_chunks": 50.01,
+            "median_chunks": 76.166
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 27,
+          "updated_candidates": 32,
+          "baseline_nearest": {
+            "min_chunks": 53.339,
+            "median_chunks": 70.228
+          },
+          "updated_nearest": {
+            "min_chunks": 46.239,
+            "median_chunks": 70.231
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 32,
+          "updated_candidates": 31,
+          "baseline_nearest": {
+            "min_chunks": 51.624,
+            "median_chunks": 74.33
+          },
+          "updated_nearest": {
+            "min_chunks": 46.325,
+            "median_chunks": 75.584
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 28,
+          "updated_candidates": 32,
+          "baseline_nearest": {
+            "min_chunks": 41.231,
+            "median_chunks": 71.948
+          },
+          "updated_nearest": {
+            "min_chunks": 43.829,
+            "median_chunks": 73.279
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 34,
+          "updated_candidates": 32,
+          "baseline_nearest": {
+            "min_chunks": 56.143,
+            "median_chunks": 77.632
+          },
+          "updated_nearest": {
+            "min_chunks": 55.973,
+            "median_chunks": 68.184
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 30,
+          "updated_candidates": 31,
+          "baseline_nearest": {
+            "min_chunks": 44.283,
+            "median_chunks": 72.625
+          },
+          "updated_nearest": {
+            "min_chunks": 43.081,
+            "median_chunks": 67.209
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 26,
+          "updated_candidates": 30,
+          "baseline_nearest": {
+            "min_chunks": 59.908,
+            "median_chunks": 76.276
+          },
+          "updated_nearest": {
+            "min_chunks": 41.0,
+            "median_chunks": 69.26
+          }
+        }
+      ]
+    },
+    {
+      "key": "epic:epic_temple",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 3456234,
+        "locate_offset": [
+          0,
+          0,
+          0
+        ],
+        "spacing": 141,
+        "separation": 87,
+        "exclusion_zone": {
+          "other_set": "betterjungletemples:jungle_temples",
+          "chunk_count": 16
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 3456234,
+        "locate_offset": [
+          0,
+          0,
+          0
+        ],
+        "spacing": 141,
+        "separation": 87,
+        "exclusion_zone": {
+          "other_set": "betterjungletemples:jungle_temples",
+          "chunk_count": 16
+        }
+      },
+      "baseline_candidates": 102,
+      "updated_candidates": 102,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 12,
+          "updated_candidates": 12,
+          "baseline_nearest": {
+            "min_chunks": 104.019,
+            "median_chunks": 122.404
+          },
+          "updated_nearest": {
+            "min_chunks": 104.019,
+            "median_chunks": 122.404
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 13,
+          "updated_candidates": 13,
+          "baseline_nearest": {
+            "min_chunks": 104.077,
+            "median_chunks": 116.469
+          },
+          "updated_nearest": {
+            "min_chunks": 104.077,
+            "median_chunks": 116.469
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 13,
+          "updated_candidates": 13,
+          "baseline_nearest": {
+            "min_chunks": 102.005,
+            "median_chunks": 132.834
+          },
+          "updated_nearest": {
+            "min_chunks": 102.005,
+            "median_chunks": 132.834
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 100.045,
+            "median_chunks": 118.089
+          },
+          "updated_nearest": {
+            "min_chunks": 100.045,
+            "median_chunks": 118.089
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 13,
+          "updated_candidates": 13,
+          "baseline_nearest": {
+            "min_chunks": 108.931,
+            "median_chunks": 130.081
+          },
+          "updated_nearest": {
+            "min_chunks": 108.931,
+            "median_chunks": 130.081
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 11,
+          "updated_candidates": 11,
+          "baseline_nearest": {
+            "min_chunks": 108.005,
+            "median_chunks": 116.211
+          },
+          "updated_nearest": {
+            "min_chunks": 108.005,
+            "median_chunks": 116.211
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 11,
+          "updated_candidates": 11,
+          "baseline_nearest": {
+            "min_chunks": 100.663,
+            "median_chunks": 125.929
+          },
+          "updated_nearest": {
+            "min_chunks": 100.663,
+            "median_chunks": 125.929
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 13,
+          "updated_candidates": 13,
+          "baseline_nearest": {
+            "min_chunks": 98.858,
+            "median_chunks": 113.358
+          },
+          "updated_nearest": {
+            "min_chunks": 98.858,
+            "median_chunks": 113.358
+          }
+        }
+      ]
+    },
+    {
+      "key": "epic:epic_temple_ruin",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 14357619,
+        "locate_offset": [
+          10,
+          0,
+          10
+        ],
+        "spacing": 80,
+        "separation": 32,
+        "exclusion_zone": {
+          "other_set": "epic:epic_temple",
+          "chunk_count": 12
+        }
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 14357619,
+        "locate_offset": [
+          10,
+          0,
+          10
+        ],
+        "spacing": 80,
+        "separation": 32,
+        "exclusion_zone": {
+          "other_set": "epic:epic_temple",
+          "chunk_count": 12
+        }
+      },
+      "baseline_candidates": 336,
+      "updated_candidates": 336,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 41,
+          "updated_candidates": 41,
+          "baseline_nearest": {
+            "min_chunks": 36.688,
+            "median_chunks": 61.847
+          },
+          "updated_nearest": {
+            "min_chunks": 36.688,
+            "median_chunks": 61.847
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 34.713,
+            "median_chunks": 59.047
+          },
+          "updated_nearest": {
+            "min_chunks": 34.713,
+            "median_chunks": 59.047
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 43,
+          "updated_candidates": 43,
+          "baseline_nearest": {
+            "min_chunks": 40.311,
+            "median_chunks": 60.216
+          },
+          "updated_nearest": {
+            "min_chunks": 40.311,
+            "median_chunks": 60.216
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 46,
+          "updated_candidates": 46,
+          "baseline_nearest": {
+            "min_chunks": 38.079,
+            "median_chunks": 61.074
+          },
+          "updated_nearest": {
+            "min_chunks": 38.079,
+            "median_chunks": 61.074
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 42,
+          "updated_candidates": 42,
+          "baseline_nearest": {
+            "min_chunks": 44.944,
+            "median_chunks": 62.169
+          },
+          "updated_nearest": {
+            "min_chunks": 44.944,
+            "median_chunks": 62.169
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 44,
+          "updated_candidates": 44,
+          "baseline_nearest": {
+            "min_chunks": 48.01,
+            "median_chunks": 64.377
+          },
+          "updated_nearest": {
+            "min_chunks": 48.01,
+            "median_chunks": 64.377
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 40,
+          "updated_candidates": 40,
+          "baseline_nearest": {
+            "min_chunks": 45.607,
+            "median_chunks": 62.064
+          },
+          "updated_nearest": {
+            "min_chunks": 45.607,
+            "median_chunks": 62.064
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 38,
+          "updated_candidates": 38,
+          "baseline_nearest": {
+            "min_chunks": 41.012,
+            "median_chunks": 63.632
+          },
+          "updated_nearest": {
+            "min_chunks": 41.012,
+            "median_chunks": 63.632
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:ancient_crypt",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 265792644,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 265792644,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 167,
+      "updated_candidates": 167,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 71.253,
+            "median_chunks": 96.519
+          },
+          "updated_nearest": {
+            "min_chunks": 71.253,
+            "median_chunks": 96.519
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 71.197,
+            "median_chunks": 91.444
+          },
+          "updated_nearest": {
+            "min_chunks": 71.197,
+            "median_chunks": 91.444
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 77.524,
+            "median_chunks": 88.674
+          },
+          "updated_nearest": {
+            "min_chunks": 77.524,
+            "median_chunks": 88.674
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 69.771,
+            "median_chunks": 89.006
+          },
+          "updated_nearest": {
+            "min_chunks": 69.771,
+            "median_chunks": 89.006
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 73.0,
+            "median_chunks": 97.417
+          },
+          "updated_nearest": {
+            "min_chunks": 73.0,
+            "median_chunks": 97.417
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 62.201,
+            "median_chunks": 91.088
+          },
+          "updated_nearest": {
+            "min_chunks": 62.201,
+            "median_chunks": 91.088
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 79.025,
+            "median_chunks": 102.66
+          },
+          "updated_nearest": {
+            "min_chunks": 79.025,
+            "median_chunks": 102.66
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 66.129,
+            "median_chunks": 93.213
+          },
+          "updated_nearest": {
+            "min_chunks": 66.129,
+            "median_chunks": 93.213
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:ancient_dungeon",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 512345192,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 512345192,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 166,
+      "updated_candidates": 166,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 64.133,
+            "median_chunks": 91.506
+          },
+          "updated_nearest": {
+            "min_chunks": 64.133,
+            "median_chunks": 91.506
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 70.328,
+            "median_chunks": 91.444
+          },
+          "updated_nearest": {
+            "min_chunks": 70.328,
+            "median_chunks": 91.444
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 73.007,
+            "median_chunks": 85.147
+          },
+          "updated_nearest": {
+            "min_chunks": 73.007,
+            "median_chunks": 85.147
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 75.24,
+            "median_chunks": 93.862
+          },
+          "updated_nearest": {
+            "min_chunks": 75.24,
+            "median_chunks": 93.862
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 78.918,
+            "median_chunks": 99.735
+          },
+          "updated_nearest": {
+            "min_chunks": 78.918,
+            "median_chunks": 99.735
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 84.054,
+            "median_chunks": 94.763
+          },
+          "updated_nearest": {
+            "min_chunks": 84.054,
+            "median_chunks": 94.763
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 72.78,
+            "median_chunks": 85.147
+          },
+          "updated_nearest": {
+            "min_chunks": 72.78,
+            "median_chunks": 85.147
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 72.402,
+            "median_chunks": 94.578
+          },
+          "updated_nearest": {
+            "min_chunks": 72.402,
+            "median_chunks": 94.578
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:ancient_ruins",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 165916912,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 165916912,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 163,
+      "updated_candidates": 163,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 72.78,
+            "median_chunks": 90.934
+          },
+          "updated_nearest": {
+            "min_chunks": 72.78,
+            "median_chunks": 90.934
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 85.147,
+            "median_chunks": 94.192
+          },
+          "updated_nearest": {
+            "min_chunks": 85.147,
+            "median_chunks": 94.192
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 62.65,
+            "median_chunks": 88.006
+          },
+          "updated_nearest": {
+            "min_chunks": 62.65,
+            "median_chunks": 88.006
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 66.483,
+            "median_chunks": 91.444
+          },
+          "updated_nearest": {
+            "min_chunks": 66.483,
+            "median_chunks": 91.444
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 18,
+          "updated_candidates": 18,
+          "baseline_nearest": {
+            "min_chunks": 70.257,
+            "median_chunks": 101.407
+          },
+          "updated_nearest": {
+            "min_chunks": 70.257,
+            "median_chunks": 101.407
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 77.104,
+            "median_chunks": 85.165
+          },
+          "updated_nearest": {
+            "min_chunks": 77.104,
+            "median_chunks": 85.165
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 64.777,
+            "median_chunks": 98.858
+          },
+          "updated_nearest": {
+            "min_chunks": 64.777,
+            "median_chunks": 98.858
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 65.924,
+            "median_chunks": 91.782
+          },
+          "updated_nearest": {
+            "min_chunks": 65.924,
+            "median_chunks": 91.782
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:ancient_towers",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 283426912,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 283426912,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 169,
+      "updated_candidates": 169,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 59.034,
+            "median_chunks": 92.022
+          },
+          "updated_nearest": {
+            "min_chunks": 59.034,
+            "median_chunks": 92.022
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 77.473,
+            "median_chunks": 94.244
+          },
+          "updated_nearest": {
+            "min_chunks": 77.473,
+            "median_chunks": 94.244
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 66.37,
+            "median_chunks": 88.006
+          },
+          "updated_nearest": {
+            "min_chunks": 66.37,
+            "median_chunks": 88.006
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 17,
+          "updated_candidates": 17,
+          "baseline_nearest": {
+            "min_chunks": 69.051,
+            "median_chunks": 96.84
+          },
+          "updated_nearest": {
+            "min_chunks": 69.051,
+            "median_chunks": 96.84
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 74.061,
+            "median_chunks": 97.185
+          },
+          "updated_nearest": {
+            "min_chunks": 74.061,
+            "median_chunks": 97.185
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 73.007,
+            "median_chunks": 92.13
+          },
+          "updated_nearest": {
+            "min_chunks": 73.007,
+            "median_chunks": 92.13
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 73.553,
+            "median_chunks": 85.44
+          },
+          "updated_nearest": {
+            "min_chunks": 73.553,
+            "median_chunks": 85.44
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 76.164,
+            "median_chunks": 89.694
+          },
+          "updated_nearest": {
+            "min_chunks": 76.164,
+            "median_chunks": 89.694
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:field_stone_ruins",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 558158731,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 558158731,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 158,
+      "updated_candidates": 158,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 72.339,
+            "median_chunks": 100.601
+          },
+          "updated_nearest": {
+            "min_chunks": 72.339,
+            "median_chunks": 100.601
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 60.008,
+            "median_chunks": 86.093
+          },
+          "updated_nearest": {
+            "min_chunks": 60.008,
+            "median_chunks": 86.093
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 76.059,
+            "median_chunks": 105.537
+          },
+          "updated_nearest": {
+            "min_chunks": 76.059,
+            "median_chunks": 105.537
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 88.955,
+            "median_chunks": 95.197
+          },
+          "updated_nearest": {
+            "min_chunks": 88.955,
+            "median_chunks": 95.197
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 75.802,
+            "median_chunks": 91.241
+          },
+          "updated_nearest": {
+            "min_chunks": 75.802,
+            "median_chunks": 91.241
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 18,
+          "updated_candidates": 18,
+          "baseline_nearest": {
+            "min_chunks": 74.465,
+            "median_chunks": 95.115
+          },
+          "updated_nearest": {
+            "min_chunks": 74.465,
+            "median_chunks": 95.115
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 18,
+          "updated_candidates": 18,
+          "baseline_nearest": {
+            "min_chunks": 79.057,
+            "median_chunks": 88.059
+          },
+          "updated_nearest": {
+            "min_chunks": 79.057,
+            "median_chunks": 88.059
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 66.483,
+            "median_chunks": 89.09
+          },
+          "updated_nearest": {
+            "min_chunks": 66.483,
+            "median_chunks": 89.09
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:field_stone_ruins_rocks",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "exclusion_zone": {
+          "chunk_count": 10,
+          "other_set": "minecraft:villages"
+        },
+        "salt": 144788412,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "exclusion_zone": {
+          "chunk_count": 10,
+          "other_set": "minecraft:villages"
+        },
+        "salt": 144788412,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 167,
+      "updated_candidates": 167,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 78.772,
+            "median_chunks": 94.26
+          },
+          "updated_nearest": {
+            "min_chunks": 78.772,
+            "median_chunks": 94.26
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 82.861,
+            "median_chunks": 103.834
+          },
+          "updated_nearest": {
+            "min_chunks": 82.861,
+            "median_chunks": 103.834
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 69.065,
+            "median_chunks": 97.673
+          },
+          "updated_nearest": {
+            "min_chunks": 69.065,
+            "median_chunks": 97.673
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 75.326,
+            "median_chunks": 97.423
+          },
+          "updated_nearest": {
+            "min_chunks": 75.326,
+            "median_chunks": 97.423
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 70.612,
+            "median_chunks": 93.904
+          },
+          "updated_nearest": {
+            "min_chunks": 70.612,
+            "median_chunks": 93.904
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 77.026,
+            "median_chunks": 93.68
+          },
+          "updated_nearest": {
+            "min_chunks": 77.026,
+            "median_chunks": 93.68
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 72.111,
+            "median_chunks": 93.724
+          },
+          "updated_nearest": {
+            "min_chunks": 72.111,
+            "median_chunks": 93.724
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 72.339,
+            "median_chunks": 91.526
+          },
+          "updated_nearest": {
+            "min_chunks": 72.339,
+            "median_chunks": 91.526
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:level_one_ruins",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 328134491,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 328134491,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 169,
+      "updated_candidates": 169,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 69.051,
+            "median_chunks": 85.803
+          },
+          "updated_nearest": {
+            "min_chunks": 69.051,
+            "median_chunks": 85.803
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 87.098,
+            "median_chunks": 99.04
+          },
+          "updated_nearest": {
+            "min_chunks": 87.098,
+            "median_chunks": 99.04
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 70.859,
+            "median_chunks": 95.425
+          },
+          "updated_nearest": {
+            "min_chunks": 70.859,
+            "median_chunks": 95.425
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 71.063,
+            "median_chunks": 92.634
+          },
+          "updated_nearest": {
+            "min_chunks": 71.063,
+            "median_chunks": 92.634
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 73.498,
+            "median_chunks": 95.764
+          },
+          "updated_nearest": {
+            "min_chunks": 73.498,
+            "median_chunks": 95.764
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 73.335,
+            "median_chunks": 93.941
+          },
+          "updated_nearest": {
+            "min_chunks": 73.335,
+            "median_chunks": 93.941
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 62.817,
+            "median_chunks": 97.534
+          },
+          "updated_nearest": {
+            "min_chunks": 62.817,
+            "median_chunks": 97.534
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 68.066,
+            "median_chunks": 92.022
+          },
+          "updated_nearest": {
+            "min_chunks": 68.066,
+            "median_chunks": 92.022
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:level_three_ruins",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 198312145,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 198312145,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 168,
+      "updated_candidates": 168,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 70.52,
+            "median_chunks": 85.381
+          },
+          "updated_nearest": {
+            "min_chunks": 70.52,
+            "median_chunks": 85.381
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 70.214,
+            "median_chunks": 90.449
+          },
+          "updated_nearest": {
+            "min_chunks": 70.214,
+            "median_chunks": 90.449
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 66.708,
+            "median_chunks": 98.859
+          },
+          "updated_nearest": {
+            "min_chunks": 66.708,
+            "median_chunks": 98.859
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 66.121,
+            "median_chunks": 91.049
+          },
+          "updated_nearest": {
+            "min_chunks": 66.121,
+            "median_chunks": 91.049
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 66.761,
+            "median_chunks": 89.221
+          },
+          "updated_nearest": {
+            "min_chunks": 66.761,
+            "median_chunks": 89.221
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 57.706,
+            "median_chunks": 80.957
+          },
+          "updated_nearest": {
+            "min_chunks": 57.706,
+            "median_chunks": 80.957
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 17,
+          "updated_candidates": 17,
+          "baseline_nearest": {
+            "min_chunks": 67.186,
+            "median_chunks": 90.089
+          },
+          "updated_nearest": {
+            "min_chunks": 67.186,
+            "median_chunks": 90.089
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 67.365,
+            "median_chunks": 94.595
+          },
+          "updated_nearest": {
+            "min_chunks": 67.365,
+            "median_chunks": 94.595
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:level_two_ruins",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 697518742,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 697518742,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 166,
+      "updated_candidates": 166,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 69.26,
+            "median_chunks": 90.377
+          },
+          "updated_nearest": {
+            "min_chunks": 69.26,
+            "median_chunks": 90.377
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 66.272,
+            "median_chunks": 81.025
+          },
+          "updated_nearest": {
+            "min_chunks": 66.272,
+            "median_chunks": 81.025
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 64.125,
+            "median_chunks": 100.005
+          },
+          "updated_nearest": {
+            "min_chunks": 64.125,
+            "median_chunks": 100.005
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 66.611,
+            "median_chunks": 82.377
+          },
+          "updated_nearest": {
+            "min_chunks": 66.611,
+            "median_chunks": 82.377
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 73.164,
+            "median_chunks": 89.844
+          },
+          "updated_nearest": {
+            "min_chunks": 73.164,
+            "median_chunks": 89.844
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 73.682,
+            "median_chunks": 89.202
+          },
+          "updated_nearest": {
+            "min_chunks": 73.682,
+            "median_chunks": 89.202
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 69.26,
+            "median_chunks": 83.361
+          },
+          "updated_nearest": {
+            "min_chunks": 69.26,
+            "median_chunks": 83.361
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 67.119,
+            "median_chunks": 90.244
+          },
+          "updated_nearest": {
+            "min_chunks": 67.119,
+            "median_chunks": 90.244
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:lost_soul_city",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 121229911,
+        "spacing": 112,
+        "separation": 65
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 121229911,
+        "spacing": 112,
+        "separation": 65
+      },
+      "baseline_candidates": 167,
+      "updated_candidates": 167,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 85.709,
+            "median_chunks": 96.135
+          },
+          "updated_nearest": {
+            "min_chunks": 85.709,
+            "median_chunks": 96.135
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 86.539,
+            "median_chunks": 98.412
+          },
+          "updated_nearest": {
+            "min_chunks": 86.539,
+            "median_chunks": 98.412
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 72.339,
+            "median_chunks": 106.231
+          },
+          "updated_nearest": {
+            "min_chunks": 72.339,
+            "median_chunks": 106.231
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 79.712,
+            "median_chunks": 98.336
+          },
+          "updated_nearest": {
+            "min_chunks": 79.712,
+            "median_chunks": 98.336
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 71.063,
+            "median_chunks": 93.097
+          },
+          "updated_nearest": {
+            "min_chunks": 71.063,
+            "median_chunks": 93.097
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 79.429,
+            "median_chunks": 93.845
+          },
+          "updated_nearest": {
+            "min_chunks": 79.429,
+            "median_chunks": 93.845
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 67.897,
+            "median_chunks": 97.192
+          },
+          "updated_nearest": {
+            "min_chunks": 67.897,
+            "median_chunks": 97.192
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 72.18,
+            "median_chunks": 100.003
+          },
+          "updated_nearest": {
+            "min_chunks": 72.18,
+            "median_chunks": 100.003
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:ocean_fortress_main",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 765385625,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 765385625,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 167,
+      "updated_candidates": 167,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 64.498,
+            "median_chunks": 94.14
+          },
+          "updated_nearest": {
+            "min_chunks": 64.498,
+            "median_chunks": 94.14
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 86.452,
+            "median_chunks": 99.825
+          },
+          "updated_nearest": {
+            "min_chunks": 86.452,
+            "median_chunks": 99.825
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 67.067,
+            "median_chunks": 88.255
+          },
+          "updated_nearest": {
+            "min_chunks": 67.067,
+            "median_chunks": 88.255
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 66.189,
+            "median_chunks": 96.0
+          },
+          "updated_nearest": {
+            "min_chunks": 66.189,
+            "median_chunks": 96.0
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 75.313,
+            "median_chunks": 86.331
+          },
+          "updated_nearest": {
+            "min_chunks": 75.313,
+            "median_chunks": 86.331
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 77.492,
+            "median_chunks": 93.301
+          },
+          "updated_nearest": {
+            "min_chunks": 77.492,
+            "median_chunks": 93.301
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 65.803,
+            "median_chunks": 102.46
+          },
+          "updated_nearest": {
+            "min_chunks": 65.803,
+            "median_chunks": 102.46
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 65.008,
+            "median_chunks": 91.049
+          },
+          "updated_nearest": {
+            "min_chunks": 65.008,
+            "median_chunks": 91.049
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:ocean_ruins",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 937485621,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 937485621,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 168,
+      "updated_candidates": 168,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 78.16,
+            "median_chunks": 92.696
+          },
+          "updated_nearest": {
+            "min_chunks": 78.16,
+            "median_chunks": 92.696
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 68.25,
+            "median_chunks": 97.124
+          },
+          "updated_nearest": {
+            "min_chunks": 68.25,
+            "median_chunks": 97.124
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 67.119,
+            "median_chunks": 99.639
+          },
+          "updated_nearest": {
+            "min_chunks": 67.119,
+            "median_chunks": 99.639
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 61.847,
+            "median_chunks": 90.934
+          },
+          "updated_nearest": {
+            "min_chunks": 61.847,
+            "median_chunks": 90.934
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 70.214,
+            "median_chunks": 99.323
+          },
+          "updated_nearest": {
+            "min_chunks": 70.214,
+            "median_chunks": 99.323
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 63.6,
+            "median_chunks": 83.024
+          },
+          "updated_nearest": {
+            "min_chunks": 63.6,
+            "median_chunks": 83.024
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 75.007,
+            "median_chunks": 91.115
+          },
+          "updated_nearest": {
+            "min_chunks": 75.007,
+            "median_chunks": 91.115
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 73.498,
+            "median_chunks": 88.566
+          },
+          "updated_nearest": {
+            "min_chunks": 73.498,
+            "median_chunks": 88.566
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:pumpkin_ruins",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 248791439,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 248791439,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 166,
+      "updated_candidates": 166,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 70.214,
+            "median_chunks": 92.962
+          },
+          "updated_nearest": {
+            "min_chunks": 70.214,
+            "median_chunks": 92.962
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 58.421,
+            "median_chunks": 82.152
+          },
+          "updated_nearest": {
+            "min_chunks": 58.421,
+            "median_chunks": 82.152
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 73.007,
+            "median_chunks": 93.048
+          },
+          "updated_nearest": {
+            "min_chunks": 73.007,
+            "median_chunks": 93.048
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 73.0,
+            "median_chunks": 93.193
+          },
+          "updated_nearest": {
+            "min_chunks": 73.0,
+            "median_chunks": 93.193
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 80.505,
+            "median_chunks": 98.843
+          },
+          "updated_nearest": {
+            "min_chunks": 80.505,
+            "median_chunks": 98.843
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 69.051,
+            "median_chunks": 91.436
+          },
+          "updated_nearest": {
+            "min_chunks": 69.051,
+            "median_chunks": 91.436
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 60.208,
+            "median_chunks": 97.494
+          },
+          "updated_nearest": {
+            "min_chunks": 60.208,
+            "median_chunks": 97.494
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 77.026,
+            "median_chunks": 88.857
+          },
+          "updated_nearest": {
+            "min_chunks": 77.026,
+            "median_chunks": 88.857
+          }
+        }
+      ]
+    },
+    {
+      "key": "philipsruins:underground_structures",
+      "changed": false,
+      "before": {
+        "type": "minecraft:random_spread",
+        "salt": 641781942,
+        "spacing": 112,
+        "separation": 56
+      },
+      "after": {
+        "type": "minecraft:random_spread",
+        "salt": 641781942,
+        "spacing": 112,
+        "separation": 56
+      },
+      "baseline_candidates": 163,
+      "updated_candidates": 163,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 69.289,
+            "median_chunks": 85.094
+          },
+          "updated_nearest": {
+            "min_chunks": 69.289,
+            "median_chunks": 85.094
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 24,
+          "updated_candidates": 24,
+          "baseline_nearest": {
+            "min_chunks": 66.37,
+            "median_chunks": 90.609
+          },
+          "updated_nearest": {
+            "min_chunks": 66.37,
+            "median_chunks": 90.609
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 20,
+          "updated_candidates": 20,
+          "baseline_nearest": {
+            "min_chunks": 65.115,
+            "median_chunks": 94.675
+          },
+          "updated_nearest": {
+            "min_chunks": 65.115,
+            "median_chunks": 94.675
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 79.0,
+            "median_chunks": 101.868
+          },
+          "updated_nearest": {
+            "min_chunks": 79.0,
+            "median_chunks": 101.868
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 17,
+          "updated_candidates": 17,
+          "baseline_nearest": {
+            "min_chunks": 77.162,
+            "median_chunks": 101.079
+          },
+          "updated_nearest": {
+            "min_chunks": 77.162,
+            "median_chunks": 101.079
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 74.007,
+            "median_chunks": 83.241
+          },
+          "updated_nearest": {
+            "min_chunks": 74.007,
+            "median_chunks": 83.241
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 18,
+          "updated_candidates": 18,
+          "baseline_nearest": {
+            "min_chunks": 83.863,
+            "median_chunks": 93.263
+          },
+          "updated_nearest": {
+            "min_chunks": 83.863,
+            "median_chunks": 93.263
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 23,
+          "updated_candidates": 23,
+          "baseline_nearest": {
+            "min_chunks": 70.029,
+            "median_chunks": 90.089
+          },
+          "updated_nearest": {
+            "min_chunks": 70.029,
+            "median_chunks": 90.089
+          }
+        }
+      ]
+    },
+    {
+      "key": "dungeons_arise:major_structures",
+      "changed": false,
+      "before": {
+        "salt": 88371663,
+        "spacing": 128,
+        "separation": 64,
+        "type": "minecraft:random_spread"
+      },
+      "after": {
+        "salt": 88371663,
+        "spacing": 128,
+        "separation": 64,
+        "type": "minecraft:random_spread"
+      },
+      "baseline_candidates": 128,
+      "updated_candidates": 128,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 69.181,
+            "median_chunks": 91.927
+          },
+          "updated_nearest": {
+            "min_chunks": 69.181,
+            "median_chunks": 91.927
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 85.428,
+            "median_chunks": 103.454
+          },
+          "updated_nearest": {
+            "min_chunks": 85.428,
+            "median_chunks": 103.454
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 91.022,
+            "median_chunks": 101.945
+          },
+          "updated_nearest": {
+            "min_chunks": 91.022,
+            "median_chunks": 101.945
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 82.565,
+            "median_chunks": 95.883
+          },
+          "updated_nearest": {
+            "min_chunks": 82.565,
+            "median_chunks": 95.883
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 81.025,
+            "median_chunks": 118.526
+          },
+          "updated_nearest": {
+            "min_chunks": 81.025,
+            "median_chunks": 118.526
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 92.13,
+            "median_chunks": 106.118
+          },
+          "updated_nearest": {
+            "min_chunks": 92.13,
+            "median_chunks": 106.118
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 81.043,
+            "median_chunks": 110.919
+          },
+          "updated_nearest": {
+            "min_chunks": 81.043,
+            "median_chunks": 110.919
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 16,
+          "updated_candidates": 16,
+          "baseline_nearest": {
+            "min_chunks": 89.805,
+            "median_chunks": 118.745
+          },
+          "updated_nearest": {
+            "min_chunks": 89.805,
+            "median_chunks": 118.745
+          }
+        }
+      ]
+    },
+    {
+      "key": "dungeons_arise:minor_structures",
+      "changed": false,
+      "before": {
+        "salt": 342415935,
+        "spacing": 112,
+        "separation": 56,
+        "type": "minecraft:random_spread"
+      },
+      "after": {
+        "salt": 342415935,
+        "spacing": 112,
+        "separation": 56,
+        "type": "minecraft:random_spread"
+      },
+      "baseline_candidates": 168,
+      "updated_candidates": 168,
+      "sampled_change_percent": 0.0,
+      "asymptotic_opportunity_change_percent": 0.0,
+      "windows": [
+        {
+          "origin_chunks": [
+            -2048,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 67.469,
+            "median_chunks": 90.796
+          },
+          "updated_nearest": {
+            "min_chunks": 67.469,
+            "median_chunks": 90.796
+          }
+        },
+        {
+          "origin_chunks": [
+            -2048,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 25,
+          "updated_candidates": 25,
+          "baseline_nearest": {
+            "min_chunks": 60.671,
+            "median_chunks": 86.579
+          },
+          "updated_nearest": {
+            "min_chunks": 60.671,
+            "median_chunks": 86.579
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            -2048
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 74.525,
+            "median_chunks": 89.811
+          },
+          "updated_nearest": {
+            "min_chunks": 74.525,
+            "median_chunks": 89.811
+          }
+        },
+        {
+          "origin_chunks": [
+            1536,
+            1536
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 75.186,
+            "median_chunks": 99.624
+          },
+          "updated_nearest": {
+            "min_chunks": 75.186,
+            "median_chunks": 99.624
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 18,
+          "updated_candidates": 18,
+          "baseline_nearest": {
+            "min_chunks": 74.202,
+            "median_chunks": 88.082
+          },
+          "updated_nearest": {
+            "min_chunks": 74.202,
+            "median_chunks": 88.082
+          }
+        },
+        {
+          "origin_chunks": [
+            3840,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 19,
+          "updated_candidates": 19,
+          "baseline_nearest": {
+            "min_chunks": 70.349,
+            "median_chunks": 94.868
+          },
+          "updated_nearest": {
+            "min_chunks": 70.349,
+            "median_chunks": 94.868
+          }
+        },
+        {
+          "origin_chunks": [
+            -256,
+            3840
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 22,
+          "updated_candidates": 22,
+          "baseline_nearest": {
+            "min_chunks": 71.176,
+            "median_chunks": 89.202
+          },
+          "updated_nearest": {
+            "min_chunks": 71.176,
+            "median_chunks": 89.202
+          }
+        },
+        {
+          "origin_chunks": [
+            -4352,
+            -256
+          ],
+          "width_chunks": 512,
+          "baseline_candidates": 21,
+          "updated_candidates": 21,
+          "baseline_nearest": {
+            "min_chunks": 75.802,
+            "median_chunks": 94.244
+          },
+          "updated_nearest": {
+            "min_chunks": 75.802,
+            "median_chunks": 94.244
+          }
+        }
+      ]
+    }
+  ],
+  "source": {
+    "checkpoint_id": "20261028T180051Z-30624d",
+    "checkpoint_sha256": "3cb269d28ae1ccbac882a44d35277d82c83582274abad2f1cf3b41566d3e9b24",
+    "level_dat_member": "world/RosewaterArtistic/level.dat",
+    "level_dat_sha256": "0025f67b913e48a0ac99d2ba21db1bf0834b266fda458ab082d4a2309bd3b8f4",
+    "worldgen_policy_sha256": "1f3e772f544f72e88bcb0c2659c1e867bc97f5f75a0e30aa13efbb9dfe7a8ea7",
+    "proposal_sha256": "fbe7cdf75dc8f07aad88db51b6a5b6f8d2a6605d69982f199a4876224ef634e8",
+    "archived_tectonic_sha256": "9ca01c0e5f109c517d2ebc025d933ca30c7c9f5010019b67527b061ecb8869d5"
+  }
+}

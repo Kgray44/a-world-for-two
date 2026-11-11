@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "castleshift:castle",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 92,
+    "separation": 32,
+    "salt": 194572831,
+    "exclusion_zone": {
+      "other_set": "minecraft:villages",
+      "chunk_count": 10
+    }
+  }
+}
