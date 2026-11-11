@@ -1,0 +1,13 @@
+{
+  "format": "awft-fleet-custody-diagnostics-probe:1",
+  "base_source_sha256": "b5e97f965a11d73c3db3f7514b2b01bf75b742e9546dd99d773c203757465d52",
+  "proposed_source_sha256": "4f48c88630a49b757bc56f7828cc4522d2d9f6e3ff42717f4450b42a6e5bbc6a",
+  "patch_sha256": "374560671c0ea04ed702f5d04e2db0a6871718aa324acd15b29d18537bd0cf46",
+  "cached_javac_args_sha256": "550b69355d2a7bbb3165ec4628018462d12d26dd35c97181f98617ae6778cf26",
+  "javac_exit_code": 0,
+  "active_source_changed": false,
+  "native_world_operations": 0,
+  "runtime_installations": 0,
+  "probe_exit_code": 0,
+  "probe_stdout": "PASS: unchanged, changed bytes/mtime/header, mtime-only, header-only, added zero-byte placeholder, removed,64-row cap; no Minecraft world or runtime"
+}
