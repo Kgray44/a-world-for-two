@@ -184,9 +184,12 @@ class Server:
                                                 "state": self.state, "warning": self.warning})
 
     def start(self, notify=lambda _: None):
-        with self.layout.mutation, self._lock:
-            if self.running():
-                raise UserError("The server is already running")
+        # Keep the complete mutation lease, but do not hold the status lock
+        # while integrity scans, reserve checks or the Java probe are running.
+        with self.layout.mutation:
+            with self._lock:
+                if self.running():
+                    raise UserError("The server is already running")
             eula = self.layout.server / "eula.txt"
             if not eula.exists() or properties(eula.read_text()).get("eula") != "true":
                 raise UserError("The owner must read and accept Minecraft's EULA in Setup before the first start")
@@ -227,26 +230,32 @@ class Server:
             command = [java, f"-Xms{settings['initial_heap_gib']}G", f"-Xmx{settings['heap_gib']}G",
                        "-XX:+UseG1GC", "-Xlog:gc*:file=../logs/gc.log:time,level,tags:filecount=3,filesize=5M",
                        "@" + str(args), "nogui"]
-            self._logger = logging.getLogger("awft-server-" + str(self.layout.home))
-            self._logger.setLevel(logging.INFO)
-            if not self._logger.handlers:
-                handler = logging.handlers.RotatingFileHandler(self.layout.logs / "console.log", maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8")
-                self._logger.addHandler(handler)
-            self.process = subprocess.Popen(command, cwd=self.layout.server, stdin=subprocess.PIPE,
-                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
-                bufsize=1, creationflags=(subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW) if os.name == "nt" else 0)
-            proc = psutil.Process(self.process.pid)
-            self.identity = {"pid": proc.pid, "created": proc.create_time(), "command": command,
-                             "cwd": str(self.layout.server), "at": utcnow()}
-            write_json(self.owner_path, self.identity)
-            self.started = time.time()
-            self.state = "starting"
-            self.warning = None
-            self.tick.update(tps=None, mspt=None, at=None)
-            self._reader_thread = threading.Thread(target=self._reader, args=(self.process,), daemon=True)
-            self._reader_thread.start()
+            with self._lock:
+                # A process/identity can change while the read-only preflight
+                # is in progress. Never create a second child over that owner.
+                if self.running():
+                    raise UserError("The server is already running")
+                self._logger = logging.getLogger("awft-server-" + str(self.layout.home))
+                self._logger.setLevel(logging.INFO)
+                if not self._logger.handlers:
+                    handler = logging.handlers.RotatingFileHandler(self.layout.logs / "console.log", maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8")
+                    self._logger.addHandler(handler)
+                self.process = subprocess.Popen(command, cwd=self.layout.server, stdin=subprocess.PIPE,
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
+                    bufsize=1, creationflags=(subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW) if os.name == "nt" else 0)
+                proc = psutil.Process(self.process.pid)
+                self.identity = {"pid": proc.pid, "created": proc.create_time(), "command": command,
+                                 "cwd": str(self.layout.server), "at": utcnow()}
+                write_json(self.owner_path, self.identity)
+                self.started = time.time()
+                self.state = "starting"
+                self.warning = None
+                self.tick.update(tps=None, mspt=None, at=None)
+                self._reader_thread = threading.Thread(target=self._reader, args=(self.process,), daemon=True)
+                self._reader_thread.start()
+                result = {"state": self.state, "pid": proc.pid}
             notify("Java started; waiting for NeoForge to report readiness")
-            return {"state": self.state, "pid": proc.pid}
+            return result
 
     def wait_ready(self, timeout=360):
         """Require actual readiness for an owned start; leave a slow live JVM alone."""
